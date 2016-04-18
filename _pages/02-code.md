@@ -12,7 +12,7 @@ Find below some toy projects I have developed.
 
 A development tool built with Ruby on Rails. Its main purpose is to allow developers mock API endpoints quickly & dynamically.
 
-- [Installation & usage guide]()
+- [Installation & usage guide]({% post_url 2016-04-01-duckrails-guide %})
 
 ---
 
