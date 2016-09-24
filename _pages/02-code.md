@@ -16,7 +16,7 @@ A development tool built with Ruby on Rails. Its main purpose is to allow develo
 
 ---
 
-## [table_flipper](https://github.com/iridakos/table_flipper)
+## [(╯°□°）╯︵ ┻━┻ table_flipper](https://github.com/iridakos/table_flipper)
 
 A useless gem that prepends the table flipper to ruby exceptions.
 
