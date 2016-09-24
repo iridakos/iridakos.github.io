@@ -26,14 +26,16 @@ description: "My name is Lazarus Lazaridis && I am a developer && this is my per
     <div class="more">
       <i class="fa fa-film"></i>
       <span>There are more to see...</span>
+      <div class="right">
+        {% if paginator.previous_page %}
+          <a href="{{ paginator.previous_page_path }}" class="previous">previous</a>
+        {% endif %}
+        <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+        {% if paginator.next_page %}
+          <a href="{{ paginator.next_page_path }}" class="next">next</a>
+        {% endif %}
+      </div>
     </div>
-  {% endif %}
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path }}" class="previous">previous</a>
-  {% endif %}
-  <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path }}" class="next">next</a>
   {% endif %}
 </div>
 

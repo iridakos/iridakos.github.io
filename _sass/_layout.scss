@@ -22,7 +22,7 @@
 
     &,
     &:visited {
-        color: $grey-color-dark;
+        color: #fff;
     }
 }
 
@@ -35,7 +35,8 @@
     }
 
     .page-link {
-        color: $grey-color-dark;
+        color: #fff;
+        font-size: 18px;
         line-height: $base-line-height;
         padding: 5px;
 
@@ -165,8 +166,6 @@
     }
 }
 
-
-
 /**
  * Page content
  */
@@ -198,16 +197,15 @@
 }
 
 .pagination {
-  border: 1px solid lighten($brand-color, 41%);
-  background: lighten($brand-color, 45%);
+  border: 1px solid lighten(#64642e, 55%);
+  background: lighten(#64642e, 60%);
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
 
   .more {
-    font-weight: bold;
-    color: darken($brand-color, 20%);
-    margin-bottom: 10px;
+    font-weight: normal;
+    color: #444;
   }
 
   .previous {
@@ -219,7 +217,7 @@
   }
 
   .page_number {
-    color: darken($brand-color, 20%);
+    color: #444;
     margin: 0;
   }
 }
