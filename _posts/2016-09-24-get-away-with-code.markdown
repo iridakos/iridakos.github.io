@@ -113,6 +113,8 @@ Don't forget to inform the author that you resolved his/her WIP.
 
 Sleeping is a good thing, take the day off and go home.
 
+![Irida (cat) sleeping](http://i.imgur.com/3q4YTHY.jpg)
+
 ### Important note
 
 This is supposed to be a fun post, DO NOT TRY THIS AT WORK.
