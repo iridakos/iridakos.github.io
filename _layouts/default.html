@@ -9,9 +9,15 @@
 
     <div class="page-content">
       <div class="wrapper">
-        {% include news.html %}
-        
-        {{ content }}
+        <div class="left-column">
+          {% include news.html %}
+          {{ content }}
+        </div>
+
+        <div class="right-column">
+          <a class="twitter-timeline"  href="https://twitter.com/lazaru_s" data-widget-id="573192559738163200">My tweets @lazaru_s</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
       </div>
     </div>
 

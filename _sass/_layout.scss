@@ -47,6 +47,12 @@
     }
 
     @include media-query($on-palm) {
+        .page-link {
+          color: $brand-color;
+        }
+    }
+
+    @include media-query($on-palm) {
         position: absolute;
         top: 9px;
         right: $spacing-unit / 2;

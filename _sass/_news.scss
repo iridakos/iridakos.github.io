@@ -7,6 +7,13 @@
     padding: 10px;
     border-radius: 5px;
 
+    &:after {
+     content: " ";
+     display: block;
+     height: 0;
+     clear: both;
+    }
+
     .news-title {
       font-weight: bold;
       color: $brand-color;
@@ -16,7 +23,6 @@
       .news-item-image {
         float: left;
         margin-right: 10px;
-        margin-top: 5px;
 
         img {
           width: 100px;

@@ -8,6 +8,29 @@ dl, dd, ol, ul, figure {
     padding: 0;
 }
 
+.left-column {
+  max-width: 800px;
+  float: left;
+}
+
+.right-column {
+  max-width: 250px;
+  float: right;
+  margin-left: 10px;
+}
+
+@include media-query($on-palm) {
+    .right-column {
+      display: none;
+    }
+}
+
+@include media-query($on-laptop) {
+    .right-column {
+      display: none;
+    }
+}
+
 
 
 /**
