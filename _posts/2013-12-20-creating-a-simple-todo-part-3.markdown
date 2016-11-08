@@ -504,7 +504,7 @@ A model scope that uses the `ability.rb` permissions!
 Open the pages_controller.rb and change it as below:
 
 ``` ruby
-class PagesController &lt; ApplicationController
+class PagesController < ApplicationController
   def home
     @tasks = Task.accessible_by(current_ability)
   end
