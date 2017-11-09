@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "DuckRails v2.0.0 docker image"
-description: "News: DuckRails can now be used via its own docker image"
+description: "News: DuckRails can now be used via its own docker image."
 date:   2017-11-10 00:05:00 +0300
 image: "https://camo.githubusercontent.com/063ef000c181d49fb2f6a8f70ffcc5125755a577/687474703a2f2f692e696d6775722e636f6d2f33686d3047616a2e706e67"
 preview: "DuckRails can now be used via its own docker image."
