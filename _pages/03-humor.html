@@ -1,0 +1,24 @@
+---
+layout: page
+menu_title: 😒 humor
+title: humor
+permalink: /humor/
+---
+
+<ul class="post-list">
+  {% for my_post in site.posts %}
+    {% if my_post.category %}
+      {% if my_post.category == 'humor' %}
+      <li>
+        <h2 class="post-container">
+          <a href="{{ my_post.url }}">{{ my_post.title }}</a>
+
+          <div class="post-preview">
+            {{ my_post.preview }}
+          </div>
+        </h2>
+      </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</ul>

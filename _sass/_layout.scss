@@ -101,6 +101,11 @@
         }
     }
 }
+p.contact {
+  a {
+    margin-right: 10px;
+  }
+}
 
 /**
  * Site footer
@@ -110,13 +115,24 @@
     margin-top: 10px;
     padding: $spacing-unit 0;
     background: $grey-color-light;
-}
+    color: $grey-color;
+    text-align: center;
 
-.footer-heading {
-    font-size: 20px;
-    margin-bottom: 20px;
-    color: $brand-color;
-    font-weight: bold;
+    .footer-heading {
+        font-size: 20px;
+        margin-bottom: 5px;
+        color: $brand-color;
+        font-weight: bold;
+    }
+
+    p {
+      margin-bottom: 5px;
+    }
+
+    .copyright {
+      color: darken($grey-color, 10%);
+      font-size: 14px;
+    }
 }
 
 .contact-list,
@@ -132,7 +148,7 @@
 
 .footer-col-wrapper {
     font-size: 15px;
-    color: $grey-color;
+
     margin-left: -$spacing-unit / 2;
     @extend %clearfix;
 }
@@ -224,6 +240,7 @@ h2.post-container {
 a.post-link {
     display: block;
     font-size: 24px;
+    font-weight: bold;
 
     &:hover {
       text-decoration: none;

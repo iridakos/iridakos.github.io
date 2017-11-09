@@ -3,6 +3,7 @@ layout: post
 title:  "Being a developer"
 date:   2015-06-21 10:00:00 +0300
 preview: "I can't really remember the first time I saw a computer. I do remember though that working on a computer was the first thing that came to my mind when I was asked: What do you want..."
+category: "humor"
 ---
 
 I can't really remember the first time I saw a computer.
