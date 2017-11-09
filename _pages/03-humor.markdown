@@ -1,6 +1,6 @@
 ---
 layout: page
-menu_title: <i class="fa fa-snowflake-o"></i> humor
+menu_title: 😒 humor
 title: humor
 permalink: /humor/
 ---
