@@ -8,12 +8,12 @@
 # Site settings
 title: iridakos
 email: ""
-description: > # this means to ignore newlines until "baseurl:"
-  My name is Lazarus Lazaridis, I like coding & cats and this is my personal blog.
+description: My name is Lazarus Lazaridis, I like coding & cats and this is my personal blog.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://iridakos.com" # the base hostname & protocol for your site
 twitter_username: lazaru_s
 github_username:  iridakos
+linkedin_username: lazaruslazaridis
 paginate: 6
 
 # Build settings
