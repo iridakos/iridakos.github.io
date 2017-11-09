@@ -2,6 +2,7 @@
 layout: post
 title:  "Creating a simple ToDo application with Ruby on Rails - Part 1"
 date:   2013-12-07 10:00:00 +0300
+preview: "So, you learned how to say 'Hello world' with Ruby on Rails and it's time to move on since that application is not something you will use unless you are the only one survived on earth..."
 ---
 
 So, you learned [how to say "Hello world" with Ruby on Rails]({% post_url 2013-11-24-saying-hello-world-with-ruby-on-rails %}) and it's time to move on since that app is not something you will use unless you are the only one survived on earth.

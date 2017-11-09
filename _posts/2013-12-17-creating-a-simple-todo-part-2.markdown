@@ -2,9 +2,10 @@
 layout: post
 title:  "Creating a simple ToDo application with Ruby on Rails - Part 2"
 date:   2013-12-17 10:00:00 +0300
+preview: "This is the second part of the tutorial for creating a simple ToDo application. In this part, we are going to..."
 ---
 
-This is the second part of the tutorial about [creating a simple ToDo application]({% post_url 2013-12-07-creating-a-simple-todo-part-1 %}).
+This is the second part of the tutorial for [creating a simple ToDo application]({% post_url 2013-12-07-creating-a-simple-todo-part-1 %}).
 
 In this part, we are going to:
 

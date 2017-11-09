@@ -1,21 +1,27 @@
 ---
 layout: default
-title: "/home"
+title: "home"
 image: "http://iridakos.com/assets/images/header-back.jpg"
 description: "My name is Lazarus Lazaridis && I am a developer && this is my personal blog."
 ---
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
-
   <ul class="post-list">
     {% for post in paginator.posts %}
       <li>
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <h2 class="post-container">
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+            {{ post.title }}
+          </a>
+
+          {% if post.preview %}
+            <div class="post-preview">
+              {{ post.preview }}
+            </div>
+          {% endif %}
         </h2>
       </li>
     {% endfor %}
@@ -24,7 +30,7 @@ description: "My name is Lazarus Lazaridis && I am a developer && this is my per
   <div class="pagination">
   {% if paginator.total_pages > 1 %}
     <div class="more">
-      <i class="fa fa-film"></i>
+      <i class="fa fa-list"></i>
       <span>There are more to see...</span>
       <div class="right">
         {% if paginator.previous_page %}

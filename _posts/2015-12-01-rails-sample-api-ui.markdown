@@ -2,6 +2,7 @@
 layout: post
 title:  "Rails sample API & UI application consuming it"
 date:   2015-06-21 10:00:00 +0300
+preview: "I recently created a simple Rails 4 API named LofoCats and a simple UI application consuming it named LofoCats UI (yes, I like cats, what else is new?)..."
 ---
 
 I recently created a simple Rails 4 API named [LofoCats API](https://github.com/iridakos/lofocats_api) and a simple UI application consuming it named [LofoCats UI](https://github.com/iridakos/lofocats_ui) (yes, I like cats, what else is new?)

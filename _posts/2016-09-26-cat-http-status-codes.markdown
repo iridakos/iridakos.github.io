@@ -4,6 +4,7 @@ title:  "Cat HTTP status codes"
 description: "HTTP status codes explained through cat pictures"
 image: "http://i.imgur.com/1yaeuIY.jpg"
 date:   2016-09-26 21:00:00 +0300
+preview: "My cats in http status codes."
 ---
 
 # Informational 1xx

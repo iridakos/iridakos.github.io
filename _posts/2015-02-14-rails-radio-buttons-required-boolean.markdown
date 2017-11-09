@@ -2,6 +2,7 @@
 layout: post
 title:  "Rails radio buttons and required boolean attributes"
 date:   2014-10-14 10:00:00 +0300
+preview: "Lately, I was trying to create a form for one of my models which had a required boolean attribute."
 ---
 
 Lately, I was trying to create a form for one of my models which had a required boolean attribute.

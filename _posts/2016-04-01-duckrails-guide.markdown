@@ -4,6 +4,7 @@ title:  "DuckRails - Open source development tool for mocking API endpoints"
 description: "A guide for installing and using DuckRails"
 image: "https://3.bp.blogspot.com/-pmI-NvE9zv0/VuaG8aAk9pI/AAAAAAAABss/OFNa5S2LCncihZyMV1O7DrmEVCW6r9X9A/s640/new-mock-general.png"
 date:   2016-04-01 10:00:00 +0300
+preview: "A guide for an opensource tool I've created: DuckRails."
 ---
 
 

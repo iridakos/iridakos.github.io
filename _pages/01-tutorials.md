@@ -1,6 +1,7 @@
 ---
 layout: page
-title: /tutorials
+menu_title: <i class="fa fa-life-ring" aria-hidden="true"></i> tutorials
+title: tutorials
 permalink: /tutorials/
 ---
 

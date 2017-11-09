@@ -2,6 +2,7 @@
 layout: post
 title:  "Testing execution of filters with RSpec"
 date:   2014-10-14 10:00:00 +0300
+preview: "I was working on my application and I wanted to write some RSpec tests for some controllers having `before_filter` for some actions...."
 ---
 
 **UPDATE**: I created a gem to cover the functionality of this post. Visit its homepage [here](https://github.com/iridakos/rspec-matchers-controller_filters).

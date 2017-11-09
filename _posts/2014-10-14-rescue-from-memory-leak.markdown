@@ -2,6 +2,7 @@
 layout: post
 title:  "Rails and rescue from memory leak"
 date:   2014-10-14 10:00:00 +0300
+preview: "Lately, I've been trying to find possible memory leaks in a rails 3.2.x application..."
 ---
 
 Lately, I've been trying to find possible memory leaks in a rails 3.2.x application.

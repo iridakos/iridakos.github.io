@@ -1,6 +1,7 @@
 ---
 layout: page
-title: /code
+menu_title: "&lt;code /&gt;"
+title: "code"
 permalink: /code/
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: page
-title: /about-me
+menu_title: <i class="fa fa-user-circle-o" aria-hidden="true"></i> about-me
+title: "about-me"
 permalink: /about/
 ---
 
