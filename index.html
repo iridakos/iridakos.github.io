@@ -13,7 +13,7 @@ description: "My name is Lazarus Lazaridis && I am a developer && this is my per
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
         <h2 class="post-container">
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl | replace: '.html', '' }}">
             {{ post.title }}
           </a>
 
