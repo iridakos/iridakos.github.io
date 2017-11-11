@@ -3,6 +3,9 @@ layout: post
 title:  "Creating a simple ToDo application with Ruby on Rails - Part 4"
 date:   2013-12-22 10:00:00 +0300
 preview: "In the previous three posts we created a simple ToDo application with Ruby on Rails. In this last part we are going to deploy the application to OpenShift."
+category: "tutorials"
+redirect_from:
+  - /2013/12/22/creating-a-simple-todo-part-4.html
 ---
 
 In the previous three posts we created a simple ToDo application with Ruby on Rails.

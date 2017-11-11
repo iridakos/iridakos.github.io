@@ -6,6 +6,8 @@ image: "http://i.imgur.com/1yaeuIY.jpg"
 date:   2016-09-26 21:00:00 +0300
 preview: "My cats in http status codes."
 category: "humor"
+redirect_from:
+  - /2016/09/26/cat-http-status-codes.html
 ---
 
 # Informational 1xx

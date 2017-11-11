@@ -3,6 +3,9 @@ layout: post
 title:  "Creating a simple ToDo application with Ruby on Rails - Part 2"
 date:   2013-12-17 10:00:00 +0300
 preview: "This is the second part of the tutorial for creating a simple ToDo application. In this part, we are going to..."
+category: "tutorials"
+redirect_from:
+  - /2013/12/17/creating-a-simple-todo-part-2.html
 ---
 
 This is the second part of the tutorial for [creating a simple ToDo application]({% post_url 2013-12-07-creating-a-simple-todo-part-1 %}).
