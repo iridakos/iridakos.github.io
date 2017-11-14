@@ -247,15 +247,21 @@ a.post-link {
 }
 
 .pagination {
-  border: 1px solid lighten($grey-color, 25%);
-  background: lighten($grey-color, 30%);
+  border: 1px solid darken($brand-color, 10%);
+  background: $brand-color;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 5px;
+  color: #fff;
 
   .more {
     font-weight: normal;
-    color: #444;
+
+    &:before, &:after {
+      content: " ";
+      display: block;
+      clear: both;
+    }
   }
 
   .previous {
@@ -267,8 +273,12 @@ a.post-link {
   }
 
   .page_number {
-    color: #444;
     margin: 0;
+  }
+
+  a, a:hover, a:visited {
+    color: #ff9900;
+    font-weight: bold;
   }
 }
 
