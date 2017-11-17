@@ -10,6 +10,10 @@ redirect_from:
   - /2016/04/01/duckrails-guide.html
 ---
 
+## Update - Nov. 18, 2017
+**Please visit the updated [wiki pages](https://github.com/iridakos/duckrails/wiki) of the project at GitHub. This post does not reflect any changes being made to the application.**
+
+***
 
 [DuckRails](https://github.com/iridakos/duckrails) is a development tool.
 
