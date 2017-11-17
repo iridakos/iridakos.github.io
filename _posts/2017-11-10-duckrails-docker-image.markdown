@@ -36,5 +36,7 @@ You should be seeing the DuckRails home page!
 
 ![DuckRails home page](https://i.imgur.com/EINIB2h.png)
 
+For a detailed guide, check the repository's [wiki page](https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker).
+
 ## Note
 This was my first attempt to create a docker image so if you have any notes/improvements, you are more than welcomed to contribute. The Dockerfile is located at the root folder of the [DuckRails](https://github.com/iridakos/duckrails/blob/master/Dockerfile) repo.
