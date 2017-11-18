@@ -3,7 +3,7 @@ layout: post
 title:  "DuckRails v2.0.0 docker image"
 description: "News: DuckRails can now be used via its own docker image."
 date:   2017-11-10 00:05:00 +0300
-image: "https://camo.githubusercontent.com/063ef000c181d49fb2f6a8f70ffcc5125755a577/687474703a2f2f692e696d6775722e636f6d2f33686d3047616a2e706e67"
+image: "https://github.com/iridakos/duckrails/blob/master/documentation/readme/resources/duckrails-home-page.png?raw=true"
 preview: "DuckRails can now be used via its own docker image."
 category: "news"
 redirect_from:
@@ -34,7 +34,7 @@ Test that everything works as expected by navigating to
 
 You should be seeing the DuckRails home page!
 
-![DuckRails home page](https://i.imgur.com/EINIB2h.png)
+![DuckRails home page](https://github.com/iridakos/duckrails/blob/master/documentation/readme/resources/duckrails-home-page.png?raw=true)
 
 For a detailed guide, check the repository's [wiki page](https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker).
 
