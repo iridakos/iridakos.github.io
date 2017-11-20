@@ -328,6 +328,14 @@ a.post-link {
     }
 }
 
+.post-category {
+  color: $grey-color;
+
+  .separator {
+    color: $brand-color;
+  }
+}
+
 .projector {
   min-height: 400px;
 

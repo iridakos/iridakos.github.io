@@ -10,7 +10,7 @@ description: "My name is Lazarus Lazaridis && I am a developer && this is my per
   <ul class="post-list">
     {% for post in paginator.posts %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>{% if post.category %}<span class="post-category"> <span class="separator">|</span> {{ post.category }}</span>{% endif %}
 
         <h2 class="post-container">
           <a class="post-link" href="{{ post.url | prepend: site.baseurl | replace: '.html', '' }}">
