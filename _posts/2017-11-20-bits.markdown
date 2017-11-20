@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "Bits"
+description: "Geek joke: Bits please"
+date:   2017-11-20 00:00:00 +0300
+image: "http://iridakos.com/assets/images/irida.jpeg"
+preview: "A programmer and a CPU walk into a bar..."
+category: "humor"
+---
+
+A developer and a CPU walk into a bar.
+
+**Developer:** I wrote some code that I need you to execute tomorrow. Here's the source.
+
+**CPU:** Bits please.
