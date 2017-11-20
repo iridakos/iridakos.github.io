@@ -4,6 +4,7 @@ title:  "How to get away with code you don't understand"
 description: ""
 date:   2016-09-24 23:00:00 +0300
 preview: "Sometimes it's hard to understand other people's code. There are many reasons for this. Here are some of them and some advice on how to handle them..."
+image: "http://iridakos.com/assets/images/irida-grey.png"
 category: "humor"
 redirect_from:
   - /2016/09/24/get-away-with-code.html

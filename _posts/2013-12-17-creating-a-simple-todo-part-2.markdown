@@ -4,6 +4,7 @@ title:  "Creating a simple ToDo application with Ruby on Rails - Part 2"
 date:   2013-12-17 10:00:00 +0300
 preview: "This is the second part of the tutorial for creating a simple ToDo application. In this part, we are going to..."
 category: "tutorials"
+image: "http://iridakos.com/assets/images/irida-grey.png"
 redirect_from:
   - /2013/12/17/creating-a-simple-todo-part-2.html
 ---

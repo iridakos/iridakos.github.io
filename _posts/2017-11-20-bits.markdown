@@ -3,7 +3,7 @@ layout: post
 title:  "Bits"
 description: "Geek joke: Bits please"
 date:   2017-11-20 00:00:00 +0300
-image: "http://iridakos.com/assets/images/irida.jpeg"
+image: "http://iridakos.com/assets/images/irida-grey.png"
 preview: "A programmer and a CPU walk into a bar..."
 category: "humor"
 ---
