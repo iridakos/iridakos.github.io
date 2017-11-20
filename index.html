@@ -5,8 +5,9 @@ image: "http://iridakos.com/assets/images/header-back.jpg"
 description: "My name is Lazarus Lazaridis && I am a developer && this is my personal blog."
 ---
 
-<div class="home">
+{% include news.html %}
 
+<div class="home">
   <ul class="post-list">
     {% for post in paginator.posts %}
       <li>

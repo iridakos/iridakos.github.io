@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "faviconicious"
+description: "Quickly create a favicon with imagemagick"
+date:   2017-11-20 01:00:00 +0300
+image: "http://iridakos.com/assets/images/irida.jpeg"
+preview: "I wanted to update this blog's favic..."
+category: "tips"
+---
+
+I wanted to update the icon of this blog (to become what else? a cat) and I didn't remember how I had created the previous one but I do remember I did it via [GIMP](https://www.gimp.org/).
+
+This time though, I found a pretty simple [imagemagick](https://www.imagemagick.org/script/index.php) command and it worked like a charm.
+
+```bash
+convert <your-image-here> -define icon:auto-resize=256,64,48,32,16 favicon.ico
+```
+
+[Here](https://www.imagemagick.org/script/command-line-options.php) are all the available options for the **imagemagick** `convert` command.

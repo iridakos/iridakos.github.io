@@ -2,8 +2,6 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="{{ site.baseurl }}/"><i class="fa fa-home" aria-hidden="true"></i> home</a>
-
     <nav class="site-nav">
       <a href="#" class="menu-icon">
         <svg viewBox="0 0 18 15">
@@ -14,18 +12,14 @@
       </a>
 
       <div class="trigger">
+        <a class="page-link {% if (page.url contains "/posts" or page.url == "/") %}active{% endif %}" href="{{ site.baseurl }}/"><i class="fa fa-home" aria-hidden="true"></i> iridakos</a>
+
         {% for my_page in site.pages %}
           {% if my_page.show_in_header %}
-            <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.menu_title }}</a>
+          <a class="page-link {% if page.url == my_page.url %}active{% endif %}" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.menu_title }}</a>
           {% endif %}
         {% endfor %}
       </div>
     </nav>
-  </div>
-
-  <div class="page-content">
-    <div class="wrapper">
-      {% include news.html %}
-    </div>
   </div>
 </header>

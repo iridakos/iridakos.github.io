@@ -1,0 +1,25 @@
+---
+layout: page
+menu_title:  <i class="fa fa-wrench" aria-hidden="true"></i> tips
+title: Tips
+permalink: /tips/
+show_in_header: true
+---
+
+<ul class="post-list">
+  {% for my_post in site.posts %}
+    {% if my_post.category %}
+      {% if my_post.category == 'tips' %}
+      <li>
+        <h2 class="post-container">
+          <a href="{{ my_post.url }}">{{ my_post.title }}</a>
+
+          <div class="post-preview">
+            {{ my_post.preview }}
+          </div>
+        </h2>
+      </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</ul>
