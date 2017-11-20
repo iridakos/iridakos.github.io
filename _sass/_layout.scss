@@ -374,7 +374,8 @@ a.post-link {
 .irida {
   margin-top: 10px;
   background: url('../assets/images/irida-grey.png') bottom center no-repeat;
-  height: 260px;
+  height: 120px;
+  background-size: contain;
 }
 
 body.error {
