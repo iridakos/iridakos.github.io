@@ -6,6 +6,8 @@ date:   2013-11-24 10:00:00 +0300
 preview: "If you are new to Ruby I suggest you first read my previous post which in short explains why you should not give up on learning Ruby..."
 image: "http://iridakos.com/assets/images/irida-grey.png"
 category: "tutorials"
+comments: true
+identifier: "hello-ruby-rails"
 redirect_from:
   - /2013/11/24/saying-hello-world-with-ruby-on-rails.html
 ---

@@ -4,7 +4,9 @@ title:  "Rails and rescue from memory leak"
 date:   2014-10-14 10:00:00 +0300
 preview: "Lately, I've been trying to find possible memory leaks in a rails 3.2.x application..."
 category: "rails"
+comments: true
 image: "http://iridakos.com/assets/images/irida-grey.png"
+identifier: "rescue-from-memory-leak"
 redirect_from:
   - /2014/10/14/rescue-from-memory-leak.html
 ---

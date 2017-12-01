@@ -10,6 +10,7 @@ title: iridakos
 email: ""
 description: I am Lazarus Lazaridis, I like coding & cats and this is my personal blog.
 baseurl: "" # the subpath of your site, e.g. /blog
+production_url: "http://iridakos.com"
 url: "http://iridakos.com" # the base hostname & protocol for your site
 twitter_username: lazaru_s
 github_username:  iridakos

@@ -6,6 +6,8 @@ date:   2017-11-10 00:05:00 +0300
 image: "https://github.com/iridakos/duckrails/blob/master/documentation/readme/resources/duckrails-home-page.png?raw=true"
 preview: "DuckRails can now be used via its own docker image."
 category: "news"
+comments: true
+identifier: "duckrails-docker-image"
 redirect_from:
   - /2017/11/10/duckrails-docker-image.html
 ---

@@ -6,6 +6,8 @@ date:   2017-11-21 00:15:00 +0300
 image: "http://iridakos.com/assets/images/irida-grey.png"
 preview: "I wanted to update this blog's favic..."
 category: "tips"
+identifier: "faviconicious"
+comments: true
 ---
 
 I wanted to update the icon of this blog (to become what else? a cat) and I didn't remember how I had created the previous one but I do remember I did it via [GIMP](https://www.gimp.org/).

@@ -3,8 +3,10 @@ layout: post
 title:  "Rails sample API & UI application consuming it"
 date:   2015-06-21 10:00:00 +0300
 preview: "I recently created a simple Rails 4 API named LofoCats and a simple UI application consuming it named LofoCats UI (yes, I like cats, what else is new?)..."
+comments: true
 category: "news"
 image: "http://iridakos.com/assets/images/irida-grey.png"
+identifier: "rails-sample-api-ui"
 redirect_from:
   - /2015/06/21/rails-sample-api-ui.html
 ---

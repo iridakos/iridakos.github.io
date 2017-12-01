@@ -4,7 +4,9 @@ title:  "Testing execution of filters with RSpec"
 date:   2014-10-14 10:00:00 +0300
 preview: "I was working on my application and I wanted to write some RSpec tests for some controllers having `before_filter` for some actions...."
 category: "testing"
+comments: true
 image: "http://iridakos.com/assets/images/irida-grey.png"
+identifier: "testing-exec-filters-rspec"
 redirect_from:
   - /2014/10/14/testing-execution-of-filters-with-rspec.html
 ---

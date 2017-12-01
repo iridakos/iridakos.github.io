@@ -6,6 +6,8 @@ image: "https://3.bp.blogspot.com/-pmI-NvE9zv0/VuaG8aAk9pI/AAAAAAAABss/OFNa5S2LC
 date:   2016-04-01 10:00:00 +0300
 preview: "A guide for an opensource tool I've created: DuckRails."
 category: "guides"
+comments: true
+identifier: "duckrails-guide"
 redirect_from:
   - /2016/04/01/duckrails-guide.html
 ---
