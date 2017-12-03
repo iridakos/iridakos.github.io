@@ -3,7 +3,7 @@ layout: post
 title:  "Using elasticsearch in a Rails application"
 description: "A tutorial to integrate with elasticsearch in a Ruby on Rails application"
 date: 2017-12-03 09:30:00 +0300
-image: http://iridakos.com/assets/images/posts/elasticsearch-rails/home-page-with-search-link.png
+image: http://iridakos.com/assets/images/posts/elasticsearch-rails/search-page.png
 preview: "In this tutorial we will use elasticsearch in a Ruby..."
 category: "tutorials"
 identifier: "elasticsearch-rails-tutorial"
