@@ -1,9 +1,8 @@
 .news-container {
+  border: 1px solid darken($grey-color-light, 10%);
   margin: 5px 0 30px 0;
 
   .news-panel {
-    border-bottom: 1px solid darken($grey-color-light, 10%);
-
     &:after {
      content: " ";
      display: block;
@@ -12,11 +11,15 @@
     }
 
     .news-title {
-      border: 1px solid darken($grey-color, 8%);
-      // font-weight: bold;
+      border-bottom: 1px solid darken($grey-color-light, 10%);
+      font-weight: bold;
       padding: 10px;
-      color: #fff;
-      background: $grey-color;
+      color: #444;
+      background: #f0f0f0;
+
+      i {
+        padding-right: 4px;
+      }
     }
 
     .news-content {
