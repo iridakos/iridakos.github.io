@@ -315,7 +315,7 @@ We will create a simple partial under a new folder located at `app/views/shared`
 
 ``` haml
 - flash.each do |type, value|
-  .flash{ :class =&gt; type.to_s }
+  .flash{ :class => type.to_s }
     = value
 ```
 
