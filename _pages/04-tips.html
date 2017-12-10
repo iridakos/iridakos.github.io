@@ -1,25 +1,26 @@
 ---
 layout: page
-menu_title:  <i class="fa fa-wrench" aria-hidden="true"></i> tips
+menu_title:  tips
 title: Tips
 permalink: /tips/
 show_in_header: true
+subtitle: some useful tips &amp; tricks
 ---
 
-<ul class="post-list">
-  {% for my_post in site.posts %}
-    {% if my_post.category %}
-      {% if my_post.category == 'tips' %}
-      <li>
-        <h2 class="post-container">
-          <a href="{{ my_post.url }}">{{ my_post.title }}</a>
+<div class="posts-container">
+    {% for my_post in site.posts %}
+      {% if my_post.category %}
+        {% if my_post.category == 'tips' %}
+          <div class="post-container">
+            <div class="post-title">
+                <a href="{{ my_post.url }}">{{ my_post.title }}</a>
+            </div>
 
-          <div class="post-preview">
-            {{ my_post.preview }}
-          </div>
-        </h2>
-      </li>
+            <div class="post-preview">
+              {{ my_post.preview }}
+            </div>
+        </div>
+        {% endif %}
       {% endif %}
-    {% endif %}
-  {% endfor %}
-</ul>
+    {% endfor %}
+</div>

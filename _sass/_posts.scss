@@ -1,0 +1,21 @@
+.post-container {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eeeeee;
+
+  &:last-child {
+    border-bottom: 0 none;
+  }
+
+  .post-metadata {
+    color: #888;
+  }
+
+  .post-title {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .post-preview {
+    margin-bottom: 20px;
+  }
+}

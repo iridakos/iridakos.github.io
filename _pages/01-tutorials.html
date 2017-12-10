@@ -1,67 +1,108 @@
 ---
 layout: page
-menu_title: <i class="fa fa-life-ring" aria-hidden="true"></i> tutorials
+menu_title: tutorials
 title: tutorials
 permalink: /tutorials/
 show_in_header: true
+subtitle: tutorials I have published in this blog
 ---
 
-<p>These are some tutorials I have created.</p>
+<div class="posts-container">
+    <div class="post-container">
+        <div class="post-title">
+            <a href="{% post_url 2017-12-03-elasticsearch-and-rails-tutorial %}">
+              <strong>Using Elasticsearch in a Rails application</strong>
+            </a>
+        </div>
 
-<h2 class="post-container">
-  <a href="{% post_url 2013-11-08-dont-give-up-on-ruby %}">Don't give up on Ruby</a>
-  <div class="post-preview">
-    Start from here... In this post I describe why you should not give up while learning ruby.
-  </div>
-</h2>
-
-<h2 class="post-container">
-  <a href="{% post_url 2013-11-24-saying-hello-world-with-ruby-on-rails %}">Saying hello world with Ruby on Rails</a>
-  <div class="post-preview">
-    Here you'll learn how to say the famous "Hello world" on a web page with Ruby on Rails.
-  </div>
-</h2>
-
-<h2>
-  A simple ToDo application
-</h2>
-
-<p>This is a series of tutorials to create a simple ToDo application with Ruby on Rails.<br/>
-The application's code is available at GitHub <a href="https://github.com/iridakos/todo">here</a>.</p>
-
-<h4 class="post-container">
-  <a href="{% post_url 2013-12-07-creating-a-simple-todo-part-1 %}">Part I</a>
-  <div class="post-preview">
-    Save your objects to the database, familiarize yourself with the rails console, use Haml for your views and learn about the famous Twitter bootstrap CSS.
-  </div>
-</h4>
-
-<h4 class="post-container">
-  <a href="{% post_url 2013-12-17-creating-a-simple-todo-part-2 %}">Part II</a>
-  <div class="post-preview">
-    Refactor the Task create action to avoid redirection, implement the edit/delete actions accordingly and add some validations on the Task model.
-  </div>
-</h4>
-
-<h4 class="post-container">
-  <a href="{% post_url 2013-12-20-creating-a-simple-todo-part-3 %}">Part III</a>
-  <div class="post-preview">
-    Use Devise &amp; CanCan in order to add user authentication and authorisation features to the application
-  </div>
-</h4>
-
-<h4 class="post-container">
-  <a href="{% post_url 2013-12-22-creating-a-simple-todo-part-4 %}">Part IV - Deploying the ToDo to OpenShift</a>
-  <div class="post-preview">
-    Learn how to deploy the application to OpenShift.
-  </div>
-</h4>
+        <div class="post-preview">
+          In this tutorial we are going to create a Ruby on Rails application that will use elasticsearch to allow users to store and search their content.
+        </div>
+    </div>
+</div>
 
 <hr />
 
-<h2 class="post-container">
-  <a href="{% post_url 2017-12-03-elasticsearch-and-rails-tutorial %}">Using Elasticsearch in a Rails application</a>
-  <div class="post-preview">
-    In this tutorial we are going to create a Ruby on Rails application that will use elasticsearch to allow users to store and search their content.
-  </div>
-</h2>
+<div class="panel panel-default">
+    <div class="panel-heading"><strong>A simple ToDo application</strong></div>
+    <div class="panel-body">
+        <p>This is a series of tutorials to create a simple ToDo application with Ruby on Rails.<br/>
+        The application's code is available at GitHub <a href="https://github.com/iridakos/todo">here</a>.</p>
+
+        <div class="posts-container">
+            <div class="post-container">
+                <div class="post-title">
+                    <a href="{% post_url 2013-12-07-creating-a-simple-todo-part-1 %}">
+                      <strong>Part I</strong>
+                    </a>
+                </div>
+
+                <div class="post-preview">
+                  Save your objects to the database, familiarize yourself with the rails console, use Haml for your views and learn about the famous Twitter bootstrap CSS.
+                </div>
+            </div>
+
+            <div class="post-container">
+                <div class="post-title">
+                    <a href="{% post_url 2013-12-17-creating-a-simple-todo-part-2 %}">
+                      <strong>Part II</strong>
+                    </a>
+                </div>
+
+                <div class="post-preview">
+                  Refactor the Task create action to avoid redirection, implement the edit/delete actions accordingly and add some validations on the Task model.
+                </div>
+            </div>
+
+            <div class="post-container">
+                <div class="post-title">
+                    <a href="{% post_url 2013-12-20-creating-a-simple-todo-part-3 %}">
+                      <strong>Part III</strong>
+                    </a>
+                </div>
+
+                <div class="post-preview">
+                  Use Devise &amp; CanCan in order to add user authentication and authorisation features to the application.
+                </div>
+            </div>
+
+            <div class="post-container">
+                <div class="post-title">
+                    <a href="{% post_url 2013-12-22-creating-a-simple-todo-part-4 %}">
+                      <strong>Part IV - Deploying the ToDo to OpenShift</strong>
+                    </a>
+                </div>
+
+                <div class="post-preview">
+                  Learn how to deploy the application to OpenShift.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="posts-container">
+    <div class="post-container">
+        <div class="post-title">
+            <a href="{% post_url 2013-11-08-dont-give-up-on-ruby %}">
+              <strong>Don't give up on Ruby</strong>
+            </a>
+        </div>
+
+        <div class="post-preview">
+          Start from here... In this post I describe why you should not give up while learning ruby.
+        </div>
+    </div>
+
+    <div class="post-container">
+        <div class="post-title">
+            <a href="{% post_url 2013-11-24-saying-hello-world-with-ruby-on-rails %}">
+              <strong>Saying hello world with Ruby on Rails</strong>
+            </a>
+        </div>
+
+        <div class="post-preview">
+          Here you'll learn how to say the famous "Hello world" on a web page with Ruby on Rails.
+        </div>
+    </div>
+</div>

@@ -6,47 +6,91 @@ comments: false
 description: "My name is Lazarus Lazaridis && I am a developer && this is my personal blog."
 ---
 
-{% include news.html %}
-
-<div class="home">
-  <ul class="post-list">
-    {% for post in paginator.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>{% if post.category %}<span class="post-category"> <span class="separator">|</span> {{ post.category }}</span>{% endif %}
-
-        <h2 class="post-container">
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl | replace: '.html', '' }}">
-            {{ post.title }}
-          </a>
-
-          {% if post.preview %}
-            <div class="post-preview">
-              {{ post.preview }}
+<div class="container page-row">
+    <div class="grid-x grid-margin-x">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-header">
+                  <h1>
+                      welcome to iridakos<br/>
+                      <small>my personal blog with posts mostly about programming</small>
+                  </h1>
+                </div>
             </div>
-          {% endif %}
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+        </div>
 
-  <div class="pagination">
-  {% if paginator.total_pages > 1 %}
-    <div class="more">
-      <i class="fa fa-list"></i>
-      <span>There are more to see...</span>
-      <div class="right">
-        {% if paginator.previous_page %}
-          <a href="{{ paginator.previous_page_path }}" class="previous">previous</a>
-        {% endif %}
-        <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
-        {% if paginator.next_page %}
-          <a href="{{ paginator.next_page_path }}" class="next">next</a>
-        {% endif %}
-      </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-9 page-content">
+                <div class="posts-container">
+                    {% for post in paginator.posts %}
+                        <div class="post-container">
+                            <div class="post-metadata">
+                                <small><span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>{% if post.category %}<span class="post-category"> <span class="separator">|</span> {{ post.category }}</span>{% endif %}</small>
+                            </div>
+
+                            <div class="post-title">
+                                <a href="{{ post.url | prepend: site.baseurl | replace: '.html', '' }}">
+                                  <strong>{{ post.title }}</strong>
+                                </a>
+                            </div>
+
+                            {% if post.preview %}
+                              <div class="post-preview">
+                                {{ post.preview }}
+                              </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="post-pagination">
+                    {% if paginator.total_pages > 1 %}
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="{% if paginator.previous_page == null %}disabled{% endif %}">
+                                    <a href="{{ paginator.previous_page_path }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;
+                                    </a>
+                                </li>
+
+                                {% for page in (1..paginator.total_pages) %}
+                                    {% if page == paginator.page %}
+                                        <li class="active">
+                                            <a href="#">
+                                                <span aria-hidden="true">{{ page }}
+                                            </a>
+                                        </li>
+                                    {% elsif page == 1 %}
+                                        <li>
+                                            <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+                                        </li>
+                                    {% else %}
+                                        <li>
+                                            <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+                                        <li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                <li class="{% if paginator.next_page == null %}disabled{% endif %}">
+                                    <a href="{{ paginator.next_page_path }}" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-3">
+                {% include news.html %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                {% include share-page.html %}
+            </div>
+        </div>
     </div>
-  {% endif %}
-</div>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
 </div>

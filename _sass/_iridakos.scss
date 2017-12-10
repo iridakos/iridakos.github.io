@@ -1,0 +1,55 @@
+.sharing {
+  margin-top: 60px;
+  text-align: center;;
+  font-size: 14px;
+
+  a.share-link {
+    font-size: 40px;
+    margin-right: 5px;
+  }
+}
+
+img {
+  @include img-responsive;
+  cursor: pointer;
+
+  &.image {
+    max-width: none;
+    display: inline-block;
+    cursor: default;
+  }
+}
+
+#image-modal {
+  .image-container {
+    overflow: auto;
+  }
+}
+
+.site-footer {
+  .footer-header {
+    margin: 20px 0 10px 0;
+  }
+}
+
+.irida {
+  margin-top: 20px;
+  background: url(../assets/images/irida-grey.png) bottom center no-repeat;
+  height: 60px;
+  background-size: contain;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 1px solid #dddddd;
+}
+
+pre {
+  code {
+    font-size: 14px;
+    white-space: pre;
+  }
+}
+
+#disqus_thread {
+  margin-top: 40px;
+}

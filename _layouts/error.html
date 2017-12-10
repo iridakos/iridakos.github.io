@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
-
-  {% include head.html %}
-
-  <body class="error">
-    {{ content }}
-    {% include footer.html %}
-    {% include analytics.html %}
-  </body>
-
+    {% include head.html %}
+    <body class="error">
+        <div class="container">
+            <div class="grid-x grid-margin-x">
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ content }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include footer.html %}
+        {% include analytics.html %}
+    </body>
 </html>
