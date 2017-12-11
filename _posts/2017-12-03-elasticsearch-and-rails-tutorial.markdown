@@ -185,9 +185,9 @@ Time to talk elastic.
 
 ## Elasticsearch gem
 
-As described in the overview, we are going to use a great gem to integrate with elasticsearch, the `elasticsearch-rails` &amp; `elasticsearch-model` gems.
+As described in the overview, we are going to use existing gems to integrate with elasticsearch, the `elasticsearch-rails` &amp; `elasticsearch-model` gems.
 
-Open your `Gemfile` and add the following line:
+Open your `Gemfile` and add the following lines:
 
 ```ruby
 gem 'elasticsearch-model', git: 'git://github.com/elastic/elasticsearch-rails.git', branch: 'master'
