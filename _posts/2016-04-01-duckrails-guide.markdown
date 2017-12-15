@@ -13,7 +13,7 @@ redirect_from:
 ---
 
 ## Update - Nov. 18, 2017
-**Please visit the updated [wiki pages](https://github.com/iridakos/duckrails/wiki) of the project at GitHub. This post does not reflect any changes being made to the application.**
+**Please visit the updated [wiki pages](https://github.com/iridakos/duckrails/wiki) of the project at GitHub. This post is old and does not reflect any changes being made to the application.**
 
 ***
 
