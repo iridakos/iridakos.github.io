@@ -2,10 +2,18 @@
 layout: default
 ---
 
-<div class="container">
+<div class="container" {% if page.outline %}id="outline"{% endif %}>
     <div class="row">
         <div class="col-xs-12">
             <div class="page-header">
+                {% if page.outline %}
+                    <div class="pull-right">
+                          <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse" aria-expanded="false" aria-controls="collapse">
+                            Outline
+                          </a>
+                    </div>
+                {% endif %}
+
               <h1>
                   {{ page.title }}<br/>
                   <small><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y - %H:%M" }}</time></small>
@@ -13,6 +21,18 @@ layout: default
             </div>
         </div>
     </div>
+
+    {% if page.outline %}
+        <div class="panel panel-default collapse" id="collapse">
+            <div class="panel-heading">
+                <strong class="panel-title">Post outline</strong>
+            </div>
+
+            <div class="panel-body" id="docout">
+
+            </div>
+        </div>
+    {% endif %}
 
     <div class="row">
         <div class="col-xs-12 col-md-9">
