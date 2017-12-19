@@ -7,6 +7,7 @@ category: "tips"
 comments: true
 image: "http://iridakos.com/assets/images/irida-grey.png"
 identifier: "rails-radio-buttons-required-boolean"
+outline: true
 redirect_from:
   - /2014/10/14/rails-radio-buttons-required-boolean.html
 ---

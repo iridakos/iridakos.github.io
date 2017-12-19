@@ -7,6 +7,7 @@ preview: "Sometimes it's hard to understand other people's code. There are many 
 image: "http://iridakos.com/assets/images/irida-grey.png"
 category: "humor"
 comments: true
+outline: true
 identifier: "get-away-with-code"
 redirect_from:
   - /2016/09/24/get-away-with-code.html

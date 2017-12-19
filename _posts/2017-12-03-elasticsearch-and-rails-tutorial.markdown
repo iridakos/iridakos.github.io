@@ -7,6 +7,7 @@ image: http://iridakos.com/assets/images/posts/elasticsearch-rails/search-page.p
 preview: "In this tutorial we will use elasticsearch in a Ruby..."
 category: "tutorials"
 identifier: "elasticsearch-rails-tutorial"
+outline: true
 comments: true
 ---
 

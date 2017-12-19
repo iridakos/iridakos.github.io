@@ -7,6 +7,7 @@ category: "testing"
 comments: true
 image: "http://iridakos.com/assets/images/irida-grey.png"
 identifier: "testing-exec-filters-rspec"
+outline: true
 redirect_from:
   - /2014/10/14/testing-execution-of-filters-with-rspec.html
 ---

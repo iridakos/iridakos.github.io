@@ -7,6 +7,7 @@ date:   2016-04-01 10:00:00 +0300
 preview: "A guide for an opensource tool I've created: DuckRails."
 category: "guides"
 comments: true
+outline: true
 identifier: "duckrails-guide"
 redirect_from:
   - /2016/04/01/duckrails-guide.html

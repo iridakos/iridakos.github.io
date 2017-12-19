@@ -8,6 +8,7 @@ preview: "DuckRails can now be used via its own docker image."
 category: "news"
 comments: true
 identifier: "duckrails-docker-image"
+outline: true
 redirect_from:
   - /2017/11/10/duckrails-docker-image.html
 ---

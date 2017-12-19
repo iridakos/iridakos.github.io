@@ -5,6 +5,7 @@ date:   2013-12-22 10:00:00 +0300
 preview: "In the previous three posts we created a simple ToDo application with Ruby on Rails. In this last part we are going to deploy the application to OpenShift."
 category: "tutorials"
 comments: true
+outline: true
 image: "http://iridakos.com/assets/images/irida-grey.png"
 identifier: "todo-part-4"
 redirect_from:
