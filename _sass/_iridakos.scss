@@ -56,4 +56,13 @@ pre {
 
 .page-header {
   margin-top: 0;
+
+  h1 {
+    color: $iridakos-secondary-color;
+
+    small {
+      color: lighten($iridakos-secondary-color, 5%);
+      font-size: 50%;
+    }
+  }
 }

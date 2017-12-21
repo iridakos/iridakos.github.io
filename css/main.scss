@@ -5,17 +5,14 @@
 
 $font-family-base: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-$brand-primary:        #7a0404; /*darken(#428bca, 50%) !default;*/
+$brand-primary:        #063347; /*darken(#428bca, 50%) !default;*/
+$link-color: lighten($brand-primary, 15%);
+$navbar-inverse-bg: $brand-primary;
+$navbar-inverse-border: darken($brand-primary, 10%);
+$iridakos-secondary-color: #c4610b;
 $font-size-base:          16px;
 
-// Import partials from `sass_dir` (defaults to `_sass`)
 @import "bootstrap",
         "iridakos",
         "posts",
-        "syntax_highlight"
-        // "base",
-        // "layout",
-        // "syntax-highlighting",
-        // "font-awesome",
-        // "news"
-;
+        "syntax_highlight";
