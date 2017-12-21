@@ -62,7 +62,7 @@ description: "My name is Lazarus Lazaridis && I am a developer && this is my per
                                         </li>
                                     {% elsif page == 1 %}
                                         <li>
-                                            <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+                                            <a href="{{ site.url }}">{{ page }}</a>
                                         </li>
                                     {% else %}
                                         <li>
