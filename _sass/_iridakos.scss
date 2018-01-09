@@ -69,8 +69,20 @@ pre {
 }
 
 .page-link {
+  font-size: 18px;
+
   &.active {
     color: #fff !important;
     text-decoration: underline;
   }
+}
+
+.navbar {
+  font-family: 'Indie Flower', cursive;
+}
+
+.news-panel .panel-heading {
+  font-family: 'Indie Flower', cursive;
+  color: #fff;
+  background: $navbar-inverse-bg;
 }

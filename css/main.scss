@@ -8,9 +8,10 @@ $font-family-base: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $brand-primary:        #1b3d77; /*darken(#428bca, 50%) !default;*/
 $link-color: $brand-primary;
 $navbar-inverse-bg: #444;
-$navbar-inverse-border: darken($brand-primary, 10%);
-$iridakos-secondary-color: #444;
+$navbar-inverse-border: darken($navbar-inverse-bg, 10%);
+$iridakos-secondary-color: #ff7e07;
 $font-size-base:          16px;
+$navbar-inverse-link-color: #ff7e07;
 
 @import "bootstrap",
         "iridakos",
