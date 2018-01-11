@@ -2,10 +2,15 @@
   margin-top: 60px;
   text-align: center;;
   font-size: 14px;
+  color: $navbar-inverse-bg;
 
   a.share-link {
     font-size: 40px;
     margin-right: 5px;
+  }
+
+  a {
+    color: $iridakos-secondary-color;
   }
 }
 
