@@ -32,6 +32,9 @@ img {
 }
 
 .site-footer {
+  font-size: 18px;
+  color: $iridakos-secondary-color;
+
   a {
     font-family: 'Indie Flower', cursive;
   }
@@ -43,13 +46,13 @@ img {
 
 .irida {
   margin-top: 20px;
-  background: url(../assets/images/irida-grey.png) bottom center no-repeat;
-  height: 60px;
+  background: url(../assets/images/irida-favicon.png) bottom center no-repeat;
+  height: 80px;
   background-size: contain;
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
-  border-bottom: 1px solid lighten($iridakos-secondary-color, 20%);
+  border-bottom: 1px solid lighten($brand-primary, 20%);
 }
 
 pre {
@@ -88,6 +91,14 @@ pre {
 
 .navbar {
   font-family: 'Indie Flower', cursive;
+
+  .navbar-brand {
+    img {
+      width: 22px;
+      height: 22px;
+      display: inline-block;
+    }
+  }
 }
 
 .news-panel .panel-heading {
