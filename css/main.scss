@@ -5,13 +5,13 @@
 
 $font-family-base: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-$brand-primary:        #1b3d77; /*darken(#428bca, 50%) !default;*/
+$brand-primary: #3375c6; /*darken(#428bca, 50%) !default;*/
 $link-color: $brand-primary;
 $navbar-inverse-bg: #444;
 $navbar-inverse-border: darken($navbar-inverse-bg, 10%);
 $iridakos-secondary-color: #ff7e07;
 $font-size-base:          16px;
-$navbar-inverse-link-color: #ff7e07;
+$navbar-inverse-link-color: $iridakos-secondary-color;
 
 @import "bootstrap",
         "iridakos",

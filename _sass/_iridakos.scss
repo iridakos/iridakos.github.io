@@ -27,6 +27,10 @@ img {
 }
 
 .site-footer {
+  a {
+    font-family: 'Indie Flower', cursive;
+  }
+
   .footer-header {
     margin: 20px 0 10px 0;
   }
@@ -34,13 +38,13 @@ img {
 
 .irida {
   margin-top: 20px;
-  background: url(../assets/images/irida-grey.png) bottom center no-repeat;
+  background: url(../assets/images/irida-favicon.png) bottom center no-repeat;
   height: 60px;
   background-size: contain;
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid lighten($iridakos-secondary-color, 20%);
 }
 
 pre {
