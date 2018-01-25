@@ -87,7 +87,7 @@ gtk-todo-tutorial # root directory
   |-- application
     |-- ui # everything related to the ui of the application
     |-- models # our models
-  |-- lib # the directory to host any utilities we might need
+    |-- lib # the directory to host any utilities we might need
   |-- resources # directory to host the resources of our application
   gtk-todo # the executable that will start our application
 ```
