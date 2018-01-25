@@ -25,10 +25,19 @@ img {
   }
 }
 
+blockquote {
+  font-size: 16px;
+}
+
 #image-modal {
   .image-container {
     overflow: auto;
   }
+}
+
+code.highlighter-rouge {
+  padding: 4px;
+  border: 1px solid #ede0e4;
 }
 
 .site-footer {

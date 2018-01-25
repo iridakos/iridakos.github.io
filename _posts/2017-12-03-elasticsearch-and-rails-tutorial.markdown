@@ -55,7 +55,7 @@ As you can see, we will use elasticsearch **version 6.0.0** in this tutorial.
 
 ### Ruby
 
-You should have ruby installed on your system. I use [RVM](https://rvm.io/) to manage to have multiple ruby versions installed on my system. If you want to go with that too, you can find instructions for installing the tool in its [homepage](https://rvm.io/) and for installing ruby versions (a.k.a. rubies) the [related documentation page](https://rvm.io/rubies/installing).
+You should have ruby installed on your system. I use [RVM](https://rvm.io/) to manage multiple ruby versions installed on my system. If you want to go with that too, you can find instructions for installing the tool in its [homepage](https://rvm.io/) and for installing ruby versions (a.k.a. rubies) the [related documentation page](https://rvm.io/rubies/installing).
 
 This tutorial is using **Ruby 2.4.2**. You can check yours using: `ruby --version` or via RVM with `rvm list`.
 
