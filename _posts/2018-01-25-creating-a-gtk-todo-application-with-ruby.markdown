@@ -2,7 +2,7 @@
 layout: post
 title:  "Creating a simple GTK+ ToDo application with Ruby"
 description: "A tutorial for creating a simple GTK+ ToDo application with Ruby"
-date: 2018-01-25 23:00:00 +0300
+date: 2018-01-25 22:00:00 +0300
 image: "/assets/images/posts/gtk-ruby/tutorial-preview.png"
 preview: "In this tutorial we are going to create a simple GTK+ ToDo application with Ruby..."
 category: "tutorials"
