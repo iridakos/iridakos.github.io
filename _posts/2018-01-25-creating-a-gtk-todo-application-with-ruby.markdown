@@ -224,7 +224,7 @@ First, we need to create a file describing the resources of the application. Cre
 </gresources>
 ```
 
-In this "description" we actually say: we have a resource which is located under the `ui` directory (relative to this `xml` file) with name `main_window.ui`. Before loading this resource please remove the blanks. Thanks. Of course this is not going to work now since we haven't created the resource via Glade yet. Don't worry though, one thing at a time.
+In this "description" we actually say: we have a resource which is located under the `ui` directory (relative to this `xml` file) with name `application_window.ui`. Before loading this resource please remove the blanks. Thanks. Of course this is not going to work now since we haven't created the resource via Glade yet. Don't worry though, one thing at a time.
 
 **Note**: the `xml-stripblanks` directive will use the `xmllint` command to remove the blanks. In Ubuntu you have to install the package `libxml2-utils` to obtain it.
 
@@ -272,7 +272,7 @@ puts app.run
 and execute it. This happens in the console and it's fine, we'll fix it later on:
 
 ```
-/.../gtk-todo-tutorial/resources/gresources.xml: Failed to locate 'ui/main_window.ui' in any source directory.
+/.../gtk-todo-tutorial/resources/gresources.xml: Failed to locate 'ui/application_window.ui' in any source directory.
 ```
 
 What we did:
