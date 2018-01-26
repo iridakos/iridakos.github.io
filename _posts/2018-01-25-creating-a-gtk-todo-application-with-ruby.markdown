@@ -1137,7 +1137,7 @@ Save and run the application. There it is.
 
 ![View todo items]({{site.url}}/assets/images/posts/gtk-ruby/tutorial-preview.png)
 
-This has been a **really long tutorial** and even though there are so much items that we haven't covered I think we better end it here.
+This has been a **really long tutorial** and even though there are so many items that we haven't covered I think we better end it here.
 
 Long post, cat photo.
 
