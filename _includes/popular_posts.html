@@ -7,7 +7,11 @@
         {% for my_post in site.posts %}
           {% if my_post.popular %}
             <div class="popular-post">
-              <a href="{{ my_post.url }}">{{ my_post.title }}</a>
+              <a href="{{ my_post.url }}"
+                 class="ga-event-link"
+                 data-event-category="Popular posts"
+                 data-event-action="click"
+                 data-event-label="{{my_post.title}}">{{ my_post.title }}</a>
               {% if my_post.category %}
                 <br />
                 <span class="post-category">{{ my_post.category }}</span>

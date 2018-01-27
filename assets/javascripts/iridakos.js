@@ -17,4 +17,10 @@
   });
 
   $('#outline').docout({ target: '#docout' });
+
+  $('.ga-event-link').on('click', function() {
+    var data = $(this).data();
+
+    ga('send', 'event', data.eventCategory, data.eventAction, data.eventLabel);
+  });
 });
