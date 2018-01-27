@@ -8,6 +8,7 @@ comments: true
 image: "http://iridakos.com/assets/images/irida-grey.png"
 identifier: "being-a-developer"
 outline: true
+popular: true
 redirect_from:
   - /2015/06/21/being-a-developer.html
 ---

@@ -9,6 +9,7 @@ category: "news"
 comments: true
 identifier: "duckrails-docker-image"
 outline: true
+popular: true
 redirect_from:
   - /2017/11/10/duckrails-docker-image.html
 ---

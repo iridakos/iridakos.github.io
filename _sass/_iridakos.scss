@@ -25,6 +25,17 @@ img {
   }
 }
 
+.thumbnail {
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+
+  &.contain {
+    background-size: contain;
+  }
+}
+
 blockquote {
   font-size: 16px;
 }
@@ -114,4 +125,19 @@ pre {
   font-family: 'Indie Flower', cursive;
   color: #fff;
   background: $navbar-inverse-bg;
+}
+
+.popular-post {
+  border-bottom: 1px solid #cad4e4;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
+  .post-category {
+    font-size: 87%;
+    color: #888;
+  }
+
+  &:last-child {
+    border-bottom: 0 none;
+  }
 }

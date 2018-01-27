@@ -8,6 +8,7 @@ comments: true
 outline: true
 image: "http://iridakos.com/assets/images/irida-grey.png"
 identifier: "todo-part-1"
+popular: true
 redirect_from:
   - /2013/12/07/creating-a-simple-todo-part-1.html
 ---

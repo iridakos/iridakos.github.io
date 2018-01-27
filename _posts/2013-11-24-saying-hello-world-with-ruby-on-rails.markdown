@@ -8,6 +8,7 @@ image: "http://iridakos.com/assets/images/irida-grey.png"
 category: "tutorials"
 comments: true
 outline: true
+popular: true
 identifier: "hello-ruby-rails"
 redirect_from:
   - /2013/11/24/saying-hello-world-with-ruby-on-rails.html

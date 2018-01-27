@@ -9,6 +9,7 @@ category: "tutorials"
 identifier: "elasticsearch-rails-tutorial"
 outline: true
 comments: true
+popular: true
 ---
 
 ## Overview

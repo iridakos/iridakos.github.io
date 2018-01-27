@@ -1,0 +1,19 @@
+<div class="panel panel-default news-panel">
+    <div class="panel-heading">
+        <h3 class="panel-title">Popular posts</h3>
+    </div>
+
+    <div class="panel-body">
+        {% for my_post in site.posts %}
+          {% if my_post.popular %}
+            <div class="popular-post">
+              <a href="{{ my_post.url }}">{{ my_post.title }}</a>
+              {% if my_post.category %}
+                <br />
+                <span class="post-category">{{ my_post.category }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+    </div>
+</div>
