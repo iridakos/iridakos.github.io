@@ -627,7 +627,7 @@ The window is ready. Save the file under `resources/ui/new_item_window.ui`.
 
 Time to port it in our application.
 
-#### Implement thew new item window class
+#### Implement the new item window class
 
 Before implementing the new class, we must update our `GResource` description file a.k.a. `resources/gresources.xml` to obtain the new resource:
 
