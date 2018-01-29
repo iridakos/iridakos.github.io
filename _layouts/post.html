@@ -15,8 +15,9 @@ layout: default
                 {% endif %}
 
               <h1>
-                  {{ page.title }}<br/>
-                  <small><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y - %H:%M" }}</time></small>
+                  {{ page.title }}
+                  <br/>
+                  <small><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y - %H:%M" }}</time> {% if page.category %}| <span itemprop="">{{ page.category }}</span> {% endif %}</small>
               </h1>
             </div>
         </div>

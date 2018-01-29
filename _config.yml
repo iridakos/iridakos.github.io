@@ -17,6 +17,7 @@ github_username:  iridakos
 linkedin_username: lazaruslazaridis
 paginate: 10
 paginate_path: "/posts/page-:num"
+author_name: Lazarus Lazaridis
 
 # Build settings
 markdown: kramdown
