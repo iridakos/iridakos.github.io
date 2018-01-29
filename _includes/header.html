@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="/"><img src="/assets/images/irida-secondary.png"> iridakos</a>
+            <a class="navbar-brand" href="/" alt="home"><img src="/assets/images/irida-secondary.png"> iridakos</a>
         </div>
 
         <div class="collapse navbar-collapse" id="site-navbar-collapse">
@@ -16,7 +16,7 @@
                 {% for my_page in site.pages %}
                   {% if my_page.show_in_header %}
                       <li>
-                          <a class="page-link {% if page.url == my_page.url %}active{% endif %}" href="{{ my_page.url | prepend: site.baseurl }}" alt="{{my_page.title}}">{{ my_page.menu_title }}</a>
+                          <a class="page-link {% if page.url == my_page.url %}active{% endif %}" href="{{ my_page.url | prepend: site.baseurl }}" alt="{{ my_page.title }}">{{ my_page.menu_title }}</a>
                       </li>
                   {% endif %}
                 {% endfor %}
