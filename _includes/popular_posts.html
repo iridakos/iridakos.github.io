@@ -7,7 +7,7 @@
         {% for my_post in site.posts %}
           {% if my_post.popular %}
             <div class="popular-post">
-              <a href="{{ my_post.url }}"
+              <a href="{{ my_post.url | replace: '.html', '' }}"
                  class="ga-event-link"
                  data-event-category="Popular posts"
                  data-event-action="click"
