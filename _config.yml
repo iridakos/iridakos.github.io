@@ -8,7 +8,7 @@
 # Site settings
 title: iridakos
 email: ""
-description: I am Lazarus Lazaridis, I am an open source enthusiast, I like coding and cats and this is my personal blog.
+description: Personal blog of Lazarus Lazaridis with programming posts, tutorials, tips and open source related stuff.
 baseurl: "" # the subpath of your site, e.g. /blog
 production_url: "http://iridakos.com"
 url: "http://iridakos.com" # the base hostname & protocol for your site
