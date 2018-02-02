@@ -14,6 +14,10 @@
   }
 }
 
+.outline-button {
+  margin-left: 10px;
+}
+
 img {
   @include img-responsive;
   cursor: pointer;
