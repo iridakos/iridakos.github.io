@@ -10,6 +10,11 @@ identifier: "todo-gtk-plus-ruby-tutorial"
 outline: true
 comments: true
 popular: true
+related_posts:
+  - todo-part-1
+  - todo-part-2
+  - todo-part-3
+  - todo-part-4
 ---
 
 Lately I was experimenting with GTK and its Ruby bindings and I decided to write a tutorial introducing this functionality. In this post we are going to create a simple ToDo application (something like what we created [here]({% post_url 2013-12-07-creating-a-simple-todo-part-1 %}) with Ruby on Rails) using the `gtk3` gem a.k.a. the GTK+ Ruby bindings.

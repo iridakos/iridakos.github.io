@@ -12,6 +12,8 @@ outline: true
 popular: true
 redirect_from:
   - /2017/11/10/duckrails-docker-image.html
+related_posts:
+  - duckrails-guide
 ---
 
 [DuckRails](https://github.com/iridakos/duckrails) now has its own docker image.

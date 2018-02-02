@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Rails radio buttons and required boolean attributes"
+description: "How to deal with required boolean attributes and radio buttons in Ruby on Rails."
 date:   2014-10-14 10:00:00 +0300
 preview: "Lately, I was trying to create a form for one of my models which had a required boolean attribute."
 category: "tips"
@@ -10,6 +11,9 @@ identifier: "rails-radio-buttons-required-boolean"
 outline: true
 redirect_from:
   - /2014/10/14/rails-radio-buttons-required-boolean.html
+related_posts:
+  - testing-exec-filters-rspec
+  - rescue-from-memory-leak
 ---
 
 Lately, I was trying to create a form for one of my models which had a required boolean attribute.

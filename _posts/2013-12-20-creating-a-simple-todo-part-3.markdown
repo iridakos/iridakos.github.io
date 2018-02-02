@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Creating a simple ToDo application with Ruby on Rails - Part 3"
+description: "Third part of the tutorial creating a simple ToDo application with Ruby on Rails."
 date:   2013-12-20 10:00:00 +0300
 preview: "This is the third part of the tutorial. In this part, we are going to use Devise & CanCan in order to add authentication and authorization features to the application."
 category: "tutorials"
@@ -10,6 +11,11 @@ image: "http://iridakos.com/assets/images/irida-grey.png"
 identifier: "todo-part-3"
 redirect_from:
   - /2013/12/20/creating-a-simple-todo-part-3.html
+related_posts:
+  - todo-part-1
+  - todo-part-2
+  - todo-part-4
+  - todo-gtk-plus-ruby-tutorial
 ---
 
 This is the third part of the tutorial. In this part, we are going to use [Devise][2] &amp; [CanCan][3] in order to add authentication and authorization features to the application.   

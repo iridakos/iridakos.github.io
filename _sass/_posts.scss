@@ -20,3 +20,28 @@
     margin-bottom: 20px;
   }
 }
+
+.related-posts {
+  margin-top: 10px;
+
+  .title {
+    color: $iridakos-secondary-color;
+    font-family: 'Indie Flower', cursive;
+  }
+
+  .related-post {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+
+    &:last-child {
+      border-bottom: 0 none;
+    }
+
+    .post-description {
+      margin-top: 5px;
+      color: $secondary-text-color;
+    }
+  }
+
+}

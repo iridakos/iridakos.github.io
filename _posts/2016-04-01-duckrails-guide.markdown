@@ -11,6 +11,8 @@ outline: true
 identifier: "duckrails-guide"
 redirect_from:
   - /2016/04/01/duckrails-guide.html
+related_posts:
+  - duckrails-docker-image
 ---
 
 ## Update - Nov. 18, 2017

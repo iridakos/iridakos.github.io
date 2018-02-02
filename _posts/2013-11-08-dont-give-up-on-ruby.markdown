@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Learning Ruby - Don't give up"
-description: "These are some thoughts I wanted to share about my experience as a developer switching from Java to Ruby"
+description: "These are some thoughts I wanted to share about my experience as a developer switching from Java to Ruby."
 date:   2013-11-08 10:00:00 +0300
 preview: "About 5 months ago, I was asked to join a Ruby on Rails project. After a lot of thinking whether I should switch to a new language after programming in Java for about 8 years or not I decided to do so."
 category: "ruby"
@@ -11,6 +11,13 @@ identifier: "learning-ruby"
 image: "http://iridakos.com/assets/images/irida-grey.png"
 redirect_from:
   - /2013/11/08/dont-give-up-on-ruby.html
+related_posts:
+  - hello-ruby-rails
+  - todo-part-1
+  - todo-part-2
+  - todo-part-3
+  - todo-part-4
+  - todo-gtk-plus-ruby-tutorial
 ---
 
 About 5 months ago, I was asked to join a Ruby on Rails project. After a lot of thinking whether I should switch to a new language after programming in Java for about 8 years or not I decided to do so.

@@ -2,6 +2,7 @@
 layout: post
 title:  "Being a developer"
 date:   2015-06-21 10:00:00 +0300
+description: "How is the life of a developer like."
 preview: "I can't really remember the first time I saw a computer. I do remember though that working on a computer was the first thing that came to my mind when I was asked: What do you want..."
 category: "humor"
 comments: true
@@ -11,6 +12,10 @@ outline: true
 popular: true
 redirect_from:
   - /2015/06/21/being-a-developer.html
+related_posts:
+  - cat-http-status-codes
+  - mom-dad-i-programmer
+  - bits
 ---
 
 I can't really remember the first time I saw a computer.

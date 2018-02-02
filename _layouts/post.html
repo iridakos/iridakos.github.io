@@ -40,12 +40,14 @@ layout: default
             <article itemscope itemtype="http://schema.org/BlogPosting">
               <div itemprop="articleBody">
                 {{ content }}
+
+                {% include related_posts.html %}
               </div>
             </article>
 
             <div class="row">
                 <div class="col-xs-12 hidden-sm hidden-xs">
-                    {% include share-page.html %}
+                    {% include share-page.html expanded=true %}
                 </div>
             </div>
 

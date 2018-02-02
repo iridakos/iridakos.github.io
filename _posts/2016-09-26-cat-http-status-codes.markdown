@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Cat HTTP status codes"
-description: "HTTP status codes explained through cat pictures"
+description: "HTTP status codes presented with cat pictures."
 image: "http://i.imgur.com/1yaeuIY.jpg"
 date:   2016-09-26 21:00:00 +0300
 preview: "My cats in http status codes."
@@ -10,6 +10,10 @@ comments: true
 identifier: "cat-http-status-codes"
 redirect_from:
   - /2016/09/26/cat-http-status-codes.html
+related_posts:
+  - being-a-developer
+  - mom-dad-i-programmer
+  - bits
 ---
 
 # Informational 1xx

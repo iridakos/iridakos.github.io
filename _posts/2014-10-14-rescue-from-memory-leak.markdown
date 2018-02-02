@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Rails and rescue from memory leak"
+description: "A story of finding a memory leak in a Ruby on Rails application."
 date:   2014-10-14 10:00:00 +0300
 preview: "Lately, I've been trying to find possible memory leaks in a rails 3.2.x application..."
 category: "rails"
@@ -10,6 +11,9 @@ image: "http://iridakos.com/assets/images/irida-grey.png"
 identifier: "rescue-from-memory-leak"
 redirect_from:
   - /2014/10/14/rescue-from-memory-leak.html
+related_posts:
+  - testing-exec-filters-rspec
+  - rescue-from-memory-leak
 ---
 
 Lately, I've been trying to find possible memory leaks in a rails 3.2.x application.
@@ -23,7 +27,7 @@ Given that, I wrote some code to track the creation of symbols in the applicatio
 
 Something like this:
 
-``` ruby
+```ruby
 class Performance
   @@current_symbols = []
 
@@ -42,7 +46,7 @@ end
 
 And in my partial something like:
 
-``` erb
+```erb
 <% Performance.new_symbols.each do |symb| %>
   <%= symb %>
 <% end %>

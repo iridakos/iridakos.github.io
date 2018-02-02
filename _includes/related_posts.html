@@ -1,0 +1,27 @@
+{% if page.related_posts %}
+<div class="related-posts">
+  <h2 class="title">Related posts</h2>
+
+  <div class="row">
+    <div class="col-xs-12">
+      {% for identifier in page.related_posts %}
+      {% for post in site.posts %}
+      {% if identifier == post.identifier %}
+      
+      <div class="related-post">
+        <div class="post-title">
+          <a class="ga-event-link" data-event-category="Related posts" data-event-action="click" data-event-label="{{ post.title }}" href="{{ post.url }}"><strong>{{ post.title }}</strong></a>
+        </div>
+
+        <div class="post-description">
+          {{ post.description }}
+        </div>
+      </div>
+
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
