@@ -10,6 +10,10 @@ identifier: "elasticsearch-rails-tutorial"
 outline: true
 comments: true
 popular: true
+related_posts:
+  - todo-part-1
+  - testing-exec-filters-rspec
+  - rescue-from-memory-leak
 ---
 
 ## Overview
