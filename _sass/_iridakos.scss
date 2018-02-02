@@ -109,11 +109,10 @@ a.about-me {
 }
 
 .page-link {
-  font-size: 18px;
+  font-size: 22px;
 
   &.active {
     color: #fff !important;
-    text-decoration: underline;
   }
 }
 
@@ -122,6 +121,12 @@ a.about-me {
   border-radius: 0;
 
   .navbar-brand {
+    font-size: 24px;
+
+    &.active {
+      color: #fff !important;
+    }
+
     img {
       width: 22px;
       height: 22px;
@@ -132,8 +137,13 @@ a.about-me {
 
 .news-panel .panel-heading {
   font-family: 'Indie Flower', cursive;
-  color: #fff;
-  background: $navbar-inverse-bg;
+  color: $iridakos-secondary-color;
+  background: #fff;
+  font-weight: bold;
+
+  .panel-title {
+    font-size: 22px;
+  }
 }
 
 .popular-post {

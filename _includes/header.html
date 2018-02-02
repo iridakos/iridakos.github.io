@@ -8,7 +8,12 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="/" alt="home"><img src="/assets/images/irida-secondary.png"> iridakos</a>
+            {% if page.is_home %}
+              {% assign menu_class = 'active' %}
+            {% else %}
+              {% assign menu_class = '' %}
+            {% endif %}
+            <a class="navbar-brand {{ menu_class }}" href="/" alt="home"><img src="/assets/images/irida-secondary.png"> iridakos</a>
         </div>
 
         <div class="collapse navbar-collapse" id="site-navbar-collapse">
@@ -16,7 +21,20 @@
                 {% for my_page in site.pages %}
                   {% if my_page.show_in_header %}
                       <li>
-                          <a class="page-link {% if page.url == my_page.url %}active{% endif %}" href="{{ my_page.url | prepend: site.baseurl }}" alt="{{ my_page.title }}">{{ my_page.menu_title }}</a>
+                          {% if page.is_post %}
+                            {% if page.category == my_page.title %}
+                              {% assign menu_class = 'active' %}
+                            {% else %}
+                              {% assign menu_class = '' %}
+                            {% endif %}
+                          {% else %}
+                            {% if page.path == my_page.path %}
+                              {% assign menu_class = 'active' %}
+                            {% else %}
+                              {% assign menu_class = '' %}
+                            {% endif %}
+                          {% endif %}
+                          <a class="page-link {{ menu_class }}" href="{{ my_page.url | prepend: site.baseurl }}" alt="{{ my_page.title }}">{{ my_page.menu_title }}</a>
                       </li>
                   {% endif %}
                 {% endfor %}
