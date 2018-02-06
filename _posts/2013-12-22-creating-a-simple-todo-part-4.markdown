@@ -7,7 +7,7 @@ preview: "In the previous three posts we created a simple ToDo application with 
 category: "tutorials"
 comments: true
 outline: true
-image: "http://iridakos.com/assets/images/irida-grey.png"
+image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "todo-part-4"
 redirect_from:
   - /2013/12/22/creating-a-simple-todo-part-4.html
@@ -53,7 +53,7 @@ We will install the client tools (rhc). From the command line:
 gem install rhc
 ```
 
-![](http://1.bp.blogspot.com/-qmddyVqJAWo/UrYyrQZWdlI/AAAAAAAAAys/RxdYjVLXy5c/s640/1.png)
+![](https://1.bp.blogspot.com/-qmddyVqJAWo/UrYyrQZWdlI/AAAAAAAAAys/RxdYjVLXy5c/s640/1.png)
 
 and we are going to configure them with:
 
@@ -63,19 +63,19 @@ rhc setup
 
 Follow the instructions and type your credentials:
 
-![](http://1.bp.blogspot.com/-fgDtadeEAZ8/UrYzdiht-0I/AAAAAAAAAy0/QndPEz-8Bf0/s1600/2.png)
+![](https://1.bp.blogspot.com/-fgDtadeEAZ8/UrYzdiht-0I/AAAAAAAAAy0/QndPEz-8Bf0/s1600/2.png)
 
 Choose to generate the token so that you don't have to login each time you interact with your remote machine (from now on we will call this gear):
 
-![](http://1.bp.blogspot.com/-gMQscjCrY-o/UrY0ClEh03I/AAAAAAAAAy8/f-zDdoVKH5o/s1600/3.png)
+![](https://1.bp.blogspot.com/-gMQscjCrY-o/UrY0ClEh03I/AAAAAAAAAy8/f-zDdoVKH5o/s1600/3.png)
 
 If you don't have any SSH keys, OpenShift will automatically generate one for you (nice) and will ask you if you want it to upload it to the server so that you can access your code. Say yes.
 
-![](http://3.bp.blogspot.com/-t4iWnn9SI-8/UrY0xJdjGSI/AAAAAAAAAzI/g4AwwfD-nhU/s1600/4.png)
+![](https://3.bp.blogspot.com/-t4iWnn9SI-8/UrY0xJdjGSI/AAAAAAAAAzI/g4AwwfD-nhU/s1600/4.png)
 
 Next, you will be asked to create a domain under which your applications will be grouped. Choose one (this is going to be used in your applications public url ex: todo-yourdomain.rhcloud.com). I chose arubystory:
 
-![](http://4.bp.blogspot.com/-JviK4uOeYgg/UrY1alm4zKI/AAAAAAAAAzQ/_y3e88Dg9fg/s1600/5.png)
+![](https://4.bp.blogspot.com/-JviK4uOeYgg/UrY1alm4zKI/AAAAAAAAAzQ/_y3e88Dg9fg/s1600/5.png)
 
 That's all. We configured the tools to use our account.
 
@@ -97,7 +97,7 @@ cd /to/the/directory/containing/the/todo/directory
 rhc create-app todo ruby-1.9
 ```
 
-![](http://1.bp.blogspot.com/-IqQuQgop4ZU/UrZEF5ZwS5I/AAAAAAAAAzg/LqEAire0Jdc/s1600/6.png)
+![](https://1.bp.blogspot.com/-IqQuQgop4ZU/UrZEF5ZwS5I/AAAAAAAAAzg/LqEAire0Jdc/s1600/6.png)
 
 Great. Now, let's initialize our local git repo. From the command line:
 
@@ -106,7 +106,7 @@ cd todo
 git init
 ```
 
-![](http://3.bp.blogspot.com/-yMSB9Vpd0pA/UrZEmAeN_CI/AAAAAAAAAzo/U5hfaUkbF1Y/s1600/7.png)
+![](https://3.bp.blogspot.com/-yMSB9Vpd0pA/UrZEmAeN_CI/AAAAAAAAAzo/U5hfaUkbF1Y/s1600/7.png)
 
 We will add the remote git using the information provided with the following command:
 
@@ -114,7 +114,7 @@ We will add the remote git using the information provided with the following com
 rhc app-show todo
 ```
 
-![](http://4.bp.blogspot.com/-sgiZ2SdRUmU/UrZFbbe5YdI/AAAAAAAAAz0/2gLJ__htjjw/s1600/8.png)
+![](https://4.bp.blogspot.com/-sgiZ2SdRUmU/UrZFbbe5YdI/AAAAAAAAAz0/2gLJ__htjjw/s1600/8.png)
 
 Copy the value of the Git URL because you are going to use it in the following command:
 
@@ -135,11 +135,11 @@ And let's merge the remote:
 git pull openshift master
 ```
 
-![](http://3.bp.blogspot.com/-BFo5XPYtTtM/UrZIOXVaH-I/AAAAAAAAA0I/_taobz4pVfs/s1600/10.png)
+![](https://3.bp.blogspot.com/-BFo5XPYtTtM/UrZIOXVaH-I/AAAAAAAAA0I/_taobz4pVfs/s1600/10.png)
 
 As you can see, we have a conflict in config.ru. Edit this file and change it to the following (we overwrite the remote changes with ours):
 
-``` rbuy
+``` ruby
 # This file is used by Rack-based servers to start the application.
 
 require ::File.expand_path('../config/environment',  __FILE__)
@@ -161,7 +161,7 @@ git push openshift master
 
 Visit the application url from your browser: `http://todo-yourdomainhere.rhcloud.com`
 
-![](http://3.bp.blogspot.com/-L0ClFgw1yxc/UrZK-S3-6GI/AAAAAAAAA0U/PExw1aB2otU/s1600/12.png)
+![](https://3.bp.blogspot.com/-L0ClFgw1yxc/UrZK-S3-6GI/AAAAAAAAA0U/PExw1aB2otU/s1600/12.png)
 
 Don't worry, we expected this. We haven't setup the database for production. We will do this "sshing" to our gear. From the command line:
 
@@ -176,7 +176,7 @@ cd app-root/repo
 RAILS_ENV=production rake db:setup
 ```
 
-1[](http://4.bp.blogspot.com/-lA0fku7ntBE/UrZL96zKpWI/AAAAAAAAA0c/sA_PDf2Kqm4/s1600/13.png)
+1[](https://4.bp.blogspot.com/-lA0fku7ntBE/UrZL96zKpWI/AAAAAAAAA0c/sA_PDf2Kqm4/s1600/13.png)
 
 Exit the gear:
 
@@ -193,7 +193,7 @@ rhc app-start todo
 
 Give it some time and refresh your browser. There it is!
 
-![](http://2.bp.blogspot.com/-KYlHEZo6-BU/UrZNbtEIC2I/AAAAAAAAA00/0cRGmosRbSs/s1600/15.png)
+![](https://2.bp.blogspot.com/-KYlHEZo6-BU/UrZNbtEIC2I/AAAAAAAAA00/0cRGmosRbSs/s1600/15.png)
 
 Now, if you try to sign up you'll see the error message again.
 
@@ -227,7 +227,7 @@ git push openshift master
 After the gear starts, refreshing the browser you'll see the error message again.
 This time the problem is once again the database. But why? Take a look at your `db/database.yml`
 
-![](http://3.bp.blogspot.com/-qgxy1WWIaMg/UrZh50LdrHI/AAAAAAAAA1A/xgqImrRFllw/s1600/16.png)
+![](https://3.bp.blogspot.com/-qgxy1WWIaMg/UrZh50LdrHI/AAAAAAAAA1A/xgqImrRFllw/s1600/16.png)
 
 As you can see, the database is saved under `db/production.sqlite3`.
 This file doesn't exist in our repo. We are going to set this value pointing to a file that is not in the repo but to another directory of the gear! That directory already exists and OpenShift has taken care so that we can see what it is with an env variable: OPENSHIFT_DATA_DIR . Change the production database line to this:
@@ -236,7 +236,7 @@ This file doesn't exist in our repo. We are going to set this value pointing to 
 database: <%=ENV['OPENSHIFT_DATA_DIR']%>/production.sqlite3
 ```
 
-![](http://4.bp.blogspot.com/-mzQw3oyDS9E/UrZl-loYqZI/AAAAAAAAA1Y/I_GhGH-ub4g/s1600/17.png)
+![](https://4.bp.blogspot.com/-mzQw3oyDS9E/UrZl-loYqZI/AAAAAAAAA1Y/I_GhGH-ub4g/s1600/17.png)
 
 Once again:
 

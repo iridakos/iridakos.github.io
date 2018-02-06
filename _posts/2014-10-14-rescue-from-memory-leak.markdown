@@ -7,7 +7,7 @@ preview: "Lately, I've been trying to find possible memory leaks in a rails 3.2.
 category: "rails"
 comments: true
 outline: true
-image: "http://iridakos.com/assets/images/irida-grey.png"
+image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "rescue-from-memory-leak"
 redirect_from:
   - /2014/10/14/rescue-from-memory-leak.html

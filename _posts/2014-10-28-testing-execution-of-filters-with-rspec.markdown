@@ -6,7 +6,7 @@ date:   2014-10-14 10:00:00 +0300
 preview: "I was working on my application and I wanted to write some RSpec tests for some controllers having `before_filter` for some actions...."
 category: "testing"
 comments: true
-image: "http://iridakos.com/assets/images/irida-grey.png"
+image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "testing-exec-filters-rspec"
 outline: true
 redirect_from:
@@ -130,4 +130,4 @@ We use the `:ignore_filters` to stub possible prepended filters so that in case 
 
 If we comment the `before_filter` declarations in the `FooController` => tadaaaaa:
 
-![](http://1.bp.blogspot.com/-bQn2QNa2khs/VE_hB6TVtpI/AAAAAAAAA7Y/vnRKVmXyXJ0/s1600/irida.png)
+![](https://1.bp.blogspot.com/-bQn2QNa2khs/VE_hB6TVtpI/AAAAAAAAA7Y/vnRKVmXyXJ0/s1600/irida.png)

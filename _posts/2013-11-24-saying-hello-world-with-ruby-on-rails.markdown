@@ -4,7 +4,7 @@ title:  "Saying hello world with Ruby on Rails"
 description: "This is a tutorial for creating the classic hello world application with Ruby on Rails."
 date:   2013-11-24 10:00:00 +0300
 preview: "If you are new to Ruby I suggest you first read my previous post which in short explains why you should not give up on learning Ruby..."
-image: "http://iridakos.com/assets/images/irida-grey.png"
+image: "https://iridakos.com/assets/images/irida-favicon.png"
 category: "tutorials"
 comments: true
 outline: true
@@ -75,7 +75,7 @@ rails s
 
 You should see something similar to this:
 
-![Rails server starting](http://2.bp.blogspot.com/-NwLVOAjtjag/UpEp1H01XKI/AAAAAAAAAcQ/vgwNU0ZVSgI/s1600/webrick.png)
+![Rails server starting](https://2.bp.blogspot.com/-NwLVOAjtjag/UpEp1H01XKI/AAAAAAAAAcQ/vgwNU0ZVSgI/s1600/webrick.png)
 
 By default, the server listens to port 3000 but you may change to the one you desire by using the `-p` option:
 {% highlight bash %}
@@ -89,7 +89,7 @@ http://localhost:8080
 
 Tadaaa... You should see something like this:
 
-![Rails welcome aboard](http://4.bp.blogspot.com/-jXXwccMm_OI/UpEuGykbR8I/AAAAAAAAAcc/iKkofkL8UmY/s640/first-hit.png)
+![Rails welcome aboard](https://4.bp.blogspot.com/-jXXwccMm_OI/UpEuGykbR8I/AAAAAAAAAcc/iKkofkL8UmY/s640/first-hit.png)
 
 Before we continue, I will try to explain in a simple way how a rails application works.
 
@@ -106,7 +106,7 @@ rails generate controller pages
 
 You will see a bunch of lines coming out from this command but focus on the first one:
 
-![Rails generating a controller](http://3.bp.blogspot.com/-ucr0i4t3rfk/UpE4sI-CjpI/AAAAAAAAAcs/BFFYthZjJng/s1600/generate-controller.png)
+![Rails generating a controller](https://3.bp.blogspot.com/-ucr0i4t3rfk/UpE4sI-CjpI/AAAAAAAAAcs/BFFYthZjJng/s1600/generate-controller.png)
 
 Yes, `pages_controller.rb` is our controller.
 In this file we are going to create our action that will serve the "root" (home) request to our application.
@@ -159,7 +159,7 @@ root to: 'pages#home'
 
 If you refresh your browser, you will see the amazing and super complex page we just created:
 
-![Hello world static page](http://4.bp.blogspot.com/-fN7Mf2u71nE/UpFE0NERslI/AAAAAAAAAdE/vVDxnUFlrFM/s640/static.png)
+![Hello world static page](https://4.bp.blogspot.com/-fN7Mf2u71nE/UpFE0NERslI/AAAAAAAAAdE/vVDxnUFlrFM/s640/static.png)
 
 We could stop here but it would be nice if we had the *Hello world!* text being passed to the view from the controller's action, yes? Yes.
 
@@ -179,7 +179,7 @@ This variable is available for use from our corresponding view so open the `home
 
 Refresh the page in your browser and there it is:
 
-![Hello world dynamic page](http://1.bp.blogspot.com/-z2SM6eyCAVc/UpFG9SrwaUI/AAAAAAAAAdQ/RHVlNsTm4o0/s640/home-hello.png)
+![Hello world dynamic page](https://1.bp.blogspot.com/-z2SM6eyCAVc/UpFG9SrwaUI/AAAAAAAAAdQ/RHVlNsTm4o0/s640/home-hello.png)
 
 There, **you just created your first Ruby on Rails application!**
 

@@ -7,7 +7,7 @@ preview: "So, you learned how to say 'Hello world' with Ruby on Rails and it's t
 category: "tutorials"
 comments: true
 outline: true
-image: "http://iridakos.com/assets/images/irida-grey.png"
+image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "todo-part-1"
 popular: true
 redirect_from:
@@ -76,7 +76,7 @@ rails server
 
 From your browser navigate to `localhost:3000`. Are we OK?  
 
-![Rails welcome aboard](http://3.bp.blogspot.com/-LKDXgX3VjUE/UqHlrYug95I/AAAAAAAAAew/rzpdLoPQ0m0/s1600/1.png)
+![Rails welcome aboard](https://3.bp.blogspot.com/-LKDXgX3VjUE/UqHlrYug95I/AAAAAAAAAew/rzpdLoPQ0m0/s1600/1.png)
 
 Yes, we are.  
 
@@ -99,7 +99,7 @@ Let's create the model. From the command line:
 rails generate model Task title:string note:text completed:date
 {% endhighlight %}
 
-![http://4.bp.blogspot.com/-kYYToZG0UAQ/UqJt6uRb09I/AAAAAAAAAkI/2joxfvGSkEI/s640/22.png](http://4.bp.blogspot.com/-kYYToZG0UAQ/UqJt6uRb09I/AAAAAAAAAkI/2joxfvGSkEI/s1600/22.png)
+![https://4.bp.blogspot.com/-kYYToZG0UAQ/UqJt6uRb09I/AAAAAAAAAkI/2joxfvGSkEI/s640/22.png](https://4.bp.blogspot.com/-kYYToZG0UAQ/UqJt6uRb09I/AAAAAAAAAkI/2joxfvGSkEI/s1600/22.png)
 
 We decided to use:  
 
@@ -138,22 +138,22 @@ or the equivalent
 rails c
 {% endhighlight %}
 
-![Rails console)](http://2.bp.blogspot.com/-T0siYFO-30c/UqHwf9hAmwI/AAAAAAAAAfU/Z2XdDpO0SBo/s1600/3.png)
+![Rails console)](https://2.bp.blogspot.com/-T0siYFO-30c/UqHwf9hAmwI/AAAAAAAAAfU/Z2XdDpO0SBo/s1600/3.png)
 
 Imagine the rails console as an application in which you can directly execute your ruby code having all your application's files available (and some of them already loaded).  
 Play a little with it, for example:  
 
-![](http://3.bp.blogspot.com/-JYNL9tGcpoU/UqHx38tF17I/AAAAAAAAAfg/nP1LEN0Dw-Y/s1600/4.png)
+![](https://3.bp.blogspot.com/-JYNL9tGcpoU/UqHx38tF17I/AAAAAAAAAfg/nP1LEN0Dw-Y/s1600/4.png)
 
 Don't be scared by the example, read [here]({ post_url 2013-11-08-dont-give-up-on-ruby}).  
 
 Now, let's check our Task model. Just type `Task`:
 
-![](http://4.bp.blogspot.com/-Jc8SR7bwgZM/UqH2uv3lDVI/AAAAAAAAAfw/NTygee5m4hg/s1600/5.png)
+![](https://4.bp.blogspot.com/-Jc8SR7bwgZM/UqH2uv3lDVI/AAAAAAAAAfw/NTygee5m4hg/s1600/5.png)
 
 Hmmm.. Refresh your browser (at `http:://localhost:3000`).  
 
-![](http://3.bp.blogspot.com/-df_owmXyYro/UqH3C7pupsI/AAAAAAAAAf4/ZbczJ-NAs-Y/s1600/6.png)
+![](https://3.bp.blogspot.com/-df_owmXyYro/UqH3C7pupsI/AAAAAAAAAf4/ZbczJ-NAs-Y/s1600/6.png)
 
 That's right. We generated the model migration but we didn't ask to apply it so that our database schema gets updated.
 
@@ -164,7 +164,7 @@ rake db:migrate RAILS_ENV=development
 
 *Note: you may skip the `RAILS_ENV=development` part since this is the default*.
 
-![](http://3.bp.blogspot.com/-Tc8AQLsmNoI/UqH4J_sz-BI/AAAAAAAAAgE/niZ8xqmDLE0/s1600/7.png)
+![](https://3.bp.blogspot.com/-Tc8AQLsmNoI/UqH4J_sz-BI/AAAAAAAAAgE/niZ8xqmDLE0/s1600/7.png)
 
 Great. The table has been created. If you refresh your browser you'll see the default rails application page again.  
 
@@ -177,7 +177,7 @@ reload!
 
 And there you have it:  
 
-![](http://2.bp.blogspot.com/-LgRrfOB6o8w/UqJuVn3fAoI/AAAAAAAAAkQ/J1f8gFRckQ4/s1600/23.png)
+![](https://2.bp.blogspot.com/-LgRrfOB6o8w/UqJuVn3fAoI/AAAAAAAAAkQ/J1f8gFRckQ4/s1600/23.png)
 
 Since our Task class is empty, what are all these properties? Where did they come from?
 
@@ -196,7 +196,7 @@ That's it. You just saved your first task. Now will load it in order to edit/upd
 {% highlight ruby %}
 task =  Task.first
 {% endhighlight %}
-![](http://2.bp.blogspot.com/-5NPBmgNGZp0/UqIAysW--YI/AAAAAAAAAgc/r52eoK-M5BI/s1600/9.png)
+![](https://2.bp.blogspot.com/-5NPBmgNGZp0/UqIAysW--YI/AAAAAAAAAgc/r52eoK-M5BI/s1600/9.png)
 
 We loaded our task by selecting the first and only record of the Task model.  
 Let's edit it:  
@@ -205,27 +205,27 @@ task.title =  'First task - edited'
 task.save
 {% endhighlight %}
 
-![](http://3.bp.blogspot.com/-rOx3Jpa4ah4/UqIBX18MbhI/AAAAAAAAAgk/a9v3uKaapl4/s1600/10.png)
+![](https://3.bp.blogspot.com/-rOx3Jpa4ah4/UqIBX18MbhI/AAAAAAAAAgk/a9v3uKaapl4/s1600/10.png)
 
 And let's delete it:
 
 {% highlight ruby %}
 task.destroy
 {% endhighlight %}
-![](http://1.bp.blogspot.com/-UfkmaJr4PwI/UqIB4IWIbgI/AAAAAAAAAgw/FWFFlXsSBOc/s1600/11.png)
+![](https://1.bp.blogspot.com/-UfkmaJr4PwI/UqIB4IWIbgI/AAAAAAAAAgw/FWFFlXsSBOc/s1600/11.png)
 
 Confirm that we have no tasks anymore.
 {% highlight ruby %}
 Task.count
 {% endhighlight %}
-![](http://4.bp.blogspot.com/-tBhNgcfScoc/UqICKeGdfxI/AAAAAAAAAg4/BVeY9vsnWJc/s1600/12.png)
+![](https://4.bp.blogspot.com/-tBhNgcfScoc/UqICKeGdfxI/AAAAAAAAAg4/BVeY9vsnWJc/s1600/12.png)
 
 Ok, our model seems to be working fine. Time to start giving a face to our application.
 
 The default views of a rails application are `erb` files that in the case of an html page you can imagine them as jsps but instead of Java you write ruby code.
 We already have such a file in our application,  `application.html.erb`, open it in your text editor to view its contents (it's located under `app/views/layouts`).
 
-![](http://1.bp.blogspot.com/-Qrj6fip6euY/UqIENujohVI/AAAAAAAAAhE/KPO_FoXqaEY/s1600/13.png)
+![](https://1.bp.blogspot.com/-Qrj6fip6euY/UqIENujohVI/AAAAAAAAAhE/KPO_FoXqaEY/s1600/13.png)
 
 This file is a layout meaning that you may use it to display content that you wish to be present to a lot (if not to all) of your application's pages. Each page you create will be `embedded` at line 11.
 You may add whatever you want before & after the `yield` directive.
@@ -256,7 +256,7 @@ Now, rename the file to `application.html.haml` and replace the contents with th
     = yield
 {% endhighlight %}
 
-![](http://3.bp.blogspot.com/-ajux9zFSolg/UqIK2vzXwQI/AAAAAAAAAhU/weBiG4hToWQ/s1600/14.png)
+![](https://3.bp.blogspot.com/-ajux9zFSolg/UqIK2vzXwQI/AAAAAAAAAhU/weBiG4hToWQ/s1600/14.png)
 
 As you can see we also removed the *turbolink* related stuff.
 
@@ -286,12 +286,12 @@ Remove the comments from the `routes.rb` file which is located under the `config
 root to:  'pages#home'
 {% endhighlight %}
 
-![](http://3.bp.blogspot.com/-gwItCMa5ZCs/UqIPWv2_qkI/AAAAAAAAAhg/GMCH_-BxWl4/s1600/15.png)
+![](https://3.bp.blogspot.com/-gwItCMa5ZCs/UqIPWv2_qkI/AAAAAAAAAhg/GMCH_-BxWl4/s1600/15.png)
 
 Refreshing your browser, you should now view an empty page (since our `home.html.haml` is empty).
 **But** if you view the source of the page from your browser, you'll see the html of our layout.
 
-![](http://2.bp.blogspot.com/-oFpofDqcJsU/UqIP9x2VsGI/AAAAAAAAAho/64Jl2mW-tj0/s1600/16.png)
+![](https://2.bp.blogspot.com/-oFpofDqcJsU/UqIP9x2VsGI/AAAAAAAAAho/64Jl2mW-tj0/s1600/16.png)
 
 Let's edit our layout to add some cool "bootstrapish" stuff.
 
@@ -321,7 +321,7 @@ The equivalent haml:
 {% endhighlight %}
 
 So our `application.haml.html` now looks like:
-![](http://4.bp.blogspot.com/-zJ_c6MVCtHg/UqJvjSeMqbI/AAAAAAAAAkk/z2nPrgAmn08/s1600/24.png)
+![](https://4.bp.blogspot.com/-zJ_c6MVCtHg/UqJvjSeMqbI/AAAAAAAAAkk/z2nPrgAmn08/s1600/24.png)
 
 In order to have the Boostrap magic enabled:
 
@@ -339,7 +339,7 @@ In order to have the Boostrap magic enabled:
 
 Done. Refresh your browser and you should see this:
 
-![](http://1.bp.blogspot.com/-wfC2D1m8tyo/UqJwI0YyDHI/AAAAAAAAAks/HpDO4VecwwA/s1600/1.png)
+![](https://1.bp.blogspot.com/-wfC2D1m8tyo/UqJwI0YyDHI/AAAAAAAAAks/HpDO4VecwwA/s1600/1.png)
 
 Time to add some task functionality.
 
@@ -374,11 +374,11 @@ and now we have them available to our view. We are going to show a table with al
 
 If you refresh you browser now, you should be seeing this:  
 
-![](http://3.bp.blogspot.com/-lpIkTcD3vUI/UqJwI0s3qKI/AAAAAAAAAlA/5q86rQRP70k/s1600/2.png)
+![](https://3.bp.blogspot.com/-lpIkTcD3vUI/UqJwI0s3qKI/AAAAAAAAAlA/5q86rQRP70k/s1600/2.png)
 
 Add a task as we did before via the rails console just to see how it is being displayed:
 
-![](http://1.bp.blogspot.com/-c_3QtYktkcc/UqJwI1JvtVI/AAAAAAAAAk8/1k5OPo47yC0/s1600/3.png)
+![](https://1.bp.blogspot.com/-c_3QtYktkcc/UqJwI1JvtVI/AAAAAAAAAk8/1k5OPo47yC0/s1600/3.png)
 
 We created our pages controller in order to handle the **static** pages of the application. The "static" word here doesn't mean static content but actions that do not belong in the context of a resource. This controller is described as a non-resourceful controller.
 
@@ -395,7 +395,7 @@ Now, from the command line execute this command to view the current routes:
 rake routes
 {% endhighlight %}
 
-![](http://4.bp.blogspot.com/-AVUtMl8E_BI/UqIrZx38edI/AAAAAAAAAiw/XjJOuQwaJJo/s1600/21.png)
+![](https://4.bp.blogspot.com/-AVUtMl8E_BI/UqIrZx38edI/AAAAAAAAAiw/XjJOuQwaJJo/s1600/21.png)
 
 As you can see, a bunch of new routes have been created besides our root one. Notice the forth column of them. These are the actions that are mapped because of the addition of the resources method in `routes.rb`. 
 
@@ -409,7 +409,7 @@ resources :tasks,  except:  [:index]
 
 Gone.
 
-![](http://4.bp.blogspot.com/-xlKrlUrVKT4/UqIttaNCOzI/AAAAAAAAAi8/HeKDjaDZMow/s1600/22.png)
+![](https://4.bp.blogspot.com/-xlKrlUrVKT4/UqIttaNCOzI/AAAAAAAAAi8/HeKDjaDZMow/s1600/22.png)
 
 Also notice that the actions are supposed to belong to a tasks controller(`tasks#action`). Guess what's next:
 
@@ -436,7 +436,7 @@ Before continuing, we will add a modal window in the `home.html.haml` so that it
 #modal.modal.fade
 {% endhighlight %}
 
-![](http://3.bp.blogspot.com/-nwVYK7VYcVs/UrHx6dnNLQI/AAAAAAAAAqE/GBIAxL5U6MU/s1600/1.png)
+![](https://3.bp.blogspot.com/-nwVYK7VYcVs/UrHx6dnNLQI/AAAAAAAAAqE/GBIAxL5U6MU/s1600/1.png)
 
 Edit the `new.js.erb` and add the following:
 {% highlight js %}
@@ -452,15 +452,15 @@ We need to add a button/link in the home page for the new action. We can add it 
 = link_to 'New task', new_task_path,  class:  'btn btn-primary'
 {% endhighlight %}
 
-![](http://1.bp.blogspot.com/-8J-8tiTbj1Q/UqI0G50_MXI/AAAAAAAAAjU/6j1P2ol5PFY/s1600/24.png)
+![](https://1.bp.blogspot.com/-8J-8tiTbj1Q/UqI0G50_MXI/AAAAAAAAAjU/6j1P2ol5PFY/s1600/24.png)
 
 Now refresh your page in the browser:  
 
-![](http://3.bp.blogspot.com/--MbGloCAfAQ/UqJwdms6NXI/AAAAAAAAAlE/VRt4mFargtY/s1600/4.png)
+![](https://3.bp.blogspot.com/--MbGloCAfAQ/UqJwdms6NXI/AAAAAAAAAlE/VRt4mFargtY/s1600/4.png)
 
 Nice. Press the button.
 
-![](http://2.bp.blogspot.com/-gxwPxDqK80Q/UnxyAOQP4qI/AAAAAAAAAPg/Bpswk3rINEE/s1600/center.png)
+![](https://2.bp.blogspot.com/-gxwPxDqK80Q/UnxyAOQP4qI/AAAAAAAAAPg/Bpswk3rINEE/s1600/center.png)
 
 Hmmm.. Error... Missing template...
 
@@ -505,7 +505,7 @@ m.modal('show');
 
 And now we can press the button *New task*:
 
-![](http://1.bp.blogspot.com/-HWF3_ZYiBkk/UqJySZRwz-I/AAAAAAAAAlQ/w5frc1R0I_8/s1600/5.png)
+![](https://1.bp.blogspot.com/-HWF3_ZYiBkk/UqJySZRwz-I/AAAAAAAAAlQ/w5frc1R0I_8/s1600/5.png)
 
 As you can see, `simple_form` picked to render the title as a simple input text, note as a `textarea` and, well, the completed date field as a combination of three selects. Let's change the last one because it doesn't look nice.
 
@@ -565,11 +565,11 @@ $('#modal').integrateDatepicker();
 
 Refresh and there it is:
 
-![](http://2.bp.blogspot.com/-vSvB3qOWx8E/UqJ6HzPNnqI/AAAAAAAAAlg/gw9xz9uB36Y/s1600/6.png)
+![](https://2.bp.blogspot.com/-vSvB3qOWx8E/UqJ6HzPNnqI/AAAAAAAAAlg/gw9xz9uB36Y/s1600/6.png)
 
 Since this form was created for the `@task` instance variable of the controller and since that `@task` does not exist but it is a new one, its action (the form's action) has automatically been resolved to the `create` action of the controller. Don't believe me? Press the save button:
 
-![](http://1.bp.blogspot.com/-HECWR77_qYI/UqJ7FoFo8wI/AAAAAAAAAlo/uQmlyyrUakE/s1600/7.png)
+![](https://1.bp.blogspot.com/-HECWR77_qYI/UqJ7FoFo8wI/AAAAAAAAAlo/uQmlyyrUakE/s1600/7.png)
 
 Open the tasks controller and add the following:
 
@@ -588,7 +588,7 @@ Here we defined the `create` action that creates the task and then redirects to 
 We also created the `task_params` private method so that we filter the params of the request in case someone tries to pass parameters that we don't expect.
 We only allow values for the `title`, `note` and `completed` attributes of our model. There will be cases that your model will have attributes you don't want to be set by the user and this is the way to control them.
 
-![](http://2.bp.blogspot.com/-pGsV25stbqI/UqJ_oUclJlI/AAAAAAAAAl0/x2cdjwjwt04/s1600/8.png)
+![](https://2.bp.blogspot.com/-pGsV25stbqI/UqJ_oUclJlI/AAAAAAAAAl0/x2cdjwjwt04/s1600/8.png)
 
 It's about time to end this part of the tutorial here. Very soon I will write the [next part]({% post_url 2013-12-17-creating-a-simple-todo-part-2 %}) in which we will:
 

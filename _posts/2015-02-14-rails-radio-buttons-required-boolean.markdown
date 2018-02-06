@@ -6,7 +6,7 @@ date:   2014-10-14 10:00:00 +0300
 preview: "Lately, I was trying to create a form for one of my models which had a required boolean attribute."
 category: "tips"
 comments: true
-image: "http://iridakos.com/assets/images/irida-grey.png"
+image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "rails-radio-buttons-required-boolean"
 outline: true
 redirect_from:
@@ -59,7 +59,7 @@ end
 So far so good.
 Back to the browser now, everything seemed fine till the moment I tried to submit the **No** value.
 
-![](http://1.bp.blogspot.com/-X73vr-AiqOk/VN70XfW0AXI/AAAAAAAABAY/F6o4ZzhrcAk/s1600/no-blank-error.png)
+![](https://1.bp.blogspot.com/-X73vr-AiqOk/VN70XfW0AXI/AAAAAAAABAY/F6o4ZzhrcAk/s1600/no-blank-error.png)
 
 I googled around to find some answers on this and some suggested that I should use the inclusion validator. And so did I.
 
@@ -76,7 +76,7 @@ end
 
 Back to the browser everything seemed fine. I could submit both Yes and No values but there was a problem when I was trying to submit the form without selecting a value.
 
-![](http://1.bp.blogspot.com/-EXTVFLg_Ht0/VN743cdp_GI/AAAAAAAABAw/E1WrcVJGagY/s1600/nil-list-error.png)
+![](https://1.bp.blogspot.com/-EXTVFLg_Ht0/VN743cdp_GI/AAAAAAAABAw/E1WrcVJGagY/s1600/nil-list-error.png)
 
 The error message was not quite what I wanted... And for sure, I wanted to find a solution that won't make me override default error messages.
 
@@ -95,6 +95,6 @@ end
 
 I could now submit both values and the desired message was showing up if no selection was made.
 
-![](http://1.bp.blogspot.com/-0XoIwnwcmCo/VN78ZLVK-kI/AAAAAAAABBQ/fK8PVq3pSfA/s1600/solution.png)
+![](https://1.bp.blogspot.com/-0XoIwnwcmCo/VN78ZLVK-kI/AAAAAAAABBQ/fK8PVq3pSfA/s1600/solution.png)
 
 Done. Problem solved.

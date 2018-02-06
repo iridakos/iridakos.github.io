@@ -7,7 +7,7 @@ preview: "This is the second part of the tutorial for creating a simple ToDo app
 category: "tutorials"
 comments: true
 outline: true
-image: "http://iridakos.com/assets/images/irida-grey.png"
+image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "todo-part-2"
 redirect_from:
   - /2013/12/17/creating-a-simple-todo-part-2.html
@@ -490,15 +490,15 @@ Thank you for the feedback you've given on the previous posts, I'd be glad to ha
 In the [next part]({% post_url 2013-12-20-creating-a-simple-todo-part-3 %}) of the tutorial we are going to use [devise][13] in order to have users logging in the application.
 
 [1]: https://github.com/iridakos/todo
-[2]: http://3.bp.blogspot.com/-G39owjB6qTI/Uq_zioffnZI/AAAAAAAAAnk/bjGpTH4dqME/s640/1.png
-[3]: http://4.bp.blogspot.com/-kmORx8WFsEM/Uq_0C-W-6WI/AAAAAAAAAns/qU9R79NYtnw/s640/2.png
-[4]: http://4.bp.blogspot.com/-Z-nuwZ9dnfk/UrACAaKIuHI/AAAAAAAAAn8/WPe5niaC7BM/s400/3.png
-[5]: http://1.bp.blogspot.com/-eIkcB0w9JAY/UrADB0SimXI/AAAAAAAAAoE/q0qlmi_UfJ4/s640/4.png
-[6]: http://2.bp.blogspot.com/-1Xn0zCidGok/UrAH14vIG0I/AAAAAAAAAoQ/-rKO13huY2k/s640/5.png
-[7]: http://4.bp.blogspot.com/-4ey47nMaMNE/UrANxHeWqEI/AAAAAAAAAog/4H6d4GxV368/s1600/6.png
-[8]: http://1.bp.blogspot.com/-gO8zVDgsoVQ/UrASSAfpaVI/AAAAAAAAAos/Q3rCTI9gm2g/s1600/7.png
-[9]: http://3.bp.blogspot.com/-mYROVcZwLQc/UrAnMp1HVwI/AAAAAAAAAo8/UaPoxv5fF-M/s1600/8.png
-[10]: http://2.bp.blogspot.com/-xYq5J2vQEeQ/UrAvrMDNWOI/AAAAAAAAApM/VS5Sm-BWuk0/s1600/9.png
-[11]: http://4.bp.blogspot.com/-HhiPgbMeRIs/UrAyEOqValI/AAAAAAAAApY/wPV2z3qc4tc/s1600/10.png
-[12]: http://3.bp.blogspot.com/-aiTerYwlzY4/UrA0LWja2lI/AAAAAAAAApk/5GgVDa64Fyw/s1600/11.png
+[2]: https://3.bp.blogspot.com/-G39owjB6qTI/Uq_zioffnZI/AAAAAAAAAnk/bjGpTH4dqME/s640/1.png
+[3]: https://4.bp.blogspot.com/-kmORx8WFsEM/Uq_0C-W-6WI/AAAAAAAAAns/qU9R79NYtnw/s640/2.png
+[4]: https://4.bp.blogspot.com/-Z-nuwZ9dnfk/UrACAaKIuHI/AAAAAAAAAn8/WPe5niaC7BM/s400/3.png
+[5]: https://1.bp.blogspot.com/-eIkcB0w9JAY/UrADB0SimXI/AAAAAAAAAoE/q0qlmi_UfJ4/s640/4.png
+[6]: https://2.bp.blogspot.com/-1Xn0zCidGok/UrAH14vIG0I/AAAAAAAAAoQ/-rKO13huY2k/s640/5.png
+[7]: https://4.bp.blogspot.com/-4ey47nMaMNE/UrANxHeWqEI/AAAAAAAAAog/4H6d4GxV368/s1600/6.png
+[8]: https://1.bp.blogspot.com/-gO8zVDgsoVQ/UrASSAfpaVI/AAAAAAAAAos/Q3rCTI9gm2g/s1600/7.png
+[9]: https://3.bp.blogspot.com/-mYROVcZwLQc/UrAnMp1HVwI/AAAAAAAAAo8/UaPoxv5fF-M/s1600/8.png
+[10]: https://2.bp.blogspot.com/-xYq5J2vQEeQ/UrAvrMDNWOI/AAAAAAAAApM/VS5Sm-BWuk0/s1600/9.png
+[11]: https://4.bp.blogspot.com/-HhiPgbMeRIs/UrAyEOqValI/AAAAAAAAApY/wPV2z3qc4tc/s1600/10.png
+[12]: https://3.bp.blogspot.com/-aiTerYwlzY4/UrA0LWja2lI/AAAAAAAAApk/5GgVDa64Fyw/s1600/11.png
 [13]: https://github.com/plataformatec/devise

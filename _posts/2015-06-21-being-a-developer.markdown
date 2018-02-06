@@ -6,7 +6,7 @@ description: "How is the life of a developer like."
 preview: "I can't really remember the first time I saw a computer. I do remember though that working on a computer was the first thing that came to my mind when I was asked: What do you want..."
 category: "humor"
 comments: true
-image: "http://iridakos.com/assets/images/irida-grey.png"
+image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "being-a-developer"
 outline: true
 popular: true
