@@ -13,6 +13,10 @@ subtitle: some of my attempts to make humor
       {% if my_post.category %}
         {% if my_post.category == 'humor' %}
           <div class="post-container">
+            <div class="post-metadata">
+                <small><span class="post-meta">{{ my_post.date | date: "%b %-d, %Y" }}</span></small>
+            </div>
+            
             <div class="post-title">
                 <a href="{{ my_post.url }}">{{ my_post.title }}</a>
             </div>
