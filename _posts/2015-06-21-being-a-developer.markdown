@@ -9,7 +9,7 @@ comments: true
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "being-a-developer"
 outline: true
-popular: true
+popular: false
 redirect_from:
   - /2015/06/21/being-a-developer.html
 related_posts:
