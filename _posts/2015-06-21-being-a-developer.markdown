@@ -67,7 +67,7 @@ Other developers believe that:
 
 My cat believes that:
 
-* my computer is her accessory and I can play with it only if I let here hunt the mouse pointer
+* my computer is her accessory and I can play with it only if I let her hunt the mouse pointer
 * nothing bad can happen when she steps on keyboard while I'm workingal;kdjfh;lkashkj
 
 ## The truth
