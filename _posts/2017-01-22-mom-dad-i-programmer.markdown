@@ -8,7 +8,7 @@ preview: "My first attempt to create a comic..."
 category: "humor"
 comments: true
 identifier: "mom-dad-i-programmer"
-popular: 8
+popular: -1
 redirect_from:
   - /2017/01/22/mom-dad-i-programmer.html
 related_posts:

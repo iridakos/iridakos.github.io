@@ -8,7 +8,7 @@ image: "https://iridakos.com/assets/images/irida-favicon.png"
 category: "tutorials"
 comments: true
 outline: true
-popular: 3
+popular: -1
 identifier: "hello-ruby-rails"
 redirect_from:
   - /2013/11/24/saying-hello-world-with-ruby-on-rails.html
