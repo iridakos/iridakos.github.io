@@ -9,19 +9,20 @@ description: Personal blog of Lazarus Lazaridis with programming tutorials, tips
 
 <div class="container page-row">
     <div class="grid-x grid-margin-x">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="page-header">
-                  <h1>
-                      Welcome to iridakos<br/>
-                      <small>blog with programming tutorials, tips and tricks, code etc</small>
-                  </h1>
-                </div>
-            </div>
-        </div>
 
         <div class="row">
             <div class="col-xs-12 col-md-9 page-content">
+              <div class="row">
+                  <div class="col-xs-12">
+                      <div class="page-header">
+                        <h1>
+                            Welcome to iridakos<br/>
+                            <small>blog with programming tutorials, tips and tricks, code etc</small>
+                        </h1>
+                      </div>
+                  </div>
+              </div>
+              
                 <div class="posts-container">
                     {% for post in paginator.posts %}
                         <div class="post-container">
