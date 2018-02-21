@@ -9,7 +9,7 @@ category: "tutorials"
 identifier: "todo-gtk-plus-ruby-tutorial"
 outline: true
 comments: true
-popular: true
+popular: 2
 related_posts:
   - todo-part-1
   - todo-part-2

@@ -9,7 +9,7 @@ category: "tutorials"
 identifier: "elasticsearch-rails-tutorial"
 outline: true
 comments: true
-popular: true
+popular: 1
 related_posts:
   - todo-part-1
   - testing-exec-filters-rspec

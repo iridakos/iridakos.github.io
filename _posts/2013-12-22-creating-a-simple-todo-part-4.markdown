@@ -9,6 +9,7 @@ comments: true
 outline: true
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "todo-part-4"
+popular: -1
 redirect_from:
   - /2013/12/22/creating-a-simple-todo-part-4.html
 related_posts:

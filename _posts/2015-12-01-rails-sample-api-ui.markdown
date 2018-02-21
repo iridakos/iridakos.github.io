@@ -12,6 +12,7 @@ redirect_from:
 related_posts:
   - hello-ruby-rails
   - todo-part-1
+popular: -1
 ---
 
 I recently created a simple Rails 4 API named [LofoCats API](https://github.com/iridakos/lofocats_api) and a simple UI application consuming it named [LofoCats UI](https://github.com/iridakos/lofocats_ui) (yes, I like cats, what else is new?)

@@ -8,6 +8,7 @@ preview: "A programmer and a CPU walk into a bar..."
 category: "humor"
 identifier: "bits"
 comments: true
+popular: -1
 related_posts:
   - mom-dad-i-programmer
   - cat-http-status-codes

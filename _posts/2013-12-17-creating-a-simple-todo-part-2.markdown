@@ -7,6 +7,7 @@ preview: "This is the second part of the tutorial for creating a simple ToDo app
 category: "tutorials"
 comments: true
 outline: true
+popular: -1
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "todo-part-2"
 redirect_from:

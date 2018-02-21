@@ -4,8 +4,9 @@
     </div>
 
     <div class="panel-body">
-        {% for my_post in site.posts %}
-          {% if my_post.popular %}
+        {% assign items = (site.posts | sort: 'popular') %}
+        {% for my_post in items %}
+          {% if my_post.popular > 0 %}
             <div class="popular-post">
               <a href="{{ my_post.url | replace: '.html', '' }}"
                  class="ga-event-link"

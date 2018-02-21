@@ -6,6 +6,7 @@ date:   2017-11-21 00:15:00 +0300
 image: "http://iridakos.com/assets/images/irida-grey.png"
 preview: "I wanted to update this blog's favic..."
 category: "tips"
+popular: -1
 identifier: "faviconicious"
 comments: true
 ---

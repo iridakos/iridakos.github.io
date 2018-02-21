@@ -8,6 +8,7 @@ preview: "My cats in http status codes."
 category: "humor"
 comments: true
 identifier: "cat-http-status-codes"
+popular: -1
 redirect_from:
   - /2016/09/26/cat-http-status-codes.html
 related_posts:
