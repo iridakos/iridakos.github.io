@@ -9,6 +9,7 @@ category: "humor"
 comments: true
 identifier: "mom-dad-i-programmer"
 popular: -1
+show_popular_inline_posts: true
 redirect_from:
   - /2017/01/22/mom-dad-i-programmer.html
 related_posts:

@@ -10,6 +10,7 @@ image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "testing-exec-filters-rspec"
 outline: true
 popular: -1
+show_popular_inline_posts: true
 redirect_from:
   - /2014/10/14/testing-execution-of-filters-with-rspec.html
 related_posts:

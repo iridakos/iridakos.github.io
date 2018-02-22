@@ -9,6 +9,7 @@ category: "tutorials"
 comments: true
 outline: true
 popular: -1
+show_popular_inline_posts: true
 identifier: "hello-ruby-rails"
 redirect_from:
   - /2013/11/24/saying-hello-world-with-ruby-on-rails.html

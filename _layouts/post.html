@@ -42,6 +42,10 @@ layout: default
                 {{ content }}
 
                 {% include related_posts.html %}
+
+                {% if page.show_popular_inline_posts %}
+                  {% include popular_inline_posts.html %}
+                {% endif %}
               </div>
             </article>
         </div>

@@ -10,6 +10,7 @@ outline: true
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "rescue-from-memory-leak"
 popular: -1
+show_popular_inline_posts: true
 redirect_from:
   - /2014/10/14/rescue-from-memory-leak.html
 related_posts:

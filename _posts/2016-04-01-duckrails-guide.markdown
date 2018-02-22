@@ -9,6 +9,7 @@ category: "guides"
 comments: true
 outline: true
 popular: -1
+show_popular_inline_posts: true
 identifier: "duckrails-guide"
 redirect_from:
   - /2016/04/01/duckrails-guide.html

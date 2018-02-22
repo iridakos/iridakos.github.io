@@ -7,6 +7,7 @@ image: "http://iridakos.com/assets/images/posts/gtk-ruby/tutorial-preview.png"
 preview: "In this tutorial we are going to create a simple GTK+ ToDo application with Ruby..."
 category: "tutorials"
 identifier: "todo-gtk-plus-ruby-tutorial"
+show_popular_inline_posts: true
 outline: true
 comments: true
 popular: 2
