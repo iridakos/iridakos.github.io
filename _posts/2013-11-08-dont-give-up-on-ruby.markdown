@@ -7,7 +7,7 @@ preview: "About 5 months ago, I was asked to join a Ruby on Rails project. After
 category: "ruby"
 comments: true
 outline: true
-popular: -1
+popular: 1
 identifier: "learning-ruby"
 image: "https://iridakos.com/assets/images/irida-grey.png"
 redirect_from:
