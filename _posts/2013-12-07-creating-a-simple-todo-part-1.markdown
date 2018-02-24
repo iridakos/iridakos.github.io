@@ -146,7 +146,7 @@ Play a little with it, for example:
 
 ![](https://3.bp.blogspot.com/-JYNL9tGcpoU/UqHx38tF17I/AAAAAAAAAfg/nP1LEN0Dw-Y/s1600/4.png)
 
-Don't be scared by the example, read [here]({ post_url 2013-11-08-dont-give-up-on-ruby}).  
+Don't be scared by the example, read [here]({% post_url 2013-11-08-dont-give-up-on-ruby %}).  
 
 Now, let's check our Task model. Just type `Task`:
 
