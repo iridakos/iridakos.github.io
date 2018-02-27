@@ -1,3 +1,6 @@
+body {
+  background: #4f4f4f;
+}
 .sharing {
   margin-top: 60px;
   text-align: center;;
@@ -14,6 +17,20 @@
   }
 }
 
+.page-content {
+  background: #fff;
+  border: 1px solid $navbar-inverse-border;
+  border-top: 0 none;
+  box-shadow: -6px 10px 21px #333;
+}
+
+.sidebar {
+  background: #222;
+  padding-top: 5px;
+  margin-top: -1px;
+  box-shadow: 6px 10px 21px #333;
+}
+
 .share-text {
   color: $iridakos-secondary-color;
 }
@@ -24,13 +41,16 @@
 
 img {
   @include img-responsive;
-  cursor: pointer;
 
   &.image {
     max-width: none;
     display: inline-block;
     cursor: default;
   }
+}
+
+.page-content img {
+  cursor: pointer;
 }
 
 .thumbnail {
@@ -63,12 +83,14 @@ code.highlighter-rouge {
   font-size: 18px;
   color: $iridakos-secondary-color;
 
-  a {
-    font-family: 'Indie Flower', cursive;
-  }
-
   .footer-header {
     margin: 20px 0 10px 0;
+  }
+
+  a {
+    color: #fff;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.4);
+    background-clip: text;
   }
 }
 
@@ -77,10 +99,7 @@ code.highlighter-rouge {
   background: url(../assets/images/irida-favicon.png) bottom center no-repeat;
   height: 80px;
   background-size: contain;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  border-bottom: 1px solid lighten($brand-primary, 20%);
+  margin-right: 0;
 }
 
 pre {
@@ -102,18 +121,22 @@ a.about-me {
   margin-top: 0;
 
   h1 {
-    font-family: 'Indie Flower', cursive;
+    font-size: 30px;
+    font-family: $secondary-font-family;
     color: $iridakos-secondary-color;
 
     small {
-      color: lighten($iridakos-secondary-color, 5%);
+      // color: lighten($iridakos-secondary-color, 5%);
+      color: #888;
       font-size: 50%;
     }
   }
 }
 
 .page-link {
-  font-size: 22px;
+  font-size: 18px;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+  background-clip: text;
 
   &.active {
     color: #fff !important;
@@ -121,11 +144,16 @@ a.about-me {
 }
 
 .navbar {
-  font-family: 'Indie Flower', cursive;
+  font-family: $secondary-font-family;
   border-radius: 0;
+  margin-bottom: 0;
+  font-size: 18px;
+  box-shadow: -6px 10px 21px #333;
 
   .navbar-brand {
-    font-size: 24px;
+    font-size: 18px;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+    background-clip: text;
 
     &.active {
       color: #fff !important;
@@ -139,14 +167,32 @@ a.about-me {
   }
 }
 
-.news-panel .panel-heading {
-  font-family: 'Indie Flower', cursive;
-  color: $iridakos-secondary-color;
-  background: #fff;
-  font-weight: bold;
+.about-me {
+  color: #fff;
 
-  .panel-title {
-    font-size: 22px;
+  a, a:visited, a:hover, a:link {
+    color: #fff !important;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+    background-clip: text;
+  }
+}
+
+.news-panel {
+  border: 0 none;
+  background: none;
+  color: #fff;
+
+  .panel-heading {
+    font-family: $secondary-font-family;
+    color: $iridakos-secondary-color;
+    font-weight: bold;
+    border-color: $iridakos-secondary-color;
+
+    background: none;
+
+    .panel-title {
+      font-size: 18px;
+    }
   }
 }
 

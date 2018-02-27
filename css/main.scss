@@ -3,16 +3,17 @@
 ---
 @charset "utf-8";
 
-$font-family-base: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-base: 'Open Sans', sans-serif;
 
 $brand-primary: #0084B4; /*darken(#428bca, 50%) !default;*/
 $link-color: $brand-primary;
-$navbar-inverse-bg: #444;
-$navbar-inverse-border: darken($navbar-inverse-bg, 10%);
+$navbar-inverse-bg: #333;
+$navbar-inverse-border: darken($navbar-inverse-bg, 2%);
 $iridakos-secondary-color: #ff7e07;
 $secondary-text-color: #888;
 $font-size-base:          16px;
 $navbar-inverse-link-color: $iridakos-secondary-color;
+$secondary-font-family: 'Open Sans', sans-serif;
 
 @import "bootstrap",
         "iridakos",

@@ -4,7 +4,7 @@ layout: default
 
 <div class="container" {% if page.outline %}id="outline"{% endif %}>
     <div class="row">
-        <div class="col-xs-12 col-md-9">
+        <div class="col-xs-12 col-md-9 page-content">
           <div class="row">
               <div class="col-xs-12">
                   <div class="page-header">
@@ -41,6 +41,8 @@ layout: default
               <div itemprop="articleBody">
                 {{ content }}
 
+                {% include share-page.html expanded=true %}
+
                 {% include related_posts.html %}
 
                 {% if page.show_popular_inline_posts %}
@@ -50,18 +52,12 @@ layout: default
             </article>
         </div>
 
-        <div class="col-xs-12 col-md-3">
+        <div class="col-xs-12 col-md-3 sidebar">
             {% include news.html %}
 
             {% include popular_posts.html %}
 
             {% include share-page.html %}
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-12 hidden-sm hidden-xs">
-            {% include share-page.html expanded=true %}
         </div>
     </div>
 </div>

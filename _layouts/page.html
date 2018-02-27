@@ -4,7 +4,7 @@ layout: default
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 col-md-9">
+        <div class="col-xs-12 col-md-9 page-content">
           <div class="row">
               <div class="col-xs-12">
                   <div class="page-header">
@@ -12,20 +12,16 @@ layout: default
                   </div>
               </div>
           </div>
-          
+
             {{ content }}
+
+            {% include share-page.html expanded=true %}
         </div>
 
-        <div class="col-xs-12 col-md-3">
+        <div class="col-xs-12 col-md-3 sidebar">
             {% include news.html %}
 
             {% include popular_posts.html %}
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-12">
-            {% include share-page.html expanded=true %}
         </div>
     </div>
 </div>

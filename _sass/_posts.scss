@@ -11,9 +11,9 @@
   }
 
   .post-title {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
-    font-family: 'Indie Flower', cursive;
+    font-family: $secondary-font-family;
   }
 
   .post-preview {
@@ -26,7 +26,7 @@
 
   .title {
     color: $iridakos-secondary-color;
-    font-family: 'Indie Flower', cursive;
+    font-family: $secondary-font-family;
   }
 
   .related-post {
