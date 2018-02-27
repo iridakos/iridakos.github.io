@@ -2,7 +2,7 @@ body {
   background: #4f4f4f;
 }
 .sharing {
-  margin-top: 60px;
+  margin-top: 30px;
   text-align: center;;
   font-size: 14px;
   color: $iridakos-secondary-color;
@@ -22,6 +22,10 @@ body {
   border: 1px solid $navbar-inverse-border;
   border-top: 0 none;
   box-shadow: -6px 10px 21px #333;
+
+  @media (max-width: $screen-sm-min) {
+    border: 0 none;
+  }
 }
 
 .sidebar {
