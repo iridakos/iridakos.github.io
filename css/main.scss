@@ -3,7 +3,7 @@
 ---
 @charset "utf-8";
 
-$font-family-base: 'Open Sans', sans-serif;
+$font-family-base: 'Roboto', sans-serif;
 
 $brand-primary: #0084B4; /*darken(#428bca, 50%) !default;*/
 $link-color: $brand-primary;
@@ -13,7 +13,7 @@ $iridakos-secondary-color: #ff7e07;
 $secondary-text-color: #888;
 $font-size-base:          16px;
 $navbar-inverse-link-color: $iridakos-secondary-color;
-$secondary-font-family: 'Open Sans', sans-serif;
+$secondary-font-family: 'Roboto', sans-serif;
 
 @import "bootstrap",
         "iridakos",

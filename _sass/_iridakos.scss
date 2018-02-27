@@ -29,6 +29,10 @@ body {
   padding-top: 5px;
   margin-top: -1px;
   box-shadow: 6px 10px 21px #333;
+
+  hr {
+    border-top: 1px solid #333;
+  }
 }
 
 .share-text {
@@ -199,25 +203,23 @@ a.about-me {
   .panel-heading {
     font-family: $secondary-font-family;
     color: $iridakos-secondary-color;
-    font-weight: bold;
     border-color: $iridakos-secondary-color;
-
     background: none;
 
     .panel-title {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 }
 
 .popular-post {
-  border-bottom: 1px solid #cad4e4;
+  border-bottom: 1px solid #333;
   padding-bottom: 10px;
   margin-bottom: 10px;
 
   .post-category {
-    font-size: 87%;
-    color: #888;
+    font-size: 80%;
+    color: #afafaf;
   }
 
   &:last-child {
