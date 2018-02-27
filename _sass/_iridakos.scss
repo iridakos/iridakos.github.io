@@ -80,8 +80,10 @@ code.highlighter-rouge {
 }
 
 .site-footer {
-  font-size: 18px;
+  margin: 20px 0;
+  font-size: 16px;
   color: $iridakos-secondary-color;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.4);
 
   .footer-header {
     margin: 20px 0 10px 0;
@@ -117,6 +119,29 @@ a.about-me {
   margin-top: 40px;
 }
 
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.me {
+  text-align: center;
+  margin-bottom: 20px;
+  float: none;
+
+  img {
+    border-radius: 100px;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    margin-left: 20px;
+    float: right;
+  }
+}
+
 .page-header {
   margin-top: 0;
 
@@ -127,7 +152,7 @@ a.about-me {
 
     small {
       color: lighten($iridakos-secondary-color, 5%);
-      font-size: 80%;
+      font-size: 50%;
     }
   }
 }
@@ -163,16 +188,6 @@ a.about-me {
       height: 22px;
       display: inline-block;
     }
-  }
-}
-
-.about-me {
-  color: #fff;
-
-  a, a:visited, a:hover, a:link {
-    color: #fff !important;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
-    background-clip: text;
   }
 }
 
