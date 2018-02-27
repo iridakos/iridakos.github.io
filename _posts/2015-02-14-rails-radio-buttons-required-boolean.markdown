@@ -9,7 +9,7 @@ comments: true
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "rails-radio-buttons-required-boolean"
 outline: true
-popular: 4
+popular: -1
 show_popular_inline_posts: true
 redirect_from:
   - /2014/10/14/rails-radio-buttons-required-boolean.html
