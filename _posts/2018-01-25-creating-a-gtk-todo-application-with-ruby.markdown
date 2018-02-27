@@ -1150,7 +1150,7 @@ Long post, cat photo.
 
 ![View todo items]({{site.url}}/assets/images/posts/gtk-ruby/cat.jpg)
 
-### Very useful links
+### Useful links
 
 - [This tutorial's code](https://github.com/iridakos/gtk-todo-tutorial)
 - [A set of bindings for the GNOME-2.x libraries to use from Ruby](https://github.com/ruby-gnome2/ruby-gnome2)
