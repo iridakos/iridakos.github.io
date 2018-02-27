@@ -126,9 +126,8 @@ a.about-me {
     color: $iridakos-secondary-color;
 
     small {
-      // color: lighten($iridakos-secondary-color, 5%);
-      color: #888;
-      font-size: 50%;
+      color: lighten($iridakos-secondary-color, 5%);
+      font-size: 80%;
     }
   }
 }
