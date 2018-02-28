@@ -152,16 +152,18 @@ a.about-me {
 
 .page-header {
   margin-top: 0;
+  margin-bottom: 28px;
 
   h1 {
     font-size: 30px;
     font-family: $secondary-font-family;
     color: $iridakos-secondary-color;
+    margin-bottom: 5px;
+  }
 
-    small {
-      color: lighten($iridakos-secondary-color, 5%);
-      font-size: 50%;
-    }
+  small {
+    color: #8f8f8f;
+    font-size: 18px;
   }
 }
 
