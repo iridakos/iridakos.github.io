@@ -7,6 +7,7 @@ image: "http://iridakos.com/assets/images/irida-grey.png"
 preview: "A programmer and a CPU walk into a bar..."
 category: "humor"
 identifier: "bits"
+hidden: true
 comments: true
 popular: -1
 related_posts:
