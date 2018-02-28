@@ -1,9 +1,9 @@
 body {
-  background: #c0c0c0;
+  background: #4f4f4f;
 }
 .sharing {
   margin-top: 30px;
-  text-align: center;
+  text-align: center;;
   font-size: 14px;
   color: $iridakos-secondary-color;
 
@@ -19,7 +19,9 @@ body {
 
 .page-content {
   background: #fff;
-  box-shadow: 0 10px 10px rgba(33,33,33,0.5);
+  border: 1px solid $navbar-inverse-border;
+  border-top: 0 none;
+  box-shadow: -6px 10px 21px #333;
 
   @media (max-width: $screen-sm-min) {
     border: 0 none;
@@ -27,12 +29,13 @@ body {
 }
 
 .sidebar {
-  background: none;
+  background: #222;
   padding-top: 5px;
   margin-top: -1px;
+  box-shadow: 6px 10px 21px #333;
 
   hr {
-    border-top: 1px solid #b0b0b0;
+    border-top: 1px solid #333;
   }
 }
 
@@ -85,12 +88,19 @@ code.highlighter-rouge {
 }
 
 .site-footer {
-  font-family: $secondary-font-family;
   margin: 20px 0;
   font-size: 16px;
+  color: $iridakos-secondary-color;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.4);
 
   .footer-header {
     margin: 20px 0 10px 0;
+  }
+
+  a {
+    color: #fff;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.4);
+    background-clip: text;
   }
 }
 
@@ -157,9 +167,8 @@ a.about-me {
 
 .page-link {
   font-size: 18px;
-  text-shadow: 0 0 1px rgba(0,0,0,0.8);
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
   background-clip: text;
-  font-family: $menu-font-family;
 
   &.active {
     color: #fff !important;
@@ -171,13 +180,12 @@ a.about-me {
   border-radius: 0;
   margin-bottom: 0;
   font-size: 18px;
-  box-shadow: 0 0 10px rgba(33,33,33,0.8);
+  box-shadow: -6px 10px 21px #333;
 
   .navbar-brand {
     font-size: 18px;
-    text-shadow: 0 0 1px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
     background-clip: text;
-    font-family: $menu-font-family;
 
     &.active {
       color: #fff !important;
@@ -194,17 +202,12 @@ a.about-me {
 .news-panel {
   border: 0 none;
   background: none;
-  color: #555;
-
-  a, a:visited, a:hover, a:link {
-    // color: lighten($brand-primary, 30%);
-  }
+  color: #fff;
 
   .panel-heading {
     font-family: $secondary-font-family;
-    color: #000;
-    font-weight: bold;
-    border-color: #111;
+    color: $iridakos-secondary-color;
+    border-color: $iridakos-secondary-color;
     background: none;
 
     .panel-title {
@@ -214,13 +217,13 @@ a.about-me {
 }
 
 .popular-post {
-  border-bottom: 1px solid #b0b0b0;
+  border-bottom: 1px solid #333;
   padding-bottom: 10px;
   margin-bottom: 10px;
 
   .post-category {
     font-size: 80%;
-    color: #555;
+    color: #afafaf;
   }
 
   &:last-child {

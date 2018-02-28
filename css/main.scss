@@ -7,14 +7,13 @@ $font-family-base: 'Roboto', sans-serif;
 
 $brand-primary: #0084B4; /*darken(#428bca, 50%) !default;*/
 $link-color: $brand-primary;
-$navbar-inverse-bg: #404040;
-$navbar-inverse-border: darken($navbar-inverse-bg, 5%);
+$navbar-inverse-bg: #333;
+$navbar-inverse-border: darken($navbar-inverse-bg, 2%);
 $iridakos-secondary-color: #ff7e07;
 $secondary-text-color: #888;
 $font-size-base:          16px;
 $navbar-inverse-link-color: $iridakos-secondary-color;
 $secondary-font-family: 'Roboto', sans-serif;
-$menu-font-family: 'Roboto', cursive;
 
 @import "bootstrap",
         "iridakos",
