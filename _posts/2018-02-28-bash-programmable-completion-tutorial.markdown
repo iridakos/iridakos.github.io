@@ -124,7 +124,7 @@ Create a file named `dothis-completion.bash`. From now on we will be referring t
 Once we add some code to it, we will `source` to allow the completion to take effect.
 We must `source` this file **every single time we change something in it**.
 
-We will discuss our options for registering this script whenever a bash shell opens [later on](#options-for-executing-the-completion-script).
+We will discuss our options for registering this script whenever a bash shell opens [later on](#registering-the-completion-script).
 
 #### Static completion
 
