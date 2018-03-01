@@ -12,8 +12,8 @@ outline: true
 comments: true
 popular: 2
 related_posts:
-  - bash-completion-script
-  - todo-part-1
+  - bash-completion-script
+  - todo-part-1
   - todo-part-2
 ---
 
