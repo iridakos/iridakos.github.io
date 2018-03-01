@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Creating a bash completion script"
-description: "A tutorial for creating bash completion script"
+description: "A tutorial for creating a bash completion script"
 date: 2018-03-01 03:00:00 +0300
 image: "http://iridakos.com/assets/images/posts/bash-completion/post-image.png"
 preview: "In this tutorial we are going to create a bash completion script to..."
