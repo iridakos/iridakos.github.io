@@ -15,11 +15,11 @@ related_posts:
   - todo-gtk-plus-ruby-tutorial
 ---
 
-Recently I worked on creating a bash completion script for a project and I enjoyed it very much. In this post I will try to familiarize you with the process of creating a bash completion script.
+I recently worked on creating a bash completion script for a project and I enjoyed it very much. In this post I will try to familiarize you with the process of creating a bash completion script.
 
 ## What is bash completion?
 
-Bash completion is a functionality through which bash helps users type their commands easier. It accomplishes that by presenting possible options when users press the `tab` key while typing a command.
+Bash completion is a functionality through which bash helps users type their commands faster and easier. It accomplishes that by presenting possible options when users press the `tab` key while typing a command.
 
 ```bash
 $ git<tab><tab>
@@ -31,7 +31,7 @@ $ git-shell
 
 ### How it works
 
-The bash completion script is code that registers via the `complete` bash command **which completion options** can be displayed for a given **executable**. The nature of the completion options vary from simple static to highly sophisticated.
+The completion script is code that uses the builtin bash command `complete` to define **which completion suggestions** can be displayed for a given **executable**. The nature of the completion options vary from simple static to highly sophisticated.
 
 ### Why bother
 
@@ -42,9 +42,7 @@ It is good to provide such a functionality to users:
 
 ## Hands on
 
-Here's what we are going to do in this tutorial (demo gif  [here](https://github.com/iridakos-tutorials/bash-completion-tutorial)).
-
-![Bash completion image](/assets/images/posts/bash-completion/post-image.png)
+Here's what we are going to do in this tutorial.
 
 We will first create a dummy executable script called `dothis`. All it does is execute the command which resides on the number, that was passed as an argument, in user's history. For example, the following command will simply execute the `ls -a` command given that it exists in history with number `235`:
 ```bash
@@ -63,9 +61,14 @@ $ dothis <tab><tab>
 220 history | cut -c 8-
 ```
 
+![Bash completion image](/assets/images/posts/bash-completion/post-image.png)
+You can see a gif demonstrating the functionality [at this tutorial's code repository on GitHub](https://github.com/iridakos-tutorials/bash-completion-tutorial).
+
+Let the show begin.
+
 ### Creating the executable script
 
-Create a file in your desired folder named `dothis` and add the following code:
+Create a file named `dothis` in your working directory and add the following code:
 
 ```bash
 #/usr/bin/env bash
@@ -88,7 +91,7 @@ fi
   * if it exists we execute the command using the `fc` functionality
   * otherwise we display an error message
 
-Make the script executable:
+Make the script executable with:
 ```bash
 chmod +x ./dothis
 ```
@@ -121,7 +124,7 @@ Done.
 
 Create a file named `dothis-completion.bash`. From now on we will be referring to this file with the term **completion script**.
 
-Once we add some code to it, we will `source` to allow the completion to take effect.
+Once we add some code to it, we will `source` it to allow the completion to take effect.
 We must `source` this file **every single time we change something in it**.
 
 We will discuss our options for registering this script whenever a bash shell opens [later on](#registering-the-completion-script).
@@ -223,7 +226,7 @@ As you can see, even though we type **nev** and then we request for completion, 
 * The contents of the `COMPREPLY` variable are always displayed. The function is responsible to add/remove entries from there now.
 * If the `COMPREPLY` variable had only one element then that word would be automatically completed in the command. Since current implementation always return the same three words, this will not happen.
 
-Enter `compgen`: a builtin command that generates completions supporting most of the options of the `complete` command (ex. `-W` for wordlist, `-d` for directories) and filtering them based on what already has been typed by the user.
+Enter `compgen`: a builtin command that generates completions supporting most of the options of the `complete` command (ex. `-W` for word list, `-d` for directories) and filtering them based on what already has been typed by the user.
 
 Don't worry if you feel confused, everything will become clear later on.
 
@@ -502,3 +505,5 @@ For **feedback, comments, typos etc**. please open an [issue](https://github.com
 Let me introduce you to my debugger.
 
 ![My debugger](/assets/images/posts/bash-completion/cat.jpg)
+
+That's all folks!
