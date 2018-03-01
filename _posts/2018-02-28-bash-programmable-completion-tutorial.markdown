@@ -417,7 +417,7 @@ _dothis_completions()
   local suggestions=($(compgen -W "$(fc -l -50 | sed 's/\t//')" -- "${COMP_WORDS[1]}"))
 
   if [ "${#suggestions[@]}" == "1" ]; then
-    local number=$(echo ${suggestions[0]/%\ */})
+    local number="${suggestions[0]/%\ */}"
     COMPREPLY=("$number")
   else
     for i in "${!suggestions[@]}"; do
@@ -462,7 +462,7 @@ _dothis_completions()
   local suggestions=($(compgen -W "$(fc -l -$commands_number | sed 's/\t//')" -- "${COMP_WORDS[1]}"))
 
   if [ "${#suggestions[@]}" == "1" ]; then
-    local number=$(echo ${suggestions[0]/%\ */})
+    local number="${suggestions[0]/%\ */}"
     COMPREPLY=("$number")
   else
     for i in "${!suggestions[@]}"; do
