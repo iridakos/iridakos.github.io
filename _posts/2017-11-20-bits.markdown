@@ -11,6 +11,7 @@ hidden: true
 comments: true
 popular: -1
 related_posts:
+  - mother-magic-trackpad
   - mom-dad-i-programmer
   - cat-http-status-codes
   - being-a-developer

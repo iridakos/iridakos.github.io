@@ -13,6 +13,7 @@ show_popular_inline_posts: true
 redirect_from:
   - /2017/01/22/mom-dad-i-programmer.html
 related_posts:
+  - mother-magic-trackpad
   - bits
   - cat-http-status-codes
   - being-a-developer

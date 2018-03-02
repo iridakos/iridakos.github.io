@@ -9,7 +9,7 @@ category: "tutorials"
 identifier: "bash-completion-script"
 show_popular_inline_posts: true
 outline: true
-popular: -1
+popular: 2
 search_tags: linux, bash, completion, programmable
 related_posts:
   - todo-gtk-plus-ruby-tutorial

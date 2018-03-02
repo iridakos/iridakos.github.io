@@ -13,6 +13,7 @@ show_popular_inline_posts: true
 redirect_from:
   - /2016/09/26/cat-http-status-codes.html
 related_posts:
+  - mother-magic-trackpad
   - being-a-developer
   - mom-dad-i-programmer
   - bits
