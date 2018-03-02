@@ -41,11 +41,9 @@ layout: default
               <div itemprop="articleBody">
                 {{ content }}
 
-                {% include related_posts.html %}
+                {% include thanks.html %}
 
-                {% if page.show_popular_inline_posts %}
-                  {% include popular_inline_posts.html %}
-                {% endif %}
+                {% include related_posts.html %}
 
                 {% include share-page.html expanded=true %}
               </div>

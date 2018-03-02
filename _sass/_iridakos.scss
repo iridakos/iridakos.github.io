@@ -135,6 +135,13 @@ a.about-me {
   float: right;
 }
 
+.clearfix::after {
+   content: " ";
+   display: block;
+   height: 0;
+   clear: both;
+}
+
 .me {
   text-align: center;
   margin-bottom: 20px;
@@ -144,9 +151,32 @@ a.about-me {
     border-radius: 100px;
   }
 
+  &.me-small {
+    img {
+      height: 60px !important;
+    }
+  }
+
   @media (min-width: $screen-sm-min) {
     margin-left: 20px;
     float: right;
+  }
+}
+
+.thanks {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin-top: 10px;
+  padding-top: 10px;
+
+  .me {
+    margin-top: 5px;
+    float: left;
+  }
+
+  .text {
+    padding-left: 20px;
+    overflow: hidden;
   }
 }
 

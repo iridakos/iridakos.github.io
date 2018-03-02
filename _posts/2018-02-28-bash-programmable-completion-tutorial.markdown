@@ -508,4 +508,4 @@ Let me introduce you to my debugger.
 
 ![My debugger](/assets/images/posts/bash-completion/cat.jpg)
 
-That's all folks, thanks for visiting!
+That's all folks!
