@@ -12,6 +12,7 @@ outline: true
 popular: 2
 search_tags: linux, bash, completion, programmable
 related_posts:
+  - mother-hacker-git-completion
   - todo-gtk-plus-ruby-tutorial
 ---
 
