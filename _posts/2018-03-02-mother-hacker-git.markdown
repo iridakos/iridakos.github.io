@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "When your mother hacks your git-completion.bash"
-description: "Humor - Mother hacker hacks git-completion.bash"
+description: "Mother hacker hacks git-completion.bash"
 date:   2018-03-02 00:00:00 +0300
 image: "http://iridakos.com/assets/images/irida-grey.png"
 preview: "Mother hacks git-completion.bash"
