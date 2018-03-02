@@ -166,7 +166,7 @@ a.about-me {
 .thanks {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-  margin-top: 10px;
+  margin-top: 30px;
   padding-top: 10px;
 
   i {
@@ -176,6 +176,7 @@ a.about-me {
   }
 
   .me {
+    margin-left: 0;
     margin-top: 5px;
     float: left;
   }
