@@ -3,7 +3,6 @@ layout: post
 title:  "Creating a simple ToDo application with Ruby on Rails - Part 2"
 description: "Second part of the tutorial creating a simple ToDo application with Ruby on Rails."
 date:   2013-12-17 10:00:00 +0300
-preview: "This is the second part of the tutorial for creating a simple ToDo application. In this part, we are going to..."
 category: "tutorials"
 comments: true
 outline: true
@@ -21,9 +20,7 @@ related_posts:
 ---
 
 This is the second part of the tutorial for [creating a simple ToDo application]({% post_url 2013-12-07-creating-a-simple-todo-part-1 %}).
-
 In this part, we are going to:
-
 * implement the edit/delete actions accordingly
 * add some validations on the Task model  
 

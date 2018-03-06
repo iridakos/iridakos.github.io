@@ -4,7 +4,6 @@ title:  "DuckRails - Open source development tool for mocking API endpoints"
 description: "A guide for installing and using DuckRails"
 image: "https://3.bp.blogspot.com/-pmI-NvE9zv0/VuaG8aAk9pI/AAAAAAAABss/OFNa5S2LCncihZyMV1O7DrmEVCW6r9X9A/s640/new-mock-general.png"
 date:   2016-04-01 10:00:00 +0300
-preview: "A guide for an opensource tool I've created: DuckRails."
 category: "guides"
 comments: true
 outline: true
@@ -17,8 +16,8 @@ related_posts:
   - duckrails-docker-image
 ---
 
-## Update - Nov. 18, 2017
-**Please visit the updated [wiki pages](https://github.com/iridakos/duckrails/wiki) of the project at GitHub. This post is old and does not reflect any changes being made to the application.**
+#### Update - Nov. 18, 2017
+Please visit the updated [wiki pages](https://github.com/iridakos/duckrails/wiki) of the project at GitHub. This post is old and does not reflect any changes being made to the application.
 
 ***
 

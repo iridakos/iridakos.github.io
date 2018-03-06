@@ -3,7 +3,6 @@ layout: post
 title:  "Creating a simple ToDo application with Ruby on Rails - Part 1"
 description: "First part of the tutorial creating a simple ToDo application with Ruby on Rails."
 date:   2013-12-07 10:00:00 +0300
-preview: "So, you learned how to say 'Hello world' with Ruby on Rails and it's time to move on since that application is not something you will use unless you are the only one survived on earth..."
 category: "tutorials"
 comments: true
 outline: true

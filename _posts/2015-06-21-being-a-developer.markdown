@@ -3,7 +3,6 @@ layout: post
 title:  "Being a developer"
 date:   2015-06-21 10:00:00 +0300
 description: "How is the life of a developer like."
-preview: "I can't really remember the first time I saw a computer. I do remember though that working on a computer was the first thing that came to my mind when I was asked: What do you want..."
 category: "humor"
 comments: true
 image: "https://iridakos.com/assets/images/irida-favicon.png"
@@ -21,7 +20,6 @@ related_posts:
 ---
 
 I can't really remember the first time I saw a computer.
-
 I do remember though that "working on a computer" was the first thing that came to my mind when I was asked "What do you want to do when you grow up?".
 
 Years later, being both a grown up and a developer, I ask myself:

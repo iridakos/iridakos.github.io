@@ -4,7 +4,6 @@ title:  "Using elasticsearch in a Rails application"
 description: "A tutorial to integrate with elasticsearch in a Ruby on Rails application."
 date: 2017-12-03 09:30:00 +0300
 image: http://iridakos.com/assets/images/posts/elasticsearch-rails/search-page.png
-preview: "In this tutorial we will use elasticsearch in a Ruby..."
 category: "tutorials"
 identifier: "elasticsearch-rails-tutorial"
 show_popular_inline_posts: true
@@ -17,7 +16,6 @@ related_posts:
   - rescue-from-memory-leak
 ---
 
-## Overview
 In this tutorial we are going to create a **[Ruby on Rails](http://rubyonrails.org/)** application that will use **[elasticsearch](https://www.elastic.co/products/elasticsearch)** to allow users to store and search their content.
 The sample application will be a stupid simple blog and the data will be, what else, posts. The integration with elasticsearch will be accomplished via the **[elasticsearch](https://github.com/elastic/elasticsearch-rails) gems** for Rails and we will use **[Kibana](https://www.elastic.co/products/kibana)** to view and check our index configuration.
 

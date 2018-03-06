@@ -3,7 +3,6 @@ layout: post
 title:  "Rails and rescue from memory leak"
 description: "A story of finding a memory leak in a Ruby on Rails application."
 date:   2014-10-14 10:00:00 +0300
-preview: "Lately, I've been trying to find possible memory leaks in a rails 3.2.x application..."
 category: "rails"
 comments: true
 outline: true
@@ -19,8 +18,7 @@ related_posts:
 ---
 
 Lately, I've been trying to find possible memory leaks in a rails 3.2.x application.
-
-![](/assets/images/irida-small.jpeg)
+![cat in panic](/assets/images/irida-small.jpeg)
 NOT easy, believe me...
 
 Anyway, after visiting almost every single result from googling *rails memory leak*, I learned something I didn't know. Symbols in ruby never die. (*Update 2016: No more [the case](http://www.infoq.com/news/2014/12/ruby-2.2.0-released) for the latest ruby versions)*.

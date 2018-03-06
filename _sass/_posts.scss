@@ -7,6 +7,7 @@
   }
 
   .post-metadata {
+    font-size: 85%;
     color: #888;
   }
 
@@ -14,9 +15,11 @@
     font-size: 18px;
     font-weight: bold;
     font-family: $secondary-font-family;
+    margin-bottom: 5px;
   }
 
   .post-preview {
+    color: #555;
     margin-bottom: 20px;
   }
 }

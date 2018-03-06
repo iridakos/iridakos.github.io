@@ -4,7 +4,6 @@ title:  "DuckRails v2.0.0 docker image"
 description: "News: DuckRails can now be used via its own docker image."
 date:   2017-11-10 00:05:00 +0300
 image: "https://github.com/iridakos/duckrails/blob/master/documentation/readme/resources/duckrails-home-page.png?raw=true"
-preview: "DuckRails can now be used via its own docker image."
 category: "news"
 comments: true
 identifier: "duckrails-docker-image"
@@ -17,9 +16,7 @@ related_posts:
   - duckrails-guide
 ---
 
-[DuckRails](https://github.com/iridakos/duckrails) now has its own docker image.
-
-[https://hub.docker.com/r/iridakos/duckrails/](https://hub.docker.com/r/iridakos/duckrails/)
+[DuckRails](https://github.com/iridakos/duckrails) now has its own docker image and so you can run the application without having to setup anything related to databases, secret keys etc. [https://hub.docker.com/r/iridakos/duckrails/](https://hub.docker.com/r/iridakos/duckrails/)
 
 ## Usage
 

@@ -3,7 +3,6 @@ layout: post
 title:  "Creating a simple ToDo application with Ruby on Rails - Part 4"
 description: "Last part of the tutorial creating a simple ToDo application with Ruby on Rails."
 date:   2013-12-22 10:00:00 +0300
-preview: "In the previous three posts we created a simple ToDo application with Ruby on Rails. In this last part we are going to deploy the application to OpenShift."
 category: "tutorials"
 comments: true
 outline: true
@@ -23,7 +22,7 @@ related_posts:
 In the previous three posts we created a simple ToDo application with Ruby on Rails.
 In this last part we are going to deploy the application to OpenShift.
 
-You can find the complete code of the tutorial here.
+You can find the complete code of the tutorial [here](https://github.com/iridakos-tutorials/todo).
 
 ### OpenShift
 

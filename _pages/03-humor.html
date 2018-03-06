@@ -22,7 +22,11 @@ subtitle: some of my attempts to make humor
             </div>
 
             <div class="post-preview">
-              {{ my_post.preview }}
+              {% if my_post.preview %}
+                {{ my_post.preview }}
+              {% else %}
+                {{ my_post.excerpt }}
+              {% endif %}
             </div>
         </div>
         {% endif %}

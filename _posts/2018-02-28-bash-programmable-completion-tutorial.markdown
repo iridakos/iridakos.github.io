@@ -4,7 +4,6 @@ title:  "Creating a bash completion script"
 description: "A tutorial for creating a bash completion script"
 date: 2018-03-01 03:00:00 +0300
 image: "http://iridakos.com/assets/images/posts/bash-completion/post-image.png"
-preview: "In this tutorial we are going to create a bash completion script to..."
 category: "tutorials"
 identifier: "bash-completion-script"
 show_popular_inline_posts: true
@@ -12,7 +11,6 @@ outline: true
 popular: 1
 search_tags: linux, bash, completion, programmable
 related_posts:
-  - mother-hacker-git-completion
   - todo-gtk-plus-ruby-tutorial
 ---
 

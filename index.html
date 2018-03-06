@@ -32,15 +32,17 @@ description: Personal blog of Lazarus Lazaridis with programming tutorials, tips
 
                             <div class="post-title">
                                 <a href="{{ post.url | prepend: site.baseurl | replace: '.html', '' }}">
-                                  <strong>{{ post.title }}</strong>
+                                  {{ post.title }}
                                 </a>
                             </div>
 
-                            {% if post.preview %}
-                              <div class="post-preview">
+                            <div class="post-preview">
+                              {% if post.preview %}
                                 {{ post.preview }}
-                              </div>
-                            {% endif %}
+                              {% else %}
+                                {{ post.excerpt }}
+                              {% endif %}
+                            </div>
                         </div>
                     {% endfor %}
                 </div>
