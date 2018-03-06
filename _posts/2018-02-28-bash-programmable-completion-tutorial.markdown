@@ -9,7 +9,7 @@ category: "tutorials"
 identifier: "bash-completion-script"
 show_popular_inline_posts: true
 outline: true
-popular: 2
+popular: 1
 search_tags: linux, bash, completion, programmable
 related_posts:
   - mother-hacker-git-completion

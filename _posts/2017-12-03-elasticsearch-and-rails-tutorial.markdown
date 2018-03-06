@@ -10,7 +10,7 @@ identifier: "elasticsearch-rails-tutorial"
 show_popular_inline_posts: true
 outline: true
 comments: true
-popular: 1
+popular: 2
 related_posts:
   - todo-part-1
   - testing-exec-filters-rspec
