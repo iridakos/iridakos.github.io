@@ -61,7 +61,7 @@ $ dothis <tab><tab>
 ```
 
 ![Bash completion image](/assets/images/posts/bash-completion/post-image.png)
-You can see a gif demonstrating the functionality [at this tutorial's code repository on GitHub](https://github.com/iridakos-tutorials/bash-completion-tutorial).
+You can see a gif demonstrating the functionality [at this tutorial's code repository on GitHub](https://github.com/iridakos/bash-completion-tutorial).
 
 Let the show begin.
 
@@ -496,9 +496,9 @@ $ dothis <tab><tab>
 
 ## Code and Comments
 
-You can find the **code of this tutorial** on [GitHub](https://github.com/iridakos-tutorials/bash-completion-tutorial).
+You can find the **code of this tutorial** on [GitHub](https://github.com/iridakos/bash-completion-tutorial).
 
-For **feedback, comments, typos etc**. please open an [issue](https://github.com/iridakos-tutorials/bash-completion-tutorial/issues) in the repository.
+For **feedback, comments, typos etc**. please open an [issue](https://github.com/iridakos/bash-completion-tutorial/issues) in the repository.
 
 ### Long post, cat photo
 

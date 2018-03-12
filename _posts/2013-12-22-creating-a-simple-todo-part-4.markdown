@@ -22,7 +22,7 @@ related_posts:
 In the previous three posts we created a simple ToDo application with Ruby on Rails.
 In this last part we are going to deploy the application to OpenShift.
 
-You can find the complete code of the tutorial [here](https://github.com/iridakos-tutorials/todo).
+You can find the complete code of the tutorial [here](https://github.com/iridakos/todo).
 
 ### OpenShift
 
