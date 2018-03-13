@@ -18,7 +18,7 @@
 
   $('#outline').docout({ target: '#docout' });
 
-  $('[data-goto]').on('click', function() {
+  $('[data-goto]').on('click touch', function() {
     var goto = $(this).data('goto');
 
     ga('send', 'event', 'Post preview', 'click', goto);
