@@ -21,7 +21,7 @@ subtitle: some of my attempts to make humor
                 <a href="{{ my_post.url }}">{{ my_post.title }}</a>
             </div>
 
-            <div class="post-preview">
+            <div class="post-preview" data-goto="{{ my_post.url }}">
               {% if my_post.preview %}
                 {{ my_post.preview }}
               {% else %}

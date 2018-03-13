@@ -36,7 +36,7 @@ description: Personal blog of Lazarus Lazaridis with programming tutorials, tips
                                 </a>
                             </div>
 
-                            <div class="post-preview">
+                            <div class="post-preview" data-goto="{{ post.url | prepend: site.baseurl | replace: '.html', '' }}">
                               {% if post.preview %}
                                 {{ post.preview }}
                               {% else %}

@@ -16,12 +16,12 @@ subtitle:
             <div class="post-metadata">
                 <small><span class="post-meta">{{ my_post.date | date: "%b %-d, %Y" }}</span></small>
             </div>
-            
+
             <div class="post-title">
                 <a href="{{ my_post.url }}">{{ my_post.title }}</a>
             </div>
 
-            <div class="post-preview">
+            <div class="post-preview" data-goto="{{ my_post.url }}">
               {{ my_post.preview }}
             </div>
         </div>

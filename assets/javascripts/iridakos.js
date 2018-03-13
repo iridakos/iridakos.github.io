@@ -18,6 +18,13 @@
 
   $('#outline').docout({ target: '#docout' });
 
+  $('[data-goto]').on('click', function() {
+    var goto = $(this).data('goto');
+
+    ga('send', 'event', 'Post preview', 'click', goto);
+    document.location = goto;
+  });
+
   $('.ga-event-link').on('click', function() {
     var data = $(this).data();
 
