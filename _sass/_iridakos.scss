@@ -22,7 +22,7 @@ body {
   background: #fff;
   border: 1px solid $navbar-inverse-border;
   border-top: 0 none;
-  box-shadow: -6px 10px 21px #333;
+  box-shadow: 6px 10px 21px #333;
 
   @media (max-width: $screen-sm-min) {
     border: 0 none;
@@ -33,7 +33,7 @@ body {
   background: #1b1b1b;
   padding-top: 5px;
   margin-top: -1px;
-  box-shadow: 6px 10px 21px #333;
+  box-shadow: -6px 10px 21px #333;
 
   hr {
     border-top: 1px solid #333;
@@ -89,6 +89,7 @@ code.highlighter-rouge {
 }
 
 .site-footer {
+  text-align: right;
   margin: 20px 0;
   font-size: 16px;
   color: $iridakos-secondary-color;

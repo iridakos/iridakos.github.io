@@ -4,7 +4,7 @@ layout: default
 
 <div class="container" {% if page.outline %}id="outline"{% endif %}>
     <div class="row">
-        <div class="col-xs-12 col-md-9 page-content">
+        <div class="col-xs-12 col-md-9 col-md-push-3 page-content">
           <div class="row">
               <div class="col-xs-12">
                   <div class="page-header">
@@ -53,7 +53,7 @@ layout: default
             </article>
         </div>
 
-        <div class="col-xs-12 col-md-3 sidebar">
+        <div class="col-xs-12 col-md-3 col-md-pull-9 sidebar">
             {% include news.html %}
 
             {% include popular_posts.html %}
