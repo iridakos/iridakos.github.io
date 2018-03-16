@@ -1,34 +1,49 @@
 .sidebar {
   padding-top: 5px;
-  margin-top: 20px;
+  margin-top: 10px;
 
   hr {
-    border-top: 1px solid #666;
+    border-top: 1px solid #555;
+    margin: 10px 0;
   }
 
-  .news-panel {
+  a {
+    color: lighten(#0084B4, 10%);
+  }
+
+  .sticky {
+    margin-top: 20px;
+  }
+
+  .sidebar-panel {
     border: 0 none;
     background: none;
-    color: #fff;
+    color: #afafaf;
+    margin-bottom: 15px;
 
     .panel-heading {
+      padding: 0 5px 8px 0;
       font-family: $secondary-font-family;
-      background: #333;
-      border: 1px solid #333;
-      border-radius: 5px;
 
       .panel-title {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: bold;
-        color: #ccc;
+        color: #202020;
+        text-shadow: 1px 1px 1px rgba(200,200,200,0.2);
+        padding-bottom: 5px;
+        border-bottom: 1px solid #202020;
       }
     }
   }
 
+  p.no-margin {
+    margin-bottom: 2px;
+  }
+
   .popular-post {
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
 
     .post-category {
       font-size: 80%;
@@ -37,6 +52,24 @@
 
     &:last-child {
       border-bottom: 0 none;
+    }
+  }
+
+  .panel-body {
+    padding: 0 5px 0 0;
+  }
+
+  .share-link {
+    color: #202020;
+    text-shadow: 1px 1px 1px rgba(200,200,200,0.2);
+
+    i {
+      padding-right: 5px;
+    }
+
+    &:hover, &:focus {
+      color: #aaa;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
     }
   }
 }

@@ -177,7 +177,8 @@ a.about-me {
 }
 
 .page-header {
-  background-color: #ccc;
+  background-color: #ddd;
+  border-bottom: 1px solid #d0d0d0;
   padding: 10px 15px;
   margin-top: 0;
 
@@ -190,12 +191,12 @@ a.about-me {
     -moz-background-clip: text;
     background-clip: text;
     color: darken($secondary-text-color, 10%);
+    text-shadow: 1px 1px 1px rgba(255,255,255,1);
   }
 
   small {
-    color: #8f8f8f;
     font-size: 18px;
-    color: #666;
+    color: #686868;
     text-shadow: none;
   }
 }
