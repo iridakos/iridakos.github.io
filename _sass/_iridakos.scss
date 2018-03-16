@@ -77,7 +77,7 @@ code.highlighter-rouge {
 }
 
 .site-footer {
-  text-align: right;
+  text-align: center;
   margin: 20px 0;
   font-size: 16px;
   color: $iridakos-secondary-color;
@@ -95,6 +95,10 @@ code.highlighter-rouge {
   a {
     color: #f0f0f0;
     text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+  }
+
+  @media (min-width: $screen-md-min) {
+    text-align: right;
   }
 }
 

@@ -32,7 +32,8 @@
 
   $('#outline').docout({ target: '#docout' });
 
-  $(".sticky").sticky({ topSpacing: 0 });
+  $(".sticky").sticky({ topSpacing: 0,
+                        bottomSpacing: 150 });
 
   $('.ga-event-link').on('click', function() {
     var data = $(this).data();
