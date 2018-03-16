@@ -6,32 +6,30 @@ layout: default
     <div class="row">
         <div class="col-xs-12 col-md-9 col-md-push-3 page-content">
           <div class="row">
-              <div class="col-xs-12">
-                  <div class="page-header">
-                      {% if page.outline %}
-                          <div class="pull-right outline-button">
-                                <a class="ga-event-link btn btn-primary"
-                                  data-event-label="{{ page.title }}" data-event-category="Document outline" data-event-action="click"
-                                  title="View the structure of this document"
-                                  role="button" data-toggle="collapse" href="#collapse" aria-expanded="false" aria-controls="collapse">
-                                  Document outline
-                                </a>
-                          </div>
-                      {% endif %}
+              <div class="col-xs-12 page-header">
+                  {% if page.outline %}
+                      <div class="pull-right outline-button">
+                            <a class="ga-event-link btn btn-default"
+                              data-event-label="{{ page.title }}" data-event-category="Document outline" data-event-action="click"
+                              title="View the structure of this document"
+                              role="button" data-toggle="collapse" href="#collapse" aria-expanded="false" aria-controls="collapse">
+                              outline
+                            </a>
+                      </div>
+                  {% endif %}
 
-                    <h1>
-                        {{ page.title }}
-                        <br/>
-                        <small><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y - %H:%M" }}</time> {% if page.category %}| <span itemprop="">{{ page.category }}</span> {% endif %}</small>
-                    </h1>
-                  </div>
+                  <h1>
+                      {{ page.title }}
+                      <br/>
+                      <small><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y - %H:%M" }}</time> {% if page.category %}| <span itemprop="">{{ page.category }}</span> {% endif %}</small>
+                  </h1>
               </div>
           </div>
 
           {% if page.outline %}
               <div class="panel panel-default collapse" id="collapse">
                   <div class="panel-heading">
-                      <strong class="panel-title">Post outline</strong>
+                      <strong class="panel-title">Outline</strong>
                   </div>
 
                   <div class="panel-body" id="docout">
