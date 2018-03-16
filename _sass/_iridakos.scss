@@ -87,6 +87,11 @@ code.highlighter-rouge {
     margin: 20px 0 10px 0;
   }
 
+  li {
+    padding-right: 0;
+    padding-left: 10px;
+  }
+
   a {
     color: #f0f0f0;
     text-shadow: 0 1px 1px rgba(0,0,0,0.5);
@@ -177,7 +182,7 @@ a.about-me {
 }
 
 .page-header {
-  background-color: #ddd;
+  background-color: #efefef;
   border-bottom: 1px solid #d0d0d0;
   padding: 10px 15px;
   margin-top: 0;
@@ -192,6 +197,8 @@ a.about-me {
     background-clip: text;
     color: darken($secondary-text-color, 10%);
     text-shadow: 1px 1px 1px rgba(255,255,255,1);
+    margin-bottom: 5px;
+    margin-top: 5px;
   }
 
   small {
