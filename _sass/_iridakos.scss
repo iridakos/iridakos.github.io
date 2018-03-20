@@ -167,6 +167,14 @@ a.about-me {
     margin-left: 0;
     margin-top: 8px;
     float: left;
+
+    &.me-small {
+      margin-right: 0;
+
+      img {
+        height: 65px;
+      }
+    }
   }
 
   .text {
