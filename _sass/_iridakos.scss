@@ -186,8 +186,8 @@ a.about-me {
 }
 
 .page-header {
-  background-color: #efefef;
-  border-bottom: 1px solid #d0d0d0;
+  background-color: #010101;
+  border-bottom: 1px solid #333;
   padding: 10px 15px;
   margin-top: 0;
 
@@ -195,12 +195,11 @@ a.about-me {
     font-size: 30px;
     font-family: $secondary-font-family;
     font-weight: bold;
-    background-color: #666666;
+    background-color: #fff;
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
-    color: darken($secondary-text-color, 10%);
-    text-shadow: 1px 1px 1px rgba(255,255,255,1);
+    color: #f0f0f0;
     margin-bottom: 5px;
     margin-top: 5px;
   }
