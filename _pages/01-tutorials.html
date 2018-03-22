@@ -8,6 +8,10 @@ description: Programming tutorials for Ruby, Ruby on Rails, Gtk, Elasticsearch a
 subtitle: my programming tutorials for Ruby, Rails, Gtk, Elasticsearch etc.
 ---
 
+<div class="sharing" style="text-align: right">
+  Subscribe only to <a class="ga-event-link" data-event-label="{{ page.title }}" data-event-category="Subscribe only to tutorial RSS" data-event-action="click" href="{{ "/feeds/tutorials.xml" | prepend: site.baseurl }}">tutorial posts RSS <i class="fa fa-rss"></i></a>
+</div>
+
 <div class="posts-container">
     {% for my_post in site.posts %}
       {% if my_post.category %}
