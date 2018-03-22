@@ -24,7 +24,7 @@ layout: null
       {% endif %}
     {% endfor %}
 
-    {% for post in tutorial_posts limit:10 %}
+    {% for post in tutorial_posts limit:30 %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
         <description>{{ post.content | xml_escape }}</description>
