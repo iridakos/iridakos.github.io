@@ -3,3 +3,11 @@
 <script src="/assets/javascripts/iridakos.js?{{site.time | date: '%s%N'}}" type="text/javascript"></script>
 
 {{ page.custom_script }}
+
+{% if page.tag_js %}
+<script src="/assets/javascripts/tags.js?{{site.time | date: '%s%N'}}" type="text/javascript"></script>
+{% endif %}
+
+{% if page.search_js %}
+<script src="/assets/javascripts/search.js?{{site.time | date: '%s%N'}}" type="text/javascript"></script>
+{% endif %}
