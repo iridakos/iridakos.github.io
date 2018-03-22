@@ -66,7 +66,7 @@ $(function() {
     var $container = $('<div class="post-container"></div>'),
     $title = $('<div class="post-title"></div>'),
     $link = $('<a href="' + searchResult.url + '">' + searchResult.title + '</a>')
-    $meta = $('<div class="post-metadata"><small>' + searchResult.categories + '</small></div>'),
+    $meta = $('<div class="post-metadata"><small>' + searchResult.date + ' | ' + searchResult.categories + '</small></div>'),
     $preview = $('<div class="post-preview">' + htmlDecode(searchResult.description) + '</div>');
 
     $results.append($container.append($meta).append($title.append($link)).append($preview));

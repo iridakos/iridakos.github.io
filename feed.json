@@ -10,7 +10,7 @@ layout: null
   { "title": "{{ post.title | json }}",
     "description": "{{ description | escape | json }}",
     "tags": "{{ post.tags }}",
-    "date": "{{ post.date | date_to_xmlschema }}",
+    "date": "{{ post.date | date: "%b %-d, %Y - %H:%M" }}",
     "search_tags": "{{ post.search_tags }}",
     "categories": "{{ post.category }}",
     "url": "{{ post.url | prepend: site.baseurl | prepend: site.url }}"}{% if forloop.last == false %},{% endif %}{% endfor %}]
