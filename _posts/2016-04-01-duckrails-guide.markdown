@@ -7,6 +7,7 @@ date:   2016-04-01 10:00:00 +0300
 category: "guides"
 comments: true
 outline: true
+tags: opensource tools developers github api
 popular: -1
 show_popular_inline_posts: true
 identifier: "duckrails-guide"

@@ -10,6 +10,7 @@ identifier: "duckrails-docker-image"
 outline: true
 show_popular_inline_posts: true
 popular: -1
+tags: opensource developers tools github api
 redirect_from:
   - /2017/11/10/duckrails-docker-image.html
 related_posts:

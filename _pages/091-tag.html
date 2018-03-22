@@ -1,0 +1,43 @@
+---
+layout: page
+menu_title: tags
+title: "tags"
+permalink: /tags/
+show_in_header: true
+description: "Tags"
+subtitle: browse posts via their tags
+custom_script: <script src="/assets/javascripts/tags.js" type="text/javascript"></script>
+---
+
+<div class="row">
+    <div class="col-xs-12 posts-container">
+        <div class="tag-results">
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 posts-container">
+      <div class="tags-container">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Available tags</h3>
+          </div>
+          <div class="panel-body">
+            {% assign all_tags = '' | split: '' %}
+
+            {% for post in site.posts %}
+              {% assign all_tags = all_tags | concat: post.tags %}
+            {% endfor %}
+
+            {% assign all_tags = all_tags | uniq | sort %}
+
+            {% for tag in all_tags %}
+              <a href="/tags/?tag={{tag}}" class="post-tag">{{tag}}</a>{% if forloop.last != true %}<span class="separator"> - </span>{% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

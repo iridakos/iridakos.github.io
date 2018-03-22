@@ -8,6 +8,7 @@ category: "tutorials"
 identifier: "bash-completion-script"
 show_popular_inline_posts: true
 outline: true
+tags: bash linux programmable-completion opensource tutorial
 popular: 1
 search_tags: linux, bash, completion, programmable
 related_posts:

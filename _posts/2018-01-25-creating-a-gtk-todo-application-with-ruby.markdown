@@ -9,6 +9,7 @@ identifier: "todo-gtk-plus-ruby-tutorial"
 show_popular_inline_posts: true
 outline: true
 comments: true
+tags: linux gtk ruby desktop opensource tutorial
 popular: 2
 related_posts:
   - bash-completion-script

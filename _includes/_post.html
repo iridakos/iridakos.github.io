@@ -1,0 +1,29 @@
+<div class="post-container">
+    <div class="post-metadata">
+        <small><span class="post-meta">{{ include.post.date | date: "%b %-d, %Y" }}</span>{% if include.hide_category != true %}<span class="post-category"> <span class="separator">|</span> {{ include.post.category }}</span>{% endif %}</small>
+    </div>
+
+    <div class="post-title">
+        <a href="{{ include.post.url | prepend: site.baseurl | replace: '.html', '' }}">
+          {{ include.post.title }}
+        </a>
+    </div>
+
+    <div class="post-preview" data-goto="{{ include.post.url | prepend: site.baseurl | replace: '.html', '' }}">
+      {% if include.post.preview %}
+        {{ include.post.preview }}
+      {% else %}
+        {{ include.post.excerpt }}
+      {% endif %}
+    </div>
+
+    {% assign tag_size = include.post.tags | size %}
+    {% if tag_size > 0 %}
+      <div class="post-tags">
+        tags:
+        {% for tag in include.post.tags %}
+          <a href="/tags/?tag={{tag}}" class="post-tag">{{ tag }}</a>{% if forloop.last != true %}<span class="separator"> - </span>{% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+</div>

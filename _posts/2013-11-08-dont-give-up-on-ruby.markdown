@@ -6,6 +6,7 @@ date:   2013-11-08 10:00:00 +0300
 category: "ruby"
 comments: true
 outline: true
+tags: ruby developers
 popular: -1
 show_popular_inline_posts: true
 identifier: "learning-ruby"

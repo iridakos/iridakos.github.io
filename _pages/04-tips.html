@@ -12,19 +12,7 @@ subtitle:
     {% for my_post in site.posts %}
       {% if my_post.category %}
         {% if my_post.category == 'tips' %}
-          <div class="post-container">
-            <div class="post-metadata">
-                <small><span class="post-meta">{{ my_post.date | date: "%b %-d, %Y" }}</span></small>
-            </div>
-
-            <div class="post-title">
-                <a href="{{ my_post.url }}">{{ my_post.title }}</a>
-            </div>
-
-            <div class="post-preview" data-goto="{{ my_post.url }}">
-              {{ my_post.preview }}
-            </div>
-        </div>
+          {% include _post.html post=my_post hide_category=true %}
         {% endif %}
       {% endif %}
     {% endfor %}

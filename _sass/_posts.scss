@@ -22,6 +22,18 @@
     color: #555;
     margin-bottom: 20px;
   }
+
+  .post-tags {
+    color: #666;
+    font-size: 80%;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-bottom: 20px;
+
+    .post-tag {
+      font-weight: normal;
+    }
+  }
 }
 
 .related-posts {

@@ -7,6 +7,7 @@ category: "tutorials"
 comments: true
 outline: true
 popular: -1
+tags: ruby rails tutorial todo application developers mvc
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "todo-part-2"
 show_popular_inline_posts: true

@@ -2,8 +2,15 @@
 layout: null
 ---
 [{% for post in site.posts %}
+  {% if post.preview %}
+    {% assign description=post.preview %}
+  {% else %}
+    {% assign description=post.excerpt | strip_newlines %}
+  {% endif %}
   { "title": "{{ post.title | json }}",
-    "description": "{% if post.description == null %}{{ post.preview | json }}{% else %}{{ post.description | json }}{% endif %}",
-    "tags": "{{ post.search_tags }}",
+    "description": "{{ description | escape | json }}",
+    "tags": "{{ post.tags }}",
+    "date": "{{ post.date | date_to_xmlschema }}",
+    "search_tags": "{{ post.search_tags }}",
     "categories": "{{ post.category }}",
     "url": "{{ post.url | prepend: site.baseurl | prepend: site.url }}"}{% if forloop.last == false %},{% endif %}{% endfor %}]

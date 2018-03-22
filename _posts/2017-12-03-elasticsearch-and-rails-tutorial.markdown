@@ -8,6 +8,7 @@ category: "tutorials"
 identifier: "elasticsearch-rails-tutorial"
 show_popular_inline_posts: true
 outline: true
+tags: ruby rails elasticsearch tutorial
 comments: true
 popular: 2
 related_posts:

@@ -9,6 +9,7 @@ comments: true
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "testing-exec-filters-rspec"
 outline: true
+tags: rspec rails ruby controllers mvc testing
 popular: -1
 show_popular_inline_posts: true
 redirect_from:
