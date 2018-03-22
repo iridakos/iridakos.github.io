@@ -22,7 +22,7 @@
       <div class="post-tags">
         tags:
         {% for tag in include.post.tags %}
-          <a href="/tags/?tag={{tag}}" class="post-tag">{{ tag }}</a>{% if forloop.last != true %}<span class="separator"> - </span>{% endif %}
+          <a href="/tags/?tag={{tag}}" class="post-tag ga-event-link" data-event-label="{{ tag }}" data-event-action="click" data-event-category="tags">{{ tag }}</a>{% if forloop.last != true %}<span class="separator"> - </span>{% endif %}
         {% endfor %}
       </div>
     {% endif %}

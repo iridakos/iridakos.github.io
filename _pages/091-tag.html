@@ -34,7 +34,7 @@ custom_script: <script src="/assets/javascripts/tags.js" type="text/javascript">
             {% assign all_tags = all_tags | uniq | sort %}
 
             {% for tag in all_tags %}
-              <a href="/tags/?tag={{tag}}" class="post-tag">{{tag}}</a>{% if forloop.last != true %}<span class="separator"> - </span>{% endif %}
+              <a class="post-tag ga-event-link" data-event-label="{{ tag }}" data-event-action="click" data-event-category="tags" href="/tags/?tag={{tag}}">{{tag}}</a>{% if forloop.last != true %}<span class="separator"> - </span>{% endif %}
             {% endfor %}
           </div>
         </div>
