@@ -39,7 +39,7 @@ description: Personal blog of Lazarus Lazaridis with programming tutorials, tips
                                     {% if page == paginator.page %}
                                         <li class="active">
                                             <a href="#">
-                                                <span aria-hidden="true">{{ page }}
+                                                <span aria-hidden="true">{{ page }}</span>
                                             </a>
                                         </li>
                                     {% elsif page == 1 %}
@@ -55,7 +55,7 @@ description: Personal blog of Lazarus Lazaridis with programming tutorials, tips
 
                                 <li class="{% if paginator.next_page == null %}disabled{% endif %}">
                                     <a href="{{ paginator.next_page_path }}" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;
+                                        <span aria-hidden="true">&raquo;</span>
                                     </a>
                                 </li>
                             </ul>
