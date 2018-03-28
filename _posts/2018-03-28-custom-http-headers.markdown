@@ -16,7 +16,7 @@ related_posts:
 hidden: true
 ---
 
-If you need to add a custom HTTP header in your responses in a Ruby on Rails applications all you have to do is to add the following:
+If you need to add a custom HTTP header in your responses in a Ruby on Rails application, all you have to do is to add the following:
 
 ```ruby
 response.headers['<header name>'] = '<header value>'
