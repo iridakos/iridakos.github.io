@@ -2,6 +2,7 @@
 layout: page
 menu_title:  how to
 title: how to
+category_match: how-to
 permalink: /how-to/
 show_in_header: true
 description: "How to and tips mostly related to programming"
@@ -13,7 +14,7 @@ redirect_from:
 <div class="posts-container">
     {% for my_post in site.posts %}
       {% if my_post.category %}
-        {% if my_post.category == 'how to' %}
+        {% if my_post.category == 'how-to' %}
           {% include _post.html post=my_post hide_category=true %}
         {% endif %}
       {% endif %}

@@ -22,7 +22,7 @@
                   {% if my_page.show_in_header %}
                       <li>
                           {% if page.is_post %}
-                            {% if page.category == my_page.title %}
+                            {% if page.category == my_page.title or page.category == my_page.category_match %}
                               {% assign menu_class = 'active' %}
                             {% else %}
                               {% assign menu_class = '' %}

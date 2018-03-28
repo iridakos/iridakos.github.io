@@ -4,7 +4,7 @@ title:  "Testing execution of filters with RSpec"
 description: "How to test the execution of controller filters with RSpec."
 date:   2014-10-14 10:00:00 +0300
 preview: "I was working on my application and I wanted to write some RSpec tests for some controllers having `before_filter` for some actions...."
-category: "testing"
+category: "how-to"
 comments: true
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "testing-exec-filters-rspec"
@@ -14,6 +14,7 @@ popular: -1
 show_popular_inline_posts: true
 redirect_from:
   - /2014/10/14/testing-execution-of-filters-with-rspec.html
+  - /testing/2014/10/14/testing-execution-of-filters-with-rspec
 related_posts:
   - rails-radio-buttons-required-boolean
   - rescue-from-memory-leak
