@@ -11,8 +11,8 @@ tags: ruby rails how-to http headers
 identifier: "custom-http-headers"
 comments: true
 redirect_from:
-  - /how to/2018/03/27/custom-http-headers
-  - /how%20to/2018/03/27/custom-http-headers
+  - /how to/2018/03/27/custom-http-headers
+  - /how%20to/2018/03/27/custom-http-headers
 related_posts:
   - hello-ruby-rails
   - todo-part-1
