@@ -6,11 +6,23 @@ body {
   margin-bottom: 20px;
   text-align: center;;
   font-size: 14px;
-  color: $iridakos-secondary-color;
+  color: #ccc;
 
   a.share-link {
     font-size: 40px;
     margin-right: 5px;
+
+    color: #202020;
+    text-shadow: 1px 1px 1px rgba(200,200,200,0.2);
+
+    i {
+      padding-right: 5px;
+    }
+
+    &:hover, &:focus {
+      color: #aaa;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+      }
   }
 
   a {
@@ -26,10 +38,6 @@ body {
   @media (max-width: $screen-sm-min) {
     border: 0 none;
   }
-}
-
-.share-text {
-  color: $iridakos-secondary-color;
 }
 
 .outline-button {
@@ -250,7 +258,7 @@ a.about-me {
 
 .publish-info {
   border: 1px solid #e0e0e0;
-  margin: 20px 0;
+  margin: 20px 0 0 0;
   margin-left: -15px;
   margin-right: -15px;
   background: #f0f0f0;

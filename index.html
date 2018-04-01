@@ -11,59 +11,68 @@ description: Personal blog of Lazarus Lazaridis with programming tutorials, tips
     <div class="grid-x grid-margin-x">
 
         <div class="row">
-            <div class="col-xs-12 col-md-9 col-md-push-3 page-content">
+            <div class="col-xs-12 col-md-9 col-md-push-3">
+
               <div class="row">
-                  <div class="col-xs-12 page-header">
-                      <h1>{{site.title}}</h1>
-                      <small>this is <a href="/about/">Lazarus Lazaridis'</a> blog</small>
+                <div class="col-xs-12 page-content">
+                  {% include share-page.html expanded=true %}
+
+                  <div class="row">
+                      <div class="col-xs-12 page-header">
+                          <h1>{{site.title}}</h1>
+                          <small>this is <a href="/about/">Lazarus Lazaridis'</a> blog</small>
+                      </div>
                   </div>
+
+                    <div class="posts-container">
+                        {% for post in paginator.posts %}
+                            {% include _post.html post=post %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="post-pagination">
+                        {% if paginator.total_pages > 1 %}
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li class="{% if paginator.previous_page == null %}disabled{% endif %}">
+                                        <a href="{{ paginator.previous_page_path }}" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+
+                                    {% for page in (1..paginator.total_pages) %}
+                                        {% if page == paginator.page %}
+                                            <li class="active">
+                                                <a href="#">
+                                                    <span aria-hidden="true">{{ page }}</span>
+                                                </a>
+                                            </li>
+                                        {% elsif page == 1 %}
+                                            <li>
+                                                <a href="{{ site.url }}">{{ page }}</a>
+                                            </li>
+                                        {% else %}
+                                            <li>
+                                                <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+                                            <li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <li class="{% if paginator.next_page == null %}disabled{% endif %}">
+                                        <a href="{{ paginator.next_page_path }}" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        {% endif %}
+                    </div>
+                </div>
               </div>
 
-                <div class="posts-container">
-                    {% for post in paginator.posts %}
-                        {% include _post.html post=post %}
-                    {% endfor %}
-                </div>
-
-                <div class="post-pagination">
-                    {% if paginator.total_pages > 1 %}
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination">
-                                <li class="{% if paginator.previous_page == null %}disabled{% endif %}">
-                                    <a href="{{ paginator.previous_page_path }}" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-
-                                {% for page in (1..paginator.total_pages) %}
-                                    {% if page == paginator.page %}
-                                        <li class="active">
-                                            <a href="#">
-                                                <span aria-hidden="true">{{ page }}</span>
-                                            </a>
-                                        </li>
-                                    {% elsif page == 1 %}
-                                        <li>
-                                            <a href="{{ site.url }}">{{ page }}</a>
-                                        </li>
-                                    {% else %}
-                                        <li>
-                                            <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-                                        <li>
-                                    {% endif %}
-                                {% endfor %}
-
-                                <li class="{% if paginator.next_page == null %}disabled{% endif %}">
-                                    <a href="{{ paginator.next_page_path }}" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    {% endif %}
-                </div>
-
+              <div class="post-footer">
                 {% include share-page.html expanded=true %}
+              </div>
             </div>
 
             <div class="col-xs-12 col-md-3 col-md-pull-9 sidebar">

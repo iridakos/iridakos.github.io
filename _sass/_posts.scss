@@ -40,22 +40,27 @@
   margin-top: 10px;
 
   .title {
-    color: $iridakos-secondary-color;
-    font-family: $secondary-font-family;
+    font-size: 20px;
+    font-weight: bold;
+    color: #aaa;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+    padding-bottom: 5px;
+    border-bottom: 1px solid #aaa;
+  }
+
+  a {
+    &:focus, &:hover, &:visited {
+      color: $brand-primary;
+    }
   }
 
   .related-post {
     margin-bottom: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-
-    &:last-child {
-      border-bottom: 0 none;
-    }
 
     .post-category {
       font-size: 80%;
-      color: $secondary-text-color;
+      color: #ccc;
     }
 
     .post-description {
@@ -63,5 +68,8 @@
       color: $secondary-text-color;
     }
   }
+}
 
+.post-footer {
+  margin-top: 20px;
 }
