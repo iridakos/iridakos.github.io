@@ -1,6 +1,12 @@
 body {
   background: #444;
 }
+
+.prompt {
+  color: $iridakos-secondary-color;
+  font-weight: bold;
+}
+
 .sharing {
   margin-top: 20px;
   margin-bottom: 20px;
