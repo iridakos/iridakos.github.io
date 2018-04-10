@@ -2,30 +2,30 @@
 layout: default
 ---
 
+<div class="page-header">
+  <div class="container">
+      <div class="row">
+          <div class="col-xs-12">
+            <h1>{{ page.menu_title }}</h1>
+            <small>{{ page.subtitle }}</small>
+          </div>
+      </div>
+  </div>
+</div>
+
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 col-md-9 col-md-push-3">
+        <div class="col-xs-12 col-md-9">
 
           <div class="row">
             <div class="col-xs-12 page-content">
-              <div class="row">
-                  <div class="col-xs-12 page-header">
-                      <h1>{{ page.menu_title }}</h1>
-                      <small>{{ page.subtitle }}</small>
-                  </div>
-              </div>
-
               {{ content }}
             </div>
           </div>
-
-          <div class="post-footer">
-            {% include share-page.html expanded=true %}  
-          </div>
         </div>
 
-        <div class="col-xs-12 col-md-3 col-md-pull-9 sidebar">
-          <div class="sticky">
+        <div class="col-xs-12 col-md-3">
+          <div class="sticky sidebar">
             {% include news.html %}
 
             {% include popular_posts.html %}

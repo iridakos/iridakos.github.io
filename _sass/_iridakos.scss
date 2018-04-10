@@ -1,5 +1,5 @@
 body {
-  background: #444;
+  background: #fff;
 }
 
 .prompt {
@@ -17,37 +17,18 @@ body {
   margin-bottom: 20px;
   text-align: center;;
   font-size: 14px;
-  color: #ccc;
 
   a.share-link {
     font-size: 40px;
     margin-right: 5px;
 
-    color: #202020;
-    text-shadow: 1px 1px 1px rgba(200,200,200,0.2);
-
     i {
       padding-right: 5px;
     }
-
-    &:hover, &:focus {
-      color: #aaa;
-      text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
-      }
   }
 
   a {
     color: $brand-primary;
-  }
-}
-
-.page-content {
-  background: #fff;
-  border-top: 0 none;
-  box-shadow: 6px 10px 21px #000;
-
-  @media (max-width: $screen-sm-min) {
-    border: 0 none;
   }
 }
 
@@ -100,10 +81,17 @@ code.highlighter-rouge {
   margin: 20px 0;
   font-size: 16px;
   color: $iridakos-secondary-color;
-  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
 
   .footer-header {
+    border-top: 1px solid #ddd;
     margin: 20px 0 10px 0;
+    padding-top: 10px;
+  }
+
+  .footer-brand-image {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
   }
 
   li {
@@ -112,12 +100,7 @@ code.highlighter-rouge {
   }
 
   a {
-    color: #f0f0f0;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.5);
-  }
-
-  @media (min-width: $screen-md-min) {
-    text-align: right;
+    color: #aaa;
   }
 }
 
@@ -203,10 +186,14 @@ a.about-me {
 }
 
 .page-header {
-  background-color: #010101;
-  border-bottom: 1px solid #333;
-  padding: 10px 15px;
+  background-color: #0084B4;
+  border: 1px solid darken(#0084B4, 8%);
+  padding: 10px 0;
   margin-top: 0;
+
+  a, a:visited, a:hover, a:focus {
+    color: darken(#0084B4, 20%);
+  }
 
   h1 {
     font-size: 30px;
@@ -216,20 +203,30 @@ a.about-me {
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
-    color: #f0f0f0;
+    color: #fff;
     margin-bottom: 5px;
     margin-top: 5px;
   }
 
   small {
     font-size: 18px;
-    color: #999;
+    color: #f0f0f0;
     text-shadow: none;
   }
 
   .tags {
-    color: #999;
+    padding-top: 5px;
+    color: #f0f0f0;
     font-size: 80%;
+
+    .tags-container {
+      color: #f0f0f0;
+    }
+
+    a, a:visited, a:hover, a:focus {
+      color: #fff;
+      font-weight: normal;
+    }
   }
 }
 
@@ -248,7 +245,6 @@ a.about-me {
   border-radius: 0;
   margin-bottom: 0;
   font-size: 18px;
-  box-shadow: -6px 10px 21px #000;
 
   .navbar-brand {
     font-size: 18px;
@@ -270,8 +266,6 @@ a.about-me {
 .publish-info {
   border: 1px solid #e0e0e0;
   margin: 20px 0 0 0;
-  margin-left: -15px;
-  margin-right: -15px;
   background: #f0f0f0;
   color: #444;
   padding: 15px;
