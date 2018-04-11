@@ -191,10 +191,6 @@ a.about-me {
   padding: 10px 0;
   margin-top: 0;
 
-  a, a:visited, a:hover, a:focus {
-    color: #fff;
-  }
-
   h1 {
     font-size: 30px;
     font-family: $secondary-font-family;
@@ -212,6 +208,10 @@ a.about-me {
     font-size: 18px;
     color: #f0f0f0;
     text-shadow: none;
+
+    a, a:visited, a:hover, a:focus {
+      color: #fff;
+    }
   }
 
   .tags {
