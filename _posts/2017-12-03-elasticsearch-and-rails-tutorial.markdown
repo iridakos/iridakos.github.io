@@ -12,6 +12,7 @@ tags: ruby rails elasticsearch tutorial
 comments: true
 popular: 2
 related_posts:
+  - elasticsearch-linux-man-pages
   - todo-part-1
   - testing-exec-filters-rspec
   - rescue-from-memory-leak
