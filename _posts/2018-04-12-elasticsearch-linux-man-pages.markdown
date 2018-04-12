@@ -31,7 +31,7 @@ We will
 
 I have gathered the code snippets you will find here in a script called [`elman`](https://github.com/iridakos/elman) and it is available on [GitHub](https://github.com/iridakos/elman) so after reading this post to get the idea, you can experiment by modifying it as you please.
 
-![elman demo gif](https://github.com/iridakos/elman/raw/master/resources/elasticsearch-manpages.gif)
+![elman demo gif](/assets/images/posts/elasticsearch-linux-manpages/elasticsearch-manpages.gif)
 
 Let's start.
 
