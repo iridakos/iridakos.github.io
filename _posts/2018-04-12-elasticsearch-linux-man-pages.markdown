@@ -19,7 +19,7 @@ In this post we are going to play around with full text searching with Elasticse
 
 ## The idea
 
-We will
+We will:
 
 1. setup an **Elasticsearch** instance locally
 2. create an index for the data
