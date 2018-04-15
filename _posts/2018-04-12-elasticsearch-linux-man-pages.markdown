@@ -9,7 +9,7 @@ identifier: "elasticsearch-linux-man-pages"
 show_popular_inline_posts: true
 outline: true
 tags: elasticsearch linux man-pages opensource tutorial ruby
-popular: -1
+popular: 1
 search_tags: elasticsearch, linux, man-pages, opensource, tutorial, ruby
 related_posts:
   - elasticsearch-rails-tutorial
