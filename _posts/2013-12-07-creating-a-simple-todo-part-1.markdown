@@ -8,7 +8,7 @@ comments: true
 outline: true
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "todo-part-1"
-popular: 6
+popular: -6
 tags: ruby rails tutorial todo application developers mvc
 show_popular_inline_posts: true
 redirect_from:
