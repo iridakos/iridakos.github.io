@@ -42,15 +42,15 @@ You will need:
 ## Let's begin
 
 Create a folder in which you are going to put the tutorial's code and navigate to it from the command line:
-{% highlight bash %}
+```bash
 mkdir tutorials
 cd tutorials
-{% endhighlight %}
+```
 
 Now let's create our new application with the name `hello_world`:
-{% highlight bash %}
+```bash
 rails new hello_world
-{% endhighlight %}
+```
 
 The command above will create a folder with the name `hello_world`.
 Inside this folder you will find various files and subfolders which actually constitute a Rails application.
@@ -60,33 +60,33 @@ In this post I will only explain the files/folders to which we are going to make
 You already have a web server installed in your system that comes bundled with Ruby and its name is WEBRick. Let's start it to see what we have created by the last command.
 
 From the command line, navigate to the created folder:
-{% highlight bash %}
+```bash
 cd hello_world
-{% endhighlight %}
+```
 
 Start WEBrick with the following command:
-{% highlight bash %}
+```bash
 rails server
-{% endhighlight %}
+```
 
 You can also use `s` instead of `server` in the previous command which is just an alias and will do the exact same thing:
-{% highlight bash %}
+```bash
 rails s
-{% endhighlight %}
+```
 
 You should see something similar to this:
 
 ![Rails server starting](https://2.bp.blogspot.com/-NwLVOAjtjag/UpEp1H01XKI/AAAAAAAAAcQ/vgwNU0ZVSgI/s1600/webrick.png)
 
 By default, the server listens to port 3000 but you may change to the one you desire by using the `-p` option:
-{% highlight bash %}
+```bash
 rails server -p 8080
-{% endhighlight %}
+```
 
 So, the web server started and our application is successfully deployed. Open your browser and visit the following address:
-{% highlight html %}
+```html
 http://localhost:8080
-{% endhighlight %}
+```
 
 Tadaaa... You should see something like this:
 
@@ -101,9 +101,9 @@ Before we continue, I will try to explain in a simple way how a rails applicatio
 These are enough for the time being. Let's create our first controller named `pages`.
 From the command line:
 
-{% highlight bash %}
+```bash
 rails generate controller pages
-{% endhighlight %}
+```
 
 You will see a bunch of lines coming out from this command but focus on the first one:
 
@@ -116,20 +116,20 @@ So, open this file with your text editor. Its location is:
 `app/controllers/pages_controller.rb`
 
 As you can see, the controller is empty. We will add an action to it, let's call it `home`:
-{% highlight ruby %}
+```ruby
 def home
 end
-{% endhighlight %}
+```
 
 As you can see, our action does nothing since all we want to do is show a static page with text *Hello world*. Let's add something though just to see it being executed from the server's log:
 
-{% highlight ruby %}
+```ruby
 class PagesController < ApplicationController
   def home
     puts "Honey, I'm home!"
   end
 end
-{% endhighlight %}
+```
 
 If you speak Java, `puts` is similar to Java's `System.out.println();`
 
@@ -142,9 +142,9 @@ Create a file in this folder with the name `home.html.erb`
 The `erb` extension implies that this file will be processed by Rails in order to embed any dynamic content.
 
 Edit this file and add:
-{% highlight html %}
+```html
 <h1>Hello world!</h1>
-{% endhighlight %}
+```
 
 What's left? Yes, we must route the root requests to our controller's action.
 
@@ -154,9 +154,9 @@ Open with your text editor the `routes.rb` file which is located here:
 You will find a bunch of help comments (text starting with `#`) there which you can delete.
 
 Now, add the following line which tells that the root path `/` will be served by our controller's home action:
-{% highlight ruby %}
+```ruby
 root to: 'pages#home'
-{% endhighlight %}
+```
 
 If you refresh your browser, you will see the amazing and super complex page we just created:
 
@@ -165,18 +165,18 @@ If you refresh your browser, you will see the amazing and super complex page we 
 We could stop here but it would be nice if we had the *Hello world!* text being passed to the view from the controller's action, yes? Yes.
 
 Open the pages controller again and change the home action:
-{% highlight ruby %}
+```ruby
 def home
   @greeting = "Home action says: Hello world!"
 end
-{% endhighlight %}
+```
 
 Here, we declared an instance variable to our controller with name `greeting` and value `Home action says: Hello world!.`
 
 This variable is available for use from our corresponding view so open the `home.html.erb` view and change its contents to the following:
-{% highlight erb %}
+```erb
 <h1><%= @greeting %></h1>
-{% endhighlight %}
+```
 
 Refresh the page in your browser and there it is:
 

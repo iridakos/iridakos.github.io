@@ -40,11 +40,12 @@ Back home, I started reading the book I had ordered: [The Ruby programming langu
 
 The moment I saw this code in chapter one:
 
-{% highlight ruby %}
+```ruby
 a.inject do |x, sum|
   x + sum
 end
-{% endhighlight %}
+```
+
 I googled **Ruby to Java converter**.
 
 I was very confused, everything seemed too different to what I had been coding for 8 years.
