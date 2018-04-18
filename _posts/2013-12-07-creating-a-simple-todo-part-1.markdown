@@ -35,18 +35,18 @@ In this part of the tutorial you will get familiar with the following items.
 
 Let's start. Navigate to your workspaces directory from the command line and create the application:
 
-{% highlight bash %}
+```bash
 rails new todo
-{% endhighlight %}
+```
 
 Open the newly created directory **todo** with your favourite text editor (I use Sublime).
 
 First, we will add the gems we will need. Open the Gemfile that is located at the root of the app's directory and add the following lines:
-{% highlight ruby %}
+```ruby
 gem 'haml'
 gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'simple_form'
-{% endhighlight %}
+```
 
 and comment out the line:  
 
@@ -56,24 +56,24 @@ adding a `#` at the beginning of the line (we won't use this gem for now).
 
 Also, open `application.js` which is located under `app/assets/javascripts` and **remove** the following line about turbolinks:  
 
-{% highlight js %}
+```js
 //= require turbolinks
-{% endhighlight %}
+```
 
 If you "speak" Java, contents of the Gemfile are something like a classpath.
 You define which libraries you are going to use.
 Rails (**bundler** actually) is going to download and install these gems unless you already have them installed. We will do this now, from the command line:  
 
-{% highlight ruby %}
+```ruby
 cd todo
 bundle install
-{% endhighlight %}
+```
 
 Ok, let's see if we are good so far. Start the server:  
 
-{% highlight ruby %}
+```ruby
 rails server
-{% endhighlight %}
+```
 
 From your browser navigate to `localhost:3000`. Are we OK?  
 
@@ -82,9 +82,9 @@ From your browser navigate to `localhost:3000`. Are we OK?
 Yes, we are.  
 
 Open with your text editor the file `database.yml` which is located under the config directory:  
-{% highlight bash %}
+```bash
 config/database.yml
-{% endhighlight %}
+```
 
 As you can see, the application has already been configured to use the [SQLite](http://www.sqlite.org/) database engine for persistence.
 This is ok for now but on an upcoming tutorial we are going to change this file in order to use MySQL.  
@@ -96,9 +96,9 @@ Our application is going to have a single model, **Task**, with the following p
 *   completed: task's completion date
 
 Let's create the model. From the command line:
-{% highlight bash %}
+```bash
 rails generate model Task title:string note:text completed:date
-{% endhighlight %}
+```
 
 ![https://4.bp.blogspot.com/-kYYToZG0UAQ/UqJt6uRb09I/AAAAAAAAAkI/2joxfvGSkEI/s640/22.png](https://4.bp.blogspot.com/-kYYToZG0UAQ/UqJt6uRb09I/AAAAAAAAAkI/2joxfvGSkEI/s1600/22.png)
 
@@ -129,15 +129,15 @@ I have a third one for the `rails server` command.
 
 From the command line:  
 
-{% highlight bash %}
+```bash
 rails console
-{% endhighlight %}
+```
 
 or the equivalent
 
-{% highlight bash %}
+```bash
 rails c
-{% endhighlight %}
+```
 
 ![Rails console)](https://2.bp.blogspot.com/-T0siYFO-30c/UqHwf9hAmwI/AAAAAAAAAfU/Z2XdDpO0SBo/s1600/3.png)
 
@@ -159,9 +159,9 @@ Hmmm.. Refresh your browser (at `http:://localhost:3000`).
 That's right. We generated the model migration but we didn't ask to apply it so that our database schema gets updated.
 
 Let's do it now. From the command prompt:  
-{% highlight bash %}
+```bash
 rake db:migrate RAILS_ENV=development
-{% endhighlight %}
+```
 
 *Note: you may skip the `RAILS_ENV=development` part since this is the default*.
 
@@ -172,9 +172,9 @@ Great. The table has been created. If you refresh your browser you'll see the de
 But re-typing `Task` in the rails console you'll see that you get the same error.
 This happens because your environment was loaded the moment you executed the command `rails console` and at that moment the table indeed didn't exist.
 You may reload the environment at any point using the command:  
-{% highlight ruby %}
+```ruby
 reload!
-{% endhighlight %}
+```
 
 And there you have it:  
 
@@ -189,36 +189,36 @@ There were added automatically by our model generation command and `ActiveRecord
 
 Let's create our first task. Within the rails console:
 
-{% highlight ruby %}
+```ruby
 Task.create(title:  'First task',  note:  'This task was created inside the rails console')
-{% endhighlight %}
+```
 
 That's it. You just saved your first task. Now will load it in order to edit/update it and then to delete it.  
-{% highlight ruby %}
+```ruby
 task =  Task.first
-{% endhighlight %}
+```
 ![](https://2.bp.blogspot.com/-5NPBmgNGZp0/UqIAysW--YI/AAAAAAAAAgc/r52eoK-M5BI/s1600/9.png)
 
 We loaded our task by selecting the first and only record of the Task model.  
 Let's edit it:  
-{% highlight ruby %}
+```ruby
 task.title =  'First task - edited'
 task.save
-{% endhighlight %}
+```
 
 ![](https://3.bp.blogspot.com/-rOx3Jpa4ah4/UqIBX18MbhI/AAAAAAAAAgk/a9v3uKaapl4/s1600/10.png)
 
 And let's delete it:
 
-{% highlight ruby %}
+```ruby
 task.destroy
-{% endhighlight %}
+```
 ![](https://1.bp.blogspot.com/-UfkmaJr4PwI/UqIB4IWIbgI/AAAAAAAAAgw/FWFFlXsSBOc/s1600/11.png)
 
 Confirm that we have no tasks anymore.
-{% highlight ruby %}
+```ruby
 Task.count
-{% endhighlight %}
+```
 ![](https://4.bp.blogspot.com/-tBhNgcfScoc/UqICKeGdfxI/AAAAAAAAAg4/BVeY9vsnWJc/s1600/12.png)
 
 Ok, our model seems to be working fine. Time to start giving a face to our application.
@@ -245,7 +245,7 @@ The haml's general idea is:
 
 Now, rename the file to `application.html.haml` and replace the contents with the following:
 
-{% highlight haml %}
+```haml
 !!!
 %html
   %head
@@ -255,7 +255,7 @@ Now, rename the file to `application.html.haml` and replace the contents with th
     = csrf_meta_tags
   %body
     = yield
-{% endhighlight %}
+```
 
 ![](https://3.bp.blogspot.com/-ajux9zFSolg/UqIK2vzXwQI/AAAAAAAAAhU/weBiG4hToWQ/s1600/14.png)
 
@@ -267,25 +267,25 @@ Got it? Isn't it simpler?
 You'll see more haml code below that will help you understand it better but you may follow a simple [tutorial](http://haml.info/tutorial.html) later.
 
 So, we will create our static pages controller now as we did at the previous tutorial. From the command line:
-{% highlight bash %}
+```bash
 rails generate controller pages
-{% endhighlight %}
+```
 
 Add a home action in the generated controller `pages_controller.rb` which is located under `app/controllers`:
 
-{% highlight ruby %}
+```ruby
 class PagesController < ApplicationController
   def home
   end
 end
-{% endhighlight %}
+```
 
 Create the corresponding (empty) home page file `home.html.haml` under `app/views/pages directory`.
 
 Remove the comments from the `routes.rb` file which is located under the `config` directory and add the following line in order to have our home page being rendered as the root path of the application:
-{% highlight ruby %}
+```ruby
 root to:  'pages#home'
-{% endhighlight %}
+```
 
 ![](https://3.bp.blogspot.com/-gwItCMa5ZCs/UqIPWv2_qkI/AAAAAAAAAhg/GMCH_-BxWl4/s1600/15.png)
 
@@ -298,7 +298,7 @@ Let's edit our layout to add some cool "bootstrapish" stuff.
 
 We will add a hero unit with our application's name. If we didn't use haml, we would add something like:
 
-{% highlight erb %}
+```erb
 <div class="row-fluid">
   <div class="span10 offset1">
     <div class="hero-unit">
@@ -307,11 +307,11 @@ We will add a hero unit with our application's name. If we didn't use haml, we w
     </div>
   </div>
 </div>
-{% endhighlight %}
+```
 
 The equivalent haml:
 
-{% highlight haml %}
+```haml
 .row-fluid
   .span10.offset1
     .hero-unit.text-center
@@ -319,7 +319,7 @@ The equivalent haml:
         ToDo
       %p
         Welcome to the tutorial's ToDo application
-{% endhighlight %}
+```
 
 So our `application.haml.html` now looks like:
 ![](https://4.bp.blogspot.com/-zJ_c6MVCtHg/UqJvjSeMqbI/AAAAAAAAAkk/z2nPrgAmn08/s1600/24.png)
@@ -329,14 +329,14 @@ In order to have the Boostrap magic enabled:
 *   rename the `application.css` file which is located under `app/assets/stylesheets` to `application.css.scss`
 *   add the following line to the bottom of the file:  
 
-{% highlight css %}
+```css
 @import  'bootstrap';
-{% endhighlight %}
+```
 
 *   in `application.js` which is located under `app/assets/javascript` add the following before the line `//require_tree .`
-{% highlight js %}
+```js
 //= require bootstrap
-{% endhighlight %}
+```
 
 Done. Refresh your browser and you should see this:
 
@@ -346,14 +346,14 @@ Time to add some task functionality.
 
 In our home action of the pages controller we will keep all of our tasks in an instance variable named `@tasks`:
 
-{% highlight ruby %}
+```ruby
 def home
   @tasks = Task.all
 end
-{% endhighlight %}
+```
 
 and now we have them available to our view. We are going to show a table with all the tasks and an appropriate message if none exists. Add the following to your home.html.haml:
-{% highlight haml %}
+```haml
 .container
   - if @tasks.empty?
     %span.text-warning There are no tasks!
@@ -371,7 +371,7 @@ and now we have them available to our view. We are going to show a table with al
               %strong= task.title
             %td.text-info= task.created_at
             %td.text-success= task.completed
-{% endhighlight %}
+```
 
 If you refresh you browser now, you should be seeing this:  
 
@@ -386,15 +386,15 @@ We created our pages controller in order to handle the **static** pages of the a
 On the other hand, now, we need to create a controller for managing our model(resource) `Task`. We want this controller to handle actions (view, create, new, update & destroy) on our model. This kind of controllers is described as resourceful.
 
 Rails helps us route these actions all at once with the resources method in our `routes.rb` file. By default, this method will route all available actions ([see here](http://guides.rubyonrails.org/routing.html#crud-verbs-and-actions)) but we can limit them to our needs as you'll see below. Add this line to `routes.rb`:
-{% highlight ruby %}
+```ruby
 resources :tasks
-{% endhighlight %}
+```
 
 Now, from the command line execute this command to view the current routes:
 
-{% highlight bash %}
+```bash
 rake routes
-{% endhighlight %}
+```
 
 ![](https://4.bp.blogspot.com/-AVUtMl8E_BI/UqIrZx38edI/AAAAAAAAAiw/XjJOuQwaJJo/s1600/21.png)
 
@@ -404,9 +404,9 @@ We actually want all of them except the index since we are going to display our 
 
 Change the resources call to the following:
 
-{% highlight ruby %}
+```ruby
 resources :tasks,  except:  [:index]
-{% endhighlight %}
+```
 
 Gone.
 
@@ -414,9 +414,9 @@ Gone.
 
 Also notice that the actions are supposed to belong to a tasks controller(`tasks#action`). Guess what's next:
 
-{% highlight bash %}
+```bash
 rails generate controller tasks
-{% endhighlight %}
+```
 
 We created the tasks controller (`app/controllers/tasks_controller.rb`).
 
@@ -424,34 +424,34 @@ Now it's time to describe what we want to do. On the home page, we want to have 
 We want all these actions to be executed the ajax way and not with redirects to new pages etc...
 
 We will start with the `tasks#new` action. In the tasks controller:
-{% highlight ruby %}
+```ruby
 def new
   @task = Task.new
 end
-{% endhighlight %}
+```
 
 Here we initialize a Task and we keep it at the `@task` instance variable. In our home action, we were rendering a whole page but now we want just a modal with a form inside it to be shown. We will respond with javascript to accomplish this so the corresponding view of the new action won't be a `new.html.haml` but a `new.js.erb` one. Create it under `app/views/tasks`. 
 
 Before continuing, we will add a modal window in the `home.html.haml` so that it is be available in the page for our scripts to access it. Add the following line to the end of you the file:
-{% highlight haml %}
+```haml
 #modal.modal.fade
-{% endhighlight %}
+```
 
 ![](https://3.bp.blogspot.com/-nwVYK7VYcVs/UrHx6dnNLQI/AAAAAAAAAqE/GBIAxL5U6MU/s1600/1.png)
 
 Edit the `new.js.erb` and add the following:
-{% highlight js %}
+```js
 m = $('#modal');
 m.html('Foo');
 m.modal('show');
-{% endhighlight %}
+```
 
 We will correct the code above later but for the time being, let's see how does the modal appear in our page.
 
 We need to add a button/link in the home page for the new action. We can add it to the layout actually so it is available on all pages (even though we are going to have only the home page in this tutorial). Edit the `application.html.haml` file in your text editor and add the following line in the hero unit:
-{% highlight haml %}
+```haml
 = link_to 'New task', new_task_path,  class:  'btn btn-primary'
-{% endhighlight %}
+```
 
 ![](https://1.bp.blogspot.com/-8J-8tiTbj1Q/UqI0G50_MXI/AAAAAAAAAjU/6j1P2ol5PFY/s1600/24.png)
 
@@ -466,9 +466,9 @@ Nice. Press the button.
 Hmmm.. Error... Missing template...
 
 What happened here since we have a view for the **new** action? In simple words, normal clicks of links are requesting the `html` format of our views. We have to request the `js` format and to do so change the link we added to the layout as below:
-{% highlight haml %}
+```haml
 = link_to 'New task', new_task_path, class: 'btn btn-primary', remote: true
-{% endhighlight %}
+```
 
 If you press the button now, you will see a modal with the word *Foo* as its content.
 
@@ -477,7 +477,7 @@ So, if we have a part of a view that we want to use to other places too, we usua
 
 In our case, we will create a partial that will be our form for creating a task. Then, in our `new.js.erb` we are going to replace the *Foo* string with this partial so the modal will display the Task form.
 Partial files start with an underscore so create a file named `_task_form.html.haml` under `app/views/tasks` directory and add the following contents:
-{% highlight haml %}
+```haml
 .modal-header
   %h1 New Task
 = simple_form_for task, class: 'clearfix' do |f|
@@ -487,22 +487,22 @@ Partial files start with an underscore so create a file named `_task_form.html.h
     = f.input :completed
   .modal-footer
     = f.submit 'Save', class: 'btn btn-primary'
-{% endhighlight %}
+```
 
 Also, open the `page.css.scss` file which is under `app/assets/stylesheets` and add the following rule to fix the bottom margin of the form displayed in a modal:
-{% highlight scss %}
+```scss
 .modal form {
   margin-bottom: 0;
 }
-{% endhighlight %}
+```
 
 Finally, let's change the `new.js.erb` in order to render the partial in the modal:
 
-{% highlight erb  %}
+```erb
 m = $('#modal');
 m.html('<%= j(render partial: 'task_form', locals: {task: @task}) %>');
 m.modal('show');
-{% endhighlight %}
+```
 
 And now we can press the button *New task*:
 
@@ -526,9 +526,9 @@ to
 
 We will need a new gem, so add it to the end of your `Gemfile`:
 
-{% highlight ruby %}
+```ruby
 gem  'bootstrap-datepicker-rails'
-{% endhighlight %}
+```
 
 Edit `application.css.scss` which is under `app/assets/stylesheets` and add the following before line  `*= require_tree .`
 
