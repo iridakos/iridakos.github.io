@@ -490,6 +490,7 @@ $ dothis <tab><tab>
 ## Useful links
 
 * [Git's completion script](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
+* [Bash completion for `goto`, one of my shell scripts](https://github.com/iridakos/goto/blob/master/goto.sh)
 * [Bash Reference Manual: Programmable Completion](https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html#Programmable-Completion)
 * [Bash Reference Manual: Programmable Completion Builtins](https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html#Programmable-Completion-Builtins)
 * [Bash Reference Manual: A Programmable Completion Example](https://www.gnu.org/software/bash/manual/html_node/A-Programmable-Completion-Example.html#A-Programmable-Completion-Example)
