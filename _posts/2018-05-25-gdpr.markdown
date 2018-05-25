@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "GDPR"
+description: "GDPR"
+date:   2018-05-25 09:00:00 +0300
+image: "http://iridakos.com/assets/images/posts/gdpr/post.jpg"
+preview: "When another GDPR email is received..."
+category: "humor"
+comments: true
+identifier: "gdpr"
+popular: -1
+show_popular_inline_posts: true
+redirect_from:
+  - /2018/05/25/gdpr.html
+related_posts:
+  - bits
+  - cat-http-status-codes
+  - being-a-developer
+  - mom-dad-i-programmer
+---
+
+When another GDPR email is received...
+
+![GDPR cat]({{site.url}}/assets/images/posts/gdpr/post.jpg)
