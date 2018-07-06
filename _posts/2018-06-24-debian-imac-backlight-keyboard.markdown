@@ -9,7 +9,7 @@ identifier: "debian-backlight-imac"
 show_popular_inline_posts: false
 outline: true
 tags: linux debian imac opensource how-to grub
-popular: 3
+popular: -1
 search_tags: linux, debian, imac, opensource, how-to, grub
 related_posts:
   - elasticsearch-linux-man-pages
