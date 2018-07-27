@@ -555,6 +555,6 @@ Elasticsearch is an awesome and powerful tool. This tutorial was written only to
 * [Elasticsearch ruby gem](https://github.com/elastic/elasticsearch-ruby)
 * [Elasticsearch rails gem](https://github.com/elastic/elasticsearch-rails)
 
-Finally, such a big post without a cat? No. Here's my elastic cat.
+Long post, cat photo. Here's my elastic cat.
 
 ![cat stretching]({{site.url}}/assets/images/posts/elasticsearch-rails/irida-elastic.png)
