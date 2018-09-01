@@ -5,11 +5,12 @@
 
 $font-family-base: 'Roboto', sans-serif;
 
-$brand-primary: #0084B4; /*darken(#428bca, 50%) !default;*/
-$link-color: $brand-primary;
-$navbar-inverse-bg: #2f2f2f;
+$brand-primary: #6d6d6d; /*#0084B4; /*darken(#428bca, 50%) !default;*/
+$link-color: #0084B4;
+$navbar-inverse-bg: #d0d0d0;
 $navbar-inverse-border: darken($navbar-inverse-bg, 2%);
-$iridakos-secondary-color: #ff7e07;
+$iridakos-secondary-color: #6d6d6d; /*#ff7e07;*/
+$headers-color: #bc0909;
 $secondary-text-color: #888;
 $font-size-base:          16px;
 $navbar-inverse-link-color: $iridakos-secondary-color;

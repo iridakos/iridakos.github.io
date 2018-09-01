@@ -1,6 +1,5 @@
 .sidebar {
   margin-top: 10px;
-  border-radius: 3px;
 
   hr {
     border-top: 1px solid rgba(27,31,35,0.15);
@@ -16,21 +15,21 @@
   }
 
   .sidebar-panel {
-    color: #444;
+    color: #777;
     margin-bottom: 15px;
-    background: #fff;
-    border: 1px solid rgba(27,31,35,0.15);
-    border-radius: 5px;
+    border: 0 none;
 
     .panel-heading {
       font-family: $secondary-font-family;
-      background: rgb(246, 248, 250);
-      border-bottom: 1px solid rgba(27,31,35,0.15);
+      background: transparent;
+      color: #666;
+      background-color: darken($headers-color, 10%);
+      border-bottom: 1px solid darken($headers-color, 25%);
+      border-radius: 0;
 
       .panel-title {
+        color: #fff;
         font-size: 16px;
-        font-weight: bold;
-        color: #444;
       }
     }
   }
@@ -40,7 +39,7 @@
   }
 
   .popular-post {
-    border-bottom: 1px solid rgba(27,31,35,0.15);
+    border-bottom: 1px solid darken($navbar-inverse-bg, 5%);
     padding-bottom: 5px;
     margin-bottom: 5px;
 

@@ -12,6 +12,16 @@ body {
   height: 20px;
 }
 
+h2, h3, h4, h5, h6 {
+  display: block;
+  color: darken($headers-color, 5%);
+  margin: 20px 0;
+}
+
+h2 {
+  border-bottom: 1px solid lighten($headers-color, 50%);
+}
+
 .sharing {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -186,8 +196,9 @@ a.about-me {
 }
 
 .page-header {
-  background-color: #0084B4;
-  border: 1px solid darken(#0084B4, 5%);
+  background-color: #606060;/*#0084B4;*/
+  border-top: 1px solid darken(#606060, 5%);
+  border-bottom: 1px solid darken(#606060, 5%);
   padding: 10px 0;
   margin-top: 0;
 
@@ -232,11 +243,12 @@ a.about-me {
 
 .page-link {
   font-size: 18px;
-  text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+  text-shadow: 1px 1px 1px rgba(255,255,255,1);
   background-clip: text;
 
-  &.active {
+  &.active, &:hover {
     color: #fff !important;
+    text-shadow: 1px 1px 1px rgba(122,122,122,1);
   }
 }
 
@@ -248,11 +260,12 @@ a.about-me {
 
   .navbar-brand {
     font-size: 18px;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 1px rgba(255,255,255,1);
     background-clip: text;
 
-    &.active {
+    &.active, &:hover {
       color: #fff !important;
+      text-shadow: 1px 1px 1px rgba(122,122,122,1);
     }
 
     img {
