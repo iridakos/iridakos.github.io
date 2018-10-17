@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Creating a simple ToDo application with Ruby on Rails - Part 4"
 description: "Last part of the tutorial creating a simple ToDo application with Ruby on Rails."
 date:   2013-12-22 10:00:00 +0300
@@ -9,7 +9,14 @@ outline: true
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "todo-part-4"
 popular: -1
-tags: ruby rails tutorial todo application mvc
+tags:
+  - ruby
+  - rails
+  - tutorial
+  - todo
+  - application
+  - developers
+  - mvc
 show_popular_inline_posts: true
 redirect_from:
   - /2013/12/22/creating-a-simple-todo-part-4.html

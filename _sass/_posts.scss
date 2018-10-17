@@ -1,74 +1,53 @@
-.post-container {
-  margin-bottom: 20px;
-  border-bottom: 1px solid #eeeeee;
-
-  &:last-child {
-    border-bottom: 0 none;
-  }
-
-  .post-metadata {
-    font-size: 85%;
-    color: #888;
-  }
-
+.post {
   .post-title {
-    font-size: 20px;
+    font-size: 120%;
     font-weight: bold;
-    font-family: $secondary-font-family;
-    margin-bottom: 5px;
   }
 
   .post-preview {
-    color: #555;
-    margin-bottom: 20px;
+    p {
+      margin-bottom: 5px;
+    }
+  }
+
+  & + .post {
+    margin-top: 20px;
+  }
+
+  .post-metadata {
+    color: $gray-600;
+    font-size: 80%;
+
+    .post-date {
+      display: inline-block;
+    }
+
+    .post-category {
+      display: inline-block;
+    }
   }
 
   .post-tags {
-    color: #888;
+    color: $iridakos;
     font-size: 80%;
-    font-weight: bold;
-    margin-top: -10px;
-    margin-bottom: 20px;
-
-    .post-tag {
-      font-weight: normal;
-    }
   }
 }
 
-.related-posts {
-  margin-top: 10px;
-
-  .title {
-    font-size: 20px;
-    font-weight: bold;
-    color: $iridakos-secondary-color;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #aaa;
-  }
-
-  a {
-    &:focus, &:hover, &:visited {
-      color: $brand-primary;
-    }
-  }
-
-  .related-post {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-
-    .post-category {
-      font-size: 80%;
-      color: #ccc;
-    }
-
-    .post-description {
-      margin-top: 5px;
-      color: $secondary-text-color;
-    }
+.posts-container {
+  hr:last-child {
+    display: none;
   }
 }
 
-.post-footer {
-  margin-top: 20px;
+.page-title-container {
+  .post {
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px solid lighten($iridakos, 20%);
+
+    .post-metadata, .post-tags, .post-tags i {
+      color: $iridakos;
+      font-size: 70%;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Being a developer"
 date:   2015-06-21 10:00:00 +0300
 description: "How is the life of a developer like."
@@ -9,7 +9,8 @@ image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "being-a-developer"
 outline: true
 popular: -1
-tags: developers
+tags:
+  - developers
 show_popular_inline_posts: true
 redirect_from:
   - /2015/06/21/being-a-developer.html

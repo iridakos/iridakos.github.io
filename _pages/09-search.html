@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 menu_title: search
 title: "search"
 permalink: /search/
@@ -10,25 +10,19 @@ search_js: true
 ---
 
 <form class="form-horizontal" id="search_form" data-search-page-url="/search">
-    <div class="form-group">
-        <div class="col-xs-8 col-xs-offset-2 col-md-offset-0">
-            <div class="input-group">
-                <input type="text" id="search_field" class="form-control search" placeholder="Search this blog for...">
+  <div class="input-group input-group-lg mr-sm-2">
+    <input id="search_field" class="form-control" name="query" type="search" placeholder="Search the blog">
 
-                <span class="input-group-btn">
-                    <button id="search_button" class="btn btn-default" type="submit">Search</button>
-                </span>
-            </div>
-        </div>
+    <div class="input-group-append">
+      <button class="btn btn-warning" type="submit" id="search_button">
+        <i class="fa fa-search"></i>
+      </button>
     </div>
+  </div>
 </form>
 
-<div class="row">
-    <div class="col-xs-12 posts-container">
-        <div class="search-results">
+<br>
 
-        </div>
-    </div>
+<div class="search-results posts-container">
+
 </div>
-
-<script src="/assets/javascripts/search.js" type="text/javascript"></script>

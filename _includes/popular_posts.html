@@ -1,23 +1,20 @@
-<div class="sidebar-panel">
-    <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-comments" aria-hidden="true"></i> most visited</h3>
-    </div>
+<div class="sidebar-section">
+  <div class="section-title">
+    popular posts
+  </div>
 
-    <div class="panel-body">
-        {% assign items = (site.posts | sort: 'popular') %}
-        {% for my_post in items %}
-          {% if my_post.popular > 0 %}
-            <div class="popular-post">
-              <a href="{{ my_post.url | replace: '.html', '' }}"
-                 class="ga-event-link"
-                 data-event-category="Popular posts"
-                 data-event-action="click"
-                 data-event-label="{{my_post.title}}">{{ my_post.title }}</a>
-              {% if my_post.category %}
-                <span class="post-category">| {{ my_post.category }}</span>
-              {% endif %}
-            </div>
-          {% endif %}
-        {% endfor %}
-    </div>
+  <div class="section-content">
+    {% assign items = (site.posts | sort: 'popular') %}
+    {% for my_post in items %}
+      {% if my_post.popular > 0 %}
+        <div class="section-item">
+          <a href="{{ my_post.url | replace: '.html', '' }}"
+             class="ga-event-link"
+             data-event-category="Popular posts"
+             data-event-action="click"
+             data-event-label="{{my_post.title}}">{{ my_post.title }}</a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
 </div>

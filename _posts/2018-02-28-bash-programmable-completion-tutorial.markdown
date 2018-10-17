@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Creating a bash completion script"
 description: "A tutorial for creating a bash completion script"
 date: 2018-03-01 03:00:00 +0300
@@ -8,9 +8,13 @@ category: "tutorials"
 identifier: "bash-completion-script"
 show_popular_inline_posts: true
 outline: true
-tags: bash linux programmable-completion opensource tutorial
+tags:
+  - bash
+  - linux
+  - programmable-completion
+  - opensource
+  - tutorial
 popular: 1
-search_tags: linux, bash, completion, programmable
 related_posts:
   - todo-gtk-plus-ruby-tutorial
 ---

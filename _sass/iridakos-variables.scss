@@ -1,0 +1,13 @@
+$primary: #b86c00;
+
+$iridakos: #6b5029;
+$iridakos-secondary: #ffffa5;
+
+$container-max-widths: (
+  sm: 100%,
+  md: 100%,
+  lg: 100%,
+  xl: 1200px
+);
+
+$dark: darken($iridakos, 10%);

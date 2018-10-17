@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "How to create a favicon from an image"
 description: "Quickly create a favicon with imagemagick from an image (png, jpg etc)."
 date:   2017-11-21 00:15:00 +0300
@@ -7,7 +7,13 @@ image: "http://iridakos.com/assets/images/irida-grey.png"
 preview: "Quickly create a favicon with imagemagick from an image (png, jpg etc)"
 category: "how-to"
 popular: -1
-tags: favicon website icon imagemagick how-to tips
+tags:
+  - favicon 
+  - website 
+  - icon 
+  - imagemagick 
+  - how-to 
+  - tips
 identifier: "faviconicious"
 comments: true
 hidden: true

@@ -4,30 +4,58 @@
   <body>
     {% include header.html %}
 
-    {{ content }}
+    <div class="container no-gutters">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-9">
+          {% if page.outline %}
+              <div class="pull-right">
+                    <a class="ga-event-link btn btn-outline-primary btn-sm outline-button collapsed"
+                      data-event-label="{{ page.title }}"
+                      data-event-category="Document outline"
+                      data-event-action="click"
+                      title="View the structure of this document"
+                      role="button"
+                      data-toggle="collapse"
+                      href="#docout"
+                      aria-expanded="false"
+                      aria-controls="collapse">
+                      Table of contents
+                      <i class="fa iridakos-collapse"></i>
+                    </a>
+              </div>
+          {% endif %}
 
-    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title text-capitalize"></h4>
-                </div>
-                <div class="modal-body text-center">
-                    <div class="image-container">
-                        <img class="image" />
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
+          {% if page.outline %}
+            <div id="docout" class="collapse">
+
+            </div>
+
+            <div class="outline page-content">
+              {{ content }}
+            </div>
+          {% else %}
+            <div class="page-content">
+              {{ content }}
+            </div>
+          {% endif %}
+
+          {% if page.is_post %}
+            {% include related_posts.html %}
+          {% endif %}
+
+
+        </div>
+
+        <div class="col">
+          {% include sidebar.html %}
+        </div>
+      </div>
     </div>
 
+
+    {% include image-modal.html %}
     {% include footer.html %}
     {% include analytics.html %}
     {% include javascripts.html %}
   </body>
-
 </html>

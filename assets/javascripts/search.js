@@ -5,7 +5,8 @@ $(function() {
   }
 
   var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+    var input = window.location.search.substring(1).replace(/\+/, ' ');
+    var sPageURL = decodeURIComponent(input),
     sURLVariables = sPageURL.split('&'),
     sParameterName,
     i;
@@ -38,7 +39,7 @@ $(function() {
     $results.html('');
 
     $.each(window.searchData, function(a,b){
-      var target = [b.title, b.description, b.search_tags, b.tags, b.categories, b.tutorials].join(' ');
+      var target = [b.title, b.description, b.tags, b.categories, b.tutorials].join(' ');
       var match = target.match(regex);
 
       if (match != null) {
@@ -50,13 +51,29 @@ $(function() {
   var createResult = function (searchResult) {
     var $results = $('.search-results');
 
-    var $container = $('<div class="post-container"></div>'),
+    var $container = $('<div class="post"></div>'),
     $title = $('<div class="post-title"></div>'),
     $link = $('<a href="' + searchResult.url + '">' + searchResult.title + '</a>')
-    $meta = $('<div class="post-metadata"><small>' + searchResult.date + ' | ' + searchResult.categories + '</small></div>'),
+    $meta = $('<div class="post-metadata"><div class="post-date" title="published on">' + searchResult.date + '</div> @ <div class="post-category" title="at category">' + searchResult.categories + '</div></div>'),
     $preview = $('<div class="post-preview">' + htmlDecode(searchResult.description) + '</div>');
 
-    $results.append($container.append($meta).append($title.append($link)).append($preview));
+    if (searchResult.tags.length > 0) {
+      var tagsContainer = $('<div class="post-tags"></div>');
+      tagsContainer.append($('<i class="fa fa-tags"></i>'));
+
+      $.each(searchResult.tags, function(i, tag) {
+        tagsContainer.append($('<a href="/tags/?tag='+ tag + '" class="ga-event-link" data-event-label="' + tag + '" data-event-action="click" data-event-category="tags">' + tag + '</a>'));
+        if (i < searchResult.tags.length - 1) {
+          tagsContainer.append("<span> - </span>");
+        }
+      });
+
+      $preview.append(tagsContainer);
+    }
+
+    $container.append($meta).append($title.append($link)).append($preview);
+    $results.append($container);
+    $results.append($('<hr class="separator">'));
   }
 
   var query = getUrlParameter('query'),
@@ -73,7 +90,11 @@ $(function() {
     window.searchData = undefined;
 
     if ($searchField.val()) {
-      fetchResults($searchField.val());
+      var q = $.trim($searchField.val());
+
+      window.history.pushState("Search submit", "This is a new title", "/search?query=" + encodeURIComponent(q));
+      fetchResults(q);
+      $searchField.val(q);
     }
   });
 

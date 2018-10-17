@@ -1,24 +1,9 @@
 <!DOCTYPE html>
 <html>
     {% include head.html %}
-    <body class="error">
-        <div class="container">
-            <div class="grid-x grid-margin-x">
-                <div class="row">
-                    <div class="col-xs-12">
-                        {{ content }}
-
-                        <div class="irida">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center">
-            {% include footer.html %}
-        </div>
-
-        {% include error_analytics.html %}
+    <body>
+    {{ content }}
+    {% include footer.html %}
+    {% include error_analytics.html %}
     </body>
 </html>

@@ -1,12 +1,14 @@
 ---
-layout: post
+layout: default
 title:  "Learning Ruby - Don't give up"
 description: "This is my very first post ever published and it is about learning this amazing language, Ruby."
 date:   2013-11-08 10:00:00 +0300
 category: "ruby"
 comments: true
 outline: true
-tags: ruby developers
+tags:
+  - ruby
+  - developers
 popular: -1
 show_popular_inline_posts: true
 identifier: "learning-ruby"

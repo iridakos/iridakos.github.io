@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Creating a Linux Desktop application with Ruby"
 description: "A tutorial for creating a simple GTK ToDo application with Ruby"
 date: 2018-01-25 22:00:00 +0300
@@ -9,7 +9,13 @@ identifier: "todo-gtk-plus-ruby-tutorial"
 show_popular_inline_posts: true
 outline: true
 comments: true
-tags: linux gtk ruby desktop opensource tutorial
+tags:
+  - linux
+  - gtk
+  - ruby
+  - desktop
+  - opensource
+  - tutorial
 popular: 2
 related_posts:
   - bash-completion-script

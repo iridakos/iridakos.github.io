@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "How to add a custom HTTP header in Rails"
 description: "Set custom HTTP headers in responses of a Ruby on Rails application."
 date:   2018-03-28 00:15:00 +0300
@@ -7,7 +7,12 @@ image: "http://iridakos.com/assets/images/irida-grey.png"
 preview: "Set custom HTTP headers in responses of a Ruby on Rails application."
 category: "how-to"
 popular: -1
-tags: ruby rails how-to http headers
+tags:
+  - ruby
+  - rails
+  - how-to
+  - http
+  - headers
 identifier: "custom-http-headers"
 comments: true
 redirect_from:

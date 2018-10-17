@@ -1,16 +1,20 @@
 ---
-layout: post
+layout: default
 title:  "Change brightness with the function keys on iMac running Debian"
 description: "Steps I had to follow to be able to change my iMac's brightness using the function keys on Debian"
 date: 2018-06-24 18:00:00 +0300
 image: "https://iridakos.com/assets/images/posts/debian-backlight/brightness.jpg"
 category: "how-to"
 identifier: "debian-backlight-imac"
-show_popular_inline_posts: false
 outline: true
-tags: linux debian imac opensource how-to grub
+tags:
+  - linux
+  - debian
+  - imac
+  - opensource
+  - how-to
+  - grub
 popular: -1
-search_tags: linux, debian, imac, opensource, how-to, grub
 related_posts:
   - elasticsearch-linux-man-pages
   - bash-completion-script

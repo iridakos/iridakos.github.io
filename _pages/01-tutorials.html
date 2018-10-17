@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 menu_title: tutorials
 title: tutorials
 permalink: /tutorials/
@@ -13,11 +13,12 @@ subtitle: my programming tutorials for Ruby, Rails, Gtk, Elasticsearch etc.
       {% if my_post.category %}
         {% if my_post.category == 'tutorials' %}
           {% include _post.html post=my_post hide_category=true %}
+          <hr class="separator">
         {% endif %}
       {% endif %}
     {% endfor %}
 </div>
 
-<div class="sharing" style="text-align: right">
-  Subscribe only to <a class="ga-event-link" data-event-label="{{ page.title }}" data-event-category="Subscribe only to tutorial RSS" data-event-action="click" href="{{ "/feeds/tutorials.xml" | prepend: site.baseurl }}">tutorial posts RSS <i class="fa fa-rss"></i></a>
+<div class="alert alert-primary iridakos-alert">
+  Subscribe to <a class="alert-link ga-event-link" data-event-label="{{ page.title }}" data-event-category="Subscribe only to tutorial RSS" data-event-action="click" href="{{ "/feeds/tutorials.xml" | prepend: site.baseurl }}">tutorial posts via RSS <i class="fa fa-rss"></i></a>
 </div>

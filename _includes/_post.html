@@ -1,15 +1,25 @@
-<div class="post-container">
-    <div class="post-metadata">
-        <small><span class="post-meta">{{ include.post.date | date: "%b %-d, %Y" }}</span>{% if include.hide_category != true %}<span class="post-category"> <span class="separator">|</span> {{ include.post.category }}</span>{% endif %}</small>
+<div class="post">
+  <div class="post-metadata">
+    <div class="post-date" title="published on">
+      {{ include.post.date | date: "%b %-d, %Y" }}
     </div>
 
-    <div class="post-title">
-        <a href="{{ include.post.url | prepend: site.baseurl | replace: '.html', '' }}">
-          {{ include.post.title }}
-        </a>
-    </div>
+    {% if include.hide_category != true %}
+      <span class="separator">@</span>
 
-    <div class="post-preview" data-goto="{{ include.post.url | prepend: site.baseurl | replace: '.html', '' }}">
+      <div class="post-category" title="at category">
+        {{ include.post.category }}
+      </div>
+    {% endif %}
+  </div>
+  <div class="post-title">
+    <a href="{{ include.post.url | prepend: site.baseurl | replace: '.html', '' }}">
+      {{ include.post.title }}
+    </a>
+  </div>
+
+  <div class="post-preview">
+    <div data-goto="{{ include.post.url | prepend: site.baseurl | replace: '.html', '' }}">
       {% if include.post.preview %}
         {{ include.post.preview }}
       {% else %}
@@ -20,10 +30,11 @@
     {% assign tag_size = include.post.tags | size %}
     {% if tag_size > 0 %}
       <div class="post-tags">
-        tags:
+        <span class="">tags:</span>
         {% for tag in include.post.tags %}
-          <a href="/tags/?tag={{tag}}" class="post-tag ga-event-link" data-event-label="{{ tag }}" data-event-action="click" data-event-category="tags">{{ tag }}</a>{% if forloop.last != true %}<span class="separator"> - </span>{% endif %}
+          <a href="/tags/?tag={{tag}}" class="ga-event-link" data-event-label="{{ tag }}" data-event-action="click" data-event-category="tags">{{ tag }}</a>{% if forloop.last != true %} - {% endif %}
         {% endfor %}
       </div>
     {% endif %}
+  </div>
 </div>

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Rails sample API &amp; UI application consuming it"
 date:   2015-06-21 10:00:00 +0300
 comments: true
@@ -7,7 +7,12 @@ category: "news"
 image: "http://iridakos.com/assets/images/irida-grey.png"
 identifier: "rails-sample-api-ui"
 show_popular_inline_posts: true
-tags: code tutorial sample api developers
+tags:
+  - code
+  - tutorial
+  - sample
+  - api
+  - developers
 redirect_from:
   - /2015/06/21/rails-sample-api-ui.html
 related_posts:

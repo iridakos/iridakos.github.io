@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Creating a simple ToDo application with Ruby on Rails - Part 2"
 description: "Second part of the tutorial creating a simple ToDo application with Ruby on Rails."
 date:   2013-12-17 10:00:00 +0300
@@ -7,7 +7,14 @@ category: "tutorials"
 comments: true
 outline: true
 popular: -1
-tags: ruby rails tutorial todo application developers mvc
+tags:
+  - ruby
+  - rails
+  - tutorial
+  - todo
+  - application
+  - developers
+  - mvc
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "todo-part-2"
 show_popular_inline_posts: true

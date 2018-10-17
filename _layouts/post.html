@@ -2,88 +2,20 @@
 layout: default
 ---
 
-<div class="page-header">
-  <div class="container">
-      <div class="row">
-          <div class="col-xs-12">
-            {% if page.outline %}
-                <div class="pull-right outline-button">
-                      <a class="ga-event-link btn btn-default"
-                        data-event-label="{{ page.title }}" data-event-category="Document outline" data-event-action="click"
-                        title="View the structure of this document"
-                        role="button" data-toggle="collapse" href="#collapse" aria-expanded="false" aria-controls="collapse">
-                        outline
-                      </a>
-                </div>
-            {% endif %}
+<div {% if page.outline %}id="outline"{% endif %}>
+  <article itemscope itemtype="http://schema.org/BlogPosting">
+    <div itemprop="articleBody">
+      {{ content }}
 
-            <h1>{{ page.title }}</h1>
-            <small><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y - %H:%M" }}</time> {% if page.category %}| <span itemprop="">{{ page.category }}</span> {% endif %}</small>
-
-            {% assign tag_size = page.tags | size %}
-            {% if tag_size > 0 %}
-              <div class="tags">
-                Tags:
-                <span class="tags-container">
-                  {% for tag in page.tags %}
-                    <a href="/tags/?tag={{tag}}" class="post-tag ga-event-link" data-event-label="{{ tag }}" data-event-action="click" data-event-category="tags">{{ tag }}</a>{% if forloop.last != true %}<span class="separator"> - </span>{% endif %}
-                  {% endfor %}
-                </span>
-              </div>
-            {% endif %}
-          </div>
-      </div>
-  </div>
-</div>
-
-<div class="container" {% if page.outline %}id="outline"{% endif %}>
-    <div class="row">
-        <div class="col-xs-12 col-md-9">
-          <div class="row">
-            <div class="col-xs-12 page-content">
-
-                <div class="row">
-                    <div class="col-xs-12">
-
-                    </div>
-                </div>
-
-                {% if page.outline %}
-                    <div class="panel panel-default collapse" id="collapse">
-                        <div class="panel-heading">
-                            <strong class="panel-title">Outline</strong>
-                        </div>
-
-                        <div class="panel-body" id="docout">
-
-                        </div>
-                    </div>
-                {% endif %}
-
-
-                <article itemscope itemtype="http://schema.org/BlogPosting">
-                  <div itemprop="articleBody">
-                    {{ content }}
-
-                    {% include publish-info.html post=page %}
-                  </div>
-                </article>
-            </div>
-
-            <div class="col-xs-12 post-footer">
-              {% include related_posts.html %}
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-md-3">
-          <div class="sticky sidebar">
-            {% include news.html %}
-
-            {% include popular_posts.html %}
-
-            {% include share-page.html %}
-          </div>
-        </div>
+      {% include publish-info.html post=page %}
     </div>
+  </article>
 </div>
+
+{% include related_posts.html %}
+
+{% include news.html %}
+
+{% include popular_posts.html %}
+
+{% include share-page.html %}

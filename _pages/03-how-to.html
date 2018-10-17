@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 menu_title:  how to
 title: how to
 category_match: how-to
@@ -16,6 +16,7 @@ redirect_from:
       {% if my_post.category %}
         {% if my_post.category == 'how-to' %}
           {% include _post.html post=my_post hide_category=true %}
+          <hr class="separator">
         {% endif %}
       {% endif %}
     {% endfor %}

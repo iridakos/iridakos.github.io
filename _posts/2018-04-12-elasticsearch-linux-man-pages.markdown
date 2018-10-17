@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Full text searching Linux man pages with Elasticsearch"
 description: "Playing around with Elasticsearch and Linux man pages"
 date: 2018-04-12 19:00:00 +0300
@@ -8,9 +8,14 @@ category: "tutorials"
 identifier: "elasticsearch-linux-man-pages"
 show_popular_inline_posts: true
 outline: true
-tags: elasticsearch linux man-pages opensource tutorial ruby
+tags:
+  - elasticsearch
+  - linux
+  - man-pages
+  - opensource
+  - tutorial
+  - ruby
 popular: 3
-search_tags: elasticsearch, linux, man-pages, opensource, tutorial, ruby
 related_posts:
   - elasticsearch-rails-tutorial
 ---

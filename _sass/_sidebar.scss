@@ -1,61 +1,53 @@
 .sidebar {
-  margin-top: 10px;
+  background: lighten($iridakos-secondary, 10%);
+  box-shadow: 0 0 8px rgba(107, 80, 41, 0.5);
 
-  hr {
-    border-top: 1px solid rgba(27,31,35,0.15);
-    margin: 5px 0;
+  a, a:visited, a:hover {
+    color: $blue;
   }
 
-  a {
-    color: lighten(#0084B4, 10%);
-  }
+  .sidebar-section {
+    font-size: 90%;
 
-  .sticky {
-    margin-top: 10px;
-  }
+    .section-title {
+      font-family: "Indie Flower";
+      font-size: 130%;
+      font-weight: 600;
+      padding: 2px 10px;
+      color: $iridakos;
+    }
 
-  .sidebar-panel {
-    color: #777;
-    margin-bottom: 15px;
-    border: 0 none;
+    .section-content {
+      margin-top: 5px;
+      padding: 0 10px;
+      border-top: 0 none;
 
-    .panel-heading {
-      font-family: $secondary-font-family;
-      background: transparent;
-      color: #666;
-      background-color: darken($headers-color, 10%);
-      border-bottom: 1px solid darken($headers-color, 25%);
-      border-radius: 0;
+      .section-item {
+        & + .section-item {
+          margin-top: 5px;
+          padding-top: 5px;
+          border-top: 1px solid lighten($iridakos, 50%);
 
-      .panel-title {
-        color: #fff;
-        font-size: 16px;
+          img.logo {
+            max-height: 20px;
+            display: inline;
+          }
+        }
       }
     }
-  }
 
-  p.no-margin {
-    margin-bottom: 2px;
-  }
-
-  .popular-post {
-    border-bottom: 1px solid darken($navbar-inverse-bg, 5%);
-    padding-bottom: 5px;
-    margin-bottom: 5px;
-
-    .post-category {
-      font-size: 80%;
-      color: #afafaf;
+    & + .sidebar-section {
+      margin-top: 10px;
     }
 
     &:last-child {
-      border-bottom: 0 none;
+      padding-bottom: 5px;
     }
   }
+}
 
-  .share-link {
-    i {
-      padding-right: 5px;
-    }
+@media (max-width: map-get($grid-breakpoints, "md")) {
+  .sidebar {
+    margin-top: 20px;   
   }
 }

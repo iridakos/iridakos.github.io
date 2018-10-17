@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Saying hello world with Ruby on Rails"
 description: "This is a tutorial for creating the classic hello world application with Ruby on Rails."
 date:   2013-11-24 10:00:00 +0300
@@ -8,7 +8,14 @@ category: "tutorials"
 comments: true
 outline: true
 popular: -1
-tags: ruby rails tutorial todo application hello-world developers
+tags:
+  - ruby
+  - rails
+  - tutorial
+  - todo
+  - application
+  - hello world
+  - developers
 show_popular_inline_posts: true
 identifier: "hello-ruby-rails"
 redirect_from:

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Testing execution of filters with RSpec"
 description: "How to test the execution of controller filters with RSpec."
 date:   2014-10-14 10:00:00 +0300
@@ -9,7 +9,13 @@ comments: true
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "testing-exec-filters-rspec"
 outline: true
-tags: rspec rails ruby controllers mvc testing
+tags:
+  - rspec
+  - rails
+  - ruby
+  - controllers
+  - mvc
+  - testing
 popular: -1
 show_popular_inline_posts: true
 redirect_from:

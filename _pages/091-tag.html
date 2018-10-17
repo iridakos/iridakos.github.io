@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 menu_title: tags
 title: "tags"
 permalink: /tags/
@@ -9,35 +9,24 @@ subtitle: browse posts via their tags
 tag_js: true
 ---
 
-<div class="row">
-    <div class="col-xs-12 posts-container">
-        <div class="tag-results">
+<div class="tag-results posts-container">
 
-        </div>
-    </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-12 posts-container">
-      <div class="tags-container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Available tags</h3>
-          </div>
-          <div class="panel-body">
-            {% assign all_tags = '' | split: '' %}
+<div class="alert alert-primary iridakos-alert">
+  <h3>All tags</h3>
 
-            {% for post in site.posts %}
-              {% assign all_tags = all_tags | concat: post.tags %}
-            {% endfor %}
+  <div class="tags">
+    {% assign all_tags = '' | split: '' %}
 
-            {% assign all_tags = all_tags | uniq | sort %}
+    {% for post in site.posts %}
+      {% assign all_tags = all_tags | concat: post.tags %}
+    {% endfor %}
 
-            {% for tag in all_tags %}
-              <a class="post-tag ga-event-link" data-event-label="{{ tag }}" data-event-action="click" data-event-category="tags" href="/tags/?tag={{tag}}">{{tag}}</a>{% if forloop.last != true %}<span class="separator"> - </span>{% endif %}
-            {% endfor %}
-          </div>
-        </div>
-      </div>
+    {% assign all_tags = all_tags | uniq | sort %}
+
+    {% for tag in all_tags %}
+      <a class="alert-link ga-event-link" data-event-label="{{ tag }}" data-event-action="click" data-event-category="tags" href="/tags/?tag={{tag}}">{{tag}}</a>{% if forloop.last != true %}{% endif %}
+    {% endfor %}
   </div>
 </div>

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 menu_title: humor
 title: humor
 permalink: /humor/
@@ -13,6 +13,7 @@ subtitle: some of my attempts to make humor
       {% if my_post.category %}
         {% if my_post.category == 'humor' %}
           {% include _post.html post=my_post hide_category=true %}
+          <hr class="separator">
         {% endif %}
       {% endif %}
     {% endfor %}

@@ -47,7 +47,7 @@ $(function() {
     $results.html('');
 
     $.each(window.tagData, function(a,b){
-      var match = b.tags.match(query);
+      var match = b.tags.join(' ').match(query);
 
       if (match != null) {
         found = true;
@@ -63,13 +63,29 @@ $(function() {
   var createResult = function (searchResult) {
     var $results = $('.tag-results');
 
-    var $container = $('<div class="post-container"></div>'),
+    var $container = $('<div class="post"></div>'),
     $title = $('<div class="post-title"></div>'),
     $link = $('<a href="' + searchResult.url + '">' + searchResult.title + '</a>')
-    $meta = $('<div class="post-metadata"><small>' + searchResult.date + ' | ' + searchResult.categories + '</small></div>'),
+    $meta = $('<div class="post-metadata"><div class="post-date" title="published on">' + searchResult.date + '</div> @ <div class="post-category" title="at category">' + searchResult.categories + '</div></div>'),
     $preview = $('<div class="post-preview">' + htmlDecode(searchResult.description) + '</div>');
 
-    $results.append($container.append($meta).append($title.append($link)).append($preview));
+    if (searchResult.tags.length > 0) {
+      var tagsContainer = $('<div class="post-tags"></div>');
+      tagsContainer.append($('<span class="important">tags: </span>'));
+
+      $.each(searchResult.tags, function(i, tag) {
+        tagsContainer.append($('<a href="/tags/?tag='+ tag + '" class="ga-event-link" data-event-label="' + tag + '" data-event-action="click" data-event-category="tags">' + tag + '</a>'));
+        if (i < searchResult.tags.length - 1) {
+          tagsContainer.append("<span> - </span>");
+        }
+      });
+
+      $preview.append(tagsContainer);
+    }
+
+    $container.append($meta).append($title.append($link)).append($preview);
+    $results.append($container);
+    $results.append($('<hr class="separator">'));
   }
 
   var updateHeader = function (tag_name) {

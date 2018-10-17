@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "DuckRails v2.0.0 docker image"
 description: "News: DuckRails can now be used via its own docker image."
 date:   2017-11-10 00:05:00 +0300
@@ -10,7 +10,12 @@ identifier: "duckrails-docker-image"
 outline: true
 show_popular_inline_posts: true
 popular: -1
-tags: opensource developers tools github api
+tags:
+  - opensource 
+  - developers 
+  - tools 
+  - github 
+  - api
 redirect_from:
   - /2017/11/10/duckrails-docker-image.html
 related_posts:

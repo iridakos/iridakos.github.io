@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Rails radio buttons and required boolean attributes"
 description: "How to deal with required boolean attributes and radio buttons in Ruby on Rails."
 date:   2014-10-14 10:00:00 +0300
@@ -9,7 +9,10 @@ comments: true
 image: "https://iridakos.com/assets/images/irida-favicon.png"
 identifier: "rails-radio-buttons-required-boolean"
 outline: true
-tags: rails ruby hack
+tags:
+  - rails
+  - ruby
+  - hack
 popular: -1
 show_popular_inline_posts: true
 redirect_from:

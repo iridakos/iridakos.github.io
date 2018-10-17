@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "Using elasticsearch in a Rails application"
 description: "A tutorial to integrate with elasticsearch in a Ruby on Rails application."
 date: 2017-12-03 09:30:00 +0300
@@ -8,7 +8,11 @@ category: "tutorials"
 identifier: "elasticsearch-rails-tutorial"
 show_popular_inline_posts: true
 outline: true
-tags: ruby rails elasticsearch tutorial
+tags:
+  - ruby
+  - rails
+  - elasticsearch
+  - tutorial
 comments: true
 popular: 2
 related_posts:
