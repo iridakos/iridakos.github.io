@@ -1,58 +1,60 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  {% if page.is_home %}
-    {% assign menu_class = 'active' %}
-  {% else %}
-    {% assign menu_class = '' %}
-  {% endif %}
+  <div class="container-fluid no-gutters">
+    {% if page.is_home %}
+      {% assign menu_class = 'active' %}
+    {% else %}
+      {% assign menu_class = '' %}
+    {% endif %}
 
-  <a class="navbar-brand {{ menu_class }}" href="/" alt="home"><img src="/assets/images/irida-favicon-grey.png">
-    home
-  </a>
+    <a class="navbar-brand {{ menu_class }}" href="/" alt="home"><img src="/assets/images/irida-favicon-grey.png">
+      home
+    </a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="header-pages">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      {% for my_page in site.pages %}
-        {% if my_page.show_in_header %}
-          {% if page.is_post %}
-            {% if page.category == my_page.title or page.category == my_page.category_match %}
-              {% assign menu_class = 'active' %}
+    <div class="collapse navbar-collapse" id="header-pages">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        {% for my_page in site.pages %}
+          {% if my_page.show_in_header %}
+            {% if page.is_post %}
+              {% if page.category == my_page.title or page.category == my_page.category_match %}
+                {% assign menu_class = 'active' %}
+              {% else %}
+                {% assign menu_class = '' %}
+              {% endif %}
             {% else %}
-              {% assign menu_class = '' %}
+              {% if page.path == my_page.path %}
+                {% assign menu_class = 'active' %}
+              {% else %}
+                {% assign menu_class = '' %}
+              {% endif %}
             {% endif %}
-          {% else %}
-            {% if page.path == my_page.path %}
-              {% assign menu_class = 'active' %}
-            {% else %}
-              {% assign menu_class = '' %}
-            {% endif %}
+            <li class="nav-item {{ menu_class }}">
+                <a class="nav-link" href="{{ my_page.url | prepend: site.baseurl }}" alt="{{ my_page.title }}">{{ my_page.menu_title }}</a>
+            </li>
           {% endif %}
-          <li class="nav-item {{ menu_class }}">
-              <a class="nav-link" href="{{ my_page.url | prepend: site.baseurl }}" alt="{{ my_page.title }}">{{ my_page.menu_title }}</a>
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+        {% endfor %}
+      </ul>
 
-    <form class="form-inline my-2 my-lg-0" method="get" action="/search">
-      <div class="input-group input-group-sm mr-sm-2">
-        <input class="form-control" name="query" type="search" placeholder="Search the blog">
+      <form class="form-inline my-2 my-lg-0" method="get" action="/search">
+        <div class="input-group input-group-sm mr-sm-2">
+          <input class="form-control" name="query" type="search" placeholder="Search the blog">
 
-        <div class="input-group-append">
-          <button class="btn btn-warning" type="submit">
-            <i class="fa fa-search"></i>
-          </button>
+          <div class="input-group-append">
+            <button class="btn btn-warning" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </nav>
 
 <div class="page-title-container">
-  <div class="container-fluid">
+  <div class="container-fluid no-gutters">
     <div class="page-title">
       <div class="row">
         <div class="col">

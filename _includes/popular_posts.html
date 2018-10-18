@@ -1,24 +1,22 @@
-<div class="sidebar-section">
-  <div class="section-title">
-    popular posts
-    
-    <div class="float-right">
-      <i class="fa fa-thumb-tack"></i>
+<div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-comments"></i> popular posts</h4>
     </div>
-  </div>
 
-  <div class="section-content">
-    {% assign items = (site.posts | sort: 'popular') %}
-    {% for my_post in items %}
-      {% if my_post.popular > 0 %}
-        <div class="section-item">
-          <a href="{{ my_post.url | replace: '.html', '' }}"
-             class="ga-event-link"
-             data-event-category="Popular posts"
-             data-event-action="click"
-             data-event-label="{{my_post.title}}">{{ my_post.title }}</a>
-        </div>
-      {% endif %}
-    {% endfor %}
+    <div class="section-content">
+      {% assign items = (site.posts | sort: 'popular') %}
+      {% for my_post in items %}
+        {% if my_post.popular > 0 %}
+          <div class="section-item">
+            <a href="{{ my_post.url | replace: '.html', '' }}"
+               class="ga-event-link"
+               data-event-category="Popular posts"
+               data-event-action="click"
+               data-event-label="{{my_post.title}}">{{ my_post.title }}</a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </div>

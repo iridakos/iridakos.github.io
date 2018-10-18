@@ -59,7 +59,7 @@ $(function() {
 
     if (searchResult.tags.length > 0) {
       var tagsContainer = $('<div class="post-tags"></div>');
-      tagsContainer.append($('<i class="fa fa-tags"></i>'));
+      tagsContainer.append($('<span class="important">tags: </span>'));
 
       $.each(searchResult.tags, function(i, tag) {
         tagsContainer.append($('<a href="/tags/?tag='+ tag + '" class="ga-event-link" data-event-label="' + tag + '" data-event-action="click" data-event-category="tags">' + tag + '</a>'));
