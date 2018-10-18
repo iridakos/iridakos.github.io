@@ -17,7 +17,7 @@
 
     .section-content {
       margin-top: 5px;
-      padding: 0 10px;
+      padding: 2px 10px 5px 10px;
       border-top: 0 none;
 
       .section-item {
@@ -36,10 +36,6 @@
 
     & + .sidebar-section {
       margin-top: 10px;
-    }
-
-    &:last-child {
-      padding-bottom: 5px;
     }
   }
 }
