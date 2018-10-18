@@ -12,7 +12,7 @@
       font-size: 130%;
       font-weight: 600;
       padding: 2px 10px;
-      color: $iridakos;
+      color: $gray-800;
     }
 
     .section-content {
@@ -35,7 +35,7 @@
     }
 
     & + .sidebar-section {
-      margin-top: 10px;
+      margin-top: 20px;
     }
   }
 }
