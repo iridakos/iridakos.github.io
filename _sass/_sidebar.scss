@@ -1,13 +1,11 @@
 .sidebar {
-  background: lighten($iridakos-secondary, 10%);
-  box-shadow: 0 0 8px rgba(107, 80, 41, 0.5);
-
   a, a:visited, a:hover {
     color: $blue;
   }
 
   .sidebar-section {
     font-size: 90%;
+    box-shadow: 0 0 8px rgba(107, 80, 41, 0.5);
 
     .section-title {
       font-family: "Indie Flower";
