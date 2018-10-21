@@ -134,3 +134,18 @@ a {
     }
   }
 }
+
+blockquote {
+  color: $iridakos;
+  border-left: 4px solid lighten($iridakos, 50%);
+  background: lighten($iridakos, 65%);
+  padding: 5px 5px 0 10px;
+
+  cite {
+    display: block;
+    text-align: right;
+    color: $iridakos;
+    padding-bottom: 5px;
+    font-size: 80%;
+  }
+}
