@@ -50,6 +50,7 @@ It is good to provide such a functionality to users:
 You can find the code of this tutorial [<i class="fa fa-github"></i>here](https://github.com/iridakos/bash-completion-tutorial).
 </div>
 
+
 Here's what we are going to do in this tutorial.
 
 We will first create a dummy executable script called `dothis`. All it does is execute the command which resides on the number, that was passed as an argument, in user's history. For example, the following command will simply execute the `ls -a` command given that it exists in history with number `235`:
