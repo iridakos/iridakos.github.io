@@ -2173,6 +2173,14 @@ Now, in the response we have an unfiltered section which we can use to render th
 }
 ```
 
+<div class="alert alert-info">
+  <h5>Code and comments</h5>
+
+  <div>You may find the script generating random data and the already generated sample data <a class="alert-link" href="https://github.com/iridakos/iridakos-posts/tree/master/2018-09-22-elasticsearch-bucket-aggregations">here</a>.</div>
+  <div>You can submit your feedback or any comments you may have <a class="alert-link" href="https://github.com/iridakos/iridakos-posts/issues/1">here</a>.</div>
+  <strong>Thanks for visiting!</strong>  
+</div>
+
 ## What's next
 
 - My next post will be a tutorial for implementing what we covered in this post in a Rails application using the [elasticsearch gem](https://github.com/elastic/elasticsearch-ruby)
