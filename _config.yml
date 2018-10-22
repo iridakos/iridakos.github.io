@@ -14,7 +14,7 @@ production_url: "https://iridakos.com"
 url: "https://iridakos.com" # the base hostname & protocol for your site
 twitter_username: lazaru_s
 github_username:  iridakos
-linkedin_username: lazaruslazaridis
+linkedin_username: iridakos
 paginate: 10
 paginate_path: "/posts/page-:num/"
 author: Lazarus Lazaridis
