@@ -23,8 +23,7 @@ related_posts:
 ---
 
 ## Introduction
-
-I decided to write a series of tutorials for Elasticsearch aggregations since I recently used the feature for the first time and I found it amazing.
+I decided to write a series of tutorials about Elasticsearch aggregations.
 In this first post of the series, we are going to deal with the **bucket aggregations** that allows us to implement faceted navigation.
 
 ### What is Elasticsearch
@@ -35,7 +34,7 @@ In this first post of the series, we are going to deal with the **bucket aggrega
 
 ### What is Kibana
 
-[Kibana](https://www.elastic.co/products/kibana) is a tool mainly allowing visualization of Elasticsearch data. In our case, we will use Kibana because it provides a very convenient way for writing and executing our queries supporting autocompletion.
+[Kibana](https://www.elastic.co/products/kibana) is a tool mainly allowing visualization of Elasticsearch data. We will use Kibana because it also provides a very convenient way for writing and executing queries (with autocomplete).
 
 > Kibana lets you visualize your Elasticsearch data and navigate the Elastic Stack, so you can do anything from learning why you're getting paged at 2:00 a.m. to understanding the impact rain might have on your quarterly numbers.
 > <cite>-- <a href="https://www.elastic.co/products/kibana">official Kibana product page</a></cite>
@@ -55,9 +54,9 @@ A section of Elasticsearch's [aggregations framework](https://www.elastic.co/gui
 
 In order to be able to execute the tutorial's commands and queries, you must first:
 
-### Install Elasticsearch
+### Install Elasticsearch (duh)
 
-Providing instructions for installing elasticsearch is out of scope. I recommend visiting the product's related [documenation site](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html). After the installation, just make sure to start the service if it's not started. You can check that with
+Providing instructions for installing Elasticsearch is out of scope. I recommend visiting the product's related [documenation site](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html). After the installation, just make sure to start the service if it's not started. You can check that with
 ```bash
 curl http://localhost:9200
 ```
@@ -84,22 +83,23 @@ It should give something like:
 }
 ```
 
-As you can see, we will use elasticsearch **version 6.4.2** in this tutorial.
+As you can see, we will use Elasticsearch **version 6.4.2** in this tutorial.
 
 ### Install Kibana
 
 I recommend following the [official instructions](https://www.elastic.co/guide/en/kibana/current/install.html) for installing kibana at your machine's OS. I followed [this guide](https://www.elastic.co/guide/en/kibana/current/deb.html) for installing the product via a repository in Ubuntu.
 
-Start the kibana service and navigate to its home page at [http://localhost:5601](http://localhost:5601). We will use heavily the **Dev Tools** which is a powerful console talking to our elasticsearch engine.
+Start the kibana service and navigate to its home page at [http://localhost:5601](http://localhost:5601). We will heavily use the **Dev Tools** which is a powerful console talking to the Elasticsearch engine.
 
 ![Kibana Dev tools]({{site.url}}/assets/images/posts/elasticsearch-bucket-aggregations/01-kibana-welcome.png)
 
-## What we will cover
+## What is it going to be covered
 
 We are going to deal with:
 
-- Simple (terms) aggregations and sub-aggregations
-- Nested aggregations
+- Terms aggregations
+- Sub-aggregations
+- Nested and reverse nested aggregations
 - Global aggregations
 
 Don't be afraid, everything will become very clear once we start playing with the data.
@@ -115,7 +115,7 @@ We will define the following entities:
 
 * **City office**: a city pet registration office
   * **city**: the city in which the office is located
-  * **office_type**: the type of the office (central, district)
+  * **office type**: the type of the office (central, district)
 * **Citizen**: a citizen with registered pets
   * **occupation**: the occupation of the citizen
   * **age**: the age of the citizen
@@ -197,7 +197,7 @@ We created an index with name `city_offices` with the [aforementioned properties
 
 **Important note**: we chose to define the entity relations as **nested objects**. Why?
 
-> The nested type is a specialised version of the object datatype that allows arrays of objects to be indexed in a way that they can be queried independently of each other ... Lucene has no concept of inner objects, so Elasticsearch flattens object hierarchies into a simple list of field names and values
+> The nested type is a specialized version of the object datatype that allows arrays of objects to be indexed in a way that they can be queried independently of each other ... Lucene has no concept of inner objects, so Elasticsearch flattens object hierarchies into a simple list of field names and values
 > <cite>-- [official elasticsearch nested datatype reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html)</cite>
 
 I will explain this with an example.
@@ -212,7 +212,7 @@ If we used the **object** datatype, Elasticsearch would merge all sub-properties
   }
 }
 ```
-Thus, if we wanted to search the index for offices that have a **Dentist** citizen with age **30**, this document would fullfil the criteria even though the Dentist is 35 years old.
+Thus, if we wanted to search the index for offices that have a **Dentist** citizen with age **30**, this document would fulfill the criteria even though the Dentist is 35 years old.
 
 Mapping the relation as **nested** overcomes this problem since
 
@@ -356,7 +356,7 @@ Inside the `aggregations` you can see our `cities` aggregation and that's why it
 
 Before explaining the weird `sum_other_doc_count` *37* value, let's first examine the `buckets`.
 
-There's our different values for the `city` field of the city offices. "Human reading" the values, we have 8 offices in Amsterdam, London, Oslo, Paris, San Franscisco and Tokyo, 7 offices in Athens, Barchelona, Chicago and Madrid.
+There's our different values for the `city` field of the city offices. "Human reading" the values, we have 8 offices in Amsterdam, London, Oslo, Paris, San Francisco and Tokyo, 7 offices in Athens, Barcelona, Chicago and Madrid.
 
 The total of these offices is 76 but the search response says we have 113. Let's subtract the bucket's office total from the actual total offices: `(113 - 76 = 37) == sum_other_doc_count`. That's right. Explanation: the aggregation we defined has another property named **`size`** which has a default value of *10*. Since we didn't define another value, Elasticsearch limited the buckets to the top 10 different city values based on their occurrences in the index. **37 are the documents whose cities are not listed in the buckets and NOT the number of the unlisted cities**.
 
@@ -418,7 +418,7 @@ Execute again.
           "doc_count": 8
         },
         {
-          "key": "San Franscisco",
+          "key": "San Francisco",
           "doc_count": 8
         },
         {
@@ -430,7 +430,7 @@ Execute again.
           "doc_count": 7
         },
         {
-          "key": "Barchelona",
+          "key": "Barcelona",
           "doc_count": 7
         },
         {
@@ -834,7 +834,7 @@ The response:
           }
         },
         {
-          "key": "San Franscisco",
+          "key": "San Francisco",
           "doc_count": 8,
           "office_types": {
             "doc_count_error_upper_bound": 0,
@@ -1952,7 +1952,7 @@ Now, in the response we have an unfiltered section which we can use to render th
             }
           },
           {
-            "key": "San Franscisco",
+            "key": "San Francisco",
             "doc_count": 8,
             "office_types": {
               "doc_count_error_upper_bound": 0,
@@ -2184,8 +2184,8 @@ Now, in the response we have an unfiltered section which we can use to render th
 
 ## What's next
 
-- My next post will be a tutorial for implementing what we covered in this post in a Rails application using the [elasticsearch gem](https://github.com/elastic/elasticsearch-ruby)
-- In the future I might come back with a tutorial covering the metrics aggregations
+- My next post will be a tutorial for implementing what we covered in this post within a Rails application using the [elasticsearch gem](https://github.com/elastic/elasticsearch-ruby)
+- Next, I might come back with a tutorial covering the metrics aggregations
 
 That's all! Bucket cat photo.
 ![My cat in a bucket](/assets/images/posts/elasticsearch-bucket-aggregations/cat-photo.jpg)
