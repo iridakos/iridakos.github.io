@@ -999,6 +999,8 @@ So, there are *3966* citizens that have registered their pets to our city office
 
 Ok good, but what if wanted to see in how many offices are these citizens registered. In other words, how many offices have Marketing Managers? How many offices have Librarians?
 
+#### Reverse nested aggregations
+
 We have to use another type of aggregation, named [Reverse nested aggregation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-reverse-nested-aggregation.html).
 
 > A special single bucket aggregation that enables aggregating on parent docs from nested documents. Effectively this aggregation can break out of the nested block structure and link to other nested structures or the root document, which allows nesting other aggregations that aren’t part of the nested object in a nested aggregation.
