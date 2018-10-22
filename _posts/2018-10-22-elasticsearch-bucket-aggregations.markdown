@@ -11,6 +11,7 @@ outline: true
 tags:
   - elasticsearch
   - aggregations
+  - opensource
   - facets
   - search
   - faceted navigation
