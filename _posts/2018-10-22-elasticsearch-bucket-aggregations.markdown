@@ -541,8 +541,8 @@ We defined another `terms` aggregation named `office_types` and kept the default
 So, we have *57* primary and *56* secondary offices and *0* offices left outside the aggregation's buckets.
 
 <div class="alert alert-info">
-<h5>Important note</h5>
-If we do define a <strong>search query</strong> along with the aggregations definition, then <strong>the aggregations will be applied to the subset of the documents that match the search query</strong>.
+  <div class="alert-heading"><i class="fa fa-hand-o-right"></i> Important note</div>
+  If we do define a <strong>search query</strong> along with the aggregations definition, then <strong>the aggregations will be applied to the subset of the documents that match the search query</strong>.
 </div>
 
 For example, if we want to see how many different office types are in Athens, we can specify the appropriate search query without altering the aggregations' one.
@@ -993,7 +993,7 @@ The response:
 So, there are *3966* citizens that have registered their pets to our city offices of which 243 are Hairdressers, 241 are Microbiologists etc.
 
 <div class="alert alert-info">
-  <h5>Important note</h5>
+  <div class="alert-heading"><i class="fa fa-hand-o-right"></i> Important note</div>
   Mind the field definition of the nested <strong>Terms</strong> aggregation in the query. <strong>It has to be the full path of the nested object</strong>.
 </div>
 
@@ -2175,7 +2175,7 @@ Now, in the response we have an unfiltered section which we can use to render th
 ```
 
 <div class="alert alert-info">
-  <h5>Code and comments</h5>
+  <div class="alert-heading"><i class="fa fa-comments"></i> Code and comments</div>
 
   <div>You may find the script generating random data and the already generated sample data <a class="alert-link" href="https://github.com/iridakos/iridakos-posts/tree/master/2018-09-22-elasticsearch-bucket-aggregations">here</a>.</div>
   <div>You can submit your feedback or any comments you may have <a class="alert-link" href="https://github.com/iridakos/iridakos-posts/issues/1">here</a>.</div>
