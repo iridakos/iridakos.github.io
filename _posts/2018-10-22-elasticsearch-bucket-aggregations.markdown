@@ -321,7 +321,7 @@ Voila!
           "doc_count": 8
         },
         {
-          "key": "San Franscisco",
+          "key": "San Francisco",
           "doc_count": 8
         },
         {
@@ -333,7 +333,7 @@ Voila!
           "doc_count": 7
         },
         {
-          "key": "Barchelona",
+          "key": "Barcelona",
           "doc_count": 7
         },
         {
@@ -2008,7 +2008,7 @@ Now, in the response we have an unfiltered section which we can use to render th
             }
           },
           {
-            "key": "Barchelona",
+            "key": "Barcelona",
             "doc_count": 7,
             "office_types": {
               "doc_count_error_upper_bound": 0,
