@@ -62,6 +62,7 @@ img.image {
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
+    box-shadow: 1px 1px 10px rgba($iridakos, 1);
 
     &.framed {
       max-height: 150px;
@@ -141,13 +142,21 @@ blockquote {
   color: $iridakos;
   border-left: 4px solid lighten($iridakos, 50%);
   background: lighten($iridakos, 65%);
-  padding: 5px 5px 0 10px;
+  padding: 10px 10px 10px 15px;
+
+  p {
+    margin-bottom: 0;
+  }
 
   cite {
     display: block;
     text-align: right;
     color: $iridakos;
-    padding-bottom: 5px;
+    padding-top: 5px;
     font-size: 80%;
   }
+}
+
+i.icon-in-text {
+  padding: 0 4px;
 }

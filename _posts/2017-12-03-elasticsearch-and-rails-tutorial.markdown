@@ -16,6 +16,7 @@ tags:
 comments: true
 popular: 2
 related_posts:
+  - elasticsearch-bucket-aggregations
   - elasticsearch-linux-man-pages
   - todo-part-1
   - testing-exec-filters-rspec
