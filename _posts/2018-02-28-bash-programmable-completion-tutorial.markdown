@@ -46,7 +46,9 @@ It is good to provide such a functionality to users:
 
 ## Hands on
 
+<div class="alert alert-primary">
 You can find the code of this tutorial [<i class="fa fa-github"></i>here](https://github.com/iridakos/bash-completion-tutorial).
+</div>
 
 Here's what we are going to do in this tutorial.
 
