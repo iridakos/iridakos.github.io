@@ -121,6 +121,8 @@ a {
 @media(min-width: 1200px) {
   .container-fluid {
     max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
