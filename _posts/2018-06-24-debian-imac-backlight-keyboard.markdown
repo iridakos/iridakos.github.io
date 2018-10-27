@@ -1,7 +1,7 @@
 ---
 layout: default
-title:  "Change brightness with the function keys on iMac running Debian"
-description: "Steps I had to follow to be able to change my iMac's brightness using the function keys on Debian"
+title:  "Change brightness with the function keys on iMac running Ubuntu or Debian"
+description: "Steps I had to follow to be able to change my iMac's brightness using the function keys on Ubuntu and Debian"
 date: 2018-06-24 18:00:00 +0300
 image: "https://iridakos.com/assets/images/posts/debian-backlight/brightness.jpg"
 category: "how-to"
@@ -10,6 +10,7 @@ outline: true
 tags:
   - linux
   - debian
+  - ubuntu
   - imac
   - opensource
   - how-to
@@ -24,7 +25,7 @@ In this post I will describe the steps I had to follow to be able to change the 
 
 ## Context
 
-After installing Debian 9.4 (*stretch*) on my iMac, I was no longer able to control the brightness from the keyboard (`F1`, `F2` keys). When pressing these keys, although a notification was shown for increasing/decreasing it, the brightness was not changing.
+After installing Debian 9.4 (*stretch*) or Ubuntu 18.04 LTS on my iMac, I was no longer able to control the brightness from the keyboard (`F1`, `F2` keys). When pressing these keys, although a notification was shown for increasing/decreasing it, the brightness was not changing.
 
 ## Identifying the problem
 
