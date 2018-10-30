@@ -44,12 +44,17 @@ It is good to provide such a functionality to users:
 * to help them know what are the available continuations to their commands
 * to prevent errors and improve their experience by hiding or showing options based on what they have already typed
 
-## Hands on
-
 <div class="alert alert-primary">
-You can find the code of this tutorial [<i class="fa fa-github"></i>here](https://github.com/iridakos/bash-completion-tutorial).
+  <h2>Code and comments</h2>
+
+  You can find the code of this tutorial on <a class="alert-link" href="https://github.com/iridakos/bash-completion-tutorial"><i class="fa fa-github"></i> GitHub</a>.
+
+  <hr />
+
+  For feedback, comments, typos etc. please open an <a class="alert-link" href="https://github.com/iridakos/bash-completion-tutorial/issues">issue</a> in the repository.
 </div>
 
+## Hands on
 
 Here's what we are going to do in this tutorial.
 
