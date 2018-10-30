@@ -1,0 +1,100 @@
+---
+layout: default
+---
+
+{% assign cats = "" | split: "" %}
+{% for cat in site.programming_cats %}
+  {% unless cat.is_index %}
+    {% assign cats = cats | push: cat %}
+  {% endunless %}
+{% endfor %}
+
+{% assign cats = cats | sort: 'index' | reverse %}
+
+{% if page.paginate %}
+  {% assign paginate_from = page.page_number | minus: 1 | times: 10 %}
+  {% assign paginate_to = paginate_from | plus: 10 %}
+  {% assign pagination_limit = cats.size | minus: paginate_to %}
+  {% assign cat_limit = 10 | at_most: pagination_limit %}
+
+  <div class="row">
+      {% for cat in cats offset:paginate_from limit:cat_limit %}
+        <div class="col-12 col-md-6 col-lg-4">
+          {% include cat.html cat=cat %}
+        </div>
+      {% endfor %}
+  </div>
+
+  {% assign omg = cats.size | modulo: 10 %}
+  {% if omg > 1 %}
+    {% assign omg = 1 %}
+  {% endif %}
+
+  {% assign total_pages = cats.size | divided_by: 10 | plus: omg %}
+
+  <div class="row">
+    <div class="col text-center">
+      {% if total_pages > 1 %}
+          <nav class="page-pagination" aria-label="Page navigation">
+              <ul class="pagination">
+                  <li class="page-item {% if page.index == 1 %}disabled{% endif %}">
+                      <a class="page-link" href="/cats/{% unless page.index == 1 %}{{page.index}}{% endunless %}" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                      </a>
+                  </li>
+
+                  {% for page in (1..total_pages) %}
+                      {% if page == page.index %}
+                          <li class="page-item active">
+                              <a class="page-link" href="#">
+                                  <span aria-hidden="true">{{ page }}</span>
+                              </a>
+                          </li>
+                      {% elsif page == 1 %}
+                          <li class="page-item">
+                              <a class="page-link" href="{{ site.url }}">{{ page }}</a>
+                          </li>
+                      {% else %}
+                          <li class="page-item">
+                              <a class="page-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+                          <li>
+                      {% endif %}
+                  {% endfor %}
+
+                  <li class="page-item {% if paginator.next_page == null %}disabled{% endif %}">
+                      <a class="page-link" href="{{ paginator.next_page_path }}" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                      </a>
+                  </li>
+              </ul>
+          </nav>
+      {% endif %}
+    </div>
+  </div>
+
+{% else %}
+  {{ content }}
+
+  <img class="programming-cat-photo no-maximize no-limits" src="{{page.image}}" alt="{{page.title}}" />
+
+  <div class="row">
+    <div class="col text-center">
+      {% assign next_index = cats.size | minus: page.index | minus: 2 %}
+      {% if cats[next_index] and next_index >= 0 %}
+        {% assign cat=cats[next_index] %}
+        <a href="{{ cat.url }}" class="btn btn-outline-primary btn-lg float-left"><i class="fa fa-angle-double-left"></i> Next photo</a>
+      {% endif %}
+
+      {% assign previous_index = cats.size | minus: page.index %}
+      {% if cats[previous_index] %}
+        {% assign cat=cats[previous_index] %}
+        <a href="{{ cat.url }}" class="btn btn-outline-primary btn-lg float-right">Previous photo <i class="fa fa-angle-double-right"></i></a>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+<div class="alert alert-primary">
+  <h3><i class="fa fa-rss"></i> Stay tuned</h3>
+  <small>Subscribe to <a class="ga-event-link" data-event-label="{{ page.title }}" data-event-category="Subscribe to programming cats RSS" data-event-action="click" href="{{ "/feeds/programming-cats.xml" | prepend: site.baseurl }}">programming cat photos via RSS <i class="fa fa-rss"></i></a></small>
+</div>

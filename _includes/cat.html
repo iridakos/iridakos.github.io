@@ -1,0 +1,20 @@
+<div class="card">
+  <a href="{{ cat.url }}">
+    <div class="card-img-top programming-cat-placeholder" style="background-image: url({{ cat.image }})" alt="{{ cat.title }}"></div>
+  </a>
+
+  {% if include.foo %}
+    <div class="card-body">
+      <h5 class="card-title"><a class="card-link" href="{{ cat.url }}">{{ include.foo }}</a></h5>
+      <p class="card-text">{{ cat.title }}</p>
+    </div>
+  {% else %}
+    <div class="card-body">
+      <h5 class="card-title"><a class="card-link" href="{{ cat.url }}">{{ cat.title }}</a></h5>
+      <p class="card-text">{{ cat.subtitle }}</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Published on {{ cat.date | date: "%b %-d, %Y" }}</small>
+    </div>
+  {% endif %}
+</div>

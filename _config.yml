@@ -25,21 +25,29 @@ links:
   https://twitter.com/lazaru_s
   https://www.linkedin.com/in/lazaruslazaridis
   https://github.com/iridakos
-
+collections:
+  programming_cats:
+    permalink: '/programming-cats/:year/:month/:day/:slug'
+    output: true
 # Build settings
 markdown: kramdown
 
 include: ['_pages']
 
 defaults:
-  -
-    scope:
+  - scope:
       path: ""      # empty string for all files
       type: posts   # limit to posts
     values:
       is_post: true # automatically set is_post=true for all posts
+  - scope:
+      path: ""      # empty string for all files
+      type: programming_cats   # limit to posts
+    values:
+      is_cat: true
 
 plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
   - jekyll-seo-tag
+  - jekyll-paginate

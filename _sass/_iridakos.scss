@@ -76,6 +76,14 @@ img.image {
       cursor: default;
       margin: 10px auto;
     }
+
+    &.no-maximize {
+      cursor: default;
+    }
+
+    &.no-limits {
+      max-height: none;
+    }
   }
 }
 
@@ -165,4 +173,26 @@ blockquote {
 
 i.icon-in-text {
   padding: 0 4px;
+}
+
+
+.programming-cat-placeholder {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-img-overlay {
+  height: 250px;
+  background-color: rgba(lighten($iridakos, 20%), 0.6);
+  color: darken($iridakos, 10%);
+}
+
+.card {
+  margin-bottom: 15px;
+}
+
+.sidebar-img {
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px rgba($iridakos, 0.8);
 }

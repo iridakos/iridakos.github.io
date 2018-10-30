@@ -36,6 +36,16 @@
             </li>
           {% endif %}
         {% endfor %}
+
+        {% if page == is_cat %}
+          {% assign menu_class = 'active' %}
+        {% else %}
+          {% assign menu_class = '' %}
+        {% endif %}
+
+        <li class="nav-item {{ menu_class }}">
+            <a class="nav-link" href="/programming-cats" alt="cats">programming cats</a>
+        </li>
       </ul>
 
       <form class="form-inline my-2 my-lg-0" method="get" action="/search">
@@ -62,7 +72,7 @@
           <div class="page-subtitle">
             {% if page.subtitle %}{{ page.subtitle }}{% else %}{{ page.description }}{% endif %}
 
-            {% if page.date %}
+            {% if page.is_post %}
               <div class="post">
                 <div class="post-metadata">
                   <div class="post-date" title="published on">
@@ -83,6 +93,16 @@
                     {% endfor %}
                   </div>
                 {% endif %}
+              </div>
+            {% endif %}
+
+            {% if page.is_cat and page.is_index != true %}
+              <div class="post">
+                <div class="post-metadata">
+                  <div class="post-date" title="published on">
+                    Photo date: <span class="important">{{ page.date | date: "%b %-d, %Y" }}</span>
+                  </div>
+                </div>
               </div>
             {% endif %}
           </div>
