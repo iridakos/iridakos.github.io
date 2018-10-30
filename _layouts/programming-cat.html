@@ -78,7 +78,7 @@ layout: default
   <img class="programming-cat-photo no-maximize no-limits" src="{{page.image}}" alt="{{page.title}}" />
 
   <div class="row">
-    <div class="col text-center">
+    <div class="col text-center mb-3">
       {% assign next_index = cats.size | minus: page.index | minus: 2 %}
       {% if cats[next_index] and next_index >= 0 %}
         {% assign cat=cats[next_index] %}
