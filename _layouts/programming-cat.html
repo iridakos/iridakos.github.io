@@ -75,7 +75,18 @@ layout: default
 {% else %}
   {{ content }}
 
-  <img class="programming-cat-photo no-maximize no-limits" src="{{page.image}}" alt="{{page.title}}" />
+  <div class="programming-cat">
+    <img class="programming-cat-photo no-maximize no-limits" src="{{page.image}}" alt="{{page.title}}" />
+    <div class="legend">
+      {% if page.legend %}
+        {{ page.legend }}
+      {% else %}
+        {{ page.title }}
+        <hr />
+        {{ page.subtitle }}
+      {% endif %}
+    </div>
+  </div>
 
   <div class="row">
     <div class="col text-center mb-3">
