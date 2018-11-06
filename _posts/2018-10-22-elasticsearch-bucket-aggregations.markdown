@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "Elasticsearch bucket aggregations and faceted navigation"
+title:  "Elasticsearch bucket aggregations and faceted navigation - facets"
 description: "A step by step tutorial for using Elasticsearch bucket aggregations to implement faceted navigation a.k.a. facets."
 preview: "A step by step tutorial for using Elasticsearch bucket aggregations to implement faceted navigation a.k.a. facets."
 date: 2018-10-22 20:00:00 +0300
