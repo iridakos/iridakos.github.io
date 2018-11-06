@@ -8,11 +8,21 @@
   background-size: contain;
   font-family: "Indie flower";
   font-size: 110%;
+  text-align: center;
+  color: $gray-800;
 
-  .copyright {
-    color: $gray-800;
-    font-size: 90%;
+  .license {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 80%;
     padding: 5px;
+
+    a, a:visited, a:hover, a:link {
+      margin-left: 0;
+
+      & + a {
+        margin-left: 0;
+      }
+    }
   }
 
   a, a:visited, a:hover, a:link {
@@ -22,6 +32,17 @@
 
     & + a {
       margin-left: 5px;
+    }
+  }
+}
+
+@media(max-width: 756px) {
+  .footer {
+    background: $iridakos;
+    color: $white;
+
+    a, a:link, a:visited, a:hover {
+      color: lighten($iridakos, 63%);
     }
   }
 }
