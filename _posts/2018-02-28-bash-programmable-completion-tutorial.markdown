@@ -19,7 +19,7 @@ related_posts:
   - todo-gtk-plus-ruby-tutorial
 ---
 
-I recently worked on creating a bash completion script for a project and I enjoyed it very much. In this post I will try to familiarize you with the process of creating a bash completion script.
+I recently worked on creating a bash completion script for [one of my toy projects](https://github.com/iridakos/goto) and I enjoyed it very much. In this post I will try to familiarize you with the process of creating a bash completion script.
 
 ## What is bash completion?
 
