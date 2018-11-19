@@ -85,6 +85,14 @@ img.image {
       max-height: none;
     }
   }
+
+  a {
+    img {
+      &.no-maximize {
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .important {
