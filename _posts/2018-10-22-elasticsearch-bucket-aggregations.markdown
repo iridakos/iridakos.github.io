@@ -24,7 +24,7 @@ related_posts:
 
 ## Introduction
 I decided to write a series of tutorials about Elasticsearch aggregations.
-In this first post of the series, we are going to deal with the **bucket aggregations** that allows us to implement faceted navigation.
+In this first post of the series, we are going to deal with the **bucket aggregations** that allow us to implement faceted navigation.
 
 ### What is Elasticsearch
 [Elasticsearch](https://www.elastic.co/products/elasticsearch) is an opensource JSON-based search engine that allows us to search indexed data quickly and with options that are not provided by classic data stores.
