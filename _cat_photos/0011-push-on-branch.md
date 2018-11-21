@@ -1,5 +1,5 @@
 ---
-layout: programming-cat
+layout: cat-photo
 title: When they push on your branch
 subtitle: "Sure, go ahead"
 description: "Sure, go ahead"

@@ -1,5 +1,5 @@
 ---
-layout: programming-cat
+layout: cat-photo
 title: Reloading the page after applying random css rules from stack overflow
 subtitle: "ctrl+c ctrl+v"
 description: "ctrl+c ctrl+v"

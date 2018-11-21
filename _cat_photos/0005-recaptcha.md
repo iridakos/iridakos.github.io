@@ -1,5 +1,5 @@
 ---
-layout: programming-cat
+layout: cat-photo
 title: reCaptcha
 subtitle: "Click on the real cat"
 description: "Click on the real cat"

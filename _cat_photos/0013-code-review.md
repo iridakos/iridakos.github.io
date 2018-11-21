@@ -1,5 +1,5 @@
 ---
-layout: programming-cat
+layout: cat-photo
 title: Code review mode ON
 subtitle: "Mop"
 description: "Mop"

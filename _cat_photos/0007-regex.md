@@ -1,5 +1,5 @@
 ---
-layout: programming-cat
+layout: cat-photo
 title: Regular expression look
 subtitle: "^(\\w+)\\b.*\\r?\\n(?s).*?\\b\\1\\b"
 description: "^(\\w+)\\b.*\\r?\\n(?s).*?\\b\\1\\b"

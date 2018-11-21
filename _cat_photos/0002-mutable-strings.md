@@ -1,5 +1,5 @@
 ---
-layout: programming-cat
+layout: cat-photo
 title: Strings
 subtitle: "THEY ARE MUTABLE"
 description: "THEY ARE MUTABLE"

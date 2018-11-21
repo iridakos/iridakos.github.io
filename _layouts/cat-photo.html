@@ -3,7 +3,7 @@ layout: default
 ---
 
 {% assign cats = "" | split: "" %}
-{% for cat in site.programming_cats %}
+{% for cat in site.cat_photos %}
   {% unless cat.is_index %}
     {% assign cats = cats | push: cat %}
   {% endunless %}
@@ -40,7 +40,7 @@ layout: default
               <ul class="pagination">
                   <li class="page-item {% if page.page_number == 1 %}disabled{% endif %}">
                       {% assign previous_page = page.page_number | minus: 1 %}
-                      <a class="page-link" href="/programming-cats/{% if page.page_number > 1 and previous_page != 1 %}page-{{previous_page}}{% endif %}" aria-label="Previous">
+                      <a class="page-link" href="/cat-photos/{% if page.page_number > 1 and previous_page != 1 %}page-{{previous_page}}{% endif %}" aria-label="Previous">
                           <span aria-hidden="true">&laquo;</span>
                       </a>
                   </li>
@@ -54,18 +54,18 @@ layout: default
                           </li>
                       {% elsif p == 1 %}
                           <li class="page-item">
-                              <a class="page-link" href="/programming-cats/">1</a>
+                              <a class="page-link" href="/cat-photos/">1</a>
                           </li>
                       {% else %}
                           <li class="page-item">
-                              <a class="page-link" href="{{ '/programming-cats/page-:num' | replace: ':num', p }}">{{ p }}</a>
+                              <a class="page-link" href="{{ '/cat-photos/page-:num' | replace: ':num', p }}">{{ p }}</a>
                           <li>
                       {% endif %}
                   {% endfor %}
 
                   <li class="page-item {% if page.page_number == total_pages %}disabled{% endif %}">
                       {% assign next_page = page.page_number | plus: 1 %}
-                      <a class="page-link" href="/programming-cats/page-{{ next_page }}" aria-label="Next">
+                      <a class="page-link" href="/cat-photos/page-{{ next_page }}" aria-label="Next">
                           <span aria-hidden="true">&raquo;</span>
                       </a>
                   </li>
@@ -76,15 +76,15 @@ layout: default
   </div>
 
 {% else %}
-  <div class="programming-cat">
-    <img class="programming-cat-photo no-maximize no-limits" src="{{page.image}}" alt="{{page.title}}" />
+  <div class="cat-photo">
+    <img class="cat-photo-photo no-maximize no-limits" src="{{page.image}}" alt="{{page.title}}" />
       {% if page.legend %}
       <div class="legend">
         {{ page.legend }}
       </div>
       {% else %}
         {% if page.skip_legend %}
-        {% else %}    
+        {% else %}
         <div class="legend">
           {{ page.title }}
           <hr />
@@ -115,5 +115,5 @@ layout: default
 
 <div class="alert alert-primary">
   <h3><i class="fa fa-rss"></i> Stay tuned</h3>
-  <small>Subscribe to <a class="ga-event-link" data-event-label="{{ page.title }}" data-event-category="Subscribe to programming cats RSS" data-event-action="click" href="{{ "/feeds/programming-cats.xml" | prepend: site.baseurl }}">programming cat photos via RSS <i class="fa fa-rss"></i></a></small>
+  <small>Subscribe to <a class="ga-event-link" data-event-label="{{ page.title }}" data-event-category="Subscribe to cat photos RSS" data-event-action="click" href="{{ "/feeds/cat-photos.xml" | prepend: site.baseurl }}">cat photos via RSS <i class="fa fa-rss"></i></a></small>
 </div>

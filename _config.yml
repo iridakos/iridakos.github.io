@@ -26,8 +26,8 @@ links:
   https://www.linkedin.com/in/lazaruslazaridis
   https://github.com/iridakos
 collections:
-  programming_cats:
-    permalink: '/programming-cats/:year/:month/:day/:slug'
+  cat_photos:
+    permalink: '/cat-photos/:year/:month/:day/:slug'
     output: true
 # Build settings
 markdown: kramdown
@@ -42,7 +42,7 @@ defaults:
       is_post: true # automatically set is_post=true for all posts
   - scope:
       path: ""      # empty string for all files
-      type: programming_cats   # limit to posts
+      type: cat_photos   # limit to posts
     values:
       is_cat: true
 

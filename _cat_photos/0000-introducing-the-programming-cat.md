@@ -1,5 +1,5 @@
 ---
-layout: programming-cat
+layout: cat-photo
 title: Working with this on the side
 subtitle: Introducing the programming cats.
 description: Introducing the programming cats.

@@ -1,5 +1,5 @@
 ---
-layout: programming-cat
+layout: cat-photo
 title: Hey you
 subtitle: "Did you accidentally add a comment on my code?"
 description: "Did you accidentally add a comment on my code?"

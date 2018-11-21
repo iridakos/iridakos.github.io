@@ -1,5 +1,5 @@
 ---
-layout: programming-cat
+layout: cat-photo
 title: Ruby
 subtitle: "WHERE ARE THE DUCKS"
 description: "WHERE ARE THE DUCKS"

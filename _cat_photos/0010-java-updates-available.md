@@ -1,5 +1,5 @@
 ---
-layout: programming-cat
+layout: cat-photo
 title: Java update available pop up
 subtitle: "When the 'Java update available' pop up pops up"
 description: "When the 'Java update available' pop up pops up"

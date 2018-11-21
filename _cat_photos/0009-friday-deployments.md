@@ -1,5 +1,5 @@
 ---
-layout: programming-cat
+layout: cat-photo
 title: Released on Friday
 subtitle: "Low five"
 description: "Low five"

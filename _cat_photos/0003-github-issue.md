@@ -1,5 +1,5 @@
 ---
-layout: programming-cat
+layout: cat-photo
 title: GitHub issues
 subtitle: "I don't get it."
 description: "I don't get it."
