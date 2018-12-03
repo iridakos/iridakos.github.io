@@ -77,7 +77,12 @@ layout: default
 
 {% else %}
   <div class="cat-photo">
-    <img class="cat-photo-photo no-maximize no-limits" src="{{page.image}}" alt="{{page.title}}" />
+    {% if page.video %}
+      <div class="text-center">
+        <iframe width="560" height="315" src="{{ page.video }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    {% else %}
+      <img class="cat-photo-photo no-maximize no-limits" src="{{page.image}}" alt="{{page.title}}" />
       {% if page.legend %}
       <div class="legend">
         {{ page.legend }}
@@ -92,6 +97,7 @@ layout: default
         </div>
         {% endif %}
       {% endif %}
+    {% endif %}
   </div>
 
   {{ content }}
