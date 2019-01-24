@@ -21,9 +21,7 @@ related_posts:
 
 I recently worked on creating a bash completion script for [one of my toy projects](https://github.com/iridakos/goto) and I enjoyed it very much.
 
-<a href="https://github.com/iridakos/goto">
-  <img class="no-maximize" src="https://github.com/iridakos/goto/raw/master/doc/goto.gif" />
-</a>
+<img class="no-maximize" src="https://iridakos.com/assets/images/programming-cat/ie6.jpg" />
 
 In this post I will try to familiarize you with the process of creating a bash completion script.
 
@@ -38,6 +36,10 @@ gitk                git-shell           git-upload-pack
 $ git-s<tab>
 $ git-shell
 ```
+
+<a href="https://github.com/iridakos/goto">
+  <img class="no-maximize" src="https://github.com/iridakos/goto/raw/master/doc/goto.gif" />
+</a>
 
 ### How it works
 
