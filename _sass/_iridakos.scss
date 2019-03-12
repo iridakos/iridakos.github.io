@@ -25,11 +25,12 @@ html {
 .page-title-container {
   border-bottom: 0 none;
   padding: 2rem 0 0 0;
-  font-size: 2rem;
+  font-size: 2.5rem;
   background: $gray-700;
-  color: $iridakos;
+  color: darken($iridakos, 10%);
   margin-bottom: 2rem;
-  background: url('/assets/images/header-background.png');
+  background: url('/assets/images/header-background.jpg') center center;
+  background-size: cover;
 
   .page-title {
     h1 {
