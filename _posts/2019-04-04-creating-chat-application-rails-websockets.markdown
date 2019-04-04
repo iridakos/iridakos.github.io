@@ -3,7 +3,7 @@ layout: default
 title:  "Creating a chat application from scratch using Rails and WebSockets"
 description: "A step by step tutorial for creating a chat application from scratch using Rails and WebSockets."
 preview: "A step by step tutorial for creating a chat application with Rails and WebSockets."
-date: 2019-04-04 20:00:00 +0300
+date: 2019-04-04 23:00:00 +0300
 image: "https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png"
 category: "tutorials"
 identifier: "rails-chat-websockets"
