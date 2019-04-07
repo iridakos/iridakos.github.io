@@ -18,6 +18,7 @@ tags:
   - redis
 popular: -1
 related_posts:
+  - dockerize-a-rails-application
   - todo-gtk-plus-ruby-tutorial
   - todo-part-1
   - hello-ruby-rails
@@ -27,6 +28,8 @@ related_posts:
 Hey! It's been a while since my last post.
 
 I recently familiarized myself with the awesomeness of WebSockets and I finally found the time to write a tutorial about it. I hope you find it helpful.
+
+**Update**: I also published another post for dockerizing the application of this tutorial, you can find it [**here**]({% post_url 2019-04-07-dockerizing-a-rails-application %}).
 
 ## Introduction
 
