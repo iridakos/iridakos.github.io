@@ -134,16 +134,6 @@ We are going to use `sudo` in this tutorial.
 
 ### Clone the rails chat tutorial from GitHub
 
-<div class="alert alert-primary">
-  <div class="alert-heading"><i class="fa fa-comments"></i> Code and comments</div>
-
-  You can find the code of this tutorial on <a class="alert-link" href="https://github.com/iridakos/rails-chat-tutorial"><i class="fa fa-github"></i> https://github.com/iridakos/rails-chat-tutorial</a> on branch <strong>docker</strong>.
-
-  <hr />
-
-  For feedback, comments, typos etc. please open an <a class="alert-link" href="https://github.com/iridakos/rails-chat-tutorial/issues">issue</a> in the repository.
-</div>
-
 Navigate to your development directory on your machine and clone the sample Rails chat application with:
 
 ```bash
