@@ -263,7 +263,7 @@ Open the `Dockerfile` and append the following line:
 COPY . /application
 ```
 
-This command will copy all files from inside build context to the image.
+This command will copy all files from inside the build context to the image.
 - the first argument is the location of the build context to be copied
 - the second argument is the target location inside the image
 
@@ -273,7 +273,7 @@ Build the image again and execute the following command to confirm that we are g
 docker run -i -t rails-chat-tutorial
 ```
 
-If you see the [ruby's docker image](https://github.com/docker-library/ruby/blob/995719add69339b78bd8cde46183b4902b761add/2.6/stretch/Dockerfile), you will see that the last line is:
+If you take a look at the [ruby's docker image](https://github.com/docker-library/ruby/blob/995719add69339b78bd8cde46183b4902b761add/2.6/stretch/Dockerfile), you will see that the last line is:
 
 ```docker
 CMD [ "irb" ]
@@ -485,7 +485,7 @@ ENTRYPOINT ['./entrypoint.sh']
 
 We are going to create a container for the PostgreSQL database.
 
-We need to specify two environment variables to configure the user of the database: `POSTGRES_USER` and `POSTGRES_PASSWORD`. The values of these environment variables will be used later on when [creating the application's container](#creating-the-applications-container).
+We need to specify two environment variables to configure a user for our application: `POSTGRES_USER` and `POSTGRES_PASSWORD`. The values of these environment variables will be used later on when [creating the application's container](#creating-the-applications-container).
 
 ```bash
 sudo docker run --name rails-chat-tutorial-pg
@@ -495,7 +495,7 @@ sudo docker run --name rails-chat-tutorial-pg
             -d postgres
 ```
 
-Since the image doesn't exist locally, Docker will fetch it from the [Official Docker images](https://hub.docker.com/_/postgres) and then it will create a container binding the PostgreSQL default port `5432` to the **same port of the host**.
+Since the image doesn't exist locally, Docker will fetch it from the [Official Docker images](https://hub.docker.com/_/postgres) and then it will create a container, binding the PostgreSQL default port `5432` to the **same port of the host**.
 
 **Notes:** I suggest you read this [documentation](https://hub.docker.com/_/postgres#how-to-extend-this-image) if you want to familiarize yourself with the options you have for customizing the container (volumes/database configuration etc).
 
@@ -509,7 +509,7 @@ sudo docker run --name rails-chat-tutorial-redis \
             -d redis
 ```
 
-Again, since the image doesn't exist locally, Docker will fetch it from the [Official Docker images](https://hub.docker.com/_/redis) and then it will create a container binding its `6376` to the **same port of the host**.
+Again, since the image doesn't exist locally, Docker will fetch it from the [Official Docker images](https://hub.docker.com/_/redis) and then it will create a container, binding its `6376` to the **same port of the host**.
 
 ### Creating the application's container
 
@@ -523,7 +523,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 <a container id>    postgres            "docker-entrypoint.s…"   2 minutes ago       Up 2 minutes        0.0.0.0:5432->5432/tcp   rails-chat-tutorial-pg
 ```
 
-The `Rails chat tutorial` production tutorial needs the following environmental variables:
+The `Rails chat tutorial` in production mode needs the following environmental variables:
 - *database.yml*
   - **DATABASE_HOST**: 172.17.0.1
   - **DATABASE_PORT**: 5432
@@ -532,7 +532,7 @@ The `Rails chat tutorial` production tutorial needs the following environmental 
 - *cable.yml*
   - **REDIS_URL**: redis://172.17.0.1:6379/1
 
-To create the container for the image we created in this post passing the required environment variables, use:
+To create the container for the image that we created in this post passing the required environment variables, use:
 
 ```bash
 sudo docker run --name rails-chat-tutorial-web \
@@ -573,7 +573,7 @@ Reload the page and voilà
 
 ![Application home page]({{site.url}}/assets/images/posts/dockerizing-rails/02.png)
 
-Cat photo.
+That's all! Cat photo.
 
 ![Irida]({{site.url}}/assets/images/posts/dockerizing-rails/irida-docker.jpg)
 
