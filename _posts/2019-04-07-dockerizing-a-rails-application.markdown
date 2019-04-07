@@ -33,6 +33,7 @@ In this post we are going to:
   * creating a container for the Redis server
   * creating a container with the required configuration from the image we built
 
+
 ![Rails chat application gif]({{site.url}}/assets/images/posts/rails-chat-tutorial/post.png)
 
 ## Prerequisites
