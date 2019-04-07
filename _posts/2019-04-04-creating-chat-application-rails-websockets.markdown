@@ -192,7 +192,7 @@ rails generate devise User username:string
 Open the generated migration which you will find under `db/migrate/<datetime>_devise_create_users.rb` and append the username's unique index definition with:
 
 ```ruby
-  add_index :user,  :username,             unique: true
+  add_index :users,  :username,             unique: true
 ```
 
 Find the line in the file that defines the `username` column and change it to:
