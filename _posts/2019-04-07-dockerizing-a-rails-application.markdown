@@ -166,7 +166,7 @@ group :production do
 end
 ```
 
-to install the adapter. The `pg` gem requires to have the package `libpq-dev` install on your maching. We will satisfy this requirement when building the image.
+to install the adapter. The `pg` gem requires to have the package `libpq-dev` installed on the machine. We will satisfy this requirement when building the image.
 
 ## Building the docker image
 
