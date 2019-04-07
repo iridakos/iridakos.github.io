@@ -44,7 +44,7 @@ The first thing you need in order to follow this tutorial is to install [Docker]
 
 We are going to use the [Docker Community Edition](https://docs.docker.com/install/). Follow the installation instructions matching your system.
 
-I'm on Ubuntu 18.04 LTS so following the [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/), I had to do the following:
+I'm on Ubuntu 18.04 LTS so following the [instructions](https://docs.docker.com/install/linux/docker-ce/ubuntu/), I had to:
 
 * Uninstall previous versions with:
 
