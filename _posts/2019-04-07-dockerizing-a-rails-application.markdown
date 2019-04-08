@@ -1,8 +1,8 @@
 ---
 layout: default
 title:  "Dockerizing a Rails application"
-description: "A step by step tutorial for creating a docker image of a Rails application and running it in Docker with PostgreSQL and Redis."
-preview: "A step by step tutorial for creating a docker image of a Rails application and running it in Docker with PostgreSQL and Redis."
+description: "A step by step tutorial to dockerize a Rails application and run it in Docker with PostgreSQL and Redis."
+preview: "A step by step tutorial to dockerize a Rails application and run it in Docker with PostgreSQL and Redis."
 date: 2019-04-07 04:00:00 +0300
 image: "https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png"
 category: "tutorials"
