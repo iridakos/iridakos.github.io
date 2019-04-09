@@ -19,7 +19,7 @@ related_posts:
   - todo-gtk-plus-ruby-tutorial
 ---
 
-I recently worked on creating a bash completion script for [one of my toy projects](https://github.com/iridakos/goto) and I enjoyed it very much.
+I recently worked on creating a bash completion script for [one of my toy projects](https://iridakos.com/tutorials/2019/04/09/shell-navigation-with-autocomplete.html) and I enjoyed it very much.
 
 <a href="https://github.com/iridakos/goto">
   <img class="no-maximize" src="https://github.com/iridakos/goto/raw/master/doc/goto.gif" />
