@@ -1,8 +1,8 @@
 ---
 layout: default
 title:  "Shell navigation to aliased directories with autocomplete - goto"
-description: "A shell script for registering directory aliases and navigating to them with autocomplete."
-preview: "A shell script for registering directory aliases and navigating to them with autocomplete."
+description: "A Linux shell script for registering directory aliases and navigating to them with autocomplete."
+preview: "A Linux shell script for registering directory aliases and navigating to them with autocomplete."
 date: 2019-04-09 17:00:00 +0300
 image: "https://iridakos.com/assets/images/posts/goto/goto.gif"
 category: "tutorials"
