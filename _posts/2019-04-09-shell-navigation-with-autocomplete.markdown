@@ -9,18 +9,12 @@ category: "tutorials"
 identifier: "dockerize-a-rails-application"
 outline: true
 tags:
-  - rails
-  - docker
-  - actioncable
-  - postgresql
-  - postgres
-  - redis
+  - linux
+  - opensource
+  - bash
+  - scripts
 popular: -1
 related_posts:
-  - rails-chat-websockets
-  - todo-gtk-plus-ruby-tutorial
-  - todo-part-1
-  - hello-ruby-rails
   - bash-completion-script
 ---
 
