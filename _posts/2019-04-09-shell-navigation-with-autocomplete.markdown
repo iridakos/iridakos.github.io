@@ -255,6 +255,11 @@ Every `register` or `unregister` action modifies this file.
 
 The script also uses the [Bash programmable completion](https://www.tldp.org/LDP/abs/html/tabexpansion.html) feature to define tab completions resolved via extraction of the aliases defined in the `goto` database file.
 
+That's all! Cat photo.
+
+![I'll be back](https://iridakos.com/assets/images/programming-cat/terminator.png)
+
+
 <div class="alert alert-primary">
   <div class="alert-heading"><i class="fa fa-comments"></i> Code and comments</div>
 
