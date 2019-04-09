@@ -16,6 +16,7 @@ tags:
   - tutorial
 popular: 1
 related_posts:
+  - shell-navigation-goto
   - todo-gtk-plus-ruby-tutorial
 ---
 
