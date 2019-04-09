@@ -88,9 +88,6 @@ You need to restart your shell after installation.
 * [Extras](#extras)
   * [Push before changing directories](#push-before-changing-directories)
   * [Revert to a pushed directory](#revert-to-a-pushed-directory)
-* [Troubleshooting](#troubleshooting)
-  * [zsh](#zsh)
-    * [command not found compdef](#command-not-found-compdef)
 
 ### Change to an aliased directory
 To change to an aliased directory, type:
