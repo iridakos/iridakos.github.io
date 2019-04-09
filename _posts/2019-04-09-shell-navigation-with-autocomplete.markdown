@@ -6,7 +6,7 @@ preview: "A Linux shell script for registering directory aliases and navigating 
 date: 2019-04-09 17:00:00 +0300
 image: "https://iridakos.com/assets/images/posts/goto/goto.gif"
 category: "tutorials"
-identifier: "dockerize-a-rails-application"
+identifier: "shell-navigation-goto"
 outline: true
 tags:
   - linux
