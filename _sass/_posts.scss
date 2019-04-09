@@ -43,10 +43,10 @@
   .post {
     margin-top: 5px;
     padding-top: 5px;
-    border-top: 1px solid lighten($iridakos, 20%);
+    border-top: 1px solid $gray-400;
 
     .post-metadata, .post-tags, .post-tags i {
-      color: $iridakos;
+      color: $gray-200;
       font-size: 70%;
     }
   }
