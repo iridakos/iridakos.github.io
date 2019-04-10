@@ -1,9 +1,9 @@
 ---
 layout: default
-title:  "Shell navigation to aliased directories with autocomplete"
-description: "A Linux shell script for registering directory aliases and navigating to them with autocomplete."
-preview: "A Linux shell script for registering directory aliases and navigating to them with autocomplete."
-date: 2019-04-09 17:00:00 +0300
+title:  "Linux shell navigation to aliased directories with autocomplete"
+description: "A Linux shell script for registering directory aliases and navigating to them with tab completion."
+preview: "A Linux shell script for registering directory aliases and navigating to them with tab completion."
+date: 2019-04-10 16:00:00 +0300
 image: "https://iridakos.com/assets/images/posts/goto/goto.gif"
 category: "tutorials"
 identifier: "shell-navigation-goto"
@@ -14,15 +14,19 @@ tags:
   - bash
   - scripts
 popular: -1
+redirect_from:
+  - /tutorials/2019/04/09/shell-navigation-with-autocomplete.html
 related_posts:
   - bash-completion-script
 ---
 
-I use the terminal a lot and in my day to day work I tend to navigate to the same bunch of directories. There are some awesome tools out there (like [autojump](https://github.com/wting/autojump)) but sometimes, especially when the directories are similarly named, there is a need to be more explicit to navigate to the proper one.
+I use the terminal a lot and in my day to day work I tend to navigate to the same bunch of directories.
+
+There are some awesome tools out there (like [autojump](https://github.com/wting/autojump) or [z](https://github.com/rupa/z)) but sometimes, especially when the directories are similarly named, there is a need **to be explicit** to navigate to the proper one.
 
 I decided to write a script to overcome this issue and to avoid having to edit my `.bash*` files to manage [`aliases`](http://tldp.org/LDP/abs/html/aliases.html) each time I wanted to add or remove a directory.
 
-## Introducing `goto`
+## goto
 
 `goto` is a shell utility to quickly navigate to aliased directories with autocomplete *(tab completion)*.
 
