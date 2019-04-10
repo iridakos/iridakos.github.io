@@ -15,7 +15,7 @@ tags:
   - opensource
   - tutorial
   - ruby
-popular: 3
+popular: -1
 related_posts:
   - elasticsearch-rails-tutorial
   - elasticsearch-bucket-aggregations
