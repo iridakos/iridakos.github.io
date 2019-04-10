@@ -16,7 +16,7 @@ tags:
   - search
   - faceted navigation
   - nested aggregations
-popular: -1
+popular: 6
 related_posts:
   - elasticsearch-rails-tutorial
   - elasticsearch-linux-man-pages
