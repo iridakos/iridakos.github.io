@@ -29,6 +29,7 @@ I recently worked on creating a bash completion script for [one of my toy projec
 
 In this post I will try to familiarize you with the process of creating a bash completion script.
 
+
 ## What is bash completion?
 
 Bash completion is a functionality through which bash helps users type their commands faster and easier. It accomplishes that by presenting possible options when users press the `tab` key while typing a command.
