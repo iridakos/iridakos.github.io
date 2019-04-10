@@ -2,6 +2,7 @@
 layout: default
 title:  "Creating a bash completion script"
 description: "A tutorial for creating a bash completion script"
+preview: "How to add tab completion to your bash scripts"
 date: 2018-03-01 03:00:00 +0300
 image: "http://iridakos.com/assets/images/posts/bash-completion/post-image.png"
 category: "tutorials"
