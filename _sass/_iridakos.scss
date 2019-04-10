@@ -25,11 +25,10 @@ html {
 }
 
 .page-title-container {
-  border-bottom: 0 none;
   padding: 2rem 0 0 0;
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  background: #555;
+  background: darken($iridakos-secondary, 10%);
   color: $gray-100;
 
   .page-title {
@@ -49,8 +48,8 @@ html {
     }
   }
 
-  border-top: 1px solid #111;
-  border-bottom: 1px solid #111;
+  border-top: 1px solid darken($iridakos-secondary, 30%);
+  border-bottom: 1px solid darken($iridakos-secondary, 20%);
 }
 
 .spiral {
@@ -166,7 +165,7 @@ a {
 
 .navbar {
   &.iridakos-navbar {
-    background: darken($primary, 10%);
+    background: #2d2d2d;
   }
 }
 
@@ -235,6 +234,12 @@ i.icon-in-text {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 1.5rem 0 1.5rem 0;
+}
+
+.alert {
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0.3rem 0 0.5rem 0;
+  }
 }
 
 h2 {
