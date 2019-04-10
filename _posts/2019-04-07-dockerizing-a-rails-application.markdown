@@ -15,7 +15,7 @@ tags:
   - postgresql
   - postgres
   - redis
-popular: -1
+popular: 4
 related_posts:
   - rails-chat-websockets
   - todo-gtk-plus-ruby-tutorial
