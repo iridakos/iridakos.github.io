@@ -573,9 +573,22 @@ Reload the page and voilà
 
 ![Application home page]({{site.url}}/assets/images/posts/dockerizing-rails/02.png)
 
+## What's next
+
+In the next tutorial we are going to:
+
+- refactor this image for production (use volume for postgreSQL, asset precompilation)
+- use [nginx](https://www.nginx.com/) to serve them
+- use [docker compose](https://docs.docker.com/compose/) to bind them all.
+
+## Thanks
+
+I am very grateful for your feedback (like this one from [DeusOtiosus
+ @ Reddit](https://www.reddit.com/r/docker/comments/baerrf/dockerizing_a_rails_application/)).
+
 That's all! Cat photo.
 
-![Irida]({{site.url}}/assets/images/posts/dockerizing-rails/irida-docker.jpg)
+![Irida]({{site.url}}/assets/images/programming-cat/terminator.png)
 
 <div class="alert alert-primary">
   <div class="alert-heading"><i class="fa fa-comments"></i> Code and comments</div>
