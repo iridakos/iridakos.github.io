@@ -163,7 +163,7 @@ We are going to use the awesome [devise](https://github.com/plataformatec/devise
 
 Append the following gem requirement at the bottom of the `Gemfile` file located at the root of the application's directory.
 
-```
+```ruby
 gem 'devise'
 ```
 
