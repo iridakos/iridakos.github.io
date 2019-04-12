@@ -487,6 +487,14 @@ to
 
 Check that your `app/assets/javascripts` folder doesn't have any files with extension `.coffee` and if you find any, remove them.<sup><a href="#acknowledgments">2</a><sup>
 
+In the terminal, also execute the following command:
+
+```bash
+rails tmp:cache:clear
+```
+
+to clear any cached compiled coffee scripts.
+
 Done. Restart you server.
 
 ### Adding a navigation bar
@@ -1381,7 +1389,7 @@ $(function() {
 
 ## Acknowledgments
 
-Thank you for your feedback.
+Thank you very much for your feedback.
 
 * [1] Armando Andini - [N+1 queries](https://github.com/iridakos/rails-chat-tutorial/issues/3)
 * [2] Rodolfo Ruiz - [Coffeescript leftovers](https://github.com/iridakos/rails-chat-tutorial/issues/5)
