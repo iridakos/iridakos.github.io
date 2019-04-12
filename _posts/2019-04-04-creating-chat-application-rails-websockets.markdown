@@ -239,6 +239,22 @@ and the following command to create the `RoomMessage`:
 rails generate resource RoomMessage room:references user:references message:text
 ```
 
+We are now going to define the appropriate relations<sup><a href="#acknowledgments">[7]</a></sup>.
+
+Open `app/models/room.rb` and add the relation inside the class:
+
+```ruby
+has_many :room_messages, dependent: :destroy,
+                         inverse_of: :room
+```
+
+Open `app/models/room_message.rb` and add the relations inside the class:
+
+```ruby
+belongs_to :user
+belongs_to :room, inverse_of: :room_messages
+```
+
 Migrate the database with:
 
 ```
@@ -1370,7 +1386,7 @@ Thank you for your feedback.
 * [2] Rodolfo Ruiz - [Coffeescript leftovers](https://github.com/iridakos/rails-chat-tutorial/issues/5)
 * [3] Felix Wolfsteller - [Turbolinks leftovers](https://github.com/iridakos/rails-chat-tutorial/issues/1)
 * [4] Maria Kravtsova - [Migration typo](https://github.com/iridakos/rails-chat-tutorial/issues/2)
-* [5] Tony Dehnke - [Sign up step](https://github.com/iridakos/rails-chat-tutorial/issues/6)
+* [5][7] Tony Dehnke - [Sign up step](https://github.com/iridakos/rails-chat-tutorial/issues/6), [Missing step for adding model relations](https://github.com/iridakos/rails-chat-tutorial/issues/8)
 * [6] keytonw - [Devise view missing button class](https://github.com/iridakos/rails-chat-tutorial/issues/9)
 
 That's all! Long post, tired cat photo.
