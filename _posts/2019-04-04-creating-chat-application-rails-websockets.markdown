@@ -608,45 +608,46 @@ def index
 end
 ```
 
-Open `app/views/rooms/index.html.erb` and change its contents to:
+Open `app/views/rooms/index.html.erb` and change its contents to<sup><a href="#acknowledgments">[8]</a></sup>:
 
 ```erb
-<div class="col-12 col-md-3 text-cebter">
-  <div class="mb-3">
-    <%= link_to new_room_path, class: "btn btn-primary" do %>
-      Create a room
+<div class="row">
+  <div class="col-12 col-md-3">
+    <div class="mb-3">
+      <%= link_to new_room_path, class: "btn btn-primary" do %>
+        Create a room
+      <% end %>
+    </div>
+
+    <% if @rooms.present? %>
+      <nav class="nav flex-column">
+        <% @rooms.each do |room| %>
+          <%= link_to room.name, room_path(room), class: "nav-link room-nav-link" %>
+        <% end %>
+      </nav>
+    <% else %>
+      <div class="text-muted">
+        The are no rooms
+      </div>
     <% end %>
   </div>
 
-  <% if @rooms.present? %>
-    <nav class="nav flex-column">
-      <% @rooms.each do |room| %>
-        <%= link_to room.name, room_path(room), class: "nav-link room-nav-link" %>
-      <% end %>
-    </nav>
-  <% else %>
-    <div class="text-muted">
-      The are no rooms
+  <div class="col">
+    <div class="alert alert-primary">
+      <h4 class="alert-heading">
+        Welcome to the RailsChatTutorial!
+      </h4>
+
+      <p>
+        We need to talk.
+      </p>
+
+      <hr />
+
+      <p>
+        You can create or join a room from the sidebar.
+      </p>
     </div>
-  <% end %>
-</div>
-
-<div class="col">
-  <div class="alert alert-primary">
-    <h4 class="alert-heading">
-      Welcome to the RailsChatTutorial!
-    </h4>
-
-    <p>
-      We need to talk.
-    </p>
-
-    <hr />
-
-    <p>
-      You can create or join a room from the sidebar.
-    </p>
-  </div>
 </div>
 ```
 
@@ -797,7 +798,7 @@ and change the `app/views/rooms/index.html.erb` to use it:
 
 ```erb
 <div class="row">
-  <div class="col-12 col-md-3 text-cebter">
+  <div class="col-12 col-md-3">
     <%= render partial: 'rooms' %>
   </div>
 
@@ -1386,7 +1387,7 @@ Thank you for your feedback.
 * [2] Rodolfo Ruiz - [Coffeescript leftovers](https://github.com/iridakos/rails-chat-tutorial/issues/5)
 * [3] Felix Wolfsteller - [Turbolinks leftovers](https://github.com/iridakos/rails-chat-tutorial/issues/1)
 * [4] Maria Kravtsova - [Migration typo](https://github.com/iridakos/rails-chat-tutorial/issues/2)
-* [5][7] Tony Dehnke - [Sign up step](https://github.com/iridakos/rails-chat-tutorial/issues/6), [Missing step for adding model relations](https://github.com/iridakos/rails-chat-tutorial/issues/8)
+* [5][7][8] Tony Dehnke - [Sign up step](https://github.com/iridakos/rails-chat-tutorial/issues/6), [Missing step for adding model relations](https://github.com/iridakos/rails-chat-tutorial/issues/8), [Missing line from html code block](https://github.com/iridakos/rails-chat-tutorial/issues/7)
 * [6] keytonw - [Devise view missing button class](https://github.com/iridakos/rails-chat-tutorial/issues/9)
 
 That's all! Long post, tired cat photo.
