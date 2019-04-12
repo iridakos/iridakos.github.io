@@ -352,6 +352,20 @@ In your terminal:
 rails generate devise:views
 ```
 
+The view for signing in is under `app/views/devise/sessions/new.html.erb` and for signing up is under `app/views/devise/registrations/new.html.erb`. Open these two files and change the submit button's class by replacing the following line<sup><a href="acknowledgments">[6]</a></sup>:
+
+```erb
+<%= f.button :submit, "Sign up" %>
+```
+
+with
+
+```erb
+<%= f.button :submit, "Sign up", class: 'btn btn-success' %>
+```
+
+to render the buttons *bootstrap style*.
+
 Before viewing our changes, let's do one last thing in our default layout.
 
 Open `app/views/layouts/application.html.erb` and replace its contents with:
@@ -1352,11 +1366,12 @@ $(function() {
 
 Thank you for your feedback.
 
-* [1] [Armando Andini - N+1 queries](https://github.com/iridakos/rails-chat-tutorial/issues/3)
-* [2] [Rodolfo Ruiz - Coffeescript leftovers](https://github.com/iridakos/rails-chat-tutorial/issues/5)
-* [3] [Felix Wolfsteller - Turbolinks leftovers](https://github.com/iridakos/rails-chat-tutorial/issues/1)
-* [4] [Maria Kravtsova - Migration typo](https://github.com/iridakos/rails-chat-tutorial/issues/2)
-* [5] [Tony Dehnke - Sign up step](https://github.com/iridakos/rails-chat-tutorial/issues/6)
+* [1] Armando Andini - [N+1 queries](https://github.com/iridakos/rails-chat-tutorial/issues/3)
+* [2] Rodolfo Ruiz - [Coffeescript leftovers](https://github.com/iridakos/rails-chat-tutorial/issues/5)
+* [3] Felix Wolfsteller - [Turbolinks leftovers](https://github.com/iridakos/rails-chat-tutorial/issues/1)
+* [4] Maria Kravtsova - [Migration typo](https://github.com/iridakos/rails-chat-tutorial/issues/2)
+* [5] Tony Dehnke - [Sign up step](https://github.com/iridakos/rails-chat-tutorial/issues/6)
+* [6] keytonw - [Devise view missing button class](https://github.com/iridakos/rails-chat-tutorial/issues/9)
 
 That's all! Long post, tired cat photo.
 
