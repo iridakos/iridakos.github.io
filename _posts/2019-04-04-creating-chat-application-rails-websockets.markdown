@@ -418,7 +418,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-Done, reload.
+Done, reload and sign up<sup><a href="#acknowledgments">[5]</a></sup>.
 
 ![Sign up with username]({{site.url}}/assets/images/posts/rails-chat-tutorial/07.png)
 
@@ -1356,6 +1356,7 @@ Thank you for your feedback.
 * [2] [Rodolfo Ruiz - Coffeescript leftovers](https://github.com/iridakos/rails-chat-tutorial/issues/5)
 * [3] [Felix Wolfsteller - Turbolinks leftovers](https://github.com/iridakos/rails-chat-tutorial/issues/1)
 * [4] [Maria Kravtsova - Migration typo](https://github.com/iridakos/rails-chat-tutorial/issues/2)
+* [5] [Tony Dehnke - Sign up step](https://github.com/iridakos/rails-chat-tutorial/issues/6)
 
 That's all! Long post, tired cat photo.
 
