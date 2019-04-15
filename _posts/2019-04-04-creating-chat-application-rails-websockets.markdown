@@ -16,7 +16,7 @@ tags:
   - chat
   - actioncable
   - redis
-popular: -1
+popular: 2
 related_posts:
   - dockerize-a-rails-application
   - todo-gtk-plus-ruby-tutorial
