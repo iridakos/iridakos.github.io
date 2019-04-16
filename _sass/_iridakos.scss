@@ -33,36 +33,41 @@ html {
 }
 
 .page-title-container {
-  padding: 1rem 0 0 0;
+  padding: 0 0 0 0;
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  background: #FFFDE8;
-  color: #0667a8;
+  background: #f2f3f4;
+  background: lighten($warning, 30%);
+  color: #333;
 
   .page-title {
     h1 {
       font-weight: bold;
       text-shadow: 1px 1px 0 rgba(255,255,255,1);
-      color: #0667a8;
+      color: #333;
     }
 
     .page-subtitle {
-      font-size: 60%;
+      font-size: 50%;
     }
 
     a, a:visited, a:link, a:hover {
       font-weight: 600;
-      color: darken($warning, 5%);
+      color: lightness($warning);
     }
   }
-
-  border-top: 1px solid lighten(#dbf0ff, 10%);
 }
 
 .spiral {
-  margin-top: 2rem;
+  margin-top: 1.75rem;
   background: url('/assets/images/header.png') repeat-x bottom;
   height: 30px;
+
+  &.flipped {
+    background: url('/assets/images/header-flipped.png') repeat-x top;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
 }
 
 img.image {
@@ -174,7 +179,31 @@ a {
 
 .navbar {
   &.iridakos-navbar {
-    background: #2d2d2d;
+    font-size: 120%;
+
+    ul.navbar-nav {
+
+      .nav-item {
+        padding: 0 5px;
+
+        &.active {
+          background: $warning;
+          border: 1px solid darken($warning, 5%);
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+
+  .navbar-brand {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    &.active {
+      background: $warning;
+      border: 1px solid darken($warning, 5%);
+      border-radius: 4px;
+    }
   }
 }
 

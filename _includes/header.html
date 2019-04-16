@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark iridakos-navbar">
+<nav class="navbar navbar-expand-lg navbar-light iridakos-navbar">
   <div class="container-fluid no-gutters">
     {% if page.is_home %}
       {% assign menu_class = 'active' %}
@@ -6,7 +6,8 @@
       {% assign menu_class = '' %}
     {% endif %}
 
-    <a class="navbar-brand {{ menu_class }}" href="/" alt="home"><img src="/assets/images/irida-favicon-grey.png">
+    <a class="navbar-brand {{ menu_class }}" href="/" alt="home">
+      <img src="/assets/images/irida-favicon-grey.png" class="mr-1">
       home
     </a>
 
@@ -64,6 +65,10 @@
 </nav>
 
 <div class="page-title-container">
+  <div class="spiral flipped">
+
+  </div>
+
   <div class="container-fluid no-gutters">
     <div class="page-title">
       <div class="row">
