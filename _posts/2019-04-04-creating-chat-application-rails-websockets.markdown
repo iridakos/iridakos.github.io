@@ -332,7 +332,7 @@ Change the `app/assets/stylesheets/application.css` files extension to `scss` an
 @import "bootstrap";
 ```
 
-Append the following lines to the `app/assets/javascript/application.js`
+Add the following lines to the `app/assets/javascript/application.js` just before the `//= require_tree .` line<sup><a href="#acknowledgments">[9]</a></sup>:
 
 ```js
 //= require jquery3
@@ -1397,6 +1397,7 @@ Thank you very much for your feedback.
 * [4] Maria Kravtsova - [Migration typo](https://github.com/iridakos/rails-chat-tutorial/issues/2)
 * [5][7][8] Tony Dehnke - [Sign up step](https://github.com/iridakos/rails-chat-tutorial/issues/6), [Missing step for adding model relations](https://github.com/iridakos/rails-chat-tutorial/issues/8), [Missing line from html code block](https://github.com/iridakos/rails-chat-tutorial/issues/7)
 * [6] keytonw - [Devise view missing button class](https://github.com/iridakos/rails-chat-tutorial/issues/9)
+* [9] Martin - [Mention order of requirements in application.js](https://github.com/iridakos/rails-chat-tutorial/issues/11)
 
 That's all! Long post, tired cat photo.
 
