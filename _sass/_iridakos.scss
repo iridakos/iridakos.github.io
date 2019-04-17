@@ -36,14 +36,14 @@ html {
   padding: 0 0 0 0;
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  background: #ffffe6;
-  color: #333;
+  background: darken(#CC342D, 15%);
+  color: $white;
 
   .page-title {
     h1 {
       font-weight: bold;
-      text-shadow: 1px 1px 0 rgba(255,255,255,1);
-      color: #333;
+      text-shadow: 1px 1px 0 rgba(darken(#CC342D, 40%),0.9);
+      color: $white;
     }
 
     .page-subtitle {
@@ -52,7 +52,7 @@ html {
 
     a, a:visited, a:link, a:hover {
       font-weight: 600;
-      color: lightness($warning);
+      color: $warning;
     }
   }
 }
