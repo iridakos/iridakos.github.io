@@ -282,3 +282,17 @@ h1, h2, h3, h4, h5, h6 {
 h2 {
   font-weight: bold;
 }
+
+.alert-light {
+  .alert-heading {
+    font-weight: bold;
+  }
+
+  & + .alert-light {
+    border-top: 1px solid $gray-200;
+  }
+
+  a.alert-link, a.alert-link:visited, a.alert-link:hover {
+    color: $iridakos;
+  }
+}

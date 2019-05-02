@@ -16,6 +16,7 @@ tags:
 comments: true
 popular: 2
 related_posts:
+  - manage-elasticsearch-nested-objects
   - elasticsearch-bucket-aggregations
   - elasticsearch-linux-man-pages
   - todo-part-1

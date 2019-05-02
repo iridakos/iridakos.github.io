@@ -19,6 +19,7 @@ popular: -1
 related_posts:
   - elasticsearch-rails-tutorial
   - elasticsearch-bucket-aggregations
+  - manage-elasticsearch-nested-objects
 ---
 
 In this post we are going to play around with full text searching with Elasticsearch and Linux man pages.

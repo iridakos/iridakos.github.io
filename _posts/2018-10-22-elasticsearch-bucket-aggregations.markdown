@@ -20,6 +20,7 @@ popular: -1
 related_posts:
   - elasticsearch-rails-tutorial
   - elasticsearch-linux-man-pages
+  - manage-elasticsearch-nested-objects
 ---
 
 ## Introduction

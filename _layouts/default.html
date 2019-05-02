@@ -40,15 +40,15 @@
           {% endif %}
 
           {% if page.is_post %}
-            <div class="alert alert-primary text-center">
+            {% include related_posts.html %}
+
+            <div class="alert alert-light">
               <h4>
                 <i class="fa fa-share"></i>
                 Share this page
               </h4>
               {% include share-page.html %}
             </div>
-
-            {% include related_posts.html %}
           {% endif %}
 
 
