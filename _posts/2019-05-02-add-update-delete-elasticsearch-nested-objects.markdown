@@ -76,9 +76,9 @@ Human has:
 * a **`cats`** property of type `nested`
 
 Each cat has:
-* an **`colors`** property of type `integer`
-* an **`name`** property of type `text`
-* an **`breed`** property of type `text`
+* a **`colors`** property of type `integer`
+* a **`name`** property of type `text`
+* a **`breed`** property of type `text`
 
 ### Add a human
 
