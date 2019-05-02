@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "Add, update and delete nested objects in Elasticsearch documents"
+title:  "Manage nested objects in Elasticsearch documents"
 description: "How to add, update and delete nested objects in Elasticsearch documents using the Update API and painless scripts."
 preview: "How to add, update and delete nested objects in Elasticsearch documents using the Update API and painless scripts."
 date: 2019-05-02 15:30:00 +0300
