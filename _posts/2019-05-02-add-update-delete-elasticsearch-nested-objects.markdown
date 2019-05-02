@@ -355,8 +355,8 @@ Cat updated:
 
 Now, in a more advanced example, we are going to use a more flexible script to:
 
-* target objects based on multiple conditions (here identifier and breed)
-* update more than one attributes (here identifier and name)
+* target objects based on multiple conditions (here colors and breed)
+* update more than one attributes (here colors and breed)
 
 Suppose we want to change the breed of cats who have `4 colors` and their breed is `Persian` to `Aegean` and their colors to `3`.
 
