@@ -6,35 +6,13 @@
 
     <div class="container-fluid no-gutters">
       <div class="row">
-        <div class="col-xs-12 col-md-8 col-lg-9 order-first order-md-last">
+        <div class="col-xs-12 col-md-8 col-lg-9 page-content">
           {% if page.outline %}
-              <div class="pull-right">
-                    <a class="ga-event-link btn btn-outline-primary btn-sm outline-button collapsed"
-                      data-event-label="{{ page.title }}"
-                      data-event-category="Document outline"
-                      data-event-action="click"
-                      title="View the structure of this document"
-                      role="button"
-                      data-toggle="collapse"
-                      href="#docout"
-                      aria-expanded="false"
-                      aria-controls="collapse">
-                      Table of contents
-                      <i class="fa iridakos-collapse"></i>
-                    </a>
-              </div>
-          {% endif %}
-
-          {% if page.outline %}
-            <div id="docout" class="collapse">
-
-            </div>
-
-            <div class="outline page-content">
+            <div class="outline">
               {{ content }}
             </div>
           {% else %}
-            <div class="page-content">
+            <div>
               {{ content }}
             </div>
           {% endif %}
@@ -54,7 +32,7 @@
 
         </div>
 
-        <div class="col order-last order-md-first">
+        <div class="col">
           {% include sidebar.html %}
         </div>
       </div>

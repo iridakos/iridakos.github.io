@@ -1,7 +1,42 @@
 <div class="sidebar">
+  {% if page.outline %}
+    <div class="alert alert-primary">
+      <div class="sidebar-section">
+        <a class="ga-event-link btn btn-success d-block collapsed text-left"
+          data-event-label="{{ page.title }}"
+          data-event-category="Document outline"
+          data-event-action="click"
+          title="View the structure of this document"
+          role="button"
+          data-toggle="collapse"
+          href="#docout"
+          aria-expanded="false"
+          aria-controls="collapse">
+          Table of contents
+          <i class="fa iridakos-collapse pull-right mt-1"></i>
+        </a>
+
+        <div id="docout" class="collapse mt-3 p-2">
+
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
   {% include popular_posts.html %}
 
   {% include news.html %}
-</div>
 
-{% include share-page.html %}
+  <div class="alert alert-primary">
+    <div class="sidebar-section">
+      <div class="section-title">
+        <i class="fa fa-share"></i>
+        Share
+      </div>
+
+      <div class="section-content">
+        {% include share-page.html %}
+      </div>
+    </div>
+  </div>
+</div>

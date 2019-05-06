@@ -1,12 +1,20 @@
 $sidebar-color: #2C72C8;
 
 .sidebar {
+  background: lighten(#FFFFA5, 15%);
+  border: 1px solid $gray-200;
+
+  .docout-root-wrap {
+    margin-bottom: 0;
+  }
+
   .alert {
-    box-shadow: 0 0 4px rgba($sidebar-color, 10%);
+    box-shadow: 0 0 0;
     padding: 0.75rem;
-    background: lighten($sidebar-color, 51%);
-    border: 1px solid lighten($sidebar-color, 45%);
+    background: transparent;
+    border: 0 none;
     color: darken($sidebar-color, 30%);
+    margin-bottom: 0;
   }
 
   .sidebar-section {
@@ -16,7 +24,7 @@ $sidebar-color: #2C72C8;
       font-family: 'Indie Flower', cursive;
       font-size: 130%;
       font-weight: bold;
-      color: $sidebar-color;
+      // color: $sidebar-color;
 
       h4 {
         margin: 0.25rem 0 0.35rem 0;
