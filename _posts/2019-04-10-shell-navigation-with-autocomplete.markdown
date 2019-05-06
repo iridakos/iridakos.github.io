@@ -255,7 +255,7 @@ That's all! Cat photo.
 ![I'll be back](https://iridakos.com/assets/images/programming-cat/terminator.png)
 
 
-<div class="alert alert-primary">
+<div class="alert alert-light">
   <div class="alert-heading"><i class="fa fa-comments"></i> Code and comments</div>
 
   You can find the code of goto at <a class="alert-link" href="https://github.com/iridakos/goto"><i class="fa fa-github"></i> https://github.com/iridakos/goto</a>.

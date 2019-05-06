@@ -37,7 +37,7 @@ In this tutorial we are going to create a **chat** web application from scratch 
 
 ![Rails chat tutorial gif]({{site.url}}/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif)
 
-<div class="alert alert-primary">
+<div class="alert alert-light">
   <div class="alert-heading"><i class="fa fa-comments"></i> Code and comments</div>
 
   You can find the code of this tutorial on <a class="alert-link" href="https://github.com/iridakos/rails-chat-tutorial"><i class="fa fa-github"></i> GitHub</a>.
@@ -1403,7 +1403,7 @@ That's all! Long post, tired cat photo.
 
 ![Tired cat photo]({{site.url}}/assets/images/posts/rails-chat-tutorial/irida.jpg)
 
-<div class="alert alert-primary">
+<div class="alert alert-light">
   <div class="alert-heading"><i class="fa fa-comments"></i> Code and comments</div>
 
   You can find the code of this tutorial on <a class="alert-link" href="https://github.com/iridakos/rails-chat-tutorial"><i class="fa fa-github"></i> GitHub</a>.
