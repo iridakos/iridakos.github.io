@@ -23,7 +23,7 @@ $sidebar-color: #2C72C8;
 
     .section-title {
       font-family: 'Indie Flower', cursive;
-      color: #8d241f;
+      color: $gray-800;
 
       h4 {
         margin: 0.25rem 0 0.35rem 0;
@@ -33,10 +33,6 @@ $sidebar-color: #2C72C8;
 
     .section-content {
       border-top: 0 none;
-
-      a, a:link, a:hover, a:visited {
-        color: darken(#ffad33, 20%);
-      }
 
       .section-item {
         & + .section-item {

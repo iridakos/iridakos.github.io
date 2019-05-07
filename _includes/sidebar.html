@@ -25,22 +25,15 @@
     </div>
   {% endif %}
 
-  {% include popular_posts.html %}
-
-  {% include news.html %}
-
-  <div class="alert alert-primary">
+  <div class="alert alert-primary d-none d-md-block">
     <div class="sidebar-section">
-      <div class="section-title">
-        <h4>
-          <i class="fa fa-share-alt"></i>
-          Share
-        </h4>
-      </div>
-
       <div class="section-content mt-2">
         {% include share-page.html %}
       </div>
     </div>
   </div>
+
+  {% include popular_posts.html %}
+
+  {% include news.html %}
 </div>
