@@ -6,7 +6,7 @@ date:   2014-10-14 10:00:00 +0300
 category: "rails"
 comments: true
 outline: true
-image: "https://iridakos.com/assets/images/irida-favicon.png"
+image: "https://iridakos.com/assets/images/site.png"
 identifier: "rescue-from-memory-leak"
 popular: -1
 tags:

@@ -6,7 +6,7 @@ date:   2014-10-14 10:00:00 +0300
 preview: "How to deal with required boolean attributes and radio buttons in Ruby on Rails."
 category: "how-to"
 comments: true
-image: "https://iridakos.com/assets/images/irida-favicon.png"
+image: "https://iridakos.com/assets/images/site.png"
 identifier: "rails-radio-buttons-required-boolean"
 outline: true
 tags:

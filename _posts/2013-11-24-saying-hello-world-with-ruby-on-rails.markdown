@@ -3,7 +3,7 @@ layout: default
 title:  "Saying hello world with Ruby on Rails"
 description: "This is a tutorial for creating the classic hello world application with Ruby on Rails."
 date:   2013-11-24 10:00:00 +0300
-image: "https://iridakos.com/assets/images/irida-favicon.png"
+image: "https://iridakos.com/assets/images/site.png"
 category: "tutorials"
 comments: true
 outline: true

@@ -15,7 +15,7 @@ tags:
   - application
   - developers
   - mvc
-image: "https://iridakos.com/assets/images/irida-favicon.png"
+image: "https://iridakos.com/assets/images/site.png"
 identifier: "todo-part-2"
 show_popular_inline_posts: true
 redirect_from:

@@ -6,7 +6,7 @@ date:   2014-10-14 10:00:00 +0300
 preview: "I was working on my application and I wanted to write some RSpec tests for some controllers having `before_filter` for some actions...."
 category: "how-to"
 comments: true
-image: "https://iridakos.com/assets/images/irida-favicon.png"
+image: "https://iridakos.com/assets/images/site.png"
 identifier: "testing-exec-filters-rspec"
 outline: true
 tags:

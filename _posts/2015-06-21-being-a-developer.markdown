@@ -5,7 +5,7 @@ date:   2015-06-21 10:00:00 +0300
 description: "How is the life of a developer like."
 category: "humor"
 comments: true
-image: "https://iridakos.com/assets/images/irida-favicon.png"
+image: "https://iridakos.com/assets/images/site.png"
 identifier: "being-a-developer"
 outline: true
 popular: -1

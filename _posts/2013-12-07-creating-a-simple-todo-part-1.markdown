@@ -6,7 +6,7 @@ date:   2013-12-07 10:00:00 +0300
 category: "tutorials"
 comments: true
 outline: true
-image: "https://iridakos.com/assets/images/irida-favicon.png"
+image: "https://iridakos.com/assets/images/site.png"
 identifier: "todo-part-1"
 popular: -6
 tags:
