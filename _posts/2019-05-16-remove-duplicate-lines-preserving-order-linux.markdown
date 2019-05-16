@@ -171,9 +171,6 @@ That's all. Cat photo.
 
 ![duplicate cat](/assets/images/posts/remove-duplicates/duplicate-cat.jpg)
 
-https://stackoverflow.com/questions/11532157/remove-duplicate-lines-without-sorting
-https://unix.stackexchange.com/a/159734/313302
-
 <div class="alert alert-light">
   <div class="alert-heading"><i class="fa fa-comments"></i> Comments and feedback</div>
 
