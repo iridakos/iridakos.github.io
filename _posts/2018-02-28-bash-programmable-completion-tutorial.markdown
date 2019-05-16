@@ -17,6 +17,7 @@ tags:
   - tutorial
 popular: 1
 related_posts:
+  - remove-duplicate-lines-linux
   - shell-navigation-goto
   - todo-gtk-plus-ruby-tutorial
 ---
