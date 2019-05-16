@@ -34,7 +34,7 @@ awk '!visited[$0]++' your_file > deduplicated_file
 
 The script keeps an associative array with *indices* equal to the unique lines of the file and *values* equal to their occurrences. For each line of the file, if the line occurrences are zero then it increases them by one and **prints the line**, otherwise it just increases the occurrences **without printing the line**.
 
-I was not familiar with `awk` and I wanted to understand how is this accomplished with such a short script. I did my research and here is what is going on:
+I was not familiar with `awk` and I wanted to understand how is this accomplished with such a short script (`awk`ward). I did my research and here is what is going on:
 
 * the awk "script" `!visited[$0]++` is executed for **each line** of the input file
 * `visited[]` is a variable of type [associative array](http://kirste.userpage.fu-berlin.de/chemnet/use/info/gawk/gawk_12.html) (a.k.a. [Map](https://en.wikipedia.org/wiki/Associative_array)). We don't have to initialize it, `awk` will do this for us the first time we access it.
