@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "Remove duplicate lines of a file preserving their order in Linux"
+title:  "Remove duplicate lines of a file keeping their order in Linux"
 description: "How to remove duplicate lines of a file in Linux without sorting or changing their order."
 preview: "How to remove duplicate lines of a file in Linux without sorting or changing their order."
 date: 2019-05-16 11:30:00 +0300
