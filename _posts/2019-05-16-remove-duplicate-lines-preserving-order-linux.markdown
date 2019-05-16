@@ -174,7 +174,7 @@ That's all. Cat photo.
 <div class="alert alert-light">
   <div class="alert-heading"><i class="fa fa-comments"></i> Comments and feedback</div>
 
-  For feedback, comments, typos etc. please use this <a class="alert-link" href="https://github.com/iridakos/iridakos-posts/issues/2">issue</a>.
+  For feedback, comments, typos etc. please use this <a class="alert-link" href="https://github.com/iridakos/iridakos-posts/issues/3">issue</a>.
 
   <hr>
 
