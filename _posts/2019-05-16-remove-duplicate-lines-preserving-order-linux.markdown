@@ -1,8 +1,8 @@
 ---
 layout: default
-title:  "Remove duplicate lines of a file keeping their order in Linux"
-description: "How to remove duplicate lines of a file in Linux without sorting or changing their order."
-preview: "How to remove duplicate lines of a file in Linux without sorting or changing their order."
+title:  "Remove duplicate lines from files keeping the original order"
+description: "How to remove duplicate lines of a file in Linux without sorting or changing their order (one-liner explained)."
+preview: "How to remove duplicate lines of a file in Linux without sorting or changing their order (one-liner explained)."
 date: 2019-05-16 11:30:00 +0300
 image: "https://iridakos.com/assets/images/posts/remove-duplicates/post.png"
 category: "how-to"
