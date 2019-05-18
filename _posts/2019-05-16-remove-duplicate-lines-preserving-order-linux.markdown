@@ -79,6 +79,35 @@ awk '!visited[$0]++ { print $0 }' your_file > deduplicated_file
 
 For every line of the file, if the expression succeeds the line is printed to the output. Otherwise, the action is not executed, nothing is printed.
 
+## Why not use the `uniq` command?
+
+The `uniq` commands removes only the **adjacent duplicate lines**. Demonstration:
+
+```bash
+$ cat test.txt
+A
+A
+A
+B
+B
+B
+A
+A
+C
+C
+C
+B
+B
+A
+$ uniq < test.txt
+A
+B
+A
+C
+B
+A
+```
+
 ## Other approaches
 
 <h3>Using the <code>sort</code> command</h3>
