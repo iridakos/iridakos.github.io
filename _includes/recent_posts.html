@@ -1,3 +1,4 @@
+{% if page.is_home != true %}
 <div class="alert alert-primary">
   <div class="sidebar-section">
     <div class="section-title">
@@ -5,7 +6,7 @@
     </div>
 
     <div class="section-content">
-      {% for post in site.posts limit:5 %}
+      {% for post in site.posts limit:3 %}
           <div class="section-item">
             <a href="{{ my_post.url }}"
                class="ga-event-link"
@@ -18,3 +19,4 @@
     </div>
   </div>
 </div>
+{% endif %}

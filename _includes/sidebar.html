@@ -27,17 +27,31 @@
 
   {% if page.is_post %}
     {% include sidebar_related_posts.html %}
+
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <div class="section-content mt-2">
+          {% include share-page.html %}
+        </div>
+      </div>
+    </div>
   {% endif %}
 
   {% include recent_posts.html %}
 
   {% include popular_posts.html %}
 
-  <div class="alert alert-primary d-none d-md-block">
-    <div class="sidebar-section">
-      <div class="section-content mt-2">
-        {% include share-page.html %}
+  {% include code.html %}
+
+  {% include news.html %}
+
+  {% if page.is_post != true %}
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <div class="section-content mt-2">
+          {% include share-page.html %}
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
 </div>
