@@ -1,0 +1,20 @@
+<div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-bullhorn"></i> recent posts</h4>
+    </div>
+
+    <div class="section-content">
+      {% for post in site.posts limit:5 %}
+          <div class="section-item">
+            <a href="{{ my_post.url }}"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="{{my_post.title}}">{{ post.title }}</a>
+            <div class="text-muted smaller">{{ post.description }}</div>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

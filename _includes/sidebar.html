@@ -25,6 +25,14 @@
     </div>
   {% endif %}
 
+  {% if page.is_post %}
+    {% include sidebar_related_posts.html %}
+  {% endif %}
+
+  {% include recent_posts.html %}
+
+  {% include popular_posts.html %}
+
   <div class="alert alert-primary d-none d-md-block">
     <div class="sidebar-section">
       <div class="section-content mt-2">
@@ -32,8 +40,4 @@
       </div>
     </div>
   </div>
-
-  {% include popular_posts.html %}
-
-  {% include news.html %}
 </div>

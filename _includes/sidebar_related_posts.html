@@ -1,0 +1,26 @@
+{% if page.related_posts %}
+<div class="alert alert-primary d-none d-md-block">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-cogs"></i> Related posts</h4>
+    </div>
+
+    <div class="section-content">
+      {% for identifier in page.related_posts %}
+        {% for post in site.posts %}
+          {% if identifier == post.identifier %}
+          <div class="section-item">
+            <a href="{{ my_post.url }}"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="{{my_post.title}}">{{ post.title }}</a>
+             <div class="text-muted smaller">{{ post.description }}</div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
