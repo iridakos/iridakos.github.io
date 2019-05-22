@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "How to navigate to aliased directories with autocomplete in Linux"
+title:  "How to alias and navigate to directories with autocomplete in Linux"
 description: "A Linux shell script for registering directory aliases and navigating to them with tab completion."
 preview: "A Linux shell script for registering directory aliases and navigating to them with tab completion."
 date: 2019-04-10 16:00:00 +0300
