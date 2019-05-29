@@ -6,14 +6,14 @@
     </div>
 
     <div class="section-content">
-      {% for post in site.posts limit:3 %}
+      {% for p in site.posts limit:3 %}
           <div class="section-item">
-            <a href="{{ my_post.url }}"
+            <a href="{{ p.url }}"
                class="ga-event-link"
                data-event-category="Recent posts"
                data-event-action="click"
-               data-event-label="{{my_post.title}}">{{ post.title }}</a>
-            <div class="text-muted smaller">{{ post.description }}</div>
+               data-event-label="{{my_post.title}}">{{ p.title }}</a>
+            <div class="text-muted smaller">{{ p.description }}</div>
           </div>
       {% endfor %}
     </div>

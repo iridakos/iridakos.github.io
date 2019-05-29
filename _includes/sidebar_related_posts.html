@@ -10,11 +10,11 @@
         {% for post in site.posts %}
           {% if identifier == post.identifier %}
           <div class="section-item">
-            <a href="{{ my_post.url }}"
+            <a href="{{ post.url }}"
                class="ga-event-link"
                data-event-category="Recent posts"
                data-event-action="click"
-               data-event-label="{{my_post.title}}">{{ post.title }}</a>
+               data-event-label="{{post.title}}">{{ post.title }}</a>
              <div class="text-muted smaller">{{ post.description }}</div>
           </div>
           {% endif %}

@@ -4,12 +4,12 @@
 
   <ul class="list-unstyled">
   {% for identifier in page.related_posts %}
-    {% for post in site.posts %}
-      {% if identifier == post.identifier %}
+    {% for p in site.posts %}
+      {% if identifier == p.identifier %}
         <li>
-          <a class="alert-link ga-event-link" data-event-category="Related posts" data-event-action="click" data-event-label="{{ post.title }}" href="{{ post.url }}"><strong>{{ post.title }}</strong></a>
+          <a class="alert-link ga-event-link" data-event-category="Related posts" data-event-action="click" data-event-label="{{ p.title }}" href="{{ p.url }}"><strong>{{ p.title }}</strong></a>
           <div>
-            <small>{{ post.description }}</small>
+            <small>{{ p.description }}</small>
           </div>
         </li>
       {% endif %}
