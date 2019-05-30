@@ -9,6 +9,11 @@
       {% for my_post in items limit:5 %}
         {% if my_post.featured.state == true %}
           <div class="section-item">
+            <div class="float-right ml-1">
+              {% for publication in my_post.featured.publications %}
+                <span class="featured-{{ publication.discriminator }}" title="Featured in {{ publication.site }}" data-toggle="tooltip">{{ publication.logo }}</span>
+              {% endfor %}
+            </div>
             <a href="{{ my_post.url }}"
                class="ga-event-link"
                data-event-category="Popular posts"
@@ -20,6 +25,10 @@
           </div>
         {% endif %}
       {% endfor %}
+
+      <div class="section-item">
+        <a href="/featured">View all featured posts</a>
+      </div>
     </div>
   </div>
 </div>
