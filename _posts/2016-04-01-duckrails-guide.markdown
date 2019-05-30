@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "DuckRails - Open source development tool for easily and dynamically mocking API endpoints"
+title:  "DuckRails - Open source development tool for mocking API endpoints"
 preview: "An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available."
 description: "An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available."
 image: "https://3.bp.blogspot.com/-pmI-NvE9zv0/VuaG8aAk9pI/AAAAAAAABss/OFNa5S2LCncihZyMV1O7DrmEVCW6r9X9A/s640/new-mock-general.png"
