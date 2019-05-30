@@ -39,7 +39,7 @@ featured:
         - type: issue
           issue: "421"
           link: https://hackernewsletter.com/issues/421/
-popular: 1
+popular: 200
 related_posts:
   - remove-duplicate-lines-linux
   - shell-navigation-goto

@@ -1,20 +1,22 @@
 <div class="alert alert-primary">
   <div class="sidebar-section">
     <div class="section-title">
-      <h4><i class="fa fa-hand-spock-o"></i> most visited</h4>
+      <h4><i class="fa fa-hand-spock-o"></i> featured posts</h4>
     </div>
 
     <div class="section-content">
-      {% assign items = (site.posts | sort: 'popular') %}
-      {% for my_post in items %}
-        {% if my_post.popular > 0 %}
+      {% assign items = (site.posts | sort: 'popular' | reverse) %}
+      {% for my_post in items limit:5 %}
+        {% if my_post.featured.state == true %}
           <div class="section-item">
             <a href="{{ my_post.url }}"
                class="ga-event-link"
                data-event-category="Popular posts"
                data-event-action="click"
                data-event-label="{{my_post.title}}">{{ my_post.title }}</a>
-             <div class="text-muted smaller">{{ my_post.description }}</div>
+             <div class="text-muted smaller">
+               {{ my_post.description }}
+             </div>
           </div>
         {% endif %}
       {% endfor %}

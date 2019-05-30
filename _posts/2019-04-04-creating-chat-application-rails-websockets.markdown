@@ -26,7 +26,7 @@ featured:
         - type: issue
           issue: "445"
           link: https://rubyweekly.com/issues/445
-popular: 2
+popular: 90
 related_posts:
   - dockerize-a-rails-application
   - todo-gtk-plus-ruby-tutorial

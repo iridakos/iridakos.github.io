@@ -14,7 +14,7 @@ tags:
   - scripts
   - file
   - awk
-popular: -1
+popular: 100
 featured:
   state: true
   publications:

@@ -16,7 +16,7 @@ tags:
   - desktop
   - opensource
   - tutorial
-popular: 2
+popular: 150
 featured:
   state: true
   publications:

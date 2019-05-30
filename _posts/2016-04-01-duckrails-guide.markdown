@@ -30,7 +30,7 @@ featured:
         - type: issue
           issue: "376"
           link: https://rubyweekly.com/issues/376
-popular: -1
+popular: 95
 show_popular_inline_posts: true
 identifier: "duckrails-guide"
 redirect_from:
