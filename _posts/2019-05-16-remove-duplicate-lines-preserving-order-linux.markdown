@@ -15,6 +15,16 @@ tags:
   - file
   - awk
 popular: -1
+featured:
+  state: true
+  publications:
+    - site: Hacker News
+      discriminator: hacker-news
+      logo: <i class="fa fa-hacker-news"></i>
+      data:
+        - type: date
+          date: "on May 29th 2019"
+          link: https://news.ycombinator.com/item?id=20037366
 related_posts:
   - bash-completion-script
   - faviconicious

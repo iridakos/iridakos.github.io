@@ -15,6 +15,16 @@ tags:
   - opensource
   - tutorial
   - ruby
+featured:
+  state: true
+  publications:
+    - site: Ruby Weekly
+      discriminator: ruby-weekly
+      logo: <i class="fa fa-diamond"></i>
+      data:
+        - type: issue
+          issue: "449"
+          link: https://rubyweekly.com/issues/449
 popular: -1
 related_posts:
   - elasticsearch-rails-tutorial

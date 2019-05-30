@@ -17,6 +17,33 @@ tags:
   - opensource
   - tutorial
 popular: 2
+featured:
+  state: true
+  publications:
+    - site: Hacker News
+      discriminator: hacker-news
+      logo: <i class="fa fa-hacker-news"></i>
+      data:
+        - type: date
+          date: "February 9 2018"
+          link: https://news.ycombinator.com/item?id=16340126
+    - site: Ruby Weekly
+      discriminator: ruby-weekly
+      logo: <i class="fa fa-diamond"></i>
+      data:
+        - type: issue
+          issue: "384"
+          link: https://rubyweekly.com/issues/384
+        - type: issue
+          issue: "414"
+          link: https://rubyweekly.com/issues/414
+    - site: opensource.com
+      discriminator: opensource-com
+      logo: <i class="fa fa-linux"></i>
+      data:
+        - type: date
+          date: "April 30th 2018"
+          link: https://opensource.com/article/18/4/creating-linux-desktop-application-ruby
 related_posts:
   - bash-completion-script
   - todo-part-1

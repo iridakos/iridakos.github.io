@@ -1,18 +1,35 @@
 ---
 layout: default
-title:  "DuckRails - Open source development tool for mocking API endpoints"
-description: "A guide for installing and using DuckRails"
+title:  "DuckRails - Open source development tool for easily and dynamically mocking API endpoints"
+preview: "An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available."
+description: "An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available."
 image: "https://3.bp.blogspot.com/-pmI-NvE9zv0/VuaG8aAk9pI/AAAAAAAABss/OFNa5S2LCncihZyMV1O7DrmEVCW6r9X9A/s640/new-mock-general.png"
 date:   2016-04-01 10:00:00 +0300
 category: "guides"
 comments: true
 outline: true
 tags:
-  - opensource 
-  - tools 
-  - developers 
-  - github 
+  - opensource
+  - tools
+  - developers
+  - github
   - api
+featured:
+  state: true
+  publications:
+    - site: Ruby Weekly
+      discriminator: ruby-weekly
+      logo: <i class="fa fa-diamond"></i>
+      data:
+        - type: issue
+          issue: "289"
+          link: https://rubyweekly.com/issues/289
+        - type: issue
+          issue: "329"
+          link: https://rubyweekly.com/issues/329
+        - type: issue
+          issue: "376"
+          link: https://rubyweekly.com/issues/376
 popular: -1
 show_popular_inline_posts: true
 identifier: "duckrails-guide"

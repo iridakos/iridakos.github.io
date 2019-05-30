@@ -1,0 +1,36 @@
+$hackernewsletter: #f60;
+$opensourcecom: #005172;
+$rubyweekly: #cc0000;
+
+.featured {
+  color: $gray-800;
+  padding: 4px 0;
+
+  .featured-hacker-news {
+    i {
+      font-size: 120%;
+      color: $hackernewsletter;
+    }
+  }
+
+  .featured-ruby-weekly {
+    i {
+      font-size: 100%;
+      color: $rubyweekly;
+    }
+  }
+
+  .featured-opensource-com {
+    i {
+      font-size: 120%;
+      color: $opensourcecom;
+    }
+  }
+
+  .featured-hackernewsletter {
+    i {
+      font-size: 110%;
+      color: $hackernewsletter;
+    }
+  }
+}

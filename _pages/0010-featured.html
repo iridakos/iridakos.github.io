@@ -1,0 +1,58 @@
+---
+layout: default
+menu_title: featured
+title: featured posts
+permalink: /featured/
+show_in_header: true
+description: Blog posts that were featured in newsletters, other sites and platforms (Ruby Weekly, Hacker News etc.)
+subtitle: Blog posts that were featured in newsletters, other sites and platforms (Ruby Weekly, Hacker News etc.)
+---
+
+<div class="posts-container">
+    {% for my_post in site.posts %}
+      {% if my_post.category %}
+        {% if my_post.featured.state %}
+          {% include _post.html post=my_post hide_category=true %}
+          <div class="featured my-1">
+            <div class="row">
+              <div class="col-auto pr-0">
+                Featured on
+              </div>
+
+              <div class="col">
+                {% for publication in my_post.featured.publications %}
+                  <div class="row">
+                    <div class="col mb-1 pl-2">
+                      <span class="featured-{{ publication.discriminator }}"><strong class="">{{ publication.logo }} {{ publication.site }}</strong></span>
+
+                        {% for publication_data in publication.data %}
+                          {% if forloop.first == true %}
+                            {% if publication_data.type == 'date' %}
+                              on
+                            {% else %}
+                              in issue{% if forloop.last == false%}s{% endif %}
+                            {% endif %}
+                          {% elsif forloop.first == false and forloop.last == false %}
+                            ,
+                          {% elsif forloop.first == false and forloop.last == true %}
+                            and
+                          {% endif %}
+
+                          {% if publication_data.type == 'date' %}
+                            <a href="{{ publication_data.link }}">{{ publication_data.date }}</a>
+                          {% elsif publication_data.type == 'issue' %}
+                            <a href="{{ publication_data.link }}">{{ publication_data.issue }}</a>
+                          {% endif %}
+                        {% endfor %}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <hr class="separator">
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+</div>

@@ -16,6 +16,16 @@ tags:
   - chat
   - actioncable
   - redis
+featured:
+  state: true
+  publications:
+    - site: Ruby Weekly
+      discriminator: ruby-weekly
+      logo: <i class="fa fa-diamond"></i>
+      data:
+        - type: issue
+          issue: "445"
+          link: https://rubyweekly.com/issues/445
 popular: 2
 related_posts:
   - dockerize-a-rails-application

@@ -15,6 +15,30 @@ tags:
   - programmable-completion
   - opensource
   - tutorial
+featured:
+  state: true
+  publications:
+    - site: Hacker News
+      discriminator: hacker-news
+      logo: <i class="fa fa-hacker-news"></i>
+      data:
+        - type: date
+          date: "September 2018"
+          link: https://news.ycombinator.com/item?id=18060049
+    - site: opensource.com
+      discriminator: opensource-com
+      logo: <i class="fa fa-linux"></i>
+      data:
+        - type: date
+          date: "March 22nd 2018"
+          link: https://opensource.com/article/18/3/creating-bash-completion-script
+    - site: hackernewsletter
+      discriminator: hackernewsletter
+      logo: <i class="fa fa-envelope"></i>
+      data:
+        - type: issue
+          issue: "421"
+          link: https://hackernewsletter.com/issues/421/
 popular: 1
 related_posts:
   - remove-duplicate-lines-linux

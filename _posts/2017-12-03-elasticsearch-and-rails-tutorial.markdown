@@ -13,6 +13,16 @@ tags:
   - rails
   - elasticsearch
   - tutorial
+featured:
+  state: true
+  publications:
+    - site: Ruby Weekly
+      discriminator: ruby-weekly
+      logo: <i class="fa fa-diamond"></i>
+      data:
+        - type: issue
+          issue: "378"
+          link: https://rubyweekly.com/issues/378
 comments: true
 popular: 2
 related_posts:
