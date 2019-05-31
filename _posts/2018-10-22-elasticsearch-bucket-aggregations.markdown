@@ -15,7 +15,7 @@ tags:
   - facets
   - search
   - faceted navigation
-  - nested aggregations
+  - nested objects
 popular: -1
 related_posts:
   - elasticsearch-rails-tutorial

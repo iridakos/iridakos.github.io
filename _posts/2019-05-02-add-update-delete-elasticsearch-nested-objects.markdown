@@ -12,7 +12,7 @@ tags:
   - elasticsearch
   - opensource
   - scripts
-  - "nested datatypes"
+  - "nested objects"
 popular: -1
 related_posts:
   - elasticsearch-bucket-aggregations
