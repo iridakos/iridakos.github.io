@@ -13,20 +13,18 @@ tag_js: true
 
 </div>
 
-<div class="alert alert-primary iridakos-alert">
-  <h3>All tags</h3>
+<div class="alert bg-light border my-3">
+  <h2><i class="fa fa-cloud"></i> All tags</h2>
 
   <div class="tags">
-    {% assign all_tags = '' | split: '' %}
-
-    {% for post in site.posts %}
-      {% assign all_tags = all_tags | concat: post.tags %}
-    {% endfor %}
-
-    {% assign all_tags = all_tags | uniq | sort %}
-
-    {% for tag in all_tags %}
-      <a class="alert-link ga-event-link" data-event-label="{{ tag }}" data-event-action="click" data-event-category="tags" href="/tags/?tag={{tag}}">{{tag}}</a>{% if forloop.last != true %}{% endif %}
+    {% assign tags = site.tags | sort %}
+    {% for tag in tags %}
+     <span class="site-tag">
+        <a href="/tags?tag={{ tag | first }}"
+            style="font-size: {{ tag | last | size  |  times: 5 | plus: 80  }}%">
+                {{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})
+        </a>
+    </span>
     {% endfor %}
   </div>
 </div>

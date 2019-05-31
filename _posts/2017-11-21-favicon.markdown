@@ -8,12 +8,14 @@ preview: "Quickly create a favicon with imagemagick from an image (png, jpg etc)
 category: "how-to"
 popular: -1
 tags:
-  - favicon 
-  - website 
-  - icon 
-  - imagemagick 
-  - how-to 
+  - favicon
+  - website
+  - icon
+  - imagemagick
+  - how-to
   - tips
+  - bash
+  - linux
 identifier: "faviconicious"
 comments: true
 hidden: true

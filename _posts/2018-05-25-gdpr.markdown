@@ -10,9 +10,7 @@ comments: true
 identifier: "gdpr"
 popular: -1
 tags:
-  - gdpr 
-  - cat 
-  - email
+  - humor
 show_popular_inline_posts: true
 redirect_from:
   - /2018/05/25/gdpr.html

@@ -15,6 +15,7 @@ tags:
   - postgresql
   - postgres
   - redis
+  - chat
 popular: 4
 related_posts:
   - rails-chat-websockets
