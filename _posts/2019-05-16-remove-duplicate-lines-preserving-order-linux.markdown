@@ -25,6 +25,13 @@ featured:
         - type: date
           date: "on May 29th 2019"
           link: https://news.ycombinator.com/item?id=20037366
+    - site: hackernewsletter
+      discriminator: hackernewsletter
+      logo: <i class="fa fa-envelope"></i>
+      data:
+        - type: issue
+          issue: "455"
+          link: https://mailchi.mp/hackernewsletter/455?e=8228187337
 related_posts:
   - bash-completion-script
   - faviconicious
