@@ -103,17 +103,19 @@ layout: default
   {{ content }}
 
   <div class="row">
-    <div class="col text-center mb-3">
-      {% assign next_index = cats.size | minus: page.index | minus: 2 %}
-      {% if cats[next_index] and next_index >= 0 %}
-        {% assign cat=cats[next_index] %}
-        <a href="{{ cat.url }}" class="btn btn-outline-primary btn-lg float-left"><i class="fa fa-angle-double-left"></i> Next photo</a>
-      {% endif %}
-
+    <div class="col-12 col-sm-6 text-left mb-3">
       {% assign previous_index = cats.size | minus: page.index %}
       {% if cats[previous_index] %}
         {% assign cat=cats[previous_index] %}
-        <a href="{{ cat.url }}" class="btn btn-outline-primary btn-lg float-right">Previous photo <i class="fa fa-angle-double-right"></i></a>
+        <a href="{{ cat.url }}" class="btn btn-outline-primary d-block"><i class="fa fa-angle-double-left"></i> Previous photo</a>
+      {% endif %}
+    </div>
+
+    <div class="col-12 col-sm-6 text-right mb-3">
+      {% assign next_index = cats.size | minus: page.index | minus: 2 %}
+      {% if cats[next_index] and next_index >= 0 %}
+        {% assign cat=cats[next_index] %}
+        <a href="{{ cat.url }}" class="btn btn-outline-primary d-block">Next photo <i class="fa fa-angle-double-right"></i></a>
       {% endif %}
     </div>
   </div>
