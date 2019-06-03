@@ -16,7 +16,7 @@
             </div>
             <a href="{{ my_post.url }}"
                class="ga-event-link"
-               data-event-category="Popular posts"
+               data-event-category="Featured posts"
                data-event-action="click"
                data-event-label="{{my_post.title}}">{{ my_post.title }}</a>
              <div class="text-muted smaller">
@@ -27,7 +27,11 @@
       {% endfor %}
 
       <div class="section-item">
-        <a href="/featured">View all featured posts</a>
+        <a href="/featured"
+           class="ga-event-link"
+           data-event-category="Featured all posts"
+           data-event-action="click"
+           data-event-label="View all featured posts">View all featured posts</a>
       </div>
     </div>
   </div>

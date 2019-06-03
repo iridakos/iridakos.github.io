@@ -39,9 +39,17 @@ subtitle: Posts featured in newsletters, other sites and platforms.
                           {% endif %}
 
                           {% if publication_data.type == 'date' %}
-                            <a href="{{ publication_data.link }}">{{ publication_data.date }}</a>
+                            <a href="{{ publication_data.link }}"
+                               class="ga-event-link"
+                               data-event-category="Featured post publication"
+                               data-event-action="click"
+                               data-event-label="{{ publication.discriminator }} - {{ publication_data.date }}">{{ publication_data.date }}</a>
                           {% elsif publication_data.type == 'issue' %}
-                            <a href="{{ publication_data.link }}">{{ publication_data.issue }}</a>
+                            <a href="{{ publication_data.link }}"
+                               class="ga-event-link"
+                               data-event-category="Featured post publication"
+                               data-event-action="click"
+                               data-event-label="{{ publication.discriminator }} - {{ publication_data.issue }}">{{ publication_data.issue }}</a>
                           {% endif %}
                         {% endfor %}
                     </div>
