@@ -8,8 +8,36 @@
       <div class="row">
         <div class="col-xs-12 col-md-8 col-lg-9 page-content">
           {% if page.outline %}
-            <div class="outline">
-              {{ content }}
+            <div class="row">
+              <div class="col-12">
+                <div class="outline">
+                  {{ content }}
+                </div>
+              </div>
+
+              <div class="col-12 order-first">
+                <div class="d-sm-block d-md-none mb-3">
+                  <a class="ga-event-link btn btn-outline-primary d-block collapsed text-left"
+                    data-event-label="{{ page.title }}"
+                    data-event-category="Document outline"
+                    data-event-action="click"
+                    title="View the structure of this document"
+                    role="button"
+                    data-toggle="collapse"
+                    data-role="outline"
+                    data-content=".outline"
+                    href="#docout-mobile"
+                    data-target="#docout-mobile"
+                    aria-expanded="false"
+                    aria-controls="collapse">
+                    Table of contents
+                    <i class="fa iridakos-collapse pull-right mt-1"></i>
+                  </a>
+
+                  <div id="docout-mobile" class="collapse my-3 border rounded bg-light p-2">
+                  </div>
+                </div>
+              </div>
             </div>
           {% else %}
             <div>

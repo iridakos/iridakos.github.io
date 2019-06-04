@@ -46,13 +46,13 @@ related_posts:
   - todo-gtk-plus-ruby-tutorial
 ---
 
-I recently worked on creating a bash completion script for [one of my toy projects for navigating to aliased directories with autocomplete](https://iridakos.com/tutorials/2019/04/10/shell-navigation-with-autocomplete.html) and I enjoyed it very much.
+I recently worked on creating a bash completion script for [one of my toy projects](https://iridakos.com/tutorials/2019/04/10/shell-navigation-with-autocomplete.html) and I found it really interesting.
 
 <a href="https://github.com/iridakos/goto">
   <img class="no-maximize" src="https://github.com/iridakos/goto/raw/master/doc/goto.gif" />
 </a>
 
-In this post I will try to familiarize you with the process of creating a bash completion script.
+In this post I will familiarize you with the process of creating a bash completion script.
 
 
 ## What is bash completion?

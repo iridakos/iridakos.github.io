@@ -31,7 +31,10 @@ I decided to write a script to overcome this issue and to avoid having to edit m
 `goto` is a shell utility to quickly navigate to aliased directories with autocomplete *(tab completion)*.
 
 <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/iridakos/goto" data-size="large" data-show-count="true" aria-label="View iridakos/goto on GitHub">goto at GitHub</a>
+<a class="btn btn-secondary bg-dark" href="https://github.com/iridakos/goto" data-size="large" data-show-count="true" aria-label="View iridakos/goto on GitHub">
+  <i class="fa fa-github" style="font-size: 110%"></i>
+  goto repo at GitHub
+</a>
 
 ![goto gif]({{site.url}}/assets/images/posts/goto/goto.gif)
 
@@ -268,6 +271,3 @@ That's all! Cat photo.
 
   <strong>Thanks for visiting!</strong>
 </div>
-
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>

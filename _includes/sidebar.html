@@ -1,15 +1,21 @@
 <div class="sidebar">
   {% if page.outline %}
-    <div class="alert alert-primary">
+    <div class="alert alert-primary d-none d-md-block">
       <div class="sidebar-section">
         <a class="ga-event-link btn btn-warning d-block collapsed text-left"
           data-event-label="{{ page.title }}"
           data-event-category="Document outline"
           data-event-action="click"
+
+          data-toggle="collapse"
+          data-role="outline"
+          data-content=".outline"
+          href="#docout-sidebar"
+          data-target="#docout-sidebar"
+
           title="View the structure of this document"
           role="button"
-          data-toggle="collapse"
-          href="#docout"
+          href="#docout-sidebar"
           aria-expanded="false"
           aria-controls="collapse">
           Table of contents
@@ -17,7 +23,7 @@
         </a>
 
         <div class="section-content">
-          <div id="docout" class="collapse mt-3 p-2">
+          <div id="docout-sidebar" class="collapse mt-2 p-2">
 
           </div>
         </div>
