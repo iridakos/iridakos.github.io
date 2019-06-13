@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  "How to remove duplicate lines from files keeping the original order"
+title:  "awk '!visited[$0]++' or how to remove duplicate lines from files keeping the original order explained"
 description: "How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained)."
 preview: "How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained)."
 date: 2019-05-16 11:30:00 +0300
