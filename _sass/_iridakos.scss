@@ -4,6 +4,8 @@ $iridakos-blue: lighten(#2C72C8, 10%);
 
 nav {
   a.navbar-brand {
+    font-size: 100% !important;
+
     img {
       height: 20px;
     }
