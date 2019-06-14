@@ -12,7 +12,7 @@ popular: -1
 show_popular_inline_posts: true
 tags:
   - humor
-  - developers
+  - devhumor
 redirect_from:
   - /2017/01/22/mom-dad-i-programmer.html
 related_posts:

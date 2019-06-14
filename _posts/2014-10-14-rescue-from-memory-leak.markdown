@@ -11,7 +11,7 @@ identifier: "rescue-from-memory-leak"
 popular: -1
 tags:
   - rails
-  - memory-leak
+  - memory leak
   - ruby
 show_popular_inline_posts: true
 redirect_from:

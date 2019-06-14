@@ -12,8 +12,7 @@ tags:
   - rails
   - tutorial
   - todo
-  - application
-  - developers
+  - web application
   - mvc
 image: "https://iridakos.com/assets/images/site.png"
 identifier: "todo-part-2"

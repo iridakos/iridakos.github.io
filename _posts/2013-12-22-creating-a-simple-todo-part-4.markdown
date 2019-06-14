@@ -14,8 +14,7 @@ tags:
   - rails
   - tutorial
   - todo
-  - application
-  - developers
+  - web application
   - mvc
 show_popular_inline_posts: true
 redirect_from:

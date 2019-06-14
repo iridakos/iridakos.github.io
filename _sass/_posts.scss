@@ -28,8 +28,13 @@
   }
 
   .post-tags {
-    color: $iridakos;
+    color: darken($warning, 10%);
+    font-weight: bold;
     font-size: 80%;
+
+    a {
+      font-weight: normal;
+    }
   }
 }
 

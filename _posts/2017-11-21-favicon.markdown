@@ -9,10 +9,8 @@ category: "how-to"
 popular: -1
 tags:
   - favicon
-  - website
   - icon
   - imagemagick
-  - how-to
   - tips
   - bash
   - linux

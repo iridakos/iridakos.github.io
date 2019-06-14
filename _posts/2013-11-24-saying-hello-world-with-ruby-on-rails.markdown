@@ -12,10 +12,9 @@ tags:
   - ruby
   - rails
   - tutorial
-  - todo
-  - application
+  - introduction
+  - web application
   - hello world
-  - developers
 show_popular_inline_posts: true
 identifier: "hello-ruby-rails"
 redirect_from:

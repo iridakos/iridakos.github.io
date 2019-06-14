@@ -8,7 +8,7 @@ comments: true
 outline: true
 tags:
   - ruby
-  - developers
+  - introduction
 popular: -1
 show_popular_inline_posts: true
 identifier: "learning-ruby"

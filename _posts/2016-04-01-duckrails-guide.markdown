@@ -11,7 +11,6 @@ outline: true
 tags:
   - opensource
   - tools
-  - developers
   - github
   - api
 featured:

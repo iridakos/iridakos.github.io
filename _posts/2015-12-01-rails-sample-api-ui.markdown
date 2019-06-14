@@ -12,7 +12,6 @@ tags:
   - tutorial
   - sample
   - api
-  - developers
 redirect_from:
   - /2015/06/21/rails-sample-api-ui.html
 related_posts:
