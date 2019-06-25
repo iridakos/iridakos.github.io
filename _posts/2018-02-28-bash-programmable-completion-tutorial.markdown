@@ -46,9 +46,9 @@ related_posts:
   - todo-gtk-plus-ruby-tutorial
 ---
 
-I recently worked on creating a bash completion script for [registering directory aliases and navigating to them with autocomplete in Bash](https://github.com/iridakos/goto) and I found the feature really interesting.
+I recently worked on creating a bash completion script for <a class="ga-event-link" data-event-category="From post to Github" data-event-action="click" data-event-label="goto from Bash completion post" href="https://github.com/iridakos/goto">registering directory aliases and navigating to them with autocomplete in Bash</a> and I found the feature really interesting.
 
-<a href="https://github.com/iridakos/goto">
+<a class="ga-event-link" data-event-category="From post to Github" data-event-action="click" data-event-label="goto from Bash completion post" href="https://github.com/iridakos/goto">
   <img class="no-maximize" src="https://github.com/iridakos/goto/raw/master/doc/goto.gif" />
 </a>
 
