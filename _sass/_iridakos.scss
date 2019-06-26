@@ -39,6 +39,12 @@ html {
   margin-bottom: 5px;
 }
 
+.no-overflow {
+  pre {
+    white-space: pre-wrap;
+  }
+}
+
 .page-title-container {
   padding: 10px 0 30px 0;
   font-size: 2rem;

@@ -441,7 +441,7 @@ Cat updated.
 }
 ```
 
-### Useful links
+## Useful links
 
 - [Elasticsearch reference - Mapping - Field datatypes - Nested datatype](https://www.elastic.co/guide/en/elasticsearch/reference/current/nested.html)
 - [Elasticsearch reference - Document APIs - Update API](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html)

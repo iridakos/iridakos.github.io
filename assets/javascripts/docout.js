@@ -88,6 +88,7 @@
 			elements = self.$content.find( settings.elements.join( "," ) ),
 			$result = settings.gntRootWrap( settings.rootClass ),
 			previousIndex = -1, currentIndex, $element, $previousElement,
+      foo = {},
 			$parent = $result;
 
 			var result = $.each( elements, function( index, element ) {
@@ -101,8 +102,7 @@
 
 					// sibling: nothing to do here
 				} else if ( currentIndex > previousIndex ) {
-
-					// child: append ul and set to parent
+          // child: append ul and set to parent
 					var ul = settings.gntChildWrap( settings.childClass, currentIndex );
 					$previousElement.append( ul );
 					$parent = ul;
@@ -112,7 +112,7 @@
 					if ( $parent.parents( "ul" ).length > 0 ) {
 
 						var parentIndex = $parent.parents( "ul" ).length - currentIndex;
-						$parent = $parent.parents().eq( parentIndex );
+						$parent = $parent.parents("ul").eq( parentIndex );
 					}
 				}
 
