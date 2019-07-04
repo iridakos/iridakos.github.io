@@ -12,9 +12,17 @@ tags:
   - email
   - communication
   - productivity
-popular: 0
+popular: 120
 featured:
-  state: false
+  state: true
+  publications:
+    - site: Better Dev Link
+      discriminator: betterldevlink
+      logo: <i class="fa fa-envelope"></i>
+      data:
+        - type: issue
+          issue: "108"
+          link: https://betterdev.link/issues/108
 ---
 
 **Email communication** is not my favorite but since I can't avoid it, I am trying to compose messages in a way that I think it makes it easier for both me and the recipient:

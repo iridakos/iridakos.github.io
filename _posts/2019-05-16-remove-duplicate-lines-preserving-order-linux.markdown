@@ -31,7 +31,7 @@ featured:
       data:
         - type: issue
           issue: "455"
-          link: https://mailchi.mp/hackernewsletter/455?e=8228187337
+          link: https://mailchi.mp/hackernewsletter/455
 related_posts:
   - bash-completion-script
   - faviconicious

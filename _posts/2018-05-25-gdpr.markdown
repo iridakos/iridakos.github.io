@@ -9,6 +9,7 @@ category: "humor"
 comments: true
 identifier: "gdpr"
 popular: -1
+hidden: true
 tags:
   - humor
   - devhumor
