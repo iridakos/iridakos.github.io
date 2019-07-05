@@ -208,7 +208,7 @@ Bye.
 <div class="p-2 border no-overflow mb-4">
 <pre>Hey,
 
-I have pushed a <strong><a href="#git-commit-reference">commit</a> that possibly fixes the bug <a href="redmine453">(Redmine #453)</a></strong> with the logging in staging.
+I have pushed a <strong><a href="#git-commit-reference">commit</a> that possibly fixes the bug <a href="#redmine453">(Redmine #453)</a></strong> with the logging in staging.
 
 Since <strong>I won't be here tomorrow, June 27th</strong>, can you please:
 
