@@ -1,8 +1,8 @@
 ---
 layout: default
 title:  "Composing better emails"
-description: "Tips for writing effective emails avoiding misunderstandings."
-preview: "Tips for writing effective emails avoiding misunderstandings."
+description: "Tips for writing effective emails avoiding misunderstandings with examples from the software development world."
+preview: "Tips for writing effective emails avoiding misunderstandings with examples from the software development world."
 date: 2019-06-26 16:30:00 +0300
 image: "https://iridakos.com/assets/images/posts/better-emails/post.png"
 category: "how-to"
