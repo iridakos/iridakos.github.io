@@ -214,7 +214,7 @@ Docker provides [official Ruby images](https://hub.docker.com/_/ruby) and we are
 Open `Dockerfile` and add the following line:
 
 ```docker
-FROM ruby-2.6.2:stretch
+FROM ruby:2.6.2-stretch
 ```
 
 and run the build command again:
