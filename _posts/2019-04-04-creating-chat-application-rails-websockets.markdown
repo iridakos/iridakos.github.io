@@ -225,12 +225,6 @@ Finally, apply the database migration using:
 rails db:migrate
 ```
 
-We want all users to be authenticated before start chatting, so we are going to add the following line in the `ApplicationController` located at *app/controllers/application_controller.rb*:
-
-```ruby
-  before_action :authenticate_user!
-```
-
 ### Rooms and messages
 
 Each chat message is going to take place in the context of a room.
@@ -312,13 +306,13 @@ Reload and voilà.
 
 ### Adding authentication
 
-In order to require only signed in user to access the application, add the following line to the `app/controllers/application_controller.rb`
+We want all users to be authenticated before start chatting, so we are going to add the following line in the `ApplicationController` located at *app/controllers/application_controller.rb*:
 
 ```ruby
   before_action :authenticate_user!
 ```
 
-If we navigate to `http://localhost:3000` now we should be redirected to the sign in page.
+If we navigate to `http://localhost:3000` now we should be redirected to the sign in page <sup><a href="#acknowledgments">[10]</a></sup>.
 
 ![Sign in]({{site.url}}/assets/images/posts/rails-chat-tutorial/04.png)
 
@@ -1408,6 +1402,7 @@ Thank you very much for your feedback.
 * [5][7][8] Tony Dehnke - [Sign up step](https://github.com/iridakos/rails-chat-tutorial/issues/6), [Missing step for adding model relations](https://github.com/iridakos/rails-chat-tutorial/issues/8), [Missing line from html code block](https://github.com/iridakos/rails-chat-tutorial/issues/7)
 * [6] keytonw - [Devise view missing button class](https://github.com/iridakos/rails-chat-tutorial/issues/9)
 * [9] Martin - [Mention order of requirements in application.js](https://github.com/iridakos/rails-chat-tutorial/issues/11)
+* [10] Sumak - [Remove duplicate authentication related code](https://github.com/iridakos/rails-chat-tutorial/issues/15)
 
 That's all! Long post, tired cat photo.
 
