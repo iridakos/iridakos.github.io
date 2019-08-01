@@ -45,7 +45,7 @@ Here are some tips. They don't apply to all type of messages, I provide `before`
 
 I noticed that there are many logs for blabla the last few days and I don't think that it is normal. I believe the problem is the updated version of gem blabla.
 
-I have opened an issue describing the case in Jira (&#35;455) in the current version.
+I have opened an issue describing the case in Redmine (&#35;455) in the current version.
 Feel free to change its priority in case blabla.
 
 Thanks,
