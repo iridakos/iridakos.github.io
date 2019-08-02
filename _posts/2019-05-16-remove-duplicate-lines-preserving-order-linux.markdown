@@ -23,7 +23,7 @@ featured:
       logo: <i class="fa fa-hacker-news"></i>
       data:
         - type: date
-          date: "on May 29th 2019"
+          date: "May 29th 2019"
           link: https://news.ycombinator.com/item?id=20037366
     - site: hackernewsletter
       discriminator: hackernewsletter

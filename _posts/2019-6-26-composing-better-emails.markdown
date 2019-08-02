@@ -21,7 +21,7 @@ featured:
       logo: <i class="fa fa-hacker-news"></i>
       data:
         - type: date
-          date: "on August 1st 2019"
+          date: "August 1st 2019"
           link: https://news.ycombinator.com/item?id=20581240
     - site: Better Dev Link
       discriminator: betterldevlink
