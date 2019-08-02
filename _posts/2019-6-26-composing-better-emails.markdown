@@ -16,6 +16,13 @@ popular: 120
 featured:
   state: true
   publications:
+    - site: Hacker News
+      discriminator: hacker-news
+      logo: <i class="fa fa-hacker-news"></i>
+      data:
+        - type: date
+          date: "on August 1st 2019"
+          link: https://news.ycombinator.com/item?id=20581240
     - site: Better Dev Link
       discriminator: betterldevlink
       logo: <i class="fa fa-envelope"></i>
