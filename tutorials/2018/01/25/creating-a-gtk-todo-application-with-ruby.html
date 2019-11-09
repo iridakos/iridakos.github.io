@@ -1,0 +1,2435 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ocs-site-verification" content="e5faa08e01247c38aadf1c1737ff8136">
+  <meta name="google-site-verification" content="KqOxy0ecDlfNdfO530ZAbtNBedy49hn2KziyqLK0JGo" />
+
+  <title>Creating a Linux Desktop application with Ruby</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
+
+  <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css?1573323847300041466">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="http://localhost:4000/feed.xml">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Creating a Linux Desktop application with Ruby" />
+<meta name="author" content="Lazarus Lazaridis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A tutorial for creating a simple GTK ToDo application with Ruby" />
+<meta property="og:description" content="A tutorial for creating a simple GTK ToDo application with Ruby" />
+<link rel="canonical" href="http://localhost:4000/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html" />
+<meta property="og:url" content="http://localhost:4000/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html" />
+<meta property="og:site_name" content="iridakos" />
+<meta property="og:image" content="http://iridakos.com/assets/images/posts/gtk-ruby/tutorial-preview.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-01-25T21:00:00+02:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@lazaru_s" />
+<meta name="twitter:creator" content="@Lazarus Lazaridis" />
+<script type="application/ld+json">
+{"image":"http://iridakos.com/assets/images/posts/gtk-ruby/tutorial-preview.png","description":"A tutorial for creating a simple GTK ToDo application with Ruby","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html"},"@type":"BlogPosting","url":"http://localhost:4000/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/site.png"},"name":"Lazarus Lazaridis"},"headline":"Creating a Linux Desktop application with Ruby","dateModified":"2018-01-25T21:00:00+02:00","datePublished":"2018-01-25T21:00:00+02:00","author":{"@type":"Person","name":"Lazarus Lazaridis"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+  <script type="text/javascript">
+      window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on the website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"light-bottom"};
+  </script>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+</head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg iridakos-navbar">
+  <div class="container-fluid no-gutters">
+    
+
+    <a class="navbar-brand " href="/" alt="home">
+      <i class="fa fa-home"></i>
+      home
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="fa fa-bars pt-1"></i>
+      </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="header-pages">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+          
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="/programming/" alt="programming">programming</a>
+            </li>
+          
+        
+          
+            
+            <li class="nav-item ">
+                <a class="nav-link" href="/painting/" alt="Painting">painting</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/cat-photos/" alt="cats">cats</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/about/" alt="about me">about me</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="more" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            more
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="more">
+            <h6 class="dropdown-header mt-1">Programming</h6>
+            <a class="dropdown-item" href="/featured/">featured posts</a>
+            <a class="dropdown-item" href="/programming-tutorials/">tutorials</a>
+            <a class="dropdown-item" href="/how-to/">how to</a>
+            <a class="dropdown-item" href="/code/">code</a>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/tags/">site tags</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/search/">search</a>
+          </div>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0" method="get" action="/search">
+        <div class="input-group input-group-sm mr-sm-2">
+          <input class="form-control" name="query" type="search" placeholder="Search the blog">
+
+          <div class="input-group-append">
+            <button class="btn btn-warning" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="page-title-container">
+  <div class="container-fluid no-gutters">
+    <div class="page-title">
+      <div class="row align-items-center">
+        <div class="col-xs-12 col-md-8 col-lg-9 order-md-first order-last text-center text-md-left">
+          <h1>Creating a Linux Desktop application with Ruby</h1>
+
+          <div class="page-subtitle">
+            A tutorial for creating a simple GTK ToDo application with Ruby
+
+            
+              <div class="post">
+                <div class="post-metadata">
+                  <div class="post-date" title="published on">
+                    Published on <span class="important">Jan 25, 2018</span>
+                  </div>
+
+                  <div class="post-category" title="in category">
+                    in category <span class="important">tutorials</span>
+                  </div>
+                </div>
+
+                
+                
+                  <div class="post-tags">
+                    <span class="important">tags:</span>
+                    
+                      <a href="/tags/?tag=linux" class="ga-event-link" data-event-label="linux" data-event-action="click" data-event-category="tags">linux</a> - 
+                    
+                      <a href="/tags/?tag=gtk" class="ga-event-link" data-event-label="gtk" data-event-action="click" data-event-category="tags">gtk</a> - 
+                    
+                      <a href="/tags/?tag=ruby" class="ga-event-link" data-event-label="ruby" data-event-action="click" data-event-category="tags">ruby</a> - 
+                    
+                      <a href="/tags/?tag=desktop" class="ga-event-link" data-event-label="desktop" data-event-action="click" data-event-category="tags">desktop</a> - 
+                    
+                      <a href="/tags/?tag=opensource" class="ga-event-link" data-event-label="opensource" data-event-action="click" data-event-category="tags">opensource</a> - 
+                    
+                      <a href="/tags/?tag=tutorial" class="ga-event-link" data-event-label="tutorial" data-event-action="click" data-event-category="tags">tutorial</a> - 
+                    
+                      <a href="/tags/?tag=programming" class="ga-event-link" data-event-label="programming" data-event-action="click" data-event-category="tags">programming</a>
+                    
+                  </div>
+                
+              </div>
+            
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container-fluid no-gutters">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-9 page-content">
+          
+            <div class="row">
+              <div class="col-12">
+                <div class="outline">
+                  <p>Lately I was experimenting with GTK and its Ruby bindings and I decided to write a tutorial introducing this functionality. In this post we are going to create a simple ToDo application (something like what we created <a href="/tutorials/2013/12/07/creating-a-simple-todo-part-1.html">here</a> with Ruby on Rails) using the <code class="highlighter-rouge">gtk3</code> gem a.k.a. the GTK+ Ruby bindings.</p>
+
+<p><strong>Note:</strong> The code of the tutorial is available at <a href="https://github.com/iridakos/gtk-todo-tutorial">GitHub</a>.</p>
+
+<h2 id="what-is-gtk">What is GTK+</h2>
+
+<p>Quoting the toolkit’s <a href="https://www.gtk.org/">page</a>:</p>
+
+<blockquote>
+  <p>GTK+, or the GIMP Toolkit, is a multi-platform toolkit for creating graphical user interfaces. Offering a complete set of widgets, GTK+ is suitable for projects ranging from small one-off tools to complete application suites.</p>
+</blockquote>
+
+<p>..and about its <a href="https://www.gtk.org/overview.php">creation</a>:</p>
+
+<blockquote>
+  <p>GTK+ was initially developed for and used by the GIMP, the GNU Image Manipulation Program. It is called the “The GIMP ToolKit” so that the origins of the project are remembered. Today it is more commonly known as GTK+ for short and is used by a large number of applications including the GNU project’s GNOME desktop.</p>
+</blockquote>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<h3 id="gtk-version">GTK+ version</h3>
+
+<p>Make sure you have GTK+ installed.</p>
+
+<p>The OS in which I developed the tutorial’s application is Ubuntu 16.04 which has GTK+ installed by default (version: 3.18).</p>
+
+<p>You can check yours with the following command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dpkg -l libgtk-3-0
+</code></pre></div></div>
+
+<h3 id="ruby">Ruby</h3>
+
+<p>You should have ruby installed on your system. I use <a href="https://rvm.io/">RVM</a> to manage multiple ruby versions installed on my system. If you want to go with that too, you can find instructions for installing the tool in its <a href="https://rvm.io/">homepage</a> and for installing ruby versions (a.k.a. rubies) the <a href="https://rvm.io/rubies/installing">related documentation page</a>.</p>
+
+<p>This tutorial is using <strong>Ruby 2.4.2</strong>. You can check yours using: <code class="highlighter-rouge">ruby --version</code> or via RVM with <code class="highlighter-rouge">rvm list</code>.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rvm-list.png" alt="rvm list screenshot" /></p>
+
+<h3 id="glade">Glade</h3>
+
+<p>Again, quoting the tool’s <a href="https://glade.gnome.org/">page</a></p>
+
+<blockquote>
+  <p>Glade is a RAD tool to enable quick &amp; easy development of user interfaces for the GTK+ toolkit and the GNOME desktop environment</p>
+</blockquote>
+
+<p>We will use Glade to design the user interface of our application.
+If you are on Ubuntu, install <code class="highlighter-rouge">glade</code> with:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install glade
+</code></pre></div></div>
+
+<h3 id="gtk3-gem">gtk3 gem</h3>
+
+<p>This gem provides the Ruby bindings for the GTK+ toolkit. In other words, it allows us to talk to the GTK+ API using the Ruby language.</p>
+
+<p>Install the gem via:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install gtk3
+</code></pre></div></div>
+
+<h2 id="the-application-specs">The application specs</h2>
+
+<p>We will build an application that:</p>
+
+<ul>
+  <li>it will have a user interface (desktop application)</li>
+  <li>it will allow users to set miscellaneous properties to each item (such as priority)</li>
+  <li>it will allow users to create and edit ToDo items
+    <ul>
+      <li>all items will be saved as files in the user’s home directory in a folder named <code class="highlighter-rouge">.gtk-todo-tutorial</code></li>
+    </ul>
+  </li>
+  <li>it will allow users to archive ToDo items
+    <ul>
+      <li>archived items should be put in their own folder <code class="highlighter-rouge">archived</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="the-application-structure">The application structure</h2>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gtk</span><span class="o">-</span><span class="n">todo</span><span class="o">-</span><span class="n">tutorial</span> <span class="c1"># root directory</span>
+  <span class="o">|--</span> <span class="n">application</span>
+    <span class="o">|--</span> <span class="n">ui</span> <span class="c1"># everything related to the ui of the application</span>
+    <span class="o">|--</span> <span class="n">models</span> <span class="c1"># our models</span>
+    <span class="o">|--</span> <span class="n">lib</span> <span class="c1"># the directory to host any utilities we might need</span>
+  <span class="o">|--</span> <span class="n">resources</span> <span class="c1"># directory to host the resources of our application</span>
+  <span class="n">gtk</span><span class="o">-</span><span class="n">todo</span> <span class="c1"># the executable that will start our application</span>
+</code></pre></div></div>
+
+<p>Let’s start!</p>
+
+<h2 id="building-the-todo-application">Building the ToDo application</h2>
+
+<h3 id="initializing-the-application">Initializing the application</h3>
+
+<p>Create a directory in which we will save all files that the application will need. As shown in the section above, I named mine <code class="highlighter-rouge">gtk-todo-tutorial</code>.</p>
+
+<p>In there create a file named <code class="highlighter-rouge">gtk-todo</code> (that’s right, no extension) and add the following:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env ruby</span>
+
+<span class="nb">require</span> <span class="s1">'gtk3'</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">Application</span><span class="p">.</span><span class="nf">new</span> <span class="s1">'com.iridakos.gtk-todo'</span><span class="p">,</span> <span class="ss">:flags_none</span>
+
+<span class="n">app</span><span class="p">.</span><span class="nf">signal_connect</span> <span class="ss">:activate</span> <span class="k">do</span> <span class="o">|</span><span class="n">application</span><span class="o">|</span>
+  <span class="n">window</span> <span class="o">=</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">ApplicationWindow</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+  <span class="n">window</span><span class="p">.</span><span class="nf">set_title</span> <span class="s1">'Hello GTK+Ruby!'</span>
+  <span class="n">window</span><span class="p">.</span><span class="nf">present</span>
+<span class="k">end</span>
+
+<span class="nb">puts</span> <span class="n">app</span><span class="p">.</span><span class="nf">run</span>
+</code></pre></div></div>
+
+<p>This is going to be the script that will start the application.</p>
+
+<p>Note the <code class="highlighter-rouge">shebang</code> in the first line. This is how we define which interpreter must be used to execute the script under UNIX/Linux operating systems. This way, we don’t have to use <code class="highlighter-rouge">ruby gtk-todo</code> but just the script’s name <code class="highlighter-rouge">gtk-todo</code>.</p>
+
+<p>Don’t try it yet though because we haven’t changed the mode of the file so as to be executable. To do so, type the following command in a terminal after navigating to the application’s root directory:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chmod +x ./gtk-todo <span class="c"># make the script executable</span>
+</code></pre></div></div>
+
+<p>Now from the console execute:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./gtk-todo # execute the script
+</code></pre></div></div>
+
+<p>Ta daaaaaa</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/first-gtk-ruby-application.png" alt="first gtk+ruby screenshot" /></p>
+
+<p><strong>Notes</strong></p>
+
+<ul>
+  <li>
+    <p>The application object we defined above and all of the GTK+ widgets in general, emit signals to trigger events. Once an application starts running for example, it emits a signal to trigger the <code class="highlighter-rouge">activate</code> event. All we have to do is to define what we want to happen when this signal is emitted. We accomplished this by using the <code class="highlighter-rouge">signal_connect</code> instance method and passing it a block whose code will be executed upon the given event. We will be doing this a lot throughout the tutorial.</p>
+  </li>
+  <li>
+    <p>When we initialized the <code class="highlighter-rouge">Gtk::Application</code> object we passed two parameters:</p>
+    <ul>
+      <li><code class="highlighter-rouge">com.iridakos.gtk-todo</code>: this is our application’s id and in general it should be a reverse DNS style identifier. For more information about its usage and best practices check <a href="https://wiki.gnome.org/HowDoI/ChooseApplicationID">here</a>.</li>
+      <li><code class="highlighter-rouge">:flags_none</code>: this is a flag defining the behavior of the application. In our case, we used the default behavior. Check <a href="https://people.gnome.org/~gcampagna/docs/Gio-2.0/Gio.ApplicationFlags.html">here</a> all the flags and the type of applications they define. You can use the Ruby equivalent flags as defined in <code class="highlighter-rouge">Gio::ApplicationFlags.constants</code>. For example, instead of using the <code class="highlighter-rouge">:flags_none</code> we could instead use <code class="highlighter-rouge">Gio::ApplicationFlags::FLAGS_NONE</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Suppose the application object we previously created (Gtk::Application) had a lot of things to do when the <code class="highlighter-rouge">activate</code> signal was emitted or that we wanted to connect to more signals. We would end up creating a huge <code class="highlighter-rouge">gtk-todo</code> script file making it hard to read/maintain. Time to refactor.</p>
+
+<p>As described in the <strong>The application structure</strong> section, create a folder named <code class="highlighter-rouge">application</code> along with its sub-folders <code class="highlighter-rouge">ui</code>, <code class="highlighter-rouge">models</code> and <code class="highlighter-rouge">lib</code>.</p>
+
+<ul>
+  <li>In the <code class="highlighter-rouge">ui</code> folder we will place all files related to our user interface.</li>
+  <li>In the <code class="highlighter-rouge">models</code> folder we will place all files related to our models.</li>
+  <li>In the <code class="highlighter-rouge">lib</code> folder we will place all other files that don’t belong to either of the aforementioned folders.</li>
+</ul>
+
+<p>We are going to define a new subclass of the <code class="highlighter-rouge">Gtk::Application</code> class for our application. Create a file named <code class="highlighter-rouge">application.rb</code> under <code class="highlighter-rouge">application/ui/todo</code> with the following contents.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">ToDo</span>
+  <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">Application</span>
+    <span class="k">def</span> <span class="nf">initialize</span>
+      <span class="k">super</span> <span class="s1">'com.iridakos.gtk-todo'</span><span class="p">,</span> <span class="no">Gio</span><span class="o">::</span><span class="no">ApplicationFlags</span><span class="o">::</span><span class="no">FLAGS_NONE</span>
+
+      <span class="n">signal_connect</span> <span class="ss">:activate</span> <span class="k">do</span> <span class="o">|</span><span class="n">application</span><span class="o">|</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">ApplicationWindow</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+        <span class="n">window</span><span class="p">.</span><span class="nf">set_title</span> <span class="s1">'Hello GTK+Ruby!'</span>
+        <span class="n">window</span><span class="p">.</span><span class="nf">present</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>and change the <code class="highlighter-rouge">gtk-todo</code> script accordingly:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env ruby</span>
+
+<span class="nb">require</span> <span class="s1">'gtk3'</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="no">ToDo</span><span class="o">::</span><span class="no">Application</span><span class="p">.</span><span class="nf">new</span>
+
+<span class="nb">puts</span> <span class="n">app</span><span class="p">.</span><span class="nf">run</span>
+</code></pre></div></div>
+<p>Much cleaner, isn’t it? Yeah, but it doesn’t work. You should be getting something like:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./gtk-todo:5:in `&lt;main&gt;': uninitialized constant ToDo (NameError)
+</code></pre></div></div>
+
+<p>The problem is that we haven’t required any of the ruby files placed in the <code class="highlighter-rouge">application</code> folder.
+Change the script file as follows and execute it again.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env ruby</span>
+
+<span class="nb">require</span> <span class="s1">'gtk3'</span>
+
+<span class="c1"># Require all ruby files in the application folder recursively</span>
+<span class="n">application_root_path</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="n">__dir__</span><span class="p">)</span>
+<span class="no">Dir</span><span class="p">[</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">application_root_path</span><span class="p">,</span> <span class="s1">'**'</span><span class="p">,</span> <span class="s1">'*.rb'</span><span class="p">)].</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span> <span class="nb">require</span> <span class="n">file</span> <span class="p">}</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="no">ToDo</span><span class="o">::</span><span class="no">Application</span><span class="p">.</span><span class="nf">new</span>
+
+<span class="nb">puts</span> <span class="n">app</span><span class="p">.</span><span class="nf">run</span>
+</code></pre></div></div>
+
+<p>You should be fine.</p>
+
+<h3 id="resources">Resources</h3>
+
+<p>At the beginning of this tutorial we said that we would use Glade to design the user interface of the application. Glade actually produces <code class="highlighter-rouge">xml</code> files with the appropriate elements and attributes that reflect what we designed via its user interface. We somehow need to make use of these files so that our application gets the UI we designed.</p>
+
+<p>These files are resources for the application and the GResource API provides a way for packing them all together in a binary file and afterwards accessing them from inside the application with advantages as opposed to manually having to deal with already loaded resources, their location on the file system etc. Read more about the API <a href="https://developer.gnome.org/gio/stable/GResource.html">here</a>.</p>
+
+<h4 id="describing-the-resources">Describing the resources</h4>
+
+<p>First, we need to create a file describing the resources of the application. Create a file named <code class="highlighter-rouge">gresources.xml</code> and place it directly under the <code class="highlighter-rouge">resources</code> folder.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;gresources&gt;</span>
+  <span class="nt">&lt;gresource</span> <span class="na">prefix=</span><span class="s">"/com/iridakos/gtk-todo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;file</span> <span class="na">preprocess=</span><span class="s">"xml-stripblanks"</span><span class="nt">&gt;</span>ui/application_window.ui<span class="nt">&lt;/file&gt;</span>
+  <span class="nt">&lt;/gresource&gt;</span>
+<span class="nt">&lt;/gresources&gt;</span>
+</code></pre></div></div>
+
+<p>In this “description” we actually say: we have a resource which is located under the <code class="highlighter-rouge">ui</code> directory (relative to this <code class="highlighter-rouge">xml</code> file) with name <code class="highlighter-rouge">application_window.ui</code>. Before loading this resource please remove the blanks. Thanks. Of course this is not going to work now since we haven’t created the resource via Glade yet. Don’t worry though, one thing at a time.</p>
+
+<p><strong>Note</strong>: the <code class="highlighter-rouge">xml-stripblanks</code> directive will use the <code class="highlighter-rouge">xmllint</code> command to remove the blanks. In Ubuntu you have to install the package <code class="highlighter-rouge">libxml2-utils</code> to obtain it.</p>
+
+<h4 id="building-the-resources-binary-file">Building the resources binary file</h4>
+
+<p>In order to produce the binary resources file, we are going to use another utility of the GLib library called <code class="highlighter-rouge">glib-compile-resources</code>. Check if you have it installed with <code class="highlighter-rouge">dpkg -l libglib2.0-bin</code>. You should be seeing something like this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ii  libglib2.0-bin     2.48.2-0ubuntu amd64          Programs <span class="k">for </span>the GLib library
+</code></pre></div></div>
+<p>If not, then install the package (<code class="highlighter-rouge">sudo apt install libglib2.0-bin</code> in Ubuntu).</p>
+
+<p>Let’s build the file. We will add the code in our script so that the resources are getting built every time we execute it.
+Change the <code class="highlighter-rouge">gtk-todo</code> script as follows.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#!/usr/bin/env ruby</span>
+
+<span class="nb">require</span> <span class="s1">'gtk3'</span>
+<span class="nb">require</span> <span class="s1">'fileutils'</span>
+
+<span class="c1"># Require all ruby files in the application folder recursively</span>
+<span class="n">application_root_path</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="n">__dir__</span><span class="p">)</span>
+<span class="no">Dir</span><span class="p">[</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">application_root_path</span><span class="p">,</span> <span class="s1">'**'</span><span class="p">,</span> <span class="s1">'*.rb'</span><span class="p">)].</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span> <span class="nb">require</span> <span class="n">file</span> <span class="p">}</span>
+
+<span class="c1"># Define the source &amp; target files of the glib-compile-resources command</span>
+<span class="n">resource_xml</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">application_root_path</span><span class="p">,</span> <span class="s1">'resources'</span><span class="p">,</span> <span class="s1">'gresources.xml'</span><span class="p">)</span>
+<span class="n">resource_bin</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">application_root_path</span><span class="p">,</span> <span class="s1">'gresource.bin'</span><span class="p">)</span>
+
+<span class="c1"># Build the binary</span>
+<span class="nb">system</span><span class="p">(</span><span class="s2">"glib-compile-resources"</span><span class="p">,</span>
+       <span class="s2">"--target"</span><span class="p">,</span> <span class="n">resource_bin</span><span class="p">,</span>
+       <span class="s2">"--sourcedir"</span><span class="p">,</span> <span class="no">File</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="n">resource_xml</span><span class="p">),</span>
+       <span class="n">resource_xml</span><span class="p">)</span>
+
+<span class="nb">at_exit</span> <span class="k">do</span>
+  <span class="c1"># Before existing, please remove the binary we produced, thanks.</span>
+  <span class="no">FileUtils</span><span class="p">.</span><span class="nf">rm_f</span><span class="p">(</span><span class="n">resource_bin</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="no">ToDo</span><span class="o">::</span><span class="no">Application</span><span class="p">.</span><span class="nf">new</span>
+<span class="nb">puts</span> <span class="n">app</span><span class="p">.</span><span class="nf">run</span>
+</code></pre></div></div>
+
+<p>and execute it. This happens in the console and it’s fine, we’ll fix it later on:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/.../gtk-todo-tutorial/resources/gresources.xml: Failed to locate 'ui/application_window.ui' in any source directory.
+</code></pre></div></div>
+
+<p>What we did:</p>
+
+<ul>
+  <li>added a <code class="highlighter-rouge">require</code> statement for the <code class="highlighter-rouge">fileutils</code> library so that we can use it in the <code class="highlighter-rouge">at_exit</code> call</li>
+  <li>defined the source and target files of the <code class="highlighter-rouge">glib-compile-resources</code> command</li>
+  <li>executed the <code class="highlighter-rouge">glib-compile-resources</code> command</li>
+  <li>set a hook so that before exiting the script (before the application exits) the binary file gets deleted so next time it gets build again</li>
+</ul>
+
+<h4 id="loading-the-resources-binary-file">Loading the resources binary file</h4>
+
+<p>Ok, we described the resources, we packed them in a binary file. Now we have to load them and register them in the application so that we can use them.
+This is so easy as adding the following two lines before the <code class="highlighter-rouge">at_exit</code> hook.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">resource</span> <span class="o">=</span> <span class="no">Gio</span><span class="o">::</span><span class="no">Resource</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="n">resource_bin</span><span class="p">)</span>
+<span class="no">Gio</span><span class="o">::</span><span class="no">Resources</span><span class="p">.</span><span class="nf">register</span><span class="p">(</span><span class="n">resource</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>That’s it. From now on, we are able to use the resources from anywhere inside the application (we’ll see how later on).
+Well now the script fails since it can’t load the binary which is not produced but…be patient, we are going to get to the interesting part soon. Actually now.</p>
+
+<h3 id="designing-the-main-application-window">Designing the main application window</h3>
+
+<h4 id="introducing-glade">Introducing glade</h4>
+
+<p>Open glade.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-empty-project.png" alt="Glade empty project screen" /></p>
+
+<p>A quick description of what you see.</p>
+
+<ul>
+  <li>On the left section there is a list of widgets which you can drag and drop in the middle section given that a widget can be placed there. For example, you can’t add a top level window inside a label widget. I will be calling this as the <strong>Widget section</strong> from now on.</li>
+  <li>On the middle section you see your widgets as they will appear (most of the times) in the application. I will be calling this as the <strong>Design section</strong> from now on.</li>
+  <li>On the right section there are two subsections:
+    <ul>
+      <li>the top section contains the hierarchy of the widgets as added to the resource. I will be calling this as the <strong>Hierarchy section</strong> from now on.</li>
+      <li>the bottom section contains all the properties that you can configure via Glade for a given selected widget of the aforementioned top section. I will be calling this as the <strong>Properties section</strong> from now on.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>I will try to describe the steps for building this tutorial’s UI using Glade but if you are interested in building GTK+ applications you should take a look at the resources &amp; tutorials for using the tool on the <a href="https://glade.gnome.org/">official page</a>.</p>
+
+<h4 id="create-the-application-window-design">Create the application window design</h4>
+
+<p>We are going to create the application window. As you can guess, all we have to do is drag the widget ‘Application Window’ from the widget section to the design section.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-application-window-1.png" alt="Glade application window" /></p>
+
+<p><code class="highlighter-rouge">Gtk::Builder</code> is an object used in GTK+ applications to read textual descriptions of a user interface (like the one we will build via Glade) and build the described objects-widgets.</p>
+
+<p>In the properties section, the first property is the <code class="highlighter-rouge">ID</code> and it has a default value <code class="highlighter-rouge">applicationWindow1</code>. If we let this property as is, then later on, through our code we would create a <code class="highlighter-rouge">Gtk::Builder</code> that would load the file produced by glade and in order to obtain the application window we would have to use something line:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">application_window</span> <span class="o">=</span> <span class="n">builder</span><span class="p">.</span><span class="nf">get_object</span><span class="p">(</span><span class="s1">'applicationWindow1'</span><span class="p">)</span>
+
+<span class="n">application_window</span><span class="p">.</span><span class="nf">signal_connect</span> <span class="s1">'whatever'</span> <span class="k">do</span> <span class="o">|</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="o">|</span>
+<span class="o">...</span>
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">application_window</code> object would be of class <code class="highlighter-rouge">Gtk::ApplicationWindow</code> and thus whatever we had to add to its behavior (like setting its title) would take place out of the original class. Also, as shown in the snippet above, the code to connect to a signal of the window would be placed inside the file that instantiated it.</p>
+
+<p>Good news though, a GTK+ <a href="https://blogs.gnome.org/tvb/2013/04/09/announcing-composite-widget-templates/">feature</a> introduced in 2013 allows the creation of composite widget templates which among other advantages allows as to define the custom class for the widget (which eventually derives from an existing GTK::Widget class in general). Don’t worry if you are confused. You are going to understand what is going on after we write some code and view the results.</p>
+
+<p>Now, in order to define our design as a template, check the <code class="highlighter-rouge">Composite</code> checkbox in the property widget. Note that the <code class="highlighter-rouge">ID</code> property changed to <code class="highlighter-rouge">Class Name</code>. Fill in there <code class="highlighter-rouge">TodoApplicationWindow</code>. This is the class we are going to create in our code to represent this widget.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-application-window-2.png" alt="Glade application window composite" /></p>
+
+<p>Save the file with name <code class="highlighter-rouge">application_window.ui</code> in a new folder named <code class="highlighter-rouge">ui</code> inside the <code class="highlighter-rouge">resources</code>. If you open the file from an editor you will see this:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="c">&lt;!-- Generated with glade 3.18.3 --&gt;</span>
+<span class="nt">&lt;interface&gt;</span>
+  <span class="nt">&lt;requires</span> <span class="na">lib=</span><span class="s">"gtk+"</span> <span class="na">version=</span><span class="s">"3.12"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;template</span> <span class="na">class=</span><span class="s">"TodoApplicationWindow"</span> <span class="na">parent=</span><span class="s">"GtkApplicationWindow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"can_focus"</span><span class="nt">&gt;</span>False<span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;child&gt;</span>
+      <span class="nt">&lt;placeholder/&gt;</span>
+    <span class="nt">&lt;/child&gt;</span>
+  <span class="nt">&lt;/template&gt;</span>
+<span class="nt">&lt;/interface&gt;</span>
+</code></pre></div></div>
+
+<p>As you can see, our widget has a class and parent attribute. Following the parent class attribute convention, obviously, our class has to be defined inside a module named <code class="highlighter-rouge">Todo</code>. Before getting there, let’s try to start the application by executing the script (<code class="highlighter-rouge">./gtk-todo</code>).</p>
+
+<p>Yeah! It starts!</p>
+
+<h4 id="create-the-application-window-class">Create the application window class</h4>
+
+<p>While running the application, if you check the contents of the application’s root directory you can see the <code class="highlighter-rouge">gresource.bin</code> file there. Even though the application starts successfully because the resource bin is present and it can register it, we do not use it yet. We still initiate an ordinary <code class="highlighter-rouge">Gtk::ApplicationWindow</code> in our <code class="highlighter-rouge">application.rb</code> file and that all we show. Time to create our custom application window class.</p>
+
+<p>Create a file named <code class="highlighter-rouge">application_window.rb</code>, place it under <code class="highlighter-rouge">application/ui/todo</code> folder and add the following content.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Todo</span>
+  <span class="k">class</span> <span class="nc">ApplicationWindow</span> <span class="o">&lt;</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">ApplicationWindow</span>
+    <span class="c1"># Register the class in the GLib world</span>
+    <span class="n">type_register</span>
+
+    <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+      <span class="k">def</span> <span class="nf">init</span>
+        <span class="c1"># Set the template from the resources binary</span>
+        <span class="n">set_template</span> <span class="ss">resource: </span><span class="s1">'/com/iridakos/gtk-todo/ui/application_window.ui'</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+      <span class="k">super</span> <span class="ss">application: </span><span class="n">application</span>
+
+      <span class="n">set_title</span> <span class="s1">'GTK+ Simple ToDo'</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>We defined the <code class="highlighter-rouge">init</code> method as a singleton method on the class after opening the <em>eigenclass</em> in order to bind the template of this widget to the previously registered resource file.</p>
+
+<p>Before that, we called the <code class="highlighter-rouge">type_register</code> class method which registers and make available our custom widget class to the <code class="highlighter-rouge">GLib</code> world.</p>
+
+<p>Finally, each time we create an instance of this window, we set its title to <code class="highlighter-rouge">GTK+ Simple ToDo</code>.</p>
+
+<p>Now, let’s go back to the <code class="highlighter-rouge">application.rb</code> file and use what we just implemented:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">ToDo</span>
+  <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">Application</span>
+    <span class="k">def</span> <span class="nf">initialize</span>
+      <span class="k">super</span> <span class="s1">'com.iridakos.gtk-todo'</span><span class="p">,</span> <span class="no">Gio</span><span class="o">::</span><span class="no">ApplicationFlags</span><span class="o">::</span><span class="no">FLAGS_NONE</span>
+
+      <span class="n">signal_connect</span> <span class="ss">:activate</span> <span class="k">do</span> <span class="o">|</span><span class="n">application</span><span class="o">|</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="no">Todo</span><span class="o">::</span><span class="no">ApplicationWindow</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+        <span class="n">window</span><span class="p">.</span><span class="nf">present</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Execute the script.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-application-window-1.png" alt="GTK+ ToDo window" /></p>
+
+<h3 id="define-the-model">Define the model</h3>
+
+<p>For simplicity, we are going to save the ToDo items in files in json format under a dedicated hidden folder in user’s home directory. Of course, in a real life application we would use a database but this is out of the scope of this tutorial.</p>
+
+<p>Our <code class="highlighter-rouge">Todo::Item</code> model will have the following properties:</p>
+
+<ul>
+  <li><strong>id</strong>: the id of the item</li>
+  <li><strong>title</strong>: the title</li>
+  <li><strong>notes</strong>: any notes</li>
+  <li><strong>priority</strong>: its priority</li>
+  <li><strong>creation_datetime</strong>: the date &amp; time the item was created</li>
+  <li><strong>filename</strong>: the name of the file that an item is saved to</li>
+</ul>
+
+<p>Create a file named <code class="highlighter-rouge">item.rb</code> under the <code class="highlighter-rouge">application/models</code> directory, with contents:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'securerandom'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="k">module</span> <span class="nn">Todo</span>
+  <span class="k">class</span> <span class="nc">Item</span>
+    <span class="no">PROPERTIES</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:id</span><span class="p">,</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:notes</span><span class="p">,</span> <span class="ss">:priority</span><span class="p">,</span> <span class="ss">:filename</span><span class="p">,</span> <span class="ss">:creation_datetime</span><span class="p">].</span><span class="nf">freeze</span>
+
+    <span class="no">PRIORITIES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'high'</span><span class="p">,</span> <span class="s1">'medium'</span><span class="p">,</span> <span class="s1">'normal'</span><span class="p">,</span> <span class="s1">'low'</span><span class="p">].</span><span class="nf">freeze</span>
+
+    <span class="nb">attr_accessor</span> <span class="o">*</span><span class="no">PROPERTIES</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+      <span class="k">if</span> <span class="n">user_data_path</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="ss">:user_data_path</span><span class="p">]</span>
+        <span class="c1"># New item. When saved, it will be placed under the :user_data_path value</span>
+        <span class="vi">@id</span> <span class="o">=</span> <span class="no">SecureRandom</span><span class="p">.</span><span class="nf">uuid</span>
+        <span class="vi">@creation_datetime</span> <span class="o">=</span> <span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="p">.</span><span class="nf">to_s</span>
+        <span class="vi">@filename</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">user_data_path</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">.json"</span>
+      <span class="k">elsif</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="ss">:filename</span><span class="p">]</span>
+        <span class="c1"># Load an existing item</span>
+        <span class="n">load_from_file</span> <span class="n">filename</span>
+      <span class="k">else</span>
+        <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s1">'Please specify the :user_data_path for new item or the :filename to load existing'</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Loads an item from a file</span>
+    <span class="k">def</span> <span class="nf">load_from_file</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+      <span class="n">properties</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">read</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+
+      <span class="c1"># Assign the properties</span>
+      <span class="no">PROPERTIES</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">property</span><span class="o">|</span>
+        <span class="nb">self</span><span class="p">.</span><span class="nf">send</span> <span class="s2">"</span><span class="si">#{</span><span class="n">property</span><span class="si">}</span><span class="s2">="</span><span class="p">,</span> <span class="n">properties</span><span class="p">[</span><span class="n">property</span><span class="p">.</span><span class="nf">to_s</span><span class="p">]</span>
+      <span class="k">end</span>
+    <span class="k">rescue</span> <span class="o">=&gt;</span> <span class="n">e</span>
+      <span class="k">raise</span> <span class="no">ArgumentError</span><span class="p">,</span> <span class="s2">"Failed to load existing item: </span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Resolves if an item is new</span>
+    <span class="k">def</span> <span class="nf">is_new?</span>
+      <span class="o">!</span><span class="no">File</span><span class="p">.</span><span class="nf">exists?</span> <span class="vi">@filename</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Saves an item to its `filename` location</span>
+    <span class="k">def</span> <span class="nf">save!</span>
+      <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="vi">@filename</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
+        <span class="n">file</span><span class="p">.</span><span class="nf">write</span> <span class="nb">self</span><span class="p">.</span><span class="nf">to_json</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Deletes an item</span>
+    <span class="k">def</span> <span class="nf">delete!</span>
+      <span class="k">raise</span> <span class="s1">'Item is not saved!'</span> <span class="k">if</span> <span class="n">is_new?</span>
+
+      <span class="no">File</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="vi">@filename</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="c1"># Produces a json string for the item</span>
+    <span class="k">def</span> <span class="nf">to_json</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+      <span class="no">PROPERTIES</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">prop</span><span class="o">|</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">prop</span><span class="p">]</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="nf">send</span> <span class="n">prop</span>
+      <span class="k">end</span>
+
+      <span class="n">result</span><span class="p">.</span><span class="nf">to_json</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>As you can see, we defined methods to:</p>
+
+<ul>
+  <li>initialize an item
+    <ul>
+      <li>as new by defining the <code class="highlighter-rouge">:user_data_path</code> in which it will be saved later on</li>
+      <li>as existing by defining the <code class="highlighter-rouge">:filename</code> to be loaded from. The filename must be a json file previously generated by an item</li>
+    </ul>
+  </li>
+  <li>load an item from a file</li>
+  <li>resolve whether an items is new or not (saved at least once in the <code class="highlighter-rouge">:user_data_path</code> or not)</li>
+  <li>save an item by writing its json string to a file</li>
+  <li>delete an item</li>
+  <li>produce the json string of an item as a hash of its properties</li>
+</ul>
+
+<h3 id="add-a-new-item">Add a new item</h3>
+
+<h4 id="create-the-button">Create the button</h4>
+
+<p>Let’s add a button to our application window for adding a new item. Open the <code class="highlighter-rouge">resources/ui/application_window.ui</code> file in glade.</p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Button</code> from the widget section to the design section.</li>
+  <li>In the properties section, set its <em>ID</em> value to <code class="highlighter-rouge">add_new_item_button</code>.</li>
+  <li>Near the bottom of the <em>General</em> tab in the properties section there’s a text area just below the <em>Label with optional image</em> option. Change its value from <em>button</em> to <em>Add new item</em></li>
+  <li>Save the file and execute the script</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-add-new-item-application-window.png" alt="Add new item button in application window" /></p>
+
+<p>Don’t worry, we will improve the design later on. Now, let’s see how to <em>connect</em> functionality to our button’s <em>clicked</em> event.</p>
+
+<p>First, we have to update our application window class so that it learns about its new child, the button with id <code class="highlighter-rouge">add_new_item_button</code>. Then, we can access the child to alter its behavior.</p>
+
+<p>Change the <code class="highlighter-rouge">init</code> method as follows:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">init</span>
+  <span class="c1"># Set the template from the resources binary</span>
+  <span class="n">set_template</span> <span class="ss">resource: </span><span class="s1">'/com/iridakos/gtk-todo/ui/application_window.ui'</span>
+
+  <span class="n">bind_template_child</span> <span class="s1">'add_new_item_button'</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Pretty simple, right? The <code class="highlighter-rouge">bind_template_child</code> method does exactly what it says and from now on every instance of our <code class="highlighter-rouge">Todo::ApplicationWindow</code> class will have an <code class="highlighter-rouge">add_new_item_button</code> method to access the related button. So, let’s alter the <code class="highlighter-rouge">initialize</code> method as follows.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+  <span class="k">super</span> <span class="ss">application: </span><span class="n">application</span>
+
+  <span class="n">set_title</span> <span class="s1">'GTK+ Simple ToDo'</span>
+
+  <span class="n">add_new_item_button</span><span class="p">.</span><span class="nf">signal_connect</span> <span class="s1">'clicked'</span> <span class="k">do</span> <span class="o">|</span><span class="n">button</span><span class="p">,</span> <span class="n">application</span><span class="o">|</span>
+    <span class="nb">puts</span> <span class="s2">"OMG! I AM CLICKED"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>As you can see, we access the button by the <code class="highlighter-rouge">add_new_item_button</code> method and we define what we want to take place when clicked. Restart the application and try clicking it. In the console you should see the message <code class="highlighter-rouge">OMG! I AM CLICKED</code> every time you click the button.</p>
+
+<p>What we want though to happen when we click this button is to show a new window through which we will save a ToDo item. You guessed right. Glade o’clock.</p>
+
+<h4 id="create-the-new-item-window">Create the new item window</h4>
+
+<ul>
+  <li>Create a new project in Glade by pressing the most left icon of the top bar or by selecting <em>File &gt; New</em> from the application menu.</li>
+  <li>Drag a <code class="highlighter-rouge">Window</code> from the widget section to the design area.</li>
+  <li>Check its <code class="highlighter-rouge">Composite</code> property and name the class <code class="highlighter-rouge">TodoNewItemWindow</code>.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-1.png" alt="GTK+ Todo new item window empty" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Grid</code> from the widget section and place it in the window we added in the previous steps.</li>
+  <li>Set its rows number to <strong>5</strong> and its columns number to <strong>2</strong> in the window that popped up.</li>
+  <li>In the <em>General</em> tab of its properties window, set its Rows spacing and Columns spacing to <strong>10</strong> (the numbers are in pixels).</li>
+  <li>In the <em>Common</em> tab of the properties section, set the <code class="highlighter-rouge">Widget Spacing &gt; Margins &gt; Top, Bottom, Left, Right</code> all to <strong>10</strong> so that the contents are not stuck to the borders of the window.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-2.png" alt="GTK+ Todo new item window with grid" /></p>
+
+<ul>
+  <li>Drag four times a <code class="highlighter-rouge">Label</code> widget from the widget section and place them in each row of the <code class="highlighter-rouge">Grid</code>.</li>
+  <li>Change their <code class="highlighter-rouge">Label</code> property from top to bottom as:
+    <ul>
+      <li><code class="highlighter-rouge">Id:</code></li>
+      <li><code class="highlighter-rouge">Title:</code></li>
+      <li><code class="highlighter-rouge">Notes:</code></li>
+      <li><code class="highlighter-rouge">Priority:</code></li>
+    </ul>
+  </li>
+  <li>In the <em>General</em> tab of the properties section, change the <em>Alignment and Padding &gt; Alignment &gt; Horizontal</em> property from <em>0.50</em> to <em>1</em> for each property. This will align the label text on the right.</li>
+  <li>This step is optional but I suggest that you do it: We will not bind these labels in our window since we don’t need to alter their state or behavior. So in this context, we don’t need to set a descriptive id for each of them like we did for the <code class="highlighter-rouge">add_new_item_button</code> button in the application window. <strong>BUT</strong>. We are going to add more elements to our design and the hierarchy of the widgets in Glade will be hard to read with all the <code class="highlighter-rouge">label1</code>. <code class="highlighter-rouge">label2</code>. So set a descriptive id to each to make our lives easier (like <code class="highlighter-rouge">id_label</code>, <code class="highlighter-rouge">title_label</code>, <code class="highlighter-rouge">notes_label</code>, <code class="highlighter-rouge">priority_label</code>). I even set the grid’s id to <code class="highlighter-rouge">main_grid</code> cause I don’t like seeing numbers in ids or variable names :)</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-3.png" alt="GTK+ Todo new item with grid and labels" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Label</code> from the widget section to the second column of the grid’s first row. The id is automatically generated by our model thus we won’t allow editing so a label to display it is more than enough.</li>
+  <li>Set the <code class="highlighter-rouge">ID</code> property to <code class="highlighter-rouge">id_value_label</code>.</li>
+  <li>Set the <em>Alignment and Padding &gt; Alignment &gt; Horizontal</em> property to <strong>0</strong> so that the text aligns on the left.</li>
+  <li>We are going to bind this widget to our window class so that we can change its text each time we load the window so setting a label through glade is not needed but doing so makes the design look closer to what it’ll look like when rendered with actual data. So you can optionally set a label here to whatever suits you better. I set mine to <code class="highlighter-rouge">id-of-the-todo-item-here</code>.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-4.png" alt="GTK+ Todo new item with grid and labels" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Text Entry</code> from the widget section to the second column of the second row of the grid.</li>
+  <li>Set its ‘ID’ property to <code class="highlighter-rouge">title_text_entry</code>. As you may have noticed, I prefer obtaining the widget type in the id so that the code in the class becomes more readable later on.</li>
+  <li>In the <em>Common</em> tab of the properties section, check the <code class="highlighter-rouge">Widget Spacing &gt; Expand &gt; Horizontal</code> checkbox and turn on the switch which is right next to it. This way, the widget will expand horizontally every time its parent (a.k.a. the grid) is resized.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-5.png" alt="GTK+ Todo new item with grid and labels" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Text View</code> from the widget section to the second column of the third row of the grid.</li>
+  <li>Set its <code class="highlighter-rouge">ID</code> to <code class="highlighter-rouge">notes</code>. Nope, just testing you. Set its <code class="highlighter-rouge">ID</code> property to <code class="highlighter-rouge">notes_text_view</code>.</li>
+  <li>In the <em>Common</em> tab of the properties section, check the <code class="highlighter-rouge">Widget Spacing &gt; Expand &gt; Horizontal, Vertical</code> checkboxes and turn on the switches which are right next to them. This way, the widget will expand horizontally and vertically every time its parent (a.k.a. the grid) is resized.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-6.png" alt="GTK+ Todo new item with grid and labels" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Combo Box</code> from the widget section to the second column of the forth row of the grid.</li>
+  <li>Set its <code class="highlighter-rouge">ID</code> to <code class="highlighter-rouge">priority_combo_box</code>.</li>
+  <li>In the <em>Common</em> tab of the properties section, check the <code class="highlighter-rouge">Widget Spacing &gt; Expand &gt; Horizontal</code> checkbox and turn on the switch which is right next to it. This way, the widget will expand horizontally every time its parent (a.k.a. the grid) is resized.</li>
+  <li>This widget is actually a drop down element and we are going to populate its values that can be selected by the user when it shows up inside our window class.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-7.png" alt="GTK+ Todo new item with grid and labels" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Button Box</code> from the widget section to the second column of the last row of the grid.</li>
+  <li>On the popped up window select 2 number of items.</li>
+  <li>In the <em>General</em> tab of the properties section set the <em>Box Attributes &gt; Orientation</em> property to <strong>Horizontal</strong>.</li>
+  <li>In the <em>General</em> tab of the properties section set the <em>Box Attributes &gt; Spacing</em> property to <strong>10</strong>.</li>
+  <li>In the <em>Common</em> tab of the properties section set the <em>Widget Spacing &gt; Alignment &gt; Horizontal</em> to <em>Center</em>.</li>
+  <li>Again, this widget won’t be altered by our code but you can give it a descriptive <code class="highlighter-rouge">ID</code> for readability. I named mine <code class="highlighter-rouge">actions_box</code></li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-8.png" alt="GTK+ Todo new item with grid and labels" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Button</code> widget twice and place it to each of the two boxes of the button box widget we added in the previous step.</li>
+  <li>Set their <code class="highlighter-rouge">ID</code> properties to <code class="highlighter-rouge">cancel_button</code> &amp; <code class="highlighter-rouge">save_button</code> respectively.</li>
+  <li>In the <em>General</em> tab of the properties window, set their <em>Button Content &gt; Label with option image</em> property to <strong>Cancel</strong> and <strong>Save</strong> respectively.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-9.png" alt="GTK+ Todo new item with grid and labels" /></p>
+
+<p>The window is ready. Save the file under <code class="highlighter-rouge">resources/ui/new_item_window.ui</code>.</p>
+
+<p>Time to port it in our application.</p>
+
+<h4 id="implement-the-new-item-window-class">Implement the new item window class</h4>
+
+<p>Before implementing the new class, we must update our <code class="highlighter-rouge">GResource</code> description file a.k.a. <code class="highlighter-rouge">resources/gresources.xml</code> to obtain the new resource:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;gresources&gt;</span>
+  <span class="nt">&lt;gresource</span> <span class="na">prefix=</span><span class="s">"/com/iridakos/gtk-todo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;file</span> <span class="na">preprocess=</span><span class="s">"xml-stripblanks"</span><span class="nt">&gt;</span>ui/application_window.ui<span class="nt">&lt;/file&gt;</span>
+    <span class="nt">&lt;file</span> <span class="na">preprocess=</span><span class="s">"xml-stripblanks"</span><span class="nt">&gt;</span>ui/new_item_window.ui<span class="nt">&lt;/file&gt;</span>
+  <span class="nt">&lt;/gresource&gt;</span>
+<span class="nt">&lt;/gresources&gt;</span>
+</code></pre></div></div>
+
+<p>Now we can create the new window class. Create a file under <code class="highlighter-rouge">application/ui/todo</code> named <code class="highlighter-rouge">new_item_window.rb</code> and set its contents as follows.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Todo</span>
+  <span class="k">class</span> <span class="nc">NewItemWindow</span> <span class="o">&lt;</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">Window</span>
+    <span class="c1"># Register the class in the GLib world</span>
+    <span class="n">type_register</span>
+
+    <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+      <span class="k">def</span> <span class="nf">init</span>
+        <span class="c1"># Set the template from the resources binary</span>
+        <span class="n">set_template</span> <span class="ss">resource: </span><span class="s1">'/com/iridakos/gtk-todo/ui/new_item_window.ui'</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+      <span class="k">super</span> <span class="ss">application: </span><span class="n">application</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Nothing special here. We just changed the template resource to point to the correct file of our resources.</p>
+
+<p>We have to change the <code class="highlighter-rouge">add_new_item_button</code> code that executes on the <code class="highlighter-rouge">clicked</code> signal to show the new item window.
+Go ahead and change that code in <code class="highlighter-rouge">application_window.rb</code> to this:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_new_item_button</span><span class="p">.</span><span class="nf">signal_connect</span> <span class="s1">'clicked'</span> <span class="k">do</span> <span class="o">|</span><span class="n">button</span><span class="o">|</span>
+  <span class="n">new_item_window</span> <span class="o">=</span> <span class="no">NewItemWindow</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+  <span class="n">new_item_window</span><span class="p">.</span><span class="nf">present</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Let’s see what we have done. Start the application and click on the <strong>Add new item</strong> button. Ta daaaaaaa</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-10.png" alt="GTK+ Todo new item with grid and labels" /></p>
+
+<p>Of course, nothing happens when pressing the buttons. We will change that.</p>
+
+<p>First we will bind the ui widgets in the <code class="highlighter-rouge">Todo::NewItemWindow</code> class.</p>
+
+<p>Change the <code class="highlighter-rouge">init</code> method the to this:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">init</span>
+  <span class="c1"># Set the template from the resources binary</span>
+  <span class="n">set_template</span> <span class="ss">resource: </span><span class="s1">'/com/iridakos/gtk-todo/ui/new_item_window.ui'</span>
+
+  <span class="c1"># Bind the window's widgets</span>
+  <span class="n">bind_template_child</span> <span class="s1">'id_value_label'</span>
+  <span class="n">bind_template_child</span> <span class="s1">'title_text_entry'</span>
+  <span class="n">bind_template_child</span> <span class="s1">'notes_text_view'</span>
+  <span class="n">bind_template_child</span> <span class="s1">'priority_combo_box'</span>
+  <span class="n">bind_template_child</span> <span class="s1">'cancel_button'</span>
+  <span class="n">bind_template_child</span> <span class="s1">'save_button'</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>This window is going to be shown either when creating a new Todo item or editing an existing one. Thus the <code class="highlighter-rouge">new_item_window</code> naming is not very valid. This was intentional though so that we refactor the code later (No it was not :D I made a mistake when writing the tutorial. In any case, we’ll refactor later on).</p>
+
+<p>For now, we will update the <code class="highlighter-rouge">initialize</code> method of the window to require one extra parameter, the <code class="highlighter-rouge">Todo::Item</code> to be created or edited. We can then set a more meaningful window title and change the children widgets to reflect the current item.</p>
+
+<p>Change the <code class="highlighter-rouge">initialize</code> method to this:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+  <span class="k">super</span> <span class="ss">application: </span><span class="n">application</span>
+  <span class="n">set_title</span> <span class="s2">"ToDo item </span><span class="si">#{</span><span class="n">item</span><span class="p">.</span><span class="nf">id</span><span class="si">}</span><span class="s2"> - </span><span class="si">#{</span><span class="n">item</span><span class="p">.</span><span class="nf">is_new?</span> <span class="p">?</span> <span class="s1">'Create'</span> <span class="p">:</span> <span class="s1">'Edit'</span> <span class="si">}</span><span class="s2"> Mode"</span>
+
+  <span class="n">id_value_label</span><span class="p">.</span><span class="nf">text</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="nf">id</span>
+  <span class="n">title_text_entry</span><span class="p">.</span><span class="nf">text</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="nf">title</span> <span class="k">if</span> <span class="n">item</span><span class="p">.</span><span class="nf">title</span>
+  <span class="n">notes_text_view</span><span class="p">.</span><span class="nf">buffer</span><span class="p">.</span><span class="nf">text</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="nf">notes</span> <span class="k">if</span> <span class="n">item</span><span class="p">.</span><span class="nf">notes</span>
+
+  <span class="c1"># Configure the combo box</span>
+  <span class="n">model</span> <span class="o">=</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">ListStore</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">String</span><span class="p">)</span>
+  <span class="no">Todo</span><span class="o">::</span><span class="no">Item</span><span class="o">::</span><span class="no">PRIORITIES</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">priority</span><span class="o">|</span>
+    <span class="n">iterator</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">append</span>
+    <span class="n">iterator</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">priority</span>
+  <span class="k">end</span>
+
+  <span class="n">priority_combo_box</span><span class="p">.</span><span class="nf">model</span> <span class="o">=</span> <span class="n">model</span>
+  <span class="n">renderer</span> <span class="o">=</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">CellRendererText</span><span class="p">.</span><span class="nf">new</span>
+  <span class="n">priority_combo_box</span><span class="p">.</span><span class="nf">pack_start</span><span class="p">(</span><span class="n">renderer</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+  <span class="n">priority_combo_box</span><span class="p">.</span><span class="nf">set_attributes</span><span class="p">(</span><span class="n">renderer</span><span class="p">,</span> <span class="s2">"text"</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">)</span>
+
+  <span class="n">priority_combo_box</span><span class="p">.</span><span class="nf">set_active</span><span class="p">(</span><span class="no">Todo</span><span class="o">::</span><span class="no">Item</span><span class="o">::</span><span class="no">PRIORITIES</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="nf">priority</span><span class="p">))</span> <span class="k">if</span> <span class="n">item</span><span class="p">.</span><span class="nf">priority</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>and add the constant <code class="highlighter-rouge">PRIORITIES</code> in the <code class="highlighter-rouge">application/models/item.rb</code> file just below the <code class="highlighter-rouge">PROPERTIES</code> constant as:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">PRIORITIES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'high'</span><span class="p">,</span> <span class="s1">'medium'</span><span class="p">,</span> <span class="s1">'normal'</span><span class="p">,</span> <span class="s1">'low'</span><span class="p">].</span><span class="nf">freeze</span>
+</code></pre></div></div>
+
+<p>What did we do here?</p>
+<ul>
+  <li>We set the window’s title to a string containing the id of the current item and the mode depending on whether the item is now being created or edited.</li>
+  <li>We set the <code class="highlighter-rouge">id_value_label</code> text to display the current item’s id.</li>
+  <li>We set the <code class="highlighter-rouge">title_text_entry</code> text to display the current item’s title.</li>
+  <li>We set the <code class="highlighter-rouge">notes_text_view</code> text to display the current item’s notes.</li>
+  <li>We create a model for the <code class="highlighter-rouge">priority_combo_box</code> whose entries are going to have only one <code class="highlighter-rouge">String</code> value. At a first sight, a <code class="highlighter-rouge">Gtk::ListStore</code> model might look a little confusing. I will try to explain how it works now.
+    <ul>
+      <li>Suppose we want to display in a combo box a list of country codes and their respective country names.</li>
+      <li>We would create a <code class="highlighter-rouge">Gtk::ListStore</code> defining that its entries would consist of two string values: one for the country code and one for the country name. Thus we would initialize the ListStore as:
+        <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">ListStore</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">String</span><span class="p">,</span> <span class="no">String</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+      <li>In order to fill the model with data we would do something like this (make sure you don’t miss the comments in the snippet):
+        <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[[</span><span class="s1">'gr'</span><span class="p">,</span> <span class="s1">'Greece'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'jp'</span><span class="p">,</span><span class="s1">'Japan'</span><span class="p">],</span> <span class="p">[</span><span class="s1">'nl'</span><span class="p">,</span> <span class="s1">'Netherlands'</span><span class="p">]].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">country_pair</span><span class="o">|</span>
+  <span class="n">entry</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">append</span>
+  <span class="c1"># Each entry has two string positions since that's how we initialized the Gtk::ListStore</span>
+  <span class="c1"># Store the country code in position 0</span>
+  <span class="n">entry</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">country_pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="c1"># Store the country name in position 1</span>
+  <span class="n">entry</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">country_pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">end</span>
+</code></pre></div>        </div>
+      </li>
+      <li>We also had to configure the combo box to render two text columns/cells (again, make sure you don’t miss the comments in the snippet):
+        <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">country_code_renderer</span> <span class="o">=</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">CellRendererText</span><span class="p">.</span><span class="nf">new</span>
+<span class="c1"># Add the first renderer</span>
+<span class="n">combo</span><span class="p">.</span><span class="nf">pack_start</span><span class="p">(</span><span class="n">country_code_renderer</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+<span class="c1"># Use the value in index 0 of each model entry a.k.a. the country code</span>
+<span class="n">combo</span><span class="p">.</span><span class="nf">set_attributes</span><span class="p">(</span><span class="n">country_code_renderer</span><span class="p">,</span> <span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">country_name_renderer</span> <span class="o">=</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">CellRendererText</span><span class="p">.</span><span class="nf">new</span>
+<span class="c1"># Add the second renderer</span>
+<span class="n">combo</span><span class="p">.</span><span class="nf">pack_start</span><span class="p">(</span><span class="n">country_name_renderer</span><span class="p">,</span> <span class="kp">true</span><span class="p">)</span>
+<span class="c1"># Use the value in index 1 of each model entry a.k.a. the country name</span>
+<span class="n">combo</span><span class="p">.</span><span class="nf">set_attributes</span><span class="p">(</span><span class="n">country_name_renderer</span><span class="p">,</span> <span class="s1">'text'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div>        </div>
+      </li>
+      <li>I hope I made it a little more clearer…</li>
+    </ul>
+  </li>
+  <li>We add a simple text renderer in the combo box and instruct it to display the one and only value of each model’s entry (a.k.a. position <code class="highlighter-rouge">0</code>). Imagine that our model is something like <code class="highlighter-rouge">[['high'],['medium'],['normal'],['low']]</code> and <code class="highlighter-rouge">0</code> is actually the first element of each sub-array. I will stop with the model-combo-text-renderer explanations now…</li>
+</ul>
+
+<h4 id="configure-the-user-data-path">Configure the user data path</h4>
+
+<p>Remember that when initializing a new <code class="highlighter-rouge">Todo::Item</code> (not an existing one) we had to define a <code class="highlighter-rouge">:user_data_path</code> in which it would be saved. We are going to resolve this path when the application starts and make it accessible from all the widgets.</p>
+
+<p>All we have to do is check if the <code class="highlighter-rouge">.gtk-todo-tutorial</code> path exists inside the user’s home <code class="highlighter-rouge">~</code> directory. If not, then we will create it. Then we set this as an instance variable of the application. All widgets have access to the application instance. Sooooo….all widgets have access to this user path variable.</p>
+
+<p>Change the <code class="highlighter-rouge">application/application.rb</code> file to this:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">ToDo</span>
+  <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">Application</span>
+    <span class="nb">attr_reader</span> <span class="ss">:user_data_path</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span>
+      <span class="k">super</span> <span class="s1">'com.iridakos.gtk-todo'</span><span class="p">,</span> <span class="no">Gio</span><span class="o">::</span><span class="no">ApplicationFlags</span><span class="o">::</span><span class="no">FLAGS_NONE</span>
+
+      <span class="vi">@user_data_path</span> <span class="o">=</span> <span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="s1">'~/.gtk-todo-tutorial'</span><span class="p">)</span>
+      <span class="k">unless</span> <span class="no">File</span><span class="p">.</span><span class="nf">directory?</span><span class="p">(</span><span class="vi">@user_data_path</span><span class="p">)</span>
+        <span class="nb">puts</span> <span class="s2">"First run. Creating user's application path: </span><span class="si">#{</span><span class="vi">@user_data_path</span><span class="si">}</span><span class="s2">"</span>
+        <span class="no">FileUtils</span><span class="p">.</span><span class="nf">mkdir_p</span><span class="p">(</span><span class="vi">@user_data_path</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="n">signal_connect</span> <span class="ss">:activate</span> <span class="k">do</span> <span class="o">|</span><span class="n">application</span><span class="o">|</span>
+        <span class="n">window</span> <span class="o">=</span> <span class="no">Todo</span><span class="o">::</span><span class="no">ApplicationWindow</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+        <span class="n">window</span><span class="p">.</span><span class="nf">present</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>One last thing that we have to do before testing what we have done so far is to instantiate the <code class="highlighter-rouge">Todo::NewItemWindow</code> when the <code class="highlighter-rouge">add_new_item_button</code> is clicked complying with the changes we made a.k.a. change the code in <code class="highlighter-rouge">application_window.rb</code> to this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">add_new_item_button</span><span class="p">.</span><span class="nf">signal_connect</span> <span class="s1">'clicked'</span> <span class="k">do</span> <span class="o">|</span><span class="n">button</span><span class="o">|</span>
+  <span class="n">new_item_window</span> <span class="o">=</span> <span class="no">NewItemWindow</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="no">Todo</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">user_data_path: </span><span class="n">application</span><span class="p">.</span><span class="nf">user_data_path</span><span class="p">))</span>
+  <span class="n">new_item_window</span><span class="p">.</span><span class="nf">present</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Start the application and click on the <strong>Add new item</strong> button. Ta daaaaaa (note the <em>- Create mode</em> part in the title).</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-11.png" alt="New item window" /></p>
+
+<h4 id="cancel-the-item-creationupdate">Cancel the item creation/update</h4>
+
+<p>In order to close the <code class="highlighter-rouge">Todo::NewItemWindow</code> window when user clicks the <code class="highlighter-rouge">cancel_button</code> all we have to do is to add this to the window’s <code class="highlighter-rouge">initialize</code> method:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cancel_button</span><span class="p">.</span><span class="nf">signal_connect</span> <span class="s1">'clicked'</span> <span class="k">do</span> <span class="o">|</span><span class="n">button</span><span class="o">|</span>
+  <span class="n">close</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">close</code> is an instance method of the <code class="highlighter-rouge">Gtk::Window</code> class that surprisingly enough closes the window.</p>
+
+<h4 id="save-the-item">Save the item</h4>
+
+<p>Saving an item involves two steps:</p>
+<ul>
+  <li>Update the item’s properties based on the widgets’ values</li>
+  <li>Call the <code class="highlighter-rouge">save!</code> method on the <code class="highlighter-rouge">Todo::Item</code> instance</li>
+</ul>
+
+<p>Again, our code will be placed in the <code class="highlighter-rouge">initialie</code> method of the <code class="highlighter-rouge">Todo::NewItemWindow</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">save_button</span><span class="p">.</span><span class="nf">signal_connect</span> <span class="s1">'clicked'</span> <span class="k">do</span> <span class="o">|</span><span class="n">button</span><span class="o">|</span>
+  <span class="n">item</span><span class="p">.</span><span class="nf">title</span> <span class="o">=</span> <span class="n">title_text_entry</span><span class="p">.</span><span class="nf">text</span>
+  <span class="n">item</span><span class="p">.</span><span class="nf">notes</span> <span class="o">=</span> <span class="n">notes_text_view</span><span class="p">.</span><span class="nf">buffer</span><span class="p">.</span><span class="nf">text</span>
+  <span class="n">item</span><span class="p">.</span><span class="nf">priority</span> <span class="o">=</span> <span class="n">priority_combo_box</span><span class="p">.</span><span class="nf">active_iter</span><span class="p">.</span><span class="nf">get_value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">priority_combo_box</span><span class="p">.</span><span class="nf">active_iter</span>
+  <span class="n">item</span><span class="p">.</span><span class="nf">save!</span>
+  <span class="n">close</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Note that we again close the window after saving the item.</p>
+
+<p>Let’s try that out.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-12.png" alt="New item window" /></p>
+
+<p>Pressing save and navigating to your <code class="highlighter-rouge">~/.gtk-todo-tutorial</code> folder you should see a file there. Mine had the following contents:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+	<span class="s2">"id"</span><span class="p">:</span> <span class="s2">"3d635839-66d0-4ce6-af31-e81b47b3e585"</span><span class="p">,</span>
+	<span class="s2">"title"</span><span class="p">:</span> <span class="s2">"Optimize the priorities model creation"</span><span class="p">,</span>
+	<span class="s2">"notes"</span><span class="p">:</span> <span class="s2">"It doesn't have to be initialized upon each window creation."</span><span class="p">,</span>
+	<span class="s2">"priority"</span><span class="p">:</span> <span class="s2">"high"</span><span class="p">,</span>
+	<span class="s2">"filename"</span><span class="p">:</span> <span class="s2">"/home/iridakos/.gtk-todo-tutorial/3d635839-66d0-4ce6-af31-e81b47b3e585.json"</span><span class="p">,</span>
+	<span class="s2">"creation_datetime"</span><span class="p">:</span> <span class="s2">"2018-01-25 18:09:51 +0200"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Don’t forget to try out the cancel button as well.</p>
+
+<p>Awesome!!!</p>
+
+<h3 id="view-todo-items">View ToDo items</h3>
+
+<p>We have left the <code class="highlighter-rouge">Todo::ApplicationWindow</code> to contain only one button. Time to change that.</p>
+
+<p>We want the window to have the <strong>Add new item</strong> on the top but below it there should be a list with all of our todo items.
+To accomplish that we are going to add a <code class="highlighter-rouge">Gtk::ListBox</code> in our design which can contain any number of rows.</p>
+
+<h4 id="update-the-application-window">Update the application window</h4>
+
+<ul>
+  <li>Open the <code class="highlighter-rouge">resources/ui/application_window.ui</code> file in Glade.</li>
+  <li>If you try to drag a <code class="highlighter-rouge">List Box</code> widget from the widget section directly on the window nothing happens. That is normal. First we have to split the window in two parts. One part for the button and one for the list box. Bear with me.</li>
+  <li>Right click on the <code class="highlighter-rouge">new_item_window</code> in the <strong>hierarchy section</strong> and select <em>Add parent &gt; Box</em>.</li>
+  <li>In the popped up window, set that you need 2 items.</li>
+  <li>The orientation of the box is already vertical so we are fine.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-13.png" alt="View todo items" /></p>
+
+<ul>
+  <li>Now, drag a <code class="highlighter-rouge">List Box</code> and place it on the free are of the previously added box.</li>
+  <li>Set its <code class="highlighter-rouge">ID</code> property to <code class="highlighter-rouge">todo_items_list_box</code></li>
+  <li>Set is <code class="highlighter-rouge">Selection mode</code> to <code class="highlighter-rouge">None</code> since we won’t provide such a functionality.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-view-todo-items-1.png" alt="View todo items" /></p>
+
+<h4 id="design-the-todo-item-list-box-row">Design the ToDo item list box row</h4>
+
+<p>Each row of the list box that we created in the previous step is going to be more complex than a row of text. It is going to contain widgets that will allow the user to expand an item’s notes, and to delete or edit the item.</p>
+
+<ul>
+  <li>Create a new project in Glade as we did for the <code class="highlighter-rouge">new_item_window.ui</code>. Save it under <code class="highlighter-rouge">resources/ui/todo_item_list_box_row.ui</code>.</li>
+  <li>Unfortunately, at least in my version of Glade, there is no <code class="highlighter-rouge">List Box Row</code> widget in the widget section so in order to add one directly as the top level widget of our project, we will do it in a kinda hackish way.</li>
+  <li>Drag a <code class="highlighter-rouge">List Box</code> from the widget section to the design area.</li>
+  <li>Inside the <strong>hierarchy section</strong> right click on the <code class="highlighter-rouge">List Box</code> and select <code class="highlighter-rouge">Add Row</code></li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-01.png" alt="View todo items" /></p>
+
+<ul>
+  <li>Inside the <strong>hierarchy section</strong> right click on the newly added <code class="highlighter-rouge">List Box Row</code> which is nested under the <code class="highlighter-rouge">List Box</code> and select <code class="highlighter-rouge">Remove parent</code>. There it is. The <code class="highlighter-rouge">List Box Row</code> is the top level widget of the project now.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-02.png" alt="View todo items" /></p>
+
+<ul>
+  <li>Check the widget’s <code class="highlighter-rouge">Composite</code> property and set its name to <code class="highlighter-rouge">TodoItemListBoxRow</code>.</li>
+  <li>Drag a <code class="highlighter-rouge">Box</code> from the widget section to the design area inside our <code class="highlighter-rouge">List Box Row</code>.</li>
+  <li>Set <strong>2</strong> items in the popped up window.</li>
+  <li>Set its <code class="highlighter-rouge">ID</code> property to <code class="highlighter-rouge">main_box</code></li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-03.png" alt="View todo items" /></p>
+
+<ul>
+  <li>Drag another <code class="highlighter-rouge">Box</code> from the widget section to the first row of the previously added box.</li>
+  <li>Set <strong>2</strong> items in the popped up window.</li>
+  <li>Set its <code class="highlighter-rouge">ID</code> property to <code class="highlighter-rouge">todo_item_top_box</code>.</li>
+  <li>Set its <em>Orientation</em> property to <strong>Horizontal</strong>.</li>
+  <li>Set its <code class="highlighter-rouge">Spacing</code> (<em>General</em> tab) property to <strong>10</strong>.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-04.png" alt="View todo items" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Label</code> from the widget section to the first column of the <code class="highlighter-rouge">todo_item_top_box</code>.</li>
+  <li>Set its <code class="highlighter-rouge">ID</code> property to <code class="highlighter-rouge">todo_item_title_label</code>.</li>
+  <li>Set its <em>Alignment and Padding &gt; Alignment &gt; Horizontal</em> property to <strong>0.00</strong>.</li>
+  <li>In the <em>Common</em> tab of the properties section, check the <em>Widget Spacing &gt; Expand &gt; Horizontal</em> checkbox and turn on the switch which is right next to it so that the label expands to available space.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-05.png" alt="View todo items" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Button</code> from the widget section to the second column of the <code class="highlighter-rouge">todo_item_top_box</code>.</li>
+  <li>Set its <code class="highlighter-rouge">ID</code> property to <code class="highlighter-rouge">details_button</code></li>
+  <li>Check the <em>Button Content &gt; Label with optional image</em> radio and type <code class="highlighter-rouge">...</code> (three dots).</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-06.png" alt="View todo items" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Revealer</code> widget from the widget section to the second row of the <code class="highlighter-rouge">main_box</code>.</li>
+  <li>Turn <strong>off</strong> the <code class="highlighter-rouge">Reveal Child</code> switch in the <em>General</em> tab.</li>
+  <li>Set its <code class="highlighter-rouge">ID</code> property to <code class="highlighter-rouge">todo_item_details_revealer</code>.</li>
+  <li>Set its <code class="highlighter-rouge">Transition type</code> property to <code class="highlighter-rouge">Slide Down</code>.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-07.png" alt="View todo items" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Box</code> from the widget section to the reveal space.</li>
+  <li>Set its items to <strong>2</strong> in the popped up window.</li>
+  <li>Set its <code class="highlighter-rouge">ID</code> property to <code class="highlighter-rouge">details_box</code>.</li>
+  <li>In the <em>Common</em> tab, set its <em>Widget Spacing &gt; Margins &gt; Top</em> property to <strong>10</strong>.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-08.png" alt="View todo items" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Button Box</code> from the widget section to the first row of the <code class="highlighter-rouge">details_box</code>.</li>
+  <li>Set its <code class="highlighter-rouge">ID</code> property to <code class="highlighter-rouge">todo_item_action_box</code>.</li>
+  <li>Set its <code class="highlighter-rouge">Layout style</code> property to <code class="highlighter-rouge">expand</code>.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-09.png" alt="View todo items" /></p>
+
+<ul>
+  <li>Drag two <code class="highlighter-rouge">Button</code> widgets to the first and second column of the <code class="highlighter-rouge">todo_item_action_box</code> respectively.</li>
+  <li>Set their <code class="highlighter-rouge">ID</code> properties to <code class="highlighter-rouge">delete_button</code> and <code class="highlighter-rouge">edit_button</code> respectively.</li>
+  <li>Set their <em>Button Content &gt; Label with optional image</em> properties to <code class="highlighter-rouge">Delete</code> and <code class="highlighter-rouge">Edit</code> respective.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-10.png" alt="View todo items" /></p>
+
+<ul>
+  <li>Drag a <code class="highlighter-rouge">Viewport</code> widget from the widget section to the second row of the <code class="highlighter-rouge">details_box</code>.</li>
+  <li>Set its <code class="highlighter-rouge">ID</code> property to <code class="highlighter-rouge">todo_action_notes_viewport</code>.</li>
+  <li>Drag a <code class="highlighter-rouge">Text View</code> widget from the widget section to the <code class="highlighter-rouge">todo_action_notes_viewport</code> that we just added.</li>
+  <li>Set is <code class="highlighter-rouge">ID</code> to <code class="highlighter-rouge">todo_item_notes_text_view</code>.</li>
+  <li>Uncheck its <code class="highlighter-rouge">Editable</code> property in the <code class="highlighter-rouge">General</code> tab of the properties section.</li>
+</ul>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-11.png" alt="View todo items" /></p>
+
+<h3 id="create-the-todo-item-list-box-row-class">Create the ToDo item list box row class</h3>
+
+<p>Now we will create the class reflecting the user interface of the list box row which we just created.</p>
+
+<p>First we have to update our <code class="highlighter-rouge">GResource</code> description file to include the newly created design. Change the <code class="highlighter-rouge">resources/gresources.xml</code> file as follows:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;gresources&gt;</span>
+  <span class="nt">&lt;gresource</span> <span class="na">prefix=</span><span class="s">"/com/iridakos/gtk-todo"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;file</span> <span class="na">preprocess=</span><span class="s">"xml-stripblanks"</span><span class="nt">&gt;</span>ui/application_window.ui<span class="nt">&lt;/file&gt;</span>
+    <span class="nt">&lt;file</span> <span class="na">preprocess=</span><span class="s">"xml-stripblanks"</span><span class="nt">&gt;</span>ui/new_item_window.ui<span class="nt">&lt;/file&gt;</span>
+    <span class="nt">&lt;file</span> <span class="na">preprocess=</span><span class="s">"xml-stripblanks"</span><span class="nt">&gt;</span>ui/todo_item_list_box_row.ui<span class="nt">&lt;/file&gt;</span>
+  <span class="nt">&lt;/gresource&gt;</span>
+<span class="nt">&lt;/gresources&gt;</span>
+</code></pre></div></div>
+
+<p>Create a file named <code class="highlighter-rouge">item_list_box_row.rb</code> inside the <code class="highlighter-rouge">application/ui</code> folder and add the following content.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">Todo</span>
+  <span class="k">class</span> <span class="nc">ItemListBoxRow</span> <span class="o">&lt;</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">ListBoxRow</span>
+    <span class="n">type_register</span>
+
+    <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="nb">self</span>
+      <span class="k">def</span> <span class="nf">init</span>
+        <span class="n">set_template</span> <span class="ss">resource: </span><span class="s1">'/com/iridakos/gtk-todo/ui/todo_item_list_box_row.ui'</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+      <span class="k">super</span><span class="p">()</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>We will not bind any children at the moment here.</p>
+
+<p>When starting the application, we have to search for files in the <code class="highlighter-rouge">:user_data_path</code> and for each file we must create a <code class="highlighter-rouge">Todo::Item</code> instance. For each instance, we must also add a new <code class="highlighter-rouge">Todo::ItemListBoxRow</code> to the <code class="highlighter-rouge">Todo::ApplicationWindow</code>’s <code class="highlighter-rouge">todo_items_list_box</code> list box. One thing at a time.</p>
+
+<p>First of all, let’s bind the <code class="highlighter-rouge">todo_items_list_box</code> in the <code class="highlighter-rouge">Todo::ApplicationWindow</code> class. Change the <code class="highlighter-rouge">init</code> method as follows:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">init</span>
+  <span class="c1"># Set the template from the resources binary</span>
+  <span class="n">set_template</span> <span class="ss">resource: </span><span class="s1">'/com/iridakos/gtk-todo/ui/application_window.ui'</span>
+
+  <span class="n">bind_template_child</span> <span class="s1">'add_new_item_button'</span>
+  <span class="n">bind_template_child</span> <span class="s1">'todo_items_list_box'</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Next, we will add an instance method in the same class that will be responsible to load the todo list items in the related list box.
+Add this code in <code class="highlighter-rouge">Todo::ApplicationWindow</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">load_todo_items</span>
+  <span class="n">todo_items_list_box</span><span class="p">.</span><span class="nf">children</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">child</span><span class="o">|</span> <span class="n">todo_items_list_box</span><span class="p">.</span><span class="nf">remove</span> <span class="n">child</span> <span class="p">}</span>
+
+  <span class="n">json_files</span> <span class="o">=</span> <span class="no">Dir</span><span class="p">[</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="n">application</span><span class="p">.</span><span class="nf">user_data_path</span><span class="p">),</span> <span class="s1">'*.json'</span><span class="p">)]</span>
+  <span class="n">items</span> <span class="o">=</span> <span class="n">json_files</span><span class="p">.</span><span class="nf">map</span><span class="p">{</span> <span class="o">|</span><span class="n">filename</span><span class="o">|</span> <span class="no">Todo</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">filename: </span><span class="n">filename</span><span class="p">)</span> <span class="p">}</span>
+
+  <span class="n">items</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+    <span class="n">todo_items_list_box</span><span class="p">.</span><span class="nf">add</span> <span class="no">Todo</span><span class="o">::</span><span class="no">ItemListBoxRow</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>and then call this method at the end of the <code class="highlighter-rouge">initialize</code> method.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+  <span class="k">super</span> <span class="ss">application: </span><span class="n">application</span>
+
+  <span class="n">set_title</span> <span class="s1">'GTK+ Simple ToDo'</span>
+
+  <span class="n">add_new_item_button</span><span class="p">.</span><span class="nf">signal_connect</span> <span class="s1">'clicked'</span> <span class="k">do</span> <span class="o">|</span><span class="n">button</span><span class="o">|</span>
+    <span class="n">new_item_window</span> <span class="o">=</span> <span class="no">NewItemWindow</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="no">Todo</span><span class="o">::</span><span class="no">Item</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">user_data_path: </span><span class="n">application</span><span class="p">.</span><span class="nf">user_data_path</span><span class="p">))</span>
+    <span class="n">new_item_window</span><span class="p">.</span><span class="nf">present</span>
+  <span class="k">end</span>
+
+  <span class="n">load_todo_items</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><strong>Note</strong>: We first make sure we empty the list box of its current children rows and we refill it. This way, we will call this method after saving a <code class="highlighter-rouge">Todo::Item</code> via the <code class="highlighter-rouge">signal_connect</code> of the <code class="highlighter-rouge">save_button</code> of the <code class="highlighter-rouge">Todo::NewItemWindow</code> and the parent application window will be reloaded! Here’s the updated code (in <code class="highlighter-rouge">application/ui/new_item_window.rb</code>):</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">save_button</span><span class="p">.</span><span class="nf">signal_connect</span> <span class="s1">'clicked'</span> <span class="k">do</span> <span class="o">|</span><span class="n">button</span><span class="o">|</span>
+  <span class="n">item</span><span class="p">.</span><span class="nf">title</span> <span class="o">=</span> <span class="n">title_text_entry</span><span class="p">.</span><span class="nf">text</span>
+  <span class="n">item</span><span class="p">.</span><span class="nf">notes</span> <span class="o">=</span> <span class="n">notes_text_view</span><span class="p">.</span><span class="nf">buffer</span><span class="p">.</span><span class="nf">text</span>
+  <span class="n">item</span><span class="p">.</span><span class="nf">priority</span> <span class="o">=</span> <span class="n">priority_combo_box</span><span class="p">.</span><span class="nf">active_iter</span><span class="p">.</span><span class="nf">get_value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">priority_combo_box</span><span class="p">.</span><span class="nf">active_iter</span>
+  <span class="n">item</span><span class="p">.</span><span class="nf">save!</span>
+
+  <span class="n">close</span>
+
+  <span class="c1"># Locate the application window</span>
+  <span class="n">application_window</span> <span class="o">=</span> <span class="n">application</span><span class="p">.</span><span class="nf">windows</span><span class="p">.</span><span class="nf">find</span> <span class="p">{</span> <span class="o">|</span><span class="n">w</span><span class="o">|</span> <span class="n">w</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Todo</span><span class="o">::</span><span class="no">ApplicationWindow</span> <span class="p">}</span>
+  <span class="n">application_window</span><span class="p">.</span><span class="nf">load_todo_items</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Previously, we used this code:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">json_files</span> <span class="o">=</span> <span class="no">Dir</span><span class="p">[</span><span class="no">File</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="no">File</span><span class="p">.</span><span class="nf">expand_path</span><span class="p">(</span><span class="n">application</span><span class="p">.</span><span class="nf">user_data_path</span><span class="p">),</span> <span class="s1">'*.json'</span><span class="p">)]</span>
+</code></pre></div></div>
+<p>in order to find all the names of the files that exist in the application user data path with <code class="highlighter-rouge">json</code> extension.</p>
+
+<p>Let’s see what we’ve created. Start the application and try adding a new ToDo item. After pressing the <strong>Save</strong> button you should see the parent <code class="highlighter-rouge">Todo::ApplicationWindow</code> being automatically updated with the new item!</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/both-windows.png" alt="View todo items" /></p>
+
+<p>What’s left to do, is to complete the functionality of the <code class="highlighter-rouge">Todo::ItemListBoxRow</code>.</p>
+
+<p>We will first bind the widgets. Change the <code class="highlighter-rouge">init</code> method of the <code class="highlighter-rouge">Todo::ItemListBoxRow</code> class as follows:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">init</span>
+  <span class="n">set_template</span> <span class="ss">resource: </span><span class="s1">'/com/iridakos/gtk-todo/ui/todo_item_list_box_row.ui'</span>
+
+  <span class="n">bind_template_child</span> <span class="s1">'details_button'</span>
+  <span class="n">bind_template_child</span> <span class="s1">'todo_item_title_label'</span>
+  <span class="n">bind_template_child</span> <span class="s1">'todo_item_details_revealer'</span>
+  <span class="n">bind_template_child</span> <span class="s1">'todo_item_notes_text_view'</span>
+  <span class="n">bind_template_child</span> <span class="s1">'delete_button'</span>
+  <span class="n">bind_template_child</span> <span class="s1">'edit_button'</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Then, we are going to setup the widgets based on the item of each row.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+  <span class="k">super</span><span class="p">()</span>
+
+  <span class="n">todo_item_title_label</span><span class="p">.</span><span class="nf">text</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="nf">title</span> <span class="o">||</span> <span class="s1">''</span>
+
+  <span class="n">todo_item_notes_text_view</span><span class="p">.</span><span class="nf">buffer</span><span class="p">.</span><span class="nf">text</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="nf">notes</span>
+
+  <span class="n">details_button</span><span class="p">.</span><span class="nf">signal_connect</span> <span class="s1">'clicked'</span> <span class="k">do</span>
+    <span class="n">todo_item_details_revealer</span><span class="p">.</span><span class="nf">set_reveal_child</span> <span class="o">!</span><span class="n">todo_item_details_revealer</span><span class="p">.</span><span class="nf">reveal_child?</span>
+  <span class="k">end</span>
+
+  <span class="n">delete_button</span><span class="p">.</span><span class="nf">signal_connect</span> <span class="s1">'clicked'</span> <span class="k">do</span>
+    <span class="n">item</span><span class="p">.</span><span class="nf">delete!</span>
+
+    <span class="c1"># Locate the application window</span>
+    <span class="n">application_window</span> <span class="o">=</span> <span class="n">application</span><span class="p">.</span><span class="nf">windows</span><span class="p">.</span><span class="nf">find</span> <span class="p">{</span> <span class="o">|</span><span class="n">w</span><span class="o">|</span> <span class="n">w</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Todo</span><span class="o">::</span><span class="no">ApplicationWindow</span> <span class="p">}</span>
+    <span class="n">application_window</span><span class="p">.</span><span class="nf">load_todo_items</span>
+  <span class="k">end</span>
+
+  <span class="n">edit_button</span><span class="p">.</span><span class="nf">signal_connect</span> <span class="s1">'clicked'</span> <span class="k">do</span>
+    <span class="n">new_item_window</span> <span class="o">=</span> <span class="no">NewItemWindow</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    <span class="n">new_item_window</span><span class="p">.</span><span class="nf">present</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">application</span>
+  <span class="n">parent</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="nf">parent</span>
+  <span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span><span class="p">.</span><span class="nf">parent</span> <span class="k">while</span> <span class="o">!</span><span class="n">parent</span><span class="p">.</span><span class="nf">is_a?</span> <span class="no">Gtk</span><span class="o">::</span><span class="no">Window</span>
+  <span class="n">parent</span><span class="p">.</span><span class="nf">application</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<ul>
+  <li>As you can see, when the <code class="highlighter-rouge">details_button</code> is clicked, we instruct the <code class="highlighter-rouge">todo_item_details_revealer</code> to swap the visibility of its contents.</li>
+  <li>After deleting an item, we find the application’s <code class="highlighter-rouge">Todo::ApplicationWindow</code> in order to call its <code class="highlighter-rouge">load_todo_items</code> as we did after saving an item.</li>
+  <li>When clicking to edit a button, we create a new instance of the <code class="highlighter-rouge">Todo::NewItemWindow</code> passing as item the current item. Works like a charm :D</li>
+  <li>Finally, we had to reach at the application parent of a list box row so we defined a simple instance method <code class="highlighter-rouge">application</code> that navigates through the widget’s parents until it reaches a window from which it can obtain the application object.</li>
+</ul>
+
+<p>Save and run the application. There it is.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/tutorial-preview.png" alt="View todo items" /></p>
+
+<p>This has been a <strong>really long tutorial</strong> and even though there are so many items that we haven’t covered I think we better end it here.</p>
+
+<p>Long post, cat photo.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/gtk-ruby/cat.jpg" alt="View todo items" /></p>
+
+<h3 id="useful-links">Useful links</h3>
+
+<ul>
+  <li><a href="https://github.com/iridakos/gtk-todo-tutorial">This tutorial’s code</a></li>
+  <li><a href="https://github.com/ruby-gnome2/ruby-gnome2">A set of bindings for the GNOME-2.x libraries to use from Ruby</a></li>
+  <li><a href="https://github.com/cedlemo/ruby-gtk3-tutorial">Gtk3 tutorial for ruby based on the official C version</a></li>
+  <li><a href="https://developer.gnome.org/gtk3/stable/">GTK+ 3 Reference Manual</a></li>
+</ul>
+
+                </div>
+              </div>
+
+              <div class="col-12 order-first">
+                <div class="d-sm-block d-md-none mb-3">
+                  <a class="ga-event-link btn btn-outline-primary d-block collapsed text-left"
+                    data-event-label="Creating a Linux Desktop application with Ruby"
+                    data-event-category="Document outline"
+                    data-event-action="click"
+                    title="View the structure of this document"
+                    role="button"
+                    data-toggle="collapse"
+                    data-role="outline"
+                    data-content=".outline"
+                    href="#docout-mobile"
+                    data-target="#docout-mobile"
+                    aria-expanded="false"
+                    aria-controls="collapse">
+                    Table of contents
+                    <i class="fa iridakos-collapse pull-right mt-1"></i>
+                  </a>
+
+                  <div id="docout-mobile" class="collapse my-3 border rounded bg-light p-2">
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+          
+            
+  
+    <div class="alert alert-light related-posts">
+      <h4 class="alert-heading text-dark"><i class="fa fa-hand-spock-o" aria-hidden="true"></i> My latest post</h4>
+
+      <div class="row mt-3">
+        <div class="col">
+          <a class="alert-link ga-event-link"
+             data-event-category="Latest post"
+             data-event-action="click"
+             data-event-label="Mountains"
+             href="/painting/2019/10/14/mountains.html"><strong>Mountains</strong></a>
+          <div>
+            <small>Painting of mountains following Bob Ross' season 13 Episode 10.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+
+            
+<div class="alert alert-light related-posts">
+  <h4 class="alert-heading text-dark"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Related posts</h4>
+
+  <ul class="list-unstyled">
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Creating a bash completion script"
+             href="/tutorials/2018/03/01/bash-programmable-completion-tutorial.html"><strong>Creating a bash completion script</strong></a>
+          <div>
+            <small>A tutorial for creating a bash completion script</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1"
+             href="/tutorials/2013/12/07/creating-a-simple-todo-part-1.html"><strong>Creating a simple ToDo application with Ruby on Rails - Part 1</strong></a>
+          <div>
+            <small>First part of the tutorial creating a simple ToDo application with Ruby on Rails.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 2"
+             href="/tutorials/2013/12/17/creating-a-simple-todo-part-2.html"><strong>Creating a simple ToDo application with Ruby on Rails - Part 2</strong></a>
+          <div>
+            <small>Second part of the tutorial creating a simple ToDo application with Ruby on Rails.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+  
+  </ul>
+</div>
+
+
+
+            <div class="alert alert-light">
+              <h4>
+                <i class="fa fa-share-alt"></i>
+                Share
+              </h4>
+              <div class="share-links">
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Creating a Linux Desktop application with Ruby&url=http://localhost:4000/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=http://localhost:4000/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Creating a Linux Desktop application with Ruby&amp;body=Creating a Linux Desktop application with Ruby: http://localhost:4000/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> Subscribe via RSS
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/feed.xml">all posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/feeds/cat-photos.xml">cat photos</a>
+  </div>
+</div>
+
+            </div>
+          
+
+
+        </div>
+
+        <div class="col">
+          <div class="sidebar">
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <a class="ga-event-link btn btn-warning d-block collapsed text-left"
+          data-event-label="Creating a Linux Desktop application with Ruby"
+          data-event-category="Document outline"
+          data-event-action="click"
+
+          data-toggle="collapse"
+          data-role="outline"
+          data-content=".outline"
+          href="#docout-sidebar"
+          data-target="#docout-sidebar"
+
+          title="View the structure of this document"
+          role="button"
+          href="#docout-sidebar"
+          aria-expanded="false"
+          aria-controls="collapse">
+          Table of contents
+          <i class="fa iridakos-collapse pull-right mt-1"></i>
+        </a>
+
+        <div class="section-content">
+          <div id="docout-sidebar" class="collapse mt-2 p-2">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  
+    
+<div class="alert alert-primary d-none d-md-block">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-cogs"></i> Related posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <div class="section-item">
+            <a href="/tutorials/2018/03/01/bash-programmable-completion-tutorial.html"
+               class="ga-event-link"
+               data-event-category="Sidebar related posts"
+               data-event-action="click"
+               data-event-label="Creating a bash completion script">Creating a bash completion script</a>
+             <div class="text-muted smaller">A tutorial for creating a bash completion script</div>
+          </div>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <div class="section-item">
+            <a href="/tutorials/2013/12/07/creating-a-simple-todo-part-1.html"
+               class="ga-event-link"
+               data-event-category="Sidebar related posts"
+               data-event-action="click"
+               data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1">Creating a simple ToDo application with Ruby on Rails - Part 1</a>
+             <div class="text-muted smaller">First part of the tutorial creating a simple ToDo application with Ruby on Rails.</div>
+          </div>
+          
+        
+          
+        
+          
+        
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <div class="section-item">
+            <a href="/tutorials/2013/12/17/creating-a-simple-todo-part-2.html"
+               class="ga-event-link"
+               data-event-category="Sidebar related posts"
+               data-event-action="click"
+               data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 2">Creating a simple ToDo application with Ruby on Rails - Part 2</a>
+             <div class="text-muted smaller">Second part of the tutorial creating a simple ToDo application with Ruby on Rails.</div>
+          </div>
+          
+        
+          
+        
+          
+        
+          
+        
+      
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <div class="section-content mt-2">
+          <div class="share-links">
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Creating a Linux Desktop application with Ruby&url=http://localhost:4000/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=http://localhost:4000/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Creating a Linux Desktop application with Ruby&amp;body=Creating a Linux Desktop application with Ruby: http://localhost:4000/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> Subscribe via RSS
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/feed.xml">all posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/feeds/cat-photos.xml">cat photos</a>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-hand-spock-o"></i> featured posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/tutorials/2018/03/01/bash-programmable-completion-tutorial.html"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a bash completion script">Creating a bash completion script</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a bash completion script
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+            </div>
+            <a href="/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a Linux Desktop application with Ruby">Creating a Linux Desktop application with Ruby</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a simple GTK ToDo application with Ruby
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-betterldevlink" title="Featured in Better Dev Link" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/how-to/2019/06/26/composing-better-emails.html"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Composing better emails">Composing better emails</a>
+             <div class="text-muted smaller">
+               Tips for writing effective emails avoiding misunderstandings with examples from the software development world.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/how-to/2019/05/16/remove-duplicate-lines-preserving-order-linux.html"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="How to remove duplicate lines from files preserving their order">How to remove duplicate lines from files preserving their order</a>
+             <div class="text-muted smaller">
+               How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained).
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+            </div>
+            <a href="/guides/2016/04/01/duckrails-guide.html"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="DuckRails - Open source development tool for mocking API endpoints">DuckRails - Open source development tool for mocking API endpoints</a>
+             <div class="text-muted smaller">
+               An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available.
+             </div>
+          </div>
+        
+      
+
+      <div class="section-item">
+        <a href="/featured"
+           class="ga-event-link"
+           data-event-category="Featured all posts"
+           data-event-action="click"
+           data-event-label="View all featured posts">View all featured posts</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-bullhorn"></i> recent posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+          <div class="section-item">
+            <a href="/painting/2019/10/14/mountains.html"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="Mountains">Mountains</a>
+            <div class="text-muted smaller">Painting of mountains following Bob Ross' season 13 Episode 10.</div>
+          </div>
+      
+          <div class="section-item">
+            <a href="/painting/2019/10/11/meadow.html"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="Meadow">Meadow</a>
+            <div class="text-muted smaller">Painting of a meadow following Bob Ross' season 5 Episode 13.</div>
+          </div>
+      
+          <div class="section-item">
+            <a href="/painting/2019/10/07/drawing-my-cat.html"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="Drawing my cat">Drawing my cat</a>
+            <div class="text-muted smaller">My attempt to draw my cat that looks nothing like this.</div>
+          </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4>
+        <i class="fa fa-github"></i> code
+      </h4>
+
+      <div class="float-right">
+
+      </div>
+    </div>
+
+    <div class="section-content">
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="goto repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/goto">goto</a>: a tool for navigating to aliased directories in the shell with auto complete
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="elman repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/elman">elman</a>: a script for full text searching Linux man pages with Elasticsearch
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="duckrails repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/duckrails">DuckRails</a>
+        version <span class="important">2.1.5</span> is out <img src="/assets/images/news/duckrails.png" class="logo" /> (<a class="ga-event-link" data-event-label="DuckRails GitHub docker wiki" data-event-action="click" data-event-category="News links" href="https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker" target="_blank">docker image available</a>)
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">iridakos images preview</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <div class="image-container">
+                    <img class="image" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer">
+  <div class="container-fluid no-gutters">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="brand mb-1">
+          <a href="https://iridakos.com"><strong>iridakos</strong></a>
+        </div>
+
+        <div class="contact-links">
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="GitHub" href="https://www.github.com/iridakos/"><i class="fa fa-github" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="Twitter" href="https://www.twitter.com/lazaru_s/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="LinkedIn" href="https://www.linkedin.com/in/iridakos/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+
+          <div class="dropdown d-inline-block mr-1">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" title="subscribe via RSS" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-rss"></i>
+            </button>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to all posts RSS - Footer" data-event-action="click" href="/feed.xml">all posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to programming posts RSS - Footer" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to tutorial posts RSS - Footer" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to opensource posts RSS - Footer" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to ruby posts RSS - Footer" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to painting posts RSS - Footer" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a Linux Desktop application with Ruby" data-event-category="Subscribe to cat photo posts RSS - Footer" data-event-action="click" href="/feeds/cat-photos.xml">cat photos</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="license mt-1">
+          <div class="mb-1">
+            <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
+          </div>
+
+          <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">iridakos</span> by
+          <a xmlns:cc="http://creativecommons.org/ns#" href="https://iridakos.com/about/" property="cc:attributionName" rel="cc:attributionURL" class="font-weight-bold">Lazarus Lazaridis</a> is licensed under a <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76452884-1', 'auto');
+
+  ga('set', 'page', '/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby')
+  ga('send', 'pageview');
+
+</script>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1573323847300041466" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1573323847300041466" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1573323847300041466" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1573323847300041466" type="text/javascript"></script>
+
+
+
+
+  </body>
+</html>

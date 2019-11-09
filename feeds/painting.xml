@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iridakos - painting articles</title>
+    <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
+    <link>http://localhost:4000/</link>
+    <image>
+      <url>http://localhost:4000/assets/images/site.png</url>
+      <link>http://localhost:4000/</link>
+      <title>iridakos</title>
+    </image>
+    <atom:link href="http://localhost:4000/feeds/painting.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 09 Nov 2019 20:24:07 +0200</pubDate>
+    <lastBuildDate>Sat, 09 Nov 2019 20:24:07 +0200</lastBuildDate>
+    <generator>Jekyll v3.7.4</generator>
+
+    
+    
+
+    
+      <item>
+        <title>Mountains</title>
+        <description>&lt;p&gt;After painting the &lt;a href=&quot;/painting/2019/10/11/meadow.html&quot;&gt;meadow with acrylic colors&lt;/a&gt;, I bought oil colors which are the ones Bob Ross uses in “The joy of painting” show.
+This time I followed the &lt;a href=&quot;https://www.youtube.com/watch?v=kasGRkfkiPM&quot;&gt;episode 10&lt;/a&gt; from season 13 of the show, called &lt;strong&gt;“Mountain Summit”&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;I am very satisfied by the outcome but being a beginner, I faced a lot of difficulties and the painting has a number of errors.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/paintings/mountains/painting.jpg&quot; alt=&quot;Mountains - Painting&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;facts&quot;&gt;Facts&lt;/h2&gt;
+
+&lt;p&gt;I used&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the wet-on-wet technique&lt;/li&gt;
+  &lt;li&gt;oil colors&lt;/li&gt;
+  &lt;li&gt;50x80 canvas&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;difficulties&quot;&gt;Difficulties&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;My paintbrushes were not the same as Bob Ross’ ones (size and material) and the paint didn’t apply the way I wanted (I will search for tips and tricks when it comes to buying paintbrushes for oil colors)&lt;/li&gt;
+  &lt;li&gt;I couldn’t find all the colors listed in the episode and I had to mix mine many times to achieve something similar&lt;/li&gt;
+  &lt;li&gt;I had such a huge difficulty creating the bushes. I am still not sure what the exact problem was but I believe it is a combination of the following three items:
+    &lt;ul&gt;
+      &lt;li&gt;wrong paintbrush&lt;/li&gt;
+      &lt;li&gt;very thick paint (according to Bob Ross, thin paint sticks on thick)&lt;/li&gt;
+      &lt;li&gt;wrong moves by me (maybe more/less pressure on the paintbrush)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The mountains, even though they look nice, were so hard to be created with the palette knife. It surely has to do with practice.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;errors&quot;&gt;Errors&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The tallest mountain has an unnatural curve on its bottom side which doesn’t make sense&lt;/li&gt;
+  &lt;li&gt;The left side of the mountains ends somewhere behind the trees without a logical explanation (in the episode the trees cover all the left part of the painting)&lt;/li&gt;
+  &lt;li&gt;The path in the front right section of the painting is a failure. In case you don’t locate it (which is very reasonable), I am talking about the black and gray waterfall that starts at the root of a tree. Yes, that is supposed to be a path.&lt;/li&gt;
+  &lt;li&gt;In the same part of the painting, the bushes didn’t want to stick at all. I cleaned and re-painted the section at least 3 times.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;
+    Bob Ross - Mountain Summit (Season 13 Episode 10)
+  &lt;/dt&gt;
+
+  &lt;dd&gt;
+    &lt;a href=&quot;https://www.youtube.com/watch?v=kasGRkfkiPM&quot;&gt;https://www.youtube.com/watch?v=kasGRkfkiPM&lt;/a&gt;
+  &lt;/dd&gt;
+
+  &lt;dt&gt;
+    Bob Ross - Final Reflections (Season 1 Episode 13)
+    &lt;br /&gt;
+    &lt;small&gt;A &quot;must see&quot; episode because it's actually Q&amp;amp;A of what might go wrong.&lt;/small&gt;
+  &lt;/dt&gt;
+
+  &lt;dd&gt;
+    &lt;a href=&quot;https://www.youtube.com/watch?v=IEQWfszfRlA&quot;&gt;https://www.youtube.com/watch?v=IEQWfszfRlA&lt;/a&gt;
+  &lt;/dd&gt;
+&lt;/dl&gt;
+</description>
+        <pubDate>Mon, 14 Oct 2019 17:00:00 +0300</pubDate>
+        <link>http://localhost:4000/painting/2019/10/14/mountains.html</link>
+        <guid isPermaLink="true">http://localhost:4000/painting/2019/10/14/mountains.html</guid>
+        
+        <category>painting</category>
+        
+        <category>Bob Ross</category>
+        
+        <category>mountains</category>
+        
+        
+        <category>painting</category>
+        
+      </item>
+    
+      <item>
+        <title>Meadow</title>
+        <description>&lt;p&gt;I have always liked painting but I had never devoted any time to this hobby. I was painting once every 2 or more years but with dissappointing results.
+Few days ago I tried to create a &lt;a href=&quot;/painting/2019/10/07/drawing-my-cat.html&quot;&gt;painting of my cat&lt;/a&gt; and I enjoyed both the process and the result.&lt;/p&gt;
+
+&lt;p&gt;I decided to pursue this hobby and yesterday, I followed an episode of Bob Ross’ show “The joy of painting” (most if not all episodes are available on &lt;a href=&quot;https://www.youtube.com/user/BobRossInc/videos&quot;&gt;Youtube&lt;/a&gt;).
+I surprised myself with the outcome even though it’s not perfect, it’s not professional and it’s very different compared to the one that Bob Ross created in the episode.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/paintings/meadow/painting.jpg&quot; alt=&quot;Meadow - Painting&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I really enjoyed painting this meadow. I was listening to some of my favorite music and I felt so focused and relaxed leaving every other thought on the side for about 5 hours (I didn’t realize the time passing by so fast).&lt;/p&gt;
+
+&lt;h2 id=&quot;facts&quot;&gt;Facts&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I followed the &lt;a href=&quot;https://www.youtube.com/watch?v=87MMbN1bQCs&quot;&gt;“Meadow Stream”&lt;/a&gt; episode which is the &lt;strong&gt;episode 13 from season 5&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;I used water colors (tempera) instead of oil colors (that are used in the episode)&lt;/li&gt;
+  &lt;li&gt;I skipped the stream because I wasn’t brave enough, I felt that I would destroy the painting&lt;/li&gt;
+  &lt;li&gt;The clouds are happy little accidents, I don’t have an answer if you ask me to tell you how I created them. They were not supposed to look like this but they turned out OK&lt;/li&gt;
+  &lt;li&gt;I need to buy some equipment (angled palette knife and some paintbrushes) because the ones I had, couldn’t produce the same results as shown in the episode&lt;/li&gt;
+  &lt;li&gt;If I was asked to paint a meadow, I would draw nothing looking like this. Having a guide, especially if you are a newbie like me is great and really helpful. I believe that practicing this way is essential before diving to custom creations (at least for me).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;
+    Bob Ross - Meadow Stream (Season 5 Episode 13)
+  &lt;/dt&gt;
+
+  &lt;dd&gt;
+    &lt;a href=&quot;https://www.youtube.com/watch?v=87MMbN1bQCs&quot;&gt;https://www.youtube.com/watch?v=87MMbN1bQCs&lt;/a&gt;
+  &lt;/dd&gt;
+&lt;/dl&gt;
+</description>
+        <pubDate>Fri, 11 Oct 2019 10:00:00 +0300</pubDate>
+        <link>http://localhost:4000/painting/2019/10/11/meadow.html</link>
+        <guid isPermaLink="true">http://localhost:4000/painting/2019/10/11/meadow.html</guid>
+        
+        <category>painting</category>
+        
+        <category>Bob Ross</category>
+        
+        <category>meadow</category>
+        
+        
+        <category>painting</category>
+        
+      </item>
+    
+      <item>
+        <title>Drawing my cat</title>
+        <description>&lt;p&gt;On Saturday I felt like drawing and (no surprises here) I decided to create a painting of my cat.&lt;/p&gt;
+
+&lt;p&gt;Without further ado, this is the result.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/drawing-my-cat/painting.jpg&quot; alt=&quot;Picatso painting&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;At the top center and right section of the photo you may notice the paws of my cat which was present during the whole process and which actually is responsible for some of the inconsistencies of the painting &lt;strong&gt;(blaming the cat)&lt;/strong&gt;. Imagine a cat having a moving paint brush in front of her and not touching it (never happens).&lt;/p&gt;
+
+&lt;p&gt;I would have taken photos showing the progress of the painting but everything was a mess. There was paint everywhere: on my hands, on my clothes, on the cat, on the table I put the canvas on and on the floor too. Everything I touched was turning to blue, brown or white.&lt;/p&gt;
+
+&lt;p&gt;I used a painting set that was given to me as a present which had many stuff inside. At some point I mixed acrylic with watercolor paints because they looked the same and I realized it only after bubbles started showing up. The victim was the sky in the window. I tried to remove the pimples but still the new paint didn’t apply well afterwards. I’m very curious to see if the sky will look like this as the days pass by.&lt;/p&gt;
+
+&lt;p&gt;Given the outcome, it’s pretty obvious that I am a newbie and I’m missing a lot of basics. I have no technique. I paint rarely but this time I really enjoyed it and even though this looks nothing like Irida (my cat), at least it does look like a cat and I find it “presentable” as opposed to my previous painting attempts. That is a personal success.&lt;/p&gt;
+
+&lt;p&gt;I decided to devote some time to learn at least the basics, view some tutorials and of course to practice on plain objects before moving to more complex scenes.&lt;/p&gt;
+
+&lt;h2 id=&quot;post-scriptum&quot;&gt;Post Scriptum&lt;/h2&gt;
+
+&lt;p&gt;You are allowed to laugh with the fact that I used the &lt;code class=&quot;highlighter-rouge&quot;&gt;art&lt;/code&gt; tag in this post.&lt;/p&gt;
+
+&lt;p&gt;This is Irida on the table of art on a previous attempt.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/drawing-my-cat/irida-paint-companion.jpg&quot; alt=&quot;Picatso&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;interesting-painting-resources&quot;&gt;Interesting painting resources&lt;/h2&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;
+    &lt;a href=&quot;https://www.youtube.com/watch?v=VufykZdkmZ0&quot;&gt;https://www.youtube.com/watch?v=VufykZdkmZ0&lt;/a&gt;
+  &lt;/dt&gt;
+
+  &lt;dd class=&quot;mb-4&quot;&gt;
+    A really good video showing how to draw a cat (I watched the video today, level of personal disappointment: 100%).
+  &lt;/dd&gt;
+
+  &lt;dt&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=oWuwxSJTyeQ&quot;&gt;https://www.youtube.com/watch?v=oWuwxSJTyeQ&lt;/a&gt;&lt;/dt&gt;
+
+  &lt;dd&gt;
+    Another beautiful video showing how to easily create a painting with a very nice landscape with relatively simple steps.
+  &lt;/dd&gt;
+&lt;/dl&gt;
+</description>
+        <pubDate>Mon, 07 Oct 2019 10:00:00 +0300</pubDate>
+        <link>http://localhost:4000/painting/2019/10/07/drawing-my-cat.html</link>
+        <guid isPermaLink="true">http://localhost:4000/painting/2019/10/07/drawing-my-cat.html</guid>
+        
+        <category>painting</category>
+        
+        <category>cats</category>
+        
+        <category>art</category>
+        
+        <category>picatso</category>
+        
+        
+        <category>painting</category>
+        
+      </item>
+    
+  </channel>
+</rss>

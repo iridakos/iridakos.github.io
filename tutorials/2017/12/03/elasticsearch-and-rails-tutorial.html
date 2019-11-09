@@ -1,0 +1,2227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ocs-site-verification" content="e5faa08e01247c38aadf1c1737ff8136">
+  <meta name="google-site-verification" content="KqOxy0ecDlfNdfO530ZAbtNBedy49hn2KziyqLK0JGo" />
+
+  <title>Using elasticsearch in a Rails application</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
+
+  <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css?1573323847300041466">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="http://localhost:4000/feed.xml">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Using elasticsearch in a Rails application" />
+<meta name="author" content="Lazarus Lazaridis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A tutorial to integrate with elasticsearch in a Ruby on Rails application." />
+<meta property="og:description" content="A tutorial to integrate with elasticsearch in a Ruby on Rails application." />
+<link rel="canonical" href="http://localhost:4000/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html" />
+<meta property="og:url" content="http://localhost:4000/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html" />
+<meta property="og:site_name" content="iridakos" />
+<meta property="og:image" content="https://iridakos.com/assets/images/posts/elasticsearch-rails/search-page.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2017-12-03T08:30:00+02:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@lazaru_s" />
+<meta name="twitter:creator" content="@Lazarus Lazaridis" />
+<script type="application/ld+json">
+{"image":"https://iridakos.com/assets/images/posts/elasticsearch-rails/search-page.png","description":"A tutorial to integrate with elasticsearch in a Ruby on Rails application.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html"},"@type":"BlogPosting","url":"http://localhost:4000/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/site.png"},"name":"Lazarus Lazaridis"},"headline":"Using elasticsearch in a Rails application","dateModified":"2017-12-03T08:30:00+02:00","datePublished":"2017-12-03T08:30:00+02:00","author":{"@type":"Person","name":"Lazarus Lazaridis"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+  <script type="text/javascript">
+      window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on the website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"light-bottom"};
+  </script>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+</head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg iridakos-navbar">
+  <div class="container-fluid no-gutters">
+    
+
+    <a class="navbar-brand " href="/" alt="home">
+      <i class="fa fa-home"></i>
+      home
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="fa fa-bars pt-1"></i>
+      </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="header-pages">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+          
+            
+            <li class="nav-item active">
+                <a class="nav-link" href="/programming/" alt="programming">programming</a>
+            </li>
+          
+        
+          
+            
+            <li class="nav-item ">
+                <a class="nav-link" href="/painting/" alt="Painting">painting</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/cat-photos/" alt="cats">cats</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/about/" alt="about me">about me</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="more" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            more
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="more">
+            <h6 class="dropdown-header mt-1">Programming</h6>
+            <a class="dropdown-item" href="/featured/">featured posts</a>
+            <a class="dropdown-item" href="/programming-tutorials/">tutorials</a>
+            <a class="dropdown-item" href="/how-to/">how to</a>
+            <a class="dropdown-item" href="/code/">code</a>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/tags/">site tags</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/search/">search</a>
+          </div>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0" method="get" action="/search">
+        <div class="input-group input-group-sm mr-sm-2">
+          <input class="form-control" name="query" type="search" placeholder="Search the blog">
+
+          <div class="input-group-append">
+            <button class="btn btn-warning" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="page-title-container">
+  <div class="container-fluid no-gutters">
+    <div class="page-title">
+      <div class="row align-items-center">
+        <div class="col-xs-12 col-md-8 col-lg-9 order-md-first order-last text-center text-md-left">
+          <h1>Using elasticsearch in a Rails application</h1>
+
+          <div class="page-subtitle">
+            A tutorial to integrate with elasticsearch in a Ruby on Rails application.
+
+            
+              <div class="post">
+                <div class="post-metadata">
+                  <div class="post-date" title="published on">
+                    Published on <span class="important">Dec 3, 2017</span>
+                  </div>
+
+                  <div class="post-category" title="in category">
+                    in category <span class="important">tutorials</span>
+                  </div>
+                </div>
+
+                
+                
+                  <div class="post-tags">
+                    <span class="important">tags:</span>
+                    
+                      <a href="/tags/?tag=ruby" class="ga-event-link" data-event-label="ruby" data-event-action="click" data-event-category="tags">ruby</a> - 
+                    
+                      <a href="/tags/?tag=rails" class="ga-event-link" data-event-label="rails" data-event-action="click" data-event-category="tags">rails</a> - 
+                    
+                      <a href="/tags/?tag=elasticsearch" class="ga-event-link" data-event-label="elasticsearch" data-event-action="click" data-event-category="tags">elasticsearch</a> - 
+                    
+                      <a href="/tags/?tag=tutorial" class="ga-event-link" data-event-label="tutorial" data-event-action="click" data-event-category="tags">tutorial</a> - 
+                    
+                      <a href="/tags/?tag=programming" class="ga-event-link" data-event-label="programming" data-event-action="click" data-event-category="tags">programming</a>
+                    
+                  </div>
+                
+              </div>
+            
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container-fluid no-gutters">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-9 page-content">
+          
+            <div class="row">
+              <div class="col-12">
+                <div class="outline">
+                  <p>In this tutorial we are going to create a <strong><a href="http://rubyonrails.org/">Ruby on Rails</a></strong> application that will use <strong><a href="https://www.elastic.co/products/elasticsearch">elasticsearch</a></strong> to allow users to store and search their content.
+The sample application will be a stupid simple blog and the data will be, what else, posts. The integration with elasticsearch will be accomplished via the <strong><a href="https://github.com/elastic/elasticsearch-rails">elasticsearch</a> gems</strong> for Rails and we will use <strong><a href="https://www.elastic.co/products/kibana">Kibana</a></strong> to view and check our index configuration.</p>
+
+<p><strong>Note:</strong> The code of this tutorial is <a href="https://github.com/iridakos/elastic_rails_tutorial">available at GitHub</a>.</p>
+
+<h2 id="what-is-elasticsearch">What is elasticsearch?</h2>
+
+<p><a href="https://www.elastic.co/products/elasticsearch">Elasticsearch</a> is an opensource JSON-based search engine that allows us to search indexed data quickly and with options that are not provided by classic data stores. You will better understand the tool’s usage once we start working on it later on on this tutorial. For now, just keep that we will store data to a database and will index them to an elasticsearch instance and afterwards we will search the indexed data via a Rails application.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<h3 id="elasticsearch">Elasticsearch</h3>
+
+<p>Providing instructions for installing elasticsearch is out of this tutorial’s scope. I recommend visiting the tool’s related <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html">documenation site</a>.</p>
+
+<p>After the installation, just make sure to start the service if it’s not started.</p>
+
+<p>You can check that with <code class="highlighter-rouge">curl http://localhost:9200</code>.</p>
+
+<p>It should give something like:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s2">"name"</span> <span class="p">:</span> <span class="s2">"asdfasdf"</span><span class="p">,</span>
+  <span class="s2">"cluster_name"</span> <span class="p">:</span> <span class="s2">"elasticsearch"</span><span class="p">,</span>
+  <span class="s2">"cluster_uuid"</span> <span class="p">:</span> <span class="s2">"asasdfdf-as"</span><span class="p">,</span>
+  <span class="s2">"version"</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"number"</span> <span class="p">:</span> <span class="s2">"6.0.0"</span><span class="p">,</span>
+    <span class="s2">"build_hash"</span> <span class="p">:</span> <span class="s2">"asdf"</span><span class="p">,</span>
+    <span class="s2">"build_date"</span> <span class="p">:</span> <span class="s2">"2017-11-10T18:41:22.859Z"</span><span class="p">,</span>
+    <span class="s2">"build_snapshot"</span> <span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"lucene_version"</span> <span class="p">:</span> <span class="s2">"7.0.1"</span><span class="p">,</span>
+    <span class="s2">"minimum_wire_compatibility_version"</span> <span class="p">:</span> <span class="s2">"5.6.0"</span><span class="p">,</span>
+    <span class="s2">"minimum_index_compatibility_version"</span> <span class="p">:</span> <span class="s2">"5.0.0"</span>
+  <span class="p">},</span>
+  <span class="s2">"tagline"</span> <span class="p">:</span> <span class="s2">"You Know, for Search"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>As you can see, we will use elasticsearch <strong>version 6.0.0</strong> in this tutorial.</p>
+
+<h3 id="ruby">Ruby</h3>
+
+<p>You should have ruby installed on your system. I use <a href="https://rvm.io/">RVM</a> to manage multiple ruby versions installed on my system. If you want to go with that too, you can find instructions for installing the tool in its <a href="https://rvm.io/">homepage</a> and for installing ruby versions (a.k.a. rubies) the <a href="https://rvm.io/rubies/installing">related documentation page</a>.</p>
+
+<p>This tutorial is using <strong>Ruby 2.4.2</strong>. You can check yours using: <code class="highlighter-rouge">ruby --version</code> or via RVM with <code class="highlighter-rouge">rvm list</code>.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rvm-list.png" alt="rvm list screenshot" /></p>
+
+<h3 id="rails">Rails</h3>
+
+<p>Given that you have ruby installed, we will need the <a href="https://github.com/rails/rails">rails gem</a> as well. We will use the latest stable version at the moment this turorial is written, which is <strong>5.1.4</strong>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install rails <span class="nt">-v</span> 5.1.4
+</code></pre></div></div>
+
+<p>You can check the version of your installed rails gem with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails <span class="nt">--version</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-version.png" alt="rails version screenshot" /></p>
+
+<p><strong>Important note:</strong> when working on tutorials, always try to use the same versions of software as described in them to avoid losing time figuring out what is wrong if you don’t see the same results as provided in the tutorial. With that in mind, make sure that you have the following versions installed:</p>
+<ul>
+  <li>Elasticsearch <em>6.0.0</em></li>
+  <li>Ruby <em>2.4.2</em></li>
+  <li>Rails <em>5.1.4</em></li>
+</ul>
+
+<h2 id="create-the-rails-application">Create the rails application</h2>
+
+<p>Time to create our application. Let’s name it <strong>elastic_rails</strong>.</p>
+
+<p>Navigate to your development directory (mine is under <code class="highlighter-rouge">~/development/projects/ruby</code> for ruby projects) and execute the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails new elastic_rails
+</code></pre></div></div>
+
+<p>After a bunch of logs, the application has been created. Let’s start it to confirm that everything is good.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>elastic_rails
+rails s
+</code></pre></div></div>
+
+<p><strong>Note:</strong> the <code class="highlighter-rouge">s</code> in the command <code class="highlighter-rouge">rails s</code> is an alias for <code class="highlighter-rouge">server</code>. You can start the server with <code class="highlighter-rouge">rails server</code> too.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-server.png" alt="rails launch server" /></p>
+
+<p>As declared in the puma startup log, the server is listening on port 3000. Let’s visit the application from the browser.
+Navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+
+<p>You should be seeing this:</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-first-run.png" alt="rails first run" /></p>
+
+<h2 id="define-the-model">Define the model</h2>
+
+<p>Let’s say that we had a blog and we wanted to allow our visitors to search our posts. We are going to define the <code class="highlighter-rouge">Post</code> model.</p>
+
+<p>By default, our new Rails application is <strong>configured to use the sqlite3 database</strong> and that works fine in our case since setting up a database and customizing rails to use it, is out of this tutorial’s scope.</p>
+
+<p>Generate the model with the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>rails generate model Post author:string title:string body:text tags:string published:boolean published_on:timestamp
+</code></pre></div></div>
+
+<p>and create the database along with the table for the posts with this command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>rake db:create db:migrate
+</code></pre></div></div>
+
+<p>To make sure we’re good with the database, open a rails console with the command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>rails c <span class="c"># `c` is an alias for `console`</span>
+</code></pre></div></div>
+
+<p>Create a post, assign your desired values to its attributes and save it.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">post</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">title</span> <span class="o">=</span> <span class="s1">'My first post'</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'&lt;h1&gt;Hello world! This is my first post!&lt;/h1&gt;'</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">author</span> <span class="o">=</span> <span class="s1">'Lazarus Lazaridis'</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">tags</span> <span class="o">=</span> <span class="s1">'first, salute, hello'</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">published</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">published_on</span> <span class="o">=</span> <span class="no">DateTime</span><span class="p">.</span><span class="nf">now</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">save</span>
+</code></pre></div></div>
+
+<p>Success!</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-console-first-post.png" alt="rails console first post" /></p>
+
+<h2 id="define-the-controller">Define the controller</h2>
+
+<p>We will also define a controller to handle posts. We are going to scaffold the controller instead of creating all the files ourselves to keep within the scope of the tutorial. So, from the command line execute:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>rails generate scaffold_controller post
+</code></pre></div></div>
+
+<p>Tadaaaaa</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-generate-controller-post.png" alt="rails console generate controller for posts" /></p>
+
+<p>Now, we are going to define the post routes and set the index page of posts as the application’s homepage.</p>
+
+<p>Open the routes file <code class="highlighter-rouge">config/routes.rb</code> and edit as shown below:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+  <span class="c1"># For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html</span>
+  <span class="n">root</span> <span class="s1">'posts#index'</span>
+
+  <span class="n">resources</span> <span class="ss">:posts</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Let’s start the server (if it is already started, restart it) and navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/posts-homepage.png" alt="posts homepage" /></p>
+
+<p>The links don’t do much at the moment but we are going to change this later on.</p>
+
+<p>Time to talk elastic.</p>
+
+<h2 id="elasticsearch-gem">Elasticsearch gem</h2>
+
+<p>As described in the overview, we are going to use existing gems to integrate with elasticsearch, the <code class="highlighter-rouge">elasticsearch-rails</code> &amp; <code class="highlighter-rouge">elasticsearch-model</code> gems.</p>
+
+<p>Open your <code class="highlighter-rouge">Gemfile</code> and add the following lines:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'elasticsearch-model'</span><span class="p">,</span> <span class="ss">git: </span><span class="s1">'git://github.com/elastic/elasticsearch-rails.git'</span><span class="p">,</span> <span class="ss">branch: </span><span class="s1">'master'</span>
+<span class="n">gem</span> <span class="s1">'elasticsearch-rails'</span><span class="p">,</span> <span class="ss">git: </span><span class="s1">'git://github.com/elastic/elasticsearch-rails.git'</span><span class="p">,</span> <span class="ss">branch: </span><span class="s1">'master'</span>
+</code></pre></div></div>
+
+<p><strong>Important note:</strong> at the moment this tutorials was being written, we had to use the master branch of the <code class="highlighter-rouge">elasticsearch-rails</code> repository so that we could use version 6.0.0 of elasticsearch. If you have problems in the future due to releases of newer versions of elasticsearch (and the master branch is not compatible with version 6.0.0), make sure to update the branch in the Gemfile above accordingly.</p>
+
+<p>We must then fetch the gem by executing the following command from withing the application’s root directory:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle
+</code></pre></div></div>
+
+<p>Perfect. We are now ready to tell our model that it’s going to be indexed in elasticsearch.</p>
+
+<p>Open the <code class="highlighter-rouge">app/models/post.rb</code> file and edit it to look like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="kp">include</span> <span class="no">Elasticsearch</span><span class="o">::</span><span class="no">Model</span>
+  <span class="kp">include</span> <span class="no">Elasticsearch</span><span class="o">::</span><span class="no">Model</span><span class="o">::</span><span class="no">Callbacks</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>What we did here?</p>
+<ul>
+  <li>We actually defined that <code class="highlighter-rouge">Post</code> is not only an application record in the rails world but also a model in the elasticsearch world.</li>
+  <li>We added callbacks so that each time a post is saved/updated/deleted, the related indexed data get updated accordingly too.
+ Before explaining what does this mean, let’s call another elasticsearch friend to help.</li>
+</ul>
+
+<h2 id="kibana">Kibana</h2>
+<p>Kibana is a tool mainly allowing visualization of elasticsearch data. In our case, we will use kibana to see the effects of our code on elasticsearch.</p>
+
+<p>Once again, follow the official instructions for installing kibana at your machine’s OS. I followed <a href="https://www.elastic.co/guide/en/kibana/current/deb.html">this guide</a> for installing the tool via a repository in Ubuntu.</p>
+
+<p>Start the kibana service and navigate to its home page at <a href="http://localhost:5601">http://localhost:5601</a>. We will use heavily the <strong>Dev Tools</strong> which is a powerful console talking to our elasticsearch engine.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/kibana-dev-tools.png" alt="Kibana Dev tools" /></p>
+
+<p>On the left section of the console we write our commands and on the right part we see their execution output.</p>
+
+<p>To view what indexes are currently present in our elasticsearch instance, execute the following command in Kibana:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET _cat/indices?v
+</code></pre></div></div>
+
+<p>Well, at the moment there is only one index with the name <code class="highlighter-rouge">.kibana</code> which is obviously not ours. Lets go back to rails console and execute the command that will import our current posts (one post actually) to elasticsearch to see what happens.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">import</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/index-does-not-exist.png" alt="Index does not exist error" /></p>
+
+<p>As you can, since we haven’t created the index for the posts, the command failed to execute. Reading the error we do understand that the gem automatically tried to find an <strong>index named as the plural form of our model name <code class="highlighter-rouge">posts</code></strong>. Following the hint, we will execute the command, this time demanding the creation of the index if it doesn’t exist.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">import</span><span class="p">(</span><span class="ss">force: </span><span class="kp">true</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Back to kibana now, let’s see what has happened to our instance’s indices.
+<img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/kibana-post-index.png" alt="Kibana post index" /></p>
+
+<p>As you can see, the <code class="highlighter-rouge">posts</code> index was created successfully. But keep this in mind: the index was created automatically, <strong>we didn’t have the opportunity to define what fields should be indexed, what should each record in the index contain or set any other kind of configuration</strong>. Don’t worry though, later on we will change this approach. We will re-create the index explicitly the way we want it to be.</p>
+
+<p>The <code class="highlighter-rouge">Post.import</code> command we execute before was supposed to also index all of our posts. If you remember, we only have inserted one single post so far. Let’s see what Kibana has to say about this. Type the following command in the <em>Dev Tools</em>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET posts/_search
+</code></pre></div></div>
+
+<p>The command will search for post records without any filters/terms/criteria in the <code class="highlighter-rouge">posts</code> index so we expect to get one result. And there it is.
+<img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/kibana-post-search-result-one.png" alt="Kibana post search first result" /></p>
+
+<p>We are interested in the <code class="highlighter-rouge">hits</code> attribute of the response’s JSON and escecially its <code class="highlighter-rouge">_source</code> attribute. As you can see, all of our model’s columns have been serialized in the <strong>document</strong> that has been indexed for that post in elasticsearch.</p>
+
+<p>But do we need all these attributes there? And what if we needed attributes from children models there too? All these are configurable via specific commands of the <code class="highlighter-rouge">elasticsearch-model</code> gem which we already use. We are going to customize this behavior later on.</p>
+
+<p>Let’s open the rails console once more and search in the elasticsearch data this time via our model’s methods.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">results</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">search</span> <span class="s1">'world'</span>
+<span class="n">results</span><span class="p">.</span><span class="nf">size</span>
+<span class="n">results</span><span class="p">.</span><span class="nf">first</span>
+</code></pre></div></div>
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-console-simple-search.png" alt="Rails console simple search" /></p>
+
+<p>The first command executes the simplest kind of search in our index. And it brought results! The same will happen if you search for <code class="highlighter-rouge">salute</code> or ‘lazarus’ or <code class="highlighter-rouge">post</code> since our unique model contains these words in the title/body/tags/author fields.</p>
+
+<p>Now try to search with <code class="highlighter-rouge">worlds</code> or <code class="highlighter-rouge">posts</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="s1">'worlds'</span><span class="p">).</span><span class="nf">size</span>
+<span class="no">Post</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="s1">'posts'</span><span class="p">).</span><span class="nf">size</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-console-plural-search.png" alt="Rails console plural search" /></p>
+
+<p>Hmmm. No results even though we would like elasticsearch to understand that we used the plural of words contained in our model. We are going to alter the configuration to match our needs.</p>
+
+<h2 id="define-the-index">Define the index</h2>
+
+<p>We are going to define the index ourselves instead of letting the elasticsearch gem define it automatically with defaults.
+To do so, edit the <code class="highlighter-rouge">app/models/post.rb</code> file to look like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="kp">include</span> <span class="no">Elasticsearch</span><span class="o">::</span><span class="no">Model</span>
+  <span class="kp">include</span> <span class="no">Elasticsearch</span><span class="o">::</span><span class="no">Model</span><span class="o">::</span><span class="no">Callbacks</span>
+
+  <span class="n">settings</span> <span class="k">do</span>
+    <span class="n">mappings</span> <span class="ss">dynamic: </span><span class="kp">false</span> <span class="k">do</span>
+      <span class="n">indexes</span> <span class="ss">:author</span><span class="p">,</span> <span class="ss">type: :text</span>
+      <span class="n">indexes</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">type: :text</span><span class="p">,</span> <span class="ss">analyzer: :english</span>
+      <span class="n">indexes</span> <span class="ss">:body</span><span class="p">,</span> <span class="ss">type: :text</span><span class="p">,</span> <span class="ss">analyzer: :english</span>
+      <span class="n">indexes</span> <span class="ss">:tags</span><span class="p">,</span> <span class="ss">type: :text</span><span class="p">,</span> <span class="ss">analyzer: :english</span>
+      <span class="n">indexes</span> <span class="ss">:published</span><span class="p">,</span> <span class="ss">type: :boolean</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>What did we do here?</p>
+
+<ul>
+  <li>When creating the index, we instructed to use <strong>only the fields that we actually want to be indexed</strong> skipping the <code class="highlighter-rouge">published on</code> date and the active record’s automatically generated <code class="highlighter-rouge">created_at</code> and <code class="highlighter-rouge">updated_at</code> attributes.</li>
+  <li>We used the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html#english-analyzer"><code class="highlighter-rouge">english</code></a> analyzer for the fields containing “normal text” so that cases like singular/plural version of terms are treated the same way (and much more).</li>
+</ul>
+
+<p>Since our index had already been created automatically before, we have to re-create it. In the rails console execute to delete the index:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">__elasticsearch__</span><span class="p">.</span><span class="nf">delete_index!</span>
+</code></pre></div></div>
+
+<p>and execute to create it again this time with our configuration:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">import</span> <span class="ss">force: </span><span class="kp">true</span>
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-console-delete-create-index.png" alt="Rails console delete create index" /></p>
+
+<p>All good. Now try searching for ‘posts’:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="no">Post</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="s1">'posts'</span><span class="p">).</span><span class="nf">size</span>
+ <span class="o">=&gt;</span> <span class="mi">1</span>
+<span class="o">&gt;</span> <span class="no">Post</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="s1">'salutation'</span><span class="p">).</span><span class="nf">size</span>
+ <span class="o">=&gt;</span> <span class="mi">1</span>
+<span class="o">&gt;</span> <span class="no">Post</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="s1">'worlds'</span><span class="p">).</span><span class="nf">size</span>
+ <span class="o">=&gt;</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>As you can see, we don’t only fetch results for either singlular/plural versions of a term but also we can get results for both <code class="highlighter-rouge">salute</code> and <code class="highlighter-rouge">salutation</code>. This magic is provided due to the english analyzer that we defined in the english earlier.</p>
+
+<p>All good so far but what if wanted to introduce filters on our search, for example searching only published posts?</p>
+
+<h2 id="define-searches">Define searches</h2>
+
+<p>To demonstrate the filtered search, we will first add another post in our database, this time with the published flag set to false.</p>
+
+<p>In the rails console:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">post</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">new</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">title</span> <span class="o">=</span> <span class="s1">'Elastic search and rails [WIP]'</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">author</span> <span class="o">=</span> <span class="s1">'iridakos'</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s1">'&lt;h1&gt;Integrating elasticsearch in your rails application&lt;/h1&gt; In this post [wip]'</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">published</span> <span class="o">=</span> <span class="kp">false</span>
+<span class="n">post</span><span class="p">.</span><span class="nf">save</span>
+</code></pre></div></div>
+
+<p><strong>Reminder:</strong> since we included the <code class="highlighter-rouge">Elasticsearch::Model::Callbacks</code> in our model, the save command above triggered the related <code class="highlighter-rouge">elasticsearch</code> functionality that indexes the new post.</p>
+
+<p>Now try searching for the word ‘post’ that exists in both of our posts:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="no">Post</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="s1">'post'</span><span class="p">).</span><span class="nf">size</span>
+ <span class="o">=&gt;</span> <span class="mi">2</span>
+<span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>For convenience, we are going to create a class method in the Post model that will take the search query as argument but it will fetch only published posts. Add the following method in the <code class="highlighter-rouge">app/models/post.rb</code> file:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">search_published</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">search</span><span class="p">({</span>
+    <span class="ss">query: </span><span class="p">{</span>
+      <span class="ss">bool: </span><span class="p">{</span>
+        <span class="ss">must: </span><span class="p">[</span>
+        <span class="p">{</span>
+          <span class="ss">multi_match: </span><span class="p">{</span>
+            <span class="ss">query: </span><span class="n">query</span><span class="p">,</span>
+            <span class="ss">fields: </span><span class="p">[</span><span class="ss">:author</span><span class="p">,</span> <span class="ss">:title</span><span class="p">,</span> <span class="ss">:body</span><span class="p">,</span> <span class="ss">:tags</span><span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="ss">match: </span><span class="p">{</span>
+            <span class="ss">published: </span><span class="kp">true</span>
+          <span class="p">}</span>
+        <span class="p">}]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>What we actually did here is to define a query that must comply with two rules:</p>
+<ul>
+  <li>match the given term in any of the fields <code class="highlighter-rouge">author</code>, <code class="highlighter-rouge">title</code>, <code class="highlighter-rouge">body</code> &amp; <code class="highlighter-rouge">tags</code></li>
+  <li>have <code class="highlighter-rouge">true</code> value at the <code class="highlighter-rouge">published</code> field</li>
+</ul>
+
+<p>Now, searching again for the <em>post</em> term we get only the published post.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> <span class="no">Post</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="s1">'post'</span><span class="p">).</span><span class="nf">size</span>
+ <span class="o">=&gt;</span> <span class="mi">2</span>
+<span class="o">&gt;</span> <span class="no">Post</span><span class="p">.</span><span class="nf">search_published</span><span class="p">(</span><span class="s1">'post'</span><span class="p">).</span><span class="nf">size</span>
+ <span class="o">=&gt;</span> <span class="mi">1</span>  
+</code></pre></div></div>
+
+<h2 id="show-me-what-you-did">Show me what you did</h2>
+
+<p>Well, the application’s UI is very basic and we won’t improve it much. We will though create a new page to demonstrate the functionality we implemented.
+The general idea is to create a <em>search page</em> with a text field that will accept the user’s term and a button to proceed to post searching.</p>
+
+<h3 id="add-the-route">Add the route</h3>
+
+<p>First we have to update our routes with the new action that will serve the search functionality. Update the <code class="highlighter-rouge">resources :posts</code> of the <code class="highlighter-rouge">config/routes.rb</code> line to this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">resources</span> <span class="ss">:posts</span> <span class="k">do</span>
+  <span class="n">collection</span> <span class="k">do</span>
+    <span class="n">get</span> <span class="ss">:search</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h3 id="add-the-controller-action">Add the controller action</h3>
+
+<p>Now, in the posts controller we have to implement the new <code class="highlighter-rouge">search</code> action which will, what else, use the <code class="highlighter-rouge">search_published</code> action that we added in the <code class="highlighter-rouge">Post</code> model. Add the method before the <code class="highlighter-rouge">private</code> declaration.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">search</span>
+  <span class="n">query</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="ss">:search_posts</span><span class="p">].</span><span class="nf">presence</span> <span class="o">&amp;&amp;</span> <span class="n">params</span><span class="p">[</span><span class="ss">:search_posts</span><span class="p">][</span><span class="ss">:query</span><span class="p">]</span>
+
+  <span class="k">if</span> <span class="n">query</span>
+    <span class="vi">@posts</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">search_published</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>As you will see in the next section (with the view), the search form will have its <code class="highlighter-rouge">method</code> attribute set to <code class="highlighter-rouge">get</code> in order to be able to have bookmarkable search links. So, either user visits the search page for the first time or after a form submit, the same <code class="highlighter-rouge">search</code> action of the controller will be executed. To distinguish the cases, we check the presence of the related <code class="highlighter-rouge">query</code> parameter to see if we’re going to proceed to search in elasticsearch.</p>
+
+<h3 id="add-the-view">Add the view</h3>
+
+<p>Create a new file named <code class="highlighter-rouge">search.html.erb</code> under <code class="highlighter-rouge">app/views/posts</code> and add the following code in it:</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>Elastic search for posts<span class="nt">&lt;/h1&gt;</span>
+
+<span class="cp">&lt;%=</span> <span class="n">form_for</span> <span class="ss">:search_posts</span><span class="p">,</span> <span class="ss">url: </span><span class="n">search_posts_path</span><span class="p">,</span> <span class="ss">method: :get</span> <span class="k">do</span> <span class="o">|</span><span class="n">form</span><span class="o">|</span> <span class="cp">%&gt;</span>
+  <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">text_field</span> <span class="ss">:query</span><span class="p">,</span> <span class="ss">value: </span><span class="n">params</span><span class="p">[</span><span class="ss">:search_posts</span><span class="p">].</span><span class="nf">presence</span> <span class="o">&amp;&amp;</span> <span class="n">params</span><span class="p">[</span><span class="ss">:search_posts</span><span class="p">][</span><span class="ss">:query</span><span class="p">]</span> <span class="cp">%&gt;</span>
+  <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">submit</span> <span class="s1">'Search'</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+
+<span class="cp">&lt;%</span> <span class="k">unless</span> <span class="vi">@posts</span><span class="p">.</span><span class="nf">nil?</span> <span class="cp">%&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">if</span> <span class="vi">@posts</span><span class="p">.</span><span class="nf">empty?</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>No posts found matching your query.<span class="nt">&lt;/h2&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">else</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>Search results<span class="nt">&lt;/h2&gt;</span>
+
+    <span class="nt">&lt;table</span> <span class="na">style=</span><span class="s">"width: 100%;"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;thead&gt;</span>
+         <span class="nt">&lt;tr&gt;</span>
+           <span class="nt">&lt;th&gt;</span>Author<span class="nt">&lt;/th&gt;</span>
+           <span class="nt">&lt;th&gt;</span>Title<span class="nt">&lt;/th&gt;</span>
+           <span class="nt">&lt;th&gt;</span>Tags<span class="nt">&lt;/th&gt;</span>
+           <span class="nt">&lt;th&gt;</span>Published on<span class="nt">&lt;/th&gt;</span>
+           <span class="nt">&lt;th&gt;</span>Actions<span class="nt">&lt;/th&gt;</span>
+         <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;/thead&gt;</span>
+
+      <span class="nt">&lt;tbody&gt;</span>
+        <span class="cp">&lt;%</span> <span class="vi">@posts</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span> <span class="cp">%&gt;</span>
+          <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span><span class="cp">&lt;%=</span> <span class="n">post</span><span class="p">.</span><span class="nf">author</span> <span class="cp">%&gt;</span><span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span><span class="cp">&lt;%=</span> <span class="n">post</span><span class="p">.</span><span class="nf">title</span> <span class="cp">%&gt;</span><span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span><span class="cp">&lt;%=</span> <span class="n">post</span><span class="p">.</span><span class="nf">tags</span> <span class="cp">%&gt;</span><span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span><span class="cp">&lt;%=</span> <span class="n">post</span><span class="p">.</span><span class="nf">published_on</span> <span class="cp">%&gt;</span><span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">'View'</span><span class="p">,</span> <span class="n">post_path</span><span class="p">(</span><span class="n">post</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="nt">&lt;/td&gt;</span>
+          <span class="nt">&lt;/tr&gt;</span>
+        <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+      <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;/table&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
+
+<p>Pretty self explanatory:</p>
+<ul>
+  <li>We add the form</li>
+  <li>We render nothing else if the <code class="highlighter-rouge">@posts</code> variable is <code class="highlighter-rouge">nil</code> (user hasn’t searched)</li>
+  <li>We render a message if we don’t find any posts - <code class="highlighter-rouge">@posts.empty? == true</code></li>
+  <li>We render a table with the found posts - <code class="highlighter-rouge">@posts.empty? == false</code></li>
+  <li><strong>Note</strong>: even though the @posts variable doesn’t contain <code class="highlighter-rouge">Post</code> instances but elasticsearch results, we can still access the properties as if it was a <code class="highlighter-rouge">Post</code>. Whatever added in the <code class="highlighter-rouge">_source</code> property is accessible on the elasticsearch result as is.</li>
+</ul>
+
+<p>Finally, let’s add a link to the homepage of the application so that we can use it to navigate to our search page. Open and edit <code class="highlighter-rouge">app/views/posts/index.html.erb</code> to look like this:</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"notice"</span><span class="nt">&gt;</span><span class="cp">&lt;%=</span> <span class="n">notice</span> <span class="cp">%&gt;</span><span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;h1&gt;</span>Posts<span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>
+  Press <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">'here'</span><span class="p">,</span> <span class="n">search_posts_path</span> <span class="cp">%&gt;</span> to search for posts.
+<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">colspan=</span><span class="s">"3"</span><span class="nt">&gt;&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="cp">&lt;%</span> <span class="vi">@posts</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">post</span><span class="o">|</span> <span class="cp">%&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">'Show'</span><span class="p">,</span> <span class="n">post</span> <span class="cp">%&gt;</span><span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">'Edit'</span><span class="p">,</span> <span class="n">edit_post_path</span><span class="p">(</span><span class="n">post</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">'Destroy'</span><span class="p">,</span> <span class="n">post</span><span class="p">,</span> <span class="ss">method: :delete</span><span class="p">,</span> <span class="ss">data: </span><span class="p">{</span> <span class="ss">confirm: </span><span class="s1">'Are you sure?'</span> <span class="p">}</span> <span class="cp">%&gt;</span><span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+    <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+
+<span class="nt">&lt;br&gt;</span>
+
+<span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s1">'New Post'</span><span class="p">,</span> <span class="n">new_post_path</span> <span class="cp">%&gt;</span>
+</code></pre></div></div>
+
+<p>Restart the server and navigate to home page.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/home-page-with-search-link.png" alt="Home page with search link" /></p>
+
+<p>Clicking on the <code class="highlighter-rouge">here</code> link, you reach at the search page.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/search-page.png" alt="Search page" /></p>
+
+<p>Submitting a query you are still on the search page but this time with the results found on elasticsearch.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/search-page-with-results.png" alt="Search page with results" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Elasticsearch is an awesome and powerful tool. This tutorial was written only to <strong>give an introduction of how to integrate Elasticsearch in a Rails application</strong> and does not cover the great and super cool stuff you can do with elasticsearch.</p>
+
+<h2 id="useful-links">Useful links</h2>
+
+<ul>
+  <li><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">Elasticsearch Reference</a></li>
+  <li><a href="https://www.elastic.co/guide/en/kibana/6.0/index.html">Kibana User Guide</a></li>
+  <li><a href="https://github.com/elastic/elasticsearch-ruby">Elasticsearch ruby gem</a></li>
+  <li><a href="https://github.com/elastic/elasticsearch-rails">Elasticsearch rails gem</a></li>
+</ul>
+
+<p>Long post, cat photo. Here’s my elastic cat.</p>
+
+<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/irida-elastic.png" alt="cat stretching" /></p>
+
+                </div>
+              </div>
+
+              <div class="col-12 order-first">
+                <div class="d-sm-block d-md-none mb-3">
+                  <a class="ga-event-link btn btn-outline-primary d-block collapsed text-left"
+                    data-event-label="Using elasticsearch in a Rails application"
+                    data-event-category="Document outline"
+                    data-event-action="click"
+                    title="View the structure of this document"
+                    role="button"
+                    data-toggle="collapse"
+                    data-role="outline"
+                    data-content=".outline"
+                    href="#docout-mobile"
+                    data-target="#docout-mobile"
+                    aria-expanded="false"
+                    aria-controls="collapse">
+                    Table of contents
+                    <i class="fa iridakos-collapse pull-right mt-1"></i>
+                  </a>
+
+                  <div id="docout-mobile" class="collapse my-3 border rounded bg-light p-2">
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+          
+            
+  
+    <div class="alert alert-light related-posts">
+      <h4 class="alert-heading text-dark"><i class="fa fa-hand-spock-o" aria-hidden="true"></i> My latest post</h4>
+
+      <div class="row mt-3">
+        <div class="col">
+          <a class="alert-link ga-event-link"
+             data-event-category="Latest post"
+             data-event-action="click"
+             data-event-label="Mountains"
+             href="/painting/2019/10/14/mountains.html"><strong>Mountains</strong></a>
+          <div>
+            <small>Painting of mountains following Bob Ross' season 13 Episode 10.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+
+            
+<div class="alert alert-light related-posts">
+  <h4 class="alert-heading text-dark"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Related posts</h4>
+
+  <ul class="list-unstyled">
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="How to manage nested objects in Elasticsearch documents"
+             href="/how-to/2019/05/02/add-update-delete-elasticsearch-nested-objects.html"><strong>How to manage nested objects in Elasticsearch documents</strong></a>
+          <div>
+            <small>How to add, update and delete nested objects in Elasticsearch documents using the Update API and painless scripts.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Elasticsearch bucket aggregations and faceted navigation - facets"
+             href="/tutorials/2018/10/22/elasticsearch-bucket-aggregations.html"><strong>Elasticsearch bucket aggregations and faceted navigation - facets</strong></a>
+          <div>
+            <small>A step by step tutorial for using Elasticsearch bucket aggregations to implement faceted navigation a.k.a. facets.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Full text searching Linux man pages with Elasticsearch"
+             href="/tutorials/2018/04/12/elasticsearch-linux-man-pages.html"><strong>Full text searching Linux man pages with Elasticsearch</strong></a>
+          <div>
+            <small>Playing around with Elasticsearch and Linux man pages</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1"
+             href="/tutorials/2013/12/07/creating-a-simple-todo-part-1.html"><strong>Creating a simple ToDo application with Ruby on Rails - Part 1</strong></a>
+          <div>
+            <small>First part of the tutorial creating a simple ToDo application with Ruby on Rails.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Testing execution of filters with RSpec"
+             href="/how-to/2014/10/14/testing-execution-of-filters-with-rspec.html"><strong>Testing execution of filters with RSpec</strong></a>
+          <div>
+            <small>How to test the execution of controller filters with RSpec.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Rails and rescue from memory leak"
+             href="/rails/2014/10/14/rescue-from-memory-leak.html"><strong>Rails and rescue from memory leak</strong></a>
+          <div>
+            <small>A story of finding a memory leak in a Ruby on Rails application.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+  </ul>
+</div>
+
+
+
+            <div class="alert alert-light">
+              <h4>
+                <i class="fa fa-share-alt"></i>
+                Share
+              </h4>
+              <div class="share-links">
+  <a class="btn btn-warning ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Using elasticsearch in a Rails application&url=http://localhost:4000/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=http://localhost:4000/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Using elasticsearch in a Rails application&amp;body=Using elasticsearch in a Rails application: http://localhost:4000/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> Subscribe via RSS
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/feed.xml">all posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/feeds/cat-photos.xml">cat photos</a>
+  </div>
+</div>
+
+            </div>
+          
+
+
+        </div>
+
+        <div class="col">
+          <div class="sidebar">
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <a class="ga-event-link btn btn-warning d-block collapsed text-left"
+          data-event-label="Using elasticsearch in a Rails application"
+          data-event-category="Document outline"
+          data-event-action="click"
+
+          data-toggle="collapse"
+          data-role="outline"
+          data-content=".outline"
+          href="#docout-sidebar"
+          data-target="#docout-sidebar"
+
+          title="View the structure of this document"
+          role="button"
+          href="#docout-sidebar"
+          aria-expanded="false"
+          aria-controls="collapse">
+          Table of contents
+          <i class="fa iridakos-collapse pull-right mt-1"></i>
+        </a>
+
+        <div class="section-content">
+          <div id="docout-sidebar" class="collapse mt-2 p-2">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  
+    
+<div class="alert alert-primary d-none d-md-block">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-cogs"></i> Related posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <div class="section-item">
+            <a href="/how-to/2019/05/02/add-update-delete-elasticsearch-nested-objects.html"
+               class="ga-event-link"
+               data-event-category="Sidebar related posts"
+               data-event-action="click"
+               data-event-label="How to manage nested objects in Elasticsearch documents">How to manage nested objects in Elasticsearch documents</a>
+             <div class="text-muted smaller">How to add, update and delete nested objects in Elasticsearch documents using the Update API and painless scripts.</div>
+          </div>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <div class="section-item">
+            <a href="/tutorials/2018/10/22/elasticsearch-bucket-aggregations.html"
+               class="ga-event-link"
+               data-event-category="Sidebar related posts"
+               data-event-action="click"
+               data-event-label="Elasticsearch bucket aggregations and faceted navigation - facets">Elasticsearch bucket aggregations and faceted navigation - facets</a>
+             <div class="text-muted smaller">A step by step tutorial for using Elasticsearch bucket aggregations to implement faceted navigation a.k.a. facets.</div>
+          </div>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <div class="section-item">
+            <a href="/tutorials/2018/04/12/elasticsearch-linux-man-pages.html"
+               class="ga-event-link"
+               data-event-category="Sidebar related posts"
+               data-event-action="click"
+               data-event-label="Full text searching Linux man pages with Elasticsearch">Full text searching Linux man pages with Elasticsearch</a>
+             <div class="text-muted smaller">Playing around with Elasticsearch and Linux man pages</div>
+          </div>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <div class="section-item">
+            <a href="/tutorials/2013/12/07/creating-a-simple-todo-part-1.html"
+               class="ga-event-link"
+               data-event-category="Sidebar related posts"
+               data-event-action="click"
+               data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1">Creating a simple ToDo application with Ruby on Rails - Part 1</a>
+             <div class="text-muted smaller">First part of the tutorial creating a simple ToDo application with Ruby on Rails.</div>
+          </div>
+          
+        
+          
+        
+          
+        
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <div class="section-item">
+            <a href="/how-to/2014/10/14/testing-execution-of-filters-with-rspec.html"
+               class="ga-event-link"
+               data-event-category="Sidebar related posts"
+               data-event-action="click"
+               data-event-label="Testing execution of filters with RSpec">Testing execution of filters with RSpec</a>
+             <div class="text-muted smaller">How to test the execution of controller filters with RSpec.</div>
+          </div>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <div class="section-item">
+            <a href="/rails/2014/10/14/rescue-from-memory-leak.html"
+               class="ga-event-link"
+               data-event-category="Sidebar related posts"
+               data-event-action="click"
+               data-event-label="Rails and rescue from memory leak">Rails and rescue from memory leak</a>
+             <div class="text-muted smaller">A story of finding a memory leak in a Ruby on Rails application.</div>
+          </div>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <div class="section-content mt-2">
+          <div class="share-links">
+  <a class="btn btn-warning ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Using elasticsearch in a Rails application&url=http://localhost:4000/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=http://localhost:4000/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Using elasticsearch in a Rails application&amp;body=Using elasticsearch in a Rails application: http://localhost:4000/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> Subscribe via RSS
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/feed.xml">all posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/feeds/cat-photos.xml">cat photos</a>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-hand-spock-o"></i> featured posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/tutorials/2018/03/01/bash-programmable-completion-tutorial.html"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a bash completion script">Creating a bash completion script</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a bash completion script
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+            </div>
+            <a href="/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a Linux Desktop application with Ruby">Creating a Linux Desktop application with Ruby</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a simple GTK ToDo application with Ruby
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-betterldevlink" title="Featured in Better Dev Link" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/how-to/2019/06/26/composing-better-emails.html"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Composing better emails">Composing better emails</a>
+             <div class="text-muted smaller">
+               Tips for writing effective emails avoiding misunderstandings with examples from the software development world.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/how-to/2019/05/16/remove-duplicate-lines-preserving-order-linux.html"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="How to remove duplicate lines from files preserving their order">How to remove duplicate lines from files preserving their order</a>
+             <div class="text-muted smaller">
+               How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained).
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+            </div>
+            <a href="/guides/2016/04/01/duckrails-guide.html"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="DuckRails - Open source development tool for mocking API endpoints">DuckRails - Open source development tool for mocking API endpoints</a>
+             <div class="text-muted smaller">
+               An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available.
+             </div>
+          </div>
+        
+      
+
+      <div class="section-item">
+        <a href="/featured"
+           class="ga-event-link"
+           data-event-category="Featured all posts"
+           data-event-action="click"
+           data-event-label="View all featured posts">View all featured posts</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-bullhorn"></i> recent posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+          <div class="section-item">
+            <a href="/painting/2019/10/14/mountains.html"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="Mountains">Mountains</a>
+            <div class="text-muted smaller">Painting of mountains following Bob Ross' season 13 Episode 10.</div>
+          </div>
+      
+          <div class="section-item">
+            <a href="/painting/2019/10/11/meadow.html"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="Meadow">Meadow</a>
+            <div class="text-muted smaller">Painting of a meadow following Bob Ross' season 5 Episode 13.</div>
+          </div>
+      
+          <div class="section-item">
+            <a href="/painting/2019/10/07/drawing-my-cat.html"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="Drawing my cat">Drawing my cat</a>
+            <div class="text-muted smaller">My attempt to draw my cat that looks nothing like this.</div>
+          </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4>
+        <i class="fa fa-github"></i> code
+      </h4>
+
+      <div class="float-right">
+
+      </div>
+    </div>
+
+    <div class="section-content">
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="goto repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/goto">goto</a>: a tool for navigating to aliased directories in the shell with auto complete
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="elman repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/elman">elman</a>: a script for full text searching Linux man pages with Elasticsearch
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="duckrails repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/duckrails">DuckRails</a>
+        version <span class="important">2.1.5</span> is out <img src="/assets/images/news/duckrails.png" class="logo" /> (<a class="ga-event-link" data-event-label="DuckRails GitHub docker wiki" data-event-action="click" data-event-category="News links" href="https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker" target="_blank">docker image available</a>)
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">iridakos images preview</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <div class="image-container">
+                    <img class="image" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer">
+  <div class="container-fluid no-gutters">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="brand mb-1">
+          <a href="https://iridakos.com"><strong>iridakos</strong></a>
+        </div>
+
+        <div class="contact-links">
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="GitHub" href="https://www.github.com/iridakos/"><i class="fa fa-github" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="Twitter" href="https://www.twitter.com/lazaru_s/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="LinkedIn" href="https://www.linkedin.com/in/iridakos/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+
+          <div class="dropdown d-inline-block mr-1">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" title="subscribe via RSS" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-rss"></i>
+            </button>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to all posts RSS - Footer" data-event-action="click" href="/feed.xml">all posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to programming posts RSS - Footer" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to tutorial posts RSS - Footer" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to opensource posts RSS - Footer" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to ruby posts RSS - Footer" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to painting posts RSS - Footer" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Using elasticsearch in a Rails application" data-event-category="Subscribe to cat photo posts RSS - Footer" data-event-action="click" href="/feeds/cat-photos.xml">cat photos</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="license mt-1">
+          <div class="mb-1">
+            <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
+          </div>
+
+          <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">iridakos</span> by
+          <a xmlns:cc="http://creativecommons.org/ns#" href="https://iridakos.com/about/" property="cc:attributionName" rel="cc:attributionURL" class="font-weight-bold">Lazarus Lazaridis</a> is licensed under a <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76452884-1', 'auto');
+
+  ga('set', 'page', '/tutorials/2017/12/03/elasticsearch-and-rails-tutorial')
+  ga('send', 'pageview');
+
+</script>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1573323847300041466" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1573323847300041466" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1573323847300041466" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1573323847300041466" type="text/javascript"></script>
+
+
+
+
+  </body>
+</html>
