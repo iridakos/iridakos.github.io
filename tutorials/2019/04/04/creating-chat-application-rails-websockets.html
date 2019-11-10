@@ -12,9 +12,9 @@
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
 
   <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
-  <link rel="stylesheet" href="/css/main.css?1573323847300041466">
+  <link rel="stylesheet" href="/css/main.css?1573406500261651388">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="alternate" type="application/rss+xml" title="iridakos" href="http://localhost:4000/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
   <!-- Begin Jekyll SEO tag v2.5.0 -->
 <meta name="generator" content="Jekyll v3.7.4" />
 <meta property="og:title" content="Creating a chat application from scratch using Rails and WebSockets" />
@@ -22,8 +22,8 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="A step by step tutorial for creating a chat application from scratch using Rails and WebSockets (ActionCable)." />
 <meta property="og:description" content="A step by step tutorial for creating a chat application from scratch using Rails and WebSockets (ActionCable)." />
-<link rel="canonical" href="http://localhost:4000/tutorials/2019/04/04/creating-chat-application-rails-websockets.html" />
-<meta property="og:url" content="http://localhost:4000/tutorials/2019/04/04/creating-chat-application-rails-websockets.html" />
+<link rel="canonical" href="https://iridakos.com/tutorials/2019/04/04/creating-chat-application-rails-websockets.html" />
+<meta property="og:url" content="https://iridakos.com/tutorials/2019/04/04/creating-chat-application-rails-websockets.html" />
 <meta property="og:site_name" content="iridakos" />
 <meta property="og:image" content="https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png" />
 <meta property="og:type" content="article" />
@@ -32,7 +32,7 @@
 <meta name="twitter:site" content="@lazaru_s" />
 <meta name="twitter:creator" content="@Lazarus Lazaridis" />
 <script type="application/ld+json">
-{"image":"https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png","description":"A step by step tutorial for creating a chat application from scratch using Rails and WebSockets (ActionCable).","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tutorials/2019/04/04/creating-chat-application-rails-websockets.html"},"@type":"BlogPosting","url":"http://localhost:4000/tutorials/2019/04/04/creating-chat-application-rails-websockets.html","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/site.png"},"name":"Lazarus Lazaridis"},"headline":"Creating a chat application from scratch using Rails and WebSockets","dateModified":"2019-04-04T23:00:00+03:00","datePublished":"2019-04-04T23:00:00+03:00","author":{"@type":"Person","name":"Lazarus Lazaridis"},"@context":"http://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/tutorials/2019/04/04/creating-chat-application-rails-websockets.html"},"image":"https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png","author":{"@type":"Person","name":"Lazarus Lazaridis"},"description":"A step by step tutorial for creating a chat application from scratch using Rails and WebSockets (ActionCable).","@type":"BlogPosting","url":"https://iridakos.com/tutorials/2019/04/04/creating-chat-application-rails-websockets.html","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"headline":"Creating a chat application from scratch using Rails and WebSockets","dateModified":"2019-04-04T23:00:00+03:00","datePublished":"2019-04-04T23:00:00+03:00","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -299,7 +299,7 @@
 
 <p>In this tutorial we are going to create a <strong>chat</strong> web application from scratch using Rails and WebSockets.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif" alt="Rails chat tutorial gif" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif" alt="Rails chat tutorial gif" /></p>
 
 <div class="alert alert-light">
   <div class="alert-heading"><i class="fa fa-comments"></i> Code and comments</div>
@@ -417,7 +417,7 @@ Use Ctrl-C to stop
 
 <p>Open a browser and visit <code class="highlighter-rouge">http://localhost:3000</code>, if you see this we are good to go.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/01-rails-new.png" alt="Rails new application" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/01-rails-new.png" alt="Rails new application" /></p>
 
 <h3 id="users-and-devise">Users and devise</h3>
 
@@ -522,7 +522,7 @@ Use Ctrl-C to stop
 
 <p>You should see an error message, no worries:</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/02.png" alt="No action index for the RoomsController" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/02.png" alt="No action index for the RoomsController" /></p>
 
 <p>We have to create the <code class="highlighter-rouge">index</code> action in the <code class="highlighter-rouge">RoomsController</code>. Open the controller <code class="highlighter-rouge">app/controllers/rooms_controller.rb</code> and change its contents to the following:</p>
 
@@ -538,7 +538,7 @@ Use Ctrl-C to stop
 
 <p>Reload and voilà.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/03.png" alt="Rooms index" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/03.png" alt="Rooms index" /></p>
 
 <h3 id="adding-authentication">Adding authentication</h3>
 
@@ -549,7 +549,7 @@ Use Ctrl-C to stop
 
 <p>If we navigate to <code class="highlighter-rouge">http://localhost:3000</code> now we should be redirected to the sign in page <sup><a href="#acknowledgments">[10]</a></sup>.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/04.png" alt="Sign in" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/04.png" alt="Sign in" /></p>
 
 <p>Before continuing with the good stuff, let’s gear up the application with some good features.</p>
 
@@ -644,11 +644,11 @@ Use Ctrl-C to stop
 
 <p>Navigate to <code class="highlighter-rouge">http://localhost:3000</code> and view what we have created.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/05.png" alt="Sign in with Devise and simple form" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/05.png" alt="Sign in with Devise and simple form" /></p>
 
 <p>Let’s try to sign up following the <code class="highlighter-rouge">Sign up</code> link of the form:</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/06.png" alt="Sign up without username" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/06.png" alt="Sign up without username" /></p>
 
 <p>As you can see, there is no field to fill in the username. For that to work we have to:</p>
 
@@ -680,7 +680,7 @@ Use Ctrl-C to stop
 
 <p>Done, reload and sign up<sup><a href="#acknowledgments">[5]</a></sup>.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/07.png" alt="Sign up with username" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/07.png" alt="Sign up with username" /></p>
 
 <h3 id="cleanup-unused-components">Cleanup unused components</h3>
 
@@ -811,11 +811,11 @@ Use Ctrl-C to stop
 
 <p>Reload to view the bar.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/08.png" alt="Sign up with navigation bar" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/08.png" alt="Sign up with navigation bar" /></p>
 
 <p>Awesome. Fill in with your desired credentials and submit the form.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/09.png" alt="Signed in" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/09.png" alt="Signed in" /></p>
 
 <h3 id="room-management">Room management</h3>
 
@@ -883,7 +883,7 @@ Use Ctrl-C to stop
 
 <p>If there are rooms, the left column of the page will render a vertical navigation with links leading to each room’s page. The right column displays a simple welcome message.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/10.png" alt="Room index" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/10.png" alt="Room index" /></p>
 
 <p>Pressing the <code class="highlighter-rouge">Create a room</code> button we get the expected error for the non-existent action.</p>
 
@@ -973,11 +973,11 @@ Use Ctrl-C to stop
 
 <p>Time to create the first room. From the rooms’ index page, press the <code class="highlighter-rouge">Create a room</code></p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/11.png" alt="New room" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/11.png" alt="New room" /></p>
 
 <p>Save and here it is.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/12.png" alt="Room index with rooms" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/12.png" alt="Room index with rooms" /></p>
 
 <p>Add this class in <code class="highlighter-rouge">app/assets/stylesheets/rails-chat-tutorial.scss</code> to improve the display of the rooms.</p>
 
@@ -991,7 +991,7 @@ Use Ctrl-C to stop
 <span class="err">}</span>
 </code></pre></div></div>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/13.png" alt="Room index with improved rooms" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/13.png" alt="Room index with improved rooms" /></p>
 
 <p><strong>Note</strong>: We will add the <code class="highlighter-rouge">edit</code> link in the room’s page a.k.a. <code class="highlighter-rouge">show</code> action.</p>
 
@@ -1124,7 +1124,7 @@ Use Ctrl-C to stop
 
 <p>Navigate to a room to see what has been done.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/14.png" alt="Room page with chat" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/14.png" alt="Room page with chat" /></p>
 
 <p>Pressing the <code class="highlighter-rouge">Send</code> button nothing happens on the page but if you check the server’s console you will notice:</p>
 
@@ -1199,7 +1199,7 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 
 <p>If you reload the page you will see something like this:</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/15.png" alt="Room message to string" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/15.png" alt="Room message to string" /></p>
 
 <p>Let’s beautify the messages.</p>
 
@@ -1285,7 +1285,7 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 
 <p>Reload the page. Magic.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/16.png" alt="Improved display of room messages" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/16.png" alt="Improved display of room messages" /></p>
 
 <h2 id="introducing-websockets---actioncable">Introducing WebSockets - ActionCable</h2>
 
@@ -1623,7 +1623,7 @@ end
 
 <p>That’s all! Long post, tired cat photo.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/irida.jpg" alt="Tired cat photo" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/irida.jpg" alt="Tired cat photo" /></p>
 
 <div class="alert alert-light">
   <div class="alert-heading"><i class="fa fa-comments"></i> Code and comments</div>
@@ -2102,10 +2102,10 @@ end
                 Share
               </h4>
               <div class="share-links">
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Creating a chat application from scratch using Rails and WebSockets&url=http://localhost:4000/tutorials/2019/04/04/creating-chat-application-rails-websockets.html" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=http://localhost:4000/tutorials/2019/04/04/creating-chat-application-rails-websockets.html" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Creating a chat application from scratch using Rails and WebSockets&url=https://iridakos.com/tutorials/2019/04/04/creating-chat-application-rails-websockets.html" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/tutorials/2019/04/04/creating-chat-application-rails-websockets.html" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
   <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Creating a chat application from scratch using Rails and WebSockets&amp;body=Creating a chat application from scratch using Rails and WebSockets: http://localhost:4000/tutorials/2019/04/04/creating-chat-application-rails-websockets.html"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Creating a chat application from scratch using Rails and WebSockets&amp;body=Creating a chat application from scratch using Rails and WebSockets: https://iridakos.com/tutorials/2019/04/04/creating-chat-application-rails-websockets.html"><i class="fa fa-envelope-o" title="Share with email"></i></a>
 </div>
 
 <div class="subscribe-links">
@@ -2572,10 +2572,10 @@ end
       <div class="sidebar-section">
         <div class="section-content mt-2">
           <div class="share-links">
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Creating a chat application from scratch using Rails and WebSockets&url=http://localhost:4000/tutorials/2019/04/04/creating-chat-application-rails-websockets.html" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=http://localhost:4000/tutorials/2019/04/04/creating-chat-application-rails-websockets.html" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Creating a chat application from scratch using Rails and WebSockets&url=https://iridakos.com/tutorials/2019/04/04/creating-chat-application-rails-websockets.html" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/tutorials/2019/04/04/creating-chat-application-rails-websockets.html" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
   <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Creating a chat application from scratch using Rails and WebSockets&amp;body=Creating a chat application from scratch using Rails and WebSockets: http://localhost:4000/tutorials/2019/04/04/creating-chat-application-rails-websockets.html"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Creating a chat application from scratch using Rails and WebSockets&amp;body=Creating a chat application from scratch using Rails and WebSockets: https://iridakos.com/tutorials/2019/04/04/creating-chat-application-rails-websockets.html"><i class="fa fa-envelope-o" title="Share with email"></i></a>
 </div>
 
 <div class="subscribe-links">
@@ -2894,10 +2894,10 @@ end
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="/assets/javascripts/bootstrap.min.js?1573323847300041466" type="text/javascript"></script>
-<script src="/assets/javascripts/docout.js?1573323847300041466" type="text/javascript"></script>
-<script src="/assets/javascripts/iridakos.js?1573323847300041466" type="text/javascript"></script>
-<script src="/assets/javascripts/search.js?1573323847300041466" type="text/javascript"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1573406500261651388" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1573406500261651388" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1573406500261651388" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1573406500261651388" type="text/javascript"></script>
 
 
 
