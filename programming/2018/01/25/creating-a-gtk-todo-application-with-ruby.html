@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
 
   <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
-  <link rel="stylesheet" href="/css/main.css?1573472910715513553">
+  <link rel="stylesheet" href="/css/main.css?1573473127079746911">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
   <!-- Begin Jekyll SEO tag v2.6.1 -->
@@ -25,16 +25,16 @@
 <link rel="canonical" href="https://iridakos.com/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby" />
 <meta property="og:url" content="https://iridakos.com/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby" />
 <meta property="og:site_name" content="iridakos" />
-<meta property="og:image" content="http://iridakos.com/assets/images/posts/gtk-ruby/tutorial-preview.png" />
+<meta property="og:image" content="https://iridakos.com/assets/images/posts/gtk-ruby/tutorial-preview.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-01-25T21:00:00+02:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="http://iridakos.com/assets/images/posts/gtk-ruby/tutorial-preview.png" />
+<meta property="twitter:image" content="https://iridakos.com/assets/images/posts/gtk-ruby/tutorial-preview.png" />
 <meta property="twitter:title" content="Creating a Linux Desktop application with Ruby" />
 <meta name="twitter:site" content="@lazaru_s" />
 <meta name="twitter:creator" content="@Lazarus Lazaridis" />
 <script type="application/ld+json">
-{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"image":"http://iridakos.com/assets/images/posts/gtk-ruby/tutorial-preview.png","description":"A tutorial for creating a simple GTK ToDo application with Ruby","@type":"BlogPosting","url":"https://iridakos.com/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby","headline":"Creating a Linux Desktop application with Ruby","dateModified":"2018-01-25T21:00:00+02:00","datePublished":"2018-01-25T21:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby"},"@context":"https://schema.org"}</script>
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"image":"https://iridakos.com/assets/images/posts/gtk-ruby/tutorial-preview.png","description":"A tutorial for creating a simple GTK ToDo application with Ruby","@type":"BlogPosting","url":"https://iridakos.com/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby","headline":"Creating a Linux Desktop application with Ruby","dateModified":"2018-01-25T21:00:00+02:00","datePublished":"2018-01-25T21:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1407,12 +1407,413 @@ Add this code in <code class="highlighter-rouge">Todo::ApplicationWindow</code>.
 <div class="alert alert-light related-posts">
   <h4 class="alert-heading text-dark"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Related posts</h4>
 
+  
+
   <ul class="list-unstyled">
   
     
-  
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Creating a bash completion script"
+             href="/programming/2018/03/01/bash-programmable-completion-tutorial"><strong>Creating a bash completion script</strong></a>
+          <div>
+            <small>A tutorial for creating a bash completion script</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
     
   
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1"
+             href="/programming/2013/12/07/creating-a-simple-todo-part-1"><strong>Creating a simple ToDo application with Ruby on Rails - Part 1</strong></a>
+          <div>
+            <small>First part of the tutorial creating a simple ToDo application with Ruby on Rails.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 2"
+             href="/programming/2013/12/17/creating-a-simple-todo-part-2"><strong>Creating a simple ToDo application with Ruby on Rails - Part 2</strong></a>
+          <div>
+            <small>Second part of the tutorial creating a simple ToDo application with Ruby on Rails.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
     
   
   </ul>
@@ -1792,10 +2193,10 @@ Add this code in <code class="highlighter-rouge">Todo::ApplicationWindow</code>.
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="/assets/javascripts/bootstrap.min.js?1573472910715513553" type="text/javascript"></script>
-<script src="/assets/javascripts/docout.js?1573472910715513553" type="text/javascript"></script>
-<script src="/assets/javascripts/iridakos.js?1573472910715513553" type="text/javascript"></script>
-<script src="/assets/javascripts/search.js?1573472910715513553" type="text/javascript"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1573473127079746911" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1573473127079746911" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1573473127079746911" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1573473127079746911" type="text/javascript"></script>
 
 
 
