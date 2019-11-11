@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ocs-site-verification" content="e5faa08e01247c38aadf1c1737ff8136">
+  <meta name="google-site-verification" content="KqOxy0ecDlfNdfO530ZAbtNBedy49hn2KziyqLK0JGo" />
+
+  <title>Testing execution of filters with RSpec</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
+
+  <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css?1573472334557130114">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Testing execution of filters with RSpec" />
+<meta name="author" content="Lazarus Lazaridis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="How to test the execution of controller filters with RSpec." />
+<meta property="og:description" content="How to test the execution of controller filters with RSpec." />
+<link rel="canonical" href="https://iridakos.com/programming/2014/10/14/testing-execution-of-filters-with-rspec" />
+<meta property="og:url" content="https://iridakos.com/programming/2014/10/14/testing-execution-of-filters-with-rspec" />
+<meta property="og:site_name" content="iridakos" />
+<meta property="og:image" content="https://iridakos.com/assets/images/site.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2014-10-14T10:00:00+03:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://iridakos.com/assets/images/site.png" />
+<meta property="twitter:title" content="Testing execution of filters with RSpec" />
+<meta name="twitter:site" content="@lazaru_s" />
+<meta name="twitter:creator" content="@Lazarus Lazaridis" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"image":"https://iridakos.com/assets/images/site.png","description":"How to test the execution of controller filters with RSpec.","@type":"BlogPosting","url":"https://iridakos.com/programming/2014/10/14/testing-execution-of-filters-with-rspec","headline":"Testing execution of filters with RSpec","dateModified":"2014-10-14T10:00:00+03:00","datePublished":"2014-10-14T10:00:00+03:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/programming/2014/10/14/testing-execution-of-filters-with-rspec"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+  <script type="text/javascript">
+      window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on the website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"light-bottom"};
+  </script>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+</head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg iridakos-navbar">
+  <div class="container-fluid no-gutters">
+    
+
+    <a class="navbar-brand " href="/" alt="home">
+      <i class="fa fa-home"></i>
+      home
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="fa fa-bars pt-1"></i>
+      </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="header-pages">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            programming
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="more">
+            <a class="dropdown-item" href="/programming/">all posts</a>
+            <a class="dropdown-item" href="/programming/featured/">featured posts</a>
+            <a class="dropdown-item" href="/programming/tutorials/">tutorials</a>
+            <a class="dropdown-item" href="/programming/how-to/">how to</a>
+            <a class="dropdown-item" href="/programming/code/">code</a>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/tags/">tags</a>
+          </div>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/painting/" alt="painting">painting</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/cats/" alt="cats">cats</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/about/" alt="about">about me</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0" method="get" action="/search">
+        <div class="input-group input-group-sm mr-sm-2">
+          <input class="form-control" name="query" type="search" placeholder="Search the blog">
+
+          <div class="input-group-append">
+            <button class="btn btn-warning" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="page-title-container">
+  <div class="container-fluid no-gutters">
+    <div class="page-title">
+      <div class="row align-items-center">
+        <div class="col-xs-12 col-md-8 col-lg-9 order-md-first order-last text-center text-md-left">
+          <h1>Testing execution of filters with RSpec</h1>
+
+            <div class="page-subtitle">
+            How to test the execution of controller filters with RSpec.
+
+            
+              <div class="post">
+                <div class="post-metadata">
+                  <div class="post-date" title="published on">
+                    Published on <span class="important">Oct 14, 2014</span>
+                  </div>
+
+                  <div class="post-category" title="in category">
+                    in category <span class="important">programming</span>
+                  </div>
+                </div>
+
+                
+                
+                  <div class="post-tags">
+                    <span class="important">tags:</span>
+                    
+                      <a href="/tags/?tag=rspec" class="ga-event-link" data-event-label="rspec" data-event-action="click" data-event-category="tags">rspec</a> - 
+                    
+                      <a href="/tags/?tag=rails" class="ga-event-link" data-event-label="rails" data-event-action="click" data-event-category="tags">rails</a> - 
+                    
+                      <a href="/tags/?tag=ruby" class="ga-event-link" data-event-label="ruby" data-event-action="click" data-event-category="tags">ruby</a> - 
+                    
+                      <a href="/tags/?tag=controllers" class="ga-event-link" data-event-label="controllers" data-event-action="click" data-event-category="tags">controllers</a> - 
+                    
+                      <a href="/tags/?tag=mvc" class="ga-event-link" data-event-label="mvc" data-event-action="click" data-event-category="tags">mvc</a> - 
+                    
+                      <a href="/tags/?tag=testing" class="ga-event-link" data-event-label="testing" data-event-action="click" data-event-category="tags">testing</a> - 
+                    
+                      <a href="/tags/?tag=how-to" class="ga-event-link" data-event-label="how-to" data-event-action="click" data-event-category="tags">how-to</a>
+                    
+                  </div>
+                
+              </div>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container-fluid no-gutters">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-9 page-content">
+          
+            <div class="row">
+              <div class="col-12">
+                <div class="outline">
+                  <p><strong>UPDATE</strong>: I created a gem to cover the functionality of this post. Visit its homepage <a href="https://github.com/iridakos/rspec-matchers-controller_filters">here</a>.</p>
+
+<p>I was working on my application and I wanted to write some RSpec tests for some controllers having <code class="highlighter-rouge">before_filter</code> for some actions.</p>
+
+<p>I didn’t want to explicitly test the behaviour of the filter since it was already tested in another context. I only wanted to test that it is being executed.</p>
+
+<p>Let’s assume that this is our controller:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">FooController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="n">before_filter</span> <span class="ss">:first_filter</span>
+  <span class="n">before_filter</span> <span class="ss">:second_filter</span><span class="p">,</span> <span class="ss">:only</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="ss">:edit</span><span class="p">,</span> <span class="ss">:update</span><span class="p">]</span>
+
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="c1"># some code</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">edit</span>
+    <span class="c1">#some code</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">update</span>
+    <span class="c1"># some code</span>
+  <span class="k">end</span>
+
+  <span class="kp">protected</span>
+
+  <span class="k">def</span> <span class="nf">first_filter</span>
+    <span class="c1"># do something</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">second_filter</span>
+    <span class="c1"># do something</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>So, we can write the following custom matcher (I placed it under <code class="highlighter-rouge">spec/support/matchers/filters.rb</code>):</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">RSpec</span><span class="o">::</span><span class="no">Matchers</span><span class="p">.</span><span class="nf">define</span> <span class="ss">:execute_before_filter</span> <span class="k">do</span> <span class="o">|</span><span class="n">filter_name</span><span class="p">,</span> <span class="n">options</span><span class="o">|</span>
+  <span class="n">match</span> <span class="k">do</span> <span class="o">|</span><span class="n">controller</span><span class="o">|</span>
+    <span class="n">controller</span><span class="p">.</span><span class="nf">stubs</span><span class="p">(</span><span class="n">filter_name</span><span class="p">).</span><span class="nf">raises</span><span class="p">(</span><span class="no">StandardError</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"Filter executed: </span><span class="si">#{</span><span class="n">filter_name</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="ss">:stub_filters</span><span class="p">]</span>
+      <span class="n">options</span><span class="p">[</span><span class="ss">:stub_filters</span><span class="p">].</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">filter</span><span class="o">|</span>
+        <span class="n">controller</span><span class="p">.</span><span class="nf">stubs</span><span class="p">(</span><span class="n">filter</span><span class="p">).</span><span class="nf">returns</span><span class="p">(</span><span class="kp">true</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="k">begin</span>
+      <span class="nb">send</span><span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="ss">:via</span><span class="p">],</span> <span class="n">options</span><span class="p">[</span><span class="ss">:on</span><span class="p">],</span> <span class="n">options</span><span class="p">[</span><span class="ss">:with</span><span class="p">])</span>
+      <span class="kp">false</span>
+    <span class="k">rescue</span> <span class="no">StandardError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+      <span class="n">e</span><span class="p">.</span><span class="nf">message</span> <span class="o">==</span> <span class="s2">"Filter executed: </span><span class="si">#{</span><span class="n">filter_name</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">rescue</span>
+      <span class="kp">false</span>
+    <span class="k">end</span>
+    <span class="n">result</span>
+  <span class="k">end</span>
+
+  <span class="n">failure_message</span> <span class="k">do</span> <span class="o">|</span><span class="n">actual</span><span class="o">|</span>
+    <span class="n">filter</span> <span class="o">=</span> <span class="n">expected</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="n">expected</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="ss">:on</span><span class="p">]</span>
+    <span class="n">with</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="ss">:via</span><span class="p">]</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="ss">:with</span><span class="p">]</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">"expected </span><span class="si">#{</span><span class="n">actual</span><span class="p">.</span><span class="nf">class</span><span class="si">}</span><span class="s2"> to execute filter </span><span class="si">#{</span><span class="n">filter</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">message</span> <span class="o">&lt;&lt;</span> <span class="s2">" before action </span><span class="si">#{</span><span class="n">action</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">message</span> <span class="o">&lt;&lt;</span> <span class="s2">" [requested via </span><span class="si">#{</span><span class="n">with</span><span class="si">}</span><span class="s2"> with params '</span><span class="si">#{</span><span class="n">params</span><span class="si">}</span><span class="s2">']."</span>
+  <span class="k">end</span>
+
+  <span class="n">failure_message_when_negated</span> <span class="k">do</span> <span class="o">|</span><span class="n">actual</span><span class="o">|</span>
+    <span class="n">filter</span> <span class="o">=</span> <span class="n">expected</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="n">expected</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="ss">:on</span><span class="p">]</span>
+    <span class="n">with</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="ss">:via</span><span class="p">]</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="ss">:with</span><span class="p">]</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">"expected </span><span class="si">#{</span><span class="n">actual</span><span class="p">.</span><span class="nf">class</span><span class="si">}</span><span class="s2"> not to execute filter </span><span class="si">#{</span><span class="n">filter</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">message</span> <span class="o">&lt;&lt;</span> <span class="s2">" before action </span><span class="si">#{</span><span class="n">action</span><span class="si">}</span><span class="s2">"</span>
+    <span class="n">message</span> <span class="o">&lt;&lt;</span> <span class="s2">" [requested via </span><span class="si">#{</span><span class="n">with</span><span class="si">}</span><span class="s2"> with params '</span><span class="si">#{</span><span class="n">params</span><span class="si">}</span><span class="s2">']"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>and then in our controller’s spec we test the filter execution with the following code:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'rails_helper'</span>
+
+<span class="no">RSpec</span><span class="p">.</span><span class="nf">describe</span> <span class="no">FooController</span><span class="p">,</span> <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="ss">:controller</span> <span class="k">do</span>
+
+  <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="n">execute_before_filter</span> <span class="ss">:first_filter</span><span class="p">,</span> <span class="ss">:on</span> <span class="o">=&gt;</span> <span class="ss">:index</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:get</span> <span class="p">}</span>
+
+  <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="n">execute_before_filter</span> <span class="ss">:first_filter</span><span class="p">,</span> <span class="ss">:on</span> <span class="o">=&gt;</span> <span class="ss">:edit</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:get</span><span class="p">,</span> <span class="ss">:with</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="s1">'1'</span> <span class="p">}</span> <span class="p">}</span>
+  <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="n">execute_before_filter</span> <span class="ss">:second_filter</span><span class="p">,</span>
+                                    <span class="ss">:on</span> <span class="o">=&gt;</span> <span class="ss">:edit</span><span class="p">,</span>
+                                    <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:get</span><span class="p">,</span>
+                                    <span class="ss">:with</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="s1">'1'</span> <span class="p">},</span>
+                                    <span class="ss">:stub_filters</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="ss">:first_filter</span><span class="p">]</span> <span class="p">}</span>
+
+  <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="n">execute_before_filter</span> <span class="ss">:first_filter</span><span class="p">,</span> <span class="ss">:on</span> <span class="o">=&gt;</span> <span class="ss">:update</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:put</span><span class="p">,</span> <span class="ss">:with</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="s1">'1'</span> <span class="p">}</span> <span class="p">}</span>
+  <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="n">execute_before_filter</span> <span class="ss">:second_filter</span><span class="p">,</span>
+                                    <span class="ss">:on</span> <span class="o">=&gt;</span> <span class="ss">:update</span><span class="p">,</span>
+                                    <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:put</span><span class="p">,</span>
+                                    <span class="ss">:with</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="ss">:'1'</span> <span class="p">},</span>
+                                    <span class="ss">:stub_filters</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="ss">:first_filter</span><span class="p">]</span> <span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>We use the <code class="highlighter-rouge">:ignore_filters</code> to stub possible prepended filters so that in case they brake due to missing stubbings etc, they don’t mess with our test.</p>
+
+<p>If we comment the <code class="highlighter-rouge">before_filter</code> declarations in the <code class="highlighter-rouge">FooController</code> =&gt; tadaaaaa:</p>
+
+<p><img src="https://1.bp.blogspot.com/-bQn2QNa2khs/VE_hB6TVtpI/AAAAAAAAA7Y/vnRKVmXyXJ0/s1600/irida.png" alt="" /></p>
+
+                </div>
+              </div>
+
+              <div class="col-12 order-first">
+                <div class="d-sm-block d-md-none mb-3">
+                  <a class="ga-event-link btn btn-outline-primary d-block collapsed text-left"
+                    data-event-label="Testing execution of filters with RSpec"
+                    data-event-category="Document outline"
+                    data-event-action="click"
+                    title="View the structure of this document"
+                    role="button"
+                    data-toggle="collapse"
+                    data-role="outline"
+                    data-content=".outline"
+                    href="#docout-mobile"
+                    data-target="#docout-mobile"
+                    aria-expanded="false"
+                    aria-controls="collapse">
+                    Table of contents
+                    <i class="fa iridakos-collapse pull-right mt-1"></i>
+                  </a>
+
+                  <div id="docout-mobile" class="collapse my-3 border rounded bg-light p-2">
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+          
+
+
+        </div>
+
+        <div class="col">
+          <div class="sidebar">
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <a class="ga-event-link btn btn-warning d-block collapsed text-left"
+          data-event-label="Testing execution of filters with RSpec"
+          data-event-category="Document outline"
+          data-event-action="click"
+
+          data-toggle="collapse"
+          data-role="outline"
+          data-content=".outline"
+          href="#docout-sidebar"
+          data-target="#docout-sidebar"
+
+          title="View the structure of this document"
+          role="button"
+          href="#docout-sidebar"
+          aria-expanded="false"
+          aria-controls="collapse">
+          Table of contents
+          <i class="fa iridakos-collapse pull-right mt-1"></i>
+        </a>
+
+        <div class="section-content">
+          <div id="docout-sidebar" class="collapse mt-2 p-2">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-hand-spock-o"></i> featured posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2018/03/01/bash-programmable-completion-tutorial"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a bash completion script">Creating a bash completion script</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a bash completion script
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+            </div>
+            <a href="/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a Linux Desktop application with Ruby">Creating a Linux Desktop application with Ruby</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a simple GTK ToDo application with Ruby
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-betterldevlink" title="Featured in Better Dev Link" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2019/06/26/composing-better-emails"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Composing better emails">Composing better emails</a>
+             <div class="text-muted smaller">
+               Tips for writing effective emails avoiding misunderstandings with examples from the software development world.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="How to remove duplicate lines from files preserving their order">How to remove duplicate lines from files preserving their order</a>
+             <div class="text-muted smaller">
+               How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained).
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+            </div>
+            <a href="/programming/2016/04/01/duckrails-guide"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="DuckRails - Open source development tool for mocking API endpoints">DuckRails - Open source development tool for mocking API endpoints</a>
+             <div class="text-muted smaller">
+               An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available.
+             </div>
+          </div>
+        
+      
+
+      <div class="section-item">
+        <a href="/programming/featured"
+           class="ga-event-link"
+           data-event-category="Featured all posts"
+           data-event-action="click"
+           data-event-label="View all featured posts">View all featured posts</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-bullhorn"></i> recent posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4>
+        <i class="fa fa-github"></i> code
+      </h4>
+
+      <div class="float-right">
+
+      </div>
+    </div>
+
+    <div class="section-content">
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="goto repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/goto">goto</a>: a tool for navigating to aliased directories in the shell with auto complete
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="elman repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/elman">elman</a>: a script for full text searching Linux man pages with Elasticsearch
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="duckrails repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/duckrails">DuckRails</a>
+        version <span class="important">2.1.5</span> is out <img src="/assets/images/news/duckrails.png" class="logo" /> (<a class="ga-event-link" data-event-label="DuckRails GitHub docker wiki" data-event-action="click" data-event-category="News links" href="https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker" target="_blank">docker image available</a>)
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <div class="section-content mt-2">
+          
+<div class="share-links">
+  <a class="btn btn-warning ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Testing execution of filters with RSpec&url=https://iridakos.com/programming/2014/10/14/testing-execution-of-filters-with-rspec" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/programming/2014/10/14/testing-execution-of-filters-with-rspec" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Testing execution of filters with RSpec&amp;body=Testing execution of filters with RSpec: https://iridakos.com/programming/2014/10/14/testing-execution-of-filters-with-rspec"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> Subscribe via RSS
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/feed.xml">all posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/feeds/cats.xml">cat photos</a>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">iridakos images preview</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <div class="image-container">
+                    <img class="image" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer">
+  <div class="container-fluid no-gutters">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="brand mb-1">
+          <a href="https://iridakos.com"><strong>iridakos</strong></a>
+        </div>
+
+        <div class="contact-links">
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="GitHub" href="https://www.github.com/iridakos/"><i class="fa fa-github" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="Twitter" href="https://www.twitter.com/lazaru_s/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="LinkedIn" href="https://www.linkedin.com/in/iridakos/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+
+          <div class="dropdown d-inline-block mr-1">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" title="subscribe via RSS" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-rss"></i>
+            </button>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to all posts RSS - Footer" data-event-action="click" href="/feed.xml">all posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to programming posts RSS - Footer" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to tutorial posts RSS - Footer" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to opensource posts RSS - Footer" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to ruby posts RSS - Footer" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to painting posts RSS - Footer" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Testing execution of filters with RSpec" data-event-category="Subscribe to cat photo posts RSS - Footer" data-event-action="click" href="/feeds/cat-photos.xml">cat photos</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="license mt-1">
+          <div class="mb-1">
+            <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
+          </div>
+
+          <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">iridakos</span> by
+          <a xmlns:cc="http://creativecommons.org/ns#" href="https://iridakos.com/about/" property="cc:attributionName" rel="cc:attributionURL" class="font-weight-bold">Lazarus Lazaridis</a> is licensed under a <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76452884-1', 'auto');
+
+  ga('set', 'page', '/programming/2014/10/14/testing-execution-of-filters-with-rspec')
+  ga('send', 'pageview');
+
+</script>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1573472334557130114" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1573472334557130114" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1573472334557130114" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1573472334557130114" type="text/javascript"></script>
+
+
+
+
+  </body>
+</html>

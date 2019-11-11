@@ -10,11 +10,10 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feeds/ruby.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 10 Nov 2019 19:33:35 +0200</pubDate>
-    <lastBuildDate>Sun, 10 Nov 2019 19:33:35 +0200</lastBuildDate>
-    <generator>Jekyll v3.7.4</generator>
+    <pubDate>Mon, 11 Nov 2019 13:38:54 +0200</pubDate>
+    <lastBuildDate>Mon, 11 Nov 2019 13:38:54 +0200</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
 
-    
     
 
     
@@ -24,7 +23,7 @@
 
 &lt;p&gt;In this post we are going to:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;create a docker image for the &lt;a href=&quot;/tutorials/2019/04/04/creating-chat-application-rails-websockets.html&quot;&gt;&lt;strong&gt;Rails chat application&lt;/strong&gt; that we created in the previous post&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;create a docker image for the &lt;a href=&quot;/programming/2019/04/04/creating-chat-application-rails-websockets&quot;&gt;&lt;strong&gt;Rails chat application&lt;/strong&gt; that we created in the previous post&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;configure the Docker environment and run the application by:
     &lt;ul&gt;
       &lt;li&gt;creating a container for the PostgreSQL database&lt;/li&gt;
@@ -59,7 +58,7 @@
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
 
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
      apt-transport-https &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
      ca-certificates &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
      curl &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
@@ -80,7 +79,7 @@ curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://download.docker
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;add-apt-repository &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
    &lt;span class=&quot;s2&quot;&gt;&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
-   &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;lsb_release &lt;span class=&quot;nt&quot;&gt;-cs&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;lsb_release &lt;span class=&quot;nt&quot;&gt;-cs&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
    stable&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -88,7 +87,7 @@ curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://download.docker
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
 
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install docker-ce docker-ce-cli containerd.io
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;docker-ce docker-ce-cli containerd.io
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ul&gt;
@@ -179,7 +178,7 @@ For more examples and ideas, visit:
 
 &lt;p&gt;Navigate to the &lt;code class=&quot;highlighter-rouge&quot;&gt;Rails chat tutorial&lt;/code&gt; (from now I will call this &lt;code class=&quot;highlighter-rouge&quot;&gt;application directory&lt;/code&gt;) directory and create the file.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;touch Dockerfile
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;Dockerfile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;and before continuing let’s try to build the image with just that empty file:&lt;/p&gt;
@@ -289,7 +288,7 @@ The other image, the &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby&lt;/co
 
 &lt;p&gt;Before starting the server (puma in our case), we have to install the dependencies of the application. To do so, add the following line to the &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;language-docker highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;bundle install &lt;span class=&quot;nt&quot;&gt;--deployment&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--without&lt;/span&gt; development &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+&lt;div class=&quot;language-docker highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--deployment&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--without&lt;/span&gt; development &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;and rebuild the image.&lt;/p&gt;
@@ -300,7 +299,7 @@ Step 1/3 : FROM ruby:2.6.2-stretch
  &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 8d6721e9290e
 Step 2/3 : COPY &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; /application
  &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; f9b9d813d6a0
-Step 3/3 : RUN bundle install &lt;span class=&quot;nt&quot;&gt;--deployment&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--without&lt;/span&gt; development &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+Step 3/3 : RUN bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--deployment&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--without&lt;/span&gt; development &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
  &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Running &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;a6c8c25da3f5
 Could not locate Gemfile
 The &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/bin/sh -c bundle install --deployment --without development test'&lt;/span&gt; returned a non-zero code: 10
@@ -318,7 +317,7 @@ The &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s
 &lt;span class=&quot;k&quot;&gt;WORKDIR&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; /application&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# Install gems&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;bundle install &lt;span class=&quot;nt&quot;&gt;--deployment&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--without&lt;/span&gt; development &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--deployment&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--without&lt;/span&gt; development &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;and rebuild. Now the gems are being installed and we are ready to start the server.&lt;/p&gt;
@@ -333,7 +332,7 @@ Step 3/4 : WORKDIR /application
  &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Running &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;ab90edf73be5
 Removing intermediate container ab90edf73be5
  &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 6bbdaa9942e3
-Step 4/4 : RUN bundle install &lt;span class=&quot;nt&quot;&gt;--deployment&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--without&lt;/span&gt; development &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+Step 4/4 : RUN bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--deployment&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--without&lt;/span&gt; development &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
  &lt;span class=&quot;nt&quot;&gt;---&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Running &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;22724a3684fe
 The dependency tzinfo-data &lt;span class=&quot;o&quot;&gt;(&amp;gt;=&lt;/span&gt; 0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; will be unused by any of the platforms Bundler is installing &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; Bundler is installing &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;ruby but the dependency is only &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run bundle lock &lt;span class=&quot;nt&quot;&gt;--add-platform&lt;/span&gt; x86-mingw32 x86-mswin32 x64-mingw32 java.
 Fetching gem metadata from https://rubygems.org/............
@@ -348,7 +347,7 @@ Installing sqlite3 1.4.0 with native extensions
 Fetching uglifier 4.1.20
 Installing uglifier 4.1.20
 Bundle &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; 21 Gemfile dependencies, 69 gems now installed.
-Gems &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;the groups development and &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;were not installed.
+Gems &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;the &lt;span class=&quot;nb&quot;&gt;groups &lt;/span&gt;development and &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;were not installed.
 Bundled gems are installed into ./vendor/bundle
 ...
 ...
@@ -374,7 +373,7 @@ Successfully tagged rails-chat-tutorial:latest
 &lt;p&gt;We will install &lt;code class=&quot;highlighter-rouge&quot;&gt;nodejs&lt;/code&gt;, add the following line:&lt;/p&gt;
 
 &lt;div class=&quot;language-docker highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-sL&lt;/span&gt; https://deb.nodesource.com/setup_10.x | bash - &lt;span class=&quot;se&quot;&gt;\
-&lt;/span&gt;    apt install &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; nodejs
+&lt;/span&gt;    apt &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; nodejs
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Rebuild and you should be fine.&lt;/p&gt;
@@ -412,7 +411,7 @@ bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rails server
 
 &lt;p&gt;This file has to be executable, so in your terminal:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chmod +x ./entrypoint.sh
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x ./entrypoint.sh
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;That’s all.&lt;/p&gt;
@@ -427,13 +426,13 @@ bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rails server
 &lt;span class=&quot;k&quot;&gt;WORKDIR&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; /application&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# Install gems&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;bundle install &lt;span class=&quot;nt&quot;&gt;--deployment&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--without&lt;/span&gt; development &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--deployment&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--without&lt;/span&gt; development &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# Set Rails environment to production&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; RAILS_ENV production&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-sL&lt;/span&gt; https://deb.nodesource.com/setup_10.x | bash - &lt;span class=&quot;se&quot;&gt;\
-&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; nodejs
+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; nodejs
 
 &lt;span class=&quot;c&quot;&gt;# Start the application server&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;ENTRYPOINT&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; ./entrypoint.sh&lt;/span&gt;
@@ -456,9 +455,9 @@ bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rails server
 &lt;span class=&quot;k&quot;&gt;ENV&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; RAILS_ENV production&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# Install gems, nodejs and precompile the assets&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;bundle install &lt;span class=&quot;nt&quot;&gt;--deployment&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--without&lt;/span&gt; development &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
+&lt;span class=&quot;k&quot;&gt;RUN &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--deployment&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--without&lt;/span&gt; development &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\
 &lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; curl &lt;span class=&quot;nt&quot;&gt;-sL&lt;/span&gt; https://deb.nodesource.com/setup_10.x | bash - &lt;span class=&quot;se&quot;&gt;\
-&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt install &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; nodejs
+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; apt &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt; nodejs
 
 &lt;span class=&quot;c&quot;&gt;# Start the application server&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;ENTRYPOINT&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; ['./entrypoint.sh']&lt;/span&gt;
@@ -501,8 +500,8 @@ bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rails server
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker ps
 
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
-&amp;lt;a container id&amp;gt;    redis               &lt;span class=&quot;s2&quot;&gt;&quot;docker-entrypoint.s…&quot;&lt;/span&gt;   2 minutes ago       Up 2 minutes        0.0.0.0:6379-&amp;gt;6379/tcp   rails-chat-tutorial-redis
-&amp;lt;a container id&amp;gt;    postgres            &lt;span class=&quot;s2&quot;&gt;&quot;docker-entrypoint.s…&quot;&lt;/span&gt;   2 minutes ago       Up 2 minutes        0.0.0.0:5432-&amp;gt;5432/tcp   rails-chat-tutorial-pg
+&amp;lt;a container &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;    redis               &lt;span class=&quot;s2&quot;&gt;&quot;docker-entrypoint.s…&quot;&lt;/span&gt;   2 minutes ago       Up 2 minutes        0.0.0.0:6379-&amp;gt;6379/tcp   rails-chat-tutorial-redis
+&amp;lt;a container &lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;    postgres            &lt;span class=&quot;s2&quot;&gt;&quot;docker-entrypoint.s…&quot;&lt;/span&gt;   2 minutes ago       Up 2 minutes        0.0.0.0:5432-&amp;gt;5432/tcp   rails-chat-tutorial-pg
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;Rails chat tutorial&lt;/code&gt; in production mode needs the following environmental variables:&lt;/p&gt;
@@ -593,8 +592,10 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 &lt;/div&gt;
 </description>
         <pubDate>Sun, 07 Apr 2019 04:00:00 +0300</pubDate>
-        <link>https://iridakos.com/tutorials/2019/04/07/dockerizing-a-rails-application.html</link>
-        <guid isPermaLink="true">https://iridakos.com/tutorials/2019/04/07/dockerizing-a-rails-application.html</guid>
+        <link>https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application</guid>
+        
+        <category>ruby</category>
         
         <category>rails</category>
         
@@ -610,10 +611,10 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
         
         <category>chat</category>
         
+        <category>tutorial</category>
+        
+        
         <category>programming</category>
-        
-        
-        <category>tutorials</category>
         
       </item>
     
@@ -623,7 +624,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 &lt;p&gt;I recently familiarized myself with the awesomeness of WebSockets and I finally found the time to write a tutorial about it. I hope you find it helpful.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: I also published another post for &lt;a href=&quot;https://twitter.com/lazaru_s/status/1182193506430984193&quot;&gt;dockerizing the application&lt;/a&gt;  of this tutorial, you can find it &lt;a href=&quot;/tutorials/2019/04/07/dockerizing-a-rails-application.html&quot;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: I also published another post for &lt;a href=&quot;https://twitter.com/lazaru_s/status/1182193506430984193&quot;&gt;dockerizing the application&lt;/a&gt;  of this tutorial, you can find it &lt;a href=&quot;/programming/2019/04/07/dockerizing-a-rails-application&quot;&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
@@ -658,7 +659,7 @@ Without WebSockets you would have to either:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Use AJAX with Javascript intervals to request and render the latest state of the processes or&lt;/li&gt;
   &lt;li&gt;Automatically reload the page every x seconds (&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta http-equiv=&quot;refresh&quot; content=&quot;x&quot;&amp;gt;&lt;/code&gt;) or&lt;/li&gt;
-  &lt;li&gt;Add a message on the page &lt;em&gt;“The statuses are not updated automatically &lt;span class=&quot;text-nowrap&quot;&gt;¯\_(ツ)_/¯&lt;/span&gt; Press &lt;a href=&quot;/tutorials/2019/04/04/creating-chat-application-rails-websockets.html&quot;&gt;here&lt;/a&gt; to reload the page.”&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;Add a message on the page &lt;em&gt;“The statuses are not updated automatically &lt;span class=&quot;text-nowrap&quot;&gt;¯\_(ツ)_/¯&lt;/span&gt; Press &lt;a href=&quot;/programming/2019/04/04/creating-chat-application-rails-websockets&quot;&gt;here&lt;/a&gt; to reload the page.”&lt;/em&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;All of these methods would request the process statuses from the server even if nothing has changed.&lt;/p&gt;
@@ -682,7 +683,7 @@ Without WebSockets you would have to either:&lt;/p&gt;
 
 &lt;p&gt;I use &lt;a href=&quot;https://rvm.io/&quot;&gt;rvm&lt;/a&gt; to manage the &lt;strong&gt;Ruby&lt;/strong&gt; versions installed on my system. To install the desired ruby version use:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm install ruby 2.6.2
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ruby 2.6.2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;install-rails&quot;&gt;Install rails&lt;/h4&gt;
@@ -1515,8 +1516,8 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 &lt;p&gt;Create a file &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/javascripts/room.js&lt;/code&gt; and add the following:&lt;/p&gt;
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#new_room_message'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'ajax:success'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'input[type=&quot;text&quot;]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#new_room_message&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;ajax:success&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;input[type=&quot;text&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -1635,7 +1636,7 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 &lt;p&gt;To install it on Ubuntu you just have to execute the following commands in your terminal:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt install redis-server
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;redis-server
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;To check that installation is successful, in your terminal make sure you get a PONG:&lt;/p&gt;
@@ -1792,12 +1793,12 @@ To do so, alter the &lt;code class=&quot;highlighter-rouge&quot;&gt;create&lt;/c
 &lt;p&gt;So, on the other side, the client side, we are going to be receiving the json representation of the &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomMessage&lt;/code&gt; model. Let’s see what that is:&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;room_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;user_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;My first message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;created_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-04-04T17:09:00.637Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;updated_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-04-04T17:09:00.637Z&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;room_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;user_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;My first message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;created_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-04-04T17:09:00.637Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;updated_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-04-04T17:09:00.637Z&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1834,13 +1835,13 @@ end
 &lt;p&gt;Let’s confirm that the new JSON transformation is valid:&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;room_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;user_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;My first message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;created_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-04-04T17:09:00.637Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;updated_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-04-04T17:09:00.637Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;user_avatar_url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://gravatar.com/avatar/02a28db6886d578f75a820b50f2dd334.png&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;room_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;user_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;My first message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;created_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-04-04T17:09:00.637Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;updated_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-04-04T17:09:00.637Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;user_avatar_url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://gravatar.com/avatar/02a28db6886d578f75a820b50f2dd334.png&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1893,26 +1894,26 @@ end
 &lt;p&gt;Create the file &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/javascripts/channels/room_channel.js&lt;/code&gt; and add the following code:&lt;/p&gt;
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[data-channel-subscribe=&quot;room&quot;]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[data-channel-subscribe=&quot;room&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;room_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'room-id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;messageTemplate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[data-role=&quot;message-template&quot;]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;room_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;room-id&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;messageTemplate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[data-role=&quot;message-template&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-    &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scrollHeight&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;        
+    &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;scrollHeight&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;        
 
     &lt;span class=&quot;nx&quot;&gt;App&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;subscriptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
       &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;RoomChannel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;RoomChannel&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
         &lt;span class=&quot;na&quot;&gt;room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;room_id&lt;/span&gt;
       &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
       &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;na&quot;&gt;received&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
           &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;messageTemplate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-          &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[data-role=&quot;user-avatar&quot;]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'src'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user_avatar_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-          &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[data-role=&quot;message-text&quot;]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-          &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[data-role=&quot;message-date&quot;]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;updated_at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[data-role=&quot;user-avatar&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user_avatar_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[data-role=&quot;message-text&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[data-role=&quot;message-date&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;updated_at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
           &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-          &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scrollHeight&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;scrollHeight&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
       &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -1970,8 +1971,10 @@ end
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 04 Apr 2019 23:00:00 +0300</pubDate>
-        <link>https://iridakos.com/tutorials/2019/04/04/creating-chat-application-rails-websockets.html</link>
-        <guid isPermaLink="true">https://iridakos.com/tutorials/2019/04/04/creating-chat-application-rails-websockets.html</guid>
+        <link>https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets</guid>
+        
+        <category>ruby</category>
         
         <category>rails</category>
         
@@ -1987,10 +1990,12 @@ end
         
         <category>redis</category>
         
+        <category>featured</category>
+        
+        <category>tutorial</category>
+        
+        
         <category>programming</category>
-        
-        
-        <category>tutorials</category>
         
       </item>
     
@@ -2036,19 +2041,19 @@ end
 &lt;p&gt;It should give something like:&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;asdfasdf&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;cluster_name&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;elasticsearch&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;cluster_uuid&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;asasdfdf-as&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;number&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;6.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;build_hash&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;asdf&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;build_date&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;2017-11-10T18:41:22.859Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;build_snapshot&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;lucene_version&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;7.0.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;minimum_wire_compatibility_version&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;5.6.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;minimum_index_compatibility_version&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;5.0.0&quot;&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;asdfasdf&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;cluster_name&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;elasticsearch&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;cluster_uuid&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;asasdfdf-as&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;6.0.0&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;build_hash&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;asdf&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;build_date&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;2017-11-10T18:41:22.859Z&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;build_snapshot&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;lucene_version&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;7.0.1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;minimum_wire_compatibility_version&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;5.6.0&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;minimum_index_compatibility_version&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;5.0.0&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;tagline&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;You Know, for Search&quot;&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;tagline&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;You Know, for Search&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -2064,7 +2069,7 @@ end
 
 &lt;p&gt;Install the gem and its dependencies use the following command in your terminal:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install elasticsearch
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;elasticsearch
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;ruby-interactive-shell&quot;&gt;Ruby interactive shell&lt;/h3&gt;
@@ -2281,8 +2286,8 @@ In irb type:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/elasticsearch-linux-manpages/elastic-man-pages.jpg&quot; alt=&quot;Cat bookmark&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 12 Apr 2018 19:00:00 +0300</pubDate>
-        <link>https://iridakos.com/tutorials/2018/04/12/elasticsearch-linux-man-pages.html</link>
-        <guid isPermaLink="true">https://iridakos.com/tutorials/2018/04/12/elasticsearch-linux-man-pages.html</guid>
+        <link>https://iridakos.com/programming/2018/04/12/elasticsearch-linux-man-pages</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2018/04/12/elasticsearch-linux-man-pages</guid>
         
         <category>elasticsearch</category>
         
@@ -2296,10 +2301,10 @@ In irb type:&lt;/p&gt;
         
         <category>ruby</category>
         
+        <category>featured</category>
+        
+        
         <category>programming</category>
-        
-        
-        <category>tutorials</category>
         
       </item>
     
@@ -2325,8 +2330,8 @@ In irb type:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 28 Mar 2018 00:15:00 +0300</pubDate>
-        <link>https://iridakos.com/how-to/2018/03/28/custom-http-headers.html</link>
-        <guid isPermaLink="true">https://iridakos.com/how-to/2018/03/28/custom-http-headers.html</guid>
+        <link>https://iridakos.com/programming/2018/03/28/custom-http-headers</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2018/03/28/custom-http-headers</guid>
         
         <category>ruby</category>
         
@@ -2338,16 +2343,14 @@ In irb type:&lt;/p&gt;
         
         <category>headers</category>
         
+        
         <category>programming</category>
-        
-        
-        <category>how-to</category>
         
       </item>
     
       <item>
         <title>Creating a Linux Desktop application with Ruby</title>
-        <description>&lt;p&gt;Lately I was experimenting with GTK and its Ruby bindings and I decided to write a tutorial introducing this functionality. In this post we are going to create a simple ToDo application (something like what we created &lt;a href=&quot;/tutorials/2013/12/07/creating-a-simple-todo-part-1.html&quot;&gt;here&lt;/a&gt; with Ruby on Rails) using the &lt;code class=&quot;highlighter-rouge&quot;&gt;gtk3&lt;/code&gt; gem a.k.a. the GTK+ Ruby bindings.&lt;/p&gt;
+        <description>&lt;p&gt;Lately I was experimenting with GTK and its Ruby bindings and I decided to write a tutorial introducing this functionality. In this post we are going to create a simple ToDo application (something like what we created &lt;a href=&quot;/programming/2013/12/07/creating-a-simple-todo-part-1&quot;&gt;here&lt;/a&gt; with Ruby on Rails) using the &lt;code class=&quot;highlighter-rouge&quot;&gt;gtk3&lt;/code&gt; gem a.k.a. the GTK+ Ruby bindings.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The code of the tutorial is available at &lt;a href=&quot;https://github.com/iridakos/gtk-todo-tutorial&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 
@@ -2469,7 +2472,7 @@ If you are on Ubuntu, install &lt;code class=&quot;highlighter-rouge&quot;&gt;gl
 
 &lt;p&gt;Don’t try it yet though because we haven’t changed the mode of the file so as to be executable. To do so, type the following command in a terminal after navigating to the application’s root directory:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chmod +x ./gtk-todo &lt;span class=&quot;c&quot;&gt;# make the script executable&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x ./gtk-todo &lt;span class=&quot;c&quot;&gt;# make the script executable&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Now from the console execute:&lt;/p&gt;
@@ -3222,12 +3225,12 @@ Go ahead and change that code in &lt;code class=&quot;highlighter-rouge&quot;&gt
 &lt;p&gt;Pressing save and navigating to your &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.gtk-todo-tutorial&lt;/code&gt; folder you should see a file there. Mine had the following contents:&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;3d635839-66d0-4ce6-af31-e81b47b3e585&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-	&lt;span class=&quot;s2&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Optimize the priorities model creation&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-	&lt;span class=&quot;s2&quot;&gt;&quot;notes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;It doesn't have to be initialized upon each window creation.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-	&lt;span class=&quot;s2&quot;&gt;&quot;priority&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;high&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-	&lt;span class=&quot;s2&quot;&gt;&quot;filename&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/home/iridakos/.gtk-todo-tutorial/3d635839-66d0-4ce6-af31-e81b47b3e585.json&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-	&lt;span class=&quot;s2&quot;&gt;&quot;creation_datetime&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;2018-01-25 18:09:51 +0200&quot;&lt;/span&gt;
+	&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;3d635839-66d0-4ce6-af31-e81b47b3e585&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Optimize the priorities model creation&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;notes&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;It doesn't have to be initialized upon each window creation.&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;priority&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;high&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/home/iridakos/.gtk-todo-tutorial/3d635839-66d0-4ce6-af31-e81b47b3e585.json&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;creation_datetime&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;2018-01-25 18:09:51 +0200&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -3541,8 +3544,8 @@ Add this code in &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::Applicati
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 25 Jan 2018 21:00:00 +0200</pubDate>
-        <link>https://iridakos.com/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html</link>
-        <guid isPermaLink="true">https://iridakos.com/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby.html</guid>
+        <link>https://iridakos.com/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby</guid>
         
         <category>linux</category>
         
@@ -3556,10 +3559,12 @@ Add this code in &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::Applicati
         
         <category>tutorial</category>
         
+        <category>todo</category>
+        
+        <category>featured</category>
+        
+        
         <category>programming</category>
-        
-        
-        <category>tutorials</category>
         
       </item>
     
@@ -3587,19 +3592,19 @@ The sample application will be a stupid simple blog and the data will be, what e
 &lt;p&gt;It should give something like:&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;asdfasdf&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;cluster_name&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;elasticsearch&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;cluster_uuid&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;asasdfdf-as&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;version&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;number&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;6.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;build_hash&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;asdf&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;build_date&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;2017-11-10T18:41:22.859Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;build_snapshot&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;lucene_version&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;7.0.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;minimum_wire_compatibility_version&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;5.6.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;minimum_index_compatibility_version&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;5.0.0&quot;&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;asdfasdf&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;cluster_name&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;elasticsearch&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;cluster_uuid&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;asasdfdf-as&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;6.0.0&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;build_hash&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;asdf&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;build_date&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;2017-11-10T18:41:22.859Z&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;build_snapshot&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;lucene_version&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;7.0.1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;minimum_wire_compatibility_version&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;5.6.0&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;minimum_index_compatibility_version&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;5.0.0&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;tagline&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;You Know, for Search&quot;&lt;/span&gt;
+  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;tagline&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;You Know, for Search&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -3617,7 +3622,7 @@ The sample application will be a stupid simple blog and the data will be, what e
 
 &lt;p&gt;Given that you have ruby installed, we will need the &lt;a href=&quot;https://github.com/rails/rails&quot;&gt;rails gem&lt;/a&gt; as well. We will use the latest stable version at the moment this turorial is written, which is &lt;strong&gt;5.1.4&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install rails &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; 5.1.4
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;rails &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; 5.1.4
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;You can check the version of your installed rails gem with:&lt;/p&gt;
@@ -4087,8 +4092,8 @@ The general idea is to create a &lt;em&gt;search page&lt;/em&gt; with a text fie
 &lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/irida-elastic.png&quot; alt=&quot;cat stretching&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 03 Dec 2017 08:30:00 +0200</pubDate>
-        <link>https://iridakos.com/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html</link>
-        <guid isPermaLink="true">https://iridakos.com/tutorials/2017/12/03/elasticsearch-and-rails-tutorial.html</guid>
+        <link>https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial</guid>
         
         <category>ruby</category>
         
@@ -4098,10 +4103,10 @@ The general idea is to create a &lt;em&gt;search page&lt;/em&gt; with a text fie
         
         <category>tutorial</category>
         
+        <category>featured</category>
+        
+        
         <category>programming</category>
-        
-        
-        <category>tutorials</category>
         
       </item>
     
@@ -4187,8 +4192,8 @@ Back to the browser now, everything seemed fine till the moment I tried to submi
 &lt;p&gt;Done. Problem solved.&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Oct 2014 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/how-to/2014/10/14/rails-radio-buttons-required-boolean.html</link>
-        <guid isPermaLink="true">https://iridakos.com/how-to/2014/10/14/rails-radio-buttons-required-boolean.html</guid>
+        <link>https://iridakos.com/programming/2014/10/14/rails-radio-buttons-required-boolean</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2014/10/14/rails-radio-buttons-required-boolean</guid>
         
         <category>rails</category>
         
@@ -4196,10 +4201,10 @@ Back to the browser now, everything seemed fine till the moment I tried to submi
         
         <category>hack</category>
         
-        <category>programming</category>
-        
-        
         <category>how-to</category>
+        
+        
+        <category>programming</category>
         
       </item>
     
@@ -4319,8 +4324,8 @@ Back to the browser now, everything seemed fine till the moment I tried to submi
 &lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-bQn2QNa2khs/VE_hB6TVtpI/AAAAAAAAA7Y/vnRKVmXyXJ0/s1600/irida.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Oct 2014 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/how-to/2014/10/14/testing-execution-of-filters-with-rspec.html</link>
-        <guid isPermaLink="true">https://iridakos.com/how-to/2014/10/14/testing-execution-of-filters-with-rspec.html</guid>
+        <link>https://iridakos.com/programming/2014/10/14/testing-execution-of-filters-with-rspec</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2014/10/14/testing-execution-of-filters-with-rspec</guid>
         
         <category>rspec</category>
         
@@ -4334,10 +4339,10 @@ Back to the browser now, everything seemed fine till the moment I tried to submi
         
         <category>testing</category>
         
-        <category>programming</category>
-        
-        
         <category>how-to</category>
+        
+        
+        <category>programming</category>
         
       </item>
     
@@ -4452,8 +4457,8 @@ NOT easy, believe me…&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/irida-small.jpeg&quot; alt=&quot;cat in panic&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Oct 2014 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/rails/2014/10/14/rescue-from-memory-leak.html</link>
-        <guid isPermaLink="true">https://iridakos.com/rails/2014/10/14/rescue-from-memory-leak.html</guid>
+        <link>https://iridakos.com/programming/2014/10/14/rescue-from-memory-leak</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2014/10/14/rescue-from-memory-leak</guid>
         
         <category>rails</category>
         
@@ -4461,10 +4466,8 @@ NOT easy, believe me…&lt;/p&gt;
         
         <category>ruby</category>
         
+        
         <category>programming</category>
-        
-        
-        <category>rails</category>
         
       </item>
     
@@ -4503,7 +4506,7 @@ In this last part we are going to deploy the application to OpenShift.&lt;/p&gt;
 
 &lt;p&gt;We will install the client tools (rhc). From the command line:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install rhc
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;rhc
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-qmddyVqJAWo/UrYyrQZWdlI/AAAAAAAAAys/RxdYjVLXy5c/s640/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
@@ -4567,7 +4570,7 @@ git init
 
 &lt;p&gt;Copy the value of the Git URL because you are going to use it in the following command:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote add openshift &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;paste the value here]
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote add openshift &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;paste &lt;/span&gt;the value here]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Let’s commit. From the command line:&lt;/p&gt;
@@ -4702,8 +4705,8 @@ git push openshift master
 &lt;p&gt;That’s it. We’re done! The application is successfully deployed to OpenShift.&lt;/p&gt;
 </description>
         <pubDate>Sun, 22 Dec 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/tutorials/2013/12/22/creating-a-simple-todo-part-4.html</link>
-        <guid isPermaLink="true">https://iridakos.com/tutorials/2013/12/22/creating-a-simple-todo-part-4.html</guid>
+        <link>https://iridakos.com/programming/2013/12/22/creating-a-simple-todo-part-4</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2013/12/22/creating-a-simple-todo-part-4</guid>
         
         <category>ruby</category>
         
@@ -4716,8 +4719,6 @@ git push openshift master
         <category>web application</category>
         
         <category>mvc</category>
-        
-        <category>programming</category>
         
         
         <category>tutorials</category>
@@ -4742,7 +4743,7 @@ git push openshift master
 
 &lt;p&gt;Install the gem from the command line:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install &lt;span class=&quot;s1&quot;&gt;'mailcatcher'&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'mailcatcher'&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://3.bp.blogspot.com/-xir1xot_tWk/UrQSPpJ98CI/AAAAAAAAAs0/r43-pJC-xMo/s1600/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
@@ -4790,7 +4791,7 @@ git push openshift master
 
 &lt;p&gt;and then, from the command line execute the bundle installer:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle install
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;In order to have the gem’s initialization stuff automatically generated for us, execute from the command line again:&lt;/p&gt;
@@ -4914,8 +4915,8 @@ We are ready to migrate, from the command line:&lt;/p&gt;
 
 &lt;p&gt;From the command line:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install html2haml
-&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;file &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;app/views/devise/&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.erb&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;html2haml &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%erb&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;haml &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; rm &lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;html2haml
+&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;file &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;app/views/devise/&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.erb&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;html2haml &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%erb&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;haml &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;I got a bunch of warnings from the last command but the conversion was successful.&lt;/p&gt;
@@ -5079,7 +5080,7 @@ We will do this firstly by creating a migration to add a user_id column to the u
 
 &lt;p&gt;and bundle from the command line:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle install
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Next, we are going to generate the file in which we are going to describe the “abilities” of a user:&lt;/p&gt;
@@ -5201,12 +5202,12 @@ A model scope that uses the &lt;code class=&quot;highlighter-rouge&quot;&gt;abil
 
 &lt;p&gt;This is the last part of the tutorial that we actually implement stuff for the ToDo application.&lt;/p&gt;
 
-&lt;p&gt;There is going to be a &lt;a href=&quot;/tutorials/2013/12/22/creating-a-simple-todo-part-4.html&quot;&gt;final part&lt;/a&gt; in which I am going to help you deploy the application to &lt;a href=&quot;https://www.openshift.com/&quot;&gt;&lt;strong&gt;OpenShift&lt;/strong&gt;&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;There is going to be a &lt;a href=&quot;/programming/2013/12/22/creating-a-simple-todo-part-4&quot;&gt;final part&lt;/a&gt; in which I am going to help you deploy the application to &lt;a href=&quot;https://www.openshift.com/&quot;&gt;&lt;strong&gt;OpenShift&lt;/strong&gt;&lt;/a&gt;!&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 20 Dec 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/tutorials/2013/12/20/creating-a-simple-todo-part-3.html</link>
-        <guid isPermaLink="true">https://iridakos.com/tutorials/2013/12/20/creating-a-simple-todo-part-3.html</guid>
+        <link>https://iridakos.com/programming/2013/12/20/creating-a-simple-todo-part-3</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2013/12/20/creating-a-simple-todo-part-3</guid>
         
         <category>ruby</category>
         
@@ -5220,8 +5221,6 @@ A model scope that uses the &lt;code class=&quot;highlighter-rouge&quot;&gt;abil
         
         <category>mvc</category>
         
-        <category>programming</category>
-        
         
         <category>tutorials</category>
         
@@ -5229,7 +5228,7 @@ A model scope that uses the &lt;code class=&quot;highlighter-rouge&quot;&gt;abil
     
       <item>
         <title>Creating a simple ToDo application with Ruby on Rails - Part 2</title>
-        <description>&lt;p&gt;This is the second part of the tutorial for &lt;a href=&quot;/tutorials/2013/12/07/creating-a-simple-todo-part-1.html&quot;&gt;creating a simple ToDo application&lt;/a&gt;.
+        <description>&lt;p&gt;This is the second part of the tutorial for &lt;a href=&quot;/programming/2013/12/07/creating-a-simple-todo-part-1&quot;&gt;creating a simple ToDo application&lt;/a&gt;.
 In this part, we are going to:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;implement the edit/delete actions accordingly&lt;/li&gt;
@@ -5673,12 +5672,12 @@ We can use the same partial we created for the &lt;strong&gt;new&lt;/strong&gt; 
 
 &lt;p&gt;Thank you for the feedback you’ve given on the previous posts, I’d be glad to have your comments and corrections for this one too.&lt;/p&gt;
 
-&lt;p&gt;In the &lt;a href=&quot;/tutorials/2013/12/20/creating-a-simple-todo-part-3.html&quot;&gt;next part&lt;/a&gt; of the tutorial we are going to use &lt;a href=&quot;https://github.com/plataformatec/devise&quot;&gt;devise&lt;/a&gt; in order to have users logging in the application.&lt;/p&gt;
+&lt;p&gt;In the &lt;a href=&quot;/programming/2013/12/20/creating-a-simple-todo-part-3&quot;&gt;next part&lt;/a&gt; of the tutorial we are going to use &lt;a href=&quot;https://github.com/plataformatec/devise&quot;&gt;devise&lt;/a&gt; in order to have users logging in the application.&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 17 Dec 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/tutorials/2013/12/17/creating-a-simple-todo-part-2.html</link>
-        <guid isPermaLink="true">https://iridakos.com/tutorials/2013/12/17/creating-a-simple-todo-part-2.html</guid>
+        <link>https://iridakos.com/programming/2013/12/17/creating-a-simple-todo-part-2</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2013/12/17/creating-a-simple-todo-part-2</guid>
         
         <category>ruby</category>
         
@@ -5692,8 +5691,6 @@ We can use the same partial we created for the &lt;strong&gt;new&lt;/strong&gt; 
         
         <category>mvc</category>
         
-        <category>programming</category>
-        
         
         <category>tutorials</category>
         
@@ -5701,7 +5698,7 @@ We can use the same partial we created for the &lt;strong&gt;new&lt;/strong&gt; 
     
       <item>
         <title>Creating a simple ToDo application with Ruby on Rails - Part 1</title>
-        <description>&lt;p&gt;So, you learned &lt;a href=&quot;/tutorials/2013/11/24/saying-hello-world-with-ruby-on-rails.html&quot;&gt;how to say “Hello world” with Ruby on Rails&lt;/a&gt; and it’s time to move on since that app is not something you will use unless you are the only one survived on earth.&lt;/p&gt;
+        <description>&lt;p&gt;So, you learned &lt;a href=&quot;/programming/2013/11/24/saying-hello-world-with-ruby-on-rails&quot;&gt;how to say “Hello world” with Ruby on Rails&lt;/a&gt; and it’s time to move on since that app is not something you will use unless you are the only one survived on earth.&lt;/p&gt;
 
 &lt;p&gt;In this part of the tutorial you will get familiar with the following items.&lt;/p&gt;
 
@@ -5827,7 +5824,7 @@ Play a little with it, for example:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://3.bp.blogspot.com/-JYNL9tGcpoU/UqHx38tF17I/AAAAAAAAAfg/nP1LEN0Dw-Y/s1600/4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Don’t be scared by the example, read &lt;a href=&quot;/ruby/2013/11/08/dont-give-up-on-ruby.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Don’t be scared by the example, read &lt;a href=&quot;/programming/2013/11/08/dont-give-up-on-ruby&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Now, let’s check our Task model. Just type &lt;code class=&quot;highlighter-rouge&quot;&gt;Task&lt;/code&gt;:&lt;/p&gt;
 
@@ -6105,9 +6102,9 @@ We want all these actions to be executed the ajax way and not with redirects to 
 &lt;p&gt;&lt;img src=&quot;https://3.bp.blogspot.com/-nwVYK7VYcVs/UrHx6dnNLQI/AAAAAAAAAqE/GBIAxL5U6MU/s1600/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Edit the &lt;code class=&quot;highlighter-rouge&quot;&gt;new.js.erb&lt;/code&gt; and add the following:&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#modal'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Foo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;modal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'show'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#modal&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Foo&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;modal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;We will correct the code above later but for the time being, let’s see how does the modal appear in our page.&lt;/p&gt;
@@ -6213,7 +6210,7 @@ m.modal('show');
 We also call this function when the document is ready on the body in order to avoid the explicit call on freshly rendered pages.
 Now, since our form was not present during the &lt;code class=&quot;highlighter-rouge&quot;&gt;ready&lt;/code&gt; callback of the document, the behaviour hasn’t been added to our &lt;code class=&quot;highlighter-rouge&quot;&gt;completed&lt;/code&gt; input. Thus, we must add the following line at the end of the &lt;code class=&quot;highlighter-rouge&quot;&gt;new.js.erb&lt;/code&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#modal'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;integrateDatepicker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#modal&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;integrateDatepicker&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Refresh and there it is:&lt;/p&gt;
@@ -6242,7 +6239,7 @@ We only allow values for the &lt;code class=&quot;highlighter-rouge&quot;&gt;tit
 
 &lt;p&gt;&lt;img src=&quot;https://2.bp.blogspot.com/-pGsV25stbqI/UqJ_oUclJlI/AAAAAAAAAl0/x2cdjwjwt04/s1600/8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;It’s about time to end this part of the tutorial here. Very soon I will write the &lt;a href=&quot;/tutorials/2013/12/17/creating-a-simple-todo-part-2.html&quot;&gt;next part&lt;/a&gt; in which we will:&lt;/p&gt;
+&lt;p&gt;It’s about time to end this part of the tutorial here. Very soon I will write the &lt;a href=&quot;/programming/2013/12/17/creating-a-simple-todo-part-2&quot;&gt;next part&lt;/a&gt; in which we will:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;refactor the &lt;code class=&quot;highlighter-rouge&quot;&gt;create&lt;/code&gt; action so that it doesn’t redirect to the root path but it closes the modal and re-renders the table of the tasks&lt;/li&gt;
@@ -6251,8 +6248,8 @@ We only allow values for the &lt;code class=&quot;highlighter-rouge&quot;&gt;tit
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 07 Dec 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/tutorials/2013/12/07/creating-a-simple-todo-part-1.html</link>
-        <guid isPermaLink="true">https://iridakos.com/tutorials/2013/12/07/creating-a-simple-todo-part-1.html</guid>
+        <link>https://iridakos.com/programming/2013/12/07/creating-a-simple-todo-part-1</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2013/12/07/creating-a-simple-todo-part-1</guid>
         
         <category>ruby</category>
         
@@ -6266,16 +6263,14 @@ We only allow values for the &lt;code class=&quot;highlighter-rouge&quot;&gt;tit
         
         <category>mvc</category>
         
+        
         <category>programming</category>
-        
-        
-        <category>tutorials</category>
         
       </item>
     
       <item>
         <title>Saying hello world with Ruby on Rails</title>
-        <description>&lt;p&gt;If you are new to Ruby I suggest you first read my &lt;a href=&quot;/ruby/2013/11/08/dont-give-up-on-ruby.html&quot;&gt;previous post&lt;/a&gt; which in short explains why you should not give up on learning Ruby.&lt;/p&gt;
+        <description>&lt;p&gt;If you are new to Ruby I suggest you first read my &lt;a href=&quot;/programming/2013/11/08/dont-give-up-on-ruby&quot;&gt;previous post&lt;/a&gt; which in short explains why you should not give up on learning Ruby.&lt;/p&gt;
 
 &lt;p&gt;Starting with this post, I’ll be writing some tutorials covering the first steps you could follow in order to get familiar with both the language (Ruby) and the framework (Ruby on Rails). My posts will be based on my own experience so I hope that anyone new here can understand them easily.&lt;/p&gt;
 
@@ -6300,7 +6295,7 @@ We only allow values for the &lt;code class=&quot;highlighter-rouge&quot;&gt;tit
 &lt;h2 id=&quot;lets-begin&quot;&gt;Let’s begin&lt;/h2&gt;
 
 &lt;p&gt;Create a folder in which you are going to put the tutorial’s code and navigate to it from the command line:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir tutorials
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;tutorials
 &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;tutorials
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -6430,11 +6425,11 @@ So let’s create this view in the appropriate folder which is:
 
 &lt;p&gt;There, &lt;strong&gt;you just created your first Ruby on Rails application!&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;What’s next? How about creating a &lt;a href=&quot;/tutorials/2013/12/07/creating-a-simple-todo-part-1.html&quot;&gt;simple ToDo application&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;What’s next? How about creating a &lt;a href=&quot;/programming/2013/12/07/creating-a-simple-todo-part-1&quot;&gt;simple ToDo application&lt;/a&gt;?&lt;/p&gt;
 </description>
         <pubDate>Sun, 24 Nov 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/tutorials/2013/11/24/saying-hello-world-with-ruby-on-rails.html</link>
-        <guid isPermaLink="true">https://iridakos.com/tutorials/2013/11/24/saying-hello-world-with-ruby-on-rails.html</guid>
+        <link>https://iridakos.com/programming/2013/11/24/saying-hello-world-with-ruby-on-rails</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2013/11/24/saying-hello-world-with-ruby-on-rails</guid>
         
         <category>ruby</category>
         
@@ -6448,10 +6443,8 @@ So let’s create this view in the appropriate folder which is:
         
         <category>hello world</category>
         
+        
         <category>programming</category>
-        
-        
-        <category>tutorials</category>
         
       </item>
     
@@ -6516,15 +6509,15 @@ I was really excited actually and I couldn’t wait to start learning the new st
 &lt;p&gt;Just give it some time.&lt;/p&gt;
 </description>
         <pubDate>Fri, 08 Nov 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/ruby/2013/11/08/dont-give-up-on-ruby.html</link>
-        <guid isPermaLink="true">https://iridakos.com/ruby/2013/11/08/dont-give-up-on-ruby.html</guid>
+        <link>https://iridakos.com/programming/2013/11/08/dont-give-up-on-ruby</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2013/11/08/dont-give-up-on-ruby</guid>
         
         <category>ruby</category>
         
         <category>introduction</category>
         
         
-        <category>ruby</category>
+        <category>programming</category>
         
       </item>
     

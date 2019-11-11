@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ocs-site-verification" content="e5faa08e01247c38aadf1c1737ff8136">
+  <meta name="google-site-verification" content="KqOxy0ecDlfNdfO530ZAbtNBedy49hn2KziyqLK0JGo" />
+
+  <title>Dockerizing a Rails application</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
+
+  <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css?1573472334557130114">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Dockerizing a Rails application" />
+<meta name="author" content="Lazarus Lazaridis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A step by step tutorial to dockerize a Rails application and run it in Docker with PostgreSQL and Redis." />
+<meta property="og:description" content="A step by step tutorial to dockerize a Rails application and run it in Docker with PostgreSQL and Redis." />
+<link rel="canonical" href="https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application" />
+<meta property="og:url" content="https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application" />
+<meta property="og:site_name" content="iridakos" />
+<meta property="og:image" content="https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-04-07T04:00:00+03:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png" />
+<meta property="twitter:title" content="Dockerizing a Rails application" />
+<meta name="twitter:site" content="@lazaru_s" />
+<meta name="twitter:creator" content="@Lazarus Lazaridis" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"image":"https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png","description":"A step by step tutorial to dockerize a Rails application and run it in Docker with PostgreSQL and Redis.","@type":"BlogPosting","url":"https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application","headline":"Dockerizing a Rails application","dateModified":"2019-04-07T04:00:00+03:00","datePublished":"2019-04-07T04:00:00+03:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+  <script type="text/javascript">
+      window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on the website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"light-bottom"};
+  </script>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+</head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg iridakos-navbar">
+  <div class="container-fluid no-gutters">
+    
+
+    <a class="navbar-brand " href="/" alt="home">
+      <i class="fa fa-home"></i>
+      home
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="fa fa-bars pt-1"></i>
+      </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="header-pages">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            programming
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="more">
+            <a class="dropdown-item" href="/programming/">all posts</a>
+            <a class="dropdown-item" href="/programming/featured/">featured posts</a>
+            <a class="dropdown-item" href="/programming/tutorials/">tutorials</a>
+            <a class="dropdown-item" href="/programming/how-to/">how to</a>
+            <a class="dropdown-item" href="/programming/code/">code</a>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/tags/">tags</a>
+          </div>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/painting/" alt="painting">painting</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/cats/" alt="cats">cats</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/about/" alt="about">about me</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0" method="get" action="/search">
+        <div class="input-group input-group-sm mr-sm-2">
+          <input class="form-control" name="query" type="search" placeholder="Search the blog">
+
+          <div class="input-group-append">
+            <button class="btn btn-warning" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="page-title-container">
+  <div class="container-fluid no-gutters">
+    <div class="page-title">
+      <div class="row align-items-center">
+        <div class="col-xs-12 col-md-8 col-lg-9 order-md-first order-last text-center text-md-left">
+          <h1>Dockerizing a Rails application</h1>
+
+            <div class="page-subtitle">
+            A step by step tutorial to dockerize a Rails application and run it in Docker with PostgreSQL and Redis.
+
+            
+              <div class="post">
+                <div class="post-metadata">
+                  <div class="post-date" title="published on">
+                    Published on <span class="important">Apr 7, 2019</span>
+                  </div>
+
+                  <div class="post-category" title="in category">
+                    in category <span class="important">programming</span>
+                  </div>
+                </div>
+
+                
+                
+                  <div class="post-tags">
+                    <span class="important">tags:</span>
+                    
+                      <a href="/tags/?tag=ruby" class="ga-event-link" data-event-label="ruby" data-event-action="click" data-event-category="tags">ruby</a> - 
+                    
+                      <a href="/tags/?tag=rails" class="ga-event-link" data-event-label="rails" data-event-action="click" data-event-category="tags">rails</a> - 
+                    
+                      <a href="/tags/?tag=docker" class="ga-event-link" data-event-label="docker" data-event-action="click" data-event-category="tags">docker</a> - 
+                    
+                      <a href="/tags/?tag=actioncable" class="ga-event-link" data-event-label="actioncable" data-event-action="click" data-event-category="tags">actioncable</a> - 
+                    
+                      <a href="/tags/?tag=postgresql" class="ga-event-link" data-event-label="postgresql" data-event-action="click" data-event-category="tags">postgresql</a> - 
+                    
+                      <a href="/tags/?tag=postgres" class="ga-event-link" data-event-label="postgres" data-event-action="click" data-event-category="tags">postgres</a> - 
+                    
+                      <a href="/tags/?tag=redis" class="ga-event-link" data-event-label="redis" data-event-action="click" data-event-category="tags">redis</a> - 
+                    
+                      <a href="/tags/?tag=chat" class="ga-event-link" data-event-label="chat" data-event-action="click" data-event-category="tags">chat</a> - 
+                    
+                      <a href="/tags/?tag=tutorial" class="ga-event-link" data-event-label="tutorial" data-event-action="click" data-event-category="tags">tutorial</a>
+                    
+                  </div>
+                
+              </div>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container-fluid no-gutters">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-9 page-content">
+          
+            <div class="row">
+              <div class="col-12">
+                <div class="outline">
+                  <p>Hey!</p>
+
+<p>In this post we are going to:</p>
+<ul>
+  <li>create a docker image for the <a href="/programming/2019/04/04/creating-chat-application-rails-websockets"><strong>Rails chat application</strong> that we created in the previous post</a></li>
+  <li>configure the Docker environment and run the application by:
+    <ul>
+      <li>creating a container for the PostgreSQL database</li>
+      <li>creating a container for the Redis server</li>
+      <li>creating a container with the required configuration from the image we built</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png" alt="Rails chat application gif" /></p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<h3 id="install-docker">Install docker</h3>
+
+<p>The first thing you need in order to follow this tutorial is to install <a href="https://www.docker.com/">Docker</a> on your machine.</p>
+
+<p>We are going to use the <a href="https://docs.docker.com/install/">Docker Community Edition</a>. Follow the installation instructions matching your system.</p>
+
+<p>I’m on Ubuntu 18.04 LTS so following the <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">instructions</a>, I had to:</p>
+
+<ul>
+  <li>Uninstall previous versions with:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get remove docker docker-engine docker.io containerd runc
+</code></pre></div></div>
+
+<ul>
+  <li>I chose to install the application using the repository.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+
+<span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="se">\</span>
+     apt-transport-https <span class="se">\</span>
+     ca-certificates <span class="se">\</span>
+     curl <span class="se">\</span>
+     gnupg-agent <span class="se">\</span>
+     software-properties-common
+
+curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>apt-key add -
+</code></pre></div></div>
+
+<p>and I verified that I had the key with the proper fingerprint after executing:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-key fingerprint 0EBFCD88
+</code></pre></div></div>
+
+<ul>
+  <li>I set up the repository with:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>add-apt-repository <span class="se">\</span>
+   <span class="s2">"deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="se">\</span><span class="s2">
+   </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> </span><span class="se">\</span><span class="s2">
+   stable"</span>
+</code></pre></div></div>
+
+<p>The installation took place with these commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get update
+
+<span class="nb">sudo </span>apt-get <span class="nb">install </span>docker-ce docker-ce-cli containerd.io
+</code></pre></div></div>
+
+<ul>
+  <li>I checked that the installation was successful with:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo docker run hello-world
+
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+1b930d010525: Pull complete
+Digest: sha256:...
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</code></pre></div></div>
+
+<h4 id="important-note">Important note</h4>
+
+<p>Upon installation, a new user group was created with the name <code class="highlighter-rouge">docker</code>. If you want to allow users to do docker stuff without using <code class="highlighter-rouge">sudo</code>, you have to do some extra configuration (<a href="https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user">read more here</a>) but keep in mind that:</p>
+
+<blockquote>
+  <p><strong>The docker group grants privileges equivalent to the root user</strong>. For details on how this impacts security in your system, see Docker Daemon Attack Surface.
+<cite>– <a href="https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user">Post-installation steps for Linux - Official Docker installation instructions</a></cite></p>
+</blockquote>
+
+<p>We are going to use <code class="highlighter-rouge">sudo</code> in this tutorial.</p>
+
+<h3 id="clone-the-rails-chat-tutorial-from-github">Clone the rails chat tutorial from GitHub</h3>
+
+<p>Navigate to your development directory on your machine and clone the sample Rails chat application with:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/iridakos/rails-chat-tutorial
+</code></pre></div></div>
+
+<p>Done.</p>
+
+<h3 id="configure-the-application-to-use-postgresql-for-the-production-environment">Configure the application to use PostgreSQL for the production environment</h3>
+
+<p>The application is configured to use the predefined <code class="highlighter-rouge">sqlite</code> database adapter. For the purpose of this tutorial we will change the adapter to <code class="highlighter-rouge">postgresql</code> and at the second part of the post we will create a container running the PostgreSQL database.</p>
+
+<p>Open the file <code class="highlighter-rouge">config/database.yml</code> file and change the <code class="highlighter-rouge">production</code> configuration as described below:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">production</span><span class="pi">:</span>
+  <span class="s">&lt;&lt;</span><span class="pi">:</span> <span class="nv">*default</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">postgresql</span>
+  <span class="na">host</span><span class="pi">:</span> <span class="s">&lt;%= ENV.fetch('DATABASE_HOST') %&gt;</span>
+  <span class="na">port</span><span class="pi">:</span> <span class="s">&lt;%= ENV.fetch('DATABASE_PORT') %&gt;</span>
+  <span class="na">username</span><span class="pi">:</span> <span class="s">&lt;%= ENV.fetch('DATABASE_USERNAME') %&gt;</span>
+  <span class="na">password</span><span class="pi">:</span> <span class="s">&lt;%= ENV.fetch('DATABASE_PASSWORD') %&gt;</span>
+</code></pre></div></div>
+
+<p>Open the application’s <code class="highlighter-rouge">Gemfile</code> and add the following lines:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s1">'pg'</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>to install the adapter. The <code class="highlighter-rouge">pg</code> gem requires to have the package <code class="highlighter-rouge">libpq-dev</code> installed on the machine. We will satisfy this requirement when building the image.</p>
+
+<h2 id="building-the-docker-image">Building the docker image</h2>
+
+<p>We are going to <strong>build the image gradually</strong> in order to understand what’s going on with every command we use.</p>
+
+<h3 id="create-the-dockerfile">Create the Dockerfile</h3>
+
+<p>Whenever we want to create a new image in docker we use a file named <code class="highlighter-rouge">Dockerfile</code>. It is a text file with instructions to be followed sequentially to assemble an image.</p>
+
+<p>Navigate to the <code class="highlighter-rouge">Rails chat tutorial</code> (from now I will call this <code class="highlighter-rouge">application directory</code>) directory and create the file.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch </span>Dockerfile
+</code></pre></div></div>
+
+<p>and before continuing let’s try to build the image with just that empty file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker build <span class="nb">.</span> <span class="nt">-t</span> rails-chat-tutorial
+</code></pre></div></div>
+
+<p>Of course we get an error, but take a look at the first line of the log:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Sending build context to Docker daemon  46.39MB
+Error response from daemon: the Dockerfile <span class="o">(</span>Dockerfile<span class="o">)</span> cannot be empty
+</code></pre></div></div>
+
+<p>When building an image, Docker creates a build context which is actually the files that will be available when the <code class="highlighter-rouge">Dockerfile</code>’s commands get executed.</p>
+
+<p>The <code class="highlighter-rouge">.</code> (dot) part of the build command that we used tells Docker to try to build the image using the current directory for its build context.</p>
+
+<p>Since we didn’t explicitly specified in the command which <code class="highlighter-rouge">Dockerfile</code> to use, Docker will use the one that is located in the root of the context.</p>
+
+<h3 id="define-the-parent-image">Define the parent image</h3>
+
+<blockquote>
+  <p>A parent image is the image that your image is based on. It refers to the contents of the FROM directive in the Dockerfile. Each subsequent declaration in the Dockerfile modifies this parent image. Most Dockerfiles start from a parent image, rather than a base image. However, the terms are sometimes used interchangeably.
+<cite>– <a href="https://docs.docker.com/develop/develop-images/baseimages/">Create a base image - Official Docker Documentation</a></cite></p>
+</blockquote>
+
+<p>Building the image from scratch is out of the context of this tutorial but if you want to familiarize your self with this aspect, read more <a href="https://docs.docker.com/develop/develop-images/baseimages/">here</a>.</p>
+
+<p>Docker provides <a href="https://hub.docker.com/_/ruby">official Ruby images</a> and we are going to use the version that the Rails chat tutorial uses which is <code class="highlighter-rouge">2.6.2</code> as our parent image.</p>
+
+<p>Open <code class="highlighter-rouge">Dockerfile</code> and add the following line:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> ruby:2.6.2-stretch</span>
+</code></pre></div></div>
+
+<p>and run the build command again:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>docker build <span class="nb">.</span> <span class="nt">-t</span> rails-chat-tutorial
+Sending build context to Docker daemon  46.39MB
+Step 1/1 : FROM ruby:2.6.2-stretch
+2.6.2-stretch: Pulling from library/ruby
+e79bb959ec00: Pull <span class="nb">complete
+</span>d4b7902036fe: Pull <span class="nb">complete
+</span>1b2a72d4e030: Pull <span class="nb">complete
+</span>d54db43011fd: Pull <span class="nb">complete
+</span>69d473365bb3: Pull <span class="nb">complete
+</span>84ed2a0dc034: Pull <span class="nb">complete
+</span>75df5efa5606: Pull <span class="nb">complete
+</span>f0d10aea813b: Pull <span class="nb">complete
+</span>Digest: sha256:d5af6b19da8381014f59e79245ae242dd5ea8dfe1a8a6c0e2bc481366f1e92b9
+Status: Downloaded newer image <span class="k">for </span>ruby:2.6.2-stretch
+ <span class="nt">---</span><span class="o">&gt;</span> 8d6721e9290e
+Successfully built 8d6721e9290e
+Successfully tagged rails-chat-tutorial:latest
+</code></pre></div></div>
+
+<p>Execute the following command to see which images Docker has.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>docker image list
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+rails-chat-tutorial   latest              8d6721e9290e        10 days ago         870MB
+ruby                  2.6.2-stretch       8d6721e9290e        10 days ago         870MB
+hello-world           latest              fce289e99eb9        3 months ago        1.84kB
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">hello-world</code> is the Docker’s image that we used after installing Docker.
+The other image, the <code class="highlighter-rouge">ruby</code> one is the parent image of our image. Since the <code class="highlighter-rouge">Dockerfile</code> didn’t have any custom instructions other that just defining a parent image, the resulting image <code class="highlighter-rouge">rails-chat-tutorial</code> is actually the same as the parent image and has the same <code class="highlighter-rouge">IMAGE ID</code>, <code class="highlighter-rouge">CREATED</code> and <code class="highlighter-rouge">SIZE</code> properties. Time to change this.</p>
+
+<h3 id="copying-the-application-code">Copying the application code</h3>
+
+<p>The purpose of the image that we are building is to serve the <code class="highlighter-rouge">Rails chat tutorial</code> application. Eventually, to do so it’s pretty obvious that the image must contain the code of the application.</p>
+
+<p>We will use the <code class="highlighter-rouge">COPY</code> command to copy the code inside the image.</p>
+
+<p>Open the <code class="highlighter-rouge">Dockerfile</code> and append the following line:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">COPY</span><span class="s"> . /application</span>
+</code></pre></div></div>
+
+<p>This command will copy all files from inside the build context to the image.</p>
+<ul>
+  <li>the first argument is the location of the build context to be copied</li>
+  <li>the second argument is the target location inside the image</li>
+</ul>
+
+<p>Build the image again and execute the following command to confirm that we are good.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -i -t rails-chat-tutorial
+</code></pre></div></div>
+
+<p>If you take a look at the <a href="https://github.com/docker-library/ruby/blob/995719add69339b78bd8cde46183b4902b761add/2.6/stretch/Dockerfile">ruby’s docker image</a>, you will see that the last line is:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CMD</span><span class="s"> [ "irb" ]</span>
+</code></pre></div></div>
+
+<p>Since we don’t define something different in our image, the same command is being executed and that’s why the execution of the previous command brought us to Ruby’s <code class="highlighter-rouge">irb</code> console.</p>
+
+<p>Let’s see what the <code class="highlighter-rouge">/application</code> directory of the container has.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Dir</span><span class="p">[</span><span class="s1">'/application/*'</span><span class="p">]</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"/application/config.ru"</span><span class="p">,</span> <span class="s2">"/application/Rakefile"</span><span class="p">,</span> <span class="s2">"/application/lib"</span><span class="p">,</span> <span class="s2">"/application/storage"</span><span class="p">,</span> <span class="s2">"/application/test"</span><span class="p">,</span> <span class="s2">"/application/Gemfile"</span><span class="p">,</span> <span class="s2">"/application/app"</span><span class="p">,</span> <span class="s2">"/application/Gemfile.lock"</span><span class="p">,</span> <span class="s2">"/application/LICENSE"</span><span class="p">,</span> <span class="s2">"/application/log"</span><span class="p">,</span> <span class="s2">"/application/public"</span><span class="p">,</span> <span class="s2">"/application/tmp"</span><span class="p">,</span> <span class="s2">"/application/vendor"</span><span class="p">,</span> <span class="s2">"/application/bin"</span><span class="p">,</span> <span class="s2">"/application/README.md"</span><span class="p">,</span> <span class="s2">"/application/config"</span><span class="p">,</span> <span class="s2">"/application/package.json"</span><span class="p">,</span> <span class="s2">"/application/Dockerfile"</span><span class="p">,</span> <span class="s2">"/application/db"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Cool, the application directory has been copied. Moving on.</p>
+
+<h3 id="install-application-dependencies">Install application dependencies</h3>
+
+<p>Before starting the server (puma in our case), we have to install the dependencies of the application. To do so, add the following line to the <code class="highlighter-rouge">Dockerfile</code>.</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">RUN </span>bundle <span class="nb">install</span> <span class="nt">--deployment</span> <span class="nt">--without</span> development <span class="nb">test</span>
+</code></pre></div></div>
+
+<p>and rebuild the image.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>build <span class="nb">.</span> <span class="nt">-t</span> rails-chat-tutorial
+Sending build context to Docker daemon  46.39MB
+Step 1/3 : FROM ruby:2.6.2-stretch
+ <span class="nt">---</span><span class="o">&gt;</span> 8d6721e9290e
+Step 2/3 : COPY <span class="nb">.</span> /application
+ <span class="nt">---</span><span class="o">&gt;</span> f9b9d813d6a0
+Step 3/3 : RUN bundle <span class="nb">install</span> <span class="nt">--deployment</span> <span class="nt">--without</span> development <span class="nb">test</span>
+ <span class="nt">---</span><span class="o">&gt;</span> Running <span class="k">in </span>a6c8c25da3f5
+Could not locate Gemfile
+The <span class="nb">command</span> <span class="s1">'/bin/sh -c bundle install --deployment --without development test'</span> returned a non-zero code: 10
+</code></pre></div></div>
+
+<p>We have an error because for the bundle command to succeed we must first change to the application’s root directory that does contain the <code class="highlighter-rouge">Gemfile</code> file.</p>
+
+<p>Change the contents of the <code class="highlighter-rouge">Dockerfile</code> to the following:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> ruby:2.6.2-stretch</span>
+
+<span class="c"># Copy application code</span>
+<span class="k">COPY</span><span class="s"> . /application</span>
+<span class="c"># Change to the application's directory</span>
+<span class="k">WORKDIR</span><span class="s"> /application</span>
+
+<span class="c"># Install gems</span>
+<span class="k">RUN </span>bundle <span class="nb">install</span> <span class="nt">--deployment</span> <span class="nt">--without</span> development <span class="nb">test</span>
+</code></pre></div></div>
+
+<p>and rebuild. Now the gems are being installed and we are ready to start the server.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker build <span class="nb">.</span> <span class="nt">-t</span> rails-chat-tutorial
+Sending build context to Docker daemon  46.39MB
+Step 1/4 : FROM ruby:2.6.2-stretch
+ <span class="nt">---</span><span class="o">&gt;</span> 8d6721e9290e
+Step 2/4 : COPY <span class="nb">.</span> /application
+ <span class="nt">---</span><span class="o">&gt;</span> b1aae569faf4
+Step 3/4 : WORKDIR /application
+ <span class="nt">---</span><span class="o">&gt;</span> Running <span class="k">in </span>ab90edf73be5
+Removing intermediate container ab90edf73be5
+ <span class="nt">---</span><span class="o">&gt;</span> 6bbdaa9942e3
+Step 4/4 : RUN bundle <span class="nb">install</span> <span class="nt">--deployment</span> <span class="nt">--without</span> development <span class="nb">test</span>
+ <span class="nt">---</span><span class="o">&gt;</span> Running <span class="k">in </span>22724a3684fe
+The dependency tzinfo-data <span class="o">(&gt;=</span> 0<span class="o">)</span> will be unused by any of the platforms Bundler is installing <span class="k">for</span><span class="nb">.</span> Bundler is installing <span class="k">for </span>ruby but the dependency is only <span class="k">for </span>x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run bundle lock <span class="nt">--add-platform</span> x86-mingw32 x86-mswin32 x64-mingw32 java.
+Fetching gem metadata from https://rubygems.org/............
+Fetching rake 12.3.2
+Installing rake 12.3.2
+Fetching concurrent-ruby 1.1.5
+...
+...
+...
+Fetching sqlite3 1.4.0
+Installing sqlite3 1.4.0 with native extensions
+Fetching uglifier 4.1.20
+Installing uglifier 4.1.20
+Bundle <span class="nb">complete</span><span class="o">!</span> 21 Gemfile dependencies, 69 gems now installed.
+Gems <span class="k">in </span>the <span class="nb">groups </span>development and <span class="nb">test </span>were not installed.
+Bundled gems are installed into ./vendor/bundle
+...
+...
+...
+
+Removing intermediate container 22724a3684fe
+ <span class="nt">---</span><span class="o">&gt;</span> d0d3163a8cca
+Successfully built d0d3163a8cca
+Successfully tagged rails-chat-tutorial:latest
+</code></pre></div></div>
+
+<h3 id="asset-compilation">Asset compilation</h3>
+
+<p>In the production environment, assets have to be pre-compiled.</p>
+
+<p>We will add this task in our <code class="highlighter-rouge">ENTRYPOINT</code> script (see below) because during asset compilation Rails initializes the application and if we executed the task upon building the image, the initialization would fail since some components (like database connection, configuration of services based on environment variables like <code class="highlighter-rouge">cable.yml</code>) are not available.</p>
+
+<p>We must install a Javascript environment in the container though or else when the time comes and the task is executed, will get the following error:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ExecJS::RuntimeUnavailable: Could not find a JavaScript runtime. See https://github.com/rails/execjs <span class="k">for </span>a list of available runtimes.
+</code></pre></div></div>
+
+<p>We will install <code class="highlighter-rouge">nodejs</code>, add the following line:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">RUN </span>curl <span class="nt">-sL</span> https://deb.nodesource.com/setup_10.x | bash - <span class="se">\
+</span>    apt <span class="nb">install</span> <span class="nt">-y</span> nodejs
+</code></pre></div></div>
+
+<p>Rebuild and you should be fine.</p>
+
+<h3 id="start-the-server">Start the server</h3>
+
+<p>We want to start the application in the production environment. Rails can resolve this via the environment variable <code class="highlighter-rouge">RAILS_ENV</code>.</p>
+
+<p>To set it in the image, add in <code class="highlighter-rouge">Dockerfile</code>:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ENV</span><span class="s"> RAILS_ENV production</span>
+</code></pre></div></div>
+
+<p>The last instruction in the <code class="highlighter-rouge">Dockerfile</code> will be our <code class="highlighter-rouge">ENTRYPOINT</code>.</p>
+
+<p>Add the following line:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ENTRYPOINT</span><span class="s"> ./entrypoint.sh</span>
+</code></pre></div></div>
+
+<p>What’s left to do is to configure the <code class="highlighter-rouge">entrypoint.sh</code> script to do the following:</p>
+<ul>
+  <li>compile the assets</li>
+  <li>start the server</li>
+</ul>
+
+<p>Create a file named <code class="highlighter-rouge">entrypoint.sh</code> in the root application directory and add:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Compile the assets</span>
+bundle <span class="nb">exec </span>rake assets:precompile
+
+<span class="c"># Start the server</span>
+bundle <span class="nb">exec </span>rails server
+</code></pre></div></div>
+
+<p>This file has to be executable, so in your terminal:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x ./entrypoint.sh
+</code></pre></div></div>
+
+<p>That’s all.</p>
+
+<p>Since there are no more modifications to be done in our <code class="highlighter-rouge">Dockerfile</code>, make sure its contents are the following:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> ruby:2.6.2-stretch</span>
+
+<span class="c"># Copy application code</span>
+<span class="k">COPY</span><span class="s"> . /application</span>
+<span class="c"># Change to the application's directory</span>
+<span class="k">WORKDIR</span><span class="s"> /application</span>
+
+<span class="c"># Install gems</span>
+<span class="k">RUN </span>bundle <span class="nb">install</span> <span class="nt">--deployment</span> <span class="nt">--without</span> development <span class="nb">test</span>
+
+<span class="c"># Set Rails environment to production</span>
+<span class="k">ENV</span><span class="s"> RAILS_ENV production</span>
+
+<span class="k">RUN </span>curl <span class="nt">-sL</span> https://deb.nodesource.com/setup_10.x | bash - <span class="se">\
+</span>    <span class="o">&amp;&amp;</span> apt <span class="nb">install</span> <span class="nt">-y</span> nodejs
+
+<span class="c"># Start the application server</span>
+<span class="k">ENTRYPOINT</span><span class="s"> ./entrypoint.sh</span>
+</code></pre></div></div>
+
+<h3 id="compacting-the-dockerfile">Compacting the Dockerfile</h3>
+
+<p>We will optimize the <code class="highlighter-rouge">Dockerfile</code> since each <code class="highlighter-rouge">RUN</code> command creates a new image (read more <a href="http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/">here</a>).</p>
+
+<p>We will merge the <code class="highlighter-rouge">RUN</code> commands in one and move the <code class="highlighter-rouge">ENV</code> command just before it. The resulting <code class="highlighter-rouge">Dockerfile</code> is:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> ruby:2.6.2-stretch</span>
+
+<span class="c"># Copy application code</span>
+<span class="k">COPY</span><span class="s"> . /application</span>
+<span class="c"># Change to the application's directory</span>
+<span class="k">WORKDIR</span><span class="s"> /application</span>
+
+<span class="c"># Set Rails environment to production</span>
+<span class="k">ENV</span><span class="s"> RAILS_ENV production</span>
+
+<span class="c"># Install gems, nodejs and precompile the assets</span>
+<span class="k">RUN </span>bundle <span class="nb">install</span> <span class="nt">--deployment</span> <span class="nt">--without</span> development <span class="nb">test</span> <span class="se">\
+</span>    <span class="o">&amp;&amp;</span> curl <span class="nt">-sL</span> https://deb.nodesource.com/setup_10.x | bash - <span class="se">\
+</span>    <span class="o">&amp;&amp;</span> apt <span class="nb">install</span> <span class="nt">-y</span> nodejs
+
+<span class="c"># Start the application server</span>
+<span class="k">ENTRYPOINT</span><span class="s"> ['./entrypoint.sh']</span>
+</code></pre></div></div>
+
+<h2 id="running-the-application-in-the-docker-environment">Running the application in the Docker environment</h2>
+
+<h3 id="creating-the-postgresql-container">Creating the PostgreSQL container</h3>
+
+<p>We are going to create a container for the PostgreSQL database.</p>
+
+<p>We need to specify two environment variables to configure a user for our application: <code class="highlighter-rouge">POSTGRES_USER</code> and <code class="highlighter-rouge">POSTGRES_PASSWORD</code>. The values of these environment variables will be used later on when <a href="#creating-the-applications-container">creating the application’s container</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker run <span class="nt">--name</span> rails-chat-tutorial-pg
+            <span class="nt">-e</span> <span class="nv">POSTGRES_USER</span><span class="o">=</span>postgres
+            <span class="nt">-e</span> <span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>postgres
+            <span class="nt">-p</span> 5432:5432
+            <span class="nt">-d</span> postgres
+</code></pre></div></div>
+
+<p>Since the image doesn’t exist locally, Docker will fetch it from the <a href="https://hub.docker.com/_/postgres">Official Docker images</a> and then it will create a container, binding the PostgreSQL default port <code class="highlighter-rouge">5432</code> to the <strong>same port of the host</strong>.</p>
+
+<p><strong>Notes:</strong> I suggest you read this <a href="https://hub.docker.com/_/postgres#how-to-extend-this-image">documentation</a> if you want to familiarize yourself with the options you have for customizing the container (volumes/database configuration etc).</p>
+
+<h3 id="creating-the-redis-container">Creating the Redis container</h3>
+
+<p>To create the <code class="highlighter-rouge">redis</code> container, all we have to do is run the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker run <span class="nt">--name</span> rails-chat-tutorial-redis <span class="se">\</span>
+            <span class="nt">-p</span> 6379:6379 <span class="se">\</span>
+            <span class="nt">-d</span> redis
+</code></pre></div></div>
+
+<p>Again, since the image doesn’t exist locally, Docker will fetch it from the <a href="https://hub.docker.com/_/redis">Official Docker images</a> and then it will create a container, binding its <code class="highlighter-rouge">6376</code> to the <strong>same port of the host</strong>.</p>
+
+<h3 id="creating-the-applications-container">Creating the application’s container</h3>
+
+<p>At this point, your docker running containers should look like this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>docker ps
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+&lt;a container <span class="nb">id</span><span class="o">&gt;</span>    redis               <span class="s2">"docker-entrypoint.s…"</span>   2 minutes ago       Up 2 minutes        0.0.0.0:6379-&gt;6379/tcp   rails-chat-tutorial-redis
+&lt;a container <span class="nb">id</span><span class="o">&gt;</span>    postgres            <span class="s2">"docker-entrypoint.s…"</span>   2 minutes ago       Up 2 minutes        0.0.0.0:5432-&gt;5432/tcp   rails-chat-tutorial-pg
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">Rails chat tutorial</code> in production mode needs the following environmental variables:</p>
+<ul>
+  <li><em>database.yml</em>
+    <ul>
+      <li><strong>DATABASE_HOST</strong>: 172.17.0.1</li>
+      <li><strong>DATABASE_PORT</strong>: 5432</li>
+      <li><strong>DATABASE_USERNAME</strong>: postgres</li>
+      <li><strong>DATABASE_PASSWORD</strong>: postgres</li>
+    </ul>
+  </li>
+  <li><em>cable.yml</em>
+    <ul>
+      <li><strong>REDIS_URL</strong>: redis://172.17.0.1:6379/1</li>
+    </ul>
+  </li>
+</ul>
+
+<p>To create the container for the image that we created in this post passing the required environment variables, use:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker run <span class="nt">--name</span> rails-chat-tutorial-web <span class="se">\</span>
+            <span class="nt">-e</span> <span class="nv">DATABASE_HOST</span><span class="o">=</span>172.17.0.1 <span class="se">\</span>
+            <span class="nt">-e</span> <span class="nv">DATABASE_PORT</span><span class="o">=</span>5432 <span class="se">\</span>
+            <span class="nt">-e</span> <span class="nv">DATABASE_USERNAME</span><span class="o">=</span>postgres <span class="se">\</span>
+            <span class="nt">-e</span> <span class="nv">DATABASE_PASSWORD</span><span class="o">=</span>postgres <span class="se">\</span>
+            <span class="nt">-e</span> <span class="nv">REDIS_URL</span><span class="o">=</span>redis://172.17.0.1:6379/1 <span class="se">\</span>
+            <span class="nt">-p</span> 3000:3000 <span class="se">\</span>
+            rails-chat-tutorial
+</code></pre></div></div>
+
+<p><strong>Note</strong>: we bound the container’s <code class="highlighter-rouge">3000</code> port on the same port of the host.</p>
+
+<p>Navigate to <code class="highlighter-rouge">http://localhost:3000</code> and see what happens.</p>
+
+<p><img src="https://iridakos.com/assets/images/posts/dockerizing-rails/01.png" alt="Error" /></p>
+
+<p>We don’t get very helpful information on the error since the application is running in production mode (at least this worked :P). Let’s connect to the container and check the logs:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>docker <span class="nb">exec</span> <span class="nt">-it</span> rails-chat-tutorial-web bash
+</code></pre></div></div>
+
+<p>Now you are connected to the container. Check the <code class="highlighter-rouge">/application/production.log</code> file. Somewhere among all these lines you will see the following:</p>
+
+<pre><code class="language-log">ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation users does not exist
+</code></pre>
+
+<p>We set up the database server but we didn’t create/migrate the database. Since we are already connected to the container we will execute the required rake tasks.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>rake db:create db:migrate
+</code></pre></div></div>
+
+<p><a href="https://twitter.com/lazaru_s/status/1182193506430984193">Reload the page and voilà</a></p>
+
+<p><img src="https://iridakos.com/assets/images/posts/dockerizing-rails/02.png" alt="Application home page" /></p>
+
+<h2 id="whats-next">What’s next</h2>
+
+<p>In the next tutorial we are going to:</p>
+
+<ul>
+  <li>refactor this image for production (use volume for postgreSQL, asset precompilation)</li>
+  <li>use <a href="https://www.nginx.com/">nginx</a> to serve them</li>
+  <li>use <a href="https://docs.docker.com/compose/">docker compose</a> to bind them all.</li>
+</ul>
+
+<h2 id="thanks">Thanks</h2>
+
+<p>I am very grateful for your feedback (like this one from <a href="https://www.reddit.com/r/docker/comments/baerrf/dockerizing_a_rails_application/">DeusOtiosus
+ @ Reddit</a>).</p>
+
+<p>That’s all! Cat photo.</p>
+
+<p><img src="https://iridakos.com/assets/images/programming-cat/terminator.png" alt="Irida" /></p>
+
+<div class="alert alert-light">
+  <div class="alert-heading"><i class="fa fa-comments"></i> Code and comments</div>
+
+  You can find the code of this tutorial on <a class="alert-link" href="https://github.com/iridakos/rails-chat-tutorial"><i class="fa fa-github"></i> https://github.com/iridakos/rails-chat-tutorial</a> on branch <strong>docker</strong>.
+
+  <hr />
+
+  For feedback, comments, typos etc. please open an <a class="alert-link" href="https://github.com/iridakos/rails-chat-tutorial/issues">issue</a> in the repository.
+
+  <hr />
+
+  <strong>Thanks for visiting!</strong>
+</div>
+
+                </div>
+              </div>
+
+              <div class="col-12 order-first">
+                <div class="d-sm-block d-md-none mb-3">
+                  <a class="ga-event-link btn btn-outline-primary d-block collapsed text-left"
+                    data-event-label="Dockerizing a Rails application"
+                    data-event-category="Document outline"
+                    data-event-action="click"
+                    title="View the structure of this document"
+                    role="button"
+                    data-toggle="collapse"
+                    data-role="outline"
+                    data-content=".outline"
+                    href="#docout-mobile"
+                    data-target="#docout-mobile"
+                    aria-expanded="false"
+                    aria-controls="collapse">
+                    Table of contents
+                    <i class="fa iridakos-collapse pull-right mt-1"></i>
+                  </a>
+
+                  <div id="docout-mobile" class="collapse my-3 border rounded bg-light p-2">
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+          
+
+
+        </div>
+
+        <div class="col">
+          <div class="sidebar">
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <a class="ga-event-link btn btn-warning d-block collapsed text-left"
+          data-event-label="Dockerizing a Rails application"
+          data-event-category="Document outline"
+          data-event-action="click"
+
+          data-toggle="collapse"
+          data-role="outline"
+          data-content=".outline"
+          href="#docout-sidebar"
+          data-target="#docout-sidebar"
+
+          title="View the structure of this document"
+          role="button"
+          href="#docout-sidebar"
+          aria-expanded="false"
+          aria-controls="collapse">
+          Table of contents
+          <i class="fa iridakos-collapse pull-right mt-1"></i>
+        </a>
+
+        <div class="section-content">
+          <div id="docout-sidebar" class="collapse mt-2 p-2">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-hand-spock-o"></i> featured posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2018/03/01/bash-programmable-completion-tutorial"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a bash completion script">Creating a bash completion script</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a bash completion script
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+            </div>
+            <a href="/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a Linux Desktop application with Ruby">Creating a Linux Desktop application with Ruby</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a simple GTK ToDo application with Ruby
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-betterldevlink" title="Featured in Better Dev Link" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2019/06/26/composing-better-emails"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Composing better emails">Composing better emails</a>
+             <div class="text-muted smaller">
+               Tips for writing effective emails avoiding misunderstandings with examples from the software development world.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="How to remove duplicate lines from files preserving their order">How to remove duplicate lines from files preserving their order</a>
+             <div class="text-muted smaller">
+               How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained).
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+            </div>
+            <a href="/programming/2016/04/01/duckrails-guide"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="DuckRails - Open source development tool for mocking API endpoints">DuckRails - Open source development tool for mocking API endpoints</a>
+             <div class="text-muted smaller">
+               An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available.
+             </div>
+          </div>
+        
+      
+
+      <div class="section-item">
+        <a href="/programming/featured"
+           class="ga-event-link"
+           data-event-category="Featured all posts"
+           data-event-action="click"
+           data-event-label="View all featured posts">View all featured posts</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-bullhorn"></i> recent posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4>
+        <i class="fa fa-github"></i> code
+      </h4>
+
+      <div class="float-right">
+
+      </div>
+    </div>
+
+    <div class="section-content">
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="goto repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/goto">goto</a>: a tool for navigating to aliased directories in the shell with auto complete
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="elman repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/elman">elman</a>: a script for full text searching Linux man pages with Elasticsearch
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="duckrails repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/duckrails">DuckRails</a>
+        version <span class="important">2.1.5</span> is out <img src="/assets/images/news/duckrails.png" class="logo" /> (<a class="ga-event-link" data-event-label="DuckRails GitHub docker wiki" data-event-action="click" data-event-category="News links" href="https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker" target="_blank">docker image available</a>)
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <div class="section-content mt-2">
+          
+<div class="share-links">
+  <a class="btn btn-warning ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Dockerizing a Rails application&url=https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Dockerizing a Rails application&amp;body=Dockerizing a Rails application: https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> Subscribe via RSS
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/feed.xml">all posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/feeds/cats.xml">cat photos</a>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">iridakos images preview</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <div class="image-container">
+                    <img class="image" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer">
+  <div class="container-fluid no-gutters">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="brand mb-1">
+          <a href="https://iridakos.com"><strong>iridakos</strong></a>
+        </div>
+
+        <div class="contact-links">
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="GitHub" href="https://www.github.com/iridakos/"><i class="fa fa-github" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="Twitter" href="https://www.twitter.com/lazaru_s/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="LinkedIn" href="https://www.linkedin.com/in/iridakos/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+
+          <div class="dropdown d-inline-block mr-1">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" title="subscribe via RSS" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-rss"></i>
+            </button>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to all posts RSS - Footer" data-event-action="click" href="/feed.xml">all posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to programming posts RSS - Footer" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to tutorial posts RSS - Footer" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to opensource posts RSS - Footer" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to ruby posts RSS - Footer" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to painting posts RSS - Footer" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Dockerizing a Rails application" data-event-category="Subscribe to cat photo posts RSS - Footer" data-event-action="click" href="/feeds/cat-photos.xml">cat photos</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="license mt-1">
+          <div class="mb-1">
+            <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
+          </div>
+
+          <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">iridakos</span> by
+          <a xmlns:cc="http://creativecommons.org/ns#" href="https://iridakos.com/about/" property="cc:attributionName" rel="cc:attributionURL" class="font-weight-bold">Lazarus Lazaridis</a> is licensed under a <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76452884-1', 'auto');
+
+  ga('set', 'page', '/programming/2019/04/07/dockerizing-a-rails-application')
+  ga('send', 'pageview');
+
+</script>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1573472334557130114" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1573472334557130114" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1573472334557130114" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1573472334557130114" type="text/javascript"></script>
+
+
+
+
+  </body>
+</html>

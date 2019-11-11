@@ -19,16 +19,6 @@ $(function() {
     }
   };
 
-  var showMissingTag = function(query) {
-    var $header = $('body').find('h1');
-
-    $header.html('tags');
-
-    if (query != undefined) {
-
-    }
-  }
-
   var fetchResults = function(query) {
     if (window.tagData != undefined) {
       tagData(query);
@@ -54,10 +44,6 @@ $(function() {
         createResult(b);
       }
     });
-
-    if (!found) {
-      showMissingTag(query);
-    }
   };
 
   var createResult = function (searchResult) {
@@ -91,7 +77,9 @@ $(function() {
   var updateHeader = function (tag_name) {
     var $header = $('body').find('h1');
 
-    $header.html('tag: ' + tag_name);
+    if (tag_name != undefined) {
+      $header.append(': ' + tag_name);
+    }
     document.title = document.title + ' - ' + tag_name
   }
 
@@ -100,7 +88,5 @@ $(function() {
   if (query != undefined) {
     updateHeader(query);
     fetchResults(query);
-  } else {
-    showMissingTag(query);
   };
 });

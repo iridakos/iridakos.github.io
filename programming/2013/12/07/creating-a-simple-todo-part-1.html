@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ocs-site-verification" content="e5faa08e01247c38aadf1c1737ff8136">
+  <meta name="google-site-verification" content="KqOxy0ecDlfNdfO530ZAbtNBedy49hn2KziyqLK0JGo" />
+
+  <title>Creating a simple ToDo application with Ruby on Rails - Part 1</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
+
+  <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css?1573472334557130114">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Creating a simple ToDo application with Ruby on Rails - Part 1" />
+<meta name="author" content="Lazarus Lazaridis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="First part of the tutorial creating a simple ToDo application with Ruby on Rails." />
+<meta property="og:description" content="First part of the tutorial creating a simple ToDo application with Ruby on Rails." />
+<link rel="canonical" href="https://iridakos.com/programming/2013/12/07/creating-a-simple-todo-part-1" />
+<meta property="og:url" content="https://iridakos.com/programming/2013/12/07/creating-a-simple-todo-part-1" />
+<meta property="og:site_name" content="iridakos" />
+<meta property="og:image" content="https://iridakos.com/assets/images/site.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2013-12-07T09:00:00+02:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://iridakos.com/assets/images/site.png" />
+<meta property="twitter:title" content="Creating a simple ToDo application with Ruby on Rails - Part 1" />
+<meta name="twitter:site" content="@lazaru_s" />
+<meta name="twitter:creator" content="@Lazarus Lazaridis" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"image":"https://iridakos.com/assets/images/site.png","description":"First part of the tutorial creating a simple ToDo application with Ruby on Rails.","@type":"BlogPosting","url":"https://iridakos.com/programming/2013/12/07/creating-a-simple-todo-part-1","headline":"Creating a simple ToDo application with Ruby on Rails - Part 1","dateModified":"2013-12-07T09:00:00+02:00","datePublished":"2013-12-07T09:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/programming/2013/12/07/creating-a-simple-todo-part-1"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+  <script type="text/javascript">
+      window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on the website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"light-bottom"};
+  </script>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+</head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg iridakos-navbar">
+  <div class="container-fluid no-gutters">
+    
+
+    <a class="navbar-brand " href="/" alt="home">
+      <i class="fa fa-home"></i>
+      home
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="fa fa-bars pt-1"></i>
+      </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="header-pages">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            programming
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="more">
+            <a class="dropdown-item" href="/programming/">all posts</a>
+            <a class="dropdown-item" href="/programming/featured/">featured posts</a>
+            <a class="dropdown-item" href="/programming/tutorials/">tutorials</a>
+            <a class="dropdown-item" href="/programming/how-to/">how to</a>
+            <a class="dropdown-item" href="/programming/code/">code</a>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/tags/">tags</a>
+          </div>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/painting/" alt="painting">painting</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/cats/" alt="cats">cats</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/about/" alt="about">about me</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0" method="get" action="/search">
+        <div class="input-group input-group-sm mr-sm-2">
+          <input class="form-control" name="query" type="search" placeholder="Search the blog">
+
+          <div class="input-group-append">
+            <button class="btn btn-warning" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="page-title-container">
+  <div class="container-fluid no-gutters">
+    <div class="page-title">
+      <div class="row align-items-center">
+        <div class="col-xs-12 col-md-8 col-lg-9 order-md-first order-last text-center text-md-left">
+          <h1>Creating a simple ToDo application with Ruby on Rails - Part 1</h1>
+
+            <div class="page-subtitle">
+            First part of the tutorial creating a simple ToDo application with Ruby on Rails.
+
+            
+              <div class="post">
+                <div class="post-metadata">
+                  <div class="post-date" title="published on">
+                    Published on <span class="important">Dec 7, 2013</span>
+                  </div>
+
+                  <div class="post-category" title="in category">
+                    in category <span class="important">programming</span>
+                  </div>
+                </div>
+
+                
+                
+                  <div class="post-tags">
+                    <span class="important">tags:</span>
+                    
+                      <a href="/tags/?tag=ruby" class="ga-event-link" data-event-label="ruby" data-event-action="click" data-event-category="tags">ruby</a> - 
+                    
+                      <a href="/tags/?tag=rails" class="ga-event-link" data-event-label="rails" data-event-action="click" data-event-category="tags">rails</a> - 
+                    
+                      <a href="/tags/?tag=tutorial" class="ga-event-link" data-event-label="tutorial" data-event-action="click" data-event-category="tags">tutorial</a> - 
+                    
+                      <a href="/tags/?tag=todo" class="ga-event-link" data-event-label="todo" data-event-action="click" data-event-category="tags">todo</a> - 
+                    
+                      <a href="/tags/?tag=web application" class="ga-event-link" data-event-label="web application" data-event-action="click" data-event-category="tags">web application</a> - 
+                    
+                      <a href="/tags/?tag=mvc" class="ga-event-link" data-event-label="mvc" data-event-action="click" data-event-category="tags">mvc</a>
+                    
+                  </div>
+                
+              </div>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container-fluid no-gutters">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-9 page-content">
+          
+            <div class="row">
+              <div class="col-12">
+                <div class="outline">
+                  <p>So, you learned <a href="/programming/2013/11/24/saying-hello-world-with-ruby-on-rails">how to say “Hello world” with Ruby on Rails</a> and it’s time to move on since that app is not something you will use unless you are the only one survived on earth.</p>
+
+<p>In this part of the tutorial you will get familiar with the following items.</p>
+
+<ol>
+  <li>saving objects (from now on we will use the rails term <strong>model</strong> for these)</li>
+  <li>the rails console</li>
+  <li>using haml for your views</li>
+  <li>using Twitter Bootstrap CSS to make your application look nice</li>
+</ol>
+
+<p><strong>You can find the complete code of the tutorial <a href="https://github.com/iridakos/todo">here</a>.</strong></p>
+
+<p>Let’s start. Navigate to your workspaces directory from the command line and create the application:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails new todo
+</code></pre></div></div>
+
+<p>Open the newly created directory <strong>todo</strong> with your favourite text editor (I use Sublime).</p>
+
+<p>First, we will add the gems we will need. Open the Gemfile that is located at the root of the app’s directory and add the following lines:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'haml'</span>
+<span class="n">gem</span> <span class="s1">'bootstrap-sass'</span><span class="p">,</span> <span class="s1">'~&gt; 2.3.2.0'</span>
+<span class="n">gem</span> <span class="s1">'simple_form'</span>
+</code></pre></div></div>
+
+<p>and comment out the line:</p>
+
+<p>gem ‘turbolinks’</p>
+
+<p>adding a <code class="highlighter-rouge">#</code> at the beginning of the line (we won’t use this gem for now).</p>
+
+<p>Also, open <code class="highlighter-rouge">application.js</code> which is located under <code class="highlighter-rouge">app/assets/javascripts</code> and <strong>remove</strong> the following line about turbolinks:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//= require turbolinks</span>
+</code></pre></div></div>
+
+<p>If you “speak” Java, contents of the Gemfile are something like a classpath.
+You define which libraries you are going to use.
+Rails (<strong>bundler</strong> actually) is going to download and install these gems unless you already have them installed. We will do this now, from the command line:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cd</span> <span class="n">todo</span>
+<span class="n">bundle</span> <span class="n">install</span>
+</code></pre></div></div>
+
+<p>Ok, let’s see if we are good so far. Start the server:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">rails</span> <span class="n">server</span>
+</code></pre></div></div>
+
+<p>From your browser navigate to <code class="highlighter-rouge">localhost:3000</code>. Are we OK?</p>
+
+<p><img src="https://3.bp.blogspot.com/-LKDXgX3VjUE/UqHlrYug95I/AAAAAAAAAew/rzpdLoPQ0m0/s1600/1.png" alt="Rails welcome aboard" /></p>
+
+<p>Yes, we are.</p>
+
+<p>Open with your text editor the file <code class="highlighter-rouge">database.yml</code> which is located under the config directory:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config/database.yml
+</code></pre></div></div>
+
+<p>As you can see, the application has already been configured to use the <a href="http://www.sqlite.org/">SQLite</a> database engine for persistence.
+This is ok for now but on an upcoming tutorial we are going to change this file in order to use MySQL.</p>
+
+<p>Our application is going to have a single model, <strong>Task</strong>, with the following properties:</p>
+
+<ul>
+  <li>title: task’s title</li>
+  <li>note: task’s note (details etc)</li>
+  <li>completed: task’s completion date</li>
+</ul>
+
+<p>Let’s create the model. From the command line:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate model Task title:string note:text completed:date
+</code></pre></div></div>
+
+<p><img src="https://4.bp.blogspot.com/-kYYToZG0UAQ/UqJt6uRb09I/AAAAAAAAAkI/2joxfvGSkEI/s1600/22.png" alt="https://4.bp.blogspot.com/-kYYToZG0UAQ/UqJt6uRb09I/AAAAAAAAAkI/2joxfvGSkEI/s640/22.png" /></p>
+
+<p>We decided to use:</p>
+
+<ul>
+  <li><strong>string</strong> for the title attribute (small data type)</li>
+  <li><strong>text</strong> for the note attribute (longer pieces of textual data)</li>
+  <li><strong>date</strong> for the completed attribute</li>
+</ul>
+
+<p>From the command’s output, we are currently interested for the first two files:</p>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">db/migrate/xxxxxxxxxxxxxxxxx_create_tasks.rb</code>
+This is the migration.
+Migrations are files which change your database’s schema upon execution.
+This specific file has the appropriate commands that will create the table for our tasks.
+View the contents to get an idea of the commands.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">app/models/task.rb</code>
+This is the model.
+Models are classes defining persistent objects.
+This specific file defines our task model. If you open the file you will see that is actually an empty subclass of the <code class="highlighter-rouge">ActiveRecord::Base</code>.
+We are going to add stuff there later on.</p>
+  </li>
+</ul>
+
+<p>At this point we are going to get familiar with the rails console - your best friend while developing rails applications.</p>
+
+<p>I suggest opening a new window/tab of the console application you’re using (I use iTerm2) so that you can have access to both the rails console and the shell prompt of our application’s root folder.
+I have a third one for the <code class="highlighter-rouge">rails server</code> command.</p>
+
+<p>From the command line:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails console
+</code></pre></div></div>
+
+<p>or the equivalent</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails c
+</code></pre></div></div>
+
+<p><img src="https://2.bp.blogspot.com/-T0siYFO-30c/UqHwf9hAmwI/AAAAAAAAAfU/Z2XdDpO0SBo/s1600/3.png" alt="Rails console)" /></p>
+
+<p>Imagine the rails console as an application in which you can directly execute your ruby code having all your application’s files available (and some of them already loaded).<br />
+Play a little with it, for example:</p>
+
+<p><img src="https://3.bp.blogspot.com/-JYNL9tGcpoU/UqHx38tF17I/AAAAAAAAAfg/nP1LEN0Dw-Y/s1600/4.png" alt="" /></p>
+
+<p>Don’t be scared by the example, read <a href="/programming/2013/11/08/dont-give-up-on-ruby">here</a>.</p>
+
+<p>Now, let’s check our Task model. Just type <code class="highlighter-rouge">Task</code>:</p>
+
+<p><img src="https://4.bp.blogspot.com/-Jc8SR7bwgZM/UqH2uv3lDVI/AAAAAAAAAfw/NTygee5m4hg/s1600/5.png" alt="" /></p>
+
+<p>Hmmm.. Refresh your browser (at <code class="highlighter-rouge">http:://localhost:3000</code>).</p>
+
+<p><img src="https://3.bp.blogspot.com/-df_owmXyYro/UqH3C7pupsI/AAAAAAAAAf4/ZbczJ-NAs-Y/s1600/6.png" alt="" /></p>
+
+<p>That’s right. We generated the model migration but we didn’t ask to apply it so that our database schema gets updated.</p>
+
+<p>Let’s do it now. From the command prompt:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rake db:migrate <span class="nv">RAILS_ENV</span><span class="o">=</span>development
+</code></pre></div></div>
+
+<p><em>Note: you may skip the <code class="highlighter-rouge">RAILS_ENV=development</code> part since this is the default</em>.</p>
+
+<p><img src="https://3.bp.blogspot.com/-Tc8AQLsmNoI/UqH4J_sz-BI/AAAAAAAAAgE/niZ8xqmDLE0/s1600/7.png" alt="" /></p>
+
+<p>Great. The table has been created. If you refresh your browser you’ll see the default rails application page again.</p>
+
+<p>But re-typing <code class="highlighter-rouge">Task</code> in the rails console you’ll see that you get the same error.
+This happens because your environment was loaded the moment you executed the command <code class="highlighter-rouge">rails console</code> and at that moment the table indeed didn’t exist.
+You may reload the environment at any point using the command:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reload!</span>
+</code></pre></div></div>
+
+<p>And there you have it:</p>
+
+<p><img src="https://2.bp.blogspot.com/-LgRrfOB6o8w/UqJuVn3fAoI/AAAAAAAAAkQ/J1f8gFRckQ4/s1600/23.png" alt="" /></p>
+
+<p>Since our Task class is empty, what are all these properties? Where did they come from?</p>
+
+<p>Well, <code class="highlighter-rouge">ActiveRecord</code> scans our table and automatically maps the column names to our model’s attributes. Cool? Cool.</p>
+
+<p>As you may notice, there are two attributes there that we didn’t ask for: <code class="highlighter-rouge">created_at</code> and <code class="highlighter-rouge">updated_at</code>
+There were added automatically by our model generation command and <code class="highlighter-rouge">ActiveRecord</code> automatically assigns values to these columns upon creation &amp; updates of a model. Cool? Cool.</p>
+
+<p>Let’s create our first task. Within the rails console:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Task</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">title:  </span><span class="s1">'First task'</span><span class="p">,</span>  <span class="ss">note:  </span><span class="s1">'This task was created inside the rails console'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>That’s it. You just saved your first task. Now will load it in order to edit/update it and then to delete it.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">task</span> <span class="o">=</span>  <span class="no">Task</span><span class="p">.</span><span class="nf">first</span>
+</code></pre></div></div>
+<p><img src="https://2.bp.blogspot.com/-5NPBmgNGZp0/UqIAysW--YI/AAAAAAAAAgc/r52eoK-M5BI/s1600/9.png" alt="" /></p>
+
+<p>We loaded our task by selecting the first and only record of the Task model.<br />
+Let’s edit it:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">task</span><span class="p">.</span><span class="nf">title</span> <span class="o">=</span>  <span class="s1">'First task - edited'</span>
+<span class="n">task</span><span class="p">.</span><span class="nf">save</span>
+</code></pre></div></div>
+
+<p><img src="https://3.bp.blogspot.com/-rOx3Jpa4ah4/UqIBX18MbhI/AAAAAAAAAgk/a9v3uKaapl4/s1600/10.png" alt="" /></p>
+
+<p>And let’s delete it:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">task</span><span class="p">.</span><span class="nf">destroy</span>
+</code></pre></div></div>
+<p><img src="https://1.bp.blogspot.com/-UfkmaJr4PwI/UqIB4IWIbgI/AAAAAAAAAgw/FWFFlXsSBOc/s1600/11.png" alt="" /></p>
+
+<p>Confirm that we have no tasks anymore.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Task</span><span class="p">.</span><span class="nf">count</span>
+</code></pre></div></div>
+<p><img src="https://4.bp.blogspot.com/-tBhNgcfScoc/UqICKeGdfxI/AAAAAAAAAg4/BVeY9vsnWJc/s1600/12.png" alt="" /></p>
+
+<p>Ok, our model seems to be working fine. Time to start giving a face to our application.</p>
+
+<p>The default views of a rails application are <code class="highlighter-rouge">erb</code> files that in the case of an html page you can imagine them as jsps but instead of Java you write ruby code.
+We already have such a file in our application,  <code class="highlighter-rouge">application.html.erb</code>, open it in your text editor to view its contents (it’s located under <code class="highlighter-rouge">app/views/layouts</code>).</p>
+
+<p><img src="https://1.bp.blogspot.com/-Qrj6fip6euY/UqIENujohVI/AAAAAAAAAhE/KPO_FoXqaEY/s1600/13.png" alt="" /></p>
+
+<p>This file is a layout meaning that you may use it to display content that you wish to be present to a lot (if not to all) of your application’s pages. Each page you create will be <code class="highlighter-rouge">embedded</code> at line 11.
+You may add whatever you want before &amp; after the <code class="highlighter-rouge">yield</code> directive.</p>
+
+<p>As you can see, the file contains both static and dynamic content (enclosed in <code class="highlighter-rouge">&lt;%= %&gt;</code> tags) and looks very much like a jsp page. We are going to change this now by using <em><a href="http://haml.info/">haml</a></em>.
+Why? Because our views will look clearer and more beautiful. It will be easier to read and update them.</p>
+
+<p>The haml’s general idea is:</p>
+
+<ul>
+  <li>use indentation to express hierarchy skipping end tags etc</li>
+  <li>ruby commands start with <code class="highlighter-rouge">-</code></li>
+  <li>ruby embedded content starts with <code class="highlighter-rouge">=</code></li>
+  <li>html tags start with <code class="highlighter-rouge">%</code></li>
+  <li>use <code class="highlighter-rouge">#</code> for setting id’s to your html elements</li>
+  <li>use <code class="highlighter-rouge">.</code> for setting css classes to your html elements</li>
+</ul>
+
+<p>Now, rename the file to <code class="highlighter-rouge">application.html.haml</code> and replace the contents with the following:</p>
+
+<div class="language-haml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">!!!
+</span><span class="nt">%html</span>
+  <span class="nt">%head</span>
+    <span class="nt">%title</span> Todo
+    <span class="p">=</span> <span class="n">stylesheet_link_tag</span>    <span class="s2">"application"</span><span class="p">,</span> <span class="ss">media: </span><span class="s2">"all"</span>
+    <span class="p">=</span> <span class="n">javascript_include_tag</span> <span class="s2">"application"</span>
+    <span class="p">=</span> <span class="n">csrf_meta_tags</span>
+  <span class="nt">%body</span>
+    <span class="p">=</span> <span class="k">yield</span>
+</code></pre></div></div>
+
+<p><img src="https://3.bp.blogspot.com/-ajux9zFSolg/UqIK2vzXwQI/AAAAAAAAAhU/weBiG4hToWQ/s1600/14.png" alt="" /></p>
+
+<p>As you can see we also removed the <em>turbolink</em> related stuff.</p>
+
+<p><strong>IMPORTANT: Make sure to set your text editor to use 2 spaces instead of tabs!!!</strong></p>
+
+<p>Got it? Isn’t it simpler?
+You’ll see more haml code below that will help you understand it better but you may follow a simple <a href="http://haml.info/tutorial.html">tutorial</a> later.</p>
+
+<p>So, we will create our static pages controller now as we did at the previous tutorial. From the command line:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate controller pages
+</code></pre></div></div>
+
+<p>Add a home action in the generated controller <code class="highlighter-rouge">pages_controller.rb</code> which is located under <code class="highlighter-rouge">app/controllers</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">PagesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">home</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Create the corresponding (empty) home page file <code class="highlighter-rouge">home.html.haml</code> under <code class="highlighter-rouge">app/views/pages directory</code>.</p>
+
+<p>Remove the comments from the <code class="highlighter-rouge">routes.rb</code> file which is located under the <code class="highlighter-rouge">config</code> directory and add the following line in order to have our home page being rendered as the root path of the application:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">root</span> <span class="ss">to:  </span><span class="s1">'pages#home'</span>
+</code></pre></div></div>
+
+<p><img src="https://3.bp.blogspot.com/-gwItCMa5ZCs/UqIPWv2_qkI/AAAAAAAAAhg/GMCH_-BxWl4/s1600/15.png" alt="" /></p>
+
+<p>Refreshing your browser, you should now view an empty page (since our <code class="highlighter-rouge">home.html.haml</code> is empty).
+<strong>But</strong> if you view the source of the page from your browser, you’ll see the html of our layout.</p>
+
+<p><img src="https://2.bp.blogspot.com/-oFpofDqcJsU/UqIP9x2VsGI/AAAAAAAAAho/64Jl2mW-tj0/s1600/16.png" alt="" /></p>
+
+<p>Let’s edit our layout to add some cool “bootstrapish” stuff.</p>
+
+<p>We will add a hero unit with our application’s name. If we didn’t use haml, we would add something like:</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row-fluid"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"span10 offset1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"hero-unit"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1&gt;</span>ToDo<span class="nt">&lt;h1&gt;</span>
+      <span class="nt">&lt;p&gt;</span>Welcome to the tutorial's ToDo application<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>The equivalent haml:</p>
+
+<div class="language-haml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.row-fluid</span>
+  <span class="nc">.span10.offset1</span>
+    <span class="nc">.hero-unit.text-center</span>
+      <span class="nt">%h1</span>
+        ToDo
+      <span class="nt">%p</span>
+        Welcome to the tutorial's ToDo application
+</code></pre></div></div>
+
+<p>So our <code class="highlighter-rouge">application.haml.html</code> now looks like:
+<img src="https://4.bp.blogspot.com/-zJ_c6MVCtHg/UqJvjSeMqbI/AAAAAAAAAkk/z2nPrgAmn08/s1600/24.png" alt="" /></p>
+
+<p>In order to have the Boostrap magic enabled:</p>
+
+<ul>
+  <li>rename the <code class="highlighter-rouge">application.css</code> file which is located under <code class="highlighter-rouge">app/assets/stylesheets</code> to <code class="highlighter-rouge">application.css.scss</code></li>
+  <li>add the following line to the bottom of the file:  </li>
+</ul>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span>  <span class="s2">'bootstrap'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>in <code class="highlighter-rouge">application.js</code> which is located under <code class="highlighter-rouge">app/assets/javascript</code> add the following before the line <code class="highlighter-rouge">//require_tree .</code>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//= require bootstrap</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Done. Refresh your browser and you should see this:</p>
+
+<p><img src="https://1.bp.blogspot.com/-wfC2D1m8tyo/UqJwI0YyDHI/AAAAAAAAAks/HpDO4VecwwA/s1600/1.png" alt="" /></p>
+
+<p>Time to add some task functionality.</p>
+
+<p>In our home action of the pages controller we will keep all of our tasks in an instance variable named <code class="highlighter-rouge">@tasks</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">home</span>
+  <span class="vi">@tasks</span> <span class="o">=</span> <span class="no">Task</span><span class="p">.</span><span class="nf">all</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>and now we have them available to our view. We are going to show a table with all the tasks and an appropriate message if none exists. Add the following to your home.html.haml:</p>
+<div class="language-haml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.container</span>
+  <span class="p">-</span> <span class="k">if</span> <span class="vi">@tasks</span><span class="p">.</span><span class="nf">empty?</span>
+    <span class="nt">%span</span><span class="nc">.text-warning</span> There are no tasks!
+  <span class="p">-</span> <span class="k">else</span>
+    <span class="nt">%table</span><span class="nc">.table.table-hover.table-bordered</span>
+      <span class="nt">%thead</span>
+        <span class="nt">%tr</span>
+          <span class="nt">%th</span> Title
+          <span class="nt">%th</span> Created at
+          <span class="nt">%th</span> Completed
+      <span class="nt">%tbody</span>
+        <span class="p">-</span> <span class="vi">@tasks</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">task</span><span class="o">|</span>
+          <span class="nt">%tr</span>
+            <span class="nt">%td</span>
+              <span class="nt">%strong</span><span class="p">=</span> <span class="n">task</span><span class="p">.</span><span class="nf">title</span>
+            <span class="nt">%td</span><span class="nc">.text-info</span><span class="p">=</span> <span class="n">task</span><span class="p">.</span><span class="nf">created_at</span>
+            <span class="nt">%td</span><span class="nc">.text-success</span><span class="p">=</span> <span class="n">task</span><span class="p">.</span><span class="nf">completed</span>
+</code></pre></div></div>
+
+<p>If you refresh you browser now, you should be seeing this:</p>
+
+<p><img src="https://3.bp.blogspot.com/-lpIkTcD3vUI/UqJwI0s3qKI/AAAAAAAAAlA/5q86rQRP70k/s1600/2.png" alt="" /></p>
+
+<p>Add a task as we did before via the rails console just to see how it is being displayed:</p>
+
+<p><img src="https://1.bp.blogspot.com/-c_3QtYktkcc/UqJwI1JvtVI/AAAAAAAAAk8/1k5OPo47yC0/s1600/3.png" alt="" /></p>
+
+<p>We created our pages controller in order to handle the <strong>static</strong> pages of the application. The “static” word here doesn’t mean static content but actions that do not belong in the context of a resource. This controller is described as a non-resourceful controller.</p>
+
+<p>On the other hand, now, we need to create a controller for managing our model(resource) <code class="highlighter-rouge">Task</code>. We want this controller to handle actions (view, create, new, update &amp; destroy) on our model. This kind of controllers is described as resourceful.</p>
+
+<p>Rails helps us route these actions all at once with the resources method in our <code class="highlighter-rouge">routes.rb</code> file. By default, this method will route all available actions (<a href="http://guides.rubyonrails.org/routing.html#crud-verbs-and-actions">see here</a>) but we can limit them to our needs as you’ll see below. Add this line to <code class="highlighter-rouge">routes.rb</code>:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">resources</span> <span class="ss">:tasks</span>
+</code></pre></div></div>
+
+<p>Now, from the command line execute this command to view the current routes:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rake routes
+</code></pre></div></div>
+
+<p><img src="https://4.bp.blogspot.com/-AVUtMl8E_BI/UqIrZx38edI/AAAAAAAAAiw/XjJOuQwaJJo/s1600/21.png" alt="" /></p>
+
+<p>As you can see, a bunch of new routes have been created besides our root one. Notice the forth column of them. These are the actions that are mapped because of the addition of the resources method in <code class="highlighter-rouge">routes.rb</code>. </p>
+
+<p>We actually want all of them except the index since we are going to display our task index in the home page instead of a separate one. It’s pretty clear what the others are supposed to do. So, let’s remove the <code class="highlighter-rouge">index</code> action.</p>
+
+<p>Change the resources call to the following:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">resources</span> <span class="ss">:tasks</span><span class="p">,</span>  <span class="ss">except:  </span><span class="p">[</span><span class="ss">:index</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Gone.</p>
+
+<p><img src="https://4.bp.blogspot.com/-xlKrlUrVKT4/UqIttaNCOzI/AAAAAAAAAi8/HeKDjaDZMow/s1600/22.png" alt="" /></p>
+
+<p>Also notice that the actions are supposed to belong to a tasks controller(<code class="highlighter-rouge">tasks#action</code>). Guess what’s next:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate controller tasks
+</code></pre></div></div>
+
+<p>We created the tasks controller (<code class="highlighter-rouge">app/controllers/tasks_controller.rb</code>).</p>
+
+<p>Now it’s time to describe what we want to do. On the home page, we want to have the list of our tasks giving the ability to update/destroy each of them. We also want to give the ability to create new tasks.
+We want all these actions to be executed the ajax way and not with redirects to new pages etc…</p>
+
+<p>We will start with the <code class="highlighter-rouge">tasks#new</code> action. In the tasks controller:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">new</span>
+  <span class="vi">@task</span> <span class="o">=</span> <span class="no">Task</span><span class="p">.</span><span class="nf">new</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Here we initialize a Task and we keep it at the <code class="highlighter-rouge">@task</code> instance variable. In our home action, we were rendering a whole page but now we want just a modal with a form inside it to be shown. We will respond with javascript to accomplish this so the corresponding view of the new action won’t be a <code class="highlighter-rouge">new.html.haml</code> but a <code class="highlighter-rouge">new.js.erb</code> one. Create it under <code class="highlighter-rouge">app/views/tasks</code>. </p>
+
+<p>Before continuing, we will add a modal window in the <code class="highlighter-rouge">home.html.haml</code> so that it is be available in the page for our scripts to access it. Add the following line to the end of you the file:</p>
+<div class="language-haml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#modal</span><span class="nc">.modal.fade</span>
+</code></pre></div></div>
+
+<p><img src="https://3.bp.blogspot.com/-nwVYK7VYcVs/UrHx6dnNLQI/AAAAAAAAAqE/GBIAxL5U6MU/s1600/1.png" alt="" /></p>
+
+<p>Edit the <code class="highlighter-rouge">new.js.erb</code> and add the following:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">m</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#modal</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="dl">'</span><span class="s1">Foo</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">modal</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>We will correct the code above later but for the time being, let’s see how does the modal appear in our page.</p>
+
+<p>We need to add a button/link in the home page for the new action. We can add it to the layout actually so it is available on all pages (even though we are going to have only the home page in this tutorial). Edit the <code class="highlighter-rouge">application.html.haml</code> file in your text editor and add the following line in the hero unit:</p>
+<div class="language-haml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">=</span> <span class="n">link_to</span> <span class="s1">'New task'</span><span class="p">,</span> <span class="n">new_task_path</span><span class="p">,</span>  <span class="ss">class:  </span><span class="s1">'btn btn-primary'</span>
+</code></pre></div></div>
+
+<p><img src="https://1.bp.blogspot.com/-8J-8tiTbj1Q/UqI0G50_MXI/AAAAAAAAAjU/6j1P2ol5PFY/s1600/24.png" alt="" /></p>
+
+<p>Now refresh your page in the browser:</p>
+
+<p><img src="https://3.bp.blogspot.com/--MbGloCAfAQ/UqJwdms6NXI/AAAAAAAAAlE/VRt4mFargtY/s1600/4.png" alt="" /></p>
+
+<p>Nice. Press the button.</p>
+
+<p><img src="https://2.bp.blogspot.com/-gxwPxDqK80Q/UnxyAOQP4qI/AAAAAAAAAPg/Bpswk3rINEE/s1600/center.png" alt="" /></p>
+
+<p>Hmmm.. Error… Missing template…</p>
+
+<p>What happened here since we have a view for the <strong>new</strong> action? In simple words, normal clicks of links are requesting the <code class="highlighter-rouge">html</code> format of our views. We have to request the <code class="highlighter-rouge">js</code> format and to do so change the link we added to the layout as below:</p>
+<div class="language-haml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">=</span> <span class="n">link_to</span> <span class="s1">'New task'</span><span class="p">,</span> <span class="n">new_task_path</span><span class="p">,</span> <span class="ss">class: </span><span class="s1">'btn btn-primary'</span><span class="p">,</span> <span class="ss">remote: </span><span class="kp">true</span>
+</code></pre></div></div>
+
+<p>If you press the button now, you will see a modal with the word <em>Foo</em> as its content.</p>
+
+<p>Before continuing, you should know what a <strong>partial</strong> is: a re-usable part of code (imagine it as a part of a view) which you may embed into other partials/pages/layouts etc.
+So, if we have a part of a view that we want to use to other places too, we usually create a partial. </p>
+
+<p>In our case, we will create a partial that will be our form for creating a task. Then, in our <code class="highlighter-rouge">new.js.erb</code> we are going to replace the <em>Foo</em> string with this partial so the modal will display the Task form.
+Partial files start with an underscore so create a file named <code class="highlighter-rouge">_task_form.html.haml</code> under <code class="highlighter-rouge">app/views/tasks</code> directory and add the following contents:</p>
+<div class="language-haml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.modal-header</span>
+  <span class="nt">%h1</span> New Task
+<span class="p">=</span> <span class="n">simple_form_for</span> <span class="n">task</span><span class="p">,</span> <span class="ss">class: </span><span class="s1">'clearfix'</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
+  <span class="nc">.modal-body</span>
+    <span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="nf">input</span> <span class="ss">:title</span>
+    <span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="nf">input</span> <span class="ss">:note</span>
+    <span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="nf">input</span> <span class="ss">:completed</span>
+  <span class="nc">.modal-footer</span>
+    <span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="nf">submit</span> <span class="s1">'Save'</span><span class="p">,</span> <span class="ss">class: </span><span class="s1">'btn btn-primary'</span>
+</code></pre></div></div>
+
+<p>Also, open the <code class="highlighter-rouge">page.css.scss</code> file which is under <code class="highlighter-rouge">app/assets/stylesheets</code> and add the following rule to fix the bottom margin of the form displayed in a modal:</p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.modal</span> <span class="nt">form</span> <span class="p">{</span>
+  <span class="nl">margin-bottom</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Finally, let’s change the <code class="highlighter-rouge">new.js.erb</code> in order to render the partial in the modal:</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>m = $('#modal');
+m.html('<span class="cp">&lt;%=</span> <span class="n">j</span><span class="p">(</span><span class="n">render</span> <span class="ss">partial: </span><span class="s1">'task_form'</span><span class="p">,</span> <span class="ss">locals: </span><span class="p">{</span><span class="ss">task: </span><span class="vi">@task</span><span class="p">})</span> <span class="cp">%&gt;</span>');
+m.modal('show');
+</code></pre></div></div>
+
+<p>And now we can press the button <em>New task</em>:</p>
+
+<p><img src="https://1.bp.blogspot.com/-HWF3_ZYiBkk/UqJySZRwz-I/AAAAAAAAAlQ/w5frc1R0I_8/s1600/5.png" alt="" /></p>
+
+<p>As you can see, <code class="highlighter-rouge">simple_form</code> picked to render the title as a simple input text, note as a <code class="highlighter-rouge">textarea</code> and, well, the completed date field as a combination of three selects. Let’s change the last one because it doesn’t look nice.</p>
+
+<p>To achieve this we will tell simple_form to render it as a simple text field, then we will add a specific class to this input and using javascript we are going to create a nice calendar.</p>
+
+<p>First change the line of the task form from:</p>
+
+<div class="language-haml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="nf">input</span> <span class="ss">:completed</span>
+</code></pre></div></div>
+
+<p>to</p>
+
+<div class="language-haml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">=</span> <span class="n">f</span><span class="p">.</span><span class="nf">input</span> <span class="ss">:completed</span><span class="p">,</span> <span class="ss">as: :string</span><span class="p">,</span> <span class="ss">input_html: </span><span class="p">{</span><span class="ss">class: </span><span class="s1">'datepicker'</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>We will need a new gem, so add it to the end of your <code class="highlighter-rouge">Gemfile</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span>  <span class="s1">'bootstrap-datepicker-rails'</span>
+</code></pre></div></div>
+
+<p>Edit <code class="highlighter-rouge">application.css.scss</code> which is under <code class="highlighter-rouge">app/assets/stylesheets</code> and add the following before line  <code class="highlighter-rouge">*= require_tree .</code></p>
+
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">*=</span>  <span class="nt">require</span> <span class="nt">bootstrap-datepicker</span>
+</code></pre></div></div>
+
+<p>Edit <code class="highlighter-rouge">application.js</code> and add the following before line <code class="highlighter-rouge">*//= require_tree .*</code></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//= require bootstrap-datepicker</span>
+</code></pre></div></div>
+
+<p>Now, we have to create a javascript function that will apply the datepicker behaviour of the gem to the appropriate inputs. We’ll do this in a fancy way. Open the <code class="highlighter-rouge">pages.js.coffee</code> file and add the following:</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="na">fn</span><span class="p">.</span><span class="na">extend</span> <span class="p">{</span>
+  <span class="na">integrateDatepicker</span><span class="o">:</span> <span class="p">(</span><span class="nx">selector</span><span class="p">)</span><span class="o">-&gt;</span>
+    <span class="nx">selector</span> <span class="o">=</span> <span class="nx">selector</span> <span class="o">||</span> <span class="s">'.datepicker'</span>
+    <span class="nx">$</span><span class="p">(</span><span class="err">@</span><span class="p">).</span><span class="na">find</span><span class="p">(</span><span class="nx">selector</span><span class="p">).</span><span class="na">datepicker</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="na">ready</span> <span class="p">()</span> <span class="o">-&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s">'body'</span><span class="p">).</span><span class="na">integrateDatepicker</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>What did we do here? </p>
+
+<p>We extended the jQuery prototype in order to add a function (<code class="highlighter-rouge">integrateDatepicker</code>) that will search the children of the current element with a given selector and apply the datepicker behaviour on them.
+We also call this function when the document is ready on the body in order to avoid the explicit call on freshly rendered pages.
+Now, since our form was not present during the <code class="highlighter-rouge">ready</code> callback of the document, the behaviour hasn’t been added to our <code class="highlighter-rouge">completed</code> input. Thus, we must add the following line at the end of the <code class="highlighter-rouge">new.js.erb</code>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#modal</span><span class="dl">'</span><span class="p">).</span><span class="nx">integrateDatepicker</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>Refresh and there it is:</p>
+
+<p><img src="https://2.bp.blogspot.com/-vSvB3qOWx8E/UqJ6HzPNnqI/AAAAAAAAAlg/gw9xz9uB36Y/s1600/6.png" alt="" /></p>
+
+<p>Since this form was created for the <code class="highlighter-rouge">@task</code> instance variable of the controller and since that <code class="highlighter-rouge">@task</code> does not exist but it is a new one, its action (the form’s action) has automatically been resolved to the <code class="highlighter-rouge">create</code> action of the controller. Don’t believe me? Press the save button:</p>
+
+<p><img src="https://1.bp.blogspot.com/-HECWR77_qYI/UqJ7FoFo8wI/AAAAAAAAAlo/uQmlyyrUakE/s1600/7.png" alt="" /></p>
+
+<p>Open the tasks controller and add the following:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">create</span>
+  <span class="vi">@task</span> <span class="o">=</span> <span class="no">Task</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">task_params</span><span class="p">)</span>
+  <span class="n">redirect_to</span> <span class="n">root_path</span>
+<span class="k">end</span>
+<span class="kp">private</span>
+<span class="k">def</span> <span class="nf">task_params</span>
+  <span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:task</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:note</span><span class="p">,</span> <span class="ss">:completed</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Here we defined the <code class="highlighter-rouge">create</code> action that creates the task and then redirects to the root path aka our home page.
+We also created the <code class="highlighter-rouge">task_params</code> private method so that we filter the params of the request in case someone tries to pass parameters that we don’t expect.
+We only allow values for the <code class="highlighter-rouge">title</code>, <code class="highlighter-rouge">note</code> and <code class="highlighter-rouge">completed</code> attributes of our model. There will be cases that your model will have attributes you don’t want to be set by the user and this is the way to control them.</p>
+
+<p><img src="https://2.bp.blogspot.com/-pGsV25stbqI/UqJ_oUclJlI/AAAAAAAAAl0/x2cdjwjwt04/s1600/8.png" alt="" /></p>
+
+<p>It’s about time to end this part of the tutorial here. Very soon I will write the <a href="/programming/2013/12/17/creating-a-simple-todo-part-2">next part</a> in which we will:</p>
+
+<ul>
+  <li>refactor the <code class="highlighter-rouge">create</code> action so that it doesn’t redirect to the root path but it closes the modal and re-renders the table of the tasks</li>
+  <li>add validation to our model so that empty titles are not allowed for the tasks showing the appropriate messages to the user</li>
+  <li>implement the edit/update and delete functionality</li>
+</ul>
+
+                </div>
+              </div>
+
+              <div class="col-12 order-first">
+                <div class="d-sm-block d-md-none mb-3">
+                  <a class="ga-event-link btn btn-outline-primary d-block collapsed text-left"
+                    data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1"
+                    data-event-category="Document outline"
+                    data-event-action="click"
+                    title="View the structure of this document"
+                    role="button"
+                    data-toggle="collapse"
+                    data-role="outline"
+                    data-content=".outline"
+                    href="#docout-mobile"
+                    data-target="#docout-mobile"
+                    aria-expanded="false"
+                    aria-controls="collapse">
+                    Table of contents
+                    <i class="fa iridakos-collapse pull-right mt-1"></i>
+                  </a>
+
+                  <div id="docout-mobile" class="collapse my-3 border rounded bg-light p-2">
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+          
+
+
+        </div>
+
+        <div class="col">
+          <div class="sidebar">
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <a class="ga-event-link btn btn-warning d-block collapsed text-left"
+          data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1"
+          data-event-category="Document outline"
+          data-event-action="click"
+
+          data-toggle="collapse"
+          data-role="outline"
+          data-content=".outline"
+          href="#docout-sidebar"
+          data-target="#docout-sidebar"
+
+          title="View the structure of this document"
+          role="button"
+          href="#docout-sidebar"
+          aria-expanded="false"
+          aria-controls="collapse">
+          Table of contents
+          <i class="fa iridakos-collapse pull-right mt-1"></i>
+        </a>
+
+        <div class="section-content">
+          <div id="docout-sidebar" class="collapse mt-2 p-2">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-hand-spock-o"></i> featured posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2018/03/01/bash-programmable-completion-tutorial"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a bash completion script">Creating a bash completion script</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a bash completion script
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+            </div>
+            <a href="/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a Linux Desktop application with Ruby">Creating a Linux Desktop application with Ruby</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a simple GTK ToDo application with Ruby
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-betterldevlink" title="Featured in Better Dev Link" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2019/06/26/composing-better-emails"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Composing better emails">Composing better emails</a>
+             <div class="text-muted smaller">
+               Tips for writing effective emails avoiding misunderstandings with examples from the software development world.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="How to remove duplicate lines from files preserving their order">How to remove duplicate lines from files preserving their order</a>
+             <div class="text-muted smaller">
+               How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained).
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+            </div>
+            <a href="/programming/2016/04/01/duckrails-guide"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="DuckRails - Open source development tool for mocking API endpoints">DuckRails - Open source development tool for mocking API endpoints</a>
+             <div class="text-muted smaller">
+               An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available.
+             </div>
+          </div>
+        
+      
+
+      <div class="section-item">
+        <a href="/programming/featured"
+           class="ga-event-link"
+           data-event-category="Featured all posts"
+           data-event-action="click"
+           data-event-label="View all featured posts">View all featured posts</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-bullhorn"></i> recent posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4>
+        <i class="fa fa-github"></i> code
+      </h4>
+
+      <div class="float-right">
+
+      </div>
+    </div>
+
+    <div class="section-content">
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="goto repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/goto">goto</a>: a tool for navigating to aliased directories in the shell with auto complete
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="elman repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/elman">elman</a>: a script for full text searching Linux man pages with Elasticsearch
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="duckrails repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/duckrails">DuckRails</a>
+        version <span class="important">2.1.5</span> is out <img src="/assets/images/news/duckrails.png" class="logo" /> (<a class="ga-event-link" data-event-label="DuckRails GitHub docker wiki" data-event-action="click" data-event-category="News links" href="https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker" target="_blank">docker image available</a>)
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <div class="section-content mt-2">
+          
+<div class="share-links">
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Creating a simple ToDo application with Ruby on Rails - Part 1&url=https://iridakos.com/programming/2013/12/07/creating-a-simple-todo-part-1" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/programming/2013/12/07/creating-a-simple-todo-part-1" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Creating a simple ToDo application with Ruby on Rails - Part 1&amp;body=Creating a simple ToDo application with Ruby on Rails - Part 1: https://iridakos.com/programming/2013/12/07/creating-a-simple-todo-part-1"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> Subscribe via RSS
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/feed.xml">all posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/feeds/cats.xml">cat photos</a>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">iridakos images preview</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <div class="image-container">
+                    <img class="image" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer">
+  <div class="container-fluid no-gutters">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="brand mb-1">
+          <a href="https://iridakos.com"><strong>iridakos</strong></a>
+        </div>
+
+        <div class="contact-links">
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="GitHub" href="https://www.github.com/iridakos/"><i class="fa fa-github" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="Twitter" href="https://www.twitter.com/lazaru_s/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="LinkedIn" href="https://www.linkedin.com/in/iridakos/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+
+          <div class="dropdown d-inline-block mr-1">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" title="subscribe via RSS" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-rss"></i>
+            </button>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to all posts RSS - Footer" data-event-action="click" href="/feed.xml">all posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to programming posts RSS - Footer" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to tutorial posts RSS - Footer" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to opensource posts RSS - Footer" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to ruby posts RSS - Footer" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to painting posts RSS - Footer" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1" data-event-category="Subscribe to cat photo posts RSS - Footer" data-event-action="click" href="/feeds/cat-photos.xml">cat photos</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="license mt-1">
+          <div class="mb-1">
+            <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
+          </div>
+
+          <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">iridakos</span> by
+          <a xmlns:cc="http://creativecommons.org/ns#" href="https://iridakos.com/about/" property="cc:attributionName" rel="cc:attributionURL" class="font-weight-bold">Lazarus Lazaridis</a> is licensed under a <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76452884-1', 'auto');
+
+  ga('set', 'page', '/programming/2013/12/07/creating-a-simple-todo-part-1')
+  ga('send', 'pageview');
+
+</script>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1573472334557130114" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1573472334557130114" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1573472334557130114" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1573472334557130114" type="text/javascript"></script>
+
+
+
+
+  </body>
+</html>

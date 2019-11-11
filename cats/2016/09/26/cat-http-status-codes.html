@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ocs-site-verification" content="e5faa08e01247c38aadf1c1737ff8136">
+  <meta name="google-site-verification" content="KqOxy0ecDlfNdfO530ZAbtNBedy49hn2KziyqLK0JGo" />
+
+  <title>Cat HTTP status codes</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
+
+  <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css?1573472334557130114">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Cat HTTP status codes" />
+<meta name="author" content="Lazarus Lazaridis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="HTTP status codes presented with cat pictures." />
+<meta property="og:description" content="HTTP status codes presented with cat pictures." />
+<link rel="canonical" href="https://iridakos.com/cats/2016/09/26/cat-http-status-codes" />
+<meta property="og:url" content="https://iridakos.com/cats/2016/09/26/cat-http-status-codes" />
+<meta property="og:site_name" content="iridakos" />
+<meta property="og:image" content="https://i.imgur.com/1yaeuIY.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-09-26T21:00:00+03:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://i.imgur.com/1yaeuIY.jpg" />
+<meta property="twitter:title" content="Cat HTTP status codes" />
+<meta name="twitter:site" content="@lazaru_s" />
+<meta name="twitter:creator" content="@Lazarus Lazaridis" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"image":"https://i.imgur.com/1yaeuIY.jpg","description":"HTTP status codes presented with cat pictures.","@type":"BlogPosting","url":"https://iridakos.com/cats/2016/09/26/cat-http-status-codes","headline":"Cat HTTP status codes","dateModified":"2016-09-26T21:00:00+03:00","datePublished":"2016-09-26T21:00:00+03:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/cats/2016/09/26/cat-http-status-codes"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+  <script type="text/javascript">
+      window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on the website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"light-bottom"};
+  </script>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+</head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg iridakos-navbar">
+  <div class="container-fluid no-gutters">
+    
+
+    <a class="navbar-brand " href="/" alt="home">
+      <i class="fa fa-home"></i>
+      home
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="fa fa-bars pt-1"></i>
+      </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="header-pages">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            programming
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="more">
+            <a class="dropdown-item" href="/programming/">all posts</a>
+            <a class="dropdown-item" href="/programming/featured/">featured posts</a>
+            <a class="dropdown-item" href="/programming/tutorials/">tutorials</a>
+            <a class="dropdown-item" href="/programming/how-to/">how to</a>
+            <a class="dropdown-item" href="/programming/code/">code</a>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/tags/">tags</a>
+          </div>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/painting/" alt="painting">painting</a>
+        </li>
+
+        
+
+        <li class="nav-item active">
+            <a class="nav-link" href="/cats/" alt="cats">cats</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/about/" alt="about">about me</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0" method="get" action="/search">
+        <div class="input-group input-group-sm mr-sm-2">
+          <input class="form-control" name="query" type="search" placeholder="Search the blog">
+
+          <div class="input-group-append">
+            <button class="btn btn-warning" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="page-title-container">
+  <div class="container-fluid no-gutters">
+    <div class="page-title">
+      <div class="row align-items-center">
+        <div class="col-xs-12 col-md-8 col-lg-9 order-md-first order-last text-center text-md-left">
+          <h1>Cat HTTP status codes</h1>
+
+            <div class="page-subtitle">
+            HTTP status codes presented with cat pictures.
+
+            
+              <div class="post">
+                <div class="post-metadata">
+                  <div class="post-date" title="published on">
+                    Published on <span class="important">Sep 26, 2016</span>
+                  </div>
+
+                  <div class="post-category" title="in category">
+                    in category <span class="important">cats</span>
+                  </div>
+                </div>
+
+                
+                
+                  <div class="post-tags">
+                    <span class="important">tags:</span>
+                    
+                      <a href="/tags/?tag=cats" class="ga-event-link" data-event-label="cats" data-event-action="click" data-event-category="tags">cats</a> - 
+                    
+                      <a href="/tags/?tag=http" class="ga-event-link" data-event-label="http" data-event-action="click" data-event-category="tags">http</a> - 
+                    
+                      <a href="/tags/?tag=programming" class="ga-event-link" data-event-label="programming" data-event-action="click" data-event-category="tags">programming</a> - 
+                    
+                      <a href="/tags/?tag=humor" class="ga-event-link" data-event-label="humor" data-event-action="click" data-event-category="tags">humor</a> - 
+                    
+                      <a href="/tags/?tag=devhumor" class="ga-event-link" data-event-label="devhumor" data-event-action="click" data-event-category="tags">devhumor</a>
+                    
+                  </div>
+                
+              </div>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container-fluid no-gutters">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-9 page-content">
+          
+            <div>
+              <h1 id="informational-1xx">Informational 1xx</h1>
+
+<h2 id="100---continue">100 - Continue</h2>
+
+<p>The client SHOULD continue with its request.</p>
+
+<p><img src="https://i.imgur.com/trZyzhA.jpg" alt="100" /></p>
+
+<h2 id="101---switching-protocols">101 - Switching protocols</h2>
+
+<p>The server understands and is willing to comply with the client’s request, via the Upgrade message header field (section 14.42), for a change in the application protocol being used on this connection.</p>
+
+<p><img src="https://i.imgur.com/1yaeuIY.jpg" alt="101" /></p>
+
+<h1 id="successful-2xx">Successful 2xx</h1>
+
+<h2 id="200---ok">200 - OK</h2>
+
+<p>The request has succeeded. The information returned with the response is dependent on the method used in the request.</p>
+
+<p><img src="https://i.imgur.com/R6KiXeK.jpg" alt="200" /></p>
+
+<h2 id="201---created">201 - Created</h2>
+
+<p>The request has been fulfilled and resulted in a new resource being created.</p>
+
+<p><img src="https://i.imgur.com/QBCIU7D.jpg" alt="201" /></p>
+
+<h2 id="202---accepted">202 - Accepted</h2>
+
+<p>The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place. There is no facility for re-sending a status code from an asynchronous operation such as this.</p>
+
+<p><img src="https://i.imgur.com/juFIKqw.jpg" alt="202" /></p>
+
+<h2 id="203---non-authoritative-information">203 - Non-Authoritative Information</h2>
+
+<p>The returned metainformation in the entity-header is not the definitive set as available from the origin server, but is gathered from a local or a third-party copy. The set presented MAY be a subset or superset of the original version.</p>
+
+<p><img src="https://i.imgur.com/aZmjhyC.jpg" alt="203" /></p>
+
+<h2 id="204---no-content">204 - No Content</h2>
+
+<p>The server has fulfilled the request but does not need to return an entity-body, and might want to return updated metainformation. The response MAY include new or updated metainformation in the form of entity-headers, which if present SHOULD be associated with the requested variant.</p>
+
+<p><img src="https://i.imgur.com/rsMXpB3.jpg" alt="204" /></p>
+
+<h2 id="205---reset-content">205 - Reset Content</h2>
+
+<p>The server has fulfilled the request and the user agent SHOULD reset the document view which caused the request to be sent. This response is primarily intended to allow input for actions to take place via user input, followed by a clearing of the form in which the input is given so that the user can easily initiate another input action. The response MUST NOT include an entity.</p>
+
+<p><img src="https://i.imgur.com/VW9fhFL.jpg" alt="205" /></p>
+
+<h2 id="206---partial-content">206 - Partial Content</h2>
+
+<p>The server has fulfilled the partial GET request for the resource. The request MUST have included a Range header field (section 14.35) indicating the desired range, and MAY have included an If-Range header field (section 14.27) to make the request conditional.</p>
+
+<p><img src="https://i.imgur.com/mVPmECl.jpg" alt="206" /></p>
+
+<h1 id="redirection-3xx">Redirection 3xx</h1>
+
+<h2 id="300---multiple-choices">300 - Multiple Choices</h2>
+
+<p>The requested resource corresponds to any one of a set of representations, each with its own specific location, and agent- driven negotiation information (section 12) is being provided so that the user (or user agent) can select a preferred representation and redirect its request to that location.</p>
+
+<p><img src="https://i.imgur.com/D3RQtp5.jpg" alt="300" /></p>
+
+<h2 id="301---moved-permanently">301 - Moved Permanently</h2>
+
+<p>The requested resource has been assigned a new permanent URI and any future references to this resource SHOULD use one of the returned URIs. Clients with link editing capabilities ought to automatically re-link references to the Request-URI to one or more of the new references returned by the server, where possible. This response is cacheable unless indicated otherwise.</p>
+
+<p><img src="https://i.imgur.com/WdTOk6c.jpg" alt="301" /></p>
+
+<h2 id="302---found">302 - Found</h2>
+
+<p>The requested resource resides temporarily under a different URI. Since the redirection might be altered on occasion, the client SHOULD continue to use the Request-URI for future requests. This response is only cacheable if indicated by a Cache-Control or Expires header field.</p>
+
+<p><img src="https://i.imgur.com/Gme5ZbS.jpg" alt="302" /></p>
+
+<h2 id="303---see-other">303 - See Other</h2>
+
+<p>The response to the request can be found under a different URI and SHOULD be retrieved using a GET method on that resource. This method exists primarily to allow the output of a POST-activated script to redirect the user agent to a selected resource. The new URI is not a substitute reference for the originally requested resource. The 303 response MUST NOT be cached, but the response to the second (redirected) request might be cacheable.</p>
+
+<p><img src="https://i.imgur.com/7iQZSmm.jpg" alt="303" /></p>
+
+<h2 id="304---not-modified">304 - Not Modified</h2>
+
+<p>If the client has performed a conditional GET request and access is allowed, but the document has not been modified, the server SHOULD respond with this status code. The 304 response MUST NOT contain a message-body, and thus is always terminated by the first empty line after the header fields.</p>
+
+<p><img src="https://i.imgur.com/Gm8imDB.jpg" alt="304" /></p>
+
+<h2 id="305---use-proxy">305 - Use Proxy</h2>
+
+<p>The requested resource MUST be accessed through the proxy given by the Location field. The Location field gives the URI of the proxy. The recipient is expected to repeat this single request via the proxy. 305 responses MUST only be generated by origin servers.</p>
+
+<p><img src="https://i.imgur.com/I4gFcTO.jpg" alt="305" /></p>
+
+<h2 id="306---unused">306 - (Unused)</h2>
+
+<p>The 306 status code was used in a previous version of the specification, is no longer used, and the code is reserved.</p>
+
+<p><img src="https://i.imgur.com/d1QN3AE.jpg" alt="306" /></p>
+
+<h2 id="307---temporary-redirect">307 - Temporary Redirect</h2>
+
+<p>The requested resource resides temporarily under a different URI. Since the redirection MAY be altered on occasion, the client SHOULD continue to use the Request-URI for future requests. This response is only cacheable if indicated by a Cache-Control or Expires header field.</p>
+
+<p><img src="https://i.imgur.com/TEMbnhR.jpg" alt="307" /></p>
+
+<h1 id="client-error-4xx">Client Error 4xx</h1>
+
+<h2 id="400---bad-request">400 - Bad Request</h2>
+
+<p>The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications.</p>
+
+<p><img src="https://i.imgur.com/r8fmqR9.jpg" alt="400" /></p>
+
+<h2 id="401---unauthorized">401 - Unauthorized</h2>
+
+<p>The request requires user authentication. The response MUST include a WWW-Authenticate header field (section 14.47) containing a challenge applicable to the requested resource.</p>
+
+<p><img src="https://i.imgur.com/n46JUqU.jpg" alt="401" /></p>
+
+<h2 id="402---payment-required">402 - Payment Required</h2>
+
+<p>This code is reserved for future use.</p>
+
+<p><img src="https://i.imgur.com/EAbRGO1.jpg" alt="402" /></p>
+
+<h2 id="403---forbidden">403 - Forbidden</h2>
+
+<p>The server understood the request, but is refusing to fulfill it.</p>
+
+<p><img src="https://i.imgur.com/AE4xQyj.jpg" alt="403" /></p>
+
+<h2 id="404---not-found">404 - Not Found</h2>
+
+<p>The server has not found anything matching the Request-URI. No indication is given of whether the condition is temporary or permanent.</p>
+
+<p><img src="https://i.imgur.com/YPIkU1j.jpg" alt="404" /></p>
+
+<h2 id="405---method-not-allowed">405 - Method Not Allowed</h2>
+
+<p>The method specified in the Request-Line is not allowed for the resource identified by the Request-URI.</p>
+
+<p><img src="https://i.imgur.com/9NdnNmR.jpg" alt="405" /></p>
+
+<h2 id="406---not-acceptable">406 - Not Acceptable</h2>
+
+<p>The resource identified by the request is only capable of generating response entities which have content characteristics not acceptable according to the accept headers sent in the request.</p>
+
+<p><img src="https://i.imgur.com/JN4VFyV.jpg" alt="406" /></p>
+
+<h2 id="407-proxy-authentication-required">407 Proxy Authentication Required</h2>
+
+<p>This code is similar to 401 (Unauthorized), but indicates that the client must first authenticate itself with the proxy. The proxy MUST return a Proxy-Authenticate header field (section 14.33) containing a challenge applicable to the proxy for the requested resource.</p>
+
+<p><img src="https://i.imgur.com/ZEW9b9e.jpg" alt="407" /></p>
+
+<h2 id="408---request-timeout">408 - Request Timeout</h2>
+
+<p>The client did not produce a request within the time that the server was prepared to wait. The client MAY repeat the request without modifications at any later time.</p>
+
+<p><img src="https://i.imgur.com/p4rF3wA.jpg" alt="408" /></p>
+
+<h2 id="409---conflict">409 - Conflict</h2>
+
+<p>The request could not be completed due to a conflict with the current state of the resource.</p>
+
+<p><img src="https://i.imgur.com/lHF6LHW.jpg" alt="409" /></p>
+
+<h2 id="410---gone">410 - Gone</h2>
+
+<p>The requested resource is no longer available at the server and no forwarding address is known.</p>
+
+<p><img src="https://i.imgur.com/OwbXglN.jpg" alt="410" /></p>
+
+<h2 id="411---length-required">411 - Length Required</h2>
+
+<p>The server refuses to accept the request without a defined Content- Length.</p>
+
+<p><img src="https://i.imgur.com/l8WJXLh.jpg" alt="411" /></p>
+
+<h2 id="412---precondition-failed">412 - Precondition Failed</h2>
+
+<p>The precondition given in one or more of the request-header fields evaluated to false when it was tested on the server.</p>
+
+<p><img src="https://i.imgur.com/4UlQLiW.jpg" alt="412-1" />
+<img src="https://i.imgur.com/r8fmqR9.jpg" alt="412-2" /></p>
+
+<h2 id="413---request-entity-too-large">413 - Request Entity Too Large</h2>
+
+<p>The server is refusing to process a request because the request entity is larger than the server is willing or able to process.</p>
+
+<p><img src="https://i.imgur.com/NPWcmDF.jpg" alt="413" /></p>
+
+<h2 id="414---request-uri-too-long">414 - Request-URI Too Long</h2>
+
+<p>The server is refusing to service the request because the Request-URI is longer than the server is willing to interpret.</p>
+
+<p><img src="https://i.imgur.com/FcMrX0n.jpg" alt="414" /></p>
+
+<h2 id="415---unsupported-media-type">415 - Unsupported Media Type</h2>
+
+<p>The server is refusing to service the request because the entity of the request is in a format not supported by the requested resource for the requested method.</p>
+
+<p><img src="https://i.imgur.com/1RRXple.jpg" alt="415" /></p>
+
+<h2 id="416---requested-range-not-satisfiable">416 - Requested Range Not Satisfiable</h2>
+
+<p>A server SHOULD return a response with this status code if a request included a Range request-header field (section 14.35), and none of the range-specifier values in this field overlap the current extent of the selected resource, and the request did not include an If-Range request-header field.</p>
+
+<p><img src="https://i.imgur.com/UT9iQHv.jpg" alt="416" /></p>
+
+<h2 id="417---expectation-failed">417 - Expectation Failed</h2>
+
+<p>The expectation given in an Expect request-header field (see section 14.20) could not be met by this server, or, if the server is a proxy, the server has unambiguous evidence that the request could not be met by the next-hop server.</p>
+
+<p><img src="https://i.imgur.com/Kiz5Eak.jpg" alt="417" /></p>
+
+<h1 id="server-error-5xx">Server Error 5xx</h1>
+
+<h2 id="500---internal-server-error">500 - Internal Server Error</h2>
+
+<p>The server encountered an unexpected condition which prevented it from fulfilling the request.</p>
+
+<p><img src="https://i.imgur.com/CQ7wEIB.jpg" alt="500" /></p>
+
+<h2 id="501---not-implemented">501 - Not Implemented</h2>
+
+<p>The server does not support the functionality required to fulfill the request.</p>
+
+<p><img src="https://i.imgur.com/gqZlwmy.jpg" alt="501" /></p>
+
+<h2 id="502---bad-gateway">502 - Bad Gateway</h2>
+
+<p>The server, while acting as a gateway or proxy, received an invalid response from the upstream server it accessed in attempting to fulfill the request.</p>
+
+<p><img src="https://i.imgur.com/OX5sSsQ.jpg" alt="502" /></p>
+
+<h2 id="503---service-unavailable">503 - Service Unavailable</h2>
+
+<p>The server is currently unable to handle the request due to a temporary overloading or maintenance of the server.</p>
+
+<p><img src="https://i.imgur.com/4UlQLiW.jpg" alt="503" /></p>
+
+<h2 id="504---gateway-timeout">504 - Gateway Timeout</h2>
+
+<p>The server, while acting as a gateway or proxy, did not receive a timely response from the upstream server specified by the URI (e.g. HTTP, FTP, LDAP) or some other auxiliary server (e.g. DNS) it needed to access in attempting to complete the request.</p>
+
+<p><img src="https://i.imgur.com/sk6jt6u.jpg" alt="504" /></p>
+
+<h2 id="505---http-version-not-supported">505 - HTTP Version Not Supported</h2>
+
+<p>The server does not support, or refuses to support, the HTTP protocol version that was used in the request message.</p>
+
+<p><img src="https://i.imgur.com/FELctb1.jpg" alt="505" /></p>
+
+<h1 id="references">References</h1>
+
+<p>HTTP status code documentation retrieved from <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">here</a>.</p>
+
+            </div>
+          
+
+          
+
+
+        </div>
+
+        <div class="col">
+          <div class="sidebar">
+  
+
+  
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-hand-spock-o"></i> featured posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2018/03/01/bash-programmable-completion-tutorial"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a bash completion script">Creating a bash completion script</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a bash completion script
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+            </div>
+            <a href="/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a Linux Desktop application with Ruby">Creating a Linux Desktop application with Ruby</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a simple GTK ToDo application with Ruby
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-betterldevlink" title="Featured in Better Dev Link" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2019/06/26/composing-better-emails"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Composing better emails">Composing better emails</a>
+             <div class="text-muted smaller">
+               Tips for writing effective emails avoiding misunderstandings with examples from the software development world.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="How to remove duplicate lines from files preserving their order">How to remove duplicate lines from files preserving their order</a>
+             <div class="text-muted smaller">
+               How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained).
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+            </div>
+            <a href="/programming/2016/04/01/duckrails-guide"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="DuckRails - Open source development tool for mocking API endpoints">DuckRails - Open source development tool for mocking API endpoints</a>
+             <div class="text-muted smaller">
+               An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available.
+             </div>
+          </div>
+        
+      
+
+      <div class="section-item">
+        <a href="/programming/featured"
+           class="ga-event-link"
+           data-event-category="Featured all posts"
+           data-event-action="click"
+           data-event-label="View all featured posts">View all featured posts</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-bullhorn"></i> recent posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4>
+        <i class="fa fa-github"></i> code
+      </h4>
+
+      <div class="float-right">
+
+      </div>
+    </div>
+
+    <div class="section-content">
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="goto repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/goto">goto</a>: a tool for navigating to aliased directories in the shell with auto complete
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="elman repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/elman">elman</a>: a script for full text searching Linux man pages with Elasticsearch
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="duckrails repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/duckrails">DuckRails</a>
+        version <span class="important">2.1.5</span> is out <img src="/assets/images/news/duckrails.png" class="logo" /> (<a class="ga-event-link" data-event-label="DuckRails GitHub docker wiki" data-event-action="click" data-event-category="News links" href="https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker" target="_blank">docker image available</a>)
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <div class="section-content mt-2">
+          
+<div class="share-links">
+  <a class="btn btn-warning ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Cat HTTP status codes&url=https://iridakos.com/cats/2016/09/26/cat-http-status-codes" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/cats/2016/09/26/cat-http-status-codes" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Cat HTTP status codes&amp;body=Cat HTTP status codes: https://iridakos.com/cats/2016/09/26/cat-http-status-codes"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> Subscribe via RSS
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/feed.xml">all posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/feeds/cats.xml">cat photos</a>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">iridakos images preview</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <div class="image-container">
+                    <img class="image" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer">
+  <div class="container-fluid no-gutters">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="brand mb-1">
+          <a href="https://iridakos.com"><strong>iridakos</strong></a>
+        </div>
+
+        <div class="contact-links">
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="GitHub" href="https://www.github.com/iridakos/"><i class="fa fa-github" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="Twitter" href="https://www.twitter.com/lazaru_s/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="LinkedIn" href="https://www.linkedin.com/in/iridakos/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+
+          <div class="dropdown d-inline-block mr-1">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" title="subscribe via RSS" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-rss"></i>
+            </button>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to all posts RSS - Footer" data-event-action="click" href="/feed.xml">all posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to programming posts RSS - Footer" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to tutorial posts RSS - Footer" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to opensource posts RSS - Footer" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+              <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to ruby posts RSS - Footer" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to painting posts RSS - Footer" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+              <div role="separator" class="dropdown-divider"></div>
+              <a class="dropdown-item ga-event-link" data-event-label="Cat HTTP status codes" data-event-category="Subscribe to cat photo posts RSS - Footer" data-event-action="click" href="/feeds/cat-photos.xml">cat photos</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="license mt-1">
+          <div class="mb-1">
+            <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
+          </div>
+
+          <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">iridakos</span> by
+          <a xmlns:cc="http://creativecommons.org/ns#" href="https://iridakos.com/about/" property="cc:attributionName" rel="cc:attributionURL" class="font-weight-bold">Lazarus Lazaridis</a> is licensed under a <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76452884-1', 'auto');
+
+  ga('set', 'page', '/cats/2016/09/26/cat-http-status-codes')
+  ga('send', 'pageview');
+
+</script>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1573472334557130114" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1573472334557130114" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1573472334557130114" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1573472334557130114" type="text/javascript"></script>
+
+
+
+
+  </body>
+</html>
