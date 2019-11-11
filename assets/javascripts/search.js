@@ -1,4 +1,6 @@
 $(function() {
+  var searchConfiguration = $('[data-role="tags-configuration"]');
+
   var htmlDecode = function (input) {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.textContent;
@@ -24,7 +26,8 @@ $(function() {
     if (window.searchData != undefined) {
       searchData(query);
     } else {
-      $.getJSON('/feed.json', function(data) {
+      var feed_url = searchConfiguration.data('feed-url');
+      $.getJSON(feed_url, function(data) {
         window.searchData = data;
         searchData(query);
       });

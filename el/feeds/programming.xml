@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iridakos - programming articles</title>
+    <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
+    <link>https://iridakos.com/</link>
+    <image>
+      <url>https://iridakos.com/assets/images/site.png</url>
+      <link>https://iridakos.com/</link>
+      <title>iridakos</title>
+    </image>
+    <atom:link href="https://iridakos.com/el/feeds/programming.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 12 Nov 2019 01:00:51 +0200</pubDate>
+    <lastBuildDate>Tue, 12 Nov 2019 01:00:51 +0200</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
+
+    
+
+    
+      <item>
+        <title>Γράφοντας καλύτερα email</title>
+        <description>&lt;p&gt;Η &lt;strong&gt;Ηλεκτρονική Αλληλογραφία (email)&lt;/strong&gt; δεν είναι η αγαπημένη μου αλλά αφού δεν μπορώ να την αποφύγω, προσπαθώ να συντάξω τα μηνύματα με τέτοιο τρόπο που νομίζω ότι διευκολύνει και εμένα αλλά και τον παραλήπτη:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;να εντοπίσει γρήγορα και εύκολα &lt;strong&gt;τι προσπαθώ να επικοινωνήσω&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;να αποφευγχθούν παρανοήσεις&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;να γλιτώσουμε χρόνο&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Παραθέτω κάποιες συμβουλές. Δεν ισχύουν για όλα τα email, παρέχω &lt;code class=&quot;highlighter-rouge&quot;&gt;πριν&lt;/code&gt; και &lt;code class=&quot;highlighter-rouge&quot;&gt;μετά&lt;/code&gt; παραδείγματα για να περιγράψω καλύτερα την κάθε περίπτωση.&lt;/p&gt;
+
+&lt;h2 id=&quot;έμφαση-τμημάτων-με-έντονη-γραμματοσειρά-ή-υπογραμμιση&quot;&gt;Έμφαση τμημάτων με έντονη γραμματοσειρά ή υπογραμμιση&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Δίνοντας έμφαση&lt;/strong&gt; στα κατάλληλα τμήματα ενός μηνύματος, ειδικά αν είναι μαρκοσκελές, βοηθάτε τους αναγνώστες &lt;strong&gt;να πάρουν γρήγορα μια ιδέα&lt;/strong&gt; σχετικά με το τι αφορά το email και να εντοπίσουν εύκολα τα &lt;strong&gt;σημαντικά στοιχεία&lt;/strong&gt; ξαναδιαβάζοντας το μήνυμα στο μέλλον.&lt;/p&gt;
+
+&lt;h3 id=&quot;παράδειγμα&quot;&gt;Παράδειγμα&lt;/h3&gt;
+
+&lt;h4 id=&quot;πριν&quot;&gt;Πριν&lt;/h4&gt;
+
+&lt;div class=&quot;border p-2 no-overflow&quot;&gt;
+&lt;pre&gt;Καλησπέρα σε όλους,
+
+Παρατήρησα πολλά logs σχετικά με ...μπλα μπλα... τις τελευταίες μέρες και δε νομίζω να είναι φυσιολογικό. Πιστεύω ότι το πρόβλημα είναι στην ανανέωση του gem ...μπλα μπλα...
+
+Άνοιξα ένα issue περιγράφοντας την περίπτωση στο Redmine (&amp;#35;455) στην τρέχουσα έκδοση.
+Αν επιθυμείτε αλλάξτε την προτεραιότητα ..μπλα μπλα...
+
+Ευχαριστώ,
+Λάζαρος
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;μετά&quot;&gt;Μετά&lt;/h4&gt;
+
+&lt;div class=&quot;border p-2 no-overflow&quot;&gt;
+&lt;pre&gt;Καλησπέρα σε όλους,
+
+Παρατήρησα &lt;strong&gt;πολλά logs σχετικά με ...μπλα μπλα... τις τελευταίες μέρες&lt;/strong&gt; και δε νομίζω να είναι φυσιολογικό. Πιστεύω ότι το πρόβλημα είναι στην ανανέωση του gem ...μπλα μπλα...
+
+Άνοιξα ένα issue περιγράφοντας την περίπτωση στο &lt;strong&gt;Redmine (&amp;#35;455)&lt;/strong&gt; στην τρέχουσα έκδοση.
+Αν επιθυμείτε αλλάξτε την προτεραιότητα ..μπλα μπλα...
+
+Ευχαριστώ,
+Λάζαρος
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;χρήση-συγκεκριμένων-ημερομηνιών-αντί-για-χτες-αύριο-κλπ&quot;&gt;Χρήση συγκεκριμένων ημερομηνιών αντί για &lt;code class=&quot;highlighter-rouge&quot;&gt;χτες&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;αύριο&lt;/code&gt; κ.λπ.&lt;/h2&gt;
+
+&lt;p&gt;Τη στιγμή που στέλνετε ένα email δεν είναι και η στιγμή που θα διαβαστεί από τους παραλήπτες. &lt;strong&gt;Αποφύγετε την χρήση μόνο χρονικών λεκτικών&lt;/strong&gt; όπως &lt;code class=&quot;highlighter-rouge&quot;&gt;χτες&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;σήμερα&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;αύριο&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;δυο ώρες πριν&lt;/code&gt; κ.λπ. αλλά &lt;strong&gt;συμπεριλάβετε και την συγκεκριμένη ημερομηνία/ώρα&lt;/strong&gt; διαφορετικά είναι πιθανό είτε να δημιουργηθεί παρανόηση είτε να χρειαστεί οι παραλήπτες να κοιτάξουν την ημερομηνία/ώρα του μηνύματος για να υπολογίσουν τον χρόνο στον οποίο αναφέρεστε.&lt;/p&gt;
+
+&lt;h3 id=&quot;παράδειγμα-1&quot;&gt;Παράδειγμα&lt;/h3&gt;
+
+&lt;h4 id=&quot;πριν-1&quot;&gt;Πριν&lt;/h4&gt;
+
+&lt;div class=&quot;p-2 border no-overflow&quot;&gt;
+&lt;pre&gt;Αγαπητό QA,
+
+Χτες ανεβάσαμε ένα fix για το λάθος &amp;#35;455 στο staging περιβάλλον και σκοπεύουμε να το ανεβάσουμε στην παραγωγή την επόμενη Δευτέρα αν μας δώσετε το πράσινο φως μέχρι άυριο - τέλος ημέρας.
+
+Ευχαριστώ,
+Λάζαρος&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;μετά-1&quot;&gt;Μετά&lt;/h4&gt;
+
+&lt;div class=&quot;p-2 border no-overflow&quot;&gt;
+&lt;pre&gt;Αγαπητό QA,
+
+&lt;b&gt;Χτες&lt;/b&gt;, 25/06/2019 ανεβάσαμε ένα fix για το &lt;b&gt;λάθος &amp;#35;455 στο staging περιβάλλον&lt;/b&gt; και σκοπεύουμε να το ανεβάσουμε στην &lt;b&gt;παραγωγή την επόμενη Δευτέρα, 01/07/2019&lt;/b&gt; αν μας δώσετε το &lt;b&gt;πράσινο φως μέχρι αύριο 27/06/2019&lt;/b&gt; - τέλος ημέρας.
+
+Ευχαριστώ,
+Λάζαρος&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;χρήση-συνδέσμων-για-αναφορές&quot;&gt;Χρήση συνδέσμων για αναφορές&lt;/h2&gt;
+
+&lt;p&gt;Χρησιμοποιήστε συνδέσμους όταν αναφέρεστε σε κάτι που δυνητικά θα απαιτήσει από τον παραλήπτη να το ψάξει σε κάποιο άλλο σύστημα.&lt;/p&gt;
+
+&lt;p&gt;Η χρήση συνδέσμων έχει δύο πλεονεκτήματα:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Εξοικονόμηση χρόνου&lt;/li&gt;
+  &lt;li&gt;Εξάλειψη ασαφών αναφορών&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;παράδειγμα-2&quot;&gt;Παράδειγμα&lt;/h3&gt;
+
+&lt;h4 id=&quot;πριν-2&quot;&gt;Πριν&lt;/h4&gt;
+
+&lt;div class=&quot;p-2 border no-overflow&quot;&gt;
+&lt;pre&gt;Αγαπητή Φοίβη,
+
+Δεν κατάλαβα τη διαδικασία που περιγράφεται στο issue με το λάθος στα logs. Ούτε το σχόλιο της Ίριδας ήταν ξεκάθαρο. Μπορείς να με βοηθήσεις;
+
+Ευχαριστώ,
+Λάζαρος&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;μετά-2&quot;&gt;Μετά&lt;/h4&gt;
+
+&lt;div class=&quot;p-2 border no-overflow&quot;&gt;
+&lt;pre&gt;Αγαπητή Φοίβη,
+
+Δεν κατάλαβα τη διαδικασία που περιγράφεται στο issue με το λάθος στα logs (&lt;a href=&quot;#redmine453&quot;&gt;Redmine #453&lt;/a&gt;). &lt;a href=&quot;#redmine453-comment&quot;&gt;Ούτε αυτό το σχόλιο της Ίριδας&lt;/a&gt; ήταν ξεκάθαρο. Μπορείς να με βοηθήσεις;
+
+Ευχαριστώ,
+Λάζαρος&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;δομήστε-τα-μακροσκελή-μηνύματα&quot;&gt;Δομήστε τα μακροσκελή μηνύματα&lt;/h2&gt;
+
+&lt;p&gt;Τα μεγάλα email σε γενικές γραμμές δεν είναι πολύ αποτελεσματικά και πολλά τμήματα τους είναι επιρρεπή στο να αγνοηθούν.&lt;/p&gt;
+
+&lt;p&gt;Όταν πρέπει να συντάξω τέτοιου είδους μηνύματα, προσπαθώ να &lt;strong&gt;κατηγοριοποιήσω το κείμενο εννοιολογικά σε τμήματα χρησιμοποιώντας επικεφαλίδες και παραγράφους&lt;/strong&gt; επιτρέποντας στους αναγνώστες να τα εντοπίσουν με μια ματιά.&lt;/p&gt;
+
+&lt;h3 id=&quot;παράδειγμα-3&quot;&gt;Παράδειγμα&lt;/h3&gt;
+
+&lt;h4 id=&quot;πριν-3&quot;&gt;Πριν&lt;/h4&gt;
+
+&lt;div class=&quot;p-2 border no-overflow&quot;&gt;
+  &lt;pre&gt;Αγαπητή ομάδα,
+
+Την προηγούμενη εβδομάδα είχαμε ένα πρόβλημα με τα logs στην παραγωγή. Αναφέρομαι στο Redmine issue &amp;#35;453. Παρατηρήσαμε μια τεράστια αύξηση στα μηνύματα που καταγράφονται ... οδηγώντας σε καθυστερημένες αποκρίσεις λόγω του ... Σε κάποιο σημείο ο server ξέμεινε από δίσκο και άρχισε να καταρρέει το σύμπαν ... Αρχίσαμε τη διερεύνηση για το τι μπορεί να συμβαίνει αμέσως και μετά από δύο μέρες καταφέραμε να αναπαράγουμε το πρόβλημα και στο staging περιβάλλον. Το πρόβλημα ήταν η χρήση μιας εξωτερικής βιβλιοθήκης που είχε ένα bug που ... Αφαιρέσαμε την βιβλιοθήκη και το λάθος έπαψε να εμφανίζεται στο staging περιβάλλον. Η buggy βιβλιοθήκη ήταν ... Ανεβάσαμε ένα fix στες και όλα μοιάζουν να έχουμε επιστρέψει στο φυσιολογικό. Επίσης προσθέσαμε κάποια script που θα μας ενημερώσουν άμεσα αν κάτι αντίστοιχο αρχίζει να συμβαίνει ξανά στο μέλλον.
+
+Ευχαριστώ για το χρόνο σας,
+Λάζαρος&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;μετά-3&quot;&gt;Μετά&lt;/h4&gt;
+
+&lt;div class=&quot;p-2 border no-overflow&quot;&gt;
+  &lt;pre&gt;Αγαπητή ομάδα,
+
+&lt;strong&gt;&lt;u&gt;Το πρόβλημα&lt;/u&gt;&lt;/strong&gt;
+Την περασμένη εβδομάδα είχαμε ένα **πρόβλημα με τα logs στην παραγωγή**. Παρατηρήσαμε μια τεράστια αύξηση στα μηνύματα ...
+
+&lt;strong&gt;&lt;u&gt;Συνέπειες&lt;/u&gt;&lt;/strong&gt;
+Η αύξηση στα μηνύματα οδήγησε σε καθυστερημένες αποκρίσεις ... Σε κάποιο σημείο ο server **ξέμεινε από δίσκο και όλα άρχισα να καταρρέουν** ...
+
+&lt;strong&gt;&lt;u&gt;Αιτία του προβλήματος&lt;/u&gt;&lt;/strong&gt;
+Αρχίσαμε άμεσα τη διερεύνηση και καταφέραμε να αναπαράγουμε το πρόβλημα και στο staging περιβάλλον.
+Το πρόβλημα ήταν η χρήση μιας **εξωτερικής βιβλιοθήκης** που είχε ένα bug ... Η βιβλιοθήκη ήταν η ...
+
+&lt;strong&gt;&lt;u&gt;Ενέργειες που πραγματοποιήθηκαν&lt;/u&gt;&lt;/strong&gt;
+
+1. &lt;strong&gt;Αφαιρέσαμε τη βιβλιοθήκη&lt;/strong&gt; και το λάθος δεν ήταν πια παρόν στο staging περιβάλλον.
+2. Οι διαχειριστές &lt;strong&gt;κράτησαν backup των logs&lt;/strong&gt; και κατόπιν τα αφαίρεσαν ...
+3. &lt;strong&gt;Ανεβάσαμε το fix στην παραγωγή&lt;/strong&gt; χτες, 26/06/2019.
+4. Επίσης, &lt;strong&gt;προσθέσαμε κάποια scripts που θα μας ειδοποιήσουν εγκαίρως&lt;/strong&gt; σε περίπτωση που αντίστοιχο πρόβλημα αρχίσει να εμφανίζεται στο μέλλον.
+
+&lt;strong&gt;&lt;u&gt;Τρέχουσα κατάσταση στην παραγωγή&lt;/u&gt;&lt;/strong&gt;
+&lt;strong&gt;Ο server τρέχει κανονικά, όλα έχουν επιστρέψει στο φυσιολογικό.&lt;/strong&gt;
+
+&lt;strong&gt;&lt;u&gt;Περισσότερες πληροφορίες&lt;/u&gt;&lt;/strong&gt;
+&lt;a href=&quot;#redmine453&quot;&gt;Σχετικό Redmine issue &amp;#35;453&lt;/a&gt;
+&lt;a href=&quot;#external-library&quot;&gt;Εξωτερική βιβλιοθήκη - Επίσημη αναφορά του bug&lt;/a&gt;
+
+Ευχαριστώ για το χρόνο σας,
+Λάζαρος&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;να-είστε-συγκεκριμένοιες-στο-τι-ζητάτε-από-ποιον&quot;&gt;Να είστε συγκεκριμένοι/ες στο τι ζητάτε από ποιον&lt;/h2&gt;
+
+&lt;p&gt;Έχω δει πάρα πολλές φορές emails για τα οποία:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ο αποστολέας ήθελε &lt;strong&gt;κάτι&lt;/strong&gt; από &lt;strong&gt;κάποιον&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;οι παραλήπτες
+    &lt;ul&gt;
+      &lt;li&gt;δεν θεωρούσαν ότι ήταν αυτοί που πρέπει να παρέχουν το κάτι&lt;/li&gt;
+      &lt;li&gt;κατάλαβαν το &lt;strong&gt;κάτι&lt;/strong&gt; σαν κάτι άλλο από αυτό που εννοούσε ο αποστολέας&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Προσπαθώ να είμαι πολύ συγκεκριμένος και να παρέχω λεπτομέρειες (όπου είναι δυνατόν) σχετικά με το τι χρειάζομαι και όταν υπάρχουν παραπάνω του ενός παραλήπτες, αναφέρομαι στον καθένα αποκλειστικά χρησιμοποιώντας το παπάκι: &lt;code class=&quot;highlighter-rouge&quot;&gt;@&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;παράδειγμα-4&quot;&gt;Παράδειγμα&lt;/h3&gt;
+
+&lt;h4 id=&quot;πριν-4&quot;&gt;Πριν&lt;/h4&gt;
+
+&lt;div class=&quot;p-2 border no-overflow&quot;&gt;
+&lt;pre&gt;Αγαπητοί,
+
+Έχω σπρώξει ένα commit που πιθανότατα λύνει το bug με τα logs στο staging. Δε θα είμαι εδώ αύριο οπότε μπορείτε να κάνετε review και να το ανεβάσετε αν είναι εντάξει;
+
+Ευχαριστώ.
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;μετά-4&quot;&gt;Μετά&lt;/h4&gt;
+
+&lt;div class=&quot;p-2 border no-overflow mb-4&quot;&gt;
+&lt;pre&gt;Αγαπητοί,
+
+Έσπρωξα ένα &lt;strong&gt;&lt;a href=&quot;#git-commit-reference&quot;&gt;commit&lt;/a&gt; που πιθανότατα λύνει το bug &lt;a href=&quot;#redmine453&quot;&gt;(Redmine #453)&lt;/a&gt;&lt;/strong&gt; με τα logs στο staging περιβάλλον.
+
+Εφόσον &lt;strong&gt;δε θα είμαι εδώ αύριο, 27/06/2019&lt;/strong&gt;, μπορείτε παρακαλώ:
+
+&lt;strong&gt;&lt;u&gt;@καπετάνιος:&lt;/u&gt;&lt;/strong&gt; &lt;strong&gt;review&lt;/strong&gt; το &lt;a href=&quot;#git-commit-reference&quot;&gt;commit&lt;/a&gt;
+&lt;strong&gt;&lt;u&gt;@qa:&lt;/u&gt;&lt;/strong&gt; &lt;strong&gt;να τρέξετε τη σουίτα&lt;/strong&gt; για να επαληθεύσετε το fix
+&lt;strong&gt;&lt;u&gt;@devs:&lt;/u&gt;&lt;/strong&gt; προχωρήσετε &lt;strong&gt;το ανέβασμα του fix στην παραγωγή στις 28/06/2019&lt;/strong&gt; δεδομένου ότι πήραμε το OK από την QA ομάδα?
+
+Ευχαριστώ,
+Λάζαρος
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Αυτά, ευχαριστώ για την ανάγνωση,&lt;/p&gt;
+
+&lt;p&gt;Λάζαρος&lt;/p&gt;
+
+&lt;h2 id=&quot;υστερόγραφο&quot;&gt;Υστερόγραφο&lt;/h2&gt;
+
+&lt;p&gt;Βρείτε συνημμένη φωτογραφία από τις γάτες μου.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/better-emails/irida-phoebe.png&quot; alt=&quot;Όταν ακούνε τη λέξη 'ηλεκτρική σκούπα'&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-light&quot;&gt;
+  &lt;div class=&quot;alert-heading&quot;&gt;&lt;i class=&quot;fa fa-comments&quot;&gt;&lt;/i&gt; Σχόλια&lt;/div&gt;
+
+  Για σχόλια, feedback, λάθη κ.λπ. παρακαλώ Χρησιμοποιήστε αυτό το &lt;a class=&quot;alert-link&quot; href=&quot;https://github.com/iridakos/iridakos-posts/issues/4&quot;&gt;GitHub issue&lt;/a&gt;.
+
+  &lt;hr /&gt;
+
+  &lt;strong&gt;Ευχαριστώ!&lt;/strong&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 11 Nov 2019 23:10:00 +0200</pubDate>
+        <link>https://iridakos.com/el/programming/2019/11/11/composing-better-emails</link>
+        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/11/composing-better-emails</guid>
+        
+        <category>email</category>
+        
+        <category>επικοινωνία</category>
+        
+        <category>παραγωγικότητα</category>
+        
+        <category>how-to</category>
+        
+        <category>featured</category>
+        
+        <category>δημοφιλή</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους</title>
+        <description>&lt;p&gt;Υποθέστε ότι έχετε ένα αρχείο κειμένου και θέλετε να αφαιρέσετε όλες τις διπλές γραμμές.&lt;/p&gt;
+
+&lt;h2 id=&quot;tldr&quot;&gt;TL;DR&lt;/h2&gt;
+
+&lt;p&gt;Για να αφαιρεθούν οι γραμμές &lt;strong&gt;διατηρώντας τη σειρά τους στο αρχείο&lt;/strong&gt; χρησιμοποιήστε:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'!visited[$0]++'&lt;/span&gt; your_file &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; deduplicated_file
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;πως-δουλεύει&quot;&gt;Πως δουλεύει&lt;/h2&gt;
+
+&lt;p&gt;Το script διατηρεί έναν πίνακα συσχετισμών (associative array) με κλειδιά την κάθε μοναδική γραμμή του αρχείου και τιμές τον αριθμό των εμφανίσεων τους. Για κάθε γραμμή του αρχείου, αν οι εμφανίσεις της γραμμής είναι 0 τότε αυξάνονται κατά 1 και &lt;strong&gt;εκτυπώνεται η γραμμή&lt;/strong&gt;, διαφορετικά απλά αυξάνονται οι εμφανίσεις &lt;strong&gt;χωρίς να πραγματοποιείται εκτύπωση της γραμμής&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Δεν ήμουν εξοικειωμένος με την &lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt; και ήθελα να καταλάβω πως επιτυγχάνεται αυτή η λειτουργικότητα με ένα τόσο μικρawk script. Έκανα την έρευνά μου και ιδού τι συμβαίνει:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;το script της awk &lt;code class=&quot;highlighter-rouge&quot;&gt;!visited[$0]++&lt;/code&gt; εκτελείται &lt;strong&gt;για κάθε γραμμή&lt;/strong&gt; του αρχείου εισόδου&lt;/li&gt;
+  &lt;li&gt;η &lt;code class=&quot;highlighter-rouge&quot;&gt;visited[]&lt;/code&gt; είναι μια μεταβλητή τύπου &lt;a href=&quot;http://kirste.userpage.fu-berlin.de/chemnet/use/info/gawk/gawk_12.html&quot;&gt;Πίνακα συσχετισμών (associative array)&lt;/a&gt; (δηλαδή &lt;a href=&quot;https://en.wikipedia.org/wiki/Associative_array&quot;&gt;Map&lt;/a&gt;). Δε χρειάζεται να την αρχικοποιήσουμε, η &lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt; θα το κάνει αυτό για μας την πρώτη φορά που θα την προσπελάσουμε.&lt;/li&gt;
+  &lt;li&gt;η μεταβλητή &lt;code class=&quot;highlighter-rouge&quot;&gt;$0&lt;/code&gt; κρατά τα περιεχόμενα της γραμμής που βρίσκεται κάθε φορά υπό επεξεργασία&lt;/li&gt;
+  &lt;li&gt;ο κώδικας &lt;code class=&quot;highlighter-rouge&quot;&gt;visited[$0]&lt;/code&gt; προσπελαύνει την τιμή που είναι αποθηκευμένη στον πίνακα συσχετισμών με κλειδί ίσο με &lt;code class=&quot;highlighter-rouge&quot;&gt;$0&lt;/code&gt; (που όπως είπαμε, είναι η υπό επεξεργασία γραμμή του αρχείου), δηλαδή τις εμφανίσεις (που εκχωρούμε παρακάτων)&lt;/li&gt;
+  &lt;li&gt;ο τελεστής &lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt; δημιουργεί την άρνηση της τιμής των εμφανίσεων:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/gawk/manual/html_node/Truth-Values.html&quot;&gt;Στην awk, οποιαδήποτε μη μηδενική αριθμητική τιμή ή οποιαδήποτε μη άδεια λεκτική τιμή θεωρείται αληθής - true&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://ftp.gnu.org/old-gnu/Manuals/gawk-3.0.3/html_chapter/gawk_8.html&quot;&gt;Εξ ορισμού, οι μεταβλητές αρχικοποιούνται σε κενά λεκτικά, τα οποία αν μετατραπούν σε αριθμό γίνονται μηδέν - 0&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;Έχοντας πει αυτά λοιπόν:
+        &lt;ul&gt;
+          &lt;li&gt;αν η εκτέλεση του &lt;code class=&quot;highlighter-rouge&quot;&gt;visited[$0]&lt;/code&gt; επιστρέψει αριθμό μεγαλύτερο του μηδενός, η άρνησή του θα ισούται με &lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;.&lt;/li&gt;
+          &lt;li&gt;αν η εκτέλεση του &lt;code class=&quot;highlighter-rouge&quot;&gt;visited[$0]&lt;/code&gt; επιστρέψει αριθμό ίσο με το μηδέν ή το κενό λεκτικό, η άρνησή του θα ισούται με &lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ο τελεστής &lt;code class=&quot;highlighter-rouge&quot;&gt;++&lt;/code&gt; αυξάνει την τιμή της μεταβλητής (&lt;code class=&quot;highlighter-rouge&quot;&gt;visited[$0]&lt;/code&gt;) κατά ένα - 1.
+    &lt;ul&gt;
+      &lt;li&gt;Αν η τιμή είναι κενή, η &lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt; τη μετατρέπει σε αριθμό άρα σε μηδέν - 0 αυτόματα και κατόπιν την αυξάνει.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Σημείωση:&lt;/strong&gt; η πράξη εκτελείται αφού προσπελάσουμε πρώτα την τιμή της μεταβλητής.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Συνοψίζοντας, ολόκληρη η έκφραση εκτιμάται ως:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;true&lt;/strong&gt; αν οι εμφανίσεις είναι 0 ή το κενό λεκτικό&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;false&lt;/strong&gt; αν οι εμφανίσεις είναι περισσότερες από μηδέν - 0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Οι δηλώσεις (statements) στην &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt;&lt;/strong&gt; αποτελούνται από ένα &lt;a href=&quot;http://kirste.userpage.fu-berlin.de/chemnet/use/info/gawk/gawk_9.html&quot;&gt;&lt;strong&gt;μοτίβο (pattern) ή έκφραση (expression)&lt;/strong&gt; και μια &lt;strong&gt;συσχετισμένη ενέργεια (associated action)&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-awk highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;expression&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Αν το μοτίβο/έκφραση επιτύχει τότε εκτελείται η συσχετισμένη ενέργεια&lt;/strong&gt;. Αν δεν δηλώσουμε την συσχετισμένη ενέργεια, η &lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt; εξ ορισμού θα εκτυπώσει (&lt;code class=&quot;highlighter-rouge&quot;&gt;print&lt;/code&gt;) τα δεδομένα εισόδου.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;An omitted action is equivalent to &lt;code class=&quot;highlighter-rouge&quot;&gt;{ print $0 }&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Το script μας αποτελείται από μια &lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt; δήλωση με μία έκφραση, παραλείποντας την συσχετισμένη ενέργεια.
+Οπότε αυτό:&lt;/p&gt;
+
+&lt;div class=&quot;language-awk highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;your_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;deduplicated_file&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;είναι ισοδύναμο με αυτό:&lt;/p&gt;
+
+&lt;div class=&quot;language-awk highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;your_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;deduplicated_file&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Για κάθε γραμμή του αρχείου, αν η έκφραση επιτύχει τότε η γραμμή εκτυπώνεται στην έξοδο (output). Διαφορετικά, η συσχετισμένη ενέργεια δεν εκτελείται, τίποτα δεν εκτυπώνεται.&lt;/p&gt;
+
+&lt;h2 id=&quot;γιατί-να-μη-χρησιμοποιήσω-την-εντολή-uniq&quot;&gt;Γιατί να μη χρησιμοποιήσω την εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;uniq&lt;/code&gt;;&lt;/h2&gt;
+
+&lt;p&gt;Η εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;uniq&lt;/code&gt; αφαιρεί μόνο τις &lt;strong&gt;γειτονικές διπλές γραμμές&lt;/strong&gt;. Επίδειξη:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;test.txt
+A
+A
+A
+B
+B
+B
+A
+A
+C
+C
+C
+B
+B
+A
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;uniq&lt;/span&gt; &amp;lt; test.txt
+A
+B
+A
+C
+B
+A
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;άλλες-προσεγγίσεις&quot;&gt;Άλλες προσεγγίσεις&lt;/h2&gt;
+
+&lt;h3&gt;Χρησιμοποιώντας την εντολή &lt;code&gt;sort&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Μπορούμε να χρησιμοποιήσουμε την παρακάτω &lt;a href=&quot;http://man7.org/linux/man-pages/man1/sort.1.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sort&lt;/code&gt;&lt;/a&gt; εντολή για να αφαιρέσουμε τις διπλές γραμμές αλλά &lt;strong&gt;η σειρά των γραμμών δεν διατηρείται&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; your_file &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; sorted_deduplicated_file
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3&gt;Χρησιμοποιώντας τις εντολές &lt;code&gt;cat&lt;/code&gt;, &lt;code&gt;sort&lt;/code&gt; και &lt;code&gt;cut&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Στην προηγούμενη προσέγγιση θα παραγόταν ένα αποδιπλοποιημένο αρχείο οι γραμμές του οποίου θα ήταν ταξινομημένες βάσει του περιεχομένου τους. &lt;a href=&quot;https://stackoverflow.com/a/20639730/2292448&quot;&gt;Χρησιμοποιώντας σωληνώσεις με ένα σύνολο εντολών&lt;/a&gt; μπορούμε να διατηρήσουμε την αρχική σειρά των γραμμών:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; your_file | &lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-uk2&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-nk1&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f2-&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;πως-λειτουργεί&quot;&gt;Πως λειτουργεί&lt;/h4&gt;
+
+&lt;p&gt;Υποθέστε ότι έχουμε το ακόλουθο αρχείο κειμένου:&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;abc
+ghi
+abc
+def
+xyz
+def
+ghi
+klm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Η εντολή &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cat -n test.txt&lt;/code&gt;&lt;/strong&gt; τοποθετεί τον αριθμό της θέσης κάθε σειράς στην αρχή της.&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1	abc
+2	ghi
+3	abc
+4	def
+5	xyz
+6	def
+7	ghi
+8	klm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Η εντολή &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sort -uk2&lt;/code&gt;&lt;/strong&gt; ταξινομεί τις γραμμές βάσει της δεύτερης στήλης (επιλογή &lt;code class=&quot;highlighter-rouge&quot;&gt;k2&lt;/code&gt;) και κρατά μόνο την πρώτη εμφάνιση των γραμμών που έχουν την ίδια τιμή στη δεύτερη στήλη (επιλογή &lt;code class=&quot;highlighter-rouge&quot;&gt;u&lt;/code&gt;)&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1	abc
+4	def
+2	ghi
+8	klm
+5	xyz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Η εντολή &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sort -nk1&lt;/code&gt;&lt;/strong&gt; ταξινομεί τις γραμμές βάσει της πρώτης στήλης (επιλογή &lt;code class=&quot;highlighter-rouge&quot;&gt;k1&lt;/code&gt;) αντιμετωπίζοντας την τιμή της στήλης ως αριθμό (επιλογή &lt;code class=&quot;highlighter-rouge&quot;&gt;n&lt;/code&gt;)&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1	abc
+2	ghi
+4	def
+5	xyz
+8	klm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Τέλος, η εντολή &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cut -f2-&lt;/code&gt;&lt;/strong&gt; εκτυπώνει κάθε γραμμή ξεκινώντας από τη δεύτερη στήλη και φτάνοντας ως το τέλος της (επιλογή &lt;code class=&quot;highlighter-rouge&quot;&gt;-f2-&lt;/code&gt;: &lt;em&gt;προσέξτε την παύλα &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; στο τέλος που δηλώνει να συμπεριληφθεί το υπόλοιπο της γραμμής&lt;/em&gt;)&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;abc
+ghi
+def
+xyz
+klm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/gawk/manual/html_node/&quot;&gt;The GNU Awk User’s Guide
+&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://kirste.userpage.fu-berlin.de/chemnet/use/info/gawk/gawk_12.html&quot;&gt;Arrays in Awk&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/gawk/manual/html_node/Truth-Values.html&quot;&gt;Awk - Truth values&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ftp.gnu.org/old-gnu/Manuals/gawk-3.0.3/html_chapter/gawk_8.html&quot;&gt;Awk expressions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/1444406/how-can-i-delete-duplicate-lines-in-a-file-in-unix&quot;&gt;How can I delete duplicate lines in a file in Unix?
+&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/11532157/remove-duplicate-lines-without-sorting&quot;&gt;Remove duplicate lines without sorting [duplicate]&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://unix.stackexchange.com/questions/159695/how-does-awk-a0-work/159734#159734&quot;&gt;How does awk ‘!a[$0]++’ work?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Αυτά. Να μια γάτα.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/remove-duplicates/duplicate-cat.jpg&quot; alt=&quot;duplicate cat&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-light&quot;&gt;
+  &lt;div class=&quot;alert-heading&quot;&gt;&lt;i class=&quot;fa fa-comments&quot;&gt;&lt;/i&gt; Σχόλια&lt;/div&gt;
+
+  Για σχόλια, feedback, λάθη κ.λπ. παρακαλώ χρησιμοποιήστε αυτό το &lt;a class=&quot;alert-link&quot; href=&quot;https://github.com/iridakos/iridakos-posts/issues/3&quot;&gt;GitHub issue&lt;/a&gt;.
+
+  &lt;hr /&gt;
+
+  &lt;strong&gt;Ευχαριστώ!&lt;/strong&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 11 Nov 2019 23:05:00 +0200</pubDate>
+        <link>https://iridakos.com/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux</link>
+        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux</guid>
+        
+        <category>linux</category>
+        
+        <category>bash</category>
+        
+        <category>scripts</category>
+        
+        <category>file</category>
+        
+        <category>awk</category>
+        
+        <category>how-to</category>
+        
+        <category>featured</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iridakos - tutorials</title>
+    <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
+    <link>https://iridakos.com/</link>
+    <image>
+      <url>https://iridakos.com/assets/images/site.png</url>
+      <link>https://iridakos.com/</link>
+      <title>iridakos</title>
+    </image>
+    <atom:link href="https://iridakos.com/el/feeds/tutorials.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 12 Nov 2019 01:00:51 +0200</pubDate>
+    <lastBuildDate>Tue, 12 Nov 2019 01:00:51 +0200</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
+
+    
+
+    
+  </channel>
+</rss>

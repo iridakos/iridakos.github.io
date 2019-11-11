@@ -1,4 +1,6 @@
 $(function() {
+  var tagsConfiguration = $('[data-role="tags-configuration"]');
+
   var htmlDecode = function (input) {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.textContent;
@@ -23,7 +25,8 @@ $(function() {
     if (window.tagData != undefined) {
       tagData(query);
     } else {
-      $.getJSON('/feed.json', function(data) {
+      var feed_url = tagsConfiguration.data('feed-url');
+      $.getJSON(feed_url, function(data) {
         window.tagData = data;
         tagData(query);
       });
@@ -37,7 +40,9 @@ $(function() {
     $results.html('');
 
     $.each(window.tagData, function(a,b){
-      var match = b.tags.join(' ').match(query);
+      var str = b.tags.join('@')
+      str = '@' + str + '@';
+      var match = str.match('@' + query + '@');
 
       if (match != null) {
         found = true;
@@ -78,7 +83,7 @@ $(function() {
     var $header = $('body').find('h1');
 
     if (tag_name != undefined) {
-      $header.append(': ' + tag_name);
+      $header.append(' - ' + tag_name);
     }
     document.title = document.title + ' - ' + tag_name
   }

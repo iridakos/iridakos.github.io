@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iridakos - cats</title>
+    <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
+    <link>https://iridakos.com/</link>
+    <image>
+      <url>https://iridakos.com/assets/images/site.png</url>
+      <link>https://iridakos.com/</link>
+      <title>iridakos</title>
+    </image>
+    <atom:link href="https://iridakos.com/el/feeds/cats.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 12 Nov 2019 01:00:51 +0200</pubDate>
+    <lastBuildDate>Tue, 12 Nov 2019 01:00:51 +0200</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
+
+    
+
+    
+      <item>
+        <title>Καναπές / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/hug-the-cat"><img src="https://iridakos.comhttps://iridakos.com/assets/images/posts/hanging-out/post.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:30:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/hug-the-cat</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/hug-the-cat</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Two step authentication / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/two-step-authentication"><img src="https://iridakos.comhttps://iridakos.com/assets/images/posts/two-step-authentication/post.png" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:20:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/two-step-authentication</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/two-step-authentication</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Παρασκευή / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/another-friday"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/another-friday.jpeg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/another-friday</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/another-friday</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Pair programming / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/pair-programming"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/pair-programming.png" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/pair-programming</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/pair-programming</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Δευτέρα. Πάλι. / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/monday-again"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/monday-again.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/monday-again</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/monday-again</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Ηλεκτρική σκούπα / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/vacuum-cleaner"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/vacuum-cleaner.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/vacuum-cleaner</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/vacuum-cleaner</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>I'll be back / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/terminator"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/terminator.png" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/terminator</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/terminator</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Δευτέρα / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/monday"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/monday.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/monday</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/monday</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Καληνύχτα / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/goot-night"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/goodnight.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/goot-night</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/goot-night</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Catwin Charles / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/catologist"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/catology.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/catologist</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/catologist</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Μπου / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/boo"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/boo.png" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/boo</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/boo</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Γατηγήτρια / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/i-know-stuff"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/i-know-stuff.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/i-know-stuff</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/i-know-stuff</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>I don't like reggae - I love it / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/code-review-mode"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/code-review.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/code-review-mode</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/code-review-mode</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Ξαναφορτώνοντας τη σελίδα μετά από copy/paste CSS από stackoverflow / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/css-stackoveflow"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/css-stackoverflow.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/css-stackoveflow</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/css-stackoveflow</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Όταν στέλνουν κώδικα στο κλαδί σου / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/push-on-my-branch"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/push-on-branch.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/push-on-my-branch</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/push-on-my-branch</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Όταν βγαίνει pop up για Java update / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/java-update-popup"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/java-update.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/java-update-popup</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/java-update-popup</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Κόλλα πέντε / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/friday-releases"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/successful-deployment.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/friday-releases</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/friday-releases</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Διαβάζοντας regular expressions / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/regex"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/regex.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/regex</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/regex</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Όταν πρέπει να υποστηρίξεις IE6 / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/ie6"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/ie6.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/ie6</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/ie6</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>reCaptcha / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/recaptcha"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/recaptcha.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/recaptcha</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/recaptcha</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Ruby / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/ruby-duck"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/ruby-duck.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/ruby-duck</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/ruby-duck</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>GitHub issues / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/github-issue"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/github-issue.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/github-issue</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/github-issue</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>RIP πουλόβερ / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/mutable-strings"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/mutable-strings.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/mutable-strings</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/mutable-strings</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Ψιτ / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/code-comments"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/code-comments.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/code-comments</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/code-comments</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Δουλεύοντας με αυτό στο πλάι / </title>
+        <description><a href="https://iridakos.com/el/cats/2019/11/11/introducing-the-programming-cat"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/working-with-this-on-the-side.jpg" /></a></description>
+        <pubDate>Mon, 11 Nov 2019 23:01:00 +0200</pubDate>
+        <link>https://iridakos.com/el/cats/2019/11/11/introducing-the-programming-cat</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/11/introducing-the-programming-cat</guid>
+        <category>cats</category>
+      </item>
+    
+      <item>
+        <title>Cat HTTP status codes / </title>
+        <description><a href="https://iridakos.com/el/cats/2016/09/26/cat-http-status-codes"><img src="https://iridakos.comhttps://i.imgur.com/1yaeuIY.jpg" /></a></description>
+        <pubDate>Mon, 26 Sep 2016 21:00:00 +0300</pubDate>
+        <link>https://iridakos.com/el/cats/2016/09/26/cat-http-status-codes</link>
+        <guid isPermaLink="true">https://iridakos.com/el/cats/2016/09/26/cat-http-status-codes</guid>
+        <category>cats</category>
+      </item>
+    
+  </channel>
+</rss>
