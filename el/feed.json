@@ -24,7 +24,7 @@
     "url": "https://iridakos.com/el/programming/2019/11/11/composing-better-emails"},
   
   { "title": "Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους",
-    "description": "How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained).",
+    "description": "Πως να αφαιρέσετε τις διπλές γραμμές ενός αρχείο σε Linux χωρίς να αλλάξει η σειρά τους - επεξήγηση awk one-liner κώδικα.",
     "date": "Nov 11, 2019 - 23:05",
     "categories": "programming",
     "tags": ["linux","bash","scripts","file","awk","how-to","featured"],
