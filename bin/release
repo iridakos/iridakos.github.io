@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+message = ARGV[0]
+raise ArgumentError.new "You must specify the commit message." unless message
+
+root_path = File.expand_path '..', __dir__
+
+Dir.chdir(root_path) do
+  `jekyll build`
+end
+
+version_file = File.join(root_path, '.current-version')
+
+version = File.read(version_file)
+new_version = Integer(version) + 1
+puts "Changing version to #{new_version}"
+
+Dir.chdir(File.join(root_path, "_site")) do
+  `git add .`
+  `git commit -m "Releasing: #{new_version} - #{message}"`
+  `git push`
+  puts "Site updated to version #{new_version}."
+end
+
+File.open(version_file, 'w') do |file|
+  file.write new_version.to_s
+end
+
+Dir.chdir(root_path) do
+  `git add .`
+  `git commit -m "Successfully released: #{new_version} - #{message}"`
+  `git push`
+  puts "Done."
+end
