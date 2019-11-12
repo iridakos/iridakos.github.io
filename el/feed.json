@@ -27,7 +27,7 @@
     "description": "Πως να αφαιρέσετε τις διπλές γραμμές ενός αρχείο σε Linux χωρίς να αλλάξει η σειρά τους - επεξήγηση awk one-liner κώδικα.",
     "date": "Nov 11, 2019 - 23:05",
     "categories": "programming",
-    "tags": ["linux","bash","scripts","file","awk","how-to","featured"],
+    "tags": ["linux","bash","scripts","file","awk","how-to","featured","δημοφιλή"],
     "url": "https://iridakos.com/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux"},
   
   { "title": "Παρασκευή",
