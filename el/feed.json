@@ -2,20 +2,6 @@
 
 [
   
-  { "title": "Καναπές",
-    "description": "&lt;p&gt;12 χρόνια μαζί.&lt;/p&gt;",
-    "date": "Nov 11, 2019 - 23:30",
-    "categories": "cats",
-    "tags": ["photo","cat","irida","hanging-out"],
-    "url": "https://iridakos.com/el/cats/2019/11/11/hug-the-cat"},
-  
-  { "title": "Two step authentication",
-    "description": "&lt;p&gt;Υπάρχουν δύο γατοκρέβατα, τόσες καρέκλες και καναπές.&lt;/p&gt;",
-    "date": "Nov 11, 2019 - 23:20",
-    "categories": "cats",
-    "tags": ["photo","cat","cats","two step authentication","humor","ubuntu"],
-    "url": "https://iridakos.com/el/cats/2019/11/11/two-step-authentication"},
-  
   { "title": "Γράφοντας καλύτερα email",
     "description": "Συμβουλές για την σύνταξη αποτελεσματικών email αποφεύγοντας παρανοήσεις, με παραδείγματα από τον κόσμο της πληροφορικής.",
     "date": "Nov 11, 2019 - 23:10",
@@ -29,6 +15,20 @@
     "categories": "programming",
     "tags": ["linux","bash","scripts","file","awk","how-to","featured","δημοφιλή"],
     "url": "https://iridakos.com/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux"},
+  
+  { "title": "Καναπές",
+    "description": "&lt;p&gt;12 χρόνια μαζί.&lt;/p&gt;",
+    "date": "Nov 9, 2019 - 23:30",
+    "categories": "cats",
+    "tags": ["photo","cat","irida","hanging-out"],
+    "url": "https://iridakos.com/el/cats/2019/11/09/hug-the-cat"},
+  
+  { "title": "Two step authentication",
+    "description": "&lt;p&gt;Υπάρχουν δύο γατοκρέβατα, τόσες καρέκλες και καναπές.&lt;/p&gt;",
+    "date": "Nov 9, 2019 - 23:20",
+    "categories": "cats",
+    "tags": ["photo","cat","cats","two step authentication","humor","ubuntu"],
+    "url": "https://iridakos.com/el/cats/2019/11/09/two-step-authentication"},
   
   { "title": "Παρασκευή",
     "description": "",
