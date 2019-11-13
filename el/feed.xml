@@ -10,8 +10,8 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Nov 2019 09:51:28 +0200</pubDate>
-    <lastBuildDate>Wed, 13 Nov 2019 09:51:28 +0200</lastBuildDate>
+    <pubDate>Wed, 13 Nov 2019 11:44:25 +0200</pubDate>
+    <lastBuildDate>Wed, 13 Nov 2019 11:44:25 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -57,7 +57,7 @@ gitk                git-shell           git-upload-pack
 &lt;p&gt;Να τι θα κάνουμε σε αυτό το βοήθημα.&lt;/p&gt;
 
 &lt;p&gt;Αρχικά, θα δημιουργήσουμε ένα πολύ απλό εκτελέσιμο script που θα το πούμε &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt;. Αυτό θα είναι το script που στη συνέχεια θα προσθέσουμε τη λειτουργικότητα για την tab συμπλήρωση.
-Το μόνο που θα κάνει το script είναι να εκτελεί την εντολή που βρίσκεται σε μια συγκεκριμένη θέση στο ιστορικό των εντολών του χρήστη. Τη θέση της εντολής στο ιστορικό θα την δέχεται σαν παράμετρο κατά την εκτέλεση. Για παράδειγμα, η παρακάτω εντολή θα εκτελέσει την εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;ls -a&lt;/code&gt; δεδομένου ότι η τελευταία βρικεται στη θέση &lt;code class=&quot;highlighter-rouge&quot;&gt;235&lt;/code&gt; στο ιστορικό εντολών του χρήστη:&lt;/p&gt;
+Το μόνο που θα κάνει το script είναι να εκτελεί την εντολή που βρίσκεται σε μια συγκεκριμένη θέση στο ιστορικό των εντολών του χρήστη. Τη θέση της εντολής στο ιστορικό θα την δέχεται σαν παράμετρο κατά την εκτέλεση. Για παράδειγμα, η παρακάτω εντολή θα εκτελέσει την εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;ls -a&lt;/code&gt; δεδομένου ότι η τελευταία βρισκεται στη θέση &lt;code class=&quot;highlighter-rouge&quot;&gt;235&lt;/code&gt; στο ιστορικό εντολών του χρήστη:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dothis 235
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -110,7 +110,7 @@ gitk                git-shell           git-upload-pack
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x ./dothis
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Θα εκτελούμε συχνά αυτό το script σε αυτό το βοήθημα οπότε συνιστώ να το μεταφέρετε σε ένα φάκελο που ανήκει στην μεταβλήτη &lt;a href=&quot;http://www.linfo.org/path_env_var.html&quot;&gt;PATH&lt;/a&gt; του περιβάλλοντός σας ωτε να μπορούμε να το προσπελάσουμε από παντού απλά πληκτρολογώντας &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Θα εκτελούμε συχνά αυτό το script σε αυτό το βοήθημα οπότε συνιστώ να το μεταφέρετε σε ένα φάκελο που ανήκει στην μεταβλητή &lt;a href=&quot;http://www.linfo.org/path_env_var.html&quot;&gt;PATH&lt;/a&gt; του περιβάλλοντός σας ωτε να μπορούμε να το προσπελάσουμε από παντού απλά πληκτρολογώντας &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Το δικό μου το έβαλα στο &lt;code class=&quot;highlighter-rouge&quot;&gt;home bin&lt;/code&gt; πληκτρολογώντας:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; ./dothis ~/bin/dothis
@@ -118,7 +118,7 @@ gitk                git-shell           git-upload-pack
 
 &lt;p&gt;Μπορείτε να κάνετε το ίδιο δεδομένου ότι έχετε φάκελο &lt;code class=&quot;highlighter-rouge&quot;&gt;~/bin&lt;/code&gt; ο οποίος εμπεριέχεται στην &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt; μεταβλητή σας.&lt;/p&gt;
 
-&lt;p&gt;Δοκιμάστε να δείτε ότι δουλέυει:&lt;/p&gt;
+&lt;p&gt;Δοκιμάστε να δείτε ότι δουλεύει:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dothis
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -138,7 +138,7 @@ No &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;number passed
 &lt;p&gt;Αφού του προσθέσουμε κώδικα, θα εκτελέσουμε την εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; για να το “ενεργοποιήσουμε”.
 Θα εκτελούμε την &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; σε αυτό το αρχείο &lt;strong&gt;κάθε φορά που αλλάζουμε το περιεχόμενό του ώστε να ισχύουν οι αλλαγές&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;Θα συζητήσουμε επιλογές ώστε να να γίνεται η ενεργοποίηση αυτή κάθε φορά που ανοίγει νέα bash κονσόλα &lt;a href=&quot;#καταχώρηση-του-script-tab-συμπλήρωσης&quot;&gt;αργότερα&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Θα συζητήσουμε επιλογές ώστε να να γίνεται η ενεργοποίηση αυτή κάθε φορά που ανοίγει νέα bash κονσόλα &lt;a href=&quot;#αυτόματη-ενεργοποίηση-του-script-tab-συμπλήρωσης&quot;&gt;αργότερα&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;στατική-συμπλήρωση&quot;&gt;Στατική συμπλήρωση&lt;/h4&gt;
 
@@ -153,7 +153,7 @@ No &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;number passed
 
 &lt;p&gt;Προσθέστε αυτά στο script συμπλήρωσης.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now tomorrow never&quot;&lt;/span&gt; dothis
+&lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;τώρα αύριο ποτέ&quot;&lt;/span&gt; dothis
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Τι κάναμε με τη χρήση της παραπάνω εντολής &lt;code class=&quot;highlighter-rouge&quot;&gt;complete&lt;/code&gt;:&lt;/p&gt;
@@ -166,9 +166,9 @@ No &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;number passed
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ./dothis-completion.bash
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Τώρα προσπαθήστε να πατήσετε το πλήτρο tab δύο φορές όπως παρακάτω:&lt;/p&gt;
+&lt;p&gt;Τώρα προσπαθήστε να πατήσετε το πλήκτρο tab δύο φορές όπως παρακάτω:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
-never     now       tomorrow
+αύριο ποτέ τώρα
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Προσπαθήστε ξανά αφού βάλετε και ένα &lt;code class=&quot;highlighter-rouge&quot;&gt;τ&lt;/code&gt;:&lt;/p&gt;
@@ -176,120 +176,125 @@ never     now       tomorrow
 τώρα
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Μαγικό! Οι επιλογές συμπλήρωσης φιλτράρονται αυτόματα ώστε να εμφανιστούν μόνο αυτές που ξεκινούν από &lt;code class=&quot;highlighter-rouge&quot;&gt;τ&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Magic! Οι επιλογές συμπλήρωσης φιλτράρονται αυτόματα ώστε να εμφανιστούν μόνο αυτές που ξεκινούν από &lt;code class=&quot;highlighter-rouge&quot;&gt;τ&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Σημείωση:&lt;/strong&gt;
-The options are not displayed in the order that we defined them in the word list, they are automatically sorted.&lt;/p&gt;
+Οι επιλογές συμπλήρωσης δεν εμφανίζονται με τη σειρά που τις ορίσαμε στη λίστα λέξεων, ταξινομούνται αυτόματα.&lt;/p&gt;
 
-&lt;p&gt;There are a lot of other options to be used instead of the &lt;code class=&quot;highlighter-rouge&quot;&gt;-W&lt;/code&gt; that we used in this section. Most of them produce completions in a fixed manner, meaning that we don’t intervene dynamically to filter their output.&lt;/p&gt;
+&lt;p&gt;Υπάρχουν πολλές άλλες επιλογές πέραν της &lt;code class=&quot;highlighter-rouge&quot;&gt;-W&lt;/code&gt; που χρησιμοποιήσαμε προηγουμένως. Οι περισσότερες παράγουν συμπληρώσεις με στατικό τρόπο, εννοώντας ότι δεν επεμβαίνουμε δυναμικά στο φιλτράρισμα τους.&lt;/p&gt;
 
-&lt;p&gt;For example, if we wanted to have directory names as completion words for the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; program, we would change the complete command to the following:&lt;/p&gt;
+&lt;p&gt;Για παράδειγμα, αν θέλαμε να έχουμε ως tab συμπληρώσεις για το εκτελέσιμο &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; τους φακέλους που βρίσκονται στον τρέχων φάκελο, θα αλλάζαμε την εντολή ως εξής:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; directory dothis
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Pressing tab after the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; program, we would get a list of the directories in the current directory from which we execute the script:&lt;/p&gt;
+&lt;p&gt;Πατώντας το tab μετά το &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt;, θα λαμβάναμε μια λίστα σαν την παρακάτω:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
 dir1/ dir2/ dir3/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Find the complete list of the available flags &lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html#Programmable-Completion-Builtins&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Βρείτε ολόκληρη τη λίστα με τις διαθέσιμες επιλογές &lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html#Programmable-Completion-Builtins&quot;&gt;εδώ&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h4 id=&quot;dynamic-completion&quot;&gt;Dynamic completion&lt;/h4&gt;
+&lt;h4 id=&quot;δυναμική-tab-συμπλήρωση&quot;&gt;Δυναμική tab συμπλήρωση&lt;/h4&gt;
 
-&lt;p&gt;We will be producing the completions of the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; executable with the following logic:&lt;/p&gt;
+&lt;p&gt;Θέλουμε να παράγουμε τις προτάσεις συμπλήρωσης για το εκτελέσιμο script μας με την ακόλουθη λογική:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;If user presses the tab key right after the command, we will show the last 50 executed commands along with their numbers in history&lt;/li&gt;
-  &lt;li&gt;If user presses the tab key after typing a number that matches more than one commands from history, we will show only those commands along with their numbers in history&lt;/li&gt;
-  &lt;li&gt;If user presses the tab key after a number that matches exactly one command in history, we auto-complete the number without appending the command’s literal (if it’s confusing, you will better understand later on, no worries)&lt;/li&gt;
+  &lt;li&gt;αν ο χρήστης πατήσει το tab αμέσως μετά την εντολή, θα δείχνουμε τις τελευταίες 50 εκτελεσθείσες εντολές μαζί με τον αριθμό που αντιστοιχεί στη θέση τους στο ιστορικό&lt;/li&gt;
+  &lt;li&gt;αν ο χρήστης πατήσει το tab αφού έχει πληκτρολογήσει και έναν αριθμό τότε θα εμφανίζουμε όλες τις εντολές των οποίων η θέση στο ιστορικό του, είναι ή ξεκινά με αυτόν τον αριθμό&lt;/li&gt;
+  &lt;li&gt;αν ο χρήστης πατήσει το tab αφού έχει πληκτρολογήσει και έναν αριθμό και υπάρχει μόνο μια εντολή με θέση που είναι ή ξεκινά με τον αριθμό αυτό τότε θα συμπληρώσουμε απευθείας όλο τον αριθμό (αν έχετε μπερδευτεί μην ανησυχείτε, θα ξεκαθαρίσουν όλα παρακάτω)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Let’s start by defining a function that will execute each time user requests completion on a &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; command. Change the completion script to this:&lt;/p&gt;
+&lt;p&gt;Ας ξεκινήσουμε με το να ορίσουμε μια μέθοδο που θα εκτελείται κάθε φορά που ο χρήστης θα “ζητά” προτάσεις συμπλήρωσης για την εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; (πατώντας το tab). Αλλάξτε το script συμπλήρωσης ως εξής:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
 _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  COMPREPLY+&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;now&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  COMPREPLY+&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tomorrow&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  COMPREPLY+&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;never&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  COMPREPLY+&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;τώρα&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  COMPREPLY+&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;αύριο&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  COMPREPLY+&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ποτέ&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Note the following:&lt;/p&gt;
+&lt;p&gt;Σημειώστε τα παρακάτω:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;we used the &lt;code class=&quot;highlighter-rouge&quot;&gt;-F&lt;/code&gt; flag in the complete command defining that the &lt;code class=&quot;highlighter-rouge&quot;&gt;_dothis_completions&lt;/code&gt; is the function that will provide the completions of the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; executable&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMPREPLY&lt;/code&gt; is an array variable used to store the completions - the completion mechanism uses this variable to display its contents as completions&lt;/li&gt;
+  &lt;li&gt;χρησιμοποιήσαμε την επιλογή &lt;code class=&quot;highlighter-rouge&quot;&gt;-F&lt;/code&gt; στην εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;complete&lt;/code&gt; ορίζοντας ότι η &lt;code class=&quot;highlighter-rouge&quot;&gt;_dothis_completions&lt;/code&gt; είναι η μέθοδος που θα παρέχει τις προτάσεις συμπλήρωσης για το &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; εκτελέσιμο&lt;/li&gt;
+  &lt;li&gt;η &lt;code class=&quot;highlighter-rouge&quot;&gt;COMPREPLY&lt;/code&gt; είναι μια μεταβλητή τύπου &lt;strong&gt;πίνακα&lt;/strong&gt; που χρησιμοποιείται για να αποθηκεύει τις προτάσεις συμπλήρωσης - ο μηχανισμός συμπλήρωσης χρησιμοποιεί τη συγκεκριμένη μεταβλητή για να εμφανίσει τα περιεχόμενά της ως προτάσεις συμπλήρωσης&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Now source the script and go for completion:&lt;/p&gt;
+&lt;p&gt;Τώρα, ενεργοποιήστε το script συμπλήρωσης και κατόπιν δοκιμάστε να πατήσετε tab μετά το εκτελέσιμο &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
-never now tomorrow
+αύριο ποτέ τώρα
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Perfect. We produce the same completions as in the previous section with the word list. Or not? Try this:&lt;/p&gt;
+&lt;p&gt;Τέλεια. Παράγουμε τις ίδιες προτάσεις συμπλήρωσης όπως πριν που χρησιμοποιήσαμε την επιλογή &lt;code class=&quot;highlighter-rouge&quot;&gt;-W&lt;/code&gt;. Ή μήπως όχι; Δοκιμάστε το παρακάτω:&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis nev&amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
-never     now       tomorrow
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis ποτ&amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
+αύριο τώρα ποτέ
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;As you can see, even though we type &lt;strong&gt;nev&lt;/strong&gt; and then we request for completion, the available options are always the same and nothing gets completed automatically. Why is this happening?&lt;/p&gt;
+
+&lt;p&gt;Όπως βλέπετε, παρόλου που έχουμε πληκτρολογήσει &lt;strong&gt;ποτ&lt;/strong&gt; και μετά ζητήσαμε προτάσεις συμπλήρωσης πατώντας το &lt;code class=&quot;highlighter-rouge&quot;&gt;tab&lt;/code&gt;, οι διαθέσιμες προτάσεις συμπλήρωσης παραμένουν οι ίδιες, αφιλτράριστες και τίποτα δε συμπληρώνεται αυτόματα (κανονικά θα έπρεπε κατευθείαν να συμπληρωθεί η λέξη &lt;code class=&quot;highlighter-rouge&quot;&gt;ποτέ&lt;/code&gt; χωρίς καν να εμφανιστούν προτάσεις συμπλήρωσης αφού είναι η μόνη επιλογή που ξεκινά από &lt;code class=&quot;highlighter-rouge&quot;&gt;ποτ&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Γιατί συμβαίνει αυτό;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;The contents of the &lt;code class=&quot;highlighter-rouge&quot;&gt;COMPREPLY&lt;/code&gt; variable are always displayed. The function is responsible to add/remove entries from there now.&lt;/li&gt;
-  &lt;li&gt;If the &lt;code class=&quot;highlighter-rouge&quot;&gt;COMPREPLY&lt;/code&gt; variable had only one element then that word would be automatically completed in the command. Since current implementation always return the same three words, this will not happen.&lt;/li&gt;
+  &lt;li&gt;Τα περιεχόμενα της μεταβλητής &lt;code class=&quot;highlighter-rouge&quot;&gt;COMPREPLY&lt;/code&gt; εμφανίζονται πάντα. Η μέθοδος είναι υπεύθυνη να προσθέτει/αφαιρεί προτάσεις από εδώ και στο εξής.&lt;/li&gt;
+  &lt;li&gt;Αν η &lt;code class=&quot;highlighter-rouge&quot;&gt;COMPREPLY&lt;/code&gt; μεταβλητή είχε μόνο ένα στοιχείο τότε η λέξη θα συμπληρωνόταν αυτόματα στην εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt;. Εφόσον η τρέχουσα υλοποίησή μας πάντα αποθηκεύει στη μεταβλητή τις ίδιες τρεις λέξεις, αυτό δε θα συμβεί.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Enter &lt;code class=&quot;highlighter-rouge&quot;&gt;compgen&lt;/code&gt;: a builtin command that generates completions supporting most of the options of the &lt;code class=&quot;highlighter-rouge&quot;&gt;complete&lt;/code&gt; command (ex. &lt;code class=&quot;highlighter-rouge&quot;&gt;-W&lt;/code&gt; for word list, &lt;code class=&quot;highlighter-rouge&quot;&gt;-d&lt;/code&gt; for directories) and filtering them based on what already has been typed by the user.&lt;/p&gt;
+&lt;p&gt;Θα μας σώσει η &lt;code class=&quot;highlighter-rouge&quot;&gt;compgen&lt;/code&gt;: μια συστημική εντολή που παράγει προτάσεις συμπλήρωσης υποστηρίζοντας σχεδόν όλλες τις επιλογές που υποστηρίζει και η συστημική εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;complete&lt;/code&gt; που χρησιμοποιούσαμε ως τώρα (πχ. &lt;code class=&quot;highlighter-rouge&quot;&gt;-W&lt;/code&gt; για λίστα λέξεων, &lt;code class=&quot;highlighter-rouge&quot;&gt;-d&lt;/code&gt; για φακέλους) και φιλτράρει τις προτάσεις βάσει του τι έχει ήδη πληκτρολογηθεί από το χρήστη.&lt;/p&gt;
 
-&lt;p&gt;Don’t worry if you feel confused, everything will become clear later on.&lt;/p&gt;
+&lt;p&gt;Και πάλι, μην ανησυχείτε αν έχετε μπερδευτεί, τα πάντα θα ξεκαθαρίσουν παρακάτω.&lt;/p&gt;
 
-&lt;p&gt;Type the following in the console to better understand what compgen does:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now tomorrow never&quot;&lt;/span&gt;
-now
-tomorrow
-never
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now tomorrow never&quot;&lt;/span&gt; n
-now
-never
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now tomorrow never&quot;&lt;/span&gt; t
-tomorrow
+&lt;p&gt;Πληκτρολογήστε τα παρακάτω στη γραμμή εντολών για να κατανοήσετε καλύτερα τη κάνει η &lt;code class=&quot;highlighter-rouge&quot;&gt;compgen&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;τώρα αύριο ποτέ&quot;&lt;/span&gt;
+αύριο
+τώρα
+ποτέ
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;τώρα αύριο ποτέ&quot;&lt;/span&gt; τ
+τώρα
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;τώρα αύριο ποτέ&quot;&lt;/span&gt; α
+αύριο
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;So now we can use it but we need to find a way to know what has been typed after the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; command.
-We already have the way. The bash completion facilities provide &lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#Bash-Variables&quot;&gt;bash variables&lt;/a&gt; related to the completion taking place. Here are the more important ones:&lt;/p&gt;
+&lt;p&gt;Οπότε τώρα μπορούμε να χρησιμοποιήσουμε την &lt;code class=&quot;highlighter-rouge&quot;&gt;compgen&lt;/code&gt; αλλά πρέπει να βρούμε πρώτα τι έχει πληκτρολογήσει ο χρήστης μετά το &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt;.
+Η λειτουργικότητα tab συμπλήρωσης ευτυχώς παρέχει &lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#Bash-Variables&quot;&gt;μεταβλητές&lt;/a&gt; που σχετίζονται με την συμπλήρωση που είναι υπό εκτέλεση. Παραθέτω τις πιο σημαντικές:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_WORDS&lt;/code&gt;: an array of all the words typed after the name of the program the &lt;code class=&quot;highlighter-rouge&quot;&gt;compspec&lt;/code&gt; belongs to&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_CWORD&lt;/code&gt;: an index of the &lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_WORDS&lt;/code&gt; array pointing to the word the current cursor is at - in other words, the index of the word the cursor was when the tab key was pressed&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_LINE&lt;/code&gt;: the current command line&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_WORDS&lt;/code&gt;: ένας πίνακας με όλες τις λέξεις που έχουν πληκτρολογηθεί μετά από το όνομα του εκτελέσιμου στο οποίο έχει συνδεθεί το &lt;code class=&quot;highlighter-rouge&quot;&gt;compspec&lt;/code&gt; (στην περίπτωσή μας: όλες τις λέξεις που έχουν πληκτρολογηθεί μετά το &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_CWORD&lt;/code&gt;: ένας αριθμός που δείχνει σε ποια θέση του πίνακα &lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_WORDS&lt;/code&gt; βρίσκεται ο κέρσορας - με άλλα λόγια, σε ποια λέξη ήταν ο κέρσορας όταν πατήθηκε το tab&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_LINE&lt;/code&gt;: ολόκληρη η τρέχουσα εντολή&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;To access the word just after the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; word, we can use the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_WORDS[1]&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Για να προσπελάσουμε την λέξη που πληκτρολογήθηκε αμέσως μετά το &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; αρκεί να χρησιμοποιήσουμε την τιμή του &lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_WORDS[1]&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;Change the completion script again:&lt;/p&gt;
+&lt;p&gt;Αλλάξτε το script συμπλήρωσης ξανά:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
 _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;COMPREPLY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now tomorrow never&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMP_WORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[1]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;COMPREPLY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;τώρα αύριο ποτέ&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMP_WORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[1]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 
 &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Source and there you are:&lt;/p&gt;
+
+&lt;p&gt;Ενεργοποιήστε το και ορίστε:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis
-never     now       tomorrow  
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis n
-never  now
+αύριο     τώρα       ποτέ
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis α
+αύριο
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Now, instead of the &lt;em&gt;now, tomorrow, never&lt;/em&gt; words, we would like to see actual numbers from the command history.&lt;/p&gt;
+&lt;p&gt;Τώρα, αντί των λέξεων &lt;em&gt;τώρα, αύριο, ποτέ&lt;/em&gt;, Θα θέλαμε να δούμε τους αριθμούς που είναι στην ουσία οι θέσεις των εντολών από το ιστορικό του χρήστη.&lt;/p&gt;
 
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;fc -l&lt;/code&gt; command followed by a negative number &lt;code class=&quot;highlighter-rouge&quot;&gt;-n&lt;/code&gt; displays the last &lt;strong&gt;n&lt;/strong&gt; commands.
-So, we will use:&lt;/p&gt;
+&lt;p&gt;Η εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;fc -l&lt;/code&gt; ακολουθούμενη από έναν αρνητικό αριθμό &lt;code class=&quot;highlighter-rouge&quot;&gt;-n&lt;/code&gt; εμφανίζει τις τελευταίες &lt;strong&gt;n&lt;/strong&gt; εντολές που εκτελέστηκαν.
+Οπότε θα την χρησιμοποιήσουμε ως εξής:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;fc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-50&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;which lists the last &lt;strong&gt;50&lt;/strong&gt; executed commands along with their numbers. The only manipulation we need to do is replace tabs with spaces in order to be displayed properly from the completion mechanism. &lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt; to the rescue.&lt;/p&gt;
+&lt;p&gt;εμφανίζοντας τις τελευταίες &lt;strong&gt;50&lt;/strong&gt; εντολές μαζί με τον αριθμό της θέσης τους στο ιστορικό. Ο μόνος χειρισμός που πρέπει να κάνουμε είναι να αντικαταστήσουμε τα tabs με κενά διαστήματα ώστε να εμφανίζονται σωστά από τον μηχανισμό των συμπληρώσεων του Bash.&lt;/p&gt;
 
-&lt;p&gt;Change the completion script as follows:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt; βόηθα μας.&lt;/p&gt;
+
+&lt;p&gt;Αλλάξτε το script συμπλήρωσης ως εξής:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
 _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -299,7 +304,7 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Source and test in the console:&lt;/p&gt;
+&lt;p&gt;Ενεργοποιήστε το script συμπλήρωσης και δοκιμάστε στη γραμμή εντολών:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
 632 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   649 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   666 &lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; ~/.bash_profile
 633 clear                           650 clear                           667 &lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; ~/.bashrc
@@ -320,9 +325,9 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 648 clear                           665 &lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; ~/.bashrc
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Not bad.&lt;/p&gt;
+&lt;p&gt;Καθόλου κακό.&lt;/p&gt;
 
-&lt;p&gt;We do have a problem though. Try typing a number as you see it in your completion list and the press the &lt;tab&gt; key again.&lt;/tab&gt;&lt;/p&gt;
+&lt;p&gt;Έχουμε ένα πρόβλημα ωστόσο. Προσπαθήστε να πληκτρολογήσετε έναν αριθμό όπως τον βλέπετε στις προτάσεις συμπλήρωσης και πατήστε το tab ξανά.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis 623&amp;lt;tab&amp;gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis 623  &lt;span class=&quot;nb&quot;&gt;ls &lt;/span&gt;623  &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-la&lt;/span&gt;
@@ -330,9 +335,9 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis 623  &lt;span class=&quot;nb&quot;&gt;ls &lt;/span&gt;623  &lt;span class=&quot;nb&quot;&gt;ls &lt;/span&gt;623  &lt;span class=&quot;nb&quot;&gt;ls &lt;/span&gt;623  &lt;span class=&quot;nb&quot;&gt;ls &lt;/span&gt;623  &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-la&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;This is happening because in our completion script, we used the &lt;code class=&quot;highlighter-rouge&quot;&gt;${COMP_WORDS[1]}&lt;/code&gt; to always check the first typed word after the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; command (the number &lt;code class=&quot;highlighter-rouge&quot;&gt;623&lt;/code&gt; in the above snippet). Hence the completion continues suggesting the same completion again and again while pressing the tab key.&lt;/p&gt;
+&lt;p&gt;Αυτό συμβαίνει γιατί στο script συμπλήρωσής μας χρησιμοποιήσαμε την τιμή της &lt;code class=&quot;highlighter-rouge&quot;&gt;${COMP_WORDS[1]}&lt;/code&gt; ώστε να ελέγχουμε την πρώτη πάντα λέξη που πληκτρολογήθηκε μετά το &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; (ο αριθμός &lt;code class=&quot;highlighter-rouge&quot;&gt;623&lt;/code&gt; στην παραπάνω απόσπασμα). Οπότε ο μηχανισμός συμπλήρωσης συνεχίζει να προτείνει ξανά και ξανά την ίδια επιλογή πατώντας το tab.&lt;/p&gt;
 
-&lt;p&gt;To fix this, we will not allow any kind of completion to take place if at least one argument has already been typed. We will add a condition in our function checking the size of the aforementioned &lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_WORDS&lt;/code&gt; array.&lt;/p&gt;
+&lt;p&gt;Για να το διορθώσουμε αυτό, δε θα επιτρέπουμε κανένα είδος συμπλήρωσης να λάβει χώρα αν τουλάχιστον μια λέξη έχει ήδη συμπληρωθεί. Θα προσθέσουμε λοιπόν μια συνθήκη ελέγχοντας το μέγεθος της προαναφερθείσας &lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_WORDS&lt;/code&gt; μεταβλητής.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
 _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
@@ -347,19 +352,19 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Source and retry.&lt;/p&gt;
+&lt;p&gt;Ενεργοποιήστε το script συμπλήρωσης και ξαναδοκιμάστε.&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis 623&amp;lt;tab&amp;gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis 623 &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-la&lt;/span&gt;&amp;lt;tab&amp;gt; &lt;span class=&quot;c&quot;&gt;# SUCCESS: nothing happens here&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis 623 &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-la&lt;/span&gt;&amp;lt;tab&amp;gt; &lt;span class=&quot;c&quot;&gt;# Επιτυχία, δεν συμβαίνει συμπλήρωση εδώ&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;There is another thing we don’t like though. We do want to display the numbers along with the corresponding commands to help users decide which one is the desired but when there is only one completion suggestion and gets automatically picked by the completion mechanism, &lt;strong&gt;we shouldn’t append the command literal too&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Υπάρχει ωστόσο και κάτι άλλο που δε μας αρέσει. Θέλουμε να εμφανίζουμε τις θέσεις μαζί με τις αντίστοιχες εντολές ώστε να βοηθήσουμε τους χρήστες να αποφασίσουν ποια είναι η εντολή που θέλουν να εκτελέσουν αλλά όταν υπάρχει μόνο μια πρόταση συμπλήρωσης και ο μηχανισμός τη συμπληρώνει αυτόματα, &lt;strong&gt;δεν θα έπρεπε να συμπληρώνεται και η εντολή παρά μόνο ο αριθμός&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;In other words, our &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; executable accepts only a number and we haven’t added any functionality checking or expecting other arguments. When our completion function gives only one result, we should trim the command literal and respond only with the command number.&lt;/p&gt;
+&lt;p&gt;Με άλλα λόγια, το &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; δέχεται μόνο έναν αριθμό και δεν έχουμε προσθέσει ελέγχους για περισσότερες παραμέτρους. Όταν μέθοδος που υπολογίζει τις προτάσεις συμπληρώσεων βρίσκε μόνο ένα αποτέλεσμα τότε θα πρέπει να πετσοκόψουμε (trim :D) το λεκτικό που περιέχει τον αριθμό και την εντολή ώστε να μείνει μόνο ο αριθμός.&lt;/p&gt;
 
-&lt;p&gt;To accomplish this, we will keep the response of the &lt;code class=&quot;highlighter-rouge&quot;&gt;compgen&lt;/code&gt; command in an array variable and if its size is &lt;strong&gt;1&lt;/strong&gt; we will trim the one and only element to keep just the number. Otherwise, we’ll let the array as is.&lt;/p&gt;
+&lt;p&gt;Για να το πετύχουμε αυτό, θα κρατήσουμε το αποτέλεσμα τις εντολής &lt;code class=&quot;highlighter-rouge&quot;&gt;compgen&lt;/code&gt; σε μια μεταβλητή τύπου πίνακα, και αν το μέγεθος της είναι &lt;strong&gt;1&lt;/strong&gt; τότε θα επεξεργαστούμε το μοναδικό στοιχείο της ώστε να μείνει μόνο ο αριθμός. Διαφορετικά θα αφήσουμε την μεταβλητή ως έχει.&lt;/p&gt;
 
-&lt;p&gt;Change the completion script to this:&lt;/p&gt;
+&lt;p&gt;Αλλάξτε το script συμπλήρωσης ως εξής:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
 _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -385,28 +390,32 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;καταχώρηση-του-script-tab-συμπλήρωσης&quot;&gt;Καταχώρηση του script tab συμπλήρωσης&lt;/h3&gt;
+&lt;h3 id=&quot;αυτόματη-ενεργοποίηση-του-script-tab-συμπλήρωσης&quot;&gt;Αυτόματη ενεργοποίηση του script tab συμπλήρωσης&lt;/h3&gt;
 
-&lt;p&gt;If you want to enable the completion just for you on your machine, all you have to do is add a line in your &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; file sourcing the script:&lt;/p&gt;
+&lt;p&gt;Αν θέλετε να ενεργοποιήσετε τις συμπληρώσεις για το εκτελέσιμο &lt;strong&gt;μόνο για εσάς&lt;/strong&gt;, το μόνο που χρειάζεται να κάνετε είναι να προσθέσετε της παρακάτω εντολή στο αρχείο σας &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &amp;lt;path-to-your-script&amp;gt;/dothis-completion.bash
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;If you want to enable the completion for all users, you can just copy the script under &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bash_completion.d/&lt;/code&gt; and it will automatically be loaded by Bash.&lt;/p&gt;
+&lt;p&gt;Αν θέλετε να τις ενεργοποιήσετε για όλους τους χρήστες τότε μπορείτε να αντιγράψετε το script συμπλήρωσης στο φάκελο &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bash_completion.d/&lt;/code&gt; και θα φορτώνεται αυτόματα από το Bash.&lt;/p&gt;
 
-&lt;h3 id=&quot;fine-tuning-the-completion-script&quot;&gt;Fine tuning the completion script&lt;/h3&gt;
+&lt;h3 id=&quot;τελειοποίηση-του-script-συμπλήρωσης&quot;&gt;Τελειοποίηση του script συμπλήρωσης&lt;/h3&gt;
 
-&lt;p&gt;Some extra steps for better results :)&lt;/p&gt;
+&lt;p&gt;Μερικά επιπλέον βήματα για καλύτερα αποτελέσματα.&lt;/p&gt;
 
-&lt;h4 id=&quot;displaying-each-entry-in-a-new-line&quot;&gt;Displaying each entry in a new line&lt;/h4&gt;
+&lt;h4 id=&quot;εμφανίζοντας-κάθε-πρόταση-συμπλήρωσης-σε-νέα-γραμμή&quot;&gt;Εμφανίζοντας κάθε πρόταση συμπλήρωσης σε νέα γραμμή&lt;/h4&gt;
 
-&lt;p&gt;Well, in the bash completion script I was working on, I too had to present suggestions consisting of two parts. I wanted to display the first part with the default color and the second part with a gray color to point out that it was just help text. In this tutorial’s example, it would be nice to present the numbers in the default color but the command literal in another one, less fancy.&lt;/p&gt;
+&lt;p&gt;Στο script συμπλήρωσης που χρειάστηκε να δημιουργήσω, επίσης έπρεπε να εμφανίζω προτάσεις που αποτελούνταν από δύο τμήματα. Ήθελα να εμφανίζω το πρώτο τμήμα με το εξ ορισμού χρώμα των γραμμάτων της κονσόλας και το δεύτερο τμήμα με γκρι χρώμα ώστε να φαίνεται ότι ήταν απλά βοηθητικό κείμενο. Στο παράδειγμά μας, θα ήταν ωραίο να παρουσιάζουμε τους αριθμούς με το εξ ορισμού χρώμα αλλά το χρώμα των εντολών να ήταν κάτι λιγότερο χτυπητό στο μάτι.&lt;/p&gt;
 
-&lt;p&gt;Unfortunately, this is not possible at least for the time being because the completions are displayed as plain text and color directives are not processed (for example: &lt;code class=&quot;highlighter-rouge&quot;&gt;\e[34mBlue&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Δυστυχώς&lt;/strong&gt;, αυτό δεν είναι δυνατόν (τουλάχιστον για την ώρα) γιατί ο μηχανισμός συμπλήρωσης εμφανίζει τις προτάσεις ως καθαρό κείμενο και οι οδηγίες χρώματος δεν εφαρμόζονται (για παράδειγμα, αυτό &lt;code class=&quot;highlighter-rouge&quot;&gt;\e[34mουρανός&lt;/code&gt; θα εμφανιζόταν ακριβώς όπως το βλέπετε και όχι η λέξη ουρανός σε μπλε χρώμα).&lt;/p&gt;
 
-&lt;p&gt;What we can do though to improve user experience (or not :D) is to display each entry in a new line. This solution is not that obvious since again we can’t just append a new line character in each &lt;code class=&quot;highlighter-rouge&quot;&gt;COMPREPLY&lt;/code&gt; entry. We will follow a rather &lt;a href=&quot;https://unix.stackexchange.com/questions/166908/is-there-anyway-to-get-compreply-to-be-output-as-a-vertical-list-of-words-instea&quot;&gt;hackish&lt;/a&gt; way and pad suggestion literals to such a width that fills the terminal’s width.&lt;/p&gt;
+&lt;p&gt;Αυτό που μπορούμε ωστόσο να κάνουμε για να βελτιώσουμε την εμπειρία των χρηστών (ή όχι :D) είναι να εμφανίζουμε την κάθε πρόταση συμπλήρωσης σε νέα γραμμή. Ο τρόπος για να το κάνουμε αυτό δεν είναι ο προφανής γιατί δεν μπορούμε απλά να προσθέσουμε στο τέλος κάθε πρότασης τον χαρακτήρα αλλαγής γραμμής αφού ο μηχανισμός συμπλήρωσης δεν θα τον μεταφράσει σε αλλαγή γραμμής αλλά θα τον δείξει ως κείμενο (&lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt;).&lt;/p&gt;
 
-&lt;p&gt;Enter &lt;code class=&quot;highlighter-rouge&quot;&gt;printf&lt;/code&gt;. If you want to display each suggestion on each own line, change the completion script to the following:&lt;/p&gt;
+&lt;p&gt;Θα ακολουθήσουμε ένα μάλλον &lt;a href=&quot;https://unix.stackexchange.com/questions/166908/is-there-anyway-to-get-compreply-to-be-output-as-a-vertical-list-of-words-instea&quot;&gt;hackish&lt;/a&gt; τρόπο και θα προσθέτουμε κενά στο τέλος κάθε πρότασης συμπλήρωσης, τόσα ώστε το τελικό πλήθος των χαρακτήρων της πρότασης (με τα κενά) να είναι ίσο με το πλήθος των χαρακτήρων που χωρά η κάθε γραμμή της κονσόλας.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;printf&lt;/code&gt; βόηθα μας.&lt;/p&gt;
+
+&lt;p&gt;Αλλάξτε το script συμπλήρωσης ως εξής:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
 _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
@@ -432,7 +441,7 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Source and test:&lt;/p&gt;
+&lt;p&gt;Ενεργοποιήστε το και δοκιμάστε:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
 ...
 499 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash                   
@@ -441,13 +450,15 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 503 dothis 500
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;customizable-behavior&quot;&gt;Customizable behavior&lt;/h4&gt;
+&lt;p&gt;Done.&lt;/p&gt;
 
-&lt;p&gt;In our case, we hard-coded to display the last 50 commands for completion. This is not a good practice. We should first respect what each user might prefer and if he/she hasn’t made any preference then we should default to 50.&lt;/p&gt;
+&lt;h4 id=&quot;προσαρμόσιμη-συμπεριφορά&quot;&gt;Προσαρμόσιμη συμπεριφορά&lt;/h4&gt;
 
-&lt;p&gt;To accomplish that we will check if an environment variable &lt;code class=&quot;highlighter-rouge&quot;&gt;DOTHIS_COMPLETION_COMMANDS_NUMBER&lt;/code&gt; has been set.&lt;/p&gt;
+&lt;p&gt;Στην περίπτωσή μας, ορίσαμε καρφωτά να εμφανίζονται οι τελευταίες 50 εκτελέσιμες εντολές όταν πατιέται το tab χωρίς να έχει πληκτρολογηθεί κάποιος αριθμός. Θα ήταν καλύτερο να αφήνουμε το χρήστη να επιλέγει πόσες θέλει να είναι αυτές οι εντολές (π.χ. οι τελευταίες 100) και αν δεν έχει ορίσει την επιθυμία του τότε εξ ορισμού να δείχνουμε τις τελευταίες 50,&lt;/p&gt;
 
-&lt;p&gt;Change the completion script one last time:&lt;/p&gt;
+&lt;p&gt;Για να το πετύχουμε αυτό, θα ελέγχουμε την τιμή μιας μεταβλητής από το περιβάλλον του χρήστη, ας πούμε &lt;code class=&quot;highlighter-rouge&quot;&gt;DOTHIS_COMPLETION_COMMANDS_NUMBER&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Αλλάξτε για τελευταία φορά το script συμπλήρωσης:&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
 _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
@@ -475,7 +486,7 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Source and test:&lt;/p&gt;
+&lt;p&gt;Ενεργοποιήστε το και δοκιμάστε:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DOTHIS_COMPLETION_COMMANDS_NUMBER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;5
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
 505 clear
@@ -485,34 +496,34 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 509 &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DOTHIS_COMPLETION_COMMANDS_NUMBER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;5
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;useful-links&quot;&gt;Useful links&lt;/h2&gt;
+&lt;h2 id=&quot;χρήσιμοι-σύνδεσμοι&quot;&gt;Χρήσιμοι σύνδεσμοι&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/git/git/blob/master/contrib/completion/git-completion.bash&quot;&gt;Git’s completion script&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/iridakos/goto/blob/master/goto.sh&quot;&gt;Bash completion for &lt;code class=&quot;highlighter-rouge&quot;&gt;goto&lt;/code&gt;, one of my shell scripts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/iridakos/goto/blob/master/goto.sh&quot;&gt;Το script συμπλήρωσης που ήταν η αφορμή για να γράψω αυτό το άρθρο (&lt;code class=&quot;highlighter-rouge&quot;&gt;goto&lt;/code&gt;)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/git/git/blob/master/contrib/completion/git-completion.bash&quot;&gt;Το script συμπλήρωσης του Git&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html#Programmable-Completion&quot;&gt;Bash Reference Manual: Programmable Completion&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html#Programmable-Completion-Builtins&quot;&gt;Bash Reference Manual: Programmable Completion Builtins&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/A-Programmable-Completion-Example.html#A-Programmable-Completion-Example&quot;&gt;Bash Reference Manual: A Programmable Completion Example&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#Bash-Variables&quot;&gt;Bash Reference Manual: Bash Variables&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;code-and-comments&quot;&gt;Code and Comments&lt;/h2&gt;
+&lt;h2 id=&quot;κώδικας-και-σχόλια&quot;&gt;Κώδικας και σχόλια&lt;/h2&gt;
 
-&lt;p&gt;You can find the &lt;strong&gt;code of this tutorial&lt;/strong&gt; on &lt;a href=&quot;https://github.com/iridakos/bash-completion-tutorial&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Μπορείτε να βρείτε &lt;strong&gt;τον κώδικα από αυτό το άρθρο&lt;/strong&gt; στο &lt;a href=&quot;https://github.com/iridakos/bash-completion-tutorial&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;For &lt;strong&gt;feedback, comments, typos etc&lt;/strong&gt;. please open an &lt;a href=&quot;https://github.com/iridakos/bash-completion-tutorial/issues&quot;&gt;issue&lt;/a&gt; in the repository.&lt;/p&gt;
+&lt;p&gt;Για &lt;strong&gt;feedback, σχόλια, λάθη κ.λπ.&lt;/strong&gt; παρακαλώ ανοίξτε ένα &lt;a href=&quot;https://github.com/iridakos/bash-completion-tutorial/issues&quot;&gt;issue&lt;/a&gt; στο αποθετήριο.&lt;/p&gt;
 
-&lt;h3 id=&quot;long-post-cat-photo&quot;&gt;Long post, cat photo&lt;/h3&gt;
+&lt;h3 id=&quot;μεγάλο-άρθρο-φωτογραφία-γάτας&quot;&gt;Μεγάλο άρθρο, φωτογραφία γάτας&lt;/h3&gt;
 
-&lt;p&gt;Let me introduce you to my debugger.&lt;/p&gt;
+&lt;p&gt;Να σας συστήσω των debugger μου.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/bash-completion/cat.jpg&quot; alt=&quot;My debugger&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;That’s all folks!&lt;/p&gt;
+&lt;p&gt;Αυτό ήταν. Τελειώσαμε. Καλή συνέχεια.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 15 Nov 2019 14:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/11/15/bash-programmable-completion-tutorial</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/15/bash-programmable-completion-tutorial</guid>
+        <pubDate>Wed, 13 Nov 2019 09:00:00 +0200</pubDate>
+        <link>https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial</link>
+        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial</guid>
         
         <category>bash</category>
         

@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="el">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ocs-site-verification" content="e5faa08e01247c38aadf1c1737ff8136">
+  <meta name="google-site-verification" content="KqOxy0ecDlfNdfO530ZAbtNBedy49hn2KziyqLK0JGo" />
+
+  <title>Bash: Προσθέτοντας tab συμπλήρωση στα script</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
+
+  <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css?1573638265086232011">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Bash: Προσθέτοντας tab συμπλήρωση στα script" />
+<meta name="author" content="Lazarus Lazaridis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash" />
+<meta property="og:description" content="Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash" />
+<link rel="canonical" href="https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial" />
+<meta property="og:url" content="https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial" />
+<meta property="og:site_name" content="iridakos" />
+<meta property="og:image" content="https://iridakos.com/assets/images/posts/bash-completion/post-image.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-13T09:00:00+02:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://iridakos.com/assets/images/posts/bash-completion/post-image.png" />
+<meta property="twitter:title" content="Bash: Προσθέτοντας tab συμπλήρωση στα script" />
+<meta name="twitter:site" content="@lazaru_s" />
+<meta name="twitter:creator" content="@Lazarus Lazaridis" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"image":"https://iridakos.com/assets/images/posts/bash-completion/post-image.png","description":"Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash","@type":"BlogPosting","url":"https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial","headline":"Bash: Προσθέτοντας tab συμπλήρωση στα script","dateModified":"2019-11-13T09:00:00+02:00","datePublished":"2019-11-13T09:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+  <script type="text/javascript">
+      window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on the website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"light-bottom"};
+  </script>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+</head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg iridakos-navbar">
+  <div class="container-fluid no-gutters">
+    
+
+    <a class="navbar-brand " href="/el/" alt="αρχική">
+      <i class="fa fa-home"></i>
+      αρχική
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="fa fa-bars pt-1"></i>
+      </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="header-pages">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            προγραμματισμός
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="more">
+            <a class="dropdown-item" href="/el/programming/">όλα τα άρθρα</a>
+            <a class="dropdown-item" href="/el/programming/featured/">δημοφιλή άρθρα</a>
+            <a class="dropdown-item" href="/el/programming/tutorials/">βοηθήματα</a>
+            <a class="dropdown-item" href="/el/programming/how-to/">how to άρθρα</a>
+            <a class="dropdown-item" href="/el/programming/code/">κώδικας</a>
+          </div>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/el/cats/" alt="cats">γάτες</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/el/painting/" alt="ζωγραφική">ζωγραφική</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/el/tags/" alt="ετικέτες">ετικέτες</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/el/about/" alt="σχετικά με μένα">σχετικά με μένα</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav mr-0 mt-2 mt-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-language"></i>
+            Ελληνικά
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="more">
+            
+            <a class="dropdown-item" href="/programming/2018/03/01/bash-programmable-completion-tutorial">English</a>
+          </div>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0" method="get" action="/el/search">
+        <div class="input-group input-group-sm mr-sm-2">
+          <input class="form-control" name="query" type="search" placeholder="Αναζήτηση άρθρων">
+
+          <div class="input-group-append">
+            <button class="btn btn-warning" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="page-title-container">
+  <div class="container-fluid no-gutters">
+    <div class="page-title">
+      <div class="row align-items-center">
+        <div class="col-xs-12 col-md-8 col-lg-9 order-md-first order-last text-center text-md-left">
+          <h1>Bash: Προσθέτοντας tab συμπλήρωση στα script</h1>
+
+            <div class="page-subtitle">
+            Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash
+
+            
+              <div class="post">
+                <div class="post-metadata">
+                  <div class="post-date" title="published on">
+                    Δημοσιέυτηκε στις <span class="important">13/11/2019</span>
+                  </div>
+
+                  <div class="post-category" title="in category">
+                    στην κατηγορία <span class="important">
+                      
+                           <a href="/el/programming">προγραμματισμός</a>
+                        
+
+                    </span>
+                  </div>
+                </div>
+
+                
+                
+                  <div class="post-tags">
+                    <span class="important">Ετικέτες:</span>
+                    
+                      <a href="/el/tags/?tag=bash" class="ga-event-link" data-event-label="bash" data-event-action="click" data-event-category="tags">bash</a> - 
+                    
+                      <a href="/el/tags/?tag=linux" class="ga-event-link" data-event-label="linux" data-event-action="click" data-event-category="tags">linux</a> - 
+                    
+                      <a href="/el/tags/?tag=programmable-completion" class="ga-event-link" data-event-label="programmable-completion" data-event-action="click" data-event-category="tags">programmable-completion</a> - 
+                    
+                      <a href="/el/tags/?tag=opensource" class="ga-event-link" data-event-label="opensource" data-event-action="click" data-event-category="tags">opensource</a> - 
+                    
+                      <a href="/el/tags/?tag=tutorial" class="ga-event-link" data-event-label="tutorial" data-event-action="click" data-event-category="tags">tutorial</a> - 
+                    
+                      <a href="/el/tags/?tag=how-to" class="ga-event-link" data-event-label="how-to" data-event-action="click" data-event-category="tags">how-to</a> - 
+                    
+                      <a href="/el/tags/?tag=featured" class="ga-event-link" data-event-label="featured" data-event-action="click" data-event-category="tags">featured</a> - 
+                    
+                      <a href="/el/tags/?tag=δημοφιλή" class="ga-event-link" data-event-label="δημοφιλή" data-event-action="click" data-event-category="tags">δημοφιλή</a> - 
+                    
+                      <a href="/el/tags/?tag=γραμμή εντολών" class="ga-event-link" data-event-label="γραμμή εντολών" data-event-action="click" data-event-category="tags">γραμμή εντολών</a> - 
+                    
+                      <a href="/el/tags/?tag=ανοιχτό λογισμικό" class="ga-event-link" data-event-label="ανοιχτό λογισμικό" data-event-action="click" data-event-category="tags">ανοιχτό λογισμικό</a> - 
+                    
+                      <a href="/el/tags/?tag=βοήθημα" class="ga-event-link" data-event-label="βοήθημα" data-event-action="click" data-event-category="tags">βοήθημα</a>
+                    
+                  </div>
+                
+
+                
+                
+                
+                  <div class="my-3">
+                    <small>
+                      Το άρθρο είναι διαθέσιμο και στα <a href="/programming/2018/03/01/bash-programmable-completion-tutorial">αγγλικά</a>.
+                    </small>
+                  </div>
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container-fluid no-gutters">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-9 page-content">
+          
+
+          
+            <div class="row">
+              <div class="col-12">
+                <div class="outline mb-5">
+                  <p>Πρόσφατα χρειάστηκε να προσθέσω tab συμπλήρωση σε ένα <a class="ga-event-link" data-event-category="From post to Github" data-event-action="click" data-event-label="goto from Bash completion post" href="https://github.com/iridakos/goto">script μου</a> και βρήκα τη λειτουργικότητα πολύ ενδιαφέρουσα.</p>
+
+<p><a class="ga-event-link" data-event-category="From post to Github" data-event-action="click" data-event-label="goto from Bash completion post" href="https://github.com/iridakos/goto">
+  <img class="no-maximize" src="https://github.com/iridakos/goto/raw/master/doc/goto.gif" />
+</a></p>
+
+<p>Σε αυτό το άρθρο θα εξοικειωθείτε με τη διαδικασία προσθήκης tab συμπλήρωσης στα script σας στη γραμμή εντολών του Bash.</p>
+
+<h2 id="τι-είναι-η-tab-συμπλήρωση-bash-completion">Τι είναι η tab συμπλήρωση (bash completion);</h2>
+
+<p>Η tab συμπλήρωση είναι μια λειτουργικότητα μέσω της οποίας το Bash επιτρέπει στους χρήστες να πληκτρολογήσουν τις εντολές τους πιο εύκολα και γρήγορα. Αυτό το πετυχαίνει με το να παρουσιάζει πιθανές επιλογές ως συνέχεια της εντολής όταν οι χρήστες πατούν το <code class="highlighter-rouge">tab</code> πλήκτρο καθώς την γράφουν.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git&lt;tab&gt;&lt;tab&gt;
+git                 git-receive-pack    git-upload-archive  
+gitk                git-shell           git-upload-pack     
+<span class="nv">$ </span>git-s&lt;tab&gt;
+<span class="nv">$ </span>git-shell
+</code></pre></div></div>
+
+<h3 id="πως-δουλεύει">Πως δουλεύει;</h3>
+
+<p>Το script συμπλήρωσης είναι κώδικας που χρησιμοποιεί την συστημική bash εντολή <code class="highlighter-rouge">complete</code> για να ορίσει <strong>ποιες προτάσεις συμπλήρωσης</strong> θα εμφανιστούν για ένα δεδομένο <strong>εκτελέσιμο</strong> πρόγραμμα.
+Η φύση των προτάσεων αυτών ποικίλει από απλές στατικές έως περίπλοκες και δυναμικές επιλογές.</p>
+
+<h3 id="γιατί-να-ασχοληθώ">Γιατί να ασχοληθώ;</h3>
+
+<p>Είναι καλό να παρέχεται αυτή η λειτουργικότητα στους χρήστες των script:</p>
+<ul>
+  <li>για να διευκολύνεται η πληκτρολόγηση κειμένου όταν μπορεί να συμπληρωθεί αυτόματα</li>
+  <li>για να μπορούν να βλέπουν ποιες είναι οι πιθανές συνέχειες στις εντολές που πληκτρολογούν και</li>
+  <li>για την αποφυγή λαθών και για την βελτίωση της εμπειρίας τους κρύβοντας τις μη διαθέσιμες και εμφανίζοντας τις διαθέσιμες επιλογές βάσει του τι έχουν ήδη πληκτρολογήσει</li>
+</ul>
+
+<h2 id="ας-ξεκινήσουμε">Ας ξεκινήσουμε</h2>
+
+<p>Να τι θα κάνουμε σε αυτό το βοήθημα.</p>
+
+<p>Αρχικά, θα δημιουργήσουμε ένα πολύ απλό εκτελέσιμο script που θα το πούμε <code class="highlighter-rouge">dothis</code>. Αυτό θα είναι το script που στη συνέχεια θα προσθέσουμε τη λειτουργικότητα για την tab συμπλήρωση.
+Το μόνο που θα κάνει το script είναι να εκτελεί την εντολή που βρίσκεται σε μια συγκεκριμένη θέση στο ιστορικό των εντολών του χρήστη. Τη θέση της εντολής στο ιστορικό θα την δέχεται σαν παράμετρο κατά την εκτέλεση. Για παράδειγμα, η παρακάτω εντολή θα εκτελέσει την εντολή <code class="highlighter-rouge">ls -a</code> δεδομένου ότι η τελευταία βρισκεται στη θέση <code class="highlighter-rouge">235</code> στο ιστορικό εντολών του χρήστη:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dothis 235
+</code></pre></div></div>
+
+<p>Στη συνέχεια θα δημιουργήσουμε το script tab συμπλήρωσης που θα εμφανίζει τις εντολές μαζί με τη θέση τους, από το <code class="highlighter-rouge">ιστορικό εντολών του χρήστη</code> και τέλος θα το συνδέσουμε με το πρόγραμμα <code class="highlighter-rouge">dothis</code> που προανέφερα.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>dothis &lt;tab&gt;&lt;tab&gt;
+215 <span class="nb">ls
+</span>216 <span class="nb">ls</span> <span class="nt">-la</span>
+217 <span class="nb">cd</span> ~
+218 man <span class="nb">history
+</span>219 git status
+220 <span class="nb">history</span> | <span class="nb">cut</span> <span class="nt">-c</span> 8-
+</code></pre></div></div>
+
+<p><img src="/assets/images/posts/bash-completion/bash-completion-tutorial.gif" alt="Επίδειξη της tab συμπλήρωσης" /></p>
+
+<p>Συγκεντρωθείτε <code class="highlighter-rouge">bash</code> και τα καταφέρουμε με την πρώτη.</p>
+
+<h3 id="δημιουργία-του-εκτελέσιμου-προγράμματος">Δημιουργία του εκτελέσιμου προγράμματος</h3>
+
+<p>Δημιουργήστε ένα αρχείο με το όνομα <code class="highlighter-rouge">dothis</code> στο φάκελο που επιθυμείτε και προσθέστε τον παρακάτω κώδικα:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+  </span><span class="nb">echo</span> <span class="s2">"No command number passed"</span>
+  <span class="nb">exit </span>2
+<span class="k">fi
+
+</span><span class="nv">exists</span><span class="o">=</span><span class="si">$(</span><span class="nb">fc</span> <span class="nt">-l</span> <span class="nt">-1000</span> | <span class="nb">grep</span> ^<span class="nv">$1</span> <span class="nt">--</span> 2&gt;/dev/null<span class="si">)</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="nt">-n</span> <span class="s2">"</span><span class="nv">$exists</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+  </span><span class="nb">fc</span> <span class="nt">-s</span> <span class="nt">--</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+<span class="k">else
+  </span><span class="nb">echo</span> <span class="s2">"Command with number </span><span class="nv">$1</span><span class="s2"> was not found in recent history"</span>
+  <span class="nb">exit </span>2
+<span class="k">fi</span>
+</code></pre></div></div>
+
+<p><strong>Σημειώσεις:</strong></p>
+<ul>
+  <li>Πρώτα ελέγχουμε αν το πρόγραμμα κλήθηκε με παράμετρο</li>
+  <li>Στη συνέχεια ελέγχουμε αν ο συγκεκριμένος αριθμός αντιστοιχεί σε κάποια από τις τελευταίες 1000 εντολές του ιστορικού του χρήστη.
+    <ul>
+      <li>αν ναι τότε την εκτελούμε με χρήση της εντολής <code class="highlighter-rouge">fc</code></li>
+      <li>διαφορετικά εμφανίζουμε ένα μήνυμα λάθους</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Μετατρέψτε το script σε εκτελέσιμο με την παρακάτω εντολή:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x ./dothis
+</code></pre></div></div>
+
+<p>Θα εκτελούμε συχνά αυτό το script σε αυτό το βοήθημα οπότε συνιστώ να το μεταφέρετε σε ένα φάκελο που ανήκει στην μεταβλητή <a href="http://www.linfo.org/path_env_var.html">PATH</a> του περιβάλλοντός σας ωτε να μπορούμε να το προσπελάσουμε από παντού απλά πληκτρολογώντας <code class="highlighter-rouge">dothis</code>.</p>
+
+<p>Το δικό μου το έβαλα στο <code class="highlighter-rouge">home bin</code> πληκτρολογώντας:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">install</span> ./dothis ~/bin/dothis
+</code></pre></div></div>
+
+<p>Μπορείτε να κάνετε το ίδιο δεδομένου ότι έχετε φάκελο <code class="highlighter-rouge">~/bin</code> ο οποίος εμπεριέχεται στην <code class="highlighter-rouge">PATH</code> μεταβλητή σας.</p>
+
+<p>Δοκιμάστε να δείτε ότι δουλεύει:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dothis
+</code></pre></div></div>
+
+<p>Θα έπρεπε να δείτε αυτό:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>dothis
+No <span class="nb">command </span>number passed
+</code></pre></div></div>
+
+<p>Done.</p>
+
+<h3 id="δημιουργία-του-script-tab-συμπλήρωσης">Δημιουργία του script tab συμπλήρωσης</h3>
+
+<p>Δημιουργήστε ένα αρχείο με όνομα <code class="highlighter-rouge">dothis-completion.bash</code>. Από εδώ και στο εξής θα αναφέρομαι στο αρχείο αυτό με τον όρο <strong>script συμπλήρωσης</strong>.</p>
+
+<p>Αφού του προσθέσουμε κώδικα, θα εκτελέσουμε την εντολή <code class="highlighter-rouge">source</code> για να το “ενεργοποιήσουμε”.
+Θα εκτελούμε την <code class="highlighter-rouge">source</code> σε αυτό το αρχείο <strong>κάθε φορά που αλλάζουμε το περιεχόμενό του ώστε να ισχύουν οι αλλαγές</strong>.</p>
+
+<p>Θα συζητήσουμε επιλογές ώστε να να γίνεται η ενεργοποίηση αυτή κάθε φορά που ανοίγει νέα bash κονσόλα <a href="#αυτόματη-ενεργοποίηση-του-script-tab-συμπλήρωσης">αργότερα</a>.</p>
+
+<h4 id="στατική-συμπλήρωση">Στατική συμπλήρωση</h4>
+
+<p>Υποθέστε ότι το <code class="highlighter-rouge">dothis</code> υποστήριζε μια στατική λίστα από παραμέτρους, για παράδειγμα:</p>
+<ul>
+  <li><code class="highlighter-rouge">τώρα</code></li>
+  <li><code class="highlighter-rouge">αύριο</code></li>
+  <li><code class="highlighter-rouge">ποτέ</code></li>
+</ul>
+
+<p>Θα χρησιμοποιήσουμε την εντολή <code class="highlighter-rouge">complete</code> για να καταχωρήσουμε αυτή τη λίστα ως επιλογές για tab συμπλήρωση. (Για να χρησιμοποιήσουμε τη σωστή ορολογία, θα χρησιμοποιήσουμε την εντολή <code class="highlighter-rouge">complete</code> για να ορίσουμε τις προδιαγραφές συμπλήρωσης (<strong>compspec</strong>) για το πρόγραμμά μας.)</p>
+
+<p>Προσθέστε αυτά στο script συμπλήρωσης.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#/usr/bin/env bash</span>
+<span class="nb">complete</span> <span class="nt">-W</span> <span class="s2">"τώρα αύριο ποτέ"</span> dothis
+</code></pre></div></div>
+
+<p>Τι κάναμε με τη χρήση της παραπάνω εντολής <code class="highlighter-rouge">complete</code>:</p>
+<ul>
+  <li>χρησιμοποιήσαμε την επιλογή <code class="highlighter-rouge">-W</code> (<em>wordlist</em>) για να παρέχουμε τη λίστα που θα χρησιμοποιηθεί για συμπλήρωση</li>
+  <li>ορίσαμε σε ποιο πρόγραμμα αυτή η λίστα θα παρέχεται για tab συμπλήρωση (η τελευταία παράμετρος: <code class="highlighter-rouge">dothis</code>)</li>
+</ul>
+
+<p>“Ενεργοποιήστε” το αρχείο (δεν βρήκα πιο δόκιμο όρο για να περιγράψω τη σημασία της εκτέλεσης της εντολής “source”):</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ./dothis-completion.bash
+</code></pre></div></div>
+
+<p>Τώρα προσπαθήστε να πατήσετε το πλήκτρο tab δύο φορές όπως παρακάτω:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>dothis &lt;tab&gt;&lt;tab&gt;
+αύριο ποτέ τώρα
+</code></pre></div></div>
+
+<p>Προσπαθήστε ξανά αφού βάλετε και ένα <code class="highlighter-rouge">τ</code>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>dothis τ&lt;tab&gt;&lt;tab&gt;
+τώρα
+</code></pre></div></div>
+
+<p>Magic! Οι επιλογές συμπλήρωσης φιλτράρονται αυτόματα ώστε να εμφανιστούν μόνο αυτές που ξεκινούν από <code class="highlighter-rouge">τ</code>.</p>
+
+<p><strong>Σημείωση:</strong>
+Οι επιλογές συμπλήρωσης δεν εμφανίζονται με τη σειρά που τις ορίσαμε στη λίστα λέξεων, ταξινομούνται αυτόματα.</p>
+
+<p>Υπάρχουν πολλές άλλες επιλογές πέραν της <code class="highlighter-rouge">-W</code> που χρησιμοποιήσαμε προηγουμένως. Οι περισσότερες παράγουν συμπληρώσεις με στατικό τρόπο, εννοώντας ότι δεν επεμβαίνουμε δυναμικά στο φιλτράρισμα τους.</p>
+
+<p>Για παράδειγμα, αν θέλαμε να έχουμε ως tab συμπληρώσεις για το εκτελέσιμο <code class="highlighter-rouge">dothis</code> τους φακέλους που βρίσκονται στον τρέχων φάκελο, θα αλλάζαμε την εντολή ως εξής:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">complete</span> <span class="nt">-A</span> directory dothis
+</code></pre></div></div>
+<p>Πατώντας το tab μετά το <code class="highlighter-rouge">dothis</code>, θα λαμβάναμε μια λίστα σαν την παρακάτω:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>dothis &lt;tab&gt;&lt;tab&gt;
+dir1/ dir2/ dir3/
+</code></pre></div></div>
+
+<p>Βρείτε ολόκληρη τη λίστα με τις διαθέσιμες επιλογές <a href="https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html#Programmable-Completion-Builtins">εδώ</a>.</p>
+
+<h4 id="δυναμική-tab-συμπλήρωση">Δυναμική tab συμπλήρωση</h4>
+
+<p>Θέλουμε να παράγουμε τις προτάσεις συμπλήρωσης για το εκτελέσιμο script μας με την ακόλουθη λογική:</p>
+
+<ul>
+  <li>αν ο χρήστης πατήσει το tab αμέσως μετά την εντολή, θα δείχνουμε τις τελευταίες 50 εκτελεσθείσες εντολές μαζί με τον αριθμό που αντιστοιχεί στη θέση τους στο ιστορικό</li>
+  <li>αν ο χρήστης πατήσει το tab αφού έχει πληκτρολογήσει και έναν αριθμό τότε θα εμφανίζουμε όλες τις εντολές των οποίων η θέση στο ιστορικό του, είναι ή ξεκινά με αυτόν τον αριθμό</li>
+  <li>αν ο χρήστης πατήσει το tab αφού έχει πληκτρολογήσει και έναν αριθμό και υπάρχει μόνο μια εντολή με θέση που είναι ή ξεκινά με τον αριθμό αυτό τότε θα συμπληρώσουμε απευθείας όλο τον αριθμό (αν έχετε μπερδευτεί μην ανησυχείτε, θα ξεκαθαρίσουν όλα παρακάτω)</li>
+</ul>
+
+<p>Ας ξεκινήσουμε με το να ορίσουμε μια μέθοδο που θα εκτελείται κάθε φορά που ο χρήστης θα “ζητά” προτάσεις συμπλήρωσης για την εντολή <code class="highlighter-rouge">dothis</code> (πατώντας το tab). Αλλάξτε το script συμπλήρωσης ως εξής:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#/usr/bin/env bash</span>
+_dothis_completions<span class="o">()</span>
+<span class="o">{</span>
+  COMPREPLY+<span class="o">=(</span><span class="s2">"τώρα"</span><span class="o">)</span>
+  COMPREPLY+<span class="o">=(</span><span class="s2">"αύριο"</span><span class="o">)</span>
+  COMPREPLY+<span class="o">=(</span><span class="s2">"ποτέ"</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="nb">complete</span> <span class="nt">-F</span> _dothis_completions dothis
+</code></pre></div></div>
+
+<p>Σημειώστε τα παρακάτω:</p>
+<ul>
+  <li>χρησιμοποιήσαμε την επιλογή <code class="highlighter-rouge">-F</code> στην εντολή <code class="highlighter-rouge">complete</code> ορίζοντας ότι η <code class="highlighter-rouge">_dothis_completions</code> είναι η μέθοδος που θα παρέχει τις προτάσεις συμπλήρωσης για το <code class="highlighter-rouge">dothis</code> εκτελέσιμο</li>
+  <li>η <code class="highlighter-rouge">COMPREPLY</code> είναι μια μεταβλητή τύπου <strong>πίνακα</strong> που χρησιμοποιείται για να αποθηκεύει τις προτάσεις συμπλήρωσης - ο μηχανισμός συμπλήρωσης χρησιμοποιεί τη συγκεκριμένη μεταβλητή για να εμφανίσει τα περιεχόμενά της ως προτάσεις συμπλήρωσης</li>
+</ul>
+
+<p>Τώρα, ενεργοποιήστε το script συμπλήρωσης και κατόπιν δοκιμάστε να πατήσετε tab μετά το εκτελέσιμο <code class="highlighter-rouge">dothis</code>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>dothis &lt;tab&gt;&lt;tab&gt;
+αύριο ποτέ τώρα
+</code></pre></div></div>
+
+<p>Τέλεια. Παράγουμε τις ίδιες προτάσεις συμπλήρωσης όπως πριν που χρησιμοποιήσαμε την επιλογή <code class="highlighter-rouge">-W</code>. Ή μήπως όχι; Δοκιμάστε το παρακάτω:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>dothis ποτ&lt;tab&gt;&lt;tab&gt;
+αύριο τώρα ποτέ
+</code></pre></div></div>
+
+<p>Όπως βλέπετε, παρόλου που έχουμε πληκτρολογήσει <strong>ποτ</strong> και μετά ζητήσαμε προτάσεις συμπλήρωσης πατώντας το <code class="highlighter-rouge">tab</code>, οι διαθέσιμες προτάσεις συμπλήρωσης παραμένουν οι ίδιες, αφιλτράριστες και τίποτα δε συμπληρώνεται αυτόματα (κανονικά θα έπρεπε κατευθείαν να συμπληρωθεί η λέξη <code class="highlighter-rouge">ποτέ</code> χωρίς καν να εμφανιστούν προτάσεις συμπλήρωσης αφού είναι η μόνη επιλογή που ξεκινά από <code class="highlighter-rouge">ποτ</code>).</p>
+
+<p>Γιατί συμβαίνει αυτό;</p>
+<ul>
+  <li>Τα περιεχόμενα της μεταβλητής <code class="highlighter-rouge">COMPREPLY</code> εμφανίζονται πάντα. Η μέθοδος είναι υπεύθυνη να προσθέτει/αφαιρεί προτάσεις από εδώ και στο εξής.</li>
+  <li>Αν η <code class="highlighter-rouge">COMPREPLY</code> μεταβλητή είχε μόνο ένα στοιχείο τότε η λέξη θα συμπληρωνόταν αυτόματα στην εντολή <code class="highlighter-rouge">dothis</code>. Εφόσον η τρέχουσα υλοποίησή μας πάντα αποθηκεύει στη μεταβλητή τις ίδιες τρεις λέξεις, αυτό δε θα συμβεί.</li>
+</ul>
+
+<p>Θα μας σώσει η <code class="highlighter-rouge">compgen</code>: μια συστημική εντολή που παράγει προτάσεις συμπλήρωσης υποστηρίζοντας σχεδόν όλλες τις επιλογές που υποστηρίζει και η συστημική εντολή <code class="highlighter-rouge">complete</code> που χρησιμοποιούσαμε ως τώρα (πχ. <code class="highlighter-rouge">-W</code> για λίστα λέξεων, <code class="highlighter-rouge">-d</code> για φακέλους) και φιλτράρει τις προτάσεις βάσει του τι έχει ήδη πληκτρολογηθεί από το χρήστη.</p>
+
+<p>Και πάλι, μην ανησυχείτε αν έχετε μπερδευτεί, τα πάντα θα ξεκαθαρίσουν παρακάτω.</p>
+
+<p>Πληκτρολογήστε τα παρακάτω στη γραμμή εντολών για να κατανοήσετε καλύτερα τη κάνει η <code class="highlighter-rouge">compgen</code>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">compgen</span> <span class="nt">-W</span> <span class="s2">"τώρα αύριο ποτέ"</span>
+αύριο
+τώρα
+ποτέ
+<span class="nv">$ </span><span class="nb">compgen</span> <span class="nt">-W</span> <span class="s2">"τώρα αύριο ποτέ"</span> τ
+τώρα
+<span class="nv">$ </span><span class="nb">compgen</span> <span class="nt">-W</span> <span class="s2">"τώρα αύριο ποτέ"</span> α
+αύριο
+</code></pre></div></div>
+
+<p>Οπότε τώρα μπορούμε να χρησιμοποιήσουμε την <code class="highlighter-rouge">compgen</code> αλλά πρέπει να βρούμε πρώτα τι έχει πληκτρολογήσει ο χρήστης μετά το <code class="highlighter-rouge">dothis</code>.
+Η λειτουργικότητα tab συμπλήρωσης ευτυχώς παρέχει <a href="https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#Bash-Variables">μεταβλητές</a> που σχετίζονται με την συμπλήρωση που είναι υπό εκτέλεση. Παραθέτω τις πιο σημαντικές:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">COMP_WORDS</code>: ένας πίνακας με όλες τις λέξεις που έχουν πληκτρολογηθεί μετά από το όνομα του εκτελέσιμου στο οποίο έχει συνδεθεί το <code class="highlighter-rouge">compspec</code> (στην περίπτωσή μας: όλες τις λέξεις που έχουν πληκτρολογηθεί μετά το <code class="highlighter-rouge">dothis</code>)</li>
+  <li><code class="highlighter-rouge">COMP_CWORD</code>: ένας αριθμός που δείχνει σε ποια θέση του πίνακα <code class="highlighter-rouge">COMP_WORDS</code> βρίσκεται ο κέρσορας - με άλλα λόγια, σε ποια λέξη ήταν ο κέρσορας όταν πατήθηκε το tab</li>
+  <li><code class="highlighter-rouge">COMP_LINE</code>: ολόκληρη η τρέχουσα εντολή</li>
+</ul>
+
+<p>Για να προσπελάσουμε την λέξη που πληκτρολογήθηκε αμέσως μετά το <code class="highlighter-rouge">dothis</code> αρκεί να χρησιμοποιήσουμε την τιμή του <code class="highlighter-rouge">COMP_WORDS[1]</code></p>
+
+<p>Αλλάξτε το script συμπλήρωσης ξανά:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#/usr/bin/env bash</span>
+_dothis_completions<span class="o">()</span>
+<span class="o">{</span>
+  <span class="nv">COMPREPLY</span><span class="o">=(</span><span class="si">$(</span><span class="nb">compgen</span> <span class="nt">-W</span> <span class="s2">"τώρα αύριο ποτέ"</span> <span class="s2">"</span><span class="k">${</span><span class="nv">COMP_WORDS</span><span class="p">[1]</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="nb">complete</span> <span class="nt">-F</span> _dothis_completions dothis
+</code></pre></div></div>
+
+<p>Ενεργοποιήστε το και ορίστε:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>dothis
+αύριο     τώρα       ποτέ
+<span class="nv">$ </span>dothis α
+αύριο
+</code></pre></div></div>
+
+<p>Τώρα, αντί των λέξεων <em>τώρα, αύριο, ποτέ</em>, Θα θέλαμε να δούμε τους αριθμούς που είναι στην ουσία οι θέσεις των εντολών από το ιστορικό του χρήστη.</p>
+
+<p>Η εντολή <code class="highlighter-rouge">fc -l</code> ακολουθούμενη από έναν αρνητικό αριθμό <code class="highlighter-rouge">-n</code> εμφανίζει τις τελευταίες <strong>n</strong> εντολές που εκτελέστηκαν.
+Οπότε θα την χρησιμοποιήσουμε ως εξής:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">fc</span> <span class="nt">-l</span> <span class="nt">-50</span>
+</code></pre></div></div>
+<p>εμφανίζοντας τις τελευταίες <strong>50</strong> εντολές μαζί με τον αριθμό της θέσης τους στο ιστορικό. Ο μόνος χειρισμός που πρέπει να κάνουμε είναι να αντικαταστήσουμε τα tabs με κενά διαστήματα ώστε να εμφανίζονται σωστά από τον μηχανισμό των συμπληρώσεων του Bash.</p>
+
+<p><code class="highlighter-rouge">sed</code> βόηθα μας.</p>
+
+<p>Αλλάξτε το script συμπλήρωσης ως εξής:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#/usr/bin/env bash</span>
+_dothis_completions<span class="o">()</span>
+<span class="o">{</span>
+  <span class="nv">COMPREPLY</span><span class="o">=(</span><span class="si">$(</span><span class="nb">compgen</span> <span class="nt">-W</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">fc</span> <span class="nt">-l</span> <span class="nt">-50</span> | <span class="nb">sed</span> <span class="s1">'s/\t//'</span><span class="si">)</span><span class="s2">"</span> <span class="nt">--</span> <span class="s2">"</span><span class="k">${</span><span class="nv">COMP_WORDS</span><span class="p">[1]</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="nb">complete</span> <span class="nt">-F</span> _dothis_completions dothis
+</code></pre></div></div>
+
+<p>Ενεργοποιήστε το script συμπλήρωσης και δοκιμάστε στη γραμμή εντολών:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>dothis &lt;tab&gt;&lt;tab&gt;
+632 <span class="nb">source </span>dothis-completion.bash   649 <span class="nb">source </span>dothis-completion.bash   666 <span class="nb">cat</span> ~/.bash_profile
+633 clear                           650 clear                           667 <span class="nb">cat</span> ~/.bashrc
+634 <span class="nb">source </span>dothis-completion.bash   651 <span class="nb">source </span>dothis-completion.bash   668 clear
+635 <span class="nb">source </span>dothis-completion.bash   652 <span class="nb">source </span>dothis-completion.bash   669 <span class="nb">install</span> ./dothis ~/bin/dothis
+636 clear                           653 <span class="nb">source </span>dothis-completion.bash   670 dothis
+637 <span class="nb">source </span>dothis-completion.bash   654 clear                           671 dothis 6546545646
+638 clear                           655 dothis 654                      672 clear
+639 <span class="nb">source </span>dothis-completion.bash   656 dothis 631                      673 dothis
+640 <span class="nb">source </span>dothis-completion.bash   657 dothis 150                      674 dothis 651
+641 <span class="nb">source </span>dothis-completion.bash   658 dothis                          675 <span class="nb">source </span>dothis-completion.bash
+642 clear                           659 clear                           676 dothis 651
+643 dothis 623  <span class="nb">ls</span> <span class="nt">-la</span>              660 dothis                          677 dothis 659
+644 clear                           661 <span class="nb">install</span> ./dothis ~/bin/dothis   678 clear
+645 <span class="nb">source </span>dothis-completion.bash   662 dothis                          679 dothis 665
+646 clear                           663 <span class="nb">install</span> ./dothis ~/bin/dothis   680 clear
+647 <span class="nb">source </span>dothis-completion.bash   664 dothis                          681 clear
+648 clear                           665 <span class="nb">cat</span> ~/.bashrc
+</code></pre></div></div>
+
+<p>Καθόλου κακό.</p>
+
+<p>Έχουμε ένα πρόβλημα ωστόσο. Προσπαθήστε να πληκτρολογήσετε έναν αριθμό όπως τον βλέπετε στις προτάσεις συμπλήρωσης και πατήστε το tab ξανά.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>dothis 623&lt;tab&gt;
+<span class="nv">$ </span>dothis 623  <span class="nb">ls </span>623  <span class="nb">ls</span> <span class="nt">-la</span>
+...
+<span class="nv">$ </span>dothis 623  <span class="nb">ls </span>623  <span class="nb">ls </span>623  <span class="nb">ls </span>623  <span class="nb">ls </span>623  <span class="nb">ls</span> <span class="nt">-la</span>
+</code></pre></div></div>
+
+<p>Αυτό συμβαίνει γιατί στο script συμπλήρωσής μας χρησιμοποιήσαμε την τιμή της <code class="highlighter-rouge">${COMP_WORDS[1]}</code> ώστε να ελέγχουμε την πρώτη πάντα λέξη που πληκτρολογήθηκε μετά το <code class="highlighter-rouge">dothis</code> (ο αριθμός <code class="highlighter-rouge">623</code> στην παραπάνω απόσπασμα). Οπότε ο μηχανισμός συμπλήρωσης συνεχίζει να προτείνει ξανά και ξανά την ίδια επιλογή πατώντας το tab.</p>
+
+<p>Για να το διορθώσουμε αυτό, δε θα επιτρέπουμε κανένα είδος συμπλήρωσης να λάβει χώρα αν τουλάχιστον μια λέξη έχει ήδη συμπληρωθεί. Θα προσθέσουμε λοιπόν μια συνθήκη ελέγχοντας το μέγεθος της προαναφερθείσας <code class="highlighter-rouge">COMP_WORDS</code> μεταβλητής.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#/usr/bin/env bash</span>
+_dothis_completions<span class="o">()</span>
+<span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">${#</span><span class="nv">COMP_WORDS</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">"2"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    return
+  fi
+
+  </span><span class="nv">COMPREPLY</span><span class="o">=(</span><span class="si">$(</span><span class="nb">compgen</span> <span class="nt">-W</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">fc</span> <span class="nt">-l</span> <span class="nt">-50</span> | <span class="nb">sed</span> <span class="s1">'s/\t//'</span><span class="si">)</span><span class="s2">"</span> <span class="nt">--</span> <span class="s2">"</span><span class="k">${</span><span class="nv">COMP_WORDS</span><span class="p">[1]</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span><span class="o">)</span>
+<span class="o">}</span>
+
+<span class="nb">complete</span> <span class="nt">-F</span> _dothis_completions dothis
+</code></pre></div></div>
+
+<p>Ενεργοποιήστε το script συμπλήρωσης και ξαναδοκιμάστε.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>dothis 623&lt;tab&gt;
+<span class="nv">$ </span>dothis 623 <span class="nb">ls</span> <span class="nt">-la</span>&lt;tab&gt; <span class="c"># Επιτυχία, δεν συμβαίνει συμπλήρωση εδώ</span>
+</code></pre></div></div>
+
+<p>Υπάρχει ωστόσο και κάτι άλλο που δε μας αρέσει. Θέλουμε να εμφανίζουμε τις θέσεις μαζί με τις αντίστοιχες εντολές ώστε να βοηθήσουμε τους χρήστες να αποφασίσουν ποια είναι η εντολή που θέλουν να εκτελέσουν αλλά όταν υπάρχει μόνο μια πρόταση συμπλήρωσης και ο μηχανισμός τη συμπληρώνει αυτόματα, <strong>δεν θα έπρεπε να συμπληρώνεται και η εντολή παρά μόνο ο αριθμός</strong>.</p>
+
+<p>Με άλλα λόγια, το <code class="highlighter-rouge">dothis</code> δέχεται μόνο έναν αριθμό και δεν έχουμε προσθέσει ελέγχους για περισσότερες παραμέτρους. Όταν μέθοδος που υπολογίζει τις προτάσεις συμπληρώσεων βρίσκε μόνο ένα αποτέλεσμα τότε θα πρέπει να πετσοκόψουμε (trim :D) το λεκτικό που περιέχει τον αριθμό και την εντολή ώστε να μείνει μόνο ο αριθμός.</p>
+
+<p>Για να το πετύχουμε αυτό, θα κρατήσουμε το αποτέλεσμα τις εντολής <code class="highlighter-rouge">compgen</code> σε μια μεταβλητή τύπου πίνακα, και αν το μέγεθος της είναι <strong>1</strong> τότε θα επεξεργαστούμε το μοναδικό στοιχείο της ώστε να μείνει μόνο ο αριθμός. Διαφορετικά θα αφήσουμε την μεταβλητή ως έχει.</p>
+
+<p>Αλλάξτε το script συμπλήρωσης ως εξής:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#/usr/bin/env bash</span>
+_dothis_completions<span class="o">()</span>
+<span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">${#</span><span class="nv">COMP_WORDS</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">"2"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    return
+  fi</span>
+
+  <span class="c"># keep the suggestions in a local variable</span>
+  <span class="nb">local </span><span class="nv">suggestions</span><span class="o">=(</span><span class="si">$(</span><span class="nb">compgen</span> <span class="nt">-W</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">fc</span> <span class="nt">-l</span> <span class="nt">-50</span> | <span class="nb">sed</span> <span class="s1">'s/\t/ /'</span><span class="si">)</span><span class="s2">"</span> <span class="nt">--</span> <span class="s2">"</span><span class="k">${</span><span class="nv">COMP_WORDS</span><span class="p">[1]</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span><span class="o">)</span>
+
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">${#</span><span class="nv">suggestions</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"1"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="c"># if there's only one match, we remove the command literal</span>
+    <span class="c"># to proceed with the automatic completion of the number</span>
+    <span class="nb">local </span><span class="nv">number</span><span class="o">=</span><span class="si">$(</span><span class="nb">echo</span> <span class="k">${</span><span class="nv">suggestions</span><span class="p">[0]/%\ */</span><span class="k">}</span><span class="si">)</span>
+    <span class="nv">COMPREPLY</span><span class="o">=(</span><span class="s2">"</span><span class="nv">$number</span><span class="s2">"</span><span class="o">)</span>
+  <span class="k">else</span>
+    <span class="c"># more than one suggestions resolved,</span>
+    <span class="c"># respond with the suggestions intact</span>
+    <span class="nv">COMPREPLY</span><span class="o">=(</span><span class="s2">"</span><span class="k">${</span><span class="nv">suggestions</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span><span class="o">)</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="nb">complete</span> <span class="nt">-F</span> _dothis_completions dothis
+</code></pre></div></div>
+
+<h3 id="αυτόματη-ενεργοποίηση-του-script-tab-συμπλήρωσης">Αυτόματη ενεργοποίηση του script tab συμπλήρωσης</h3>
+
+<p>Αν θέλετε να ενεργοποιήσετε τις συμπληρώσεις για το εκτελέσιμο <strong>μόνο για εσάς</strong>, το μόνο που χρειάζεται να κάνετε είναι να προσθέσετε της παρακάτω εντολή στο αρχείο σας <code class="highlighter-rouge">~/.bashrc</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> &lt;path-to-your-script&gt;/dothis-completion.bash
+</code></pre></div></div>
+
+<p>Αν θέλετε να τις ενεργοποιήσετε για όλους τους χρήστες τότε μπορείτε να αντιγράψετε το script συμπλήρωσης στο φάκελο <code class="highlighter-rouge">/etc/bash_completion.d/</code> και θα φορτώνεται αυτόματα από το Bash.</p>
+
+<h3 id="τελειοποίηση-του-script-συμπλήρωσης">Τελειοποίηση του script συμπλήρωσης</h3>
+
+<p>Μερικά επιπλέον βήματα για καλύτερα αποτελέσματα.</p>
+
+<h4 id="εμφανίζοντας-κάθε-πρόταση-συμπλήρωσης-σε-νέα-γραμμή">Εμφανίζοντας κάθε πρόταση συμπλήρωσης σε νέα γραμμή</h4>
+
+<p>Στο script συμπλήρωσης που χρειάστηκε να δημιουργήσω, επίσης έπρεπε να εμφανίζω προτάσεις που αποτελούνταν από δύο τμήματα. Ήθελα να εμφανίζω το πρώτο τμήμα με το εξ ορισμού χρώμα των γραμμάτων της κονσόλας και το δεύτερο τμήμα με γκρι χρώμα ώστε να φαίνεται ότι ήταν απλά βοηθητικό κείμενο. Στο παράδειγμά μας, θα ήταν ωραίο να παρουσιάζουμε τους αριθμούς με το εξ ορισμού χρώμα αλλά το χρώμα των εντολών να ήταν κάτι λιγότερο χτυπητό στο μάτι.</p>
+
+<p><strong>Δυστυχώς</strong>, αυτό δεν είναι δυνατόν (τουλάχιστον για την ώρα) γιατί ο μηχανισμός συμπλήρωσης εμφανίζει τις προτάσεις ως καθαρό κείμενο και οι οδηγίες χρώματος δεν εφαρμόζονται (για παράδειγμα, αυτό <code class="highlighter-rouge">\e[34mουρανός</code> θα εμφανιζόταν ακριβώς όπως το βλέπετε και όχι η λέξη ουρανός σε μπλε χρώμα).</p>
+
+<p>Αυτό που μπορούμε ωστόσο να κάνουμε για να βελτιώσουμε την εμπειρία των χρηστών (ή όχι :D) είναι να εμφανίζουμε την κάθε πρόταση συμπλήρωσης σε νέα γραμμή. Ο τρόπος για να το κάνουμε αυτό δεν είναι ο προφανής γιατί δεν μπορούμε απλά να προσθέσουμε στο τέλος κάθε πρότασης τον χαρακτήρα αλλαγής γραμμής αφού ο μηχανισμός συμπλήρωσης δεν θα τον μεταφράσει σε αλλαγή γραμμής αλλά θα τον δείξει ως κείμενο (<code class="highlighter-rouge">\n</code>).</p>
+
+<p>Θα ακολουθήσουμε ένα μάλλον <a href="https://unix.stackexchange.com/questions/166908/is-there-anyway-to-get-compreply-to-be-output-as-a-vertical-list-of-words-instea">hackish</a> τρόπο και θα προσθέτουμε κενά στο τέλος κάθε πρότασης συμπλήρωσης, τόσα ώστε το τελικό πλήθος των χαρακτήρων της πρότασης (με τα κενά) να είναι ίσο με το πλήθος των χαρακτήρων που χωρά η κάθε γραμμή της κονσόλας.</p>
+
+<p><code class="highlighter-rouge">printf</code> βόηθα μας.</p>
+
+<p>Αλλάξτε το script συμπλήρωσης ως εξής:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#/usr/bin/env bash</span>
+_dothis_completions<span class="o">()</span>
+<span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">${#</span><span class="nv">COMP_WORDS</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">"2"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    return
+  fi
+
+  </span><span class="nb">local </span><span class="nv">IFS</span><span class="o">=</span><span class="s1">$'</span><span class="se">\n</span><span class="s1">'</span>
+  <span class="nb">local </span><span class="nv">suggestions</span><span class="o">=(</span><span class="si">$(</span><span class="nb">compgen</span> <span class="nt">-W</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">fc</span> <span class="nt">-l</span> <span class="nt">-50</span> | <span class="nb">sed</span> <span class="s1">'s/\t//'</span><span class="si">)</span><span class="s2">"</span> <span class="nt">--</span> <span class="s2">"</span><span class="k">${</span><span class="nv">COMP_WORDS</span><span class="p">[1]</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span><span class="o">)</span>
+
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">${#</span><span class="nv">suggestions</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"1"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">local </span><span class="nv">number</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">suggestions</span><span class="p">[0]/%\ */</span><span class="k">}</span><span class="s2">"</span>
+    <span class="nv">COMPREPLY</span><span class="o">=(</span><span class="s2">"</span><span class="nv">$number</span><span class="s2">"</span><span class="o">)</span>
+  <span class="k">else
+    for </span>i <span class="k">in</span> <span class="s2">"</span><span class="k">${</span><span class="p">!suggestions[@]</span><span class="k">}</span><span class="s2">"</span><span class="p">;</span> <span class="k">do
+      </span>suggestions[<span class="nv">$i</span><span class="o">]=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">printf</span> <span class="s1">'%*s'</span> <span class="s2">"-</span><span class="nv">$COLUMNS</span><span class="s2">"</span>  <span class="s2">"</span><span class="k">${</span><span class="nv">suggestions</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span><span class="s2">"</span>
+    <span class="k">done
+
+    </span><span class="nv">COMPREPLY</span><span class="o">=(</span><span class="s2">"</span><span class="k">${</span><span class="nv">suggestions</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span><span class="o">)</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="nb">complete</span> <span class="nt">-F</span> _dothis_completions dothis
+</code></pre></div></div>
+
+<p>Ενεργοποιήστε το και δοκιμάστε:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dothis &lt;tab&gt;&lt;tab&gt;
+...
+499 <span class="nb">source </span>dothis-completion.bash                   
+500 clear
+...       
+503 dothis 500
+</code></pre></div></div>
+
+<p>Done.</p>
+
+<h4 id="προσαρμόσιμη-συμπεριφορά">Προσαρμόσιμη συμπεριφορά</h4>
+
+<p>Στην περίπτωσή μας, ορίσαμε καρφωτά να εμφανίζονται οι τελευταίες 50 εκτελέσιμες εντολές όταν πατιέται το tab χωρίς να έχει πληκτρολογηθεί κάποιος αριθμός. Θα ήταν καλύτερο να αφήνουμε το χρήστη να επιλέγει πόσες θέλει να είναι αυτές οι εντολές (π.χ. οι τελευταίες 100) και αν δεν έχει ορίσει την επιθυμία του τότε εξ ορισμού να δείχνουμε τις τελευταίες 50,</p>
+
+<p>Για να το πετύχουμε αυτό, θα ελέγχουμε την τιμή μιας μεταβλητής από το περιβάλλον του χρήστη, ας πούμε <code class="highlighter-rouge">DOTHIS_COMPLETION_COMMANDS_NUMBER</code>.</p>
+
+<p>Αλλάξτε για τελευταία φορά το script συμπλήρωσης:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#/usr/bin/env bash</span>
+_dothis_completions<span class="o">()</span>
+<span class="o">{</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">${#</span><span class="nv">COMP_WORDS</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">"2"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    return
+  fi
+
+  </span><span class="nb">local </span><span class="nv">commands_number</span><span class="o">=</span><span class="k">${</span><span class="nv">DOTHIS_COMPLETION_COMMANDS_NUMBER</span><span class="k">:-</span><span class="nv">50</span><span class="k">}</span>
+  <span class="nb">local </span><span class="nv">IFS</span><span class="o">=</span><span class="s1">$'</span><span class="se">\n</span><span class="s1">'</span>
+  <span class="nb">local </span><span class="nv">suggestions</span><span class="o">=(</span><span class="si">$(</span><span class="nb">compgen</span> <span class="nt">-W</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">fc</span> <span class="nt">-l</span> -<span class="nv">$commands_number</span> | <span class="nb">sed</span> <span class="s1">'s/\t//'</span><span class="si">)</span><span class="s2">"</span> <span class="nt">--</span> <span class="s2">"</span><span class="k">${</span><span class="nv">COMP_WORDS</span><span class="p">[1]</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span><span class="o">)</span>
+
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">${#</span><span class="nv">suggestions</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"1"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">local </span><span class="nv">number</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">suggestions</span><span class="p">[0]/%\ */</span><span class="k">}</span><span class="s2">"</span>
+    <span class="nv">COMPREPLY</span><span class="o">=(</span><span class="s2">"</span><span class="nv">$number</span><span class="s2">"</span><span class="o">)</span>
+  <span class="k">else
+    for </span>i <span class="k">in</span> <span class="s2">"</span><span class="k">${</span><span class="p">!suggestions[@]</span><span class="k">}</span><span class="s2">"</span><span class="p">;</span> <span class="k">do
+      </span>suggestions[<span class="nv">$i</span><span class="o">]=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">printf</span> <span class="s1">'%*s'</span> <span class="s2">"-</span><span class="nv">$COLUMNS</span><span class="s2">"</span>  <span class="s2">"</span><span class="k">${</span><span class="nv">suggestions</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span><span class="s2">"</span>
+    <span class="k">done
+
+    </span><span class="nv">COMPREPLY</span><span class="o">=(</span><span class="s2">"</span><span class="k">${</span><span class="nv">suggestions</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span><span class="o">)</span>
+  <span class="k">fi</span>
+<span class="o">}</span>
+
+<span class="nb">complete</span> <span class="nt">-F</span> _dothis_completions dothis
+</code></pre></div></div>
+
+<p>Ενεργοποιήστε το και δοκιμάστε:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">DOTHIS_COMPLETION_COMMANDS_NUMBER</span><span class="o">=</span>5
+<span class="nv">$ </span>dothis &lt;tab&gt;&lt;tab&gt;
+505 clear
+506 <span class="nb">source</span> ./dothis-completion.bash
+507 dothis clear
+508 clear
+509 <span class="nb">export </span><span class="nv">DOTHIS_COMPLETION_COMMANDS_NUMBER</span><span class="o">=</span>5
+</code></pre></div></div>
+
+<h2 id="χρήσιμοι-σύνδεσμοι">Χρήσιμοι σύνδεσμοι</h2>
+
+<ul>
+  <li><a href="https://github.com/iridakos/goto/blob/master/goto.sh">Το script συμπλήρωσης που ήταν η αφορμή για να γράψω αυτό το άρθρο (<code class="highlighter-rouge">goto</code>)</a></li>
+  <li><a href="https://github.com/git/git/blob/master/contrib/completion/git-completion.bash">Το script συμπλήρωσης του Git</a></li>
+  <li><a href="https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html#Programmable-Completion">Bash Reference Manual: Programmable Completion</a></li>
+  <li><a href="https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html#Programmable-Completion-Builtins">Bash Reference Manual: Programmable Completion Builtins</a></li>
+  <li><a href="https://www.gnu.org/software/bash/manual/html_node/A-Programmable-Completion-Example.html#A-Programmable-Completion-Example">Bash Reference Manual: A Programmable Completion Example</a></li>
+  <li><a href="https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#Bash-Variables">Bash Reference Manual: Bash Variables</a></li>
+</ul>
+
+<h2 id="κώδικας-και-σχόλια">Κώδικας και σχόλια</h2>
+
+<p>Μπορείτε να βρείτε <strong>τον κώδικα από αυτό το άρθρο</strong> στο <a href="https://github.com/iridakos/bash-completion-tutorial">GitHub</a>.</p>
+
+<p>Για <strong>feedback, σχόλια, λάθη κ.λπ.</strong> παρακαλώ ανοίξτε ένα <a href="https://github.com/iridakos/bash-completion-tutorial/issues">issue</a> στο αποθετήριο.</p>
+
+<h3 id="μεγάλο-άρθρο-φωτογραφία-γάτας">Μεγάλο άρθρο, φωτογραφία γάτας</h3>
+
+<p>Να σας συστήσω των debugger μου.</p>
+
+<p><img src="/assets/images/posts/bash-completion/cat.jpg" alt="My debugger" /></p>
+
+<p>Αυτό ήταν. Τελειώσαμε. Καλή συνέχεια.</p>
+
+                </div>
+              </div>
+
+              <div class="col-12 order-first">
+                <div class="d-sm-block d-md-none mb-3">
+                  <a class="ga-event-link btn btn-outline-primary d-block collapsed text-left"
+                    data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script"
+                    data-event-category="Document outline"
+                    data-event-action="click"
+                    title="View the structure of this document"
+                    role="button"
+                    data-toggle="collapse"
+                    data-role="outline"
+                    data-content=".outline"
+                    href="#docout-mobile"
+                    data-target="#docout-mobile"
+                    aria-expanded="false"
+                    aria-controls="collapse">
+                    Πίνακας περιεχομένων
+                    <i class="fa iridakos-collapse pull-right mt-1"></i>
+                  </a>
+
+                  <div id="docout-mobile" class="collapse my-3 border rounded bg-light p-2">
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+          
+
+
+  
+
+
+          
+<div class="alert alert-light related-posts">
+  <h4 class="alert-heading text-dark"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Σχετικά άρθρα</h4>
+
+  
+
+  <ul class="list-unstyled">
+  
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους"
+             href="/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux"><strong>Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους</strong></a>
+          <div>
+            <small>Πως να αφαιρέσετε τις διπλές γραμμές ενός αρχείο σε Linux χωρίς να αλλάξει η σειρά τους - επεξήγηση awk one-liner κώδικα.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+  </ul>
+</div>
+
+
+
+          <div class="alert alert-light">
+            <h4>
+              <i class="fa fa-share-alt"></i>
+              Κοινοποίηση
+            </h4>
+            
+<div class="share-links">
+  <a class="btn btn-warning ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Bash: Προσθέτοντας tab συμπλήρωση στα script&url=https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Bash: Προσθέτοντας tab συμπλήρωση στα script&amp;body=Bash: Προσθέτοντας tab συμπλήρωση στα script: https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> RSS feeds
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/el/feed.xml">όλα τα άρθρα</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/el/feeds/programming.xml">όλα τα άρθρα προγραμματισμού</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/el/feeds/tutorials.xml">βοηθήματα προγραμματισμού</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/el/feeds/opensource.xml">άρθρα σχετικά με ανοιχτό λογισμικό</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/el/feeds/ruby.xml">άρθρα σχετικά με την Ruby (...on Rails)</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/el/feeds/painting.xml">άρθρα ζωγραφικής</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/el/feeds/cats.xml">άρθρα με γάτες</a>
+  </div>
+</div>
+
+          </div>
+
+
+        </div>
+
+        <div class="col">
+          <div class="sidebar">
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <a class="ga-event-link btn btn-warning d-block collapsed text-left"
+          data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script"
+          data-event-category="Document outline"
+          data-event-action="click"
+
+          data-toggle="collapse"
+          data-role="outline"
+          data-content=".outline"
+          href="#docout-sidebar"
+          data-target="#docout-sidebar"
+
+          title="View the structure of this document"
+          role="button"
+          href="#docout-sidebar"
+          aria-expanded="false"
+          aria-controls="collapse">
+          Πίνακας περιεχομένων
+          <i class="fa iridakos-collapse pull-right mt-1"></i>
+        </a>
+
+        <div class="section-content">
+          <div id="docout-sidebar" class="collapse mt-2 p-2">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-hand-spock-o"></i> Δημοφιλή άρθρα</h4>
+    </div>
+
+    <div class="section-content">
+      
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/el/programming/2019/11/13/bash-programmable-completion-tutorial"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script">Bash: Προσθέτοντας tab συμπλήρωση στα script</a>
+             <div class="text-muted smaller">
+               Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-betterldevlink" title="Featured in Better Dev Link" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/el/programming/2019/11/11/composing-better-emails"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Γράφοντας καλύτερα email">Γράφοντας καλύτερα email</a>
+             <div class="text-muted smaller">
+               Ηλεκτρονική αλληλογραφία - Συμβουλές για την σύνταξη αποτελεσματικών email αποφεύγοντας παρανοήσεις, με παραδείγματα από τον κόσμο της πληροφορικής.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους">Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους</a>
+             <div class="text-muted smaller">
+               Πως να αφαιρέσετε τις διπλές γραμμές ενός αρχείο σε Linux χωρίς να αλλάξει η σειρά τους - επεξήγηση awk one-liner κώδικα.
+             </div>
+          </div>
+        
+      
+
+      <div class="section-item">
+        <a href="/el/programming/featured"
+           class="ga-event-link"
+           data-event-category="Featured all posts"
+           data-event-action="click"
+           data-event-label="View all featured posts">Δείτε όλα τα δημοφιλή άρθρα</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-bullhorn"></i> Πρόσφατα άρθρα</h4>
+    </div>
+
+    
+
+    <div class="section-content">
+      
+          <div class="section-item">
+            <a href="/el/programming/2019/11/13/bash-programmable-completion-tutorial"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script">Bash: Προσθέτοντας tab συμπλήρωση στα script</a>
+            <div class="text-muted smaller">Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash</div>
+          </div>
+      
+          <div class="section-item">
+            <a href="/el/programming/2019/11/11/composing-better-emails"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="Γράφοντας καλύτερα email">Γράφοντας καλύτερα email</a>
+            <div class="text-muted smaller">Ηλεκτρονική αλληλογραφία - Συμβουλές για την σύνταξη αποτελεσματικών email αποφεύγοντας παρανοήσεις, με παραδείγματα από τον κόσμο της πληροφορικής.</div>
+          </div>
+      
+          <div class="section-item">
+            <a href="/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους">Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους</a>
+            <div class="text-muted smaller">Πως να αφαιρέσετε τις διπλές γραμμές ενός αρχείο σε Linux χωρίς να αλλάξει η σειρά τους - επεξήγηση awk one-liner κώδικα.</div>
+          </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4>
+        <i class="fa fa-github"></i> Κώδικας
+      </h4>
+
+      <div class="float-right">
+
+      </div>
+    </div>
+
+    <div class="section-content">
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="goto repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/goto">goto</a>: ένα utility για καταχώρηση ψευδώνυμων φακέλων και πλοήγηση σε αυτούς με bash completion
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="elman repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/elman">elman</a>: ένα script για ευρετηριασμένη αναζήτηση στις Linux βοηθητικές σελίδες με χρήση του Elasticsearch
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="duckrails repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/duckrails">DuckRails</a>
+        Η έκδοση <span class="important">2.1.5</span> είναι διαθέσιμη <img src="/assets/images/news/duckrails.png" class="logo" /> (<a class="ga-event-link" data-event-label="DuckRails GitHub docker wiki" data-event-action="click" data-event-category="News links" href="https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker" target="_blank">docker image διαθέσιμο επίσης</a>)
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <div class="section-content mt-2">
+          
+<div class="share-links">
+  <a class="btn btn-warning ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Bash: Προσθέτοντας tab συμπλήρωση στα script&url=https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Bash: Προσθέτοντας tab συμπλήρωση στα script&amp;body=Bash: Προσθέτοντας tab συμπλήρωση στα script: https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> RSS feeds
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/el/feed.xml">όλα τα άρθρα</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/el/feeds/programming.xml">όλα τα άρθρα προγραμματισμού</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/el/feeds/tutorials.xml">βοηθήματα προγραμματισμού</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/el/feeds/opensource.xml">άρθρα σχετικά με ανοιχτό λογισμικό</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/el/feeds/ruby.xml">άρθρα σχετικά με την Ruby (...on Rails)</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/el/feeds/painting.xml">άρθρα ζωγραφικής</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/el/feeds/cats.xml">άρθρα με γάτες</a>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">iridakos images preview</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <div class="image-container">
+                    <img class="image" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer">
+  <div class="container-fluid no-gutters">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="brand mb-1">
+          <a href="https://iridakos.com"><strong>iridakos</strong></a>
+        </div>
+
+        <div class="contact-links">
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="GitHub" href="https://www.github.com/iridakos/"><i class="fa fa-github" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="Twitter" href="https://www.twitter.com/lazaru_s/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="LinkedIn" href="https://www.linkedin.com/in/iridakos/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+        </div>
+
+        <div class="license mt-1">
+          <div class="mb-1">
+            <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
+          </div>
+
+          <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">iridakos</span> by
+          <a xmlns:cc="http://creativecommons.org/ns#" href="https://iridakos.com/about/" property="cc:attributionName" rel="cc:attributionURL" class="font-weight-bold">Lazarus Lazaridis</a> is licensed under a <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76452884-1', 'auto');
+
+  ga('set', 'page', '/el/programming/2019/11/13/bash-programmable-completion-tutorial')
+  ga('send', 'pageview');
+
+</script>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1573638265086232011" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1573638265086232011" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1573638265086232011" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1573638265086232011" type="text/javascript"></script>
+
+
+
+
+  </body>
+</html>
