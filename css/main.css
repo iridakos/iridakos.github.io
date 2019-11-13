@@ -8683,19 +8683,19 @@ img.image {
   .navbar.iridakos-navbar ul.navbar-nav .nav-item {
     padding: 0 5px; }
     .navbar.iridakos-navbar ul.navbar-nav .nav-item.active {
-      background-color: #52aced;
-      border: 1px solid #3ba1ea;
+      background-color: #ffc107;
+      border: 1px solid #edb100;
       border-radius: 4px; }
       .navbar.iridakos-navbar ul.navbar-nav .nav-item.active > a, .navbar.iridakos-navbar ul.navbar-nav .nav-item.active > a:hover, .navbar.iridakos-navbar ul.navbar-nav .nav-item.active > a:visited, .navbar.iridakos-navbar ul.navbar-nav .nav-item.active > a:link {
-        color: #fff !important; }
+        color: #212529 !important; }
 .navbar .navbar-brand {
   padding-left: 15px;
   padding-right: 15px; }
   .navbar .navbar-brand.active {
-    background-color: #52aced;
-    border: 1px solid #3ba1ea;
+    background-color: #ffc107;
+    border: 1px solid #edb100;
     border-radius: 4px;
-    color: #fff !important; }
+    color: #212529 !important; }
 
 blockquote {
   color: #157bc4;
@@ -8806,9 +8806,10 @@ h2 {
   .post .post-metadata .post-category {
     display: inline-block; }
 .post .post-tags {
-  color: #d39e00;
-  font-weight: bold;
   font-size: 80%; }
+  .post .post-tags > span {
+    color: #d39e00;
+    display: inline-block; }
   .post .post-tags a {
     font-weight: normal; }
 
@@ -8821,9 +8822,16 @@ h2 {
   border-top: 1px solid #adb5bd;
   border-top: 1px solid #ffc107; }
   .page-title-container .post .post-metadata, .page-title-container .post .post-tags, .page-title-container .post .post-tags i {
-    color: #dee2e6;
-    font-size: 90%;
-    text-shadow: none; }
+    color: #fff;
+    font-size: 80%;
+    text-shadow: 1px 1px 5px black;
+    font-weight: normal; }
+    .page-title-container .post .post-metadata .important, .page-title-container .post .post-tags .important, .page-title-container .post .post-tags i .important {
+      font-weight: normal; }
+    .page-title-container .post .post-metadata > span, .page-title-container .post .post-tags > span, .page-title-container .post .post-tags i > span {
+      color: #fff; }
+    .page-title-container .post .post-metadata a, .page-title-container .post .post-metadata a:visited, .page-title-container .post .post-metadata a:link, .page-title-container .post .post-metadata a:hover, .page-title-container .post .post-tags a, .page-title-container .post .post-tags a:visited, .page-title-container .post .post-tags a:link, .page-title-container .post .post-tags a:hover, .page-title-container .post .post-tags i a, .page-title-container .post .post-tags i a:visited, .page-title-container .post .post-tags i a:link, .page-title-container .post .post-tags i a:hover {
+      color: #ffc107 !important; }
 
 .footer {
   padding: 10px 0 5px 0;
@@ -8871,7 +8879,7 @@ h2 {
   .sidebar .sidebar-section {
     font-size: 90%; }
     .sidebar .sidebar-section .section-title {
-      font-family: 'Indie Flower', cursive;
+      font-family: 'Indie Flower', "Open Sans", cursive;
       color: #343a40; }
       .sidebar .sidebar-section .section-title h4 {
         margin: 0.25rem 0 0.35rem 0;

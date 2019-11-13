@@ -10,12 +10,536 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/el/feeds/tutorials.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 12 Nov 2019 12:18:29 +0200</pubDate>
-    <lastBuildDate>Tue, 12 Nov 2019 12:18:29 +0200</lastBuildDate>
+    <pubDate>Wed, 13 Nov 2019 09:45:36 +0200</pubDate>
+    <lastBuildDate>Wed, 13 Nov 2019 09:45:36 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
 
+    
+      <item>
+        <title>Bash: Προσθέτοντας tab συμπλήρωση στα script</title>
+        <description>&lt;p&gt;Πρόσφατα χρειάστηκε να προσθέσω tab συμπλήρωση σε ένα &lt;a class=&quot;ga-event-link&quot; data-event-category=&quot;From post to Github&quot; data-event-action=&quot;click&quot; data-event-label=&quot;goto from Bash completion post&quot; href=&quot;https://github.com/iridakos/goto&quot;&gt;script μου&lt;/a&gt; και βρήκα τη λειτουργικότητα πολύ ενδιαφέρουσα.&lt;/p&gt;
+
+&lt;p&gt;&lt;a class=&quot;ga-event-link&quot; data-event-category=&quot;From post to Github&quot; data-event-action=&quot;click&quot; data-event-label=&quot;goto from Bash completion post&quot; href=&quot;https://github.com/iridakos/goto&quot;&gt;
+  &lt;img class=&quot;no-maximize&quot; src=&quot;https://github.com/iridakos/goto/raw/master/doc/goto.gif&quot; /&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Σε αυτό το άρθρο θα εξοικειωθείτε με τη διαδικασία προσθήκης tab συμπλήρωσης στα script σας στη γραμμή εντολών του Bash.&lt;/p&gt;
+
+&lt;h2 id=&quot;τι-είναι-η-tab-συμπλήρωση-bash-completion&quot;&gt;Τι είναι η tab συμπλήρωση (bash completion);&lt;/h2&gt;
+
+&lt;p&gt;Η tab συμπλήρωση είναι μια λειτουργικότητα μέσω της οποίας το Bash επιτρέπει στους χρήστες να πληκτρολογήσουν τις εντολές τους πιο εύκολα και γρήγορα. Αυτό το πετυχαίνει με το να παρουσιάζει πιθανές επιλογές ως συνέχεια της εντολής όταν οι χρήστες πατούν το &lt;code class=&quot;highlighter-rouge&quot;&gt;tab&lt;/code&gt; πλήκτρο καθώς την γράφουν.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git&amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
+git                 git-receive-pack    git-upload-archive  
+gitk                git-shell           git-upload-pack     
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git-s&amp;lt;tab&amp;gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git-shell
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;πως-δουλεύει&quot;&gt;Πως δουλεύει;&lt;/h3&gt;
+
+&lt;p&gt;Το script συμπλήρωσης είναι κώδικας που χρησιμοποιεί την συστημική bash εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;complete&lt;/code&gt; για να ορίσει &lt;strong&gt;ποιες προτάσεις συμπλήρωσης&lt;/strong&gt; θα εμφανιστούν για ένα δεδομένο &lt;strong&gt;εκτελέσιμο&lt;/strong&gt; πρόγραμμα.
+Η φύση των προτάσεων αυτών ποικίλει από απλές στατικές έως περίπλοκες και δυναμικές επιλογές.&lt;/p&gt;
+
+&lt;h3 id=&quot;γιατί-να-ασχοληθώ&quot;&gt;Γιατί να ασχοληθώ;&lt;/h3&gt;
+
+&lt;p&gt;Είναι καλό να παρέχεται αυτή η λειτουργικότητα στους χρήστες των script:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;για να διευκολύνεται η πληκτρολόγηση κειμένου όταν μπορεί να συμπληρωθεί αυτόματα&lt;/li&gt;
+  &lt;li&gt;για να μπορούν να βλέπουν ποιες είναι οι πιθανές συνέχειες στις εντολές που πληκτρολογούν και&lt;/li&gt;
+  &lt;li&gt;για την αποφυγή λαθών και για την βελτίωση της εμπειρίας τους κρύβοντας τις μη διαθέσιμες και εμφανίζοντας τις διαθέσιμες επιλογές βάσει του τι έχουν ήδη πληκτρολογήσει&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ας-ξεκινήσουμε&quot;&gt;Ας ξεκινήσουμε&lt;/h2&gt;
+
+&lt;p&gt;Να τι θα κάνουμε σε αυτό το βοήθημα.&lt;/p&gt;
+
+&lt;p&gt;Αρχικά, θα δημιουργήσουμε ένα πολύ απλό εκτελέσιμο script που θα το πούμε &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt;. Αυτό θα είναι το script που στη συνέχεια θα προσθέσουμε τη λειτουργικότητα για την tab συμπλήρωση.
+Το μόνο που θα κάνει το script είναι να εκτελεί την εντολή που βρίσκεται σε μια συγκεκριμένη θέση στο ιστορικό των εντολών του χρήστη. Τη θέση της εντολής στο ιστορικό θα την δέχεται σαν παράμετρο κατά την εκτέλεση. Για παράδειγμα, η παρακάτω εντολή θα εκτελέσει την εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;ls -a&lt;/code&gt; δεδομένου ότι η τελευταία βρικεται στη θέση &lt;code class=&quot;highlighter-rouge&quot;&gt;235&lt;/code&gt; στο ιστορικό εντολών του χρήστη:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dothis 235
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Στη συνέχεια θα δημιουργήσουμε το script tab συμπλήρωσης που θα εμφανίζει τις εντολές μαζί με τη θέση τους, από το &lt;code class=&quot;highlighter-rouge&quot;&gt;ιστορικό εντολών του χρήστη&lt;/code&gt; και τέλος θα το συνδέσουμε με το πρόγραμμα &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; που προανέφερα.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
+215 &lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;216 &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-la&lt;/span&gt;
+217 &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~
+218 man &lt;span class=&quot;nb&quot;&gt;history
+&lt;/span&gt;219 git status
+220 &lt;span class=&quot;nb&quot;&gt;history&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 8-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/bash-completion/bash-completion-tutorial.gif&quot; alt=&quot;Επίδειξη της tab συμπλήρωσης&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Συγκεντρωθείτε &lt;code class=&quot;highlighter-rouge&quot;&gt;bash&lt;/code&gt; και τα καταφέρουμε με την πρώτη.&lt;/p&gt;
+
+&lt;h3 id=&quot;δημιουργία-του-εκτελέσιμου-προγράμματος&quot;&gt;Δημιουργία του εκτελέσιμου προγράμματος&lt;/h3&gt;
+
+&lt;p&gt;Δημιουργήστε ένα αρχείο με το όνομα &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; στο φάκελο που επιθυμείτε και προσθέστε τον παρακάτω κώδικα:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-z&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;No command number passed&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;2
+&lt;span class=&quot;k&quot;&gt;fi
+
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;exists&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;fc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-1000&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; ^&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; 2&amp;gt;/dev/null&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$exists&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;fc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Command with number &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; was not found in recent history&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;2
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημειώσεις:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Πρώτα ελέγχουμε αν το πρόγραμμα κλήθηκε με παράμετρο&lt;/li&gt;
+  &lt;li&gt;Στη συνέχεια ελέγχουμε αν ο συγκεκριμένος αριθμός αντιστοιχεί σε κάποια από τις τελευταίες 1000 εντολές του ιστορικού του χρήστη.
+    &lt;ul&gt;
+      &lt;li&gt;αν ναι τότε την εκτελούμε με χρήση της εντολής &lt;code class=&quot;highlighter-rouge&quot;&gt;fc&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;διαφορετικά εμφανίζουμε ένα μήνυμα λάθους&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Μετατρέψτε το script σε εκτελέσιμο με την παρακάτω εντολή:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x ./dothis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Θα εκτελούμε συχνά αυτό το script σε αυτό το βοήθημα οπότε συνιστώ να το μεταφέρετε σε ένα φάκελο που ανήκει στην μεταβλήτη &lt;a href=&quot;http://www.linfo.org/path_env_var.html&quot;&gt;PATH&lt;/a&gt; του περιβάλλοντός σας ωτε να μπορούμε να το προσπελάσουμε από παντού απλά πληκτρολογώντας &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Το δικό μου το έβαλα στο &lt;code class=&quot;highlighter-rouge&quot;&gt;home bin&lt;/code&gt; πληκτρολογώντας:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; ./dothis ~/bin/dothis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Μπορείτε να κάνετε το ίδιο δεδομένου ότι έχετε φάκελο &lt;code class=&quot;highlighter-rouge&quot;&gt;~/bin&lt;/code&gt; ο οποίος εμπεριέχεται στην &lt;code class=&quot;highlighter-rouge&quot;&gt;PATH&lt;/code&gt; μεταβλητή σας.&lt;/p&gt;
+
+&lt;p&gt;Δοκιμάστε να δείτε ότι δουλέυει:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dothis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Θα έπρεπε να δείτε αυτό:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis
+No &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;number passed
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Done.&lt;/p&gt;
+
+&lt;h3 id=&quot;δημιουργία-του-script-tab-συμπλήρωσης&quot;&gt;Δημιουργία του script tab συμπλήρωσης&lt;/h3&gt;
+
+&lt;p&gt;Δημιουργήστε ένα αρχείο με όνομα &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis-completion.bash&lt;/code&gt;. Από εδώ και στο εξής θα αναφέρομαι στο αρχείο αυτό με τον όρο &lt;strong&gt;script συμπλήρωσης&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Αφού του προσθέσουμε κώδικα, θα εκτελέσουμε την εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; για να το “ενεργοποιήσουμε”.
+Θα εκτελούμε την &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; σε αυτό το αρχείο &lt;strong&gt;κάθε φορά που αλλάζουμε το περιεχόμενό του ώστε να ισχύουν οι αλλαγές&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Θα συζητήσουμε επιλογές ώστε να να γίνεται η ενεργοποίηση αυτή κάθε φορά που ανοίγει νέα bash κονσόλα &lt;a href=&quot;#καταχώρηση-του-script-tab-συμπλήρωσης&quot;&gt;αργότερα&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;στατική-συμπλήρωση&quot;&gt;Στατική συμπλήρωση&lt;/h4&gt;
+
+&lt;p&gt;Υποθέστε ότι το &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; υποστήριζε μια στατική λίστα από παραμέτρους, για παράδειγμα:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;τώρα&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;αύριο&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ποτέ&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Θα χρησιμοποιήσουμε την εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;complete&lt;/code&gt; για να καταχωρήσουμε αυτή τη λίστα ως επιλογές για tab συμπλήρωση. (Για να χρησιμοποιήσουμε τη σωστή ορολογία, θα χρησιμοποιήσουμε την εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;complete&lt;/code&gt; για να ορίσουμε τις προδιαγραφές συμπλήρωσης (&lt;strong&gt;compspec&lt;/strong&gt;) για το πρόγραμμά μας.)&lt;/p&gt;
+
+&lt;p&gt;Προσθέστε αυτά στο script συμπλήρωσης.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now tomorrow never&quot;&lt;/span&gt; dothis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Τι κάναμε με τη χρήση της παραπάνω εντολής &lt;code class=&quot;highlighter-rouge&quot;&gt;complete&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;χρησιμοποιήσαμε την επιλογή &lt;code class=&quot;highlighter-rouge&quot;&gt;-W&lt;/code&gt; (&lt;em&gt;wordlist&lt;/em&gt;) για να παρέχουμε τη λίστα που θα χρησιμοποιηθεί για συμπλήρωση&lt;/li&gt;
+  &lt;li&gt;ορίσαμε σε ποιο πρόγραμμα αυτή η λίστα θα παρέχεται για tab συμπλήρωση (η τελευταία παράμετρος: &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;“Ενεργοποιήστε” το αρχείο (δεν βρήκα πιο δόκιμο όρο για να περιγράψω τη σημασία της εκτέλεσης της εντολής “source”):&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ./dothis-completion.bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Τώρα προσπαθήστε να πατήσετε το πλήτρο tab δύο φορές όπως παρακάτω:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
+never     now       tomorrow
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Προσπαθήστε ξανά αφού βάλετε και ένα &lt;code class=&quot;highlighter-rouge&quot;&gt;τ&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis τ&amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
+τώρα
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Μαγικό! Οι επιλογές συμπλήρωσης φιλτράρονται αυτόματα ώστε να εμφανιστούν μόνο αυτές που ξεκινούν από &lt;code class=&quot;highlighter-rouge&quot;&gt;τ&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημείωση:&lt;/strong&gt;
+The options are not displayed in the order that we defined them in the word list, they are automatically sorted.&lt;/p&gt;
+
+&lt;p&gt;There are a lot of other options to be used instead of the &lt;code class=&quot;highlighter-rouge&quot;&gt;-W&lt;/code&gt; that we used in this section. Most of them produce completions in a fixed manner, meaning that we don’t intervene dynamically to filter their output.&lt;/p&gt;
+
+&lt;p&gt;For example, if we wanted to have directory names as completion words for the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; program, we would change the complete command to the following:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-A&lt;/span&gt; directory dothis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Pressing tab after the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; program, we would get a list of the directories in the current directory from which we execute the script:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
+dir1/ dir2/ dir3/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Find the complete list of the available flags &lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html#Programmable-Completion-Builtins&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;dynamic-completion&quot;&gt;Dynamic completion&lt;/h4&gt;
+
+&lt;p&gt;We will be producing the completions of the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; executable with the following logic:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If user presses the tab key right after the command, we will show the last 50 executed commands along with their numbers in history&lt;/li&gt;
+  &lt;li&gt;If user presses the tab key after typing a number that matches more than one commands from history, we will show only those commands along with their numbers in history&lt;/li&gt;
+  &lt;li&gt;If user presses the tab key after a number that matches exactly one command in history, we auto-complete the number without appending the command’s literal (if it’s confusing, you will better understand later on, no worries)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s start by defining a function that will execute each time user requests completion on a &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; command. Change the completion script to this:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
+_dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  COMPREPLY+&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;now&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  COMPREPLY+&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tomorrow&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  COMPREPLY+&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;never&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note the following:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;we used the &lt;code class=&quot;highlighter-rouge&quot;&gt;-F&lt;/code&gt; flag in the complete command defining that the &lt;code class=&quot;highlighter-rouge&quot;&gt;_dothis_completions&lt;/code&gt; is the function that will provide the completions of the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; executable&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMPREPLY&lt;/code&gt; is an array variable used to store the completions - the completion mechanism uses this variable to display its contents as completions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now source the script and go for completion:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
+never now tomorrow
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Perfect. We produce the same completions as in the previous section with the word list. Or not? Try this:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis nev&amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
+never     now       tomorrow
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;As you can see, even though we type &lt;strong&gt;nev&lt;/strong&gt; and then we request for completion, the available options are always the same and nothing gets completed automatically. Why is this happening?&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The contents of the &lt;code class=&quot;highlighter-rouge&quot;&gt;COMPREPLY&lt;/code&gt; variable are always displayed. The function is responsible to add/remove entries from there now.&lt;/li&gt;
+  &lt;li&gt;If the &lt;code class=&quot;highlighter-rouge&quot;&gt;COMPREPLY&lt;/code&gt; variable had only one element then that word would be automatically completed in the command. Since current implementation always return the same three words, this will not happen.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Enter &lt;code class=&quot;highlighter-rouge&quot;&gt;compgen&lt;/code&gt;: a builtin command that generates completions supporting most of the options of the &lt;code class=&quot;highlighter-rouge&quot;&gt;complete&lt;/code&gt; command (ex. &lt;code class=&quot;highlighter-rouge&quot;&gt;-W&lt;/code&gt; for word list, &lt;code class=&quot;highlighter-rouge&quot;&gt;-d&lt;/code&gt; for directories) and filtering them based on what already has been typed by the user.&lt;/p&gt;
+
+&lt;p&gt;Don’t worry if you feel confused, everything will become clear later on.&lt;/p&gt;
+
+&lt;p&gt;Type the following in the console to better understand what compgen does:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now tomorrow never&quot;&lt;/span&gt;
+now
+tomorrow
+never
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now tomorrow never&quot;&lt;/span&gt; n
+now
+never
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now tomorrow never&quot;&lt;/span&gt; t
+tomorrow
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So now we can use it but we need to find a way to know what has been typed after the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; command.
+We already have the way. The bash completion facilities provide &lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#Bash-Variables&quot;&gt;bash variables&lt;/a&gt; related to the completion taking place. Here are the more important ones:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_WORDS&lt;/code&gt;: an array of all the words typed after the name of the program the &lt;code class=&quot;highlighter-rouge&quot;&gt;compspec&lt;/code&gt; belongs to&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_CWORD&lt;/code&gt;: an index of the &lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_WORDS&lt;/code&gt; array pointing to the word the current cursor is at - in other words, the index of the word the cursor was when the tab key was pressed&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_LINE&lt;/code&gt;: the current command line&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To access the word just after the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; word, we can use the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_WORDS[1]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Change the completion script again:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
+_dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;COMPREPLY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now tomorrow never&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMP_WORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[1]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Source and there you are:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis
+never     now       tomorrow  
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis n
+never  now
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, instead of the &lt;em&gt;now, tomorrow, never&lt;/em&gt; words, we would like to see actual numbers from the command history.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;fc -l&lt;/code&gt; command followed by a negative number &lt;code class=&quot;highlighter-rouge&quot;&gt;-n&lt;/code&gt; displays the last &lt;strong&gt;n&lt;/strong&gt; commands.
+So, we will use:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;fc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-50&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;which lists the last &lt;strong&gt;50&lt;/strong&gt; executed commands along with their numbers. The only manipulation we need to do is replace tabs with spaces in order to be displayed properly from the completion mechanism. &lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt; to the rescue.&lt;/p&gt;
+
+&lt;p&gt;Change the completion script as follows:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
+_dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;COMPREPLY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;fc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-50&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/\t//'&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMP_WORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[1]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Source and test in the console:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
+632 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   649 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   666 &lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; ~/.bash_profile
+633 clear                           650 clear                           667 &lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; ~/.bashrc
+634 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   651 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   668 clear
+635 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   652 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   669 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; ./dothis ~/bin/dothis
+636 clear                           653 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   670 dothis
+637 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   654 clear                           671 dothis 6546545646
+638 clear                           655 dothis 654                      672 clear
+639 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   656 dothis 631                      673 dothis
+640 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   657 dothis 150                      674 dothis 651
+641 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   658 dothis                          675 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash
+642 clear                           659 clear                           676 dothis 651
+643 dothis 623  &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-la&lt;/span&gt;              660 dothis                          677 dothis 659
+644 clear                           661 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; ./dothis ~/bin/dothis   678 clear
+645 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   662 dothis                          679 dothis 665
+646 clear                           663 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; ./dothis ~/bin/dothis   680 clear
+647 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash   664 dothis                          681 clear
+648 clear                           665 &lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Not bad.&lt;/p&gt;
+
+&lt;p&gt;We do have a problem though. Try typing a number as you see it in your completion list and the press the &lt;tab&gt; key again.&lt;/tab&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis 623&amp;lt;tab&amp;gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis 623  &lt;span class=&quot;nb&quot;&gt;ls &lt;/span&gt;623  &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-la&lt;/span&gt;
+...
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis 623  &lt;span class=&quot;nb&quot;&gt;ls &lt;/span&gt;623  &lt;span class=&quot;nb&quot;&gt;ls &lt;/span&gt;623  &lt;span class=&quot;nb&quot;&gt;ls &lt;/span&gt;623  &lt;span class=&quot;nb&quot;&gt;ls &lt;/span&gt;623  &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-la&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is happening because in our completion script, we used the &lt;code class=&quot;highlighter-rouge&quot;&gt;${COMP_WORDS[1]}&lt;/code&gt; to always check the first typed word after the &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; command (the number &lt;code class=&quot;highlighter-rouge&quot;&gt;623&lt;/code&gt; in the above snippet). Hence the completion continues suggesting the same completion again and again while pressing the tab key.&lt;/p&gt;
+
+&lt;p&gt;To fix this, we will not allow any kind of completion to take place if at least one argument has already been typed. We will add a condition in our function checking the size of the aforementioned &lt;code class=&quot;highlighter-rouge&quot;&gt;COMP_WORDS&lt;/code&gt; array.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
+_dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMP_WORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;2&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+    return
+  fi
+
+  &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMPREPLY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;fc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-50&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/\t//'&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMP_WORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[1]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Source and retry.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis 623&amp;lt;tab&amp;gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis 623 &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-la&lt;/span&gt;&amp;lt;tab&amp;gt; &lt;span class=&quot;c&quot;&gt;# SUCCESS: nothing happens here&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;There is another thing we don’t like though. We do want to display the numbers along with the corresponding commands to help users decide which one is the desired but when there is only one completion suggestion and gets automatically picked by the completion mechanism, &lt;strong&gt;we shouldn’t append the command literal too&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;In other words, our &lt;code class=&quot;highlighter-rouge&quot;&gt;dothis&lt;/code&gt; executable accepts only a number and we haven’t added any functionality checking or expecting other arguments. When our completion function gives only one result, we should trim the command literal and respond only with the command number.&lt;/p&gt;
+
+&lt;p&gt;To accomplish this, we will keep the response of the &lt;code class=&quot;highlighter-rouge&quot;&gt;compgen&lt;/code&gt; command in an array variable and if its size is &lt;strong&gt;1&lt;/strong&gt; we will trim the one and only element to keep just the number. Otherwise, we’ll let the array as is.&lt;/p&gt;
+
+&lt;p&gt;Change the completion script to this:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
+_dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMP_WORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;2&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+    return
+  fi&lt;/span&gt;
+
+  &lt;span class=&quot;c&quot;&gt;# keep the suggestions in a local variable&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;fc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-50&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/\t/ /'&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMP_WORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[1]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# if there's only one match, we remove the command literal&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# to proceed with the automatic completion of the number&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[0]/%\ */&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;COMPREPLY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$number&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# more than one suggestions resolved,&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# respond with the suggestions intact&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;COMPREPLY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;καταχώρηση-του-script-tab-συμπλήρωσης&quot;&gt;Καταχώρηση του script tab συμπλήρωσης&lt;/h3&gt;
+
+&lt;p&gt;If you want to enable the completion just for you on your machine, all you have to do is add a line in your &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; file sourcing the script:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &amp;lt;path-to-your-script&amp;gt;/dothis-completion.bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you want to enable the completion for all users, you can just copy the script under &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/bash_completion.d/&lt;/code&gt; and it will automatically be loaded by Bash.&lt;/p&gt;
+
+&lt;h3 id=&quot;fine-tuning-the-completion-script&quot;&gt;Fine tuning the completion script&lt;/h3&gt;
+
+&lt;p&gt;Some extra steps for better results :)&lt;/p&gt;
+
+&lt;h4 id=&quot;displaying-each-entry-in-a-new-line&quot;&gt;Displaying each entry in a new line&lt;/h4&gt;
+
+&lt;p&gt;Well, in the bash completion script I was working on, I too had to present suggestions consisting of two parts. I wanted to display the first part with the default color and the second part with a gray color to point out that it was just help text. In this tutorial’s example, it would be nice to present the numbers in the default color but the command literal in another one, less fancy.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, this is not possible at least for the time being because the completions are displayed as plain text and color directives are not processed (for example: &lt;code class=&quot;highlighter-rouge&quot;&gt;\e[34mBlue&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;What we can do though to improve user experience (or not :D) is to display each entry in a new line. This solution is not that obvious since again we can’t just append a new line character in each &lt;code class=&quot;highlighter-rouge&quot;&gt;COMPREPLY&lt;/code&gt; entry. We will follow a rather &lt;a href=&quot;https://unix.stackexchange.com/questions/166908/is-there-anyway-to-get-compreply-to-be-output-as-a-vertical-list-of-words-instea&quot;&gt;hackish&lt;/a&gt; way and pad suggestion literals to such a width that fills the terminal’s width.&lt;/p&gt;
+
+&lt;p&gt;Enter &lt;code class=&quot;highlighter-rouge&quot;&gt;printf&lt;/code&gt;. If you want to display each suggestion on each own line, change the completion script to the following:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
+_dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMP_WORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;2&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+    return
+  fi
+
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;IFS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;fc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-50&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/\t//'&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMP_WORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[1]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[0]/%\ */&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;COMPREPLY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$number&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else
+    for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!suggestions[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+      &lt;/span&gt;suggestions[&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%*s'&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$COLUMNS&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;done
+
+    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMPREPLY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Source and test:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
+...
+499 &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;dothis-completion.bash                   
+500 clear
+...       
+503 dothis 500
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;customizable-behavior&quot;&gt;Customizable behavior&lt;/h4&gt;
+
+&lt;p&gt;In our case, we hard-coded to display the last 50 commands for completion. This is not a good practice. We should first respect what each user might prefer and if he/she hasn’t made any preference then we should default to 50.&lt;/p&gt;
+
+&lt;p&gt;To accomplish that we will check if an environment variable &lt;code class=&quot;highlighter-rouge&quot;&gt;DOTHIS_COMPLETION_COMMANDS_NUMBER&lt;/code&gt; has been set.&lt;/p&gt;
+
+&lt;p&gt;Change the completion script one last time:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#/usr/bin/env bash&lt;/span&gt;
+_dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMP_WORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;2&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+    return
+  fi
+
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;commands_number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DOTHIS_COMPLETION_COMMANDS_NUMBER&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;IFS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;compgen&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-W&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;fc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; -&lt;span class=&quot;nv&quot;&gt;$commands_number&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/\t//'&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMP_WORDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[1]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${#&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[0]/%\ */&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;COMPREPLY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$number&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else
+    for &lt;/span&gt;i &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!suggestions[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+      &lt;/span&gt;suggestions[&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'%*s'&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$COLUMNS&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;  &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;done
+
+    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;COMPREPLY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;suggestions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[@]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; _dothis_completions dothis
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Source and test:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DOTHIS_COMPLETION_COMMANDS_NUMBER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;5
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dothis &amp;lt;tab&amp;gt;&amp;lt;tab&amp;gt;
+505 clear
+506 &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ./dothis-completion.bash
+507 dothis clear
+508 clear
+509 &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DOTHIS_COMPLETION_COMMANDS_NUMBER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;useful-links&quot;&gt;Useful links&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/git/git/blob/master/contrib/completion/git-completion.bash&quot;&gt;Git’s completion script&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/iridakos/goto/blob/master/goto.sh&quot;&gt;Bash completion for &lt;code class=&quot;highlighter-rouge&quot;&gt;goto&lt;/code&gt;, one of my shell scripts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html#Programmable-Completion&quot;&gt;Bash Reference Manual: Programmable Completion&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion-Builtins.html#Programmable-Completion-Builtins&quot;&gt;Bash Reference Manual: Programmable Completion Builtins&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/A-Programmable-Completion-Example.html#A-Programmable-Completion-Example&quot;&gt;Bash Reference Manual: A Programmable Completion Example&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html#Bash-Variables&quot;&gt;Bash Reference Manual: Bash Variables&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;code-and-comments&quot;&gt;Code and Comments&lt;/h2&gt;
+
+&lt;p&gt;You can find the &lt;strong&gt;code of this tutorial&lt;/strong&gt; on &lt;a href=&quot;https://github.com/iridakos/bash-completion-tutorial&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For &lt;strong&gt;feedback, comments, typos etc&lt;/strong&gt;. please open an &lt;a href=&quot;https://github.com/iridakos/bash-completion-tutorial/issues&quot;&gt;issue&lt;/a&gt; in the repository.&lt;/p&gt;
+
+&lt;h3 id=&quot;long-post-cat-photo&quot;&gt;Long post, cat photo&lt;/h3&gt;
+
+&lt;p&gt;Let me introduce you to my debugger.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/bash-completion/cat.jpg&quot; alt=&quot;My debugger&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s all folks!&lt;/p&gt;
+</description>
+        <pubDate>Tue, 12 Nov 2019 14:00:00 +0200</pubDate>
+        <link>https://iridakos.com/el/programming/2019/11/12/bash-programmable-completion-tutorial</link>
+        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/12/bash-programmable-completion-tutorial</guid>
+        
+        <category>bash</category>
+        
+        <category>linux</category>
+        
+        <category>programmable-completion</category>
+        
+        <category>opensource</category>
+        
+        <category>tutorial</category>
+        
+        <category>how-to</category>
+        
+        <category>featured</category>
+        
+        <category>δημοφιλή</category>
+        
+        <category>γραμμή εντολών</category>
+        
+        <category>ανοιχτό λογισμικό</category>
+        
+        <category>βοήθημα</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
   </channel>
 </rss>

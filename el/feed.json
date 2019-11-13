@@ -2,6 +2,13 @@
 
 [
   
+  { "title": "Bash: Προσθέτοντας tab συμπλήρωση στα script",
+    "description": "Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash",
+    "date": "Nov 12, 2019 - 14:00",
+    "categories": "programming",
+    "tags": ["bash","linux","programmable-completion","opensource","tutorial","how-to","featured","δημοφιλή","γραμμή εντολών","ανοιχτό λογισμικό","βοήθημα"],
+    "url": "https://iridakos.com/el/programming/2019/11/12/bash-programmable-completion-tutorial"},
+  
   { "title": "Γράφοντας καλύτερα email",
     "description": "Συμβουλές για την σύνταξη αποτελεσματικών email αποφεύγοντας παρανοήσεις, με παραδείγματα από τον κόσμο της πληροφορικής.",
     "date": "Nov 11, 2019 - 23:10",
