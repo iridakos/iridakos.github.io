@@ -10,8 +10,8 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feeds/programming.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 14 Nov 2019 09:40:26 +0200</pubDate>
-    <lastBuildDate>Thu, 14 Nov 2019 09:40:26 +0200</lastBuildDate>
+    <pubDate>Thu, 14 Nov 2019 22:59:53 +0200</pubDate>
+    <lastBuildDate>Thu, 14 Nov 2019 22:59:53 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -8224,7 +8224,7 @@ The general idea is to create a &lt;em&gt;search page&lt;/em&gt; with a text fie
     
       <item>
         <title>Mom dad I want to be a computer programmer</title>
-        <description>&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/comics/s01e01.png&quot; alt=&quot;S01E01&quot; /&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/comics/s01e01.png&quot; style=&quot;max-height: none;&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 22 Jan 2017 16:00:00 +0200</pubDate>
         <link>https://iridakos.com/programming/2017/01/22/mom-dad-i-programmer</link>
