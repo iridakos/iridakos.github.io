@@ -10,8 +10,8 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feeds/ruby.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 18 Nov 2019 10:50:58 +0200</pubDate>
-    <lastBuildDate>Mon, 18 Nov 2019 10:50:58 +0200</lastBuildDate>
+    <pubDate>Tue, 19 Nov 2019 10:25:03 +0200</pubDate>
+    <lastBuildDate>Tue, 19 Nov 2019 10:25:03 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -728,7 +728,7 @@ ruby-2.6.2 - #generating rails-chat-tutorial wrappers...........
 
 &lt;p&gt;Rails will create all the application’s files and install the required gems.&lt;/p&gt;
 
-&lt;p&gt;Let’s start the application to make sure that everything if fine.&lt;/p&gt;
+&lt;p&gt;Let’s start the application to make sure that everything is fine.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails server
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -769,7 +769,7 @@ Use Ctrl-C to stop
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate devise:install
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;We will create the model representing our uses using the devise generators.&lt;/p&gt;
+&lt;p&gt;We will create the model representing our users using the devise generators.&lt;/p&gt;
 
 &lt;p&gt;On your terminal, execute:&lt;/p&gt;
 
@@ -895,7 +895,7 @@ Use Ctrl-C to stop
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;and execute &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle&lt;/code&gt; to fetch and install it.&lt;/p&gt;
 
-&lt;p&gt;Change the &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets/application.css&lt;/code&gt; files extension to &lt;code class=&quot;highlighter-rouge&quot;&gt;scss&lt;/code&gt; and &lt;strong&gt;replace its contents&lt;/strong&gt; with:&lt;/p&gt;
+&lt;p&gt;Change the &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets/application.css&lt;/code&gt; file’s extension to &lt;code class=&quot;highlighter-rouge&quot;&gt;scss&lt;/code&gt; and &lt;strong&gt;replace its contents&lt;/strong&gt; with:&lt;/p&gt;
 
 &lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&quot;bootstrap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -932,7 +932,7 @@ Use Ctrl-C to stop
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate devise:views
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;The view for signing in is under &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/devise/sessions/new.html.erb&lt;/code&gt; and for signing up is under &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/devise/registrations/new.html.erb&lt;/code&gt;. Open these two files and change the submit button’s class by replacing the following line&lt;sup&gt;&lt;a href=&quot;acknowledgments&quot;&gt;[6]&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+&lt;p&gt;The view for signing in is under &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/devise/sessions/new.html.erb&lt;/code&gt; and for signing up is under &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/devise/registrations/new.html.erb&lt;/code&gt;. Open these two files and change the submit button’s class by replacing the following line&lt;sup&gt;&lt;a href=&quot;#acknowledgments&quot;&gt;[6]&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:submit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Sign up&quot;&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -1432,7 +1432,7 @@ Use Ctrl-C to stop
 &lt;p&gt;&lt;strong&gt;Notes:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;We reused the &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/rooms/_rooms.html.erb&lt;/code&gt; partial that we created in the previous step&lt;/li&gt;
-  &lt;li&gt;We added a &lt;code class=&quot;highlighter-rouge&quot;&gt;div&lt;/code&gt; with class &lt;code class=&quot;highlighter-rouge&quot;&gt;.chat&lt;/code&gt; and this is where the room’s messages are renderer.&lt;/li&gt;
+  &lt;li&gt;We added a &lt;code class=&quot;highlighter-rouge&quot;&gt;div&lt;/code&gt; with class &lt;code class=&quot;highlighter-rouge&quot;&gt;.chat&lt;/code&gt; and this is where the room’s messages are rendered.&lt;/li&gt;
   &lt;li&gt;We added a form for the &lt;code class=&quot;highlighter-rouge&quot;&gt;@room_message&lt;/code&gt; that we instantiated in the controller. We also used the directive &lt;code class=&quot;highlighter-rouge&quot;&gt;remote: true&lt;/code&gt; when we instantiated the form thus the form is going to be submitted by &lt;strong&gt;Ajax&lt;/strong&gt;.&lt;/li&gt;
   &lt;li&gt;We added a hidden field for the attribute &lt;code class=&quot;highlighter-rouge&quot;&gt;:room_id&lt;/code&gt; so that the value reaches the &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomMessagesController&lt;/code&gt; once we submit the form.&lt;/li&gt;
 &lt;/ul&gt;
@@ -1489,7 +1489,7 @@ Use Ctrl-C to stop
 &lt;p&gt;&lt;strong&gt;Notes:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;we preload the room using the &lt;code class=&quot;highlighter-rouge&quot;&gt;room_id&lt;/code&gt; parameter that we added as a hidden field in the form in the previous step&lt;/li&gt;
-  &lt;li&gt;we create a new message for the room setting its user to currently signed in user&lt;/li&gt;
+  &lt;li&gt;we create a new message for the room setting its user to the currently signed in user&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;If you try to submit a message now, again you will see nothing but in the server console you can see from the log that the room message has been created.&lt;/p&gt;

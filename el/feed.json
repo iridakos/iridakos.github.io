@@ -2,6 +2,13 @@
 
 [
   
+  { "title": "Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets",
+    "description": "Ένα βοήθημα που περιγράφει βήμα προς βήμα πως να δημιουργήσετε μια εφαρμογή συνομιλιών (chat) από το μηδέν με χρήση Rails και WebSockets (ActionCable).",
+    "date": "Nov 19, 2019 - 08:00",
+    "categories": "programming",
+    "tags": ["ruby","rails","websockets","devise","bootstrap","chat","actioncable","redis","featured","δημοφιλή","tutorial","βοήθημα","how-to"],
+    "url": "https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets"},
+  
   { "title": "Bash: Προσθέτοντας tab συμπλήρωση στα script",
     "description": "Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash",
     "date": "Nov 13, 2019 - 10:30",

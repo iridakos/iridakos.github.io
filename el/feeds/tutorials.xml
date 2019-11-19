@@ -10,12 +10,1381 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/el/feeds/tutorials.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 18 Nov 2019 10:50:58 +0200</pubDate>
-    <lastBuildDate>Mon, 18 Nov 2019 10:50:58 +0200</lastBuildDate>
+    <pubDate>Tue, 19 Nov 2019 10:25:03 +0200</pubDate>
+    <lastBuildDate>Tue, 19 Nov 2019 10:25:03 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
 
+    
+      <item>
+        <title>Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets</title>
+        <description>&lt;h2 id=&quot;εισαγωγή&quot;&gt;Εισαγωγή&lt;/h2&gt;
+
+&lt;p&gt;Σε αυτό το βοήθημα θα δημιουργήσουμε μια εφαρμογή συνομιλιών (&lt;strong&gt;chat&lt;/strong&gt;) από το μηδέν χρησιμοποιώντας το framework Ruby on Rails και την τεχνολογία των WebSockets.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif&quot; alt=&quot;Rails chat tutorial gif&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ενημέρωση&lt;/strong&gt;: Δημοσίευσα άλλο ένα βοήθημα για τη &lt;a href=&quot;https://twitter.com/lazaru_s/status/1182193506430984193&quot;&gt;δημιουργία docker image της εφαρμογής&lt;/a&gt; του παρόντος, μπορείτε να το βρείτε στα αγγλικά για την ώρα &lt;a href=&quot;/programming/2019/04/07/dockerizing-a-rails-application&quot;&gt;&lt;strong&gt;εδώ&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;alert alert-light&quot;&gt;
+  &lt;div class=&quot;alert-heading&quot;&gt;&lt;i class=&quot;fa fa-comments&quot;&gt;&lt;/i&gt; Κώδικας και σχόλια&lt;/div&gt;
+
+  Μπορείτε να βρείτε τον κώδικα του παρόντος άρθρου στο &lt;a class=&quot;alert-link&quot; href=&quot;https://github.com/iridakos/rails-chat-tutorial&quot;&gt;&lt;i class=&quot;fa fa-github&quot;&gt;&lt;/i&gt; GitHub&lt;/a&gt;.
+
+  &lt;hr /&gt;
+
+  Για σχόλια, feedback, λάθη κ.λπ. παρακαλώ ανοίξτε ένα &lt;a class=&quot;alert-link&quot; href=&quot;https://github.com/iridakos/rails-chat-tutorial/issues&quot;&gt;issue&lt;/a&gt; στο αποθετήριο.
+&lt;/div&gt;
+
+&lt;h3 id=&quot;τι-είναι-τα-websockets&quot;&gt;Τι είναι τα WebSockets;&lt;/h3&gt;
+
+&lt;p&gt;Πρόκειται ουσιαστικά για ένα πρωτόκολλο που επιτρέπει την αμφίδρομη επικοινωνία μεταξύ πελάτη και εξυπηρετητή μιας διαδικτυακής εφαρμογής μέσω μιας και μόνης σύνδεσης TCP μακράς διαρκείας.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The WebSocket protocol enables interaction between a web browser (or other client application) and a web server &lt;strong&gt;with lower overheads, facilitating real-time data transfer from and to the server&lt;/strong&gt;.
+&lt;br /&gt;&lt;br /&gt;This is made possible by providing a standardized way for the server to send content to the client without being first requested by the client, and allowing messages to be passed back and forth while keeping the connection open. In this way, a two-way ongoing conversation can take place between the client and the server.&lt;br /&gt;&lt;br /&gt;The communications are done over TCP port number 80 (or 443 in the case of TLS-encrypted connections), which is of benefit for those environments which block non-web Internet connections using a firewall. Similar two-way browser-server communications have been achieved in non-standardized ways using stopgap technologies such as Comet.
+&lt;cite&gt;– &lt;a href=&quot;https://en.wikipedia.org/wiki/WebSocket&quot;&gt;WebSocket @ Wikipedia&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;γιατί-να-χρησιμοποιήσουμε-websockets&quot;&gt;Γιατί να χρησιμοποιήσουμε WebSockets;&lt;/h3&gt;
+
+&lt;p&gt;Υποθέστε ότι θέλετε να δημιουργήσετε μια ιστοσελίδα που εμφανίζει τις καταστάσεις κάποιων διαδικασιών που βρίσκονται υπό εκτέλεση.
+Χωρίς τη χρήση WebSockets, θα έπρεπε να κάνετε ένα από τα παρακάτω:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;να χρησιμοποιήσετε AJAX με Javascript intervals για να ζητάτε και να εμφανίζεται τις τρέχουσες καταστάσεις των διαδικασιών&lt;/li&gt;
+  &lt;li&gt;να φορτώνεται ξανά τη σελίδα κάθε x δευτερόλεπτα (&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;meta http-equiv=&quot;refresh&quot; content=&quot;x&quot;&amp;gt;&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;να προσθέσετε ένα μήνυμα στη σελίδα τύπου &lt;em&gt;“Οι καταστάσεις δεν ενημερώνονται αυτόματα &lt;span class=&quot;text-nowrap&quot;&gt;¯\_(ツ)_/¯&lt;/span&gt; Πατήστε &lt;a href=&quot;/el/programming/2019/11/19/creating-chat-application-rails-websockets&quot;&gt;εδώ&lt;/a&gt; για να φορτώσετε ξανά τη σελίδα.”&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Και οι τρεις παραπάνω προτάσεις θα κατέληγαν στο να ζητήσουν από τον εξυπηρετητή τις καταστάσεις των διαδικασιών ακόμη και να αυτές δεν είχαν αλλάξει.&lt;/p&gt;
+
+&lt;p&gt;Τα WebSockets είναι αυτά που θα μας επιτρέψουν αυτού του είδους η επικοινωνία να λάβει χώρα κατά απαίτηση. Το κόστος αυτής της λειτουργικότητας είναι η διατήρηση TCP συνδέσεων μεταξύ του εξυπηρετητή και όλων των πελατών του (μια για κάθε ανοιγμένη σελίδα στον φυλλομετρητή).&lt;/p&gt;
+
+&lt;h2 id=&quot;χτίζοντας-την-εφαρμογή&quot;&gt;Χτίζοντας την εφαρμογή&lt;/h2&gt;
+
+&lt;p&gt;Θα χτίσουμε την εφαρμογή χρησιμοποιώντας:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Ruby&lt;/strong&gt;: έκδοση &lt;strong&gt;2.6.2&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Rails&lt;/strong&gt;: έκδοση &lt;strong&gt;5.2.3&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;στήνοντας-το-περιβάλλον&quot;&gt;Στήνοντας το περιβάλλον&lt;/h3&gt;
+
+&lt;p&gt;Θα εγκαταστήσουμε τις κατάλληλες εκδόσεις της Ruby και του Ruby on Rails.&lt;/p&gt;
+
+&lt;h4 id=&quot;εγκατάσταση-ruby&quot;&gt;Εγκατάσταση Ruby&lt;/h4&gt;
+
+&lt;p&gt;Χρησιμοποιώ το πρόγραμμα &lt;a href=&quot;https://rvm.io/&quot;&gt;rvm&lt;/a&gt; για να διαχειρίζομαι τις εκδόσεις της &lt;strong&gt;Ruby&lt;/strong&gt; που εγκαθιστώ στο σύστημά μου. Για να εγκαταστήσετε την Ruby του παρόντος βοηθήματος εκτελέστε:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rvm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ruby 2.6.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;εγκατάσταση-ruby-on-rails&quot;&gt;Εγκατάσταση Ruby on Rails&lt;/h4&gt;
+
+&lt;p&gt;Δημιουργήστε ένα φάκελο στο σύστημά σας με το όνομα &lt;code class=&quot;highlighter-rouge&quot;&gt;rails-chat-tutorial&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Περιηγηθείτε σε αυτόν τον φάκελο&lt;/strong&gt; και δημιουργήστε τα παρακάτω αρχεία:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;.ruby-version&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ruby-2.6.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;.ruby-gemset&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails-chat-tutorial
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Με αυτά τα δύο αρχεία, ενημερώνουμε τον &lt;em&gt;rvm&lt;/em&gt; (Ruby version manager) ότι όταν εργαζόμαστε σε αυτόν τον φάκελο, θέλουμε να γίνεται χρήση της συγκεκριμένης έκδοσης Ruby (&lt;code class=&quot;highlighter-rouge&quot;&gt;.ruby-version&lt;/code&gt;) και των συγκεκριμένων βιβλιοθηκών που έχουν εγκατασταθεί στο &lt;em&gt;gemset&lt;/em&gt; με το όνομα &lt;code class=&quot;highlighter-rouge&quot;&gt;rails-chat-tutorial&lt;/code&gt; (&lt;code class=&quot;highlighter-rouge&quot;&gt;.ruby-gemset&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Τώρα, αν περιηγηθείτε ξανά στον φάκελο θα δείτε κάτι σαν τα παρακάτω:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ cd .
+
+ruby-2.6.2 - #gemset created /home/iridakos/.rvm/gems/ruby-2.6.2@rails-chat-tutorial
+ruby-2.6.2 - #generating rails-chat-tutorial wrappers...........
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Εγκαταστήστε την επιθυμητή έκδοση του Ruby on Rails με:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install rails -v 5.2.3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;δημιουργία-της-εφαρμογής&quot;&gt;Δημιουργία της εφαρμογής&lt;/h4&gt;
+
+&lt;p&gt;Είμαστε έτοιμοι να δημιουργήσουμε την &lt;em&gt;rails&lt;/em&gt; εφαρμογή, στη γραμμή εντολών πληκτρολογήστε:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails new .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημείωση&lt;/strong&gt;: Δεν προσδιορίσαμε κάποιο όνομα για την εφαρμογή οπότε το framework θα χρησιμοποιήσει το όνομα του φακέλου: &lt;code class=&quot;highlighter-rouge&quot;&gt;rails-chat-tutorial&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Το Rails θα δημιουργήσει όλα τα αρχεία της εφαρμογής και θα εγκαταστήσει τις απαιτούμενες βιβλιοθήκες (gems).&lt;/p&gt;
+
+&lt;p&gt;Ας ξεκινήσουμε την εφαρμογή για να επιβεβαιώσουμε ότι όλα είναι εντάξει.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You should see something like:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;=&amp;gt; Booting Puma
+=&amp;gt; Rails 5.2.3 application starting in development
+=&amp;gt; Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.12.1 (ruby 2.6.2-p47), codename: Llamas in Pajamas
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://localhost:3000
+Use Ctrl-C to stop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ανοίξτε έναν φυλλομετρητή και επισκεφθείτε τη διεύθυνση: &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt;. Αν βλέπετε το παρακάτω είμαστε εντάξει για να συνεχίσουμε. Αν όχι, δε με ξέρετε δε σας ξέρω :P&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/01-rails-new.png&quot; alt=&quot;Rails new application&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;χρήστες-και-βιβλιοθήκη-devise&quot;&gt;Χρήστες και βιβλιοθήκη &lt;code class=&quot;highlighter-rouge&quot;&gt;devise&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Θα χρησιμοποιήσουμε την φοβερή λύση της βιβλιοθήκης &lt;a href=&quot;https://github.com/plataformatec/devise&quot;&gt;devise&lt;/a&gt; για πιστοποίηση χρηστών.&lt;/p&gt;
+
+&lt;p&gt;Προσαρτήστε την παρακάτω απαίτηση βιβλιοθήκης στο τέλος του αρχείου &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; βρίσκεται στον κεντρικό φάκελο της εφαρμογής (Rails root directory).&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'devise'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Στη γραμμή εντολών, εγκαταστήστε τη νέα βιβλιοθήκη εκτελώντας:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ολοκληρώστε την ενσωμάτωση της &lt;code class=&quot;highlighter-rouge&quot;&gt;devise&lt;/code&gt; με:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate devise:install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Θα δημιουργήσουμε το μοντέλο που αναπαριστά τους χρήστες μας χρησιμοποιώντας τις γεννήτριες της &lt;code class=&quot;highlighter-rouge&quot;&gt;devise&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Εκτελέστε στη γραμμή εντολών:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate devise User username:string
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημείωση&lt;/strong&gt;: προσθέσαμε ένα επιπλέον χαρακτηριστικό &lt;code class=&quot;highlighter-rouge&quot;&gt;username&lt;/code&gt; στο μοντέλο (πέραν των όσων εξ ορισμού παρήγαγε η βιβλιοθήκη) ούτως ώστε να έχουμε κάτι πιο φιλικό να εμφανίζουμε για τους χρήστες αντί της διεύθυνσης email.&lt;/p&gt;
+
+&lt;p&gt;Ανοίξτε το αρχείο προσαρμογής της βάσης (migration) που βρίσκεται στην τοποθεσία &lt;code class=&quot;highlighter-rouge&quot;&gt;db/migrate/&amp;lt;datetime&amp;gt;_devise_create_users.rb&lt;/code&gt; και προσθέστε ένα ευρετήριο μοναδικότητας (unique index) για το χαρακτηριστικό που προσθέσαμε (&lt;code class=&quot;highlighter-rouge&quot;&gt;username&lt;/code&gt;)&lt;sup&gt;&lt;a href=&quot;#ευχαριστίες&quot;&gt;[4]&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;add_index&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;ss&quot;&gt;:username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;             &lt;span class=&quot;ss&quot;&gt;unique: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Βρείτε τη γραμμή που ορίζει τη στήλη &lt;code class=&quot;highlighter-rouge&quot;&gt;username&lt;/code&gt; αλλάξτε την ως εξής:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;null: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;για να δηλώσουμε το χαρακτηριστικό ως υποχρεωτικό.&lt;/p&gt;
+
+&lt;p&gt;Στη συνέχεια, στο μοντέλο &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; που βρίσκεται στην τοποθεσία &lt;code class=&quot;highlighter-rouge&quot;&gt;app/models/user.rb&lt;/code&gt; προσθέστε τον παρακάτω κανόνα επικύρωσης της μοναδικότητας και της υποχρεωτικής παρουσίας του χαρακτηριστικού:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;validates&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;uniqueness: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;presence: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Τέλος, προσαρμόστε τη βάση με:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails db:migrate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;δωμάτια-και-μηνύματα&quot;&gt;Δωμάτια και μηνύματα&lt;/h3&gt;
+
+&lt;p&gt;Κάθε μήνυμα θα εμφανίζεται σε ένα δωμάτιο.&lt;/p&gt;
+
+&lt;p&gt;Ας δημιουργήσουμε και τα δύο.&lt;/p&gt;
+
+&lt;p&gt;Χρησιμοποιήστε την παρακάτω εντολή για δημιουργήσετε το δωμάτιο - &lt;code class=&quot;highlighter-rouge&quot;&gt;Room&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate resource Room name:string:uniq
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;και την ακόλουθη εντολή για να δημιουργήσετε το μήνυμα δωματίου - &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomMessage&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate resource RoomMessage room:references user:references message:text
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Τώρα θα ορίσουμε τις σχέσεις αυτών των δύο&lt;sup&gt;&lt;a href=&quot;#ευχαριστίες&quot;&gt;[7]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ανοίξτε το αρχείο που βρίσκεται στην τοποθεσία &lt;code class=&quot;highlighter-rouge&quot;&gt;app/models/room.rb&lt;/code&gt; και προσθέστε την παρακάτω σχέση μέσα στην κλάση:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;has_many&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:room_messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;dependent: :destroy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                         &lt;span class=&quot;ss&quot;&gt;inverse_of: :room&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ανοίξτε το αρχείο που βρίσκεται στην τοποθεσία &lt;code class=&quot;highlighter-rouge&quot;&gt;app/models/room_message.rb&lt;/code&gt; και προσθέστε τις παρακάτω σχέσεις:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:user&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;inverse_of: :room_messages&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Προσαρμόστε τη βάση με την εντολή:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails db:migrate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Τώρα μπορούμε να ορίσουμε με τέτοιο τρόπο τις διαδρομές (routes) ώστε τα αιτήματα στην αρχική σελίδα (root requests) να σερβίρονται από την ενέργεια &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; του ελεγκτή &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomsController&lt;/code&gt; (που δημιουργήθηκε αυτόματα όταν εκτελέσαμε την εντολή για τη δημιουργία του πόρου &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomMessage&lt;/code&gt; παραπάνω) - &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomsController#index&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ανοίξτε το αρχείο που βρίσκεται στην τοποθεσία &lt;code class=&quot;highlighter-rouge&quot;&gt;config/routes.rb&lt;/code&gt; και αλλάξτε τα περιεχόμενά του στα παρακάτω:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Rails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;routes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;devise_for&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;controller: :rooms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;action: :index&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;resources&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:room_messages&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;resources&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:rooms&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Επανεκκινήστε τον εξυπηρετητή και προσπαθήστε να περιηγηθείτε στην αρχική σελίδα της εφαρμογής (http://localhost:3000).&lt;/p&gt;
+
+&lt;p&gt;Θα δείτε το παρακάτω λάθος, μην ανησυχείτε:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/02.png&quot; alt=&quot;No action index for the RoomsController&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Πρέπει να δημιουργήσουμε την ενέργεια &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; στον ελεγκτή &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomsController&lt;/code&gt;. Ανοίξτε τον ελεγκτή που βρίσκεται στην τοποθεσία &lt;code class=&quot;highlighter-rouge&quot;&gt;app/controllers/rooms_controller.rb&lt;/code&gt; και αλλάξτε τα περιεχόμενά του στα παρακάτω:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RoomsController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationController&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Κατόπιν, δημιουργήστε το αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/rooms/index.html.erb&lt;/code&gt; και για την ώρα απλά προσθέστε μόνο την παρακάτω επικεφαλίδα:&lt;/p&gt;
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Rooms index&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Φορτώστε ξανά την αρχική σελίδα και voilà.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/03.png&quot; alt=&quot;Rooms index&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;προσθήκη-πιστοποίησης-χρηστών&quot;&gt;Προσθήκη πιστοποίησης χρηστών&lt;/h3&gt;
+
+&lt;p&gt;Θέλουμε όλοι οι χρήστες να είναι πιστοποιημένοι πριν να μπορέσουν να συμμετάσχουν σε συνομιλίες οπότε θα προσθέσουμε την παρακάτω γραμμή στην κλάση &lt;code class=&quot;highlighter-rouge&quot;&gt;ApplicationController&lt;/code&gt; που βρίσκεται στην τοποθεσία &lt;em&gt;app/controllers/application_controller.rb&lt;/em&gt; και από την οποία κληρονομούν οι ελεγκτές μας:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;before_action&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:authenticate_user!&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Αν πλοηγηθούμε εκ νέου στην αρχική σελίδα &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; θα πρέπει να ανακατευθυνθούμε στη σελίδα πιστοποίησης χρηστών &lt;sup&gt;&lt;a href=&quot;#ευχαριστίες&quot;&gt;[10]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/04.png&quot; alt=&quot;Sign in&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Πριν συνεχίσουμε με τα ωραία, ας εξοπλίσουμε πρώτα την εφαρμογή με κάποια καλά χαρακτηριστικά.&lt;/p&gt;
+
+&lt;h3 id=&quot;προσθήκη-bootstrap&quot;&gt;Προσθήκη bootstrap&lt;/h3&gt;
+
+&lt;p&gt;Θα χρησιμοποιήσουμε το &lt;a href=&quot;https://getbootstrap.com/&quot;&gt;Bootstrap&lt;/a&gt; και θα το ενσωματώσουμε στην εφαρμογή χρησιμοποιώντας τη βιβλιοθήκη &lt;a href=&quot;https://github.com/twbs/bootstrap-rubygem&quot;&gt;bootstrap-rubygem&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ακολουθώντας τις οδηγίες της βιβλιοθήκης, προσθέστε τις παρακάτω απαιτήσεις βιβλιοθηκών στο μητρώο των απαιτήσεων &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bootstrap'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'~&amp;gt; 4.3.1'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'jquery-rails'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;και εκτελέστε την εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle&lt;/code&gt; για να κατέβουν και να εγκατασταθούν.&lt;/p&gt;
+
+&lt;p&gt;Αλλάξτε την κατάληξη του αρχείου &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets/application.css&lt;/code&gt; σε &lt;code class=&quot;highlighter-rouge&quot;&gt;scss&lt;/code&gt; και &lt;strong&gt;αντικαταστήστε τα περιεχόμενά του&lt;/strong&gt; με:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&quot;bootstrap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Προσθέστε τις ακόλουθες γραμμές στο αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/javascript/application.js&lt;/code&gt; αμέσως πριν τη γραμμή &lt;code class=&quot;highlighter-rouge&quot;&gt;//= require_tree .&lt;/code&gt; &lt;sup&gt;&lt;a href=&quot;#ευχαριστίες&quot;&gt;[9]&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//= require jquery3&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//= require popper&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//= require bootstrap-sprockets&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;προσθήκη-simple_form&quot;&gt;Προσθήκη simple_form&lt;/h3&gt;
+
+&lt;p&gt;Θα χρησιμοποιήσουμε αυτή την εξαιρετική βιβλιοθήκη για να δημιουργούμε τις φόρμες μας εύκολα.&lt;/p&gt;
+
+&lt;p&gt;Προσθέστε την απαίτηση στο αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; και εκτελέστε την εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle&lt;/code&gt; για να το εγκαταστήσετε.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'simple_form'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Τέλος, ολοκληρώστε την ενσωμάτωση στην εφαρμογή χρησιμοποιώντας:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate simple_form:install &lt;span class=&quot;nt&quot;&gt;--bootstrap&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημείωση&lt;/strong&gt;: Χρησιμοποιήσαμε την οδηγία &lt;em&gt;–bootstrap&lt;/em&gt; στην παραπάνω εντολή αφού το &lt;code class=&quot;highlighter-rouge&quot;&gt;bootstrap&lt;/code&gt; είναι το CSS framework που θα χρησιμοποιούμε.&lt;/p&gt;
+
+&lt;h3 id=&quot;προβολές-devise-με-bootstrap-και-simple_form&quot;&gt;Προβολές devise με bootstrap και simple_form&lt;/h3&gt;
+
+&lt;p&gt;Η βιβλιοθήκη &lt;code class=&quot;highlighter-rouge&quot;&gt;devise&lt;/code&gt; χρησιμοποιεί τις δικές τις προβολές (views) για πιστοποιήσεις, καταχωρήσεις νέων χρηστών κ.λπ. Παρόλα αυτά, έχουμε τρόπο να προσαρμόσουμε αυτές τις προβολές και εφόσον επιλέξαμε να χρησιμοποιήσουμε τις βιβλιοθήκες &lt;code class=&quot;highlighter-rouge&quot;&gt;bootstrap&lt;/code&gt; και &lt;code class=&quot;highlighter-rouge&quot;&gt;simple_form&lt;/code&gt;, μπορούμε να παράξουμε αυτές τις προβολές ούτως ώστε οι επιλογές μας να γίνουν σεβαστές.&lt;/p&gt;
+
+&lt;p&gt;Στη γραμμή εντολών σας:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate devise:views
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Η προβολή για την πιστοποίηση των χρηστών βρίσκεται στην τοποθεσία &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/devise/sessions/new.html.erb&lt;/code&gt; και για την καταχώρηση χρηστών στην τοποθεσία &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/devise/registrations/new.html.erb&lt;/code&gt;. Ανοίξτε αυτά τα δύο αρχεία και αλλάξτε τις κλάσεις των κουμπιών υποβολής αντικαθιστώντας την παρακάτω γραμμή&lt;sup&gt;&lt;a href=&quot;#ευχαριστίες&quot;&gt;[6]&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:submit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Sign up&quot;&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;με&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:submit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Sign up&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;class: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'btn btn-success'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ώστε τα κουμπιά να εμφανίζονται ακολουθώντας το στυλ του &lt;em&gt;bootstrap&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Πριν δούμε τις αλλαγές που κάναμε, ας κάνουμε ένα τελευταίο πράγμα στην προκαθορισμένη δομή των προβολών μας (default layout).&lt;/p&gt;
+
+&lt;p&gt;Ανοίξτε το αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/layouts/application.html.erb&lt;/code&gt; και αντικαταστήστε τα περιεχόμενά του με τα παρακάτω:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;RailsChatTutorial&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;csrf_meta_tags&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;csp_meta_tag&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stylesheet_link_tag&lt;/span&gt;    &lt;span class=&quot;s1&quot;&gt;'application'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;media: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'all'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'data-turbolinks-track'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'reload'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;javascript_include_tag&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'data-turbolinks-track'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'reload'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col-12&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ώστε να χρησιμοποιούμε το &lt;a href=&quot;https://getbootstrap.com/docs/4.0/layout/grid/&quot;&gt;Bootstrap’s πλέγμα (grid)&lt;/a&gt; στις προβολές.&lt;/p&gt;
+
+&lt;p&gt;Περιηγηθείτε στην αρχική σελίδα &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; και δείτε τι δημιουργήσαμε.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/05.png&quot; alt=&quot;Sign in with Devise and simple form&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ας προσπαθήσουμε να κάνουμε καταχώρηση χρήστη ακολουθώντας το σύνδεσμο &lt;code class=&quot;highlighter-rouge&quot;&gt;Sign up&lt;/code&gt; της φόρμας:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/06.png&quot; alt=&quot;Sign up without username&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Όπως βλέπετε, δεν υπάρχει πεδίο για τη συμπλήρωση του ονόματος χρήστη (&lt;code class=&quot;highlighter-rouge&quot;&gt;username&lt;/code&gt;) που προσθέσαμε όταν δημιουργήσαμε το μοντέλο &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt;. Για να μπορούν οι χρήστες να καταχωρούν το όνομά τους πρέπει:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;να προσθέσουμε το πεδίο στη φόρμα&lt;/li&gt;
+  &lt;li&gt;να ενημερώσουμε τη βιβλιοθήκη &lt;code class=&quot;highlighter-rouge&quot;&gt;devise&lt;/code&gt; ώστε να αναγνωρίζει και να δέχεται το νέο χαρακτηριστικό (&lt;code class=&quot;highlighter-rouge&quot;&gt;username&lt;/code&gt;) διαφορετικά ο ελεγκτής &lt;code class=&quot;highlighter-rouge&quot;&gt;ApplicationController&lt;/code&gt; θα &lt;a href=&quot;https://api.rubyonrails.org/classes/ActionController/Parameters.html&quot;&gt;το αγνοεί&lt;/a&gt; όταν θα υποβάλλουμε τη φόρμα.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Για να προσθέσουμε το πεδίο στη φόρμα καταχώρησης χρηστών, ανοίξτε το αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/devise/registrations/new.html.erb&lt;/code&gt; και προσθέστε αυτές τις γραμμές μεταξύ των πεδίων &lt;code class=&quot;highlighter-rouge&quot;&gt;email&lt;/code&gt; και &lt;code class=&quot;highlighter-rouge&quot;&gt;password&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;ss&quot;&gt;required: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Κατόπιν, ανοίξτε τον ελεγκτή της εφαρμογής &lt;code class=&quot;highlighter-rouge&quot;&gt;app/controllers/application_controller.rb&lt;/code&gt; για να ρυθμίσετε καταλλήλως τα επιτρεπόμενα χαρακτηριστικά. Αλλάξτε τα περιεχόμενά του στα παρακάτω:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ApplicationController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActionController&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;before_action&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:authenticate_user!&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;before_action&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:configure_permitted_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;if: :devise_controller?&lt;/span&gt;
+
+  &lt;span class=&quot;kp&quot;&gt;protected&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;configure_permitted_parameters&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;devise_parameter_sanitizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;permit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:sign_up&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;keys: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Αυτό ήταν, περιηγηθείτε ξανά στην αρχική σελίδα και δοκιμάστε να καταχωρηθείτε ως χρήστες&lt;sup&gt;&lt;a href=&quot;#ευχαριστίες&quot;&gt;[5]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/07.png&quot; alt=&quot;Sign up with username&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;καθάρισμα-μη-χρησιμοποιούμενων-στοιχείων&quot;&gt;Καθάρισμα μη χρησιμοποιούμενων στοιχείων&lt;/h3&gt;
+
+&lt;p&gt;Δε θα χρησιμοποιήσουμε &lt;code class=&quot;highlighter-rouge&quot;&gt;coffee script&lt;/code&gt; ή τα &lt;code class=&quot;highlighter-rouge&quot;&gt;turbolinks&lt;/code&gt; οπότε ας αφαιρέσουμε τις σχετικές αναφορές.&lt;/p&gt;
+
+&lt;p&gt;Ανοίξτε το &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; και αφαιρέστε τις παρακάτω γραμμές:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Use CoffeeScript for .coffee assets and views&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'coffee-rails'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'~&amp;gt; 4.2'&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'turbolinks'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'~&amp;gt; 5'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ανοίξτε το αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/javascripts/application.js&lt;/code&gt; και αφαιρέστε την παρακάτω γραμμή:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//= require turbolinks&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ανοίξτε το &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/layouts/application.html.erb&lt;/code&gt; και αλλάξτε τις παρακάτω γραμμές&lt;sup&gt;&lt;a href=&quot;#ευχαριστίες&quot;&gt;[3]&lt;/a&gt;&lt;/sup&gt; από:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stylesheet_link_tag&lt;/span&gt;    &lt;span class=&quot;s1&quot;&gt;'application'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;media: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'all'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'data-turbolinks-track'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'reload'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;javascript_include_tag&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'data-turbolinks-track'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'reload'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;σε&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stylesheet_link_tag&lt;/span&gt;    &lt;span class=&quot;s1&quot;&gt;'application'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;media: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'all'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;javascript_include_tag&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ελέγξτε ότι ο φάκελος &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/javascripts&lt;/code&gt; δεν έχει αρχεία με κατάληξη &lt;code class=&quot;highlighter-rouge&quot;&gt;.coffee&lt;/code&gt; και αν έχει, αφαιρέστε τα.&lt;sup&gt;&lt;a href=&quot;#ευχαριστίες&quot;&gt;2&lt;/a&gt;&lt;sup&gt;&lt;/sup&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Στη γραμμή εντολών τέλος, εκτελέστε:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails tmp:cache:clear
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;για να καθαρίσετε ότι αρχεία coffee scripts είχαν ενδεχομένως ενταχθεί στην cache.&lt;/p&gt;
+
+&lt;p&gt;Αυτά. Επανεκκινήστε τον εξυπηρετητή.&lt;/p&gt;
+
+&lt;h3 id=&quot;προσθήκη-μπάρας-πλοήγησης&quot;&gt;Προσθήκη μπάρας πλοήγησης&lt;/h3&gt;
+
+&lt;p&gt;Για να βελτιώσουμε τη χρηστικότητα της εφαρμογής θα προσθέσουμε μια &lt;a href=&quot;https://getbootstrap.com/docs/4.0/components/navbar/&quot;&gt;μπάρα πλοήγησης&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Δημιουργήστε το φάκελο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/shared&lt;/code&gt; και ένα αρχείο μέσα του με το όνομα &lt;code class=&quot;highlighter-rouge&quot;&gt;_navigation_bar.html.erb&lt;/code&gt;. Αυτό θα είναι ένα απόσπασμα (partial) που θα εμφανίζει την μπάρα πλοήγησης και που στη συνέχεια θα προσθέσουμε στην κεντρική δομή των ιστοσελίδων της εφαρμογής (application layout) για να εμφανίζεται σε όλες τις σελίδες. Προσθέστε μέσα του τα παρακάτω:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbar navbar-expand-lg navbar-dark bg-dark justify-content-between&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbar-brand&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Rails chat tutorial&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbar-toggler&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-toggle=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;collapse&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#nav-bar-collapse&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-controls=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbarColor01&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-expanded=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-label=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Toggle navigation&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbar-toggler-icon&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_user&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dropdown&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nav-link dropdown-toggle&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbarDropdown&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-toggle=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dropdown&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-haspopup=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-expanded=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;avatar&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gravatar_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dropdown-menu dropdown-menu-right&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-labelledby=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbarDropdown&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;link_to&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Logout'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destroy_user_session_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;method: :delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;class: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'dropdown-item'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Δώστε προσοχή στη γραμμή &lt;code class=&quot;highlighter-rouge&quot;&gt;gravatar_url(current_user)&lt;/code&gt;. Αυτή είναι μια βοηθητική μέθοδος που θα χρησιμοποιούμε για να εμφανίζουμε την εικόνα προφίλ (&lt;code class=&quot;highlighter-rouge&quot;&gt;gravatar&lt;/code&gt;) των πιστοποιημένων χρηστών. Δεν είναι συστημική μέθοδος, θα την υλοποιήσουμε εμείς αλλά είναι αρκετά απλή.&lt;/p&gt;
+
+&lt;p&gt;Ανοίξτε το αρχείο με τις βοηθητικές μεθόδους &lt;code class=&quot;highlighter-rouge&quot;&gt;app/helpers/application_helper.rb&lt;/code&gt; και προσθέστε τον παρακάτω κώδικα:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;gravatar_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gravatar_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Digest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MD5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hexdigest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;downcase&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://gravatar.com/avatar/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gravatar_id&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.png&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημείωση&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Όπως μπορείτε να δείτε το όνομα του χρήστη, η εικόνα προφίλ και ο σύνδεσμος εξόδου από την εφαρμογή θα εμφανίζονται μόνο όταν ο χρήστης έχει συνδεθεί.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Η εικόνα προφίλ έχει μια CSS κλάση &lt;code class=&quot;highlighter-rouge&quot;&gt;avatar&lt;/code&gt;. Πρέπει να ορίσουμε αυτήν την κλάση σε κάποιο αρχείο stylesheet της εφαρμογής. Δημιουργήστε ένα αρχείο (στο οποίο θα συγκεντρώσουμε όλες τις CSS κλάσεις που θα χρησιμοποιήσουμε πέραν αυτών που παρέχονται από το &lt;code class=&quot;highlighter-rouge&quot;&gt;bootstrap&lt;/code&gt;) με το όνομα &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets/rails-chat-tutorial.scss&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Για την ώρα προσθέστε τον κανόνα για την εικόνα προφίλ:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.avatar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;max-height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;30px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;15px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;vertical-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;middle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;και ανοίξτε το αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;application.scss&lt;/code&gt; για να το προσθέσετε στο μητρώο stylesheet της εφαρμογής. Προσθέστε τη γραμμή:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@import &quot;rails-chat-tutorial&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Τώρα θα προσθέσουμε το απόσπασμα της μπάρας πλοήγησης που δημιουργήσαμε στην προκαθορισμένη δομή των σελίδων της εφαρμογής. Ανοίξτε το αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/layouts/application.html.erb&lt;/code&gt; και αλλάξτε τα περιεχόμενά του στα παρακάτω:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;RailsChatTutorial&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;csrf_meta_tags&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;csp_meta_tag&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stylesheet_link_tag&lt;/span&gt;    &lt;span class=&quot;s1&quot;&gt;'application'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;media: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'all'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;javascript_include_tag&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col-12&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;partial: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'shared/navigation_bar'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;my-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Φορτώστε ξανά την αρχική σελίδα και δείτε την μπάρα.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/08.png&quot; alt=&quot;Sign up with navigation bar&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Τέλεια. Συμπληρώστε τα επιθυμητά στοιχεία εισόδου σας και υποβάλετε τη φόρμα.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/09.png&quot; alt=&quot;Signed in&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;διαχείριση-δωματίων&quot;&gt;Διαχείριση δωματίων&lt;/h3&gt;
+
+&lt;p&gt;Θα δημιουργήσουμε μια απλή δομή για τα δωμάτια.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Μια μικρή στήλη που θα εμφανίζει κάθετα όλα τα διαθέσιμα δωμάτια&lt;/li&gt;
+  &lt;li&gt;Μια μεγάλη στήλη που θα περιέχει τα μηνύματα και τη φόρμα υποβολής μηνύματος.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Οι αρχική σελίδα των δωματίων θα έχει τη δεξιά στήλη άδεια, η τελευταία θα εμφανίζεται μόνο όταν ο χρήστης έχει επιλέξει συγκεκριμένο δωμάτιο.&lt;/p&gt;
+
+&lt;p&gt;Τέλος, στην αρχική σελίδα των δωματίων θα παρέχουμε και την επιλογή για δημιουργία νέου δωματίου.&lt;/p&gt;
+
+&lt;h4 id=&quot;αρχική-σελίδα-δωματίων&quot;&gt;Αρχική σελίδα δωματίων&lt;/h4&gt;
+
+&lt;p&gt;Πρώτα θα πρέπει να φορτώσουμε όλα τα διαθέσιμα δωμάτια στον ελεγκτή &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomsController&lt;/code&gt;. Ανοίξτε το αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/controllers/rooms_controller.rb&lt;/code&gt; και αλλάξτε την μέθοδο &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; όπως παρακάτω:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@rooms&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;all&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ανοίξτε την προβολή &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/rooms/index.html.erb&lt;/code&gt; και αλλάξτε τα περιεχόμενά της στα παρακάτω&lt;sup&gt;&lt;a href=&quot;#ευχαριστίες&quot;&gt;[8]&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col-12 col-md-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mb-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;link_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_room_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;class: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;btn btn-primary&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+        Create a room
+      &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@rooms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;present?&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nav flex-column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@rooms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;room&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;link_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;class: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;nav-link room-nav-link&quot;&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        The are no rooms
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alert alert-primary&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;h4&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alert-heading&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        Welcome to the RailsChatTutorial!
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/h4&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
+        We need to talk.
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
+        You can create or join a room from the sidebar.
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Αν υπάρχουν δωμάτια, η αριστερή στήλη θα εμφανίζει μια κάθετη πλοήγηση με συνδέσμους που οδηγούν στη σελίδα κάθε δωματίου. Η δεξιά στήλη εμφανίζει ένα απλό μήνυμα καλωσορίσματος στην εφαρμογή.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/10.png&quot; alt=&quot;Room index&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Πατώντας το κουμπί &lt;code class=&quot;highlighter-rouge&quot;&gt;Create a room&lt;/code&gt; εμφανίζεται ένα αναμενόμενο λάθος καθώς ο ελεγκτής δεν υποστηρίζει ακόμη την ενέργεια δημιουργίας δωματίου.&lt;/p&gt;
+
+&lt;h4 id=&quot;δημιουργία-και-επεξεργασία-δωματίου&quot;&gt;Δημιουργία και επεξεργασία δωματίου&lt;/h4&gt;
+
+&lt;p&gt;Θα ορίσουμε τις ενέργειες για τη δημιουργία και την επεξεργασία ενός δωματίου.&lt;/p&gt;
+
+&lt;p&gt;Ανοίξτε τον ελεγκτή των δωματίων &lt;code class=&quot;highlighter-rouge&quot;&gt;app/controllers/rooms_controller.rb&lt;/code&gt; και αλλάξτε τα περιεχόμενά του ως εξής:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RoomsController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationController&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Loads:&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# @rooms = all rooms&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# @room = current room when applicable&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;before_action&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:load_entities&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@rooms&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;all&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;permitted_parameters&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;save&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;flash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Room &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; was created successfully&quot;&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;redirect_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rooms_path&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:new&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;edit&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;update_attributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;permitted_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;flash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:success&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Room &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; was updated successfully&quot;&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;redirect_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rooms_path&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:new&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;kp&quot;&gt;protected&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;load_entities&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@rooms&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;all&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;permitted_parameters&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;permit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημείωση&lt;/strong&gt;: φορτώνουμε από πριν τις μεταβλητές που κρατούν τα δωμάτια (&lt;code class=&quot;highlighter-rouge&quot;&gt;@rooms&lt;/code&gt;)  και το τρέχον δωμάτιο (&lt;code class=&quot;highlighter-rouge&quot;&gt;@room&lt;/code&gt;) ώστε να είναι διαθέσιμες σε όλες τις ενέργειες χρησιμοποιώντας την οδηγία &lt;code class=&quot;highlighter-rouge&quot;&gt;before_action :load_entities&lt;/code&gt; (action hook).&lt;/p&gt;
+
+&lt;p&gt;Θα δημιουργήσουμε μια απλή φόρμα για το μοντέλο &lt;code class=&quot;highlighter-rouge&quot;&gt;Room&lt;/code&gt; και θα τη χρησιμοποιήσουμε και για τη δημιουργία αλλά και για την επεξεργασία ενός δωματίου. Δημιουργήστε την προβολή &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/rooms/_form.html.erb&lt;/code&gt; και προσθέστε τα παρακάτω:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;simple_form_for&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;submit&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Save&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;class: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'btn btn-success'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Στη συνέχεια, δημιουργήστε τις προβολές των ενεργειών &lt;code class=&quot;highlighter-rouge&quot;&gt;new&lt;/code&gt; και &lt;code class=&quot;highlighter-rouge&quot;&gt;edit&lt;/code&gt; αντίστοιχα:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;app/views/rooms/new.html.erb&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;
+  Creating a room  
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;partial: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'form'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;app/views/rooms/edit.html.erb&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;
+  Editing room &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;partial: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'form'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ώρα να φτιάξουμε το πρώτο μας δωμάτιο. Από την αρχική σελίδα των δωματίων, πατήστε το κουμπί &lt;code class=&quot;highlighter-rouge&quot;&gt;Create a room&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/11.png&quot; alt=&quot;New room&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Σώστε το και ορίστε:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/12.png&quot; alt=&quot;Room index with rooms&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Προσθέστε την παρακάτω κλάση στο αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets/rails-chat-tutorial.scss&lt;/code&gt; για να βελτιώσουμε την εμφάνιση των δωματίων.&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.room-nav-link&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lighten&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;primary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lighten&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;primary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;45%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;err&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;.room-nav-link&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;border-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/13.png&quot; alt=&quot;Room index with improved rooms&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημείωση&lt;/strong&gt;: Θα προσθέσουμε παρακάτω τον σύνδεσμο επεξεργασίας (&lt;code class=&quot;highlighter-rouge&quot;&gt;edit&lt;/code&gt;) ενός δωματίου.&lt;/p&gt;
+
+&lt;p&gt;Πριν προχωρήσουμε στη σελίδα προβολής ενός δωματίου, θα αλλάξουμε τον κώδικα της αρχικής σελίδας των δωματίων ώστε να μπορούμε να χρησιμοποιήσουμε την αριστερή στήλη και μέσα στη σελίδα ενός δωματίου.&lt;/p&gt;
+
+&lt;p&gt;Δημιουργήστε το απόσπασμα προβολής &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/rooms/_rooms.html.erb&lt;/code&gt; με τα εξής περιεχόμενα:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mb-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;link_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_room_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;class: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'btn btn-primary'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    Create a room
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@rooms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;present?&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nav flex-column&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@rooms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;room&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;link_to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;class: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'nav-link room-nav-link'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-muted&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    The are no rooms
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;και προσαρμόστε την αρχική σελίδα των δωματίων &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/rooms/index.html.erb&lt;/code&gt; ώστε να το χρησιμοποιεί:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col-12 col-md-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;partial: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'rooms'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alert alert-primary&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;h4&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;alert-heading&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        Welcome to the RailsChatTutorial!
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/h4&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
+        We need to talk.
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;
+        You can create or join a room from the sidebar.
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;σελίδα-δωματίου&quot;&gt;Σελίδα δωματίου&lt;/h4&gt;
+
+&lt;p&gt;Προσθέστε την ενέργεια προβολής ενός δωματίου &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt; στον ελεγκτή των δωματίων &lt;code class=&quot;highlighter-rouge&quot;&gt;app/controllers/rooms_controller.rb&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;show&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@room_message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;RoomMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;room: &lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@room_messages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;room_messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;includes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημειώσεις:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Δημιουργούμε ένα νέο μήνυμα (&lt;code class=&quot;highlighter-rouge&quot;&gt;@room_message&lt;/code&gt;) για να το χρησιμοποιήσουμε στην προβολή όταν θα δημιουργήσουμε τη φόρμα για την υποβολή νέου μηνύματος.&lt;/li&gt;
+  &lt;li&gt;Όταν εμφανίζουμε ένα μήνυμα στο δωμάτιο, προσπελαύνουμε την email διεύθυνση του χρήστη που το δημιούργησε για να μπορούμε να υπολογίσουμε το hash της &lt;code class=&quot;highlighter-rouge&quot;&gt;gravatar&lt;/code&gt; εικόνας προφίλ του. Χρησιμοποιήσαμε λοιπόν την μέθοδο &lt;code class=&quot;highlighter-rouge&quot;&gt;.includes(:user)&lt;/code&gt; στο ερώτημα της βάσης για τα μηνύματα δωματίου &lt;code class=&quot;highlighter-rouge&quot;&gt;@room_messages&lt;/code&gt; ώστε να προσκομίζονται και οι χρήστες ταυτόχρονα για να αποφύγουμε το πρόβλημα με τα &lt;a href=&quot;https://medium.com/@bretdoucette/n-1-queries-and-how-to-avoid-them-a12f02345be5&quot;&gt;N+1 ερωτήματα&lt;/a&gt;&lt;sup&gt;&lt;a href=&quot;#ευχαριστίες&quot;&gt;[1]&lt;/a&gt;&lt;/sup&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Δημιουργήστε την προβολή δωματίου &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/rooms/show.html.erb&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col-12 col-md-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;partial: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'rooms'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;chat&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room_messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;room_message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room_message&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;simple_form_for&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;remote: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;input-group mb-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;as: :string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                 &lt;span class=&quot;ss&quot;&gt;wrapper: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                 &lt;span class=&quot;ss&quot;&gt;label: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                 &lt;span class=&quot;ss&quot;&gt;input_html: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                                   &lt;span class=&quot;ss&quot;&gt;class: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'chat-input'&lt;/span&gt;
+                                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;input-group-append&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;submit&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Send&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;class: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'btn btn-primary chat-input'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:room_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;as: :hidden&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημειώσεις:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Επαναχρησιμοποιήσαμε το απόσπασμα προβολής &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/rooms/_rooms.html.erb&lt;/code&gt; που δημιουργήσαμε στο προηγούμενο βήμα&lt;/li&gt;
+  &lt;li&gt;Προσθέσαμε ένα &lt;code class=&quot;highlighter-rouge&quot;&gt;div&lt;/code&gt; με κλάση &lt;code class=&quot;highlighter-rouge&quot;&gt;.chat&lt;/code&gt; και σε αυτό θα εμφανίζονται τα μηνύματα του δωματίου&lt;/li&gt;
+  &lt;li&gt;Προσθέσαμε μια φόρμα για το μήνυμα &lt;code class=&quot;highlighter-rouge&quot;&gt;@room_message&lt;/code&gt; που αρχικοποιήσαμε στον ελεγκτή. Επίσης χρησιμοποιήσαμε την οδηγία &lt;code class=&quot;highlighter-rouge&quot;&gt;remote: true&lt;/code&gt; όταν αρχικοποιήσαμε τη φόρμα συνεπώς η υποβολή της θα γίνεται μέσω &lt;strong&gt;Ajax&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Προσθέσαμε ένα κρυφό πεδίο για το χαρακτηριστικό &lt;code class=&quot;highlighter-rouge&quot;&gt;:room_id&lt;/code&gt; ώστε να είναι διαθέσιμο στον ελεγκτή των μηνυμάτων &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomMessagesController&lt;/code&gt; κατά την υποβολή της φόρμας&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ας ομορφύνουμε τα στοιχεία της συνομιλίας προσθέτοντας τις παρακάτω γραμμές στο αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets/rails-chat-tutorial.scss&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.chat&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lighten&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;secondary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lighten&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;secondary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50vh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;overflow-y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nc&quot;&gt;.chat-input&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;border-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Περιηγηθείτε σε ένα δωμάτιο για να δούμε τι έχουμε κάνει μέχρι στιγμής.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/14.png&quot; alt=&quot;Room page with chat&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Πατώντας το κουμπή &lt;code class=&quot;highlighter-rouge&quot;&gt;Send&lt;/code&gt; δε συμβαίνει τίποτα στη σελίδα αλλά αν κοιτάξετε το αρχείο καταγραφής (log) του εξυπηρετητή θα παρατηρήσετε το εξής:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;AbstractController::ActionNotFound (The action 'create' could not be found for RoomMessagesController):
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ας το διορθώσουμε.&lt;/p&gt;
+
+&lt;h4 id=&quot;δημιουργία-μηνυμάτων&quot;&gt;Δημιουργία μηνυμάτων&lt;/h4&gt;
+
+&lt;p&gt;Αυτό θα είναι απλό. Το μόνο που έχουμε να κάνουμε είναι να υλοποιήσουμε την ενέργεια της δημιουργίας - &lt;code class=&quot;highlighter-rouge&quot;&gt;create&lt;/code&gt; στον ελεγκτή των μηνυμάτων - &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomMessagesController&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;app/controllers/room_messages_controller.rb&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RoomMessagesController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationController&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;before_action&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:load_entities&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@room_message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;RoomMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;user: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                       &lt;span class=&quot;ss&quot;&gt;room: &lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                       &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;dig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:room_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;kp&quot;&gt;protected&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;load_entities&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;dig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:room_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:room_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημειώσεις:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;φορτώνουμε εκ των προτέρων το δωμάτιο χρησιμοποιώντας την παράμετρο &lt;code class=&quot;highlighter-rouge&quot;&gt;room_id&lt;/code&gt; που προσθέσαμε προηγουμένως σαν κρυφό πεδίο στη φόρμα του μηνύματος&lt;/li&gt;
+  &lt;li&gt;δημιουργούμε ένα νέο μήνυμα θέτοντας του ως χρήστη τον χρήστη που είναι πιστοποιημένος κατά την υποβολή&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Αν δοκιμάσετε να υποβάλετε ένα μήνυμα τώρα, και πάλι δε θα δείτε να συμβαίνει κάτι στη σελίδα αλλά στα logs του εξυπηρετητή θα δείτε ότι το μήνυμα δημιουργήθηκε επιτυχώς.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Started POST &quot;/room_messages&quot; for ::1 at 2019-04-04 19:24:33 +0300
+Processing by RoomMessagesController#create as JS
+  Parameters: {&quot;utf8&quot;=&amp;gt;&quot;✓&quot;, &quot;room_message&quot;=&amp;gt;{&quot;message&quot;=&amp;gt;&quot;My first message&quot;, &quot;room_id&quot;=&amp;gt;&quot;8&quot;}, &quot;commit&quot;=&amp;gt;&quot;Send&quot;}
+  User Load (0.2ms)  SELECT  &quot;users&quot;.* FROM &quot;users&quot; WHERE &quot;users&quot;.&quot;id&quot; = ? ORDER BY &quot;users&quot;.&quot;id&quot; ASC LIMIT ?  [[&quot;id&quot;, 1], [&quot;LIMIT&quot;, 1]]
+  ↳ /home/iridakos/.rvm/gems/ruby-2.6.2@rails-chat-tutorial/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Room Load (0.2ms)  SELECT  &quot;rooms&quot;.* FROM &quot;rooms&quot; WHERE &quot;rooms&quot;.&quot;id&quot; = ? LIMIT ?  [[&quot;id&quot;, 8], [&quot;LIMIT&quot;, 1]]
+  ↳ app/controllers/room_messages_controller.rb:13
+   (0.1ms)  begin transaction
+  ↳ app/controllers/room_messages_controller.rb:5
+  RoomMessage Create (0.7ms)  INSERT INTO &quot;room_messages&quot; (&quot;room_id&quot;, &quot;user_id&quot;, &quot;message&quot;, &quot;created_at&quot;, &quot;updated_at&quot;) VALUES (?, ?, ?, ?, ?)  [[&quot;room_id&quot;, 8], [&quot;user_id&quot;, 1], [&quot;message&quot;, &quot;My first message&quot;], [&quot;created_at&quot;, &quot;2019-04-04 16:24:33.456641&quot;], [&quot;updated_at&quot;, &quot;2019-04-04 16:24:33.456641&quot;]]
+  ↳ app/controllers/room_messages_controller.rb:5
+   (4.0ms)  commit transaction
+  ↳ app/controllers/room_messages_controller.rb:5
+No template found for RoomMessagesController#create, rendering head :no_content
+Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Οι χρήστες περιμένουν το πεδίο του μηνύματος να καθαρίζει μετά την αποστολή ενός μηνύματος. Ας μην τους αφήσουμε να περιμένουν.&lt;/p&gt;
+
+&lt;p&gt;Δημιουργήστε ένα αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/javascripts/room.js&lt;/code&gt; και προσθέστε τα παρακάτω:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#new_room_message&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;ajax:success&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;input[type=&quot;text&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Συνδέουμε το συμβάν &lt;code class=&quot;highlighter-rouge&quot;&gt;ajax:success&lt;/code&gt; που πυροδοτείται από το &lt;a href=&quot;https://guides.rubyonrails.org/working_with_javascript_in_rails.html#form-with&quot;&gt;Rails&lt;/a&gt; στην επιτυχή υποβολή της φόρμας και το μόνο που κάνουμε είναι ότι καθαρίζουμε τα περιεχόμενα του πεδίου κειμένου του μηνύματος.&lt;/p&gt;
+
+&lt;p&gt;Φορτώστε εκ νέου τη σελίδα και προσπαθήστε να υποβάλετε ξανά και δείτε την αλλαγή που μόλις κάναμε. Το πεδίο του μηνύματος θα πρέπει να καθαρίσει μετά την υποβολή της φόρμας.&lt;/p&gt;
+
+&lt;h4 id=&quot;εμφάνιση-μηνυμάτων&quot;&gt;Εμφάνιση μηνυμάτων&lt;/h4&gt;
+
+&lt;p&gt;Αν φορτώσετε πάλι τη σελίδα του δωματίου θα δείτε κάτι σαν αυτό:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/15.png&quot; alt=&quot;Room message to string&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ας ομορφύνουμε και τα μηνύματα.&lt;/p&gt;
+
+&lt;p&gt;Αντικαταστήστε τα περιεχόμενα της προβολής του δωματίου &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/rooms/show.html.erb&lt;/code&gt; με τα παρακάτω:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col-12 col-md-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;partial: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'rooms'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;chat&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room_messages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;room_message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;chat-message-container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row no-gutters&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col-auto text-center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+              &lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gravatar_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;room_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;avatar&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+              &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message-content&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mb-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                  &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-right&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+                  &lt;span class=&quot;nt&quot;&gt;&amp;lt;small&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;created_at&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+                  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/small&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+              &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;simple_form_for&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;remote: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;input-group mb-3&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;as: :string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                 &lt;span class=&quot;ss&quot;&gt;wrapper: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                 &lt;span class=&quot;ss&quot;&gt;label: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                 &lt;span class=&quot;ss&quot;&gt;input_html: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                                   &lt;span class=&quot;ss&quot;&gt;class: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'chat-input'&lt;/span&gt;
+                                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;input-group-append&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;submit&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Send&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;class: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'btn btn-primary chat-input'&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:room_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;as: :hidden&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;&amp;lt;%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;και προσθέστε τις παρακάτω CSS κλάσεις &lt;strong&gt;μέσα στην κλάση .chat&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.chat-message-container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;err&quot;&gt;.avatar&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nc&quot;&gt;.message-content&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;primary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;border-radius&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lighten&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;primary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;white&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.chat-message-container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;margin-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Φορτώστε ξανά τη σελίδα. Magic.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/16.png&quot; alt=&quot;Improved display of room messages&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;websockets---actioncable&quot;&gt;WebSockets - ActionCable&lt;/h2&gt;
+
+&lt;p&gt;Ήρθε η ώρα να χρησιμοποιήσουμε τα WebSockets μέσω της λειτουργικότητας ActionCable του Rails.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Action Cable seamlessly integrates WebSockets with the rest of your Rails application. It allows for real-time features to be written in Ruby in the same style and form as the rest of your Rails application, while still being performant and scalable. It’s a full-stack offering that provides both a client-side JavaScript framework and a server-side Ruby framework. You have access to your full domain model written with Active Record or your ORM of choice.
+&lt;cite&gt;– &lt;a href=&quot;https://guides.rubyonrails.org/action_cable_overview.html&quot;&gt;Action Cable Overview @ Ruby on Rails Guides (v5.2.3)&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;εγκατάσταση-redis&quot;&gt;Εγκατάσταση redis&lt;/h3&gt;
+
+&lt;p&gt;Θα χρησιμοποιήσουμε τον προσαρμογέα (adapter) &lt;code class=&quot;highlighter-rouge&quot;&gt;redis&lt;/code&gt; που αποτελεί &lt;a href=&quot;https://guides.rubyonrails.org/action_cable_overview.html#redis-adapter&quot;&gt;μια ασφαλή επιλογή για παραγωγικά περιβάλλοντα&lt;/a&gt; σε αντίθεση με την επιλογή &lt;code class=&quot;highlighter-rouge&quot;&gt;async&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Πρώτα πρέπει να εγκαταστήσετε την εφαρμογή &lt;a href=&quot;https://redis.io/&quot;&gt;redis&lt;/a&gt; στο σύστημά σας.&lt;/p&gt;
+
+&lt;p&gt;Για να το εγκαταστήσω σε Ubuntu χρειάστηκε απλά να εκτελέσω τις παρακάτω εντολές.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;redis-server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Για να ελέγξετε ότι η εγκατάσταση ήταν επιτυχής, βεβαιωθείτε ότι παίρνετε PONG όταν εκτελείτε:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ redis-cli
+127.0.0.1:6379&amp;gt; ping
+PONG
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;ρύθμιση-του-actioncable&quot;&gt;Ρύθμιση του ActionCable&lt;/h3&gt;
+
+&lt;p&gt;Αφου εργαζόμαστε σε περιβάλλον ανάπτυξης (development environment), ανοίξτε το αρχείο ρυθμίσεων του στοιχείου ActionCable &lt;code class=&quot;highlighter-rouge&quot;&gt;config/cable.yml&lt;/code&gt; και αντικαταστήστε τα περιεχόμενά του με τα παρακάτω:&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;development&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;redis&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%= ENV.fetch(&quot;REDIS_URL&quot;) { &quot;redis://localhost:6379/1&quot; } %&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;channel_prefix&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rails-chat-tutorial_development&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;async&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;production&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;adapter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;redis&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;%= ENV.fetch(&quot;REDIS_URL&quot;) { &quot;redis://localhost:6379/1&quot; } %&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;channel_prefix&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rails-chat-tutorial_production&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημείωση:&lt;/strong&gt; προσθέσαμε την επιλογή &lt;code class=&quot;highlighter-rouge&quot;&gt;channel_prefix&lt;/code&gt; επειδή:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Additionally, a channel_prefix may be provided to avoid channel name collisions when using the same Redis server for multiple applications
+&lt;cite&gt;– &lt;a href=&quot;https://guides.rubyonrails.org/action_cable_overview.html#redis-adapter&quot;&gt;Action Cable Overview # Redis Adapter @ Ruby on Rails Guides (v5.2.3)&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Τέλος, θα προσθέσουμε την απαίτηση βιβλιοθήκης για τον προσαρμογέα &lt;code class=&quot;highlighter-rouge&quot;&gt;redis&lt;/code&gt; στο μητρώο απαιτήσεων &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'redis'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Μην ξεχνάτε να εκτελείτε &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle&lt;/code&gt; κάθε φορά που αλλάζετε αυτό το αρχείο.&lt;/p&gt;
+
+&lt;h3 id=&quot;ρύθμιση-devise-για-πιστοποίηση-συνδέσεων-websocket&quot;&gt;Ρύθμιση &lt;code class=&quot;highlighter-rouge&quot;&gt;devise&lt;/code&gt; για πιστοποίηση συνδέσεων WebSocket&lt;/h3&gt;
+
+&lt;p&gt;Όταν εγκαθίσταται μια σύνδεση WebSocket, δεν έχουμε πρόσβαση στη συνεδρία του χρήστη (user session) αλλά έχουμε πρόσβαση τα cookies του. Έτσι, για να μπορούμε να πιστοποιήσουμε τον χρήστη χρειάζεται να κάνουμε κάποια πράγματα σχετικά με το &lt;code class=&quot;highlighter-rouge&quot;&gt;devise&lt;/code&gt; (&lt;a href=&quot;https://rubytutorial.io/actioncable-devise-authentication/&quot;&gt;credits to Greg Molnar&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Δημιουργήστε έναν αρχικοποιητή για τα “warden hooks” με το όνομα &lt;code class=&quot;highlighter-rouge&quot;&gt;config/initializers/warden_hooks.rb&lt;/code&gt; και προσθέστε τις παρακάτω γραμμές:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Warden&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Manager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;after_set_user&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;opts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;cookies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;signed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Warden&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Manager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;before_logout&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;cookies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;signed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;nil&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Επεξήγηση:&lt;/strong&gt; Προσθέτουμε ένα cookie με το αναγνωριστικό του χρήστη (user id) μετά την επιτυχή πιστοποίηση του και το αφαιρούμε κατά την έξοδό του από την εφαρμογή.&lt;/p&gt;
+
+&lt;h3 id=&quot;ρύθμιση-της-σύνδεση-websocket&quot;&gt;Ρύθμιση της σύνδεση WebSocket&lt;/h3&gt;
+
+&lt;p&gt;Ανοίξτε το αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/channels/application_cable/connection.rb&lt;/code&gt; και αλλάξτε τα περιεχόμενά του ως εξής:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ApplicationCable&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Connection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActionCable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Connection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;identified_by&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:current_user&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;connect&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;current_user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;find_verified_user&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;kp&quot;&gt;private&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;find_verified_user&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;verified_user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;id: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cookies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;signed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'user.id'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;verified_user&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;reject_unauthorized_connection&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Επεξήγηση:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Here identified_by is a connection identifier that can be used to find the specific connection later. Note that anything marked as an identifier will automatically create a delegate by the same name on any channel instances created off the connection.
+&lt;cite&gt;– &lt;a href=&quot;https://guides.rubyonrails.org/action_cable_overview.html#connection-setup&quot;&gt;Action Cable Overview # Connection setup @ Ruby on Rails Guides (v5.2.3)&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Στη μέθοδο &lt;code class=&quot;highlighter-rouge&quot;&gt;find_verified_user&lt;/code&gt; προσπελαύνουμε το cookie που θέσαμε νωρίτερα στον αρχικοποιητή των &lt;code class=&quot;highlighter-rouge&quot;&gt;warden hooks&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;δημιουργία-του-καναλιού-δωματίου&quot;&gt;Δημιουργία του καναλιού δωματίου&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A channel encapsulates a logical unit of work, similar to what a controller does in a regular MVC setup.
+&lt;cite&gt;– &lt;a href=&quot;https://guides.rubyonrails.org/action_cable_overview.html#channelsp&quot;&gt;Action Cable Overview # Channels @ Ruby on Rails Guides (v5.2.3)&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Θα δημιουργήσουμε το κανάλι &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomChannel&lt;/code&gt; στο οποίο θα εγγράφονται όλες οι σελίδες δωματίων.&lt;/p&gt;
+
+&lt;p&gt;Δημιουργήστε το κανάλι με το όνομα &lt;code class=&quot;highlighter-rouge&quot;&gt;app/channels/room_channel.rb&lt;/code&gt; και τα εξής περιεχόμενα:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RoomChannel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationCable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Channel&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;subscribed&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;room&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;stream_for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# or&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# stream_from &quot;room_#{params[:room]}&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Επεξήγηση&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Η μέθοδος &lt;code class=&quot;highlighter-rouge&quot;&gt;subscribed&lt;/code&gt; εκτελείται κάθε φορά που εγγράφεται κάποιος στο κανάλι και είναι υπεύθυνη να ρυθμίσει τη ροή μέσω της οποίας τα δεδομένα θα πηγαινοέρχονται.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Θα ρυθμίσουμε τον κώδικα της σελίδα δωματίου αργότερα με τέτοιο τρόπο ώστε κατά την εγγραφή στο κανάλι να αποστέλλεται και η παράμετρος του δωματίου &lt;code class=&quot;highlighter-rouge&quot;&gt;room&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Έχουμε δύο επιλογές:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Να χρησιμοποιήσουμε τη μέθοδο &lt;code class=&quot;highlighter-rouge&quot;&gt;stream_for&lt;/code&gt;: με αυτό τον τρόπο το Rails αυτόματα παράγει ένα όνομα ροής για το εκάστοτε μοντέλο (&lt;code class=&quot;highlighter-rouge&quot;&gt;room&lt;/code&gt; στην περίπτωσή μας), για παράδειγμα: “room:asdfwer234”. Όταν στη συνέχεια θέλουμε να στείλουμε δεδομένα σε αυτή τη ροή, το μόνο που έχουμε να κάνουμε είναι να εκτελέσουμε τη μέθοδο &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomChannel.broadcast_to(room_object, data)&lt;/code&gt; όπου το Rails θα ανακτήσει αυτόματα το όνομα της ροής βάσει της παραμέτρου &lt;code class=&quot;highlighter-rouge&quot;&gt;room_object&lt;/code&gt;. Με άλλα λόγια, δε χρειάζεται εμείς να υπολογίζουμε το όνομα μιας ροής δωματίου στην οποία θέλουμε να στείλουμε/λάβουμε δεδομένα.
+    &lt;ul&gt;
+      &lt;li&gt;αυτή η επιλογή είναι μόνο όταν το κανάλι χειρίζεται εγγραφές (subscriptions) που συνδέονται με μοντέλα, στην περίπτωσή μας κάποιο δωμάτιο&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Να χρησιμοποιήσουμε τη μέθοδο &lt;code class=&quot;highlighter-rouge&quot;&gt;stream_from&lt;/code&gt;: ορίζουμε μόνοι μας το όνομα της ροής και στη συνέχεια, όταν θέλουμε να στείλουμε δεδομένα στη ροή χρησιμοποιούμε: &lt;code class=&quot;highlighter-rouge&quot;&gt;ActionCable.server.broadcast(&quot;room_#{a_room_id_here}&quot;, data)&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Διαβάστε περισσότερα &lt;a href=&quot;https://guides.rubyonrails.org/action_cable_overview.html#streams&quot;&gt;εδώ&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;αναμετάδοση-μηνυμάτων&quot;&gt;Αναμετάδοση μηνυμάτων&lt;/h3&gt;
+
+&lt;p&gt;Κάθε φορά που δημιουργείται ένα μήνυμα, θέλουμε να το αναμεταδώσουμε στη ροή του καναλιού για το συγκεκριμένο δωμάτιο.
+Για να το κάνουμε αυτό, αλλάξτε την ενέργεια δημιουργίας μηνύματος - &lt;code class=&quot;highlighter-rouge&quot;&gt;create&lt;/code&gt; του αντίστοιχου ελεγκτή &lt;code class=&quot;highlighter-rouge&quot;&gt;app/controllers/room_messages_controller.rb&lt;/code&gt; ως εξής:&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;
+  &lt;span class=&quot;vi&quot;&gt;@room_message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;RoomMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;user: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                     &lt;span class=&quot;ss&quot;&gt;room: &lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                     &lt;span class=&quot;ss&quot;&gt;message: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;dig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:room_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;no&quot;&gt;RoomChannel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;broadcast_to&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room_message&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Επεξήγηση&lt;/strong&gt;: προσθέσαμε τη γραμμή &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomChannel.broadcast_to @room, @room_message&lt;/code&gt; που θα αναμεταδώσει στη ροή του καναλιού του δωματίου (όπως εξηγήσαμε προηγουμένως) το μήνυμα &lt;code class=&quot;highlighter-rouge&quot;&gt;@room_message&lt;/code&gt; μετασχηματισμένο σε μορφή JSON μέσω της μεθόδου &lt;code class=&quot;highlighter-rouge&quot;&gt;to_json&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Έτσι, στην άλλη πλευρά, στην πλευρά του πελάτη δηλαδή, θα παραλάβουμε την JSON μορφή του μοντέλου &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomMessage&lt;/code&gt;. Για να δούμε πως είναι αυτή:&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;room_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;user_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;My first message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;created_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-04-04T17:09:00.637Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;updated_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-04-04T17:09:00.637Z&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Έχουμε σκοπό να εμφανίσουμε τα μηνύματα στη σελίδα του δωματίου μέσω Javascript και αυτή η πληροφορία που λαμβάνουμε προς το παρόν δεν είναι αρκετή. Μας λείπει η διεύθυνση της εικόνας προφίλ &lt;code class=&quot;highlighter-rouge&quot;&gt;gravatar&lt;/code&gt;. Ας την προσθέσουμε.&lt;/p&gt;
+
+&lt;p&gt;Ανοίξτε το μοντέλου του χρήστη &lt;code class=&quot;highlighter-rouge&quot;&gt;app/models/user.rb&lt;/code&gt; και προσθέστε την παρακάτω μέθοδο.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def gravatar_url
+  gravatar_id = Digest::MD5::hexdigest(email).downcase
+  &quot;https://gravatar.com/avatar/#{gravatar_id}.png&quot;
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Έχουμε ήδη υλοποιήσει αυτή τη μέθοδο στις βοηθητικές μεθόδους &lt;code class=&quot;highlighter-rouge&quot;&gt;app/helpers/application_helper.rb&lt;/code&gt; αλλά δε θα τη χρειαστούμε πλέον οπότε &lt;strong&gt;αφαιρέστε τη&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ενημερώστε το απόσπασμα της μπάρας πλοήγησης &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/shared/_navigation_bar.html.erb&lt;/code&gt; ώστε ο υπολογισμός της διεύθυνσης της εικόνας προφίλ να γίνεται πλέον από τη μέθοδο που μόλις δημιουργήσαμε:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;avatar&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;gravatar_url&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ενημερώστε και τη σελίδα δωματίου &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/rooms/show.html.erb&lt;/code&gt; αλλάξτε τη και εκεί επίσης, με:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;room_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;gravatar_url&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;avatar&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Τέλος, θα αλλάξουμε το μετασχηματισμό &lt;code class=&quot;highlighter-rouge&quot;&gt;JSON&lt;/code&gt; των μηνυμάτων - &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomMessage&lt;/code&gt; ώστε να εμπεριέχει και τη διεύθυνση της εικόνας προφίλ:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;app/models/room_message.rb&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;as_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;user_avatar_url: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;gravatar_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ας επιβεβαιώσουμε ότι ο μετασχηματισμός είναι επιτυχής:&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;room_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;user_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;My first message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;created_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-04-04T17:09:00.637Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;updated_at&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2019-04-04T17:09:00.637Z&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;user_avatar_url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://gravatar.com/avatar/02a28db6886d578f75a820b50f2dd334.png&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Μια χαρά, προχωράμε.&lt;/p&gt;
+
+&lt;h3 id=&quot;εγγραφή-στη-ροή-δωματίου&quot;&gt;Εγγραφή στη ροή δωματίου&lt;/h3&gt;
+
+&lt;p&gt;Θα προσθέσουμε κάποια δεδομένα στη σελίδα των δωματίων ώστε να μπορούμε να τα χρησιμοποιήσουμε μέσω Javascript για να πραγματοποιούμε εγγραφή στις κατάλληλες ροές κάθε φορά που επισκεπτόμαστε ένα δωμάτιο.&lt;/p&gt;
+
+&lt;p&gt;Ανοίξτε το αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/rooms/show.html.erb&lt;/code&gt; και αλλάξτε τη γραμμή στην οποία ορίζουμε το div &lt;code class=&quot;highlighter-rouge&quot;&gt;chat&lt;/code&gt; ως εξής:&lt;/p&gt;
+
+&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;chat&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-channel-subscribe=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;room&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-room-id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Επεξήγηση&lt;/strong&gt;: Προσθέσαμε δύο χαρακτηριστικά δεδομένων, ένα που ορίζει σε ποιο κανάλι θέλουμε να γραφτούμε (&lt;code class=&quot;highlighter-rouge&quot;&gt;room&lt;/code&gt;) και ένα που ορίζει σε ποιο συγκεκριμένο δωμάτιο βρισκόμαστε (&lt;code class=&quot;highlighter-rouge&quot;&gt;@room.id&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Στο τέλος του αρχείου προσθέστε το παρακάτω απόσπασμα κώδικα:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;d-none&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message-template&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;chat-message-container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row no-gutters&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col-auto text-center&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;avatar&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;user-avatar&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;col&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message-content&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mb-1&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message-text&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-right&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;small&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-role=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;message-date&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/small&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Αυτό το απόσπασμα θα χρησιμοποιείται σαν πρότυπο (template) για κάθε εισερχόμενο μήνυμα. Κάθε φορά που έρχεται κάποιο μήνυμα θα:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;κλωνοποιούμε αυτό το απόσπασμα HTML&lt;/li&gt;
+  &lt;li&gt;θα αλλάζουμε τις τιμές των κατάλληλων στοιχείων του κλωνοποιημένου πλέον αποσπάσματος και τέλος&lt;/li&gt;
+  &lt;li&gt;θα προσαρτούμε τον παραγόμενο HTML κώδικα στο τέλος του div &lt;code class=&quot;highlighter-rouge&quot;&gt;chat&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Τώρα θα δημιουργήσουμε το Javascript που θα είναι υπεύθυνο για τις εγγραφές στις ροές των καναλιών και για τον χειρισμό των εισερχόμενων δεδομένων.&lt;/p&gt;
+
+&lt;p&gt;Δημιουργήστε το αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/javascripts/channels/room_channel.js&lt;/code&gt; και προσθέστε τον παρακάτω κώδικα:&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[data-channel-subscribe=&quot;room&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;room_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;room-id&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;messageTemplate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[data-role=&quot;message-template&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;scrollHeight&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;        
+
+    &lt;span class=&quot;nx&quot;&gt;App&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;subscriptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;RoomChannel&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;room&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;room_id&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;received&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;messageTemplate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[data-role=&quot;user-avatar&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;attr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user_avatar_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[data-role=&quot;message-text&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[data-role=&quot;message-date&quot;]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;updated_at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;scrollHeight&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Επεξήγηση&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Για κάθε στοιχείο που έχει χαρακτηριστικό δεδομένων (data attribute) &lt;code class=&quot;highlighter-rouge&quot;&gt;channel-subscribe&lt;/code&gt; με τιμή &lt;code class=&quot;highlighter-rouge&quot;&gt;room&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Δημιούργησε μια εγγραφή (subscription) στο κανάλι “RoomChannel” περνώντας ως παράμετρο με όνομα &lt;code class=&quot;highlighter-rouge&quot;&gt;room&lt;/code&gt; την τιμή του &lt;code class=&quot;highlighter-rouge&quot;&gt;room-id&lt;/code&gt; χαρακτηριστικού δεδομένων (θυμηθείτε αυτή τη γραμμή στο κανάλι των δωματίων (&lt;code class=&quot;highlighter-rouge&quot;&gt;RoomChannel&lt;/code&gt;): &lt;code class=&quot;highlighter-rouge&quot;&gt;Room.find params[:room]&lt;/code&gt;)
+        &lt;ul&gt;
+          &lt;li&gt;Όταν έρχονται δεδομένα, κλωνοποίησε το πρότυπο και άλλαξε τα περιεχόμενά του βάσει των χαρακτηριστικών του εισερχόμενου αντικειμένου.&lt;/li&gt;
+          &lt;li&gt;Πρόσθεσε το νέο περιεχόμενο στο div &lt;code class=&quot;highlighter-rouge&quot;&gt;chat&lt;/code&gt; και τέλος&lt;/li&gt;
+          &lt;li&gt;Χρησιμοποίησε animation για να εντυπωσιάσεις τους χρήστες μετακινώντας σταδιακά την τρέχουσα θέση του div μηνυμάτων στο κάτω μέρος του (αν δεν έγινε κατανοητό στα ελληνικά, εννοώ να γίνει smooth scrolling στο bottom του div :).&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Αυτάααααααα! Μεγάλο άρθρο, κουράστηκε η γάτα.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/irida.jpg&quot; alt=&quot;Tired cat photo&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;ευχαριστίες&quot;&gt;Ευχαριστίες&lt;/h2&gt;
+
+&lt;p&gt;Ευχαριστώ πολύ για τα σχόλια και το feedback!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[1] Armando Andini - &lt;a href=&quot;https://github.com/iridakos/rails-chat-tutorial/issues/3&quot;&gt;N+1 queries&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[2] Rodolfo Ruiz - &lt;a href=&quot;https://github.com/iridakos/rails-chat-tutorial/issues/5&quot;&gt;Coffeescript leftovers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[3] Felix Wolfsteller - &lt;a href=&quot;https://github.com/iridakos/rails-chat-tutorial/issues/1&quot;&gt;Turbolinks leftovers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[4] Maria Kravtsova - &lt;a href=&quot;https://github.com/iridakos/rails-chat-tutorial/issues/2&quot;&gt;Migration typo&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[5][7][8] Tony Dehnke - &lt;a href=&quot;https://github.com/iridakos/rails-chat-tutorial/issues/6&quot;&gt;Sign up step&lt;/a&gt;, &lt;a href=&quot;https://github.com/iridakos/rails-chat-tutorial/issues/8&quot;&gt;Missing step for adding model relations&lt;/a&gt;, &lt;a href=&quot;https://github.com/iridakos/rails-chat-tutorial/issues/7&quot;&gt;Missing line from html code block&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[6] keytonw - &lt;a href=&quot;https://github.com/iridakos/rails-chat-tutorial/issues/9&quot;&gt;Devise view missing button class&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[9] Martin - &lt;a href=&quot;https://github.com/iridakos/rails-chat-tutorial/issues/11&quot;&gt;Mention order of requirements in application.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[10] Sumak - &lt;a href=&quot;https://github.com/iridakos/rails-chat-tutorial/issues/15&quot;&gt;Remove duplicate authentication related code&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Tue, 19 Nov 2019 08:00:00 +0200</pubDate>
+        <link>https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets</link>
+        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets</guid>
+        
+        <category>ruby</category>
+        
+        <category>rails</category>
+        
+        <category>websockets</category>
+        
+        <category>devise</category>
+        
+        <category>bootstrap</category>
+        
+        <category>chat</category>
+        
+        <category>actioncable</category>
+        
+        <category>redis</category>
+        
+        <category>featured</category>
+        
+        <category>δημοφιλή</category>
+        
+        <category>tutorial</category>
+        
+        <category>βοήθημα</category>
+        
+        <category>how-to</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Bash: Προσθέτοντας tab συμπλήρωση στα script</title>

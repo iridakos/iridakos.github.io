@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,7 @@
   <meta name="ocs-site-verification" content="e5faa08e01247c38aadf1c1737ff8136">
   <meta name="google-site-verification" content="KqOxy0ecDlfNdfO530ZAbtNBedy49hn2KziyqLK0JGo" />
 
-  <title>Creating a chat application from scratch using Rails and WebSockets</title>
+  <title>Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets</title>
 
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
 
@@ -17,24 +17,24 @@
   <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
   <!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.6" />
-<meta property="og:title" content="Creating a chat application from scratch using Rails and WebSockets" />
+<meta property="og:title" content="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" />
 <meta name="author" content="Lazarus Lazaridis" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A step by step tutorial for creating a chat application from scratch using Rails and WebSockets (ActionCable)." />
-<meta property="og:description" content="A step by step tutorial for creating a chat application from scratch using Rails and WebSockets (ActionCable)." />
-<link rel="canonical" href="https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets" />
-<meta property="og:url" content="https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets" />
+<meta name="description" content="Ένα βοήθημα που περιγράφει βήμα προς βήμα πως να δημιουργήσετε μια εφαρμογή συνομιλιών (chat) από το μηδέν με χρήση Rails και WebSockets (ActionCable)." />
+<meta property="og:description" content="Ένα βοήθημα που περιγράφει βήμα προς βήμα πως να δημιουργήσετε μια εφαρμογή συνομιλιών (chat) από το μηδέν με χρήση Rails και WebSockets (ActionCable)." />
+<link rel="canonical" href="https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets" />
+<meta property="og:url" content="https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets" />
 <meta property="og:site_name" content="iridakos" />
 <meta property="og:image" content="https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-04-04T23:00:00+03:00" />
+<meta property="article:published_time" content="2019-11-19T08:00:00+02:00" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="twitter:image" content="https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png" />
-<meta property="twitter:title" content="Creating a chat application from scratch using Rails and WebSockets" />
+<meta property="twitter:title" content="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" />
 <meta name="twitter:site" content="@lazaru_s" />
 <meta name="twitter:creator" content="@Lazarus Lazaridis" />
 <script type="application/ld+json">
-{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"image":"https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png","description":"A step by step tutorial for creating a chat application from scratch using Rails and WebSockets (ActionCable).","@type":"BlogPosting","url":"https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets","headline":"Creating a chat application from scratch using Rails and WebSockets","dateModified":"2019-04-04T23:00:00+03:00","datePublished":"2019-04-04T23:00:00+03:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets"},"@context":"https://schema.org"}</script>
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"image":"https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png","description":"Ένα βοήθημα που περιγράφει βήμα προς βήμα πως να δημιουργήσετε μια εφαρμογή συνομιλιών (chat) από το μηδέν με χρήση Rails και WebSockets (ActionCable).","@type":"BlogPosting","url":"https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets","headline":"Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets","dateModified":"2019-11-19T08:00:00+02:00","datePublished":"2019-11-19T08:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -51,9 +51,9 @@
   <div class="container-fluid no-gutters">
     
 
-    <a class="navbar-brand " href="/" alt="home">
+    <a class="navbar-brand " href="/el/" alt="αρχική">
       <i class="fa fa-home"></i>
-      home
+      αρχική
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,40 +68,40 @@
 
         <li class="nav-item dropdown active">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            programming
+            προγραμματισμός
           </a>
 
           <div class="dropdown-menu" aria-labelledby="more">
-            <a class="dropdown-item" href="/programming/">all posts</a>
-            <a class="dropdown-item" href="/programming/featured/">featured posts</a>
-            <a class="dropdown-item" href="/programming/tutorials/">tutorials</a>
-            <a class="dropdown-item" href="/programming/how-to/">how to</a>
-            <a class="dropdown-item" href="/programming/code/">code</a>
+            <a class="dropdown-item" href="/el/programming/">όλα τα άρθρα</a>
+            <a class="dropdown-item" href="/el/programming/featured/">δημοφιλή άρθρα</a>
+            <a class="dropdown-item" href="/el/programming/tutorials/">βοηθήματα</a>
+            <a class="dropdown-item" href="/el/programming/how-to/">how to άρθρα</a>
+            <a class="dropdown-item" href="/el/programming/code/">κώδικας</a>
           </div>
         </li>
 
         
 
         <li class="nav-item ">
-            <a class="nav-link" href="/cats/" alt="cats">cats</a>
+            <a class="nav-link" href="/el/cats/" alt="cats">γάτες</a>
         </li>
 
         
 
         <li class="nav-item ">
-            <a class="nav-link" href="/painting/" alt="painting">painting</a>
+            <a class="nav-link" href="/el/painting/" alt="ζωγραφική">ζωγραφική</a>
         </li>
 
         
 
         <li class="nav-item ">
-            <a class="nav-link" href="/tags/" alt="tags">tags</a>
+            <a class="nav-link" href="/el/tags/" alt="ετικέτες">ετικέτες</a>
         </li>
 
         
 
         <li class="nav-item ">
-            <a class="nav-link" href="/about/" alt="about">about me</a>
+            <a class="nav-link" href="/el/about/" alt="σχετικά με μένα">σχετικά με μένα</a>
         </li>
       </ul>
 
@@ -109,19 +109,19 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-language"></i>
-            English
+            Ελληνικά
           </a>
 
           <div class="dropdown-menu" aria-labelledby="more">
             
-            <a class="dropdown-item" href="/el/programming/2019/11/19/creating-chat-application-rails-websockets">Ελληνικά</a>
+            <a class="dropdown-item" href="/programming/2019/04/04/creating-chat-application-rails-websockets">English</a>
           </div>
         </li>
       </ul>
 
-      <form class="form-inline my-2 my-lg-0" method="get" action="/search">
+      <form class="form-inline my-2 my-lg-0" method="get" action="/el/search">
         <div class="input-group input-group-sm mr-sm-2">
-          <input class="form-control" name="query" type="search" placeholder="Search the blog">
+          <input class="form-control" name="query" type="search" placeholder="Αναζήτηση άρθρων">
 
           <div class="input-group-append">
             <button class="btn btn-warning" type="submit">
@@ -139,47 +139,58 @@
     <div class="page-title">
       <div class="row align-items-center">
         <div class="col-xs-12 col-md-8 col-lg-9 order-md-first order-last text-center text-md-left">
-          <h1>Creating a chat application from scratch using Rails and WebSockets</h1>
+          <h1>Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets</h1>
 
             <div class="page-subtitle">
-            A step by step tutorial for creating a chat application from scratch using Rails and WebSockets (ActionCable).
+            Ένα βοήθημα που περιγράφει βήμα προς βήμα πως να δημιουργήσετε μια εφαρμογή συνομιλιών (chat) από το μηδέν με χρήση Rails και WebSockets (ActionCable).
 
             
               <div class="post">
                 <div class="post-metadata">
                   <div class="post-date" title="published on">
-                    Published on <span class="important">Apr 4, 2019</span>
+                    Δημοσιέυτηκε στις <span class="important">19/11/2019</span>
                   </div>
 
                   <div class="post-category" title="in category">
-                    in category <span class="important">programming</span>
+                    στην κατηγορία <span class="important">
+                      
+                           <a href="/el/programming">προγραμματισμός</a>
+                        
+
+                    </span>
                   </div>
                 </div>
 
                 
                 
                   <div class="post-tags">
-                    <span class="important">tags:</span>
+                    <span class="important">Ετικέτες:</span>
                     
-                      <a href="/tags/?tag=ruby" class="ga-event-link" data-event-label="ruby" data-event-action="click" data-event-category="tags">ruby</a> - 
+                      <a href="/el/tags/?tag=ruby" class="ga-event-link" data-event-label="ruby" data-event-action="click" data-event-category="tags">ruby</a> - 
                     
-                      <a href="/tags/?tag=rails" class="ga-event-link" data-event-label="rails" data-event-action="click" data-event-category="tags">rails</a> - 
+                      <a href="/el/tags/?tag=rails" class="ga-event-link" data-event-label="rails" data-event-action="click" data-event-category="tags">rails</a> - 
                     
-                      <a href="/tags/?tag=websockets" class="ga-event-link" data-event-label="websockets" data-event-action="click" data-event-category="tags">websockets</a> - 
+                      <a href="/el/tags/?tag=websockets" class="ga-event-link" data-event-label="websockets" data-event-action="click" data-event-category="tags">websockets</a> - 
                     
-                      <a href="/tags/?tag=devise" class="ga-event-link" data-event-label="devise" data-event-action="click" data-event-category="tags">devise</a> - 
+                      <a href="/el/tags/?tag=devise" class="ga-event-link" data-event-label="devise" data-event-action="click" data-event-category="tags">devise</a> - 
                     
-                      <a href="/tags/?tag=bootstrap" class="ga-event-link" data-event-label="bootstrap" data-event-action="click" data-event-category="tags">bootstrap</a> - 
+                      <a href="/el/tags/?tag=bootstrap" class="ga-event-link" data-event-label="bootstrap" data-event-action="click" data-event-category="tags">bootstrap</a> - 
                     
-                      <a href="/tags/?tag=chat" class="ga-event-link" data-event-label="chat" data-event-action="click" data-event-category="tags">chat</a> - 
+                      <a href="/el/tags/?tag=chat" class="ga-event-link" data-event-label="chat" data-event-action="click" data-event-category="tags">chat</a> - 
                     
-                      <a href="/tags/?tag=actioncable" class="ga-event-link" data-event-label="actioncable" data-event-action="click" data-event-category="tags">actioncable</a> - 
+                      <a href="/el/tags/?tag=actioncable" class="ga-event-link" data-event-label="actioncable" data-event-action="click" data-event-category="tags">actioncable</a> - 
                     
-                      <a href="/tags/?tag=redis" class="ga-event-link" data-event-label="redis" data-event-action="click" data-event-category="tags">redis</a> - 
+                      <a href="/el/tags/?tag=redis" class="ga-event-link" data-event-label="redis" data-event-action="click" data-event-category="tags">redis</a> - 
                     
-                      <a href="/tags/?tag=featured" class="ga-event-link" data-event-label="featured" data-event-action="click" data-event-category="tags">featured</a> - 
+                      <a href="/el/tags/?tag=featured" class="ga-event-link" data-event-label="featured" data-event-action="click" data-event-category="tags">featured</a> - 
                     
-                      <a href="/tags/?tag=tutorial" class="ga-event-link" data-event-label="tutorial" data-event-action="click" data-event-category="tags">tutorial</a>
+                      <a href="/el/tags/?tag=δημοφιλή" class="ga-event-link" data-event-label="δημοφιλή" data-event-action="click" data-event-category="tags">δημοφιλή</a> - 
+                    
+                      <a href="/el/tags/?tag=tutorial" class="ga-event-link" data-event-label="tutorial" data-event-action="click" data-event-category="tags">tutorial</a> - 
+                    
+                      <a href="/el/tags/?tag=βοήθημα" class="ga-event-link" data-event-label="βοήθημα" data-event-action="click" data-event-category="tags">βοήθημα</a> - 
+                    
+                      <a href="/el/tags/?tag=how-to" class="ga-event-link" data-event-label="how-to" data-event-action="click" data-event-category="tags">how-to</a>
                     
                   </div>
                 
@@ -189,7 +200,7 @@
                 
                   <div class="my-3">
                     <small>
-                      The article is also available in <a href="/el/programming/2019/11/19/creating-chat-application-rails-websockets">greek</a>.
+                      Το άρθρο είναι διαθέσιμο και στα <a href="/programming/2019/04/04/creating-chat-application-rails-websockets">αγγλικά</a>.
                     </small>
                   </div>
                 
@@ -207,34 +218,32 @@
       <div class="row">
         <div class="col-xs-12 col-md-8 col-lg-9 page-content">
           
+
+          
             <div class="row">
               <div class="col-12">
                 <div class="outline mb-5">
-                  <p>Hey! It’s been a while since my last post.</p>
+                  <h2 id="εισαγωγή">Εισαγωγή</h2>
 
-<p>I recently familiarized myself with the awesomeness of WebSockets and I finally found the time to write a tutorial about it. I hope you find it helpful.</p>
-
-<p><strong>Update</strong>: I also published another post for <a href="https://twitter.com/lazaru_s/status/1182193506430984193">dockerizing the application</a>  of this tutorial, you can find it <a href="/programming/2019/04/07/dockerizing-a-rails-application"><strong>here</strong></a>.</p>
-
-<h2 id="introduction">Introduction</h2>
-
-<p>In this tutorial we are going to create a <strong>chat</strong> web application from scratch using Rails and WebSockets.</p>
+<p>Σε αυτό το βοήθημα θα δημιουργήσουμε μια εφαρμογή συνομιλιών (<strong>chat</strong>) από το μηδέν χρησιμοποιώντας το framework Ruby on Rails και την τεχνολογία των WebSockets.</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif" alt="Rails chat tutorial gif" /></p>
 
-<div class="alert alert-light">
-  <div class="alert-heading"><i class="fa fa-comments"></i> Code and comments</div>
+<p><strong>Ενημέρωση</strong>: Δημοσίευσα άλλο ένα βοήθημα για τη <a href="https://twitter.com/lazaru_s/status/1182193506430984193">δημιουργία docker image της εφαρμογής</a> του παρόντος, μπορείτε να το βρείτε στα αγγλικά για την ώρα <a href="/programming/2019/04/07/dockerizing-a-rails-application"><strong>εδώ</strong></a>.</p>
 
-  You can find the code of this tutorial on <a class="alert-link" href="https://github.com/iridakos/rails-chat-tutorial"><i class="fa fa-github"></i> GitHub</a>.
+<div class="alert alert-light">
+  <div class="alert-heading"><i class="fa fa-comments"></i> Κώδικας και σχόλια</div>
+
+  Μπορείτε να βρείτε τον κώδικα του παρόντος άρθρου στο <a class="alert-link" href="https://github.com/iridakos/rails-chat-tutorial"><i class="fa fa-github"></i> GitHub</a>.
 
   <hr />
 
-  For feedback, comments, typos etc. please open an <a class="alert-link" href="https://github.com/iridakos/rails-chat-tutorial/issues">issue</a> in the repository.
+  Για σχόλια, feedback, λάθη κ.λπ. παρακαλώ ανοίξτε ένα <a class="alert-link" href="https://github.com/iridakos/rails-chat-tutorial/issues">issue</a> στο αποθετήριο.
 </div>
 
-<h3 id="what-are-websockets">What are WebSockets</h3>
+<h3 id="τι-είναι-τα-websockets">Τι είναι τα WebSockets;</h3>
 
-<p>WebSocket is actually a protocol that enables bidirectional communication between the client and the server of a web application over a single long living TCP connection.</p>
+<p>Πρόκειται ουσιαστικά για ένα πρωτόκολλο που επιτρέπει την αμφίδρομη επικοινωνία μεταξύ πελάτη και εξυπηρετητή μιας διαδικτυακής εφαρμογής μέσω μιας και μόνης σύνδεσης TCP μακράς διαρκείας.</p>
 
 <blockquote>
   <p>The WebSocket protocol enables interaction between a web browser (or other client application) and a web server <strong>with lower overheads, facilitating real-time data transfer from and to the server</strong>.
@@ -242,45 +251,45 @@
 <cite>– <a href="https://en.wikipedia.org/wiki/WebSocket">WebSocket @ Wikipedia</a></cite></p>
 </blockquote>
 
-<h3 id="why-websockets">Why WebSockets</h3>
+<h3 id="γιατί-να-χρησιμοποιήσουμε-websockets">Γιατί να χρησιμοποιήσουμε WebSockets;</h3>
 
-<p>Suppose you have to create a web page that shows the statuses of running processes.
-Without WebSockets you would have to either:</p>
+<p>Υποθέστε ότι θέλετε να δημιουργήσετε μια ιστοσελίδα που εμφανίζει τις καταστάσεις κάποιων διαδικασιών που βρίσκονται υπό εκτέλεση.
+Χωρίς τη χρήση WebSockets, θα έπρεπε να κάνετε ένα από τα παρακάτω:</p>
 <ul>
-  <li>Use AJAX with Javascript intervals to request and render the latest state of the processes or</li>
-  <li>Automatically reload the page every x seconds (<code class="highlighter-rouge">&lt;meta http-equiv="refresh" content="x"&gt;</code>) or</li>
-  <li>Add a message on the page <em>“The statuses are not updated automatically <span class="text-nowrap">¯\_(ツ)_/¯</span> Press <a href="/programming/2019/04/04/creating-chat-application-rails-websockets">here</a> to reload the page.”</em></li>
+  <li>να χρησιμοποιήσετε AJAX με Javascript intervals για να ζητάτε και να εμφανίζεται τις τρέχουσες καταστάσεις των διαδικασιών</li>
+  <li>να φορτώνεται ξανά τη σελίδα κάθε x δευτερόλεπτα (<code class="highlighter-rouge">&lt;meta http-equiv="refresh" content="x"&gt;</code>)</li>
+  <li>να προσθέσετε ένα μήνυμα στη σελίδα τύπου <em>“Οι καταστάσεις δεν ενημερώνονται αυτόματα <span class="text-nowrap">¯\_(ツ)_/¯</span> Πατήστε <a href="/el/programming/2019/11/19/creating-chat-application-rails-websockets">εδώ</a> για να φορτώσετε ξανά τη σελίδα.”</em></li>
 </ul>
 
-<p>All of these methods would request the process statuses from the server even if nothing has changed.</p>
+<p>Και οι τρεις παραπάνω προτάσεις θα κατέληγαν στο να ζητήσουν από τον εξυπηρετητή τις καταστάσεις των διαδικασιών ακόμη και να αυτές δεν είχαν αλλάξει.</p>
 
-<p>WebSockets are here to allow this communication to take place on demand. The cost is having to keep alive TCP connections between the server and all its clients (each for every open browser tab).</p>
+<p>Τα WebSockets είναι αυτά που θα μας επιτρέψουν αυτού του είδους η επικοινωνία να λάβει χώρα κατά απαίτηση. Το κόστος αυτής της λειτουργικότητας είναι η διατήρηση TCP συνδέσεων μεταξύ του εξυπηρετητή και όλων των πελατών του (μια για κάθε ανοιγμένη σελίδα στον φυλλομετρητή).</p>
 
-<h2 id="building-the-application">Building the application</h2>
+<h2 id="χτίζοντας-την-εφαρμογή">Χτίζοντας την εφαρμογή</h2>
 
-<p>We are going to build the web application using:</p>
+<p>Θα χτίσουμε την εφαρμογή χρησιμοποιώντας:</p>
 
 <ul>
-  <li><strong>Ruby</strong>: version <strong>2.6.2</strong></li>
-  <li><strong>Rails</strong>: version <strong>5.2.3</strong></li>
+  <li><strong>Ruby</strong>: έκδοση <strong>2.6.2</strong></li>
+  <li><strong>Rails</strong>: έκδοση <strong>5.2.3</strong></li>
 </ul>
 
-<h3 id="setting-up-the-environment">Setting up the environment</h3>
+<h3 id="στήνοντας-το-περιβάλλον">Στήνοντας το περιβάλλον</h3>
 
-<p>We are going to install the proper ruby and rails versions.</p>
+<p>Θα εγκαταστήσουμε τις κατάλληλες εκδόσεις της Ruby και του Ruby on Rails.</p>
 
-<h4 id="install-ruby">Install ruby</h4>
+<h4 id="εγκατάσταση-ruby">Εγκατάσταση Ruby</h4>
 
-<p>I use <a href="https://rvm.io/">rvm</a> to manage the <strong>Ruby</strong> versions installed on my system. To install the desired ruby version use:</p>
+<p>Χρησιμοποιώ το πρόγραμμα <a href="https://rvm.io/">rvm</a> για να διαχειρίζομαι τις εκδόσεις της <strong>Ruby</strong> που εγκαθιστώ στο σύστημά μου. Για να εγκαταστήσετε την Ruby του παρόντος βοηθήματος εκτελέστε:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rvm <span class="nb">install </span>ruby 2.6.2
 </code></pre></div></div>
 
-<h4 id="install-rails">Install rails</h4>
+<h4 id="εγκατάσταση-ruby-on-rails">Εγκατάσταση Ruby on Rails</h4>
 
-<p>Create a directory in your system with the name <code class="highlighter-rouge">rails-chat-tutorial</code>.</p>
+<p>Δημιουργήστε ένα φάκελο στο σύστημά σας με το όνομα <code class="highlighter-rouge">rails-chat-tutorial</code>.</p>
 
-<p><strong>Navigate to that directory</strong> and create the following two files:</p>
+<p><strong>Περιηγηθείτε σε αυτόν τον φάκελο</strong> και δημιουργήστε τα παρακάτω αρχεία:</p>
 
 <p><em>.ruby-version</em></p>
 
@@ -292,9 +301,9 @@ Without WebSockets you would have to either:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails-chat-tutorial
 </code></pre></div></div>
 
-<p>With these file we are letting <em>rvm</em> know that when working on this directory, we want to use the specific ruby version (<code class="highlighter-rouge">.ruby-version</code>) and the gems from the specific gemset (<code class="highlighter-rouge">.ruby-gemset</code>)</p>
+<p>Με αυτά τα δύο αρχεία, ενημερώνουμε τον <em>rvm</em> (Ruby version manager) ότι όταν εργαζόμαστε σε αυτόν τον φάκελο, θέλουμε να γίνεται χρήση της συγκεκριμένης έκδοσης Ruby (<code class="highlighter-rouge">.ruby-version</code>) και των συγκεκριμένων βιβλιοθηκών που έχουν εγκατασταθεί στο <em>gemset</em> με το όνομα <code class="highlighter-rouge">rails-chat-tutorial</code> (<code class="highlighter-rouge">.ruby-gemset</code>).</p>
 
-<p>Now, re-entering in the directory you should see something like this:</p>
+<p>Τώρα, αν περιηγηθείτε ξανά στον φάκελο θα δείτε κάτι σαν τα παρακάτω:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cd .
 
@@ -302,23 +311,23 @@ ruby-2.6.2 - #gemset created /home/iridakos/.rvm/gems/ruby-2.6.2@rails-chat-tuto
 ruby-2.6.2 - #generating rails-chat-tutorial wrappers...........
 </code></pre></div></div>
 
-<p>Install the desired rails version with:</p>
+<p>Εγκαταστήστε την επιθυμητή έκδοση του Ruby on Rails με:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install rails -v 5.2.3
 </code></pre></div></div>
 
-<h4 id="create-the-rails-application">Create the rails application</h4>
+<h4 id="δημιουργία-της-εφαρμογής">Δημιουργία της εφαρμογής</h4>
 
-<p>We are ready to create our new <em>rails</em> application:</p>
+<p>Είμαστε έτοιμοι να δημιουργήσουμε την <em>rails</em> εφαρμογή, στη γραμμή εντολών πληκτρολογήστε:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails new .
 </code></pre></div></div>
 
-<p><strong>Note</strong>: We didn’t define a name for the application and rails will resolve it using the directory name: <code class="highlighter-rouge">rails-chat-tutorial</code>.</p>
+<p><strong>Σημείωση</strong>: Δεν προσδιορίσαμε κάποιο όνομα για την εφαρμογή οπότε το framework θα χρησιμοποιήσει το όνομα του φακέλου: <code class="highlighter-rouge">rails-chat-tutorial</code>.</p>
 
-<p>Rails will create all the application’s files and install the required gems.</p>
+<p>Το Rails θα δημιουργήσει όλα τα αρχεία της εφαρμογής και θα εγκαταστήσει τις απαιτούμενες βιβλιοθήκες (gems).</p>
 
-<p>Let’s start the application to make sure that everything is fine.</p>
+<p>Ας ξεκινήσουμε την εφαρμογή για να επιβεβαιώσουμε ότι όλα είναι εντάξει.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails server
 </code></pre></div></div>
@@ -336,98 +345,98 @@ Puma starting in single mode...
 Use Ctrl-C to stop
 </code></pre></div></div>
 
-<p>Open a browser and visit <code class="highlighter-rouge">http://localhost:3000</code>, if you see this we are good to go.</p>
+<p>Ανοίξτε έναν φυλλομετρητή και επισκεφθείτε τη διεύθυνση: <code class="highlighter-rouge">http://localhost:3000</code>. Αν βλέπετε το παρακάτω είμαστε εντάξει για να συνεχίσουμε. Αν όχι, δε με ξέρετε δε σας ξέρω :P</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/01-rails-new.png" alt="Rails new application" /></p>
 
-<h3 id="users-and-devise">Users and devise</h3>
+<h3 id="χρήστες-και-βιβλιοθήκη-devise">Χρήστες και βιβλιοθήκη <code class="highlighter-rouge">devise</code></h3>
 
-<p>We are going to use the awesome <a href="https://github.com/plataformatec/devise">devise</a> solution for authentication.</p>
+<p>Θα χρησιμοποιήσουμε την φοβερή λύση της βιβλιοθήκης <a href="https://github.com/plataformatec/devise">devise</a> για πιστοποίηση χρηστών.</p>
 
-<p>Append the following gem requirement at the bottom of the <code class="highlighter-rouge">Gemfile</code> file located at the root of the application’s directory.</p>
+<p>Προσαρτήστε την παρακάτω απαίτηση βιβλιοθήκης στο τέλος του αρχείου <code class="highlighter-rouge">Gemfile</code> βρίσκεται στον κεντρικό φάκελο της εφαρμογής (Rails root directory).</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'devise'</span>
 </code></pre></div></div>
 
-<p>On your terminal, install the new gem by executing:</p>
+<p>Στη γραμμή εντολών, εγκαταστήστε τη νέα βιβλιοθήκη εκτελώντας:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle
 </code></pre></div></div>
 
-<p>Finish integration with devise using:</p>
+<p>Ολοκληρώστε την ενσωμάτωση της <code class="highlighter-rouge">devise</code> με:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate devise:install
 </code></pre></div></div>
 
-<p>We will create the model representing our users using the devise generators.</p>
+<p>Θα δημιουργήσουμε το μοντέλο που αναπαριστά τους χρήστες μας χρησιμοποιώντας τις γεννήτριες της <code class="highlighter-rouge">devise</code>.</p>
 
-<p>On your terminal, execute:</p>
+<p>Εκτελέστε στη γραμμή εντολών:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate devise User username:string
 </code></pre></div></div>
 
-<p><strong>Note</strong>: we have added an extra attribute <code class="highlighter-rouge">username</code> to our model (besides the defaults generated by devise) so that we have something more friendly to present when displaying users instead of their email.</p>
+<p><strong>Σημείωση</strong>: προσθέσαμε ένα επιπλέον χαρακτηριστικό <code class="highlighter-rouge">username</code> στο μοντέλο (πέραν των όσων εξ ορισμού παρήγαγε η βιβλιοθήκη) ούτως ώστε να έχουμε κάτι πιο φιλικό να εμφανίζουμε για τους χρήστες αντί της διεύθυνσης email.</p>
 
-<p>Open the generated migration which you will find under <code class="highlighter-rouge">db/migrate/&lt;datetime&gt;_devise_create_users.rb</code> and append the username’s unique index definition with<sup><a href="#acknowledgments">[4]</a></sup>:</p>
+<p>Ανοίξτε το αρχείο προσαρμογής της βάσης (migration) που βρίσκεται στην τοποθεσία <code class="highlighter-rouge">db/migrate/&lt;datetime&gt;_devise_create_users.rb</code> και προσθέστε ένα ευρετήριο μοναδικότητας (unique index) για το χαρακτηριστικό που προσθέσαμε (<code class="highlighter-rouge">username</code>)<sup><a href="#ευχαριστίες">[4]</a></sup>:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span>  <span class="ss">:username</span><span class="p">,</span>             <span class="ss">unique: </span><span class="kp">true</span>
 </code></pre></div></div>
 
-<p>Find the line in the file that defines the <code class="highlighter-rouge">username</code> column and change it to:</p>
+<p>Βρείτε τη γραμμή που ορίζει τη στήλη <code class="highlighter-rouge">username</code> αλλάξτε την ως εξής:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:username</span><span class="p">,</span> <span class="ss">null: </span><span class="kp">false</span>
 </code></pre></div></div>
 
-<p>to make the attribute required.</p>
+<p>για να δηλώσουμε το χαρακτηριστικό ως υποχρεωτικό.</p>
 
-<p>Then in the User model which is located at <code class="highlighter-rouge">app/models/user.rb</code> add the validation rule for uniqueness and presence:</p>
+<p>Στη συνέχεια, στο μοντέλο <code class="highlighter-rouge">User</code> που βρίσκεται στην τοποθεσία <code class="highlighter-rouge">app/models/user.rb</code> προσθέστε τον παρακάτω κανόνα επικύρωσης της μοναδικότητας και της υποχρεωτικής παρουσίας του χαρακτηριστικού:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">validates</span> <span class="ss">:username</span><span class="p">,</span> <span class="ss">uniqueness: </span><span class="kp">true</span><span class="p">,</span> <span class="ss">presence: </span><span class="kp">true</span>
 </code></pre></div></div>
 
-<p>Finally, apply the database migration using:</p>
+<p>Τέλος, προσαρμόστε τη βάση με:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails db:migrate
 </code></pre></div></div>
 
-<h3 id="rooms-and-messages">Rooms and messages</h3>
+<h3 id="δωμάτια-και-μηνύματα">Δωμάτια και μηνύματα</h3>
 
-<p>Each chat message is going to take place in the context of a room.</p>
+<p>Κάθε μήνυμα θα εμφανίζεται σε ένα δωμάτιο.</p>
 
-<p>Let’s build them all.</p>
+<p>Ας δημιουργήσουμε και τα δύο.</p>
 
-<p>Use the following command to create the <code class="highlighter-rouge">Room</code>:</p>
+<p>Χρησιμοποιήστε την παρακάτω εντολή για δημιουργήσετε το δωμάτιο - <code class="highlighter-rouge">Room</code>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate resource Room name:string:uniq
 </code></pre></div></div>
 
-<p>and the following command to create the <code class="highlighter-rouge">RoomMessage</code>:</p>
+<p>και την ακόλουθη εντολή για να δημιουργήσετε το μήνυμα δωματίου - <code class="highlighter-rouge">RoomMessage</code>:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate resource RoomMessage room:references user:references message:text
 </code></pre></div></div>
 
-<p>We are now going to define the appropriate relations<sup><a href="#acknowledgments">[7]</a></sup>.</p>
+<p>Τώρα θα ορίσουμε τις σχέσεις αυτών των δύο<sup><a href="#ευχαριστίες">[7]</a></sup>.</p>
 
-<p>Open <code class="highlighter-rouge">app/models/room.rb</code> and add the relation inside the class:</p>
+<p>Ανοίξτε το αρχείο που βρίσκεται στην τοποθεσία <code class="highlighter-rouge">app/models/room.rb</code> και προσθέστε την παρακάτω σχέση μέσα στην κλάση:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">has_many</span> <span class="ss">:room_messages</span><span class="p">,</span> <span class="ss">dependent: :destroy</span><span class="p">,</span>
                          <span class="ss">inverse_of: :room</span>
 </code></pre></div></div>
 
-<p>Open <code class="highlighter-rouge">app/models/room_message.rb</code> and add the relations inside the class:</p>
+<p>Ανοίξτε το αρχείο που βρίσκεται στην τοποθεσία <code class="highlighter-rouge">app/models/room_message.rb</code> και προσθέστε τις παρακάτω σχέσεις:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">belongs_to</span> <span class="ss">:user</span>
 <span class="n">belongs_to</span> <span class="ss">:room</span><span class="p">,</span> <span class="ss">inverse_of: :room_messages</span>
 </code></pre></div></div>
 
-<p>Migrate the database with:</p>
+<p>Προσαρμόστε τη βάση με την εντολή:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails db:migrate
 </code></pre></div></div>
 
-<p>We can now setup our routes so that the root request is served by the <code class="highlighter-rouge">RoomsController#index</code> action.</p>
+<p>Τώρα μπορούμε να ορίσουμε με τέτοιο τρόπο τις διαδρομές (routes) ώστε τα αιτήματα στην αρχική σελίδα (root requests) να σερβίρονται από την ενέργεια <code class="highlighter-rouge">index</code> του ελεγκτή <code class="highlighter-rouge">RoomsController</code> (που δημιουργήθηκε αυτόματα όταν εκτελέσαμε την εντολή για τη δημιουργία του πόρου <code class="highlighter-rouge">RoomMessage</code> παραπάνω) - <code class="highlighter-rouge">RoomsController#index</code>.</p>
 
-<p>Open your <code class="highlighter-rouge">config/routes.rb</code> file and change its contents to:</p>
+<p>Ανοίξτε το αρχείο που βρίσκεται στην τοποθεσία <code class="highlighter-rouge">config/routes.rb</code> και αλλάξτε τα περιεχόμενά του στα παρακάτω:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
   <span class="n">devise_for</span> <span class="ss">:users</span>
@@ -439,13 +448,13 @@ Use Ctrl-C to stop
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p>Restart the server and try to navigate to the application’s root url.</p>
+<p>Επανεκκινήστε τον εξυπηρετητή και προσπαθήστε να περιηγηθείτε στην αρχική σελίδα της εφαρμογής (http://localhost:3000).</p>
 
-<p>You should see an error message, no worries:</p>
+<p>Θα δείτε το παρακάτω λάθος, μην ανησυχείτε:</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/02.png" alt="No action index for the RoomsController" /></p>
 
-<p>We have to create the <code class="highlighter-rouge">index</code> action in the <code class="highlighter-rouge">RoomsController</code>. Open the controller <code class="highlighter-rouge">app/controllers/rooms_controller.rb</code> and change its contents to the following:</p>
+<p>Πρέπει να δημιουργήσουμε την ενέργεια <code class="highlighter-rouge">index</code> στον ελεγκτή <code class="highlighter-rouge">RoomsController</code>. Ανοίξτε τον ελεγκτή που βρίσκεται στην τοποθεσία <code class="highlighter-rouge">app/controllers/rooms_controller.rb</code> και αλλάξτε τα περιεχόμενά του στα παρακάτω:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">RoomsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
   <span class="k">def</span> <span class="nf">index</span>
@@ -453,90 +462,90 @@ Use Ctrl-C to stop
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p>Then create the file <code class="highlighter-rouge">app/views/rooms/index.html.erb</code> and for now just add the following:</p>
+<p>Κατόπιν, δημιουργήστε το αρχείο <code class="highlighter-rouge">app/views/rooms/index.html.erb</code> και για την ώρα απλά προσθέστε μόνο την παρακάτω επικεφαλίδα:</p>
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>Rooms index<span class="nt">&lt;/h1&gt;</span>
 </code></pre></div></div>
 
-<p>Reload and voilà.</p>
+<p>Φορτώστε ξανά την αρχική σελίδα και voilà.</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/03.png" alt="Rooms index" /></p>
 
-<h3 id="adding-authentication">Adding authentication</h3>
+<h3 id="προσθήκη-πιστοποίησης-χρηστών">Προσθήκη πιστοποίησης χρηστών</h3>
 
-<p>We want all users to be authenticated before start chatting, so we are going to add the following line in the <code class="highlighter-rouge">ApplicationController</code> located at <em>app/controllers/application_controller.rb</em>:</p>
+<p>Θέλουμε όλοι οι χρήστες να είναι πιστοποιημένοι πριν να μπορέσουν να συμμετάσχουν σε συνομιλίες οπότε θα προσθέσουμε την παρακάτω γραμμή στην κλάση <code class="highlighter-rouge">ApplicationController</code> που βρίσκεται στην τοποθεσία <em>app/controllers/application_controller.rb</em> και από την οποία κληρονομούν οι ελεγκτές μας:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">before_action</span> <span class="ss">:authenticate_user!</span>
 </code></pre></div></div>
 
-<p>If we navigate to <code class="highlighter-rouge">http://localhost:3000</code> now we should be redirected to the sign in page <sup><a href="#acknowledgments">[10]</a></sup>.</p>
+<p>Αν πλοηγηθούμε εκ νέου στην αρχική σελίδα <code class="highlighter-rouge">http://localhost:3000</code> θα πρέπει να ανακατευθυνθούμε στη σελίδα πιστοποίησης χρηστών <sup><a href="#ευχαριστίες">[10]</a></sup>.</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/04.png" alt="Sign in" /></p>
 
-<p>Before continuing with the good stuff, let’s gear up the application with some good features.</p>
+<p>Πριν συνεχίσουμε με τα ωραία, ας εξοπλίσουμε πρώτα την εφαρμογή με κάποια καλά χαρακτηριστικά.</p>
 
-<h3 id="add-bootstrap">Add bootstrap</h3>
+<h3 id="προσθήκη-bootstrap">Προσθήκη bootstrap</h3>
 
-<p>We are going to use <a href="https://getbootstrap.com/">Bootstrap</a> and we will integrate it in the application using the <a href="https://github.com/twbs/bootstrap-rubygem">bootstrap-rubygem</a> gem.</p>
+<p>Θα χρησιμοποιήσουμε το <a href="https://getbootstrap.com/">Bootstrap</a> και θα το ενσωματώσουμε στην εφαρμογή χρησιμοποιώντας τη βιβλιοθήκη <a href="https://github.com/twbs/bootstrap-rubygem">bootstrap-rubygem</a>.</p>
 
-<p>Following the instructions of the gem, append the dependencies in your <code class="highlighter-rouge">Gemfile</code>.</p>
+<p>Ακολουθώντας τις οδηγίες της βιβλιοθήκης, προσθέστε τις παρακάτω απαιτήσεις βιβλιοθηκών στο μητρώο των απαιτήσεων <code class="highlighter-rouge">Gemfile</code>.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'bootstrap'</span><span class="p">,</span> <span class="s1">'~&gt; 4.3.1'</span>
 <span class="n">gem</span> <span class="s1">'jquery-rails'</span>
 </code></pre></div></div>
-<p>and execute <code class="highlighter-rouge">bundle</code> to fetch and install it.</p>
+<p>και εκτελέστε την εντολή <code class="highlighter-rouge">bundle</code> για να κατέβουν και να εγκατασταθούν.</p>
 
-<p>Change the <code class="highlighter-rouge">app/assets/stylesheets/application.css</code> file’s extension to <code class="highlighter-rouge">scss</code> and <strong>replace its contents</strong> with:</p>
+<p>Αλλάξτε την κατάληξη του αρχείου <code class="highlighter-rouge">app/assets/stylesheets/application.css</code> σε <code class="highlighter-rouge">scss</code> και <strong>αντικαταστήστε τα περιεχόμενά του</strong> με:</p>
 
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@import</span> <span class="s1">"bootstrap"</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>Add the following lines to the <code class="highlighter-rouge">app/assets/javascript/application.js</code> just before the <code class="highlighter-rouge">//= require_tree .</code> line<sup><a href="#acknowledgments">[9]</a></sup>:</p>
+<p>Προσθέστε τις ακόλουθες γραμμές στο αρχείο <code class="highlighter-rouge">app/assets/javascript/application.js</code> αμέσως πριν τη γραμμή <code class="highlighter-rouge">//= require_tree .</code> <sup><a href="#ευχαριστίες">[9]</a></sup>:</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//= require jquery3</span>
 <span class="c1">//= require popper</span>
 <span class="c1">//= require bootstrap-sprockets</span>
 </code></pre></div></div>
 
-<h3 id="add-simple_form">Add simple_form</h3>
+<h3 id="προσθήκη-simple_form">Προσθήκη simple_form</h3>
 
-<p>We are going to use this great gem to generate forms easily.</p>
+<p>Θα χρησιμοποιήσουμε αυτή την εξαιρετική βιβλιοθήκη για να δημιουργούμε τις φόρμες μας εύκολα.</p>
 
-<p>Append the gem dependency in your <code class="highlighter-rouge">Gemfile</code> and bundle to install it.</p>
+<p>Προσθέστε την απαίτηση στο αρχείο <code class="highlighter-rouge">Gemfile</code> και εκτελέστε την εντολή <code class="highlighter-rouge">bundle</code> για να το εγκαταστήσετε.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'simple_form'</span>
 </code></pre></div></div>
 
-<p>Then complete the integration using:</p>
+<p>Τέλος, ολοκληρώστε την ενσωμάτωση στην εφαρμογή χρησιμοποιώντας:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate simple_form:install <span class="nt">--bootstrap</span>
 </code></pre></div></div>
 
-<p><strong>Note</strong>: We used the <em>–bootstrap</em> directive since that’s the framework we are using.</p>
+<p><strong>Σημείωση</strong>: Χρησιμοποιήσαμε την οδηγία <em>–bootstrap</em> στην παραπάνω εντολή αφού το <code class="highlighter-rouge">bootstrap</code> είναι το CSS framework που θα χρησιμοποιούμε.</p>
 
-<h3 id="devise-views-with-bootstrap-and-simple-form">Devise views with bootstrap and simple form</h3>
+<h3 id="προβολές-devise-με-bootstrap-και-simple_form">Προβολές devise με bootstrap και simple_form</h3>
 
-<p>Devise uses its own views for sign in, register etc. But we do have a way to customize these views and now that we have ended up using bootstrap and simple forms, we can generate these views in a way that our choices are respected.</p>
+<p>Η βιβλιοθήκη <code class="highlighter-rouge">devise</code> χρησιμοποιεί τις δικές τις προβολές (views) για πιστοποιήσεις, καταχωρήσεις νέων χρηστών κ.λπ. Παρόλα αυτά, έχουμε τρόπο να προσαρμόσουμε αυτές τις προβολές και εφόσον επιλέξαμε να χρησιμοποιήσουμε τις βιβλιοθήκες <code class="highlighter-rouge">bootstrap</code> και <code class="highlighter-rouge">simple_form</code>, μπορούμε να παράξουμε αυτές τις προβολές ούτως ώστε οι επιλογές μας να γίνουν σεβαστές.</p>
 
-<p>In your terminal:</p>
+<p>Στη γραμμή εντολών σας:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails generate devise:views
 </code></pre></div></div>
 
-<p>The view for signing in is under <code class="highlighter-rouge">app/views/devise/sessions/new.html.erb</code> and for signing up is under <code class="highlighter-rouge">app/views/devise/registrations/new.html.erb</code>. Open these two files and change the submit button’s class by replacing the following line<sup><a href="#acknowledgments">[6]</a></sup>:</p>
+<p>Η προβολή για την πιστοποίηση των χρηστών βρίσκεται στην τοποθεσία <code class="highlighter-rouge">app/views/devise/sessions/new.html.erb</code> και για την καταχώρηση χρηστών στην τοποθεσία <code class="highlighter-rouge">app/views/devise/registrations/new.html.erb</code>. Ανοίξτε αυτά τα δύο αρχεία και αλλάξτε τις κλάσεις των κουμπιών υποβολής αντικαθιστώντας την παρακάτω γραμμή<sup><a href="#ευχαριστίες">[6]</a></sup>:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">button</span> <span class="ss">:submit</span><span class="p">,</span> <span class="s2">"Sign up"</span> <span class="cp">%&gt;</span>
 </code></pre></div></div>
 
-<p>with</p>
+<p>με</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">button</span> <span class="ss">:submit</span><span class="p">,</span> <span class="s2">"Sign up"</span><span class="p">,</span> <span class="ss">class: </span><span class="s1">'btn btn-success'</span> <span class="cp">%&gt;</span>
 </code></pre></div></div>
 
-<p>to render the buttons <em>bootstrap style</em>.</p>
+<p>ώστε τα κουμπιά να εμφανίζονται ακολουθώντας το στυλ του <em>bootstrap</em>.</p>
 
-<p>Before viewing our changes, let’s do one last thing in our default layout.</p>
+<p>Πριν δούμε τις αλλαγές που κάναμε, ας κάνουμε ένα τελευταίο πράγμα στην προκαθορισμένη δομή των προβολών μας (default layout).</p>
 
-<p>Open <code class="highlighter-rouge">app/views/layouts/application.html.erb</code> and replace its contents with:</p>
+<p>Ανοίξτε το αρχείο <code class="highlighter-rouge">app/views/layouts/application.html.erb</code> και αντικαταστήστε τα περιεχόμενά του με τα παρακάτω:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
@@ -561,30 +570,30 @@ Use Ctrl-C to stop
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<p>This last one was to use <a href="https://getbootstrap.com/docs/4.0/layout/grid/">Bootstrap’s grid</a> in our views.</p>
+<p>ώστε να χρησιμοποιούμε το <a href="https://getbootstrap.com/docs/4.0/layout/grid/">Bootstrap’s πλέγμα (grid)</a> στις προβολές.</p>
 
-<p>Navigate to <code class="highlighter-rouge">http://localhost:3000</code> and view what we have created.</p>
+<p>Περιηγηθείτε στην αρχική σελίδα <code class="highlighter-rouge">http://localhost:3000</code> και δείτε τι δημιουργήσαμε.</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/05.png" alt="Sign in with Devise and simple form" /></p>
 
-<p>Let’s try to sign up following the <code class="highlighter-rouge">Sign up</code> link of the form:</p>
+<p>Ας προσπαθήσουμε να κάνουμε καταχώρηση χρήστη ακολουθώντας το σύνδεσμο <code class="highlighter-rouge">Sign up</code> της φόρμας:</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/06.png" alt="Sign up without username" /></p>
 
-<p>As you can see, there is no field to fill in the username. For that to work we have to:</p>
+<p>Όπως βλέπετε, δεν υπάρχει πεδίο για τη συμπλήρωση του ονόματος χρήστη (<code class="highlighter-rouge">username</code>) που προσθέσαμε όταν δημιουργήσαμε το μοντέλο <code class="highlighter-rouge">User</code>. Για να μπορούν οι χρήστες να καταχωρούν το όνομά τους πρέπει:</p>
 
 <ul>
-  <li>Add the field in the sign up form</li>
-  <li>Configure devise to accept the new attribute (<code class="highlighter-rouge">username</code>) or else the <code class="highlighter-rouge">ApplicationController</code> will <a href="https://api.rubyonrails.org/classes/ActionController/Parameters.html">ignore it</a> once submitted from the form.</li>
+  <li>να προσθέσουμε το πεδίο στη φόρμα</li>
+  <li>να ενημερώσουμε τη βιβλιοθήκη <code class="highlighter-rouge">devise</code> ώστε να αναγνωρίζει και να δέχεται το νέο χαρακτηριστικό (<code class="highlighter-rouge">username</code>) διαφορετικά ο ελεγκτής <code class="highlighter-rouge">ApplicationController</code> θα <a href="https://api.rubyonrails.org/classes/ActionController/Parameters.html">το αγνοεί</a> όταν θα υποβάλλουμε τη φόρμα.</li>
 </ul>
 
-<p>To add the field in the sign up form, open <code class="highlighter-rouge">app/views/devise/registrations/new.html.erb</code> and add these lines between the email and password fields.</p>
+<p>Για να προσθέσουμε το πεδίο στη φόρμα καταχώρησης χρηστών, ανοίξτε το αρχείο <code class="highlighter-rouge">app/views/devise/registrations/new.html.erb</code> και προσθέστε αυτές τις γραμμές μεταξύ των πεδίων <code class="highlighter-rouge">email</code> και <code class="highlighter-rouge">password</code>.</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cp">&lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">input</span> <span class="ss">:username</span><span class="p">,</span>
               <span class="ss">required: </span><span class="kp">true</span> <span class="cp">%&gt;</span>
 </code></pre></div></div>
 
-<p>Then, open the <code class="highlighter-rouge">app/controllers/application_controller.rb</code> file to configure the new attribute. Change the contents to:</p>
+<p>Κατόπιν, ανοίξτε τον ελεγκτή της εφαρμογής <code class="highlighter-rouge">app/controllers/application_controller.rb</code> για να ρυθμίσετε καταλλήλως τα επιτρεπόμενα χαρακτηριστικά. Αλλάξτε τα περιεχόμενά του στα παρακάτω:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
   <span class="n">before_action</span> <span class="ss">:authenticate_user!</span>
@@ -599,15 +608,15 @@ Use Ctrl-C to stop
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p>Done, reload and sign up<sup><a href="#acknowledgments">[5]</a></sup>.</p>
+<p>Αυτό ήταν, περιηγηθείτε ξανά στην αρχική σελίδα και δοκιμάστε να καταχωρηθείτε ως χρήστες<sup><a href="#ευχαριστίες">[5]</a></sup>.</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/07.png" alt="Sign up with username" /></p>
 
-<h3 id="cleanup-unused-components">Cleanup unused components</h3>
+<h3 id="καθάρισμα-μη-χρησιμοποιούμενων-στοιχείων">Καθάρισμα μη χρησιμοποιούμενων στοιχείων</h3>
 
-<p>We will not be using <code class="highlighter-rouge">coffee script</code> or <code class="highlighter-rouge">turbolinks</code> so let’s remove all the related stuff.</p>
+<p>Δε θα χρησιμοποιήσουμε <code class="highlighter-rouge">coffee script</code> ή τα <code class="highlighter-rouge">turbolinks</code> οπότε ας αφαιρέσουμε τις σχετικές αναφορές.</p>
 
-<p>Open <code class="highlighter-rouge">Gemfile</code> and remove the following lines:</p>
+<p>Ανοίξτε το <code class="highlighter-rouge">Gemfile</code> και αφαιρέστε τις παρακάτω γραμμές:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Use CoffeeScript for .coffee assets and views</span>
 <span class="n">gem</span> <span class="s1">'coffee-rails'</span><span class="p">,</span> <span class="s1">'~&gt; 4.2'</span>
@@ -615,39 +624,39 @@ Use Ctrl-C to stop
 <span class="n">gem</span> <span class="s1">'turbolinks'</span><span class="p">,</span> <span class="s1">'~&gt; 5'</span>
 </code></pre></div></div>
 
-<p>Open <code class="highlighter-rouge">app/assets/javascripts/application.js</code> and remove the following line:</p>
+<p>Ανοίξτε το αρχείο <code class="highlighter-rouge">app/assets/javascripts/application.js</code> και αφαιρέστε την παρακάτω γραμμή:</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//= require turbolinks</span>
 </code></pre></div></div>
 
-<p>Open <code class="highlighter-rouge">app/views/layouts/application.html.erb</code> and change the following lines <sup><a href="#acknowledgments">[3]</a></sup>:</p>
+<p>Ανοίξτε το <code class="highlighter-rouge">app/views/layouts/application.html.erb</code> και αλλάξτε τις παρακάτω γραμμές<sup><a href="#ευχαριστίες">[3]</a></sup> από:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="cp">&lt;%=</span> <span class="n">stylesheet_link_tag</span>    <span class="s1">'application'</span><span class="p">,</span> <span class="ss">media: </span><span class="s1">'all'</span><span class="p">,</span> <span class="s1">'data-turbolinks-track'</span><span class="p">:</span> <span class="s1">'reload'</span> <span class="cp">%&gt;</span>
     <span class="cp">&lt;%=</span> <span class="n">javascript_include_tag</span> <span class="s1">'application'</span><span class="p">,</span> <span class="s1">'data-turbolinks-track'</span><span class="p">:</span> <span class="s1">'reload'</span> <span class="cp">%&gt;</span>
 </code></pre></div></div>
 
-<p>to</p>
+<p>σε</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="cp">&lt;%=</span> <span class="n">stylesheet_link_tag</span>    <span class="s1">'application'</span><span class="p">,</span> <span class="ss">media: </span><span class="s1">'all'</span> <span class="cp">%&gt;</span>
     <span class="cp">&lt;%=</span> <span class="n">javascript_include_tag</span> <span class="s1">'application'</span> <span class="cp">%&gt;</span>
 </code></pre></div></div>
 
-<p>Check that your <code class="highlighter-rouge">app/assets/javascripts</code> folder doesn’t have any files with extension <code class="highlighter-rouge">.coffee</code> and if you find any, remove them.<sup><a href="#acknowledgments">2</a><sup></sup></sup></p>
+<p>Ελέγξτε ότι ο φάκελος <code class="highlighter-rouge">app/assets/javascripts</code> δεν έχει αρχεία με κατάληξη <code class="highlighter-rouge">.coffee</code> και αν έχει, αφαιρέστε τα.<sup><a href="#ευχαριστίες">2</a><sup></sup></sup></p>
 
-<p>In the terminal, also execute the following command:</p>
+<p>Στη γραμμή εντολών τέλος, εκτελέστε:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails tmp:cache:clear
 </code></pre></div></div>
 
-<p>to clear any cached compiled coffee scripts.</p>
+<p>για να καθαρίσετε ότι αρχεία coffee scripts είχαν ενδεχομένως ενταχθεί στην cache.</p>
 
-<p>Done. Restart you server.</p>
+<p>Αυτά. Επανεκκινήστε τον εξυπηρετητή.</p>
 
-<h3 id="adding-a-navigation-bar">Adding a navigation bar</h3>
+<h3 id="προσθήκη-μπάρας-πλοήγησης">Προσθήκη μπάρας πλοήγησης</h3>
 
-<p>To improve the usability of the web pages will add a top <a href="https://getbootstrap.com/docs/4.0/components/navbar/">navigation bar</a>.</p>
+<p>Για να βελτιώσουμε τη χρηστικότητα της εφαρμογής θα προσθέσουμε μια <a href="https://getbootstrap.com/docs/4.0/components/navbar/">μπάρα πλοήγησης</a>.</p>
 
-<p>Create the directory <code class="highlighter-rouge">app/views/shared</code> and a file inside it named <code class="highlighter-rouge">_navigation_bar.html.erb</code>. This is going to be the partial responsible for rendering the navigation bar and which later on we will add to the application’s default layout in order to be rendered on all web pages. Add these contents:</p>
+<p>Δημιουργήστε το φάκελο <code class="highlighter-rouge">app/views/shared</code> και ένα αρχείο μέσα του με το όνομα <code class="highlighter-rouge">_navigation_bar.html.erb</code>. Αυτό θα είναι ένα απόσπασμα (partial) που θα εμφανίζει την μπάρα πλοήγησης και που στη συνέχεια θα προσθέσουμε στην κεντρική δομή των ιστοσελίδων της εφαρμογής (application layout) για να εμφανίζεται σε όλες τις σελίδες. Προσθέστε μέσα του τα παρακάτω:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-lg navbar-dark bg-dark justify-content-between"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Rails chat tutorial<span class="nt">&lt;/a&gt;</span>
@@ -670,9 +679,9 @@ Use Ctrl-C to stop
 <span class="nt">&lt;/nav&gt;</span>
 </code></pre></div></div>
 
-<p>Mind the <code class="highlighter-rouge">gravatar_url(current_user)</code> line. This is a helper method that we are going to use in order to resolve the gravatar url of the signed in user. This is not a builtin method, we have to defined it but it’s pretty straightforward.</p>
+<p>Δώστε προσοχή στη γραμμή <code class="highlighter-rouge">gravatar_url(current_user)</code>. Αυτή είναι μια βοηθητική μέθοδος που θα χρησιμοποιούμε για να εμφανίζουμε την εικόνα προφίλ (<code class="highlighter-rouge">gravatar</code>) των πιστοποιημένων χρηστών. Δεν είναι συστημική μέθοδος, θα την υλοποιήσουμε εμείς αλλά είναι αρκετά απλή.</p>
 
-<p>Edit <code class="highlighter-rouge">app/helpers/application_helper.rb</code> and add the following method:</p>
+<p>Ανοίξτε το αρχείο με τις βοηθητικές μεθόδους <code class="highlighter-rouge">app/helpers/application_helper.rb</code> και προσθέστε τον παρακάτω κώδικα:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">gravatar_url</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
   <span class="n">gravatar_id</span> <span class="o">=</span> <span class="no">Digest</span><span class="o">::</span><span class="no">MD5</span><span class="o">::</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="nf">email</span><span class="p">).</span><span class="nf">downcase</span>
@@ -680,14 +689,14 @@ Use Ctrl-C to stop
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><strong>Note</strong>:</p>
+<p><strong>Σημείωση</strong>:</p>
 <ul>
-  <li>As you can see, the user’s username, avatar and sign out link will only be rendered if the user is signed in.</li>
+  <li>Όπως μπορείτε να δείτε το όνομα του χρήστη, η εικόνα προφίλ και ο σύνδεσμος εξόδου από την εφαρμογή θα εμφανίζονται μόνο όταν ο χρήστης έχει συνδεθεί.</li>
 </ul>
 
-<p>The avatar image has a css class <code class="highlighter-rouge">avatar</code>. We have to define this class in the application’s stylesheets. Create a css file in which we will gather all css class that we will use in the application under the name <code class="highlighter-rouge">app/assets/stylesheets/rails-chat-tutorial.scss</code>.</p>
+<p>Η εικόνα προφίλ έχει μια CSS κλάση <code class="highlighter-rouge">avatar</code>. Πρέπει να ορίσουμε αυτήν την κλάση σε κάποιο αρχείο stylesheet της εφαρμογής. Δημιουργήστε ένα αρχείο (στο οποίο θα συγκεντρώσουμε όλες τις CSS κλάσεις που θα χρησιμοποιήσουμε πέραν αυτών που παρέχονται από το <code class="highlighter-rouge">bootstrap</code>) με το όνομα <code class="highlighter-rouge">app/assets/stylesheets/rails-chat-tutorial.scss</code>.</p>
 
-<p>For now add the rule for the avatar:</p>
+<p>Για την ώρα προσθέστε τον κανόνα για την εικόνα προφίλ:</p>
 
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.avatar</span> <span class="p">{</span>
   <span class="nl">max-height</span><span class="p">:</span><span class="m">30px</span><span class="p">;</span>
@@ -697,12 +706,12 @@ Use Ctrl-C to stop
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>and open <code class="highlighter-rouge">application.scss</code> to import the newly created stylesheet. Add the line:</p>
+<p>και ανοίξτε το αρχείο <code class="highlighter-rouge">application.scss</code> για να το προσθέσετε στο μητρώο stylesheet της εφαρμογής. Προσθέστε τη γραμμή:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@import "rails-chat-tutorial"
 </code></pre></div></div>
 
-<p>We have to add this partial in the application layout. Edit <code class="highlighter-rouge">app/views/layouts/application.html.erb</code> and change its contents to:</p>
+<p>Τώρα θα προσθέσουμε το απόσπασμα της μπάρας πλοήγησης που δημιουργήσαμε στην προκαθορισμένη δομή των σελίδων της εφαρμογής. Ανοίξτε το αρχείο <code class="highlighter-rouge">app/views/layouts/application.html.erb</code> και αλλάξτε τα περιεχόμενά του στα παρακάτω:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
@@ -730,37 +739,37 @@ Use Ctrl-C to stop
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<p>Reload to view the bar.</p>
+<p>Φορτώστε ξανά την αρχική σελίδα και δείτε την μπάρα.</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/08.png" alt="Sign up with navigation bar" /></p>
 
-<p>Awesome. Fill in with your desired credentials and submit the form.</p>
+<p>Τέλεια. Συμπληρώστε τα επιθυμητά στοιχεία εισόδου σας και υποβάλετε τη φόρμα.</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/09.png" alt="Signed in" /></p>
 
-<h3 id="room-management">Room management</h3>
+<h3 id="διαχείριση-δωματίων">Διαχείριση δωματίων</h3>
 
-<p>We are going to create a simple layout for groups.</p>
+<p>Θα δημιουργήσουμε μια απλή δομή για τα δωμάτια.</p>
 
 <ul>
-  <li>One narrow column displaying vertically all the available rooms</li>
-  <li>One wide column which is going to host the chat messages and form.</li>
+  <li>Μια μικρή στήλη που θα εμφανίζει κάθετα όλα τα διαθέσιμα δωμάτια</li>
+  <li>Μια μεγάλη στήλη που θα περιέχει τα μηνύματα και τη φόρμα υποβολής μηνύματος.</li>
 </ul>
 
-<p>The rooms index page will have the second column empty since this column will be present only when user is inside a specific room.</p>
+<p>Οι αρχική σελίδα των δωματίων θα έχει τη δεξιά στήλη άδεια, η τελευταία θα εμφανίζεται μόνο όταν ο χρήστης έχει επιλέξει συγκεκριμένο δωμάτιο.</p>
 
-<p>In the index page we will provide the option to create a room.</p>
+<p>Τέλος, στην αρχική σελίδα των δωματίων θα παρέχουμε και την επιλογή για δημιουργία νέου δωματίου.</p>
 
-<h4 id="room-index">Room index</h4>
+<h4 id="αρχική-σελίδα-δωματίων">Αρχική σελίδα δωματίων</h4>
 
-<p>First we have to load all rooms in the <code class="highlighter-rouge">RoomsController</code>. Open <code class="highlighter-rouge">app/controllers/rooms_controller.rb</code> and change the index action as:</p>
+<p>Πρώτα θα πρέπει να φορτώσουμε όλα τα διαθέσιμα δωμάτια στον ελεγκτή <code class="highlighter-rouge">RoomsController</code>. Ανοίξτε το αρχείο <code class="highlighter-rouge">app/controllers/rooms_controller.rb</code> και αλλάξτε την μέθοδο <code class="highlighter-rouge">index</code> όπως παρακάτω:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">index</span>
   <span class="vi">@rooms</span> <span class="o">=</span> <span class="no">Room</span><span class="p">.</span><span class="nf">all</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p>Open <code class="highlighter-rouge">app/views/rooms/index.html.erb</code> and change its contents to<sup><a href="#acknowledgments">[8]</a></sup>:</p>
+<p>Ανοίξτε την προβολή <code class="highlighter-rouge">app/views/rooms/index.html.erb</code> και αλλάξτε τα περιεχόμενά της στα παρακάτω<sup><a href="#ευχαριστίες">[8]</a></sup>:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-12 col-md-3"</span><span class="nt">&gt;</span>
@@ -802,17 +811,17 @@ Use Ctrl-C to stop
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
 
-<p>If there are rooms, the left column of the page will render a vertical navigation with links leading to each room’s page. The right column displays a simple welcome message.</p>
+<p>Αν υπάρχουν δωμάτια, η αριστερή στήλη θα εμφανίζει μια κάθετη πλοήγηση με συνδέσμους που οδηγούν στη σελίδα κάθε δωματίου. Η δεξιά στήλη εμφανίζει ένα απλό μήνυμα καλωσορίσματος στην εφαρμογή.</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/10.png" alt="Room index" /></p>
 
-<p>Pressing the <code class="highlighter-rouge">Create a room</code> button we get the expected error for the non-existent action.</p>
+<p>Πατώντας το κουμπί <code class="highlighter-rouge">Create a room</code> εμφανίζεται ένα αναμενόμενο λάθος καθώς ο ελεγκτής δεν υποστηρίζει ακόμη την ενέργεια δημιουργίας δωματίου.</p>
 
-<h4 id="room-newedit">Room new/edit</h4>
+<h4 id="δημιουργία-και-επεξεργασία-δωματίου">Δημιουργία και επεξεργασία δωματίου</h4>
 
-<p>We have to define the actions for creating and updating a room.</p>
+<p>Θα ορίσουμε τις ενέργειες για τη δημιουργία και την επεξεργασία ενός δωματίου.</p>
 
-<p>Open the <code class="highlighter-rouge">app/controllers/rooms_controller.rb</code> and change its contents to:</p>
+<p>Ανοίξτε τον ελεγκτή των δωματίων <code class="highlighter-rouge">app/controllers/rooms_controller.rb</code> και αλλάξτε τα περιεχόμενά του ως εξής:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">RoomsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
   <span class="c1"># Loads:</span>
@@ -864,9 +873,9 @@ Use Ctrl-C to stop
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><strong>Note</strong>: we preload the <code class="highlighter-rouge">@rooms</code> and the <code class="highlighter-rouge">@room</code> variables making them available to all actions with the <code class="highlighter-rouge">before_action :load_entities</code> hook.</p>
+<p><strong>Σημείωση</strong>: φορτώνουμε από πριν τις μεταβλητές που κρατούν τα δωμάτια (<code class="highlighter-rouge">@rooms</code>)  και το τρέχον δωμάτιο (<code class="highlighter-rouge">@room</code>) ώστε να είναι διαθέσιμες σε όλες τις ενέργειες χρησιμοποιώντας την οδηγία <code class="highlighter-rouge">before_action :load_entities</code> (action hook).</p>
 
-<p>We will create a simple form for the <code class="highlighter-rouge">Room</code> object and we will use it both when creating and editing a room. Create the <code class="highlighter-rouge">app/views/rooms/_form.html.erb</code> and add:</p>
+<p>Θα δημιουργήσουμε μια απλή φόρμα για το μοντέλο <code class="highlighter-rouge">Room</code> και θα τη χρησιμοποιήσουμε και για τη δημιουργία αλλά και για την επεξεργασία ενός δωματίου. Δημιουργήστε την προβολή <code class="highlighter-rouge">app/views/rooms/_form.html.erb</code> και προσθέστε τα παρακάτω:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;%=</span> <span class="n">simple_form_for</span> <span class="vi">@room</span> <span class="k">do</span> <span class="o">|</span><span class="n">form</span><span class="o">|</span> <span class="cp">%&gt;</span>
   <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">input</span> <span class="ss">:name</span> <span class="cp">%&gt;</span>
@@ -874,7 +883,7 @@ Use Ctrl-C to stop
 <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
 </code></pre></div></div>
 
-<p>Then, create the views for the <code class="highlighter-rouge">new</code>/<code class="highlighter-rouge">edit</code> action accordingly:</p>
+<p>Στη συνέχεια, δημιουργήστε τις προβολές των ενεργειών <code class="highlighter-rouge">new</code> και <code class="highlighter-rouge">edit</code> αντίστοιχα:</p>
 
 <p><em>app/views/rooms/new.html.erb</em></p>
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>
@@ -892,15 +901,15 @@ Use Ctrl-C to stop
 <span class="cp">&lt;%=</span> <span class="n">render</span> <span class="ss">partial: </span><span class="s1">'form'</span> <span class="cp">%&gt;</span>
 </code></pre></div></div>
 
-<p>Time to create the first room. From the rooms’ index page, press the <code class="highlighter-rouge">Create a room</code></p>
+<p>Ώρα να φτιάξουμε το πρώτο μας δωμάτιο. Από την αρχική σελίδα των δωματίων, πατήστε το κουμπί <code class="highlighter-rouge">Create a room</code></p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/11.png" alt="New room" /></p>
 
-<p>Save and here it is.</p>
+<p>Σώστε το και ορίστε:</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/12.png" alt="Room index with rooms" /></p>
 
-<p>Add this class in <code class="highlighter-rouge">app/assets/stylesheets/rails-chat-tutorial.scss</code> to improve the display of the rooms.</p>
+<p>Προσθέστε την παρακάτω κλάση στο αρχείο <code class="highlighter-rouge">app/assets/stylesheets/rails-chat-tutorial.scss</code> για να βελτιώσουμε την εμφάνιση των δωματίων.</p>
 
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.room-nav-link</span> <span class="p">{</span>
   <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="n">lighten</span><span class="p">(</span><span class="err">$</span><span class="n">primary</span><span class="p">,</span> <span class="m">40%</span><span class="p">);</span>
@@ -914,11 +923,11 @@ Use Ctrl-C to stop
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/13.png" alt="Room index with improved rooms" /></p>
 
-<p><strong>Note</strong>: We will add the <code class="highlighter-rouge">edit</code> link in the room’s page a.k.a. <code class="highlighter-rouge">show</code> action.</p>
+<p><strong>Σημείωση</strong>: Θα προσθέσουμε παρακάτω τον σύνδεσμο επεξεργασίας (<code class="highlighter-rouge">edit</code>) ενός δωματίου.</p>
 
-<p>Before moving on to the Room page, we will refactor the index page so as to be able to use the left column’s content inside the room page as well.</p>
+<p>Πριν προχωρήσουμε στη σελίδα προβολής ενός δωματίου, θα αλλάξουμε τον κώδικα της αρχικής σελίδας των δωματίων ώστε να μπορούμε να χρησιμοποιήσουμε την αριστερή στήλη και μέσα στη σελίδα ενός δωματίου.</p>
 
-<p>Create the partial <code class="highlighter-rouge">app/views/rooms/_rooms.html.erb</code> with contents:</p>
+<p>Δημιουργήστε το απόσπασμα προβολής <code class="highlighter-rouge">app/views/rooms/_rooms.html.erb</code> με τα εξής περιεχόμενα:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mb-3"</span><span class="nt">&gt;</span>
   <span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="n">new_room_path</span><span class="p">,</span> <span class="ss">class: </span><span class="s1">'btn btn-primary'</span> <span class="k">do</span> <span class="cp">%&gt;</span>
@@ -939,7 +948,7 @@ Use Ctrl-C to stop
 <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
 </code></pre></div></div>
 
-<p>and change the <code class="highlighter-rouge">app/views/rooms/index.html.erb</code> to use it:</p>
+<p>και προσαρμόστε την αρχική σελίδα των δωματίων <code class="highlighter-rouge">app/views/rooms/index.html.erb</code> ώστε να το χρησιμοποιεί:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-12 col-md-3"</span><span class="nt">&gt;</span>
@@ -966,9 +975,9 @@ Use Ctrl-C to stop
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
 
-<h4 id="room-page">Room page</h4>
+<h4 id="σελίδα-δωματίου">Σελίδα δωματίου</h4>
 
-<p>Add the <code class="highlighter-rouge">show</code> action in the <code class="highlighter-rouge">app/controllers/rooms_controller.rb</code>:</p>
+<p>Προσθέστε την ενέργεια προβολής ενός δωματίου <code class="highlighter-rouge">show</code> στον ελεγκτή των δωματίων <code class="highlighter-rouge">app/controllers/rooms_controller.rb</code>:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">show</span>
   <span class="vi">@room_message</span> <span class="o">=</span> <span class="no">RoomMessage</span><span class="p">.</span><span class="nf">new</span> <span class="ss">room: </span><span class="vi">@room</span>
@@ -976,13 +985,13 @@ Use Ctrl-C to stop
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><strong>Notes:</strong></p>
+<p><strong>Σημειώσεις:</strong></p>
 <ul>
-  <li>We construct a new room message which we are going to use in the view to build a form for creating the chat messages.</li>
-  <li>When displaying the room message, we access its user’s email attribute to resolve the gravatar hash. We used <code class="highlighter-rouge">.includes(:user)</code> in the query for the <code class="highlighter-rouge">@room_messages</code> to fetch them along with their users avoiding <a href="https://medium.com/@bretdoucette/n-1-queries-and-how-to-avoid-them-a12f02345be5">N+1 queries</a><sup><a href="#acknowledgments">[1]</a></sup>.</li>
+  <li>Δημιουργούμε ένα νέο μήνυμα (<code class="highlighter-rouge">@room_message</code>) για να το χρησιμοποιήσουμε στην προβολή όταν θα δημιουργήσουμε τη φόρμα για την υποβολή νέου μηνύματος.</li>
+  <li>Όταν εμφανίζουμε ένα μήνυμα στο δωμάτιο, προσπελαύνουμε την email διεύθυνση του χρήστη που το δημιούργησε για να μπορούμε να υπολογίσουμε το hash της <code class="highlighter-rouge">gravatar</code> εικόνας προφίλ του. Χρησιμοποιήσαμε λοιπόν την μέθοδο <code class="highlighter-rouge">.includes(:user)</code> στο ερώτημα της βάσης για τα μηνύματα δωματίου <code class="highlighter-rouge">@room_messages</code> ώστε να προσκομίζονται και οι χρήστες ταυτόχρονα για να αποφύγουμε το πρόβλημα με τα <a href="https://medium.com/@bretdoucette/n-1-queries-and-how-to-avoid-them-a12f02345be5">N+1 ερωτήματα</a><sup><a href="#ευχαριστίες">[1]</a></sup>.</li>
 </ul>
 
-<p>Create the view <code class="highlighter-rouge">app/views/rooms/show.html.erb</code>:</p>
+<p>Δημιουργήστε την προβολή δωματίου <code class="highlighter-rouge">app/views/rooms/show.html.erb</code>:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>
   <span class="cp">&lt;%=</span> <span class="vi">@room</span><span class="p">.</span><span class="nf">name</span> <span class="cp">%&gt;</span>
@@ -1019,15 +1028,15 @@ Use Ctrl-C to stop
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
 
-<p><strong>Notes:</strong></p>
+<p><strong>Σημειώσεις:</strong></p>
 <ul>
-  <li>We reused the <code class="highlighter-rouge">app/views/rooms/_rooms.html.erb</code> partial that we created in the previous step</li>
-  <li>We added a <code class="highlighter-rouge">div</code> with class <code class="highlighter-rouge">.chat</code> and this is where the room’s messages are rendered.</li>
-  <li>We added a form for the <code class="highlighter-rouge">@room_message</code> that we instantiated in the controller. We also used the directive <code class="highlighter-rouge">remote: true</code> when we instantiated the form thus the form is going to be submitted by <strong>Ajax</strong>.</li>
-  <li>We added a hidden field for the attribute <code class="highlighter-rouge">:room_id</code> so that the value reaches the <code class="highlighter-rouge">RoomMessagesController</code> once we submit the form.</li>
+  <li>Επαναχρησιμοποιήσαμε το απόσπασμα προβολής <code class="highlighter-rouge">app/views/rooms/_rooms.html.erb</code> που δημιουργήσαμε στο προηγούμενο βήμα</li>
+  <li>Προσθέσαμε ένα <code class="highlighter-rouge">div</code> με κλάση <code class="highlighter-rouge">.chat</code> και σε αυτό θα εμφανίζονται τα μηνύματα του δωματίου</li>
+  <li>Προσθέσαμε μια φόρμα για το μήνυμα <code class="highlighter-rouge">@room_message</code> που αρχικοποιήσαμε στον ελεγκτή. Επίσης χρησιμοποιήσαμε την οδηγία <code class="highlighter-rouge">remote: true</code> όταν αρχικοποιήσαμε τη φόρμα συνεπώς η υποβολή της θα γίνεται μέσω <strong>Ajax</strong>.</li>
+  <li>Προσθέσαμε ένα κρυφό πεδίο για το χαρακτηριστικό <code class="highlighter-rouge">:room_id</code> ώστε να είναι διαθέσιμο στον ελεγκτή των μηνυμάτων <code class="highlighter-rouge">RoomMessagesController</code> κατά την υποβολή της φόρμας</li>
 </ul>
 
-<p>Style the chat components by adding the following lines to the <code class="highlighter-rouge">app/assets/stylesheets/rails-chat-tutorial.scss</code>:</p>
+<p>Ας ομορφύνουμε τα στοιχεία της συνομιλίας προσθέτοντας τις παρακάτω γραμμές στο αρχείο <code class="highlighter-rouge">app/assets/stylesheets/rails-chat-tutorial.scss</code>:</p>
 
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.chat</span> <span class="p">{</span>
   <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="n">lighten</span><span class="p">(</span><span class="err">$</span><span class="n">secondary</span><span class="p">,</span> <span class="m">40%</span><span class="p">);</span>
@@ -1043,20 +1052,20 @@ Use Ctrl-C to stop
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Navigate to a room to see what has been done.</p>
+<p>Περιηγηθείτε σε ένα δωμάτιο για να δούμε τι έχουμε κάνει μέχρι στιγμής.</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/14.png" alt="Room page with chat" /></p>
 
-<p>Pressing the <code class="highlighter-rouge">Send</code> button nothing happens on the page but if you check the server’s console you will notice:</p>
+<p>Πατώντας το κουμπή <code class="highlighter-rouge">Send</code> δε συμβαίνει τίποτα στη σελίδα αλλά αν κοιτάξετε το αρχείο καταγραφής (log) του εξυπηρετητή θα παρατηρήσετε το εξής:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AbstractController::ActionNotFound (The action 'create' could not be found for RoomMessagesController):
 </code></pre></div></div>
 
-<p>Let’s fix that.</p>
+<p>Ας το διορθώσουμε.</p>
 
-<h4 id="creating-room-messages">Creating room messages</h4>
+<h4 id="δημιουργία-μηνυμάτων">Δημιουργία μηνυμάτων</h4>
 
-<p>This is going to be easy. All we have to do is implement the <code class="highlighter-rouge">create</code> action in the <code class="highlighter-rouge">RoomMessagesController</code>.</p>
+<p>Αυτό θα είναι απλό. Το μόνο που έχουμε να κάνουμε είναι να υλοποιήσουμε την ενέργεια της δημιουργίας - <code class="highlighter-rouge">create</code> στον ελεγκτή των μηνυμάτων - <code class="highlighter-rouge">RoomMessagesController</code>.</p>
 
 <p><em>app/controllers/room_messages_controller.rb</em></p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">RoomMessagesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
@@ -1076,13 +1085,13 @@ Use Ctrl-C to stop
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><strong>Notes:</strong></p>
+<p><strong>Σημειώσεις:</strong></p>
 <ul>
-  <li>we preload the room using the <code class="highlighter-rouge">room_id</code> parameter that we added as a hidden field in the form in the previous step</li>
-  <li>we create a new message for the room setting its user to the currently signed in user</li>
+  <li>φορτώνουμε εκ των προτέρων το δωμάτιο χρησιμοποιώντας την παράμετρο <code class="highlighter-rouge">room_id</code> που προσθέσαμε προηγουμένως σαν κρυφό πεδίο στη φόρμα του μηνύματος</li>
+  <li>δημιουργούμε ένα νέο μήνυμα θέτοντας του ως χρήστη τον χρήστη που είναι πιστοποιημένος κατά την υποβολή</li>
 </ul>
 
-<p>If you try to submit a message now, again you will see nothing but in the server console you can see from the log that the room message has been created.</p>
+<p>Αν δοκιμάσετε να υποβάλετε ένα μήνυμα τώρα, και πάλι δε θα δείτε να συμβαίνει κάτι στη σελίδα αλλά στα logs του εξυπηρετητή θα δείτε ότι το μήνυμα δημιουργήθηκε επιτυχώς.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Started POST "/room_messages" for ::1 at 2019-04-04 19:24:33 +0300
 Processing by RoomMessagesController#create as JS
@@ -1101,9 +1110,9 @@ No template found for RoomMessagesController#create, rendering head :no_content
 Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 </code></pre></div></div>
 
-<p>A user would expect to have the message field cleared after sending a new message. We don’t disappoint users.</p>
+<p>Οι χρήστες περιμένουν το πεδίο του μηνύματος να καθαρίζει μετά την αποστολή ενός μηνύματος. Ας μην τους αφήσουμε να περιμένουν.</p>
 
-<p>Create a file <code class="highlighter-rouge">app/assets/javascripts/room.js</code> and add the following:</p>
+<p>Δημιουργήστε ένα αρχείο <code class="highlighter-rouge">app/assets/javascripts/room.js</code> και προσθέστε τα παρακάτω:</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#new_room_message</span><span class="dl">'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">ajax:success</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span><span class="nx">c</span> <span class="p">)</span> <span class="p">{</span>
@@ -1112,19 +1121,19 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 <span class="p">});</span>
 </code></pre></div></div>
 
-<p>We bind to the <code class="highlighter-rouge">ajax:success</code> event triggered by <a href="https://guides.rubyonrails.org/working_with_javascript_in_rails.html#form-with">Rails</a> on successful submission of the form and all we want to do is clear the text field’s value.</p>
+<p>Συνδέουμε το συμβάν <code class="highlighter-rouge">ajax:success</code> που πυροδοτείται από το <a href="https://guides.rubyonrails.org/working_with_javascript_in_rails.html#form-with">Rails</a> στην επιτυχή υποβολή της φόρμας και το μόνο που κάνουμε είναι ότι καθαρίζουμε τα περιεχόμενα του πεδίου κειμένου του μηνύματος.</p>
 
-<p>Reload the page and try submitting again and check it out. The field value should be emptied after sending the message.</p>
+<p>Φορτώστε εκ νέου τη σελίδα και προσπαθήστε να υποβάλετε ξανά και δείτε την αλλαγή που μόλις κάναμε. Το πεδίο του μηνύματος θα πρέπει να καθαρίσει μετά την υποβολή της φόρμας.</p>
 
-<h4 id="displaying-room-messages">Displaying room messages</h4>
+<h4 id="εμφάνιση-μηνυμάτων">Εμφάνιση μηνυμάτων</h4>
 
-<p>If you reload the page you will see something like this:</p>
+<p>Αν φορτώσετε πάλι τη σελίδα του δωματίου θα δείτε κάτι σαν αυτό:</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/15.png" alt="Room message to string" /></p>
 
-<p>Let’s beautify the messages.</p>
+<p>Ας ομορφύνουμε και τα μηνύματα.</p>
 
-<p>Replace the contents of <code class="highlighter-rouge">app/views/rooms/show.html.erb</code> with:</p>
+<p>Αντικαταστήστε τα περιεχόμενα της προβολής του δωματίου <code class="highlighter-rouge">app/views/rooms/show.html.erb</code> με τα παρακάτω:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>
   <span class="cp">&lt;%=</span> <span class="vi">@room</span><span class="p">.</span><span class="nf">name</span> <span class="cp">%&gt;</span>
@@ -1181,7 +1190,7 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
 
-<p>and add the following css classes <strong>inside the .chat class</strong>:</p>
+<p>και προσθέστε τις παρακάτω CSS κλάσεις <strong>μέσα στην κλάση .chat</strong>:</p>
 
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.chat-message-container</span> <span class="p">{</span>
   <span class="nl">padding</span><span class="p">:</span> <span class="m">5px</span><span class="p">;</span>
@@ -1204,41 +1213,41 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 <span class="err">}</span>
 </code></pre></div></div>
 
-<p>Reload the page. Magic.</p>
+<p>Φορτώστε ξανά τη σελίδα. Magic.</p>
 
 <p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/16.png" alt="Improved display of room messages" /></p>
 
-<h2 id="introducing-websockets---actioncable">Introducing WebSockets - ActionCable</h2>
+<h2 id="websockets---actioncable">WebSockets - ActionCable</h2>
 
-<p>Time to start using WebSockets with ActionCable.</p>
+<p>Ήρθε η ώρα να χρησιμοποιήσουμε τα WebSockets μέσω της λειτουργικότητας ActionCable του Rails.</p>
 
 <blockquote>
   <p>Action Cable seamlessly integrates WebSockets with the rest of your Rails application. It allows for real-time features to be written in Ruby in the same style and form as the rest of your Rails application, while still being performant and scalable. It’s a full-stack offering that provides both a client-side JavaScript framework and a server-side Ruby framework. You have access to your full domain model written with Active Record or your ORM of choice.
 <cite>– <a href="https://guides.rubyonrails.org/action_cable_overview.html">Action Cable Overview @ Ruby on Rails Guides (v5.2.3)</a></cite></p>
 </blockquote>
 
-<h3 id="install-redis">Install redis</h3>
+<h3 id="εγκατάσταση-redis">Εγκατάσταση redis</h3>
 
-<p>We are going to use the <code class="highlighter-rouge">redis</code> adapter which is <a href="https://guides.rubyonrails.org/action_cable_overview.html#redis-adapter">a safe option for production environments</a> unlike the <code class="highlighter-rouge">async</code> one.</p>
+<p>Θα χρησιμοποιήσουμε τον προσαρμογέα (adapter) <code class="highlighter-rouge">redis</code> που αποτελεί <a href="https://guides.rubyonrails.org/action_cable_overview.html#redis-adapter">μια ασφαλή επιλογή για παραγωγικά περιβάλλοντα</a> σε αντίθεση με την επιλογή <code class="highlighter-rouge">async</code>.</p>
 
-<p>You first must install <a href="https://redis.io/">redis</a> on your system.</p>
+<p>Πρώτα πρέπει να εγκαταστήσετε την εφαρμογή <a href="https://redis.io/">redis</a> στο σύστημά σας.</p>
 
-<p>To install it on Ubuntu you just have to execute the following commands in your terminal:</p>
+<p>Για να το εγκαταστήσω σε Ubuntu χρειάστηκε απλά να εκτελέσω τις παρακάτω εντολές.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
 <span class="nb">sudo </span>apt <span class="nb">install </span>redis-server
 </code></pre></div></div>
 
-<p>To check that installation is successful, in your terminal make sure you get a PONG:</p>
+<p>Για να ελέγξετε ότι η εγκατάσταση ήταν επιτυχής, βεβαιωθείτε ότι παίρνετε PONG όταν εκτελείτε:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ redis-cli
 127.0.0.1:6379&gt; ping
 PONG
 </code></pre></div></div>
 
-<h3 id="configure-actioncable">Configure ActionCable</h3>
+<h3 id="ρύθμιση-του-actioncable">Ρύθμιση του ActionCable</h3>
 
-<p>Since we are working on the development environment, open your <code class="highlighter-rouge">config/cable.yml</code> and replace its contents with:</p>
+<p>Αφου εργαζόμαστε σε περιβάλλον ανάπτυξης (development environment), ανοίξτε το αρχείο ρυθμίσεων του στοιχείου ActionCable <code class="highlighter-rouge">config/cable.yml</code> και αντικαταστήστε τα περιεχόμενά του με τα παρακάτω:</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">development</span><span class="pi">:</span>
   <span class="na">adapter</span><span class="pi">:</span> <span class="s">redis</span>
@@ -1254,25 +1263,25 @@ PONG
   <span class="na">channel_prefix</span><span class="pi">:</span> <span class="s">rails-chat-tutorial_production</span>
 </code></pre></div></div>
 
-<p><strong>Note:</strong> we have added an option <code class="highlighter-rouge">channel_prefix</code> because:</p>
+<p><strong>Σημείωση:</strong> προσθέσαμε την επιλογή <code class="highlighter-rouge">channel_prefix</code> επειδή:</p>
 
 <blockquote>
   <p>Additionally, a channel_prefix may be provided to avoid channel name collisions when using the same Redis server for multiple applications
 <cite>– <a href="https://guides.rubyonrails.org/action_cable_overview.html#redis-adapter">Action Cable Overview # Redis Adapter @ Ruby on Rails Guides (v5.2.3)</a></cite></p>
 </blockquote>
 
-<p>Finally, we are going to add the dependency in the <code class="highlighter-rouge">Gemfile</code>:</p>
+<p>Τέλος, θα προσθέσουμε την απαίτηση βιβλιοθήκης για τον προσαρμογέα <code class="highlighter-rouge">redis</code> στο μητρώο απαιτήσεων <code class="highlighter-rouge">Gemfile</code>:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'redis'</span>
 </code></pre></div></div>
 
-<p>Don’t forget to bundle after altering the <code class="highlighter-rouge">Gemfile</code>.</p>
+<p>Μην ξεχνάτε να εκτελείτε <code class="highlighter-rouge">bundle</code> κάθε φορά που αλλάζετε αυτό το αρχείο.</p>
 
-<h3 id="configure-devise-for-authenticating-websocket-connections">Configure Devise for authenticating websocket connections</h3>
+<h3 id="ρύθμιση-devise-για-πιστοποίηση-συνδέσεων-websocket">Ρύθμιση <code class="highlighter-rouge">devise</code> για πιστοποίηση συνδέσεων WebSocket</h3>
 
-<p>When establishing a websocket connection, we don’t have access to the user session but we do have access to the cookies. So, in order to be able to authenticate the user we need to do some devise related stuff first (<a href="https://rubytutorial.io/actioncable-devise-authentication/">credits to Greg Molnar</a>).</p>
+<p>Όταν εγκαθίσταται μια σύνδεση WebSocket, δεν έχουμε πρόσβαση στη συνεδρία του χρήστη (user session) αλλά έχουμε πρόσβαση τα cookies του. Έτσι, για να μπορούμε να πιστοποιήσουμε τον χρήστη χρειάζεται να κάνουμε κάποια πράγματα σχετικά με το <code class="highlighter-rouge">devise</code> (<a href="https://rubytutorial.io/actioncable-devise-authentication/">credits to Greg Molnar</a>).</p>
 
-<p>Create an initializer for warden hooks under the name <code class="highlighter-rouge">config/initializers/warden_hooks.rb</code> and add the following lines:</p>
+<p>Δημιουργήστε έναν αρχικοποιητή για τα “warden hooks” με το όνομα <code class="highlighter-rouge">config/initializers/warden_hooks.rb</code> και προσθέστε τις παρακάτω γραμμές:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Warden</span><span class="o">::</span><span class="no">Manager</span><span class="p">.</span><span class="nf">after_set_user</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="p">,</span><span class="n">auth</span><span class="p">,</span><span class="n">opts</span><span class="o">|</span>
   <span class="n">scope</span> <span class="o">=</span> <span class="n">opts</span><span class="p">[</span><span class="ss">:scope</span><span class="p">]</span>
@@ -1285,11 +1294,11 @@ PONG
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><strong>Explain:</strong> We add a cookie with the user’s id upon successful sign in and we remove it once the user logs out.</p>
+<p><strong>Επεξήγηση:</strong> Προσθέτουμε ένα cookie με το αναγνωριστικό του χρήστη (user id) μετά την επιτυχή πιστοποίηση του και το αφαιρούμε κατά την έξοδό του από την εφαρμογή.</p>
 
-<h3 id="configure-the-websocket-connection">Configure the websocket connection</h3>
+<h3 id="ρύθμιση-της-σύνδεση-websocket">Ρύθμιση της σύνδεση WebSocket</h3>
 
-<p>Open <code class="highlighter-rouge">app/channels/application_cable/connection.rb</code> and change its contents to the following:</p>
+<p>Ανοίξτε το αρχείο <code class="highlighter-rouge">app/channels/application_cable/connection.rb</code> και αλλάξτε τα περιεχόμενά του ως εξής:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">ApplicationCable</span>
   <span class="k">class</span> <span class="nc">Connection</span> <span class="o">&lt;</span> <span class="no">ActionCable</span><span class="o">::</span><span class="no">Connection</span><span class="o">::</span><span class="no">Base</span>
@@ -1312,25 +1321,25 @@ PONG
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><strong>Explain:</strong></p>
+<p><strong>Επεξήγηση:</strong></p>
 
 <blockquote>
   <p>Here identified_by is a connection identifier that can be used to find the specific connection later. Note that anything marked as an identifier will automatically create a delegate by the same name on any channel instances created off the connection.
 <cite>– <a href="https://guides.rubyonrails.org/action_cable_overview.html#connection-setup">Action Cable Overview # Connection setup @ Ruby on Rails Guides (v5.2.3)</a></cite></p>
 </blockquote>
 
-<p>In the <code class="highlighter-rouge">find_verified_user</code> method we access the cookie that we previously set in the warden hook.</p>
+<p>Στη μέθοδο <code class="highlighter-rouge">find_verified_user</code> προσπελαύνουμε το cookie που θέσαμε νωρίτερα στον αρχικοποιητή των <code class="highlighter-rouge">warden hooks</code>.</p>
 
-<h3 id="create-the-room-channel">Create the room channel</h3>
+<h3 id="δημιουργία-του-καναλιού-δωματίου">Δημιουργία του καναλιού δωματίου</h3>
 
 <blockquote>
   <p>A channel encapsulates a logical unit of work, similar to what a controller does in a regular MVC setup.
 <cite>– <a href="https://guides.rubyonrails.org/action_cable_overview.html#channelsp">Action Cable Overview # Channels @ Ruby on Rails Guides (v5.2.3)</a></cite></p>
 </blockquote>
 
-<p>We will create the <code class="highlighter-rouge">RoomChannel</code> in which all Room pages will subscribe to.</p>
+<p>Θα δημιουργήσουμε το κανάλι <code class="highlighter-rouge">RoomChannel</code> στο οποίο θα εγγράφονται όλες οι σελίδες δωματίων.</p>
 
-<p>Create <code class="highlighter-rouge">app/channels/room_channel.rb</code> with the following contents:</p>
+<p>Δημιουργήστε το κανάλι με το όνομα <code class="highlighter-rouge">app/channels/room_channel.rb</code> και τα εξής περιεχόμενα:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">RoomChannel</span> <span class="o">&lt;</span> <span class="no">ApplicationCable</span><span class="o">::</span><span class="no">Channel</span>
   <span class="k">def</span> <span class="nf">subscribed</span>
@@ -1343,31 +1352,31 @@ PONG
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><strong>Explain</strong>:</p>
+<p><strong>Επεξήγηση</strong>:</p>
 
 <ul>
-  <li>The <code class="highlighter-rouge">subscribed</code> method gets called once a subscription to the channel is established and it is responsible to setup the stream from which data will be sent back and forth.</li>
+  <li>Η μέθοδος <code class="highlighter-rouge">subscribed</code> εκτελείται κάθε φορά που εγγράφεται κάποιος στο κανάλι και είναι υπεύθυνη να ρυθμίσει τη ροή μέσω της οποίας τα δεδομένα θα πηγαινοέρχονται.</li>
 </ul>
 
-<p>We are going to configure the room page code later on to request subscriptions to this channel passing the <code class="highlighter-rouge">room</code> parameter.</p>
+<p>Θα ρυθμίσουμε τον κώδικα της σελίδα δωματίου αργότερα με τέτοιο τρόπο ώστε κατά την εγγραφή στο κανάλι να αποστέλλεται και η παράμετρος του δωματίου <code class="highlighter-rouge">room</code>.</p>
 
-<p>We have two options:</p>
+<p>Έχουμε δύο επιλογές:</p>
 
 <ul>
-  <li>Use <code class="highlighter-rouge">stream_for</code>: this way Rails automatically generates a stream name for the given object (<code class="highlighter-rouge">room</code> in our case), for example: “room:asdfwer234”. When we want afterwards to broadcast data to the stream, all we have to do is call <code class="highlighter-rouge">RoomChannel.broadcast_to(room_object, data)</code> in which case Rails resolves the stream name from the <code class="highlighter-rouge">room_object</code>. In other words, we don’t have to manually resolve the stream name in which the data have to be send (see next item).
+  <li>Να χρησιμοποιήσουμε τη μέθοδο <code class="highlighter-rouge">stream_for</code>: με αυτό τον τρόπο το Rails αυτόματα παράγει ένα όνομα ροής για το εκάστοτε μοντέλο (<code class="highlighter-rouge">room</code> στην περίπτωσή μας), για παράδειγμα: “room:asdfwer234”. Όταν στη συνέχεια θέλουμε να στείλουμε δεδομένα σε αυτή τη ροή, το μόνο που έχουμε να κάνουμε είναι να εκτελέσουμε τη μέθοδο <code class="highlighter-rouge">RoomChannel.broadcast_to(room_object, data)</code> όπου το Rails θα ανακτήσει αυτόματα το όνομα της ροής βάσει της παραμέτρου <code class="highlighter-rouge">room_object</code>. Με άλλα λόγια, δε χρειάζεται εμείς να υπολογίζουμε το όνομα μιας ροής δωματίου στην οποία θέλουμε να στείλουμε/λάβουμε δεδομένα.
     <ul>
-      <li>This option is available when the channel handles subscriptions bound to models like in our case, a specific room</li>
+      <li>αυτή η επιλογή είναι μόνο όταν το κανάλι χειρίζεται εγγραφές (subscriptions) που συνδέονται με μοντέλα, στην περίπτωσή μας κάποιο δωμάτιο</li>
     </ul>
   </li>
-  <li>Use <code class="highlighter-rouge">stream_from</code>: we manually define the name of the stream and later on, when we want to broadcast to the stream, we have to use: <code class="highlighter-rouge">ActionCable.server.broadcast("room_#{a_room_id_here}", data)</code>.</li>
+  <li>Να χρησιμοποιήσουμε τη μέθοδο <code class="highlighter-rouge">stream_from</code>: ορίζουμε μόνοι μας το όνομα της ροής και στη συνέχεια, όταν θέλουμε να στείλουμε δεδομένα στη ροή χρησιμοποιούμε: <code class="highlighter-rouge">ActionCable.server.broadcast("room_#{a_room_id_here}", data)</code>.</li>
 </ul>
 
-<p>Read more <a href="https://guides.rubyonrails.org/action_cable_overview.html#streams">here</a>.</p>
+<p>Διαβάστε περισσότερα <a href="https://guides.rubyonrails.org/action_cable_overview.html#streams">εδώ</a>.</p>
 
-<h3 id="broadcast-room-messages">Broadcast room messages</h3>
+<h3 id="αναμετάδοση-μηνυμάτων">Αναμετάδοση μηνυμάτων</h3>
 
-<p>Every time a room message is being created, we just need to broadcast to the message’s room stream.
-To do so, alter the <code class="highlighter-rouge">create</code> action of the <code class="highlighter-rouge">app/controllers/room_messages_controller.rb</code> to this:</p>
+<p>Κάθε φορά που δημιουργείται ένα μήνυμα, θέλουμε να το αναμεταδώσουμε στη ροή του καναλιού για το συγκεκριμένο δωμάτιο.
+Για να το κάνουμε αυτό, αλλάξτε την ενέργεια δημιουργίας μηνύματος - <code class="highlighter-rouge">create</code> του αντίστοιχου ελεγκτή <code class="highlighter-rouge">app/controllers/room_messages_controller.rb</code> ως εξής:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">create</span>
   <span class="vi">@room_message</span> <span class="o">=</span> <span class="no">RoomMessage</span><span class="p">.</span><span class="nf">create</span> <span class="ss">user: </span><span class="n">current_user</span><span class="p">,</span>
@@ -1378,9 +1387,9 @@ To do so, alter the <code class="highlighter-rouge">create</code> action of the 
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><strong>Explain</strong>: we added the line <code class="highlighter-rouge">RoomChannel.broadcast_to @room, @room_message</code> which will broadcast to the room’s specific stream (as explained above) the <code class="highlighter-rouge">@room_message</code> transformed to json via the <code class="highlighter-rouge">to_json</code> method.</p>
+<p><strong>Επεξήγηση</strong>: προσθέσαμε τη γραμμή <code class="highlighter-rouge">RoomChannel.broadcast_to @room, @room_message</code> που θα αναμεταδώσει στη ροή του καναλιού του δωματίου (όπως εξηγήσαμε προηγουμένως) το μήνυμα <code class="highlighter-rouge">@room_message</code> μετασχηματισμένο σε μορφή JSON μέσω της μεθόδου <code class="highlighter-rouge">to_json</code>.</p>
 
-<p>So, on the other side, the client side, we are going to be receiving the json representation of the <code class="highlighter-rouge">RoomMessage</code> model. Let’s see what that is:</p>
+<p>Έτσι, στην άλλη πλευρά, στην πλευρά του πελάτη δηλαδή, θα παραλάβουμε την JSON μορφή του μοντέλου <code class="highlighter-rouge">RoomMessage</code>. Για να δούμε πως είναι αυτή:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span><span class="w">
@@ -1392,9 +1401,9 @@ To do so, alter the <code class="highlighter-rouge">create</code> action of the 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>We plan to add the new messages in the room’s page via Javascript and this information is not adequate. The only thing we are missing is the user avatar. Time to refactor.</p>
+<p>Έχουμε σκοπό να εμφανίσουμε τα μηνύματα στη σελίδα του δωματίου μέσω Javascript και αυτή η πληροφορία που λαμβάνουμε προς το παρόν δεν είναι αρκετή. Μας λείπει η διεύθυνση της εικόνας προφίλ <code class="highlighter-rouge">gravatar</code>. Ας την προσθέσουμε.</p>
 
-<p>Open <code class="highlighter-rouge">app/models/user.rb</code> and add the following method:</p>
+<p>Ανοίξτε το μοντέλου του χρήστη <code class="highlighter-rouge">app/models/user.rb</code> και προσθέστε την παρακάτω μέθοδο.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def gravatar_url
   gravatar_id = Digest::MD5::hexdigest(email).downcase
@@ -1402,19 +1411,19 @@ To do so, alter the <code class="highlighter-rouge">create</code> action of the 
 end
 </code></pre></div></div>
 
-<p>We had already implemented this in the <code class="highlighter-rouge">app/helpers/application_helper.rb</code> file and we won’t be using it anymore so <strong>remove it</strong>.</p>
+<p>Έχουμε ήδη υλοποιήσει αυτή τη μέθοδο στις βοηθητικές μεθόδους <code class="highlighter-rouge">app/helpers/application_helper.rb</code> αλλά δε θα τη χρειαστούμε πλέον οπότε <strong>αφαιρέστε τη</strong>.</p>
 
-<p>Update <code class="highlighter-rouge">app/views/shared/_navigation_bar.html.erb</code> and change the previous gravatar resolution to this:</p>
+<p>Ενημερώστε το απόσπασμα της μπάρας πλοήγησης <code class="highlighter-rouge">app/views/shared/_navigation_bar.html.erb</code> ώστε ο υπολογισμός της διεύθυνσης της εικόνας προφίλ να γίνεται πλέον από τη μέθοδο που μόλις δημιουργήσαμε:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"avatar"</span> <span class="na">src=</span><span class="s">"</span><span class="cp">&lt;%=</span> <span class="n">current_user</span><span class="p">.</span><span class="nf">gravatar_url</span> <span class="cp">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
 </code></pre></div></div>
 
-<p>Update <code class="highlighter-rouge">app/views/rooms/show.html.erb</code> and change it there too, with:</p>
+<p>Ενημερώστε και τη σελίδα δωματίου <code class="highlighter-rouge">app/views/rooms/show.html.erb</code> αλλάξτε τη και εκεί επίσης, με:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"</span><span class="cp">&lt;%=</span> <span class="n">room_message</span><span class="p">.</span><span class="nf">user</span><span class="p">.</span><span class="nf">gravatar_url</span> <span class="cp">%&gt;</span><span class="s">"</span> <span class="na">class=</span><span class="s">"avatar"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
 </code></pre></div></div>
 
-<p>Finally, we will change the <code class="highlighter-rouge">JSON</code> representation of the <code class="highlighter-rouge">RoomMessage</code> to include the user’s url:</p>
+<p>Τέλος, θα αλλάξουμε το μετασχηματισμό <code class="highlighter-rouge">JSON</code> των μηνυμάτων - <code class="highlighter-rouge">RoomMessage</code> ώστε να εμπεριέχει και τη διεύθυνση της εικόνας προφίλ:</p>
 
 <p><em>app/models/room_message.rb</em></p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">as_json</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
@@ -1422,7 +1431,7 @@ end
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p>Let’s confirm that the new JSON transformation is valid:</p>
+<p>Ας επιβεβαιώσουμε ότι ο μετασχηματισμός είναι επιτυχής:</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span><span class="w">
@@ -1435,20 +1444,20 @@ end
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>Great, moving on.</p>
+<p>Μια χαρά, προχωράμε.</p>
 
-<h3 id="subscribe-to-the-room-stream">Subscribe to the room stream</h3>
+<h3 id="εγγραφή-στη-ροή-δωματίου">Εγγραφή στη ροή δωματίου</h3>
 
-<p>We are going to add some data in the room page in order to use them via Javascript to subscribe to the appropriate streams each time we visit a room.</p>
+<p>Θα προσθέσουμε κάποια δεδομένα στη σελίδα των δωματίων ώστε να μπορούμε να τα χρησιμοποιήσουμε μέσω Javascript για να πραγματοποιούμε εγγραφή στις κατάλληλες ροές κάθε φορά που επισκεπτόμαστε ένα δωμάτιο.</p>
 
-<p>Open the file <code class="highlighter-rouge">app/views/rooms/show.html.erb</code> and alter the line in which we define the chat div, to this:</p>
+<p>Ανοίξτε το αρχείο <code class="highlighter-rouge">app/views/rooms/show.html.erb</code> και αλλάξτε τη γραμμή στην οποία ορίζουμε το div <code class="highlighter-rouge">chat</code> ως εξής:</p>
 
 <div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"chat"</span> <span class="na">data-channel-subscribe=</span><span class="s">"room"</span> <span class="na">data-room-id=</span><span class="s">"</span><span class="cp">&lt;%=</span> <span class="vi">@room</span><span class="p">.</span><span class="nf">id</span> <span class="cp">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span>
 </code></pre></div></div>
 
-<p><strong>Explain</strong>: We added two data attributes, one defining to which channel we want to subscribe and one defining to which room we are.</p>
+<p><strong>Επεξήγηση</strong>: Προσθέσαμε δύο χαρακτηριστικά δεδομένων, ένα που ορίζει σε ποιο κανάλι θέλουμε να γραφτούμε (<code class="highlighter-rouge">room</code>) και ένα που ορίζει σε ποιο συγκεκριμένο δωμάτιο βρισκόμαστε (<code class="highlighter-rouge">@room.id</code>).</p>
 
-<p>At the end of the file, add the following snippet:</p>
+<p>Στο τέλος του αρχείου προσθέστε το παρακάτω απόσπασμα κώδικα:</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"d-none"</span> <span class="na">data-role=</span><span class="s">"message-template"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"chat-message-container"</span><span class="nt">&gt;</span>
@@ -1471,17 +1480,17 @@ end
 <span class="nt">&lt;/div&gt;</span>
 </code></pre></div></div>
 
-<p>This snippet is going to be used as a template for each incoming message. Every time a message arrives, we will</p>
+<p>Αυτό το απόσπασμα θα χρησιμοποιείται σαν πρότυπο (template) για κάθε εισερχόμενο μήνυμα. Κάθε φορά που έρχεται κάποιο μήνυμα θα:</p>
 
 <ul>
-  <li>clone this html</li>
-  <li>alter the appropriate elements’ values and</li>
-  <li>append the resulting html to the end of the chat div.</li>
+  <li>κλωνοποιούμε αυτό το απόσπασμα HTML</li>
+  <li>θα αλλάζουμε τις τιμές των κατάλληλων στοιχείων του κλωνοποιημένου πλέον αποσπάσματος και τέλος</li>
+  <li>θα προσαρτούμε τον παραγόμενο HTML κώδικα στο τέλος του div <code class="highlighter-rouge">chat</code>.</li>
 </ul>
 
-<p>Now we will create the Javascript that will do the work of subscribing and handling incoming channel data.</p>
+<p>Τώρα θα δημιουργήσουμε το Javascript που θα είναι υπεύθυνο για τις εγγραφές στις ροές των καναλιών και για τον χειρισμό των εισερχόμενων δεδομένων.</p>
 
-<p>Create the file <code class="highlighter-rouge">app/assets/javascripts/channels/room_channel.js</code> and add the following code:</p>
+<p>Δημιουργήστε το αρχείο <code class="highlighter-rouge">app/assets/javascripts/channels/room_channel.js</code> και προσθέστε τον παρακάτω κώδικα:</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">[data-channel-subscribe="room"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">element</span><span class="p">)</span> <span class="p">{</span>
@@ -1511,25 +1520,29 @@ end
 <span class="p">});</span>
 </code></pre></div></div>
 
-<p><strong>Explain</strong>:</p>
+<p><strong>Επεξήγηση</strong>:</p>
 
 <ul>
-  <li>For each element that has a data attribute <code class="highlighter-rouge">channel-subscribe</code> with value <code class="highlighter-rouge">room</code>
+  <li>Για κάθε στοιχείο που έχει χαρακτηριστικό δεδομένων (data attribute) <code class="highlighter-rouge">channel-subscribe</code> με τιμή <code class="highlighter-rouge">room</code>
     <ul>
-      <li>Create a subscription to the “RoomChannel” passing the element’s <code class="highlighter-rouge">room-id</code> data attribute as a parameter with name <code class="highlighter-rouge">room</code> (remember this line of the <code class="highlighter-rouge">RoomChannel</code>: <code class="highlighter-rouge">Room.find params[:room]</code> ?)
+      <li>Δημιούργησε μια εγγραφή (subscription) στο κανάλι “RoomChannel” περνώντας ως παράμετρο με όνομα <code class="highlighter-rouge">room</code> την τιμή του <code class="highlighter-rouge">room-id</code> χαρακτηριστικού δεδομένων (θυμηθείτε αυτή τη γραμμή στο κανάλι των δωματίων (<code class="highlighter-rouge">RoomChannel</code>): <code class="highlighter-rouge">Room.find params[:room]</code>)
         <ul>
-          <li>When data is received, clone the template snippet and alter its contents based on the incoming object attributes.</li>
-          <li>Append the newly generated content to the chat div and finally</li>
-          <li>Do some animation to impress by scrolling smoothly to the bottom of the div.</li>
+          <li>Όταν έρχονται δεδομένα, κλωνοποίησε το πρότυπο και άλλαξε τα περιεχόμενά του βάσει των χαρακτηριστικών του εισερχόμενου αντικειμένου.</li>
+          <li>Πρόσθεσε το νέο περιεχόμενο στο div <code class="highlighter-rouge">chat</code> και τέλος</li>
+          <li>Χρησιμοποίησε animation για να εντυπωσιάσεις τους χρήστες μετακινώντας σταδιακά την τρέχουσα θέση του div μηνυμάτων στο κάτω μέρος του (αν δεν έγινε κατανοητό στα ελληνικά, εννοώ να γίνει smooth scrolling στο bottom του div :).</li>
         </ul>
       </li>
     </ul>
   </li>
 </ul>
 
-<h2 id="acknowledgments">Acknowledgments</h2>
+<p>Αυτάααααααα! Μεγάλο άρθρο, κουράστηκε η γάτα.</p>
 
-<p>Thank you very much for your feedback.</p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/irida.jpg" alt="Tired cat photo" /></p>
+
+<h2 id="ευχαριστίες">Ευχαριστίες</h2>
+
+<p>Ευχαριστώ πολύ για τα σχόλια και το feedback!</p>
 
 <ul>
   <li>[1] Armando Andini - <a href="https://github.com/iridakos/rails-chat-tutorial/issues/3">N+1 queries</a></li>
@@ -1542,31 +1555,13 @@ end
   <li>[10] Sumak - <a href="https://github.com/iridakos/rails-chat-tutorial/issues/15">Remove duplicate authentication related code</a></li>
 </ul>
 
-<p>That’s all! Long post, tired cat photo.</p>
-
-<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/irida.jpg" alt="Tired cat photo" /></p>
-
-<div class="alert alert-light">
-  <div class="alert-heading"><i class="fa fa-comments"></i> Code and comments</div>
-
-  You can find the code of this tutorial on <a class="alert-link" href="https://github.com/iridakos/rails-chat-tutorial"><i class="fa fa-github"></i> GitHub</a>.
-
-  <hr />
-
-  For feedback, comments, typos etc. please open an <a class="alert-link" href="https://github.com/iridakos/rails-chat-tutorial/issues">issue</a> in the repository.
-
-  <hr />
-
-  <strong>Thanks for visiting!</strong>
-</div>
-
                 </div>
               </div>
 
               <div class="col-12 order-first">
                 <div class="d-sm-block d-md-none mb-3">
                   <a class="ga-event-link btn btn-outline-primary d-block collapsed text-left"
-                    data-event-label="Creating a chat application from scratch using Rails and WebSockets"
+                    data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets"
                     data-event-category="Document outline"
                     data-event-action="click"
                     title="View the structure of this document"
@@ -1578,7 +1573,7 @@ end
                     data-target="#docout-mobile"
                     aria-expanded="false"
                     aria-controls="collapse">
-                    Table of contents
+                    Πίνακας περιεχομένων
                     <i class="fa iridakos-collapse pull-right mt-1"></i>
                   </a>
 
@@ -1593,28 +1588,11 @@ end
 
 
   
-    <div class="alert alert-light related-posts">
-      <h4 class="alert-heading text-dark"><i class="fa fa-hand-spock-o" aria-hidden="true"></i> My latest post</h4>
-
-      <div class="row mt-3">
-        <div class="col">
-          <a class="alert-link ga-event-link"
-             data-event-category="Latest post"
-             data-event-action="click"
-             data-event-label="Two step authentication in Ubuntu"
-             href="/cats/2019/11/04/two-step-authentication"><strong>Two step authentication in Ubuntu</strong></a>
-          <div>
-            <small>Next level two step authentication</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  
 
 
           
 <div class="alert alert-light related-posts">
-  <h4 class="alert-heading text-dark"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Related posts</h4>
+  <h4 class="alert-heading text-dark"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Σχετικά άρθρα</h4>
 
   
 
@@ -1670,73 +1648,6 @@ end
       
     
       
-        <li>
-          <a class="alert-link ga-event-link"
-             data-event-category="Related posts"
-             data-event-action="click"
-             data-event-label="Dockerizing a Rails application"
-             href="/programming/2019/04/07/dockerizing-a-rails-application"><strong>Dockerizing a Rails application</strong></a>
-          <div>
-            <small>A step by step tutorial to dockerize a Rails application and run it in Docker with PostgreSQL and Redis.</small>
-          </div>
-        </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
     
       
     
@@ -1755,343 +1666,6 @@ end
       
     
   
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-        <li>
-          <a class="alert-link ga-event-link"
-             data-event-category="Related posts"
-             data-event-action="click"
-             data-event-label="Creating a Linux Desktop application with Ruby"
-             href="/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby"><strong>Creating a Linux Desktop application with Ruby</strong></a>
-          <div>
-            <small>A tutorial for creating a simple GTK ToDo application with Ruby</small>
-          </div>
-        </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  
-    
-      
-    
-      
-    
-      
-        <li>
-          <a class="alert-link ga-event-link"
-             data-event-category="Related posts"
-             data-event-action="click"
-             data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1"
-             href="/programming/2013/12/07/creating-a-simple-todo-part-1"><strong>Creating a simple ToDo application with Ruby on Rails - Part 1</strong></a>
-          <div>
-            <small>First part of the tutorial creating a simple ToDo application with Ruby on Rails.</small>
-          </div>
-        </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  
-    
-      
-    
-      
-        <li>
-          <a class="alert-link ga-event-link"
-             data-event-category="Related posts"
-             data-event-action="click"
-             data-event-label="Saying hello world with Ruby on Rails"
-             href="/programming/2013/11/24/saying-hello-world-with-ruby-on-rails"><strong>Saying hello world with Ruby on Rails</strong></a>
-          <div>
-            <small>This is a tutorial for creating the classic hello world application with Ruby on Rails.</small>
-          </div>
-        </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
     
       
     
@@ -2196,42 +1770,122 @@ end
       
     
       
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
         <li>
           <a class="alert-link ga-event-link"
              data-event-category="Related posts"
              data-event-action="click"
-             data-event-label="Creating a bash completion script"
-             href="/programming/2018/03/01/bash-programmable-completion-tutorial"><strong>Creating a bash completion script</strong></a>
+             data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script"
+             href="/el/programming/2019/11/13/bash-programmable-completion-tutorial"><strong>Bash: Προσθέτοντας tab συμπλήρωση στα script</strong></a>
           <div>
-            <small>A tutorial for creating a bash completion script</small>
+            <small>Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash</small>
           </div>
         </li>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
       
     
       
@@ -2303,32 +1957,32 @@ end
           <div class="alert alert-light">
             <h4>
               <i class="fa fa-share-alt"></i>
-              Share
+              Κοινοποίηση
             </h4>
             
 <div class="share-links">
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Creating a chat application from scratch using Rails and WebSockets&url=https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Creating a chat application from scratch using Rails and WebSockets&amp;body=Creating a chat application from scratch using Rails and WebSockets: https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets&url=https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets&amp;body=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets: https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets"><i class="fa fa-envelope-o" title="Share with email"></i></a>
 </div>
 
 <div class="subscribe-links">
   <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fa fa-rss"></i> Subscribe via RSS
+    <i class="fa fa-rss"></i> RSS feeds
   </button>
 
   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/feed.xml">all posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/el/feed.xml">όλα τα άρθρα</a>
     <div role="separator" class="dropdown-divider"></div>
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/el/feeds/programming.xml">όλα τα άρθρα προγραμματισμού</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/el/feeds/tutorials.xml">βοηθήματα προγραμματισμού</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/el/feeds/opensource.xml">άρθρα σχετικά με ανοιχτό λογισμικό</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/el/feeds/ruby.xml">άρθρα σχετικά με την Ruby (...on Rails)</a>
     <div role="separator" class="dropdown-divider"></div>
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/el/feeds/painting.xml">άρθρα ζωγραφικής</a>
     <div role="separator" class="dropdown-divider"></div>
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/feeds/cats.xml">cat photos</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/el/feeds/cats.xml">άρθρα με γάτες</a>
   </div>
 </div>
 
@@ -2343,7 +1997,7 @@ end
     <div class="alert alert-primary d-none d-md-block">
       <div class="sidebar-section">
         <a class="ga-event-link btn btn-warning d-block collapsed text-left"
-          data-event-label="Creating a chat application from scratch using Rails and WebSockets"
+          data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets"
           data-event-category="Document outline"
           data-event-action="click"
 
@@ -2358,7 +2012,7 @@ end
           href="#docout-sidebar"
           aria-expanded="false"
           aria-controls="collapse">
-          Table of contents
+          Πίνακας περιεχομένων
           <i class="fa iridakos-collapse pull-right mt-1"></i>
         </a>
 
@@ -2376,7 +2030,7 @@ end
   <div class="alert alert-primary">
   <div class="sidebar-section">
     <div class="section-title">
-      <h4><i class="fa fa-hand-spock-o"></i> featured posts</h4>
+      <h4><i class="fa fa-hand-spock-o"></i> Δημοφιλή άρθρα</h4>
     </div>
 
     <div class="section-content">
@@ -2393,35 +2047,13 @@ end
                 <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
               
             </div>
-            <a href="/programming/2018/03/01/bash-programmable-completion-tutorial"
+            <a href="/el/programming/2019/11/13/bash-programmable-completion-tutorial"
                class="ga-event-link"
                data-event-category="Featured posts"
                data-event-action="click"
-               data-event-label="Creating a bash completion script">Creating a bash completion script</a>
+               data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script">Bash: Προσθέτοντας tab συμπλήρωση στα script</a>
              <div class="text-muted smaller">
-               A tutorial for creating a bash completion script
-             </div>
-          </div>
-        
-      
-        
-          <div class="section-item">
-            <div class="float-right ml-1">
-              
-                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
-              
-                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
-              
-                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
-              
-            </div>
-            <a href="/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby"
-               class="ga-event-link"
-               data-event-category="Featured posts"
-               data-event-action="click"
-               data-event-label="Creating a Linux Desktop application with Ruby">Creating a Linux Desktop application with Ruby</a>
-             <div class="text-muted smaller">
-               A tutorial for creating a simple GTK ToDo application with Ruby
+               Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash
              </div>
           </div>
         
@@ -2435,13 +2067,13 @@ end
                 <span class="featured-betterldevlink" title="Featured in Better Dev Link" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
               
             </div>
-            <a href="/programming/2019/06/26/composing-better-emails"
+            <a href="/el/programming/2019/11/11/composing-better-emails"
                class="ga-event-link"
                data-event-category="Featured posts"
                data-event-action="click"
-               data-event-label="Composing better emails">Composing better emails</a>
+               data-event-label="Γράφοντας καλύτερα email">Γράφοντας καλύτερα email</a>
              <div class="text-muted smaller">
-               Tips for writing effective emails avoiding misunderstandings with examples from the software development world.
+               Ηλεκτρονική αλληλογραφία - Συμβουλές για την σύνταξη αποτελεσματικών email αποφεύγοντας παρανοήσεις, με παραδείγματα από τον κόσμο της πληροφορικής.
              </div>
           </div>
         
@@ -2455,13 +2087,13 @@ end
                 <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
               
             </div>
-            <a href="/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux"
+            <a href="/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux"
                class="ga-event-link"
                data-event-category="Featured posts"
                data-event-action="click"
-               data-event-label="How to remove duplicate lines from files preserving their order">How to remove duplicate lines from files preserving their order</a>
+               data-event-label="Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους">Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους</a>
              <div class="text-muted smaller">
-               How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained).
+               Πως να αφαιρέσετε τις διπλές γραμμές ενός αρχείο σε Linux χωρίς να αλλάξει η σειρά τους - επεξήγηση awk one-liner κώδικα.
              </div>
           </div>
         
@@ -2473,24 +2105,24 @@ end
                 <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
               
             </div>
-            <a href="/programming/2016/04/01/duckrails-guide"
+            <a href="/el/programming/2019/11/19/creating-chat-application-rails-websockets"
                class="ga-event-link"
                data-event-category="Featured posts"
                data-event-action="click"
-               data-event-label="DuckRails - Open source development tool for mocking API endpoints">DuckRails - Open source development tool for mocking API endpoints</a>
+               data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets">Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets</a>
              <div class="text-muted smaller">
-               An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available.
+               Ένα βοήθημα που περιγράφει βήμα προς βήμα πως να δημιουργήσετε μια εφαρμογή συνομιλιών (chat) από το μηδέν με χρήση Rails και WebSockets (ActionCable).
              </div>
           </div>
         
       
 
       <div class="section-item">
-        <a href="/programming/featured"
+        <a href="/el/programming/featured"
            class="ga-event-link"
            data-event-category="Featured all posts"
            data-event-action="click"
-           data-event-label="View all featured posts">View all featured posts</a>
+           data-event-label="View all featured posts">Δείτε όλα τα δημοφιλή άρθρα</a>
       </div>
     </div>
   </div>
@@ -2501,7 +2133,7 @@ end
 <div class="alert alert-primary">
   <div class="sidebar-section">
     <div class="section-title">
-      <h4><i class="fa fa-bullhorn"></i> recent posts</h4>
+      <h4><i class="fa fa-bullhorn"></i> Πρόσφατα άρθρα</h4>
     </div>
 
     
@@ -2509,30 +2141,30 @@ end
     <div class="section-content">
       
           <div class="section-item">
-            <a href="/cats/2019/11/04/two-step-authentication"
+            <a href="/el/programming/2019/11/19/creating-chat-application-rails-websockets"
                class="ga-event-link"
                data-event-category="Recent posts"
                data-event-action="click"
-               data-event-label="Two step authentication in Ubuntu">Two step authentication in Ubuntu</a>
-            <div class="text-muted smaller">Next level two step authentication</div>
+               data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets">Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets</a>
+            <div class="text-muted smaller">Ένα βοήθημα που περιγράφει βήμα προς βήμα πως να δημιουργήσετε μια εφαρμογή συνομιλιών (chat) από το μηδέν με χρήση Rails και WebSockets (ActionCable).</div>
           </div>
       
           <div class="section-item">
-            <a href="/cats/2019/11/01/hug-the-cat"
+            <a href="/el/programming/2019/11/13/bash-programmable-completion-tutorial"
                class="ga-event-link"
                data-event-category="Recent posts"
                data-event-action="click"
-               data-event-label="Hug the cat">Hug the cat</a>
-            <div class="text-muted smaller">Photo of me and Irida hanging out on the sofa</div>
+               data-event-label="Bash: Προσθέτοντας tab συμπλήρωση στα script">Bash: Προσθέτοντας tab συμπλήρωση στα script</a>
+            <div class="text-muted smaller">Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash</div>
           </div>
       
           <div class="section-item">
-            <a href="/painting/2019/10/14/mountains"
+            <a href="/el/programming/2019/11/11/composing-better-emails"
                class="ga-event-link"
                data-event-category="Recent posts"
                data-event-action="click"
-               data-event-label="Mountains">Mountains</a>
-            <div class="text-muted smaller">Painting of mountains following Bob Ross' season 13 Episode 10.</div>
+               data-event-label="Γράφοντας καλύτερα email">Γράφοντας καλύτερα email</a>
+            <div class="text-muted smaller">Ηλεκτρονική αλληλογραφία - Συμβουλές για την σύνταξη αποτελεσματικών email αποφεύγοντας παρανοήσεις, με παραδείγματα από τον κόσμο της πληροφορικής.</div>
           </div>
       
     </div>
@@ -2545,7 +2177,7 @@ end
   <div class="sidebar-section">
     <div class="section-title">
       <h4>
-        <i class="fa fa-github"></i> code
+        <i class="fa fa-github"></i> Κώδικας
       </h4>
 
       <div class="float-right">
@@ -2555,16 +2187,16 @@ end
 
     <div class="section-content">
       <div class="section-item">
-        <a class="ga-event-link" data-event-label="goto repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/goto">goto</a>: a tool for navigating to aliased directories in the shell with auto complete
+        <a class="ga-event-link" data-event-label="goto repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/goto">goto</a>: ένα utility για καταχώρηση ψευδώνυμων φακέλων και πλοήγηση σε αυτούς με bash completion
       </div>
 
       <div class="section-item">
-        <a class="ga-event-link" data-event-label="elman repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/elman">elman</a>: a script for full text searching Linux man pages with Elasticsearch
+        <a class="ga-event-link" data-event-label="elman repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/elman">elman</a>: ένα script για ευρετηριασμένη αναζήτηση στις Linux βοηθητικές σελίδες με χρήση του Elasticsearch
       </div>
 
       <div class="section-item">
         <a class="ga-event-link" data-event-label="duckrails repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/duckrails">DuckRails</a>
-        version <span class="important">2.1.5</span> is out <img src="/assets/images/news/duckrails.png" class="logo" /> (<a class="ga-event-link" data-event-label="DuckRails GitHub docker wiki" data-event-action="click" data-event-category="News links" href="https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker" target="_blank">docker image available</a>)
+        Η έκδοση <span class="important">2.1.5</span> είναι διαθέσιμη <img src="/assets/images/news/duckrails.png" class="logo" /> (<a class="ga-event-link" data-event-label="DuckRails GitHub docker wiki" data-event-action="click" data-event-category="News links" href="https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker" target="_blank">docker image διαθέσιμο επίσης</a>)
       </div>
     </div>
   </div>
@@ -2580,28 +2212,28 @@ end
         <div class="section-content mt-2">
           
 <div class="share-links">
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Creating a chat application from scratch using Rails and WebSockets&url=https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
-  <a class="btn btn-warning ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Creating a chat application from scratch using Rails and WebSockets&amp;body=Creating a chat application from scratch using Rails and WebSockets: https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets&url=https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets&amp;body=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets: https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets"><i class="fa fa-envelope-o" title="Share with email"></i></a>
 </div>
 
 <div class="subscribe-links">
   <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fa fa-rss"></i> Subscribe via RSS
+    <i class="fa fa-rss"></i> RSS feeds
   </button>
 
   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/feed.xml">all posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/el/feed.xml">όλα τα άρθρα</a>
     <div role="separator" class="dropdown-divider"></div>
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/el/feeds/programming.xml">όλα τα άρθρα προγραμματισμού</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/el/feeds/tutorials.xml">βοηθήματα προγραμματισμού</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/el/feeds/opensource.xml">άρθρα σχετικά με ανοιχτό λογισμικό</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/el/feeds/ruby.xml">άρθρα σχετικά με την Ruby (...on Rails)</a>
     <div role="separator" class="dropdown-divider"></div>
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/el/feeds/painting.xml">άρθρα ζωγραφικής</a>
     <div role="separator" class="dropdown-divider"></div>
-    <a class="dropdown-item ga-event-link" data-event-label="Creating a chat application from scratch using Rails and WebSockets" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/feeds/cats.xml">cat photos</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/el/feeds/cats.xml">άρθρα με γάτες</a>
   </div>
 </div>
 
@@ -2674,7 +2306,7 @@ end
 
   ga('create', 'UA-76452884-1', 'auto');
 
-  ga('set', 'page', '/programming/2019/04/04/creating-chat-application-rails-websockets')
+  ga('set', 'page', '/el/programming/2019/11/19/creating-chat-application-rails-websockets')
   ga('send', 'pageview');
 
 </script>
