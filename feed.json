@@ -283,7 +283,7 @@
     "tags": ["humor","devhumor"],
     "url": "https://iridakos.com/programming/2018/05/25/gdpr"},
   
-  { "title": "Full text searching Linux man pages with Elasticsearch",
+  { "title": "Indexing and full text searching Linux man pages",
     "description": "&lt;p&gt;In this post we are going to play around with full text searching Linux man pages using Elasticsearch.&lt;/p&gt;",
     "date": "Apr 12, 2018 - 19:00",
     "categories": "programming",
