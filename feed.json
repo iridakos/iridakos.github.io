@@ -3,6 +3,13 @@
 
 [
   
+  { "title": "Mongoid - Inheritance: change embedded document's type via nested attributes",
+    "description": "How to change the type of an embedded document via nested attributes.",
+    "date": "Nov 22, 2019 - 09:00",
+    "categories": "programming",
+    "tags": ["ruby","rails","how-to","mongoid","mongodb","tutorial","opensource"],
+    "url": "https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type"},
+  
   { "title": "Two step authentication in Ubuntu",
     "description": "Next level two step authentication",
     "date": "Nov 4, 2019 - 09:00",

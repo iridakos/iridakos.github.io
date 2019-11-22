@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ocs-site-verification" content="e5faa08e01247c38aadf1c1737ff8136">
+  <meta name="google-site-verification" content="KqOxy0ecDlfNdfO530ZAbtNBedy49hn2KziyqLK0JGo" />
+
+  <title>Mongoid - Inheritance: change embedded document's type via nested attributes</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
+
+  <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css?1574425679797042084">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="Mongoid - Inheritance: change embedded document’s type via nested attributes" />
+<meta name="author" content="Lazarus Lazaridis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="How to change the type of an embedded document via nested attributes." />
+<meta property="og:description" content="How to change the type of an embedded document via nested attributes." />
+<link rel="canonical" href="https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type" />
+<meta property="og:url" content="https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type" />
+<meta property="og:site_name" content="iridakos" />
+<meta property="og:image" content="https://iridakos.com/assets/images/posts/mongoid-nested-embedded/post.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-11-22T09:00:00+02:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://iridakos.com/assets/images/posts/mongoid-nested-embedded/post.png" />
+<meta property="twitter:title" content="Mongoid - Inheritance: change embedded document’s type via nested attributes" />
+<meta name="twitter:site" content="@lazaru_s" />
+<meta name="twitter:creator" content="@Lazarus Lazaridis" />
+<script type="application/ld+json">
+{"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"image":"https://iridakos.com/assets/images/posts/mongoid-nested-embedded/post.png","description":"How to change the type of an embedded document via nested attributes.","@type":"BlogPosting","url":"https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type","headline":"Mongoid - Inheritance: change embedded document’s type via nested attributes","dateModified":"2019-11-22T09:00:00+02:00","datePublished":"2019-11-22T09:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+  <script type="text/javascript">
+      window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on the website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"light-bottom"};
+  </script>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+</head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg iridakos-navbar">
+  <div class="container-fluid no-gutters">
+    
+
+    <a class="navbar-brand " href="/" alt="home">
+      <i class="fa fa-home"></i>
+      home
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="fa fa-bars pt-1"></i>
+      </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="header-pages">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            programming
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="more">
+            <a class="dropdown-item" href="/programming/">all posts</a>
+            <a class="dropdown-item" href="/programming/featured/">featured posts</a>
+            <a class="dropdown-item" href="/programming/tutorials/">tutorials</a>
+            <a class="dropdown-item" href="/programming/how-to/">how to</a>
+            <a class="dropdown-item" href="/programming/code/">code</a>
+          </div>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/cats/" alt="cats">cats</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/painting/" alt="painting">painting</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/tags/" alt="tags">tags</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/about/" alt="about">about me</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav mr-0 mt-2 mt-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-language"></i>
+            English
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="more">
+            
+            <a class="dropdown-item" href="/el/">Ελληνικά</a>
+          </div>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0" method="get" action="/search">
+        <div class="input-group input-group-sm mr-sm-2">
+          <input class="form-control" name="query" type="search" placeholder="Search the blog">
+
+          <div class="input-group-append">
+            <button class="btn btn-warning" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="page-title-container">
+  <div class="container-fluid no-gutters">
+    <div class="page-title">
+      <div class="row align-items-center">
+        <div class="col-xs-12 col-md-8 col-lg-9 order-md-first order-last text-center text-md-left">
+          <h1>Mongoid - Inheritance: change embedded document's type via nested attributes</h1>
+
+            <div class="page-subtitle">
+            How to change the type of an embedded document via nested attributes.
+
+            
+              <div class="post">
+                <div class="post-metadata">
+                  <div class="post-date" title="published on">
+                    Published on <span class="important">Nov 22, 2019</span>
+                  </div>
+
+                  <div class="post-category" title="in category">
+                    in category <span class="important">programming</span>
+                  </div>
+                </div>
+
+                
+                
+                  <div class="post-tags">
+                    <span class="important">tags:</span>
+                    
+                      <a href="/tags/?tag=ruby" class="ga-event-link" data-event-label="ruby" data-event-action="click" data-event-category="tags">ruby</a> - 
+                    
+                      <a href="/tags/?tag=rails" class="ga-event-link" data-event-label="rails" data-event-action="click" data-event-category="tags">rails</a> - 
+                    
+                      <a href="/tags/?tag=how-to" class="ga-event-link" data-event-label="how-to" data-event-action="click" data-event-category="tags">how-to</a> - 
+                    
+                      <a href="/tags/?tag=mongoid" class="ga-event-link" data-event-label="mongoid" data-event-action="click" data-event-category="tags">mongoid</a> - 
+                    
+                      <a href="/tags/?tag=mongodb" class="ga-event-link" data-event-label="mongodb" data-event-action="click" data-event-category="tags">mongodb</a> - 
+                    
+                      <a href="/tags/?tag=tutorial" class="ga-event-link" data-event-label="tutorial" data-event-action="click" data-event-category="tags">tutorial</a> - 
+                    
+                      <a href="/tags/?tag=opensource" class="ga-event-link" data-event-label="opensource" data-event-action="click" data-event-category="tags">opensource</a>
+                    
+                  </div>
+                
+
+                
+                
+                
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container-fluid no-gutters">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-9 page-content">
+          
+            <div class="row">
+              <div class="col-12">
+                <div class="outline mb-5">
+                  <p>I recently faced some issues when trying to update a <strong>nested document’s type</strong> via <a href="https://docs.mongodb.com/mongoid/current/tutorials/mongoid-nested-attributes/">nested attributes</a> using the <a href="https://github.com/mongodb/mongoid"><strong>mongoid</strong></a> gem. Bare with me if this sentence doesn’t make any sense yet.</p>
+
+<h2 id="use-case">Use case</h2>
+
+<p>Suppose we have a document named <code class="highlighter-rouge">Person</code> that embeds a document that can be any of the types <code class="highlighter-rouge">Book</code> or <code class="highlighter-rouge">BoardGame</code> which inherit from the class <code class="highlighter-rouge">Item</code>.</p>
+
+<h3 id="item">Item</h3>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Item</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">embedded_in</span> <span class="ss">:person</span><span class="p">,</span> <span class="ss">inverse_of: :item</span>
+
+  <span class="n">field</span> <span class="ss">:name</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h3 id="book">Book</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Book</span> <span class="o">&lt;</span> <span class="no">Item</span>
+  <span class="n">field</span> <span class="ss">:authors</span><span class="p">,</span> <span class="ss">type: </span><span class="no">Array</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h3 id="boardgame">BoardGame</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BoardGame</span> <span class="o">&lt;</span> <span class="no">Item</span>
+  <span class="n">field</span> <span class="ss">:players</span><span class="p">,</span> <span class="ss">type: </span><span class="no">Integer</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h3 id="person">Person</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Document</span>
+
+  <span class="n">embeds_one</span> <span class="ss">:item</span><span class="p">,</span> <span class="ss">inverse_of: :person</span>
+  <span class="n">accepts_nested_attributes_for</span> <span class="ss">:item</span><span class="p">,</span> <span class="ss">allow_destroy: </span><span class="kp">true</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="the-problems">The problems</h2>
+
+<p>To simplify the post I won’t go with the scenario of building the forms and the controller actions to demonstrate the problems but instead I will simulate the behavior in the <code class="highlighter-rouge">rails console</code>.</p>
+
+<p>Let’s create a <code class="highlighter-rouge">Person</code> with a <code class="highlighter-rouge">Book</code> as an <code class="highlighter-rouge">Item</code>.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">person</span> <span class="o">=</span> <span class="no">Person</span><span class="p">.</span><span class="nf">create!</span><span class="p">({</span>
+  <span class="ss">item_attributes: </span><span class="p">{</span>
+    <span class="ss">_type: </span><span class="s2">"Book"</span><span class="p">,</span>
+    <span class="ss">name: </span><span class="s2">"Jitterbug Perfume"</span><span class="p">,</span>
+    <span class="ss">authors: </span><span class="p">[</span><span class="s2">"Tom Robbins"</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Person _id: 5dd7b01ec2889856ab8a619f, &gt;</span>
+<span class="o">&gt;&gt;</span> <span class="n">person</span><span class="p">.</span><span class="nf">item</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Book _id: 5dd7ae76c2889856ab8a619e, name: "Jitterbug Perfume", _type: "Book", authors: ["Tom Robbins"]&gt;</span>
+</code></pre></div></div>
+
+<h3 id="failing-attribute-assignments">Failing attribute assignments</h3>
+
+<p>Let’s try to change the person’s item from <code class="highlighter-rouge">Book</code> to <code class="highlighter-rouge">BoardGame</code> with 5 players.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">person</span><span class="p">.</span><span class="nf">update_attributes</span><span class="p">({</span>
+  <span class="ss">item_attributes: </span><span class="p">{</span>
+    <span class="ss">_type: </span><span class="s2">"BoardGame"</span><span class="p">,</span>
+    <span class="ss">name: </span><span class="s2">"Ticket to Ride"</span><span class="p">,</span>
+    <span class="ss">players: </span><span class="mi">5</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="no">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="n">from</span> <span class="p">(</span><span class="n">irb</span><span class="p">):</span><span class="mi">9</span>
+<span class="no">Mongoid</span><span class="o">::</span><span class="no">Errors</span><span class="o">::</span><span class="no">UnknownAttribute</span> <span class="p">()</span>
+<span class="ss">message:
+  </span><span class="no">Attempted</span> <span class="n">to</span> <span class="n">set</span> <span class="n">a</span> <span class="n">value</span> <span class="k">for</span> <span class="s1">'players'</span> <span class="n">which</span> <span class="n">is</span> <span class="n">not</span> <span class="n">allowed</span> <span class="n">on</span> <span class="n">the</span> <span class="n">model</span> <span class="no">Book</span><span class="p">.</span>
+<span class="nf">summary</span><span class="p">:</span>
+  <span class="no">Without</span> <span class="n">including</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Attributes</span><span class="o">::</span><span class="no">Dynamic</span> <span class="k">in</span> <span class="n">your</span> <span class="n">model</span> <span class="n">and</span> <span class="n">the</span> <span class="n">attribute</span> <span class="n">does</span> <span class="n">not</span> <span class="n">already</span> <span class="n">exist</span> <span class="k">in</span> <span class="n">the</span> <span class="n">attributes</span> <span class="nb">hash</span><span class="p">,</span> <span class="n">attempting</span> <span class="n">to</span> <span class="n">call</span> <span class="no">Book</span><span class="c1">#players= for it is not allowed. This is also triggered by passing the attribute to any method that accepts an attributes hash, and is raised instead of getting a NoMethodError.</span>
+<span class="ss">resolution:
+  </span><span class="no">You</span> <span class="n">can</span> <span class="kp">include</span> <span class="no">Mongoid</span><span class="o">::</span><span class="no">Attributes</span><span class="o">::</span><span class="no">Dynamic</span> <span class="k">if</span> <span class="n">you</span> <span class="n">expect</span> <span class="n">to</span> <span class="n">be</span> <span class="n">writing</span> <span class="n">values</span> <span class="k">for</span> <span class="n">undefined</span> <span class="n">fields</span> <span class="n">often</span><span class="o">.</span>
+</code></pre></div></div>
+
+<p>This didn’t work, the assignment of the nested attributes <code class="highlighter-rouge">item_attributes</code> as you can see from the error message <strong>were applied in the model <code class="highlighter-rouge">Book</code></strong>.</p>
+
+<p>The fact that we changed the <code class="highlighter-rouge">_type</code> attribute of the document doesn’t mean that the object in memory also was magically transformed from a <code class="highlighter-rouge">Book</code> to a <code class="highlighter-rouge">BoardGame</code>.</p>
+
+<h3 id="document-attribute-leftovers">Document attribute leftovers</h3>
+
+<p>Let’s try to change the person’s item from <code class="highlighter-rouge">Book</code> to <code class="highlighter-rouge">BoardGame</code> but this time without the players to see if this fixes the issue.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">person</span><span class="p">.</span><span class="nf">update_attributes</span><span class="p">({</span>
+  <span class="ss">item_attributes: </span><span class="p">{</span>
+    <span class="ss">_type: </span><span class="s2">"BoardGame"</span><span class="p">,</span>
+    <span class="ss">name: </span><span class="s2">"Ticket to Ride"</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+<span class="o">&gt;&gt;</span> <span class="n">person</span><span class="p">.</span><span class="nf">item</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Book _id: 5dd7b270c2889858a08a619e, name: "Ticket to Ride", _type: "BoardGame", authors: ["Tom Robbins"]&gt;</span>
+</code></pre></div></div>
+
+<p>This seems to have worked even though the result of the <code class="highlighter-rouge">person.item</code> accessor gave a <code class="highlighter-rouge">Book</code> document with <code class="highlighter-rouge">_type</code> of a <code class="highlighter-rouge">BoardGame</code> and with an attribute <code class="highlighter-rouge">authors</code> present.</p>
+
+<p>Let’s reload to see if the document is going to be properly instantiated.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">person</span><span class="p">.</span><span class="nf">reload</span><span class="p">.</span><span class="nf">item</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;BoardGame _id: 5dd7b270c2889858a08a619e, name: "Ticket to Ride", _type: "BoardGame", players: nil&gt;</span>
+</code></pre></div></div>
+
+<p>Seems to be fine but what is going on with the actual document attributes?</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">person</span><span class="p">.</span><span class="nf">item</span><span class="p">.</span><span class="nf">attributes</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="s2">"_id"</span><span class="o">=&gt;</span><span class="no">BSON</span><span class="o">::</span><span class="no">ObjectId</span><span class="p">(</span><span class="s1">'5dd7b270c2889858a08a619e'</span><span class="p">),</span> <span class="s2">"_type"</span><span class="o">=&gt;</span><span class="s2">"BoardGame"</span><span class="p">,</span> <span class="s2">"name"</span><span class="o">=&gt;</span><span class="s2">"Ticket to Ride"</span><span class="p">,</span> <span class="s2">"authors"</span><span class="o">=&gt;</span><span class="p">[</span><span class="s2">"Tom Robbins"</span><span class="p">]}</span>
+</code></pre></div></div>
+
+<p>As you can see, the <code class="highlighter-rouge">authors</code> attribute (that we had initially set) hasn’t been removed when we changed the type of the <code class="highlighter-rouge">Item</code> from <code class="highlighter-rouge">Book</code> to <code class="highlighter-rouge">BoardGame</code>.</p>
+
+<h3 id="wrong-validators">Wrong validators</h3>
+
+<p>Let’s change the <code class="highlighter-rouge">BoardGame</code> document so that it validates the presence of <code class="highlighter-rouge">players</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BoardGame</span> <span class="o">&lt;</span> <span class="no">Item</span>
+  <span class="n">field</span> <span class="ss">:players</span><span class="p">,</span> <span class="ss">type: </span><span class="no">Integer</span>
+
+  <span class="n">validates</span> <span class="ss">:players</span><span class="p">,</span> <span class="ss">presence: </span><span class="kp">true</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Our <code class="highlighter-rouge">person</code> now has an item of type <code class="highlighter-rouge">BoardGame</code>. We will now try to change it to a <code class="highlighter-rouge">Book</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;</span> <span class="n">person</span><span class="p">.</span><span class="nf">attributes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">item_attributes: </span><span class="p">{</span>
+    <span class="ss">_type: </span><span class="s2">"Book"</span><span class="p">,</span>
+    <span class="ss">name: </span><span class="s2">"Jitterbug Perfume"</span>
+  <span class="p">}</span>  
+<span class="p">}</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:item_attributes</span><span class="o">=&gt;</span><span class="p">{</span><span class="ss">:_type</span><span class="o">=&gt;</span><span class="s2">"Book"</span><span class="p">,</span> <span class="ss">:name</span><span class="o">=&gt;</span><span class="s2">"Jitterbug Perfume"</span><span class="p">}}</span>
+<span class="o">&gt;&gt;</span> <span class="n">person</span><span class="p">.</span><span class="nf">valid?</span>
+<span class="o">=&gt;</span> <span class="kp">false</span>
+<span class="o">&gt;&gt;</span> <span class="n">person</span><span class="p">.</span><span class="nf">errors</span><span class="p">.</span><span class="nf">full_messages</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"Item is invalid"</span><span class="p">]</span>
+<span class="o">&gt;&gt;</span> <span class="n">person</span><span class="p">.</span><span class="nf">item</span><span class="p">.</span><span class="nf">errors</span><span class="p">.</span><span class="nf">full_messages</span>
+<span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"Players can't be blank"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>As described in the previous section, the fact that the <code class="highlighter-rouge">_type</code> attribute changed doesn’t mean that the actual object in memory changed accordingly. Upon save of the parent document, the <code class="highlighter-rouge">item</code> is still an instance of the previous <code class="highlighter-rouge">_type</code> which was <code class="highlighter-rouge">BoadGame</code> thus the validations that take place are not the ones defined in the new <code class="highlighter-rouge">Book</code> class but those defined in the <code class="highlighter-rouge">BoardGame</code>.</p>
+
+<p>This also means that if we had validations in the <code class="highlighter-rouge">Book</code> class too, they wouldn’t execute in this scenario as well.</p>
+
+<h2 id="investigation">Investigation</h2>
+
+<p>I tried to google the issue (<a href="https://twitter.com/lazaru_s/status/1197506095704612864">I couldn’t even construct a proper query</a>) to see how others dealt with this but I didn’t find anything helpful and I decided to dive in the source of <a href="https://github.com/mongodb/mongoid"><code class="highlighter-rouge">mongoid</code></a> in order to locate the code that deals with the nested assignments and possibly create a <code class="highlighter-rouge">monkey patch</code>.</p>
+
+<p>First, I <a href="https://github.com/mongodb/mongoid/search?q=%22def+accepts_nested_attributes_for%22&amp;unscoped_q=%22def+accepts_nested_attributes_for%22">searched for the file that defines the <code class="highlighter-rouge">accepts_nested_attributes_for</code> method that we used in the <code class="highlighter-rouge">Person</code> class</a>.</p>
+
+<p>Found in <a href="https://github.com/mongodb/mongoid/blob/v7.0.5/lib/mongoid/attributes/nested.rb">mongoid/attributes/nested.rb</a></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">accepts_nested_attributes_for</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+  <span class="n">options</span> <span class="o">=</span> <span class="n">args</span><span class="p">.</span><span class="nf">extract_options!</span><span class="p">.</span><span class="nf">dup</span>
+  <span class="n">options</span><span class="p">[</span><span class="ss">:autosave</span><span class="p">]</span> <span class="o">=</span> <span class="kp">true</span> <span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="ss">:autosave</span><span class="p">].</span><span class="nf">nil?</span>
+
+  <span class="n">options</span><span class="p">[</span><span class="ss">:reject_if</span><span class="p">]</span> <span class="o">=</span> <span class="no">REJECT_ALL_BLANK_PROC</span> <span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="ss">:reject_if</span><span class="p">]</span> <span class="o">==</span> <span class="ss">:all_blank</span>
+  <span class="n">args</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="o">|</span>
+    <span class="n">meth</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">_attributes="</span>
+    <span class="nb">self</span><span class="p">.</span><span class="nf">nested_attributes</span><span class="p">[</span><span class="s2">"</span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">_attributes"</span><span class="p">]</span> <span class="o">=</span> <span class="n">meth</span>
+    <span class="n">association</span> <span class="o">=</span> <span class="n">relations</span><span class="p">[</span><span class="nb">name</span><span class="p">.</span><span class="nf">to_s</span><span class="p">]</span>
+    <span class="k">raise</span> <span class="no">Errors</span><span class="o">::</span><span class="no">NestedAttributesMetadataNotFound</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="nb">name</span><span class="p">)</span> <span class="k">unless</span> <span class="n">association</span>
+    <span class="n">autosave_nested_attributes</span><span class="p">(</span><span class="n">association</span><span class="p">)</span> <span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="ss">:autosave</span><span class="p">]</span>
+
+    <span class="n">re_define_method</span><span class="p">(</span><span class="n">meth</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">attrs</span><span class="o">|</span>
+      <span class="n">_assigning</span> <span class="k">do</span>
+        <span class="k">if</span> <span class="n">association</span><span class="p">.</span><span class="nf">polymorphic?</span> <span class="n">and</span> <span class="n">association</span><span class="p">.</span><span class="nf">inverse_type</span>
+          <span class="n">options</span> <span class="o">=</span> <span class="n">options</span><span class="p">.</span><span class="nf">merge!</span><span class="p">(</span><span class="ss">:class_name</span> <span class="o">=&gt;</span> <span class="nb">self</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="n">association</span><span class="p">.</span><span class="nf">inverse_type</span><span class="p">))</span>
+        <span class="k">end</span>
+        <span class="n">association</span><span class="p">.</span><span class="nf">nested_builder</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">options</span><span class="p">).</span><span class="nf">build</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>The line that is mostly related to our issue from the above snippet is this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">association</span><span class="p">.</span><span class="nf">nested_builder</span><span class="p">(</span><span class="n">attrs</span><span class="p">,</span> <span class="n">options</span><span class="p">).</span><span class="nf">build</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>which is executed upon attribute assignment.</p>
+
+<p>Since the <code class="highlighter-rouge">item</code> association defined in the <code class="highlighter-rouge">Person</code> document is of type <code class="highlighter-rouge">embeds_one</code>, I located its code to find the <code class="highlighter-rouge">nested_builder</code> method.</p>
+
+<p>Found it at <a href="https://github.com/mongodb/mongoid/blob/2ad44f5ef464e8a291be3accc54b884560b9da48/lib/mongoid/association/embedded/embeds_one.rb#L138"><code class="highlighter-rouge">mongoid/association/embedded/embeds_one.rb</code></a></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">nested_builder</span><span class="p">(</span><span class="n">attributes</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+  <span class="no">Nested</span><span class="o">::</span><span class="no">One</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">attributes</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Ok, now we have to see what is going on inside the <code class="highlighter-rouge">#build</code> method of the <a href="https://github.com/mongodb/mongoid/blob/master/lib/mongoid/association/nested/one.rb#L28"><code class="highlighter-rouge">mongoid/association/nested/one.rb</code></a> file.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+  <span class="k">return</span> <span class="k">if</span> <span class="n">reject?</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+  <span class="vi">@existing</span> <span class="o">=</span> <span class="n">parent</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="n">association</span><span class="p">.</span><span class="nf">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">update?</span>
+    <span class="n">attributes</span><span class="p">.</span><span class="nf">delete_id</span>
+    <span class="n">existing</span><span class="p">.</span><span class="nf">assign_attributes</span><span class="p">(</span><span class="n">attributes</span><span class="p">)</span>
+  <span class="k">elsif</span> <span class="n">replace?</span>
+    <span class="n">parent</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="n">association</span><span class="p">.</span><span class="nf">setter</span><span class="p">,</span> <span class="no">Factory</span><span class="p">.</span><span class="nf">build</span><span class="p">(</span><span class="vi">@class_name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">))</span>
+  <span class="k">elsif</span> <span class="n">delete?</span>
+    <span class="n">parent</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="n">association</span><span class="p">.</span><span class="nf">setter</span><span class="p">,</span> <span class="kp">nil</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">replace?</span>
+  <span class="o">!</span><span class="n">existing</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">destroyable?</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">attributes</span><span class="p">.</span><span class="nf">blank?</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">update?</span>
+  <span class="n">existing</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">destroyable?</span> <span class="o">&amp;&amp;</span> <span class="n">acceptable_id?</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>The part that is related to the behavior we want to alter is the one inside the <code class="highlighter-rouge">if update? .. elsif replace?</code> block:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">...</span>
+<span class="k">if</span> <span class="n">update?</span>
+  <span class="n">attributes</span><span class="p">.</span><span class="nf">delete_id</span>
+  <span class="n">existing</span><span class="p">.</span><span class="nf">assign_attributes</span><span class="p">(</span><span class="n">attributes</span><span class="p">)</span>
+<span class="k">elsif</span> <span class="n">replace?</span>
+  <span class="n">parent</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="n">association</span><span class="p">.</span><span class="nf">setter</span><span class="p">,</span> <span class="no">Factory</span><span class="p">.</span><span class="nf">build</span><span class="p">(</span><span class="vi">@class_name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">))</span>
+<span class="o">...</span>  
+</code></pre></div></div>
+
+<p>This is where the attribute assignment in the existing embedded document takes place.</p>
+
+<h2 id="desired-behavior">Desired behavior</h2>
+
+<p>Since we are talking about embedded documents, when changing the type <strong>instead of updating the existing document’s attributes</strong> we can easily <strong>replace it at once with a new instance of the proper class</strong>.</p>
+
+<p>From that point on, we won’t have to deal with</p>
+<ul>
+  <li>the invalid attribute assignments</li>
+  <li>removing the old attributes that are not present in the new document type</li>
+  <li>fixing the usage of wrong validators.</li>
+</ul>
+
+<p>The replaced object will be properly instantiated and assigned to the parent.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>To change to the desired aforementioned behavior, I patched the <code class="highlighter-rouge">Mongoid::Association::Nested::One</code> class.</p>
+
+<p>I created a module (<a href="https://www.justinweiss.com/articles/3-ways-to-monkey-patch-without-making-a-mess/">I suggest you read this great article about monkey patching without making a mess</a>) under <code class="highlighter-rouge">lib/core_extensions/mongoid/association/nested/one/embedded_one_change_type.rb</code> with the following contents:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">module</span> <span class="nn">CoreExtensions</span>
+  <span class="k">module</span> <span class="nn">Mongoid</span>
+    <span class="k">module</span> <span class="nn">Association</span>
+      <span class="k">module</span> <span class="nn">Nested</span>
+        <span class="k">module</span> <span class="nn">One</span>
+          <span class="k">module</span> <span class="nn">EmbeddedOneChangeType</span>
+            <span class="nb">attr_accessor</span> <span class="ss">:changing_type</span>
+
+            <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+              <span class="k">return</span> <span class="k">if</span> <span class="n">reject?</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+
+              <span class="vi">@existing</span> <span class="o">=</span> <span class="n">parent</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="n">association</span><span class="p">.</span><span class="nf">name</span><span class="p">)</span>
+              <span class="c1"># Retrieve the new class</span>
+              <span class="n">new_class</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">.</span><span class="nf">dig</span><span class="p">(</span><span class="ss">:_type</span><span class="p">)</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">constantize</span>
+              <span class="c1"># Resolve whether we should be changing type or not</span>
+              <span class="vi">@changing_type</span> <span class="o">=</span> <span class="n">new_class</span> <span class="o">&amp;&amp;</span> <span class="vi">@existing</span><span class="p">.</span><span class="nf">class</span> <span class="o">!=</span> <span class="n">new_class</span> <span class="o">&amp;&amp;</span> <span class="n">association</span><span class="p">.</span><span class="nf">embedded?</span>
+
+              <span class="k">if</span> <span class="n">update?</span>
+                <span class="n">attributes</span><span class="p">.</span><span class="nf">delete_id</span>
+                <span class="n">existing</span><span class="p">.</span><span class="nf">assign_attributes</span><span class="p">(</span><span class="n">attributes</span><span class="p">)</span>
+              <span class="k">elsif</span> <span class="n">replace?</span>
+                <span class="n">parent</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="n">association</span><span class="p">.</span><span class="nf">setter</span><span class="p">,</span> <span class="o">::</span><span class="no">Mongoid</span><span class="o">::</span><span class="no">Factory</span><span class="p">.</span><span class="nf">build</span><span class="p">(</span><span class="vi">@class_name</span><span class="p">,</span> <span class="n">attributes</span><span class="p">))</span>
+              <span class="k">elsif</span> <span class="n">delete?</span>
+                <span class="n">parent</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="n">association</span><span class="p">.</span><span class="nf">setter</span><span class="p">,</span> <span class="kp">nil</span><span class="p">)</span>
+              <span class="k">end</span>
+            <span class="k">end</span>
+
+            <span class="k">def</span> <span class="nf">replace?</span>
+              <span class="c1"># Replace if the association hasn't been set or if we are changing type.</span>
+              <span class="p">(</span><span class="o">!</span><span class="n">existing</span> <span class="o">||</span> <span class="n">changing_type</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">destroyable?</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">attributes</span><span class="p">.</span><span class="nf">blank?</span>
+            <span class="k">end</span>
+
+            <span class="k">def</span> <span class="nf">update?</span>
+              <span class="c1"># Don't update the document if we are changing type</span>
+              <span class="n">existing</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">changing_type</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">destroyable?</span> <span class="o">&amp;&amp;</span> <span class="n">acceptable_id?</span>
+            <span class="k">end</span>
+          <span class="k">end</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>and inside an initializer I patched the proper <code class="highlighter-rouge">mongoid</code> class with:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Mongoid</span><span class="o">::</span><span class="no">Association</span><span class="o">::</span><span class="no">Nested</span><span class="o">::</span><span class="no">One</span><span class="p">.</span><span class="nf">prepend</span> <span class="no">CoreExtensions</span><span class="o">::</span><span class="no">Mongoid</span><span class="o">::</span><span class="no">Association</span><span class="o">::</span><span class="no">Nested</span><span class="o">::</span><span class="no">One</span><span class="o">::</span><span class="no">EmbeddedOneChangeType</span>
+</code></pre></div></div>
+
+<h3 id="explanation">Explanation</h3>
+
+<p>We override the build method in order to additionally resolve if we are changing type in an embedded association or not:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="vi">@changing_type</span> <span class="o">=</span> <span class="n">new_class</span> <span class="o">&amp;&amp;</span> <span class="vi">@existing</span><span class="p">.</span><span class="nf">class</span> <span class="o">!=</span> <span class="n">new_class</span> <span class="o">&amp;&amp;</span> <span class="n">association</span><span class="p">.</span><span class="nf">embedded?</span>
+</code></pre></div></div>
+
+<p>We are changing type if:</p>
+<ul>
+  <li>there’s a <code class="highlighter-rouge">_type</code> attribute present and</li>
+  <li>the <code class="highlighter-rouge">_type</code>’s value is different than the existing object’s one and</li>
+  <li>the association is embedded</li>
+</ul>
+
+<p>Then we alter the methods that decide whether a document should be updated or replaced, so that they take in consideration if we are <code class="highlighter-rouge">@changing_type</code> (as calculated above) or not:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">update?</span>
+  <span class="c1"># Don't update the document if we are changing type</span>
+  <span class="n">existing</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">changing_type</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">destroyable?</span> <span class="o">&amp;&amp;</span> <span class="n">acceptable_id?</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>and</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">replace?</span>
+  <span class="c1"># Replace if the association hasn't been set or if we are changing type.</span>
+  <span class="p">(</span><span class="o">!</span><span class="n">existing</span> <span class="o">||</span> <span class="n">changing_type</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">destroyable?</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">attributes</span><span class="p">.</span><span class="nf">blank?</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<div class="alert alert-warning">
+  <div class="alert-heading"><i class="fa fa-comments"></i> Feedback and comments</div>
+
+  <p>
+    I am not very fond of monkey patching but this was my quick workaround. If you believe that the desired behavior as described here (for the `embedded_one` associations) is invalid or if you deal with this problem in any other way, I'd be glad to here about it.
+  </p>
+
+  <p>
+    For suggestions, feedback, comments, typos etc. please use <a class="alert-link" href="https://github.com/iridakos/iridakos-posts/issues/5">this issue</a> on GitHub.
+  </p>
+
+  <hr />
+
+  <strong>Thanks for visiting!</strong>
+</div>
+
+<p>Almost forgot, cat photo.</p>
+
+<p><img src="/assets/images/posts/mongoid-nested-embedded/cat.jpg" alt="Cat" /></p>
+
+                </div>
+              </div>
+
+              <div class="col-12 order-first">
+                <div class="d-sm-block d-md-none mb-3">
+                  <a class="ga-event-link btn btn-outline-primary d-block collapsed text-left"
+                    data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes"
+                    data-event-category="Document outline"
+                    data-event-action="click"
+                    title="View the structure of this document"
+                    role="button"
+                    data-toggle="collapse"
+                    data-role="outline"
+                    data-content=".outline"
+                    href="#docout-mobile"
+                    data-target="#docout-mobile"
+                    aria-expanded="false"
+                    aria-controls="collapse">
+                    Table of contents
+                    <i class="fa iridakos-collapse pull-right mt-1"></i>
+                  </a>
+
+                  <div id="docout-mobile" class="collapse my-3 border rounded bg-light p-2">
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+          
+
+
+  
+
+
+          
+<div class="alert alert-light related-posts">
+  <h4 class="alert-heading text-dark"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Related posts</h4>
+
+  
+
+  <ul class="list-unstyled">
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Dockerizing a Rails application"
+             href="/programming/2019/04/07/dockerizing-a-rails-application"><strong>Dockerizing a Rails application</strong></a>
+          <div>
+            <small>A step by step tutorial to dockerize a Rails application and run it in Docker with PostgreSQL and Redis.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Creating a chat application from scratch using Rails and WebSockets"
+             href="/programming/2019/04/04/creating-chat-application-rails-websockets"><strong>Creating a chat application from scratch using Rails and WebSockets</strong></a>
+          <div>
+            <small>A step by step tutorial for creating a chat application from scratch using Rails and WebSockets (ActionCable).</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Creating a Linux Desktop application with Ruby"
+             href="/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby"><strong>Creating a Linux Desktop application with Ruby</strong></a>
+          <div>
+            <small>A tutorial for creating a simple GTK ToDo application with Ruby</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link ga-event-link"
+             data-event-category="Related posts"
+             data-event-action="click"
+             data-event-label="Creating a simple ToDo application with Ruby on Rails - Part 1"
+             href="/programming/2013/12/07/creating-a-simple-todo-part-1"><strong>Creating a simple ToDo application with Ruby on Rails - Part 1</strong></a>
+          <div>
+            <small>First part of the tutorial creating a simple ToDo application with Ruby on Rails.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+  </ul>
+</div>
+
+
+
+          <div class="alert alert-light">
+            <h4>
+              <i class="fa fa-share-alt"></i>
+              Share
+            </h4>
+            
+<div class="share-links">
+  <a class="btn btn-warning ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Mongoid - Inheritance: change embedded document's type via nested attributes&url=https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Mongoid - Inheritance: change embedded document's type via nested attributes&amp;body=Mongoid - Inheritance: change embedded document's type via nested attributes: https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> Subscribe via RSS
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/feed.xml">all posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/feeds/cats.xml">cat photos</a>
+  </div>
+</div>
+
+          </div>
+
+
+        </div>
+
+        <div class="col">
+          <div class="sidebar">
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <a class="ga-event-link btn btn-warning d-block collapsed text-left"
+          data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes"
+          data-event-category="Document outline"
+          data-event-action="click"
+
+          data-toggle="collapse"
+          data-role="outline"
+          data-content=".outline"
+          href="#docout-sidebar"
+          data-target="#docout-sidebar"
+
+          title="View the structure of this document"
+          role="button"
+          href="#docout-sidebar"
+          aria-expanded="false"
+          aria-controls="collapse">
+          Table of contents
+          <i class="fa iridakos-collapse pull-right mt-1"></i>
+        </a>
+
+        <div class="section-content">
+          <div id="docout-sidebar" class="collapse mt-2 p-2">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-hand-spock-o"></i> featured posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2018/03/01/bash-programmable-completion-tutorial"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a bash completion script">Creating a bash completion script</a>
+             <div class="text-muted smaller">
+               A tutorial for adding tab completion to your scripts using the Bash Programmable Completion functionality.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+            </div>
+            <a href="/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Creating a Linux Desktop application with Ruby">Creating a Linux Desktop application with Ruby</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a simple GTK ToDo application with Ruby
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-betterldevlink" title="Featured in Better Dev Link" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2019/06/26/composing-better-emails"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="Composing better emails">Composing better emails</a>
+             <div class="text-muted smaller">
+               Tips for writing effective emails avoiding misunderstandings with examples from the software development world.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="How to remove duplicate lines from files preserving their order">How to remove duplicate lines from files preserving their order</a>
+             <div class="text-muted smaller">
+               How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained).
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+            </div>
+            <a href="/programming/2016/04/01/duckrails-guide"
+               class="ga-event-link"
+               data-event-category="Featured posts"
+               data-event-action="click"
+               data-event-label="DuckRails - Open source development tool for mocking API endpoints">DuckRails - Open source development tool for mocking API endpoints</a>
+             <div class="text-muted smaller">
+               An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available.
+             </div>
+          </div>
+        
+      
+
+      <div class="section-item">
+        <a href="/programming/featured"
+           class="ga-event-link"
+           data-event-category="Featured all posts"
+           data-event-action="click"
+           data-event-label="View all featured posts">View all featured posts</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-bullhorn"></i> recent posts</h4>
+    </div>
+
+    
+
+    <div class="section-content">
+      
+          <div class="section-item">
+            <a href="/programming/2019/11/22/mongoid-nested-attributes-embedded-type"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes">Mongoid - Inheritance: change embedded document's type via nested attributes</a>
+            <div class="text-muted smaller">How to change the type of an embedded document via nested attributes.</div>
+          </div>
+      
+          <div class="section-item">
+            <a href="/cats/2019/11/04/two-step-authentication"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="Two step authentication in Ubuntu">Two step authentication in Ubuntu</a>
+            <div class="text-muted smaller">Next level two step authentication</div>
+          </div>
+      
+          <div class="section-item">
+            <a href="/cats/2019/11/01/hug-the-cat"
+               class="ga-event-link"
+               data-event-category="Recent posts"
+               data-event-action="click"
+               data-event-label="Hug the cat">Hug the cat</a>
+            <div class="text-muted smaller">Photo of me and Irida hanging out on the sofa</div>
+          </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4>
+        <i class="fa fa-github"></i> code
+      </h4>
+
+      <div class="float-right">
+
+      </div>
+    </div>
+
+    <div class="section-content">
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="goto repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/goto">goto</a>: a tool for navigating to aliased directories in the shell with auto complete
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="elman repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/elman">elman</a>: a script for full text searching Linux man pages with Elasticsearch
+      </div>
+
+      <div class="section-item">
+        <a class="ga-event-link" data-event-label="duckrails repo" data-event-action="click" data-event-category="News github link" href="https://github.com/iridakos/duckrails">DuckRails</a>
+        version <span class="important">2.1.5</span> is out <img src="/assets/images/news/duckrails.png" class="logo" /> (<a class="ga-event-link" data-event-label="DuckRails GitHub docker wiki" data-event-action="click" data-event-category="News links" href="https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker" target="_blank">docker image available</a>)
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <div class="section-content mt-2">
+          
+<div class="share-links">
+  <a class="btn btn-warning ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Share to Twitter" data-event-action="click" href="https://twitter.com/intent/tweet?text=Mongoid - Inheritance: change embedded document's type via nested attributes&url=https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Share to Facebook" data-event-action="click" href="https://facebook.com/sharer.php?u=https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Share to Reddit" data-event-action="click" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Share with email" data-event-action="click" href="mailto:?subject=Mongoid - Inheritance: change embedded document's type via nested attributes&amp;body=Mongoid - Inheritance: change embedded document's type via nested attributes: https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> Subscribe via RSS
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to all posts RSS" data-event-action="click" href="/feed.xml">all posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to programming posts RSS" data-event-action="click" href="/feeds/programming.xml">all programming related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to tutorial posts RSS" data-event-action="click" href="/feeds/tutorials.xml">programming tutorials posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to opensource posts RSS" data-event-action="click" href="/feeds/opensource.xml">opensource related posts</a>
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to ruby posts RSS" data-event-action="click" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to painting posts RSS" data-event-action="click" href="/feeds/painting.xml">painting posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item ga-event-link" data-event-label="Mongoid - Inheritance: change embedded document's type via nested attributes" data-event-category="Subscribe to cat photo posts RSS" data-event-action="click" href="/feeds/cats.xml">cat photos</a>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">iridakos images preview</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <div class="image-container">
+                    <img class="image" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer">
+  <div class="container-fluid no-gutters">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="brand mb-1">
+          <a href="https://iridakos.com"><strong>iridakos</strong></a>
+        </div>
+
+        <div class="contact-links">
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="GitHub" href="https://www.github.com/iridakos/"><i class="fa fa-github" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="Twitter" href="https://www.twitter.com/lazaru_s/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a class="ga-event-link btn btn-outline-primary font-weight-bold mr-1" data-event-category="Footer links" data-event-action="click" data-event-label="LinkedIn" href="https://www.linkedin.com/in/iridakos/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+        </div>
+
+        <div class="license mt-1">
+          <div class="mb-1">
+            <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
+          </div>
+
+          <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">iridakos</span> by
+          <a xmlns:cc="http://creativecommons.org/ns#" href="https://iridakos.com/about/" property="cc:attributionName" rel="cc:attributionURL" class="font-weight-bold">Lazarus Lazaridis</a> is licensed under a <a class="font-weight-bold" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76452884-1', 'auto');
+
+  ga('set', 'page', '/programming/2019/11/22/mongoid-nested-attributes-embedded-type')
+  ga('send', 'pageview');
+
+</script>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1574425679797042084" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1574425679797042084" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1574425679797042084" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1574425679797042084" type="text/javascript"></script>
+
+
+
+
+  </body>
+</html>
