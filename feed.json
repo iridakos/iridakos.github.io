@@ -3,6 +3,13 @@
 
 [
   
+  { "title": "i",
+    "description": "A developer poem for var i",
+    "date": "Nov 22, 2019 - 17:00",
+    "categories": "programming",
+    "tags": ["humor","devhumor"],
+    "url": "https://iridakos.com/programming/2019/11/22/i"},
+  
   { "title": "Mongoid - Inheritance: change embedded document's type via nested attributes",
     "description": "How to change the type of an embedded document via nested attributes.",
     "date": "Nov 22, 2019 - 09:00",

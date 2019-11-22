@@ -10,12 +10,49 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feeds/programming.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 22 Nov 2019 14:29:01 +0200</pubDate>
-    <lastBuildDate>Fri, 22 Nov 2019 14:29:01 +0200</lastBuildDate>
+    <pubDate>Fri, 22 Nov 2019 19:24:33 +0200</pubDate>
+    <lastBuildDate>Fri, 22 Nov 2019 19:24:33 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
 
+    
+      <item>
+        <title>i</title>
+        <description>&lt;pre&gt;
+Roses are red
+Violets are blue
+I was looping forever
+And then I found you.
+
+&lt;span class=&quot;text-danger font-weight-bold&quot;&gt;i&lt;/span&gt; was your name
+I think &lt;span class=&quot;text-danger font-weight-bold&quot;&gt;j&lt;/span&gt; was next to you
+Born inside a &lt;span class=&quot;text-danger font-weight-bold&quot;&gt;for&lt;/span&gt;
+Died in there too.
+
+I saw you getting bigger
+Loop over loop over loop
+And &lt;span class=&quot;text-danger font-weight-bold&quot;&gt;j&lt;/span&gt; was getting smaller
+You were a great group.
+
+And then you just vanished
+You left me there alone
+Condition wasn't true
+At least nothing was thrown.
+&lt;/pre&gt;
+</description>
+        <pubDate>Fri, 22 Nov 2019 17:00:00 +0200</pubDate>
+        <link>https://iridakos.com/programming/2019/11/22/i</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/11/22/i</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Mongoid - Inheritance: change embedded document's type via nested attributes</title>
@@ -11341,79 +11378,6 @@ So let’s create this view in the appropriate folder which is:
         <category>web application</category>
         
         <category>hello world</category>
-        
-        
-        <category>programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Learning Ruby - Don't give up</title>
-        <description>&lt;p&gt;About 5 months ago, I was asked to join a Ruby on Rails project. After a lot of thinking whether I should switch to a new language after programming in Java for about 8 years or not I decided to do so.
-I was really excited actually and I couldn’t wait to start learning the new stuff.&lt;/p&gt;
-
-&lt;p&gt;Day one I had an introduction to the development environment. A text editor and a console. I said, “OK, this must be this guy’s thing, I’ll download an IDE”. Then I looked all the other devs’ monitors and still, no IDE. Black terminals and text editors. So I asked:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;- Why don’t you use something like Eclipse?&lt;/p&gt;
-
-  &lt;p&gt;- We don’t have to, a text editor is enough.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The guy started showing me some code. After 8 hours of listening to words like &lt;code class=&quot;highlighter-rouge&quot;&gt;haml&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;yaml&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;cancan&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;monkey patch&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;factory girl&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;coffeescript&lt;/code&gt; etc I left the office like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/irida-small.jpeg&quot; alt=&quot;What?&quot; /&gt;
-&lt;em&gt;OMG, I took the wrong decision.&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Back home, I started reading the book I had ordered: &lt;a href=&quot;https://www.amazon.com/Ruby-Programming-Language-David-Flanagan/dp/0596516177&quot;&gt;The Ruby programming language&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The moment I saw this code in chapter one:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;inject&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I googled &lt;strong&gt;Ruby to Java converter&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;I was very confused, everything seemed too different to what I had been coding for 8 years.&lt;/p&gt;
-
-&lt;p&gt;I didn’t know if Ruby was the next step for my programming future but since I decided to participate to the project I had to continue my effort.&lt;/p&gt;
-
-&lt;p&gt;And so I did.&lt;/p&gt;
-
-&lt;p&gt;And now, after 5 months I’m glad I did. And I managed, during this period of learning ruby, to develop an application in order to practice.&lt;/p&gt;
-
-&lt;p&gt;Even though this is related mostly to the framework I used (&lt;a href=&quot;http://rubyonrails.org/&quot;&gt;Rails&lt;/a&gt;), I didn’t have to setup any &lt;code class=&quot;highlighter-rouge&quot;&gt;hibernate&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;jpa&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;transaction&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;jdbc&lt;/code&gt; etc stuff.&lt;/p&gt;
-
-&lt;p&gt;Everything was pretty smooth and with a little googling I had answers to any issues that came up. All that weird words &lt;code class=&quot;highlighter-rouge&quot;&gt;haml&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;yaml&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;monkey patch&lt;/code&gt; etc are now what I consider “must use” stuff.&lt;/p&gt;
-
-&lt;p&gt;Yes, you get a little dizzy at first:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://3.bp.blogspot.com/-YrAG3jyG6ec/UnxzE0n8k8I/AAAAAAAAAPo/embvPY31z2o/s1600/left.png&quot; alt=&quot;Cat looking left&quot; /&gt;
-&lt;em&gt;left window: terminal&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://2.bp.blogspot.com/-gxwPxDqK80Q/UnxyAOQP4qI/AAAAAAAAAPg/Bpswk3rINEE/s1600/center.png&quot; alt=&quot;Cat looking in the middle&quot; /&gt;
-&lt;em&gt;middle window: text editor&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://2.bp.blogspot.com/-PoGJiJaGztg/Unxx_3RKMsI/AAAAAAAAAPY/nLxfxxs1kQE/s1600/right.png&quot; alt=&quot;Cat looking right&quot; /&gt;
-&lt;em&gt;right window: firefox&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Yes, there are a looooot of stuff to learn, a looooot of stuff to get used to and surely a lot of stuff you have to forget if your previous programming language is so different like Java. But once you reach that point, you will see that it wasn’t that hard.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;There is something here that makes Ruby developers feel happy. I don’t know how to express this something and probably it’s different for each programmer.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I love coding in Ruby (especially when it’s on Rails) and you will love this too.&lt;/p&gt;
-
-&lt;p&gt;Just give it some time.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 08 Nov 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2013/11/08/dont-give-up-on-ruby</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2013/11/08/dont-give-up-on-ruby</guid>
-        
-        <category>ruby</category>
-        
-        <category>introduction</category>
         
         
         <category>programming</category>
