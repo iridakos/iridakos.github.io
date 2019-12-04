@@ -10,12 +10,46 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feeds/programming.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Nov 2019 10:21:49 +0200</pubDate>
-    <lastBuildDate>Mon, 25 Nov 2019 10:21:49 +0200</lastBuildDate>
+    <pubDate>Wed, 04 Dec 2019 11:51:02 +0200</pubDate>
+    <lastBuildDate>Wed, 04 Dec 2019 11:51:02 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
 
+    
+      <item>
+        <title>What do you get after you lose your data from an SSD?</title>
+        <description>&lt;h1 id=&quot;ptssd&quot;&gt;PTSSD&lt;/h1&gt;
+</description>
+        <pubDate>Wed, 04 Dec 2019 09:00:00 +0200</pubDate>
+        <link>https://iridakos.com/programming/2019/12/04/ptssd</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/04/ptssd</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>I am talking to my code</title>
+        <description>&lt;p&gt;I am talking to my code but according to my cat, this is the least worrying.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 03 Dec 2019 21:00:00 +0200</pubDate>
+        <link>https://iridakos.com/programming/2019/12/03/talking-to-my-code</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/03/talking-to-my-code</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>i</title>
@@ -5910,25 +5944,6 @@ In addition, the &lt;code class=&quot;highlighter-rouge&quot;&gt;/sys/class/back
       </item>
     
       <item>
-        <title>GDPR</title>
-        <description>&lt;p&gt;When another GDPR email is received…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gdpr/post.jpg&quot; alt=&quot;GDPR cat&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 25 May 2018 09:00:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2018/05/25/gdpr</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2018/05/25/gdpr</guid>
-        
-        <category>humor</category>
-        
-        <category>devhumor</category>
-        
-        
-        <category>programming</category>
-        
-      </item>
-    
-      <item>
         <title>Indexing and full text searching Linux man pages</title>
         <description>&lt;p&gt;In this post we are going to play around with full text searching Linux man pages using Elasticsearch.&lt;/p&gt;
 
@@ -11198,186 +11213,6 @@ We only allow values for the &lt;code class=&quot;highlighter-rouge&quot;&gt;tit
         <category>web application</category>
         
         <category>mvc</category>
-        
-        
-        <category>programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Saying hello world with Ruby on Rails</title>
-        <description>&lt;p&gt;If you are new to Ruby I suggest you first read my &lt;a href=&quot;/programming/2013/11/08/dont-give-up-on-ruby&quot;&gt;previous post&lt;/a&gt; which in short explains why you should not give up on learning Ruby.&lt;/p&gt;
-
-&lt;p&gt;Starting with this post, I’ll be writing some tutorials covering the first steps you could follow in order to get familiar with both the language (Ruby) and the framework (Ruby on Rails). My posts will be based on my own experience so I hope that anyone new here can understand them easily.&lt;/p&gt;
-
-&lt;p&gt;First things first, install ruby and rails on your machine. There are plenty of installation tutorials out there from which you can pick the one matching your machine’s operating system. I followed &lt;a href=&quot;http://railsapps.github.io/installrubyonrails-mac.html&quot;&gt;this one&lt;/a&gt; in order to install Ruby 2.0 &amp;amp; Rails 4 on OS X Mavericks.&lt;/p&gt;
-
-&lt;h2 id=&quot;development-environment&quot;&gt;Development environment&lt;/h2&gt;
-
-&lt;p&gt;You will need:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Text editor&lt;/strong&gt;: I prefer using Sublime Text which is an excellent text editor with many plugins. There are a lot of other options but this is something you don’t have to decide now. Give them a try and you’ll find the one you like the most. &lt;em&gt;&lt;strong&gt;Update 2016&lt;/strong&gt;: I now prefer using GitHub’s &lt;a href=&quot;https://atom.io/&quot;&gt;Atom&lt;/a&gt; editor&lt;/em&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Console:&lt;/strong&gt; I use &lt;a href=&quot;http://www.iterm2.com/&quot;&gt;iTerm2&lt;/a&gt; which is a powerful replacement for OS X’s Terminal application.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Browser:&lt;/strong&gt; Your favorite one. I use firefox (with its firebug &amp;amp; httpfox plugins) for development. &lt;em&gt;&lt;strong&gt;Update 2016&lt;/strong&gt;: I now prefer using Google Chrome with its great development tools&lt;/em&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;lets-begin&quot;&gt;Let’s begin&lt;/h2&gt;
-
-&lt;p&gt;Create a folder in which you are going to put the tutorial’s code and navigate to it from the command line:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;tutorials
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;tutorials
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now let’s create our new application with the name &lt;code class=&quot;highlighter-rouge&quot;&gt;hello_world&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails new hello_world
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The command above will create a folder with the name &lt;code class=&quot;highlighter-rouge&quot;&gt;hello_world&lt;/code&gt;.
-Inside this folder you will find various files and subfolders which actually constitute a Rails application.&lt;/p&gt;
-
-&lt;p&gt;In this post I will only explain the files/folders to which we are going to make changes on (a thorough explanation will be provided in an upcoming one).&lt;/p&gt;
-
-&lt;p&gt;You already have a web server installed in your system that comes bundled with Ruby and its name is WEBRick. Let’s start it to see what we have created by the last command.&lt;/p&gt;
-
-&lt;p&gt;From the command line, navigate to the created folder:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;hello_world
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Start WEBrick with the following command:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You can also use &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;server&lt;/code&gt; in the previous command which is just an alias and will do the exact same thing:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails s
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You should see something similar to this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://2.bp.blogspot.com/-NwLVOAjtjag/UpEp1H01XKI/AAAAAAAAAcQ/vgwNU0ZVSgI/s1600/webrick.png&quot; alt=&quot;Rails server starting&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;By default, the server listens to port 3000 but you may change to the one you desire by using the &lt;code class=&quot;highlighter-rouge&quot;&gt;-p&lt;/code&gt; option:&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails server &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 8080
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;So, the web server started and our application is successfully deployed. Open your browser and visit the following address:&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://localhost:8080
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Tadaaa… You should see something like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-jXXwccMm_OI/UpEuGykbR8I/AAAAAAAAAcc/iKkofkL8UmY/s640/first-hit.png&quot; alt=&quot;Rails welcome aboard&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Before we continue, I will try to explain in a simple way how a rails application works.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Every request to the application is served by methods (called &lt;code class=&quot;highlighter-rouge&quot;&gt;actions&lt;/code&gt;) which are defined in special files called &lt;code class=&quot;highlighter-rouge&quot;&gt;controllers&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;These actions execute what has to be executed and define what the response will be (for example an html page, a JSON object etc). The responses (e.x. a page) are defined in special files called views but there are cases (such as when responding with a JSON object) that an action’s view is not required to be defined.&lt;/li&gt;
-  &lt;li&gt;The rules (&lt;code class=&quot;highlighter-rouge&quot;&gt;routes&lt;/code&gt;) that define which action of which controller will serve each request are placed in a special file called &lt;code class=&quot;highlighter-rouge&quot;&gt;routes.rb&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;These are enough for the time being. Let’s create our first controller named &lt;code class=&quot;highlighter-rouge&quot;&gt;pages&lt;/code&gt;.
-From the command line:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate controller pages
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;You will see a bunch of lines coming out from this command but focus on the first one:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://3.bp.blogspot.com/-ucr0i4t3rfk/UpE4sI-CjpI/AAAAAAAAAcs/BFFYthZjJng/s1600/generate-controller.png&quot; alt=&quot;Rails generating a controller&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Yes, &lt;code class=&quot;highlighter-rouge&quot;&gt;pages_controller.rb&lt;/code&gt; is our controller.
-In this file we are going to create our action that will serve the “root” (home) request to our application.&lt;/p&gt;
-
-&lt;p&gt;So, open this file with your text editor. Its location is:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;app/controllers/pages_controller.rb&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;As you can see, the controller is empty. We will add an action to it, let’s call it &lt;code class=&quot;highlighter-rouge&quot;&gt;home&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;home&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;As you can see, our action does nothing since all we want to do is show a static page with text &lt;em&gt;Hello world&lt;/em&gt;. Let’s add something though just to see it being executed from the server’s log:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PagesController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationController&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;home&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Honey, I'm home!&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If you speak Java, &lt;code class=&quot;highlighter-rouge&quot;&gt;puts&lt;/code&gt; is similar to Java’s &lt;code class=&quot;highlighter-rouge&quot;&gt;System.out.println();&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;If not told otherwise (which is our case), the home action will try to respond with a view named &lt;code class=&quot;highlighter-rouge&quot;&gt;home&lt;/code&gt; too.
-So let’s create this view in the appropriate folder which is:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/pages/&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Create a file in this folder with the name &lt;code class=&quot;highlighter-rouge&quot;&gt;home.html.erb&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;erb&lt;/code&gt; extension implies that this file will be processed by Rails in order to embed any dynamic content.&lt;/p&gt;
-
-&lt;p&gt;Edit this file and add:&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hello world!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;What’s left? Yes, we must route the root requests to our controller’s action.&lt;/p&gt;
-
-&lt;p&gt;Open with your text editor the &lt;code class=&quot;highlighter-rouge&quot;&gt;routes.rb&lt;/code&gt; file which is located here:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;config/routes.rb&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;You will find a bunch of help comments (text starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;#&lt;/code&gt;) there which you can delete.&lt;/p&gt;
-
-&lt;p&gt;Now, add the following line which tells that the root path &lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt; will be served by our controller’s home action:&lt;/p&gt;
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;to: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'pages#home'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If you refresh your browser, you will see the amazing and super complex page we just created:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-fN7Mf2u71nE/UpFE0NERslI/AAAAAAAAAdE/vVDxnUFlrFM/s640/static.png&quot; alt=&quot;Hello world static page&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We could stop here but it would be nice if we had the &lt;em&gt;Hello world!&lt;/em&gt; text being passed to the view from the controller’s action, yes? Yes.&lt;/p&gt;
-
-&lt;p&gt;Open the pages controller again and change the home action:&lt;/p&gt;
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;home&lt;/span&gt;
-  &lt;span class=&quot;vi&quot;&gt;@greeting&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Home action says: Hello world!&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here, we declared an instance variable to our controller with name &lt;code class=&quot;highlighter-rouge&quot;&gt;greeting&lt;/code&gt; and value &lt;code class=&quot;highlighter-rouge&quot;&gt;Home action says: Hello world!.&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;This variable is available for use from our corresponding view so open the &lt;code class=&quot;highlighter-rouge&quot;&gt;home.html.erb&lt;/code&gt; view and change its contents to the following:&lt;/p&gt;
-&lt;div class=&quot;language-erb highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@greeting&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Refresh the page in your browser and there it is:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-z2SM6eyCAVc/UpFG9SrwaUI/AAAAAAAAAdQ/RHVlNsTm4o0/s640/home-hello.png&quot; alt=&quot;Hello world dynamic page&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;There, &lt;strong&gt;you just created your first Ruby on Rails application!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;What’s next? How about creating a &lt;a href=&quot;/programming/2013/12/07/creating-a-simple-todo-part-1&quot;&gt;simple ToDo application&lt;/a&gt;?&lt;/p&gt;
-</description>
-        <pubDate>Sun, 24 Nov 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2013/11/24/saying-hello-world-with-ruby-on-rails</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2013/11/24/saying-hello-world-with-ruby-on-rails</guid>
-        
-        <category>ruby</category>
-        
-        <category>rails</category>
-        
-        <category>tutorial</category>
-        
-        <category>introduction</category>
-        
-        <category>web application</category>
-        
-        <category>hello world</category>
         
         
         <category>programming</category>

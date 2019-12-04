@@ -10,8 +10,8 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feeds/cats.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Nov 2019 10:21:49 +0200</pubDate>
-    <lastBuildDate>Mon, 25 Nov 2019 10:21:49 +0200</lastBuildDate>
+    <pubDate>Wed, 04 Dec 2019 11:51:02 +0200</pubDate>
+    <lastBuildDate>Wed, 04 Dec 2019 11:51:02 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -185,15 +185,6 @@
         <pubDate>Thu, 01 Nov 2018 00:00:00 +0200</pubDate>
         <link>https://iridakos.com/cats/2018/11/01/friday-releases</link>
         <guid isPermaLink="true">https://iridakos.com/cats/2018/11/01/friday-releases</guid>
-        <category>cats</category>
-      </item>
-    
-      <item>
-        <title>GDPR / When another GDPR email is received...</title>
-        <description><a href="https://iridakos.com/cats/2018/10/30/gdpr"><img src="https://iridakos.comhttps://iridakos.com/assets/images/posts/gdpr/post.jpg" /></a></description>
-        <pubDate>Tue, 30 Oct 2018 00:00:00 +0200</pubDate>
-        <link>https://iridakos.com/cats/2018/10/30/gdpr</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2018/10/30/gdpr</guid>
         <category>cats</category>
       </item>
     

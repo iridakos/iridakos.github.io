@@ -3,6 +3,20 @@
 
 [
   
+  { "title": "What do you get after you lose your data from an SSD?",
+    "description": "What?",
+    "date": "Dec 4, 2019 - 09:00",
+    "categories": "programming",
+    "tags": ["humor","devhumor"],
+    "url": "https://iridakos.com/programming/2019/12/04/ptssd"},
+  
+  { "title": "I am talking to my code",
+    "description": "Are you talking to me?",
+    "date": "Dec 3, 2019 - 21:00",
+    "categories": "programming",
+    "tags": ["humor","devhumor"],
+    "url": "https://iridakos.com/programming/2019/12/03/talking-to-my-code"},
+  
   { "title": "i",
     "description": "A poem for var i",
     "date": "Nov 22, 2019 - 17:00",
@@ -213,13 +227,6 @@
     "tags": [],
     "url": "https://iridakos.com/cats/2018/11/01/friday-releases"},
   
-  { "title": "GDPR",
-    "description": "",
-    "date": "Oct 30, 2018 - 00:00",
-    "categories": "",
-    "tags": [],
-    "url": "https://iridakos.com/cats/2018/10/30/gdpr"},
-  
   { "title": "Regular expression look",
     "description": "",
     "date": "Oct 30, 2018 - 00:00",
@@ -289,13 +296,6 @@
     "categories": "programming",
     "tags": ["linux","debian","ubuntu","imac","opensource","how-to","grub"],
     "url": "https://iridakos.com/programming/2018/06/24/debian-imac-backlight-keyboard"},
-  
-  { "title": "GDPR",
-    "description": "When another GDPR email is received...",
-    "date": "May 25, 2018 - 09:00",
-    "categories": "programming",
-    "tags": ["humor","devhumor"],
-    "url": "https://iridakos.com/programming/2018/05/25/gdpr"},
   
   { "title": "Indexing and full text searching Linux man pages",
     "description": "&lt;p&gt;In this post we are going to play around with full text searching Linux man pages using Elasticsearch.&lt;/p&gt;",

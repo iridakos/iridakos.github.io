@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iridakos - programming jokes and other</title>
+    <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
+    <link>https://iridakos.com/</link>
+    <image>
+      <url>https://iridakos.com/assets/images/site.png</url>
+      <link>https://iridakos.com/</link>
+      <title>iridakos</title>
+    </image>
+    <atom:link href="https://iridakos.com/feeds/programming-humor.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 04 Dec 2019 11:51:02 +0200</pubDate>
+    <lastBuildDate>Wed, 04 Dec 2019 11:51:02 +0200</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
+
+    
+
+    
+      <item>
+        <title>What do you get after you lose your data from an SSD?</title>
+        <description>&lt;h1 id=&quot;ptssd&quot;&gt;PTSSD&lt;/h1&gt;
+</description>
+        <pubDate>Wed, 04 Dec 2019 09:00:00 +0200</pubDate>
+        <link>https://iridakos.com/programming/2019/12/04/ptssd</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/04/ptssd</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>I am talking to my code</title>
+        <description>&lt;p&gt;I am talking to my code but according to my cat, this is the least worrying.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 03 Dec 2019 21:00:00 +0200</pubDate>
+        <link>https://iridakos.com/programming/2019/12/03/talking-to-my-code</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/03/talking-to-my-code</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>i</title>
+        <description>&lt;pre&gt;
+Roses are red
+Violets are blue
+I was looping forever
+And then I found you.
+
+&lt;span class=&quot;text-danger font-weight-bold&quot;&gt;i&lt;/span&gt; was your name
+I think &lt;span class=&quot;text-danger font-weight-bold&quot;&gt;j&lt;/span&gt; was next to you
+Born inside a &lt;span class=&quot;text-danger font-weight-bold&quot;&gt;for&lt;/span&gt;
+Died in there too.
+
+I saw you getting bigger
+Loop over loop over loop
+And &lt;span class=&quot;text-danger font-weight-bold&quot;&gt;j&lt;/span&gt; was getting smaller
+You were a great group.
+
+And then you just vanished
+You left me there alone
+Condition wasn't true
+At least nothing was thrown.
+&lt;/pre&gt;
+</description>
+        <pubDate>Fri, 22 Nov 2019 17:00:00 +0200</pubDate>
+        <link>https://iridakos.com/programming/2019/11/22/i</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/11/22/i</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>Mom dad I want to be a computer programmer</title>
+        <description>&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/comics/s01e01.png&quot; style=&quot;max-height: none;&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 22 Jan 2017 16:00:00 +0200</pubDate>
+        <link>https://iridakos.com/programming/2017/01/22/mom-dad-i-programmer</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2017/01/22/mom-dad-i-programmer</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>Being a developer</title>
+        <description>&lt;p&gt;I can’t really remember the first time I saw a computer.
+I do remember though that “working on a computer” was the first thing that came to my mind when I was asked “What do you want to do when you grow up?”.&lt;/p&gt;
+
+&lt;p&gt;Years later, being both a grown up and a developer, I ask myself:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Now that you know, if you were a kid again, would you still want to be working on computers when you grew up?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Let’s see what a life for a developer means to me so far.&lt;/p&gt;
+
+&lt;h2 id=&quot;my-friends&quot;&gt;My friends&lt;/h2&gt;
+
+&lt;p&gt;Some of my friends believe that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;when I do stuff on the computer, many windows with progress bars making strange alien movie sounds appear constantly&lt;/li&gt;
+  &lt;li&gt;I smoke and drink coffee in front of at least two monitors till early morning moving my head like cats do when flies pass by&lt;/li&gt;
+  &lt;li&gt;I can hack the whole universe, I just don’t do it because there’s no need&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The others believe that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I am an expert in printing email attached zip files&lt;/li&gt;
+  &lt;li&gt;I am an expert in converting a scanned image to a Microsoft office document&lt;/li&gt;
+  &lt;li&gt;I’m not good at my work because I don’t know how to set a formula in excel&lt;/li&gt;
+  &lt;li&gt;even though they were asked by the store if they wanted the OS installed on their brand new laptop, I should be the one to install it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;my-family&quot;&gt;My family&lt;/h2&gt;
+
+&lt;p&gt;My mother believes that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;it’s always a good time to call to ask from me to visit her friend with a new TV in order to program the channels&lt;/li&gt;
+  &lt;li&gt;I can handle any device with buttons&lt;/li&gt;
+  &lt;li&gt;I lie when I explain that the bug I was talking about is not a real one and that I should be cleaning the house more regularly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;My older siblings believe that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;something went wrong and my parents should have stopped at them&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;other-developers&quot;&gt;Other developers&lt;/h2&gt;
+
+&lt;p&gt;Other developers believe that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the technologies I use suck unless they use them too&lt;/li&gt;
+  &lt;li&gt;I understand them when they talk about all existing technologies, tech abbreviations and conferences&lt;/li&gt;
+  &lt;li&gt;we should go for drinks at a regular basis otherwise we will all end up alone&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;cats&quot;&gt;Cats&lt;/h2&gt;
+
+&lt;p&gt;My cat believes that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;my computer is her accessory and I can play with it only if I let her hunt the mouse pointer&lt;/li&gt;
+  &lt;li&gt;nothing bad can happen when she steps on keyboard while I’m workingal;kdjfh;lkashkj&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-truth&quot;&gt;The truth&lt;/h2&gt;
+
+&lt;p&gt;The truth is that being a developer is cool besides the fact that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;even though you think of yourself like Neo, sometimes you might be working for hours on aligning a div vertically in the middle of its container.&lt;/li&gt;
+  &lt;li&gt;even though it’s called MySQL, sometimes it might not feel so “My”&lt;/li&gt;
+  &lt;li&gt;even though you &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdir best_idea_ever&lt;/code&gt; on Saturday morning you end your weekend with &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo rm -rf ./best_idea_ever&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;it’s 2015 and the only thing that renders the same way to all browsers is the &lt;code class=&quot;highlighter-rouge&quot;&gt;about:blank&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;you read this post to find code snippets&lt;/code&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 21 Jun 2015 10:00:00 +0300</pubDate>
+        <link>https://iridakos.com/programming/2015/06/21/being-a-developer</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2015/06/21/being-a-developer</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        
+        <category>humor</category>
+        
+      </item>
+    
+  </channel>
+</rss>

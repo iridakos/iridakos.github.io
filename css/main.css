@@ -9148,3 +9148,6 @@ h2 {
   border-radius: 4px; }
   .highlight pre {
     padding: 20px; }
+
+.post-navigation .btn small {
+  white-space: normal; }

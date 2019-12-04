@@ -10,12 +10,89 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/el/feeds/programming.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Nov 2019 10:21:49 +0200</pubDate>
-    <lastBuildDate>Mon, 25 Nov 2019 10:21:49 +0200</lastBuildDate>
+    <pubDate>Wed, 04 Dec 2019 11:51:02 +0200</pubDate>
+    <lastBuildDate>Wed, 04 Dec 2019 11:51:02 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
 
+    
+      <item>
+        <title>Τι παθαίνεις αν χάσεις όλα τα δεδομένα σου από έναν SSD;</title>
+        <description>&lt;h1 id=&quot;ptssd&quot;&gt;PTSSD&lt;/h1&gt;
+</description>
+        <pubDate>Wed, 04 Dec 2019 09:00:00 +0200</pubDate>
+        <link>https://iridakos.com/el/programming/2019/12/04/ptssd</link>
+        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/12/04/ptssd</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        <category>χιούμορ</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>Μιλάω στον κώδικα</title>
+        <description>&lt;p&gt;Όταν προγραμματίζω, μιλάω στον κώδικα. Αλλά, σύμφωνα με τη γάτα μου, αυτό είναι το λιγότερο ανησυχητικό.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 03 Dec 2019 21:00:00 +0200</pubDate>
+        <link>https://iridakos.com/el/programming/2019/12/03/talking-to-my-code</link>
+        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/12/03/talking-to-my-code</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        <category>χιούμορ</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>i</title>
+        <description>&lt;pre&gt;
+Roses are red
+Violets are blue
+I was looping forever
+And then I found you.
+
+&lt;span class=&quot;text-danger font-weight-bold&quot;&gt;i&lt;/span&gt; was your name
+I think &lt;span class=&quot;text-danger font-weight-bold&quot;&gt;j&lt;/span&gt; was next to you
+Born inside a &lt;span class=&quot;text-danger font-weight-bold&quot;&gt;for&lt;/span&gt;
+Died in there too.
+
+I saw you getting bigger
+Loop over loop over loop
+And &lt;span class=&quot;text-danger font-weight-bold&quot;&gt;j&lt;/span&gt; was getting smaller
+You were a great group.
+
+And then you just vanished
+You left me there alone
+Condition wasn't true
+At least nothing was thrown.
+&lt;/pre&gt;
+</description>
+        <pubDate>Fri, 22 Nov 2019 17:00:00 +0200</pubDate>
+        <link>https://iridakos.com/el/programming/2019/11/22/i</link>
+        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/22/i</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        <category>χιούμορ</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets</title>

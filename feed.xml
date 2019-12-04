@@ -10,12 +10,46 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Nov 2019 10:21:49 +0200</pubDate>
-    <lastBuildDate>Mon, 25 Nov 2019 10:21:49 +0200</lastBuildDate>
+    <pubDate>Wed, 04 Dec 2019 11:51:02 +0200</pubDate>
+    <lastBuildDate>Wed, 04 Dec 2019 11:51:02 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
 
+    
+      <item>
+        <title>What do you get after you lose your data from an SSD?</title>
+        <description>&lt;h1 id=&quot;ptssd&quot;&gt;PTSSD&lt;/h1&gt;
+</description>
+        <pubDate>Wed, 04 Dec 2019 09:00:00 +0200</pubDate>
+        <link>https://iridakos.com/programming/2019/12/04/ptssd</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/04/ptssd</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>I am talking to my code</title>
+        <description>&lt;p&gt;I am talking to my code but according to my cat, this is the least worrying.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 03 Dec 2019 21:00:00 +0200</pubDate>
+        <link>https://iridakos.com/programming/2019/12/03/talking-to-my-code</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/03/talking-to-my-code</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>i</title>
@@ -4009,28 +4043,6 @@ end
         <pubDate>Thu, 01 Nov 2018 00:00:00 +0200</pubDate>
         <link>https://iridakos.com/cats/2018/11/01/push-on-my-branch</link>
         <guid isPermaLink="true">https://iridakos.com/cats/2018/11/01/push-on-my-branch</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Java update available pop up</title>
-        <description>
-</description>
-        <pubDate>Thu, 01 Nov 2018 00:00:00 +0200</pubDate>
-        <link>https://iridakos.com/cats/2018/11/01/java-update-popup</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/01/java-update-popup</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Released on Friday</title>
-        <description>
-</description>
-        <pubDate>Thu, 01 Nov 2018 00:00:00 +0200</pubDate>
-        <link>https://iridakos.com/cats/2018/11/01/friday-releases</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/01/friday-releases</guid>
         
         
       </item>
