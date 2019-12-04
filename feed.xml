@@ -10,8 +10,8 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 04 Dec 2019 15:26:32 +0200</pubDate>
-    <lastBuildDate>Wed, 04 Dec 2019 15:26:32 +0200</lastBuildDate>
+    <pubDate>Wed, 04 Dec 2019 15:32:52 +0200</pubDate>
+    <lastBuildDate>Wed, 04 Dec 2019 15:32:52 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -19,7 +19,7 @@
     
       <item>
         <title>Pizza commit</title>
-        <description>&lt;p&gt;&lt;strong&gt;[Me]:&lt;/strong&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;strong&gt;Me:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Closes issue #13&quot;&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; Remove obsolete reference to core entity
@@ -27,9 +27,9 @@
   &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; Log every ac...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;[Colleague]:&lt;/strong&gt; “Hey, the pizza is heeeere”&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Colleague:&lt;/strong&gt; “Hey, the pizza is heeeere”&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;[Me]:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Me:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;* backspaces *&lt;/p&gt;
 
