@@ -10,12 +10,46 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/el/feeds/programming.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 04 Dec 2019 12:38:54 +0200</pubDate>
-    <lastBuildDate>Wed, 04 Dec 2019 12:38:54 +0200</lastBuildDate>
+    <pubDate>Wed, 04 Dec 2019 13:16:17 +0200</pubDate>
+    <lastBuildDate>Wed, 04 Dec 2019 13:16:17 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
 
+    
+      <item>
+        <title>Πίτσα commit</title>
+        <description>&lt;p&gt;&lt;strong&gt;[Εγώ]:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Closes issue #13&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; Remove obsolete reference to core entity
+  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; Refactor module generating values
+  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; Log every ac...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;[Συνάδελφος]:&lt;/strong&gt; “Ήρθαν οι πίτσες!”&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[Me]:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;* backspaces *&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Fixes&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Wed, 04 Dec 2019 11:00:00 +0200</pubDate>
+        <link>https://iridakos.com/el/programming/2019/12/04/pizza-commit</link>
+        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/12/04/pizza-commit</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        <category>χιούμορ</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Τι παθαίνεις αν χάσεις όλα τα δεδομένα σου από έναν SSD;</title>

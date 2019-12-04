@@ -3,6 +3,13 @@
 
 [
   
+  { "title": "Pizza commit",
+    "description": "git commit -mmm",
+    "date": "Dec 4, 2019 - 11:00",
+    "categories": "programming",
+    "tags": ["humor","devhumor"],
+    "url": "https://iridakos.com/programming/2019/12/04/pizza-commit"},
+  
   { "title": "What do you get after you lose your data from an SSD?",
     "description": "What?",
     "date": "Dec 4, 2019 - 09:00",

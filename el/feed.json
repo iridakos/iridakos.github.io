@@ -2,6 +2,13 @@
 
 [
   
+  { "title": "Πίτσα commit",
+    "description": "git commit -μμμ",
+    "date": "Dec 4, 2019 - 11:00",
+    "categories": "programming",
+    "tags": ["humor","devhumor","χιούμορ"],
+    "url": "https://iridakos.com/el/programming/2019/12/04/pizza-commit"},
+  
   { "title": "Τι παθαίνεις αν χάσεις όλα τα δεδομένα σου από έναν SSD;",
     "description": "Τι;",
     "date": "Dec 4, 2019 - 09:00",
