@@ -2,6 +2,13 @@
 
 [
   
+  { "title": "Βραδιά ταινίας",
+    "description": "Παρακολουθώντας ταινίες με το γατί",
+    "date": "Dec 6, 2019 - 09:00",
+    "categories": "cats",
+    "tags": ["photo","cat","cats","movie"],
+    "url": "https://iridakos.com/el/cats/2019/12/06/movie-night"},
+  
   { "title": "Πίτσα commit",
     "description": "git commit -μμμ",
     "date": "Dec 4, 2019 - 11:00",

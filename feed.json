@@ -3,6 +3,13 @@
 
 [
   
+  { "title": "Movie night",
+    "description": "Watching movies with a cat in the house",
+    "date": "Dec 6, 2019 - 09:00",
+    "categories": "cats",
+    "tags": ["photo","cat","cats","movie"],
+    "url": "https://iridakos.com/cats/2019/12/06/movie-night"},
+  
   { "title": "Pizza commit",
     "description": "git commit -mmm",
     "date": "Dec 4, 2019 - 11:00",
