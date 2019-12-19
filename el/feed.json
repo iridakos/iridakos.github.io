@@ -2,6 +2,13 @@
 
 [
   
+  { "title": "Περιγραφική ονομασία μεταβλητών",
+    "description": "Βοήθεια βοήθεια βοήθεια",
+    "date": "Dec 12, 2019 - 09:00",
+    "categories": "programming",
+    "tags": ["humor","devhumor"],
+    "url": "https://iridakos.com/el/programming/2019/12/12/descriptive-variable-names"},
+  
   { "title": "Βραδιά ταινίας",
     "description": "Παρακολουθώντας ταινίες θρίλερ με το γατί",
     "date": "Dec 6, 2019 - 09:00",

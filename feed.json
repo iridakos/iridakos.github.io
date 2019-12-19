@@ -3,6 +3,13 @@
 
 [
   
+  { "title": "Descriptive variable names",
+    "description": "Help help help",
+    "date": "Dec 12, 2019 - 09:00",
+    "categories": "programming",
+    "tags": ["humor","devhumor"],
+    "url": "https://iridakos.com/programming/2019/12/12/descriptive-variable-names"},
+  
   { "title": "Movie night",
     "description": "Watching horror movies with a cat in the house",
     "date": "Dec 6, 2019 - 09:00",
