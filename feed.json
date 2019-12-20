@@ -3,6 +3,13 @@
 
 [
   
+  { "title": "Vim",
+    "description": "A poem for vim",
+    "date": "Dec 20, 2019 - 09:00",
+    "categories": "programming",
+    "tags": ["humor","devhumor","poem","linux"],
+    "url": "https://iridakos.com/programming/2019/12/20/thy-vim"},
+  
   { "title": "Descriptive variable names",
     "description": "Help help help",
     "date": "Dec 12, 2019 - 09:00",
@@ -42,7 +49,7 @@
     "description": "A poem for var i",
     "date": "Nov 22, 2019 - 17:00",
     "categories": "programming",
-    "tags": ["humor","devhumor"],
+    "tags": ["humor","devhumor","poem"],
     "url": "https://iridakos.com/programming/2019/11/22/i"},
   
   { "title": "Mongoid - Inheritance: change embedded document's type via nested attributes",

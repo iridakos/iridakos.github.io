@@ -10,12 +10,64 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feeds/programming.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 19 Dec 2019 10:13:20 +0200</pubDate>
-    <lastBuildDate>Thu, 19 Dec 2019 10:13:20 +0200</lastBuildDate>
+    <pubDate>Fri, 20 Dec 2019 12:34:04 +0200</pubDate>
+    <lastBuildDate>Fri, 20 Dec 2019 12:34:04 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
 
+    
+      <item>
+        <title>Vim</title>
+        <description>&lt;pre&gt;
+Roses are red
+Violets are blue
+I have stuck in &lt;span class=&quot;font-weight-bold&quot;&gt;vim&lt;/span&gt;
+And so have you.
+
+Vim ain't for newbies
+But I'm a curious soul
+So I went down
+That shell rabbit hole.
+
+I tried to edit &lt;code class=&quot;font-weight-bold&quot;&gt;hosts&lt;/code&gt;
+Everything went wrong
+The file remained open
+For two hours long.
+
+When I found the magic
+&lt;span class=&quot;font-weight-bold&quot;&gt;Semicolon double-u q&lt;/span&gt;
+The file was readonly
+You've been there too.
+
+The bells started ringing
+As I &lt;span class=&quot;font-weight-bold&quot;&gt;control&lt;/span&gt;led&lt;span class=&quot;font-weight-bold&quot;&gt; + c&lt;/span&gt;
+What was I thinking
+I WANT TO BE FREE
+
+I had to stop the panic
+Said it'll all be fine
+I will just kill the process
+Using &lt;strong&gt;minus nine&lt;/strong&gt;.
+&lt;div class=&quot;text-right text-muted font-italic&quot;&gt;&lt;small&gt;-- iridakos&lt;/small&gt;&lt;/div&gt;
+&lt;/pre&gt;
+</description>
+        <pubDate>Fri, 20 Dec 2019 09:00:00 +0200</pubDate>
+        <link>https://iridakos.com/programming/2019/12/20/thy-vim</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/20/thy-vim</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        <category>poem</category>
+        
+        <category>linux</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Descriptive variable names</title>
@@ -135,6 +187,8 @@ At least nothing was thrown.
         <category>humor</category>
         
         <category>devhumor</category>
+        
+        <category>poem</category>
         
         
         <category>programming</category>
@@ -9711,507 +9765,6 @@ git push openshift master
         <pubDate>Sun, 22 Dec 2013 09:00:00 +0200</pubDate>
         <link>https://iridakos.com/programming/2013/12/22/creating-a-simple-todo-part-4</link>
         <guid isPermaLink="true">https://iridakos.com/programming/2013/12/22/creating-a-simple-todo-part-4</guid>
-        
-        <category>ruby</category>
-        
-        <category>rails</category>
-        
-        <category>tutorial</category>
-        
-        <category>todo</category>
-        
-        <category>web application</category>
-        
-        <category>mvc</category>
-        
-        
-        <category>tutorials</category>
-        
-      </item>
-    
-      <item>
-        <title>Creating a simple ToDo application with Ruby on Rails - Part 3</title>
-        <description>&lt;p&gt;This is the third part of the tutorial. In this part, we are going to use &lt;a href=&quot;https://github.com/plataformatec/devise&quot;&gt;Devise&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://github.com/ryanb/cancan&quot;&gt;CanCan&lt;/a&gt; in order to add authentication and authorization features to the application.&lt;/p&gt;
-
-&lt;p&gt;In order to continue, you must complete the previous two parts if you haven’t done this already:&lt;/p&gt;
-
-&lt;p&gt;Done? Cool, let’s start.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;You can find the complete code of the tutorial &lt;a href=&quot;https://github.com/iridakos/todo&quot;&gt;here&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;mailcatcher&quot;&gt;MailCatcher&lt;/h3&gt;
-
-&lt;p&gt;Our users will register to the application using their email address and they will receive a confirmation email in order to activate their account.&lt;/p&gt;
-
-&lt;p&gt;Before introducing Devise, you’ll get to know MailCatcher which is an awesome gem for simulating a real smtp server. We will configure the application to use it when in development mode.&lt;/p&gt;
-
-&lt;p&gt;Install the gem from the command line:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'mailcatcher'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://3.bp.blogspot.com/-xir1xot_tWk/UrQSPpJ98CI/AAAAAAAAAs0/r43-pJC-xMo/s1600/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;and start the &lt;em&gt;smtp server&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mailcatcher
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-k8L0mJDKAu0/UrQSsm2YGQI/AAAAAAAAAs8/bQeU2mEOWQs/s1600/2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As you can see from the output, we will be sending our mail through:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;smtp://127.0.0.1:1025
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;and we will browse the sent emails via the web interface at:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://127.0.0.1:1080
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Visit the last one, you should be seeing something like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://3.bp.blogspot.com/-lNN_HazoxYY/UrQTfkGR4oI/AAAAAAAAAtI/ljslOQ0_wCM/s640/3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now open the &lt;code class=&quot;highlighter-rouge&quot;&gt;development.rb&lt;/code&gt; file which is located under &lt;code class=&quot;highlighter-rouge&quot;&gt;config/environments&lt;/code&gt; and add the following lines:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;action_mailer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;default_url_options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'localhost:3000'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;action_mailer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;delivery_method&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:smtp&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;action_mailer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;smtp_settings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:address&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1025&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The first line defines which host is going to be used while converting the relative paths in our emails to absolute ones.&lt;/p&gt;
-
-&lt;p&gt;The second ones defined the protocol to be used and the last one sets the settings of the smtp server.&lt;/p&gt;
-
-&lt;h3 id=&quot;devise&quot;&gt;Devise&lt;/h3&gt;
-
-&lt;p&gt;Devise is a gem that will provide us with almost anything about authentication.&lt;/p&gt;
-
-&lt;p&gt;Open your &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; with your text editor and add the devise gem:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'devise'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;and then, from the command line execute the bundle installer:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In order to have the gem’s initialization stuff automatically generated for us, execute from the command line again:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate devise:install
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This command will create two files:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;config/initializer/devise.rb
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;and&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;config/locales/devise.en.yml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The first one configures the devise and second one has localized messages used by the gem.&lt;br /&gt;
-Open the first one and comment out the line since we won’t be using this option:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# config.reconfirmable = true&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now, we are going to instruct devise to generate the model that will be used for our users:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate devise User
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-oBAp7BGPwgM/UrQYXXpg-KI/AAAAAAAAAtY/M5incD478fI/s1600/4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;With this command, we created our User model &amp;amp; the migration that will create the table for the model and we also added automatically the appropriate routes for registration/sign in/confirmation etc.&lt;/p&gt;
-
-&lt;p&gt;Before applying the migration, we will create another one because we want to enable the &lt;a href=&quot;https://github.com/plataformatec/devise/wiki/How-To:-Add-:confirmable-to-Users&quot;&gt;confirmable&lt;/a&gt; option so that our users confirm their account before start doing anything with the application.&lt;/p&gt;
-
-&lt;p&gt;To do so, we will generate a custom migration:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate migration add_confirmable_to_users
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-74eeusjNHpg/UrQa8kQgouI/AAAAAAAAAts/LI_SELrKXA0/s640/5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now open the generated file (&lt;code class=&quot;highlighter-rouge&quot;&gt;xxxx_add_confirmable_to_users.rb&lt;/code&gt;) with your text editor and change its contents to the following:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AddConfirmableToUsers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;
-      &lt;span class=&quot;c1&quot;&gt;# Note: You can't use change, as User.update_all with fail in the down migration&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;up&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;add_column&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:confirmation_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:string&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;add_column&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:confirmed_at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:datetime&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;add_column&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:confirmation_sent_at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:datetime&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# add_column :users, :unconfirmed_email, :string # Only if using reconfirmable&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;add_index&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:confirmation_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:unique&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# User.reset_column_information # Need for some types of updates, but not for update_all.&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# To avoid a short time window between running the migration and updating all existing&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# users as confirmed, do the following&lt;/span&gt;
-        &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;update_all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:confirmed_at&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# All existing user accounts should be able to log in after this.&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-      &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;down&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;remove_columns&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:confirmation_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:confirmed_at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:confirmation_sent_at&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;# remove_columns :users, :unconfirmed_email # Only if using reconfirmable&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This migration will add columns to our users table to keep information about confirmations.&lt;br /&gt;
-We are ready to migrate, from the command line:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rake db:migrate
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://2.bp.blogspot.com/-Z1VgW9-WuXE/UrQcDBERk9I/AAAAAAAAAt4/D15Cqkh7GLg/s640/6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We updated our users table but we need to update the model too. Open &lt;code class=&quot;highlighter-rouge&quot;&gt;user.rb&lt;/code&gt; which is located under &lt;code class=&quot;highlighter-rouge&quot;&gt;app/models/&lt;/code&gt; and change it to this:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ActiveRecord&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# Include default devise modules. Others available are:&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# :confirmable, :lockable, :timeoutable and :omniauthable&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;devise&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:database_authenticatable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:registerable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-         &lt;span class=&quot;ss&quot;&gt;:recoverable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:rememberable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:trackable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:validatable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-         &lt;span class=&quot;ss&quot;&gt;:confirmable&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;We just added the &lt;code class=&quot;highlighter-rouge&quot;&gt;:confirmable&lt;/code&gt; option.&lt;/p&gt;
-
-&lt;p&gt;Let’s check what is going on with our routes, from the command line:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rake routes
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-3FYuBjpmTWw/UrQeLkwrCnI/AAAAAAAAAuE/6Ena1dL1b90/s640/7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Wow, way too many new routes. Time to start the server:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000/users/sign_in&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;We have a sign in form!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://3.bp.blogspot.com/-kDWvyY_Qotw/UrQfhEoMQiI/AAAAAAAAAuQ/4ID6lfDRqRg/s1600/8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Where did this view come from?&lt;/p&gt;
-
-&lt;p&gt;Well, devise has some default views that we use by default. But what if we want to use our own? This page doesn’t look good…&lt;/p&gt;
-
-&lt;p&gt;Thankfully, devise gives us the option to generate the default views inside our application’s views folder so that we can make changes on them.&lt;/p&gt;
-
-&lt;p&gt;By default, the generated views are of &lt;code class=&quot;highlighter-rouge&quot;&gt;erb&lt;/code&gt; type and since we are using &lt;code class=&quot;highlighter-rouge&quot;&gt;haml&lt;/code&gt; we will follow one more step.&lt;/p&gt;
-
-&lt;p&gt;From the command line:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate devise:views
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-2A125ZPTEfw/UrQo04ValPI/AAAAAAAAAu8/orkztT1rr3s/s1600/12.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;At this point, it would be a good exercise for you to convert all generated views to &lt;code class=&quot;highlighter-rouge&quot;&gt;haml&lt;/code&gt; (don’t forget to change the file extension to &lt;code class=&quot;highlighter-rouge&quot;&gt;.html.haml&lt;/code&gt;) but there is &lt;a href=&quot;https://github.com/plataformatec/devise/wiki/How-To:-Create-Haml-and-Slim-Views&quot;&gt;another way&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;From the command line:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;html2haml
-&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;file &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;app/views/devise/&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.erb&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;html2haml &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%erb&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;haml &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I got a bunch of warnings from the last command but the conversion was successful.&lt;/p&gt;
-
-&lt;p&gt;Ok, now we can edit these files and make the views look what we want.&lt;/p&gt;
-
-&lt;p&gt;But instead of “centralizing” all devise’s forms file by file we have also another option.
-We can create another layout (besides our application’s default) and configure the application to use it if the executed action belongs to a devise controller.&lt;/p&gt;
-
-&lt;p&gt;Create a file with name &lt;code class=&quot;highlighter-rouge&quot;&gt;devise.html.haml&lt;/code&gt; into &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/layouts&lt;/code&gt; and add the following:&lt;/p&gt;
-
-&lt;div class=&quot;language-haml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;!!!
-&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;%html&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;%head&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;%title&lt;/span&gt; Todo
-    &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stylesheet_link_tag&lt;/span&gt;    &lt;span class=&quot;s2&quot;&gt;&quot;application&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;media: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;all&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;javascript_include_tag&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;application&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;csrf_meta_tags&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;%body&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;.row-fluid&lt;/span&gt;
-      &lt;span class=&quot;nc&quot;&gt;.span10.offset1&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;.hero-unit.text-center&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;%h1&lt;/span&gt;
-            ToDo
-          &lt;span class=&quot;nt&quot;&gt;%p&lt;/span&gt;
-            Welcome to the tutorial's ToDo application
-    &lt;span class=&quot;nc&quot;&gt;.row-fluid&lt;/span&gt;
-      &lt;span class=&quot;nc&quot;&gt;.span4.offset4&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;and add the following to the &lt;code class=&quot;highlighter-rouge&quot;&gt;application_controller.rb&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;layout&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:layout_by_controller&lt;/span&gt;
-
-&lt;span class=&quot;kp&quot;&gt;protected&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;layout_by_controller&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;devise_controller?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'devise'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://3.bp.blogspot.com/-jRHXoh7ysMs/UrQmiN2ffHI/AAAAAAAAAuo/QJFz4X8Fl6s/s1600/10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Refresh your browser, much better:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-ExLgrVNbHTU/UrQnL6zy2-I/AAAAAAAAAuw/2JfqAKK6IrU/s640/11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Let’s bootstrap that sign in button, edit the &lt;code class=&quot;highlighter-rouge&quot;&gt;new.html.haml&lt;/code&gt; file located under &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/devise/sessions&lt;/code&gt; and add the bootstrap class to the button:&lt;/p&gt;
-
-&lt;div class=&quot;language-haml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:submit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Sign in&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;class: &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'btn btn-primary'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-NXzY4nuli0g/UrQpgehMmnI/AAAAAAAAAvE/U-YGvUPVbxQ/s640/13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now, I want you to visit the root path of the application, &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://2.bp.blogspot.com/-Plj6rsGDvPE/UrQqCiD_3pI/AAAAAAAAAvQ/Qo22lTV8tgs/s640/14.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Hmm, where is the authentication?
-We are going to add a filter in our &lt;code class=&quot;highlighter-rouge&quot;&gt;application_controller.rb&lt;/code&gt; so that all actions require an authenticated user. Edit the file and add this line:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;before_filter&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:authenticate_user!&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-AFkOWlbnNiA/UrQq1K1tsrI/AAAAAAAAAvY/bYZ8uUvLWRs/s1600/15.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Refresh, you should be automatically redirected to the sign in page.&lt;/p&gt;
-
-&lt;p&gt;Let’s create a user. Follow the sign up link (as an exercise, on each new devise view missing the bootstrap stuff, find the file and make the appropriate changes):&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-0iTNQwKaEUk/UrQt8lPzxII/AAAAAAAAAvk/akprw06R5Ts/s640/16.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Press the sign up button and open a new tab to your browser to see the MailCatcher stuff (&lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:1080&lt;/code&gt;):&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-M5kXD_V2RJU/UrQwfTnE8cI/AAAAAAAAAvw/B5_KniFRHIU/s640/17.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Magic!&lt;/p&gt;
-
-&lt;p&gt;Confirm you account following the link and login.&lt;/p&gt;
-
-&lt;p&gt;So far so good, but something wasn’t quite nice. We should be seeing some default devise generated messages for the actions we executed (like “Successfully registered” etc) but nothing was displayed.&lt;/p&gt;
-
-&lt;p&gt;Devise uses &lt;a href=&quot;http://guides.rubyonrails.org/action_controller_overview.html#the-flash&quot;&gt;flash messages&lt;/a&gt; and currently we have done nothing about showing them.&lt;/p&gt;
-
-&lt;p&gt;We will create a simple partial under a new folder located at &lt;code class=&quot;highlighter-rouge&quot;&gt;app/views/shared&lt;/code&gt; named &lt;code class=&quot;highlighter-rouge&quot;&gt;_flash.html.haml&lt;/code&gt; with the following contents:&lt;/p&gt;
-
-&lt;div class=&quot;language-haml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;.flash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_s&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Trying to sign in with invalid credentials should show you an error message now:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-wQVFcTS-vFA/UrQzGH2Yp4I/AAAAAAAAAv8/vRuJ8olI1yk/s640/18.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Nice. Let’s add some user related stuff to our application layout so that when logged in a user can see his username and a logout link. Edit &lt;code class=&quot;highlighter-rouge&quot;&gt;application.html.haml&lt;/code&gt; and add the following inside the hero-unit.&lt;/p&gt;
-
-&lt;div class=&quot;language-haml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.text-center&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;%strong&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;email&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.text-center&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;link_to&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'logout'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destroy_user_session_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;method: :delete&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-2lam0erxDBA/UrQ133DLRtI/AAAAAAAAAwQ/KR--jTKRXV0/s640/20.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;We added the current user’s email (using the helper method current_user provided by devise) and a logout link pointing to the destroy session path from our routes.&lt;/p&gt;
-
-&lt;p&gt;Now, after a user logs in, you should see something like the following:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-cy_DXi5UeBw/UrQ1oSg6qTI/AAAAAAAAAwI/AOSupkAqqjA/s640/19.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Ok, we have added user authentication. Now before accessing the home page and all of its task related actions, an authenticated user is required. But, which task should a user be able to view/edit/destroy?&lt;/p&gt;
-
-&lt;h3 id=&quot;cancan&quot;&gt;CanCan&lt;/h3&gt;
-
-&lt;p&gt;Before messing with CanCan, we should think a little about our models.&lt;/p&gt;
-
-&lt;p&gt;We have users and tasks. We want each user to manage his/her own tasks without being able to do anything to tasks that belong to another user.&lt;/p&gt;
-
-&lt;p&gt;So, we need to add a new attribute to our Task model that will keep track of the User it belongs to.
-We will do this firstly by creating a migration to add a user_id column to the users table:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate migration add_column_user_id_to_tasks user_id:integer
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Open the generated file and confirm that rails understood exactly what we wanted to do:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://2.bp.blogspot.com/-rf6pLHwapaY/UrQ6HxhMDDI/AAAAAAAAAwc/615aBqlUuqY/s1600/21.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Now we must tell to both our models about their association.&lt;/p&gt;
-
-&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;user.rb&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;has_many&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:tasks&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-XkBNiD-AePg/UrQ8eJN36SI/AAAAAAAAAwo/BsIhoz-GywM/s1600/22.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;and in &lt;code class=&quot;highlighter-rouge&quot;&gt;task.rb&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;belongs_to&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:user&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;validates_presence_of&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:user&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-fdjSjLQEzt4/UrQ8eRWuyFI/AAAAAAAAAw0/eqMYw0u3k78/s1600/23.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Rails understands in both cases which model is being associated by the value of the symbol.&lt;/p&gt;
-
-&lt;p&gt;Apply the migration to the database:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;rake db:migrate
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;CanCan o’Clock. We will use CanCan in order to protect a user’s tasks from being accessed by another user.&lt;/p&gt;
-
-&lt;p&gt;Add the gem to your &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'cancan'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;and bundle from the command line:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Next, we are going to generate the file in which we are going to describe the “abilities” of a user:&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails generate cancan:ability
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://4.bp.blogspot.com/-C_nH_YI9AVA/UrQ91EbYGOI/AAAAAAAAAw4/SMEQexVFuiE/s1600/24.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Open the generated file with your text editor and replace its contents with the following:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Ability&lt;/span&gt;
-  &lt;span class=&quot;kp&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;CanCan&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Ability&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;can&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:manage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;user_id: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;id&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here we define that a user can execute any kind of action on a Task only if the task’s &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; attribute matches the current user’s id.&lt;/p&gt;
-
-&lt;p&gt;Time to authorize our actions. &lt;a href=&quot;https://github.com/ryanb/cancan/wiki/Authorizing-controller-actions&quot;&gt;There is a shortcut for this&lt;/a&gt; but we will to do it the tedious way.
-Open the tasks controller and review the actions:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;new&lt;/code&gt;: we don’t need to check anything here&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;create&lt;/code&gt;: the task’s &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; must be the one of the current user&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;edit&lt;/code&gt;: the task’s &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; must be the one of the current user&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;update&lt;/code&gt;: the task’s &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; must be the one of the current user&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;delete&lt;/code&gt;: the task’s &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; must be the one of the current user&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We will apply the limitations above using the CanCan’s &lt;code class=&quot;highlighter-rouge&quot;&gt;authorize!&lt;/code&gt; action.
-This method accepts two parameters, the &lt;code class=&quot;highlighter-rouge&quot;&gt;action&lt;/code&gt; (symbol) that will be executed and the &lt;code class=&quot;highlighter-rouge&quot;&gt;object&lt;/code&gt; on which it will be executed.&lt;/p&gt;
-
-&lt;p&gt;Change the controller’s actions as below:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TasksController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationController&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:show_form&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_user&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;authorize!&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;save_task&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;edit&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;authorize!&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:edit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:show_form&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;assign_attributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;authorize!&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;save_task&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;destroy&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;authorize!&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:destroy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;destroy&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@tasks&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;accessible_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_ability&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;kp&quot;&gt;private&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;save_task&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;save&lt;/span&gt;
-      &lt;span class=&quot;vi&quot;&gt;@tasks&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;accessible_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_ability&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:hide_form&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:show_form&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;task_params&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;permit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:note&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:completed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;All actions in the &lt;code class=&quot;highlighter-rouge&quot;&gt;authorized!&lt;/code&gt; calls could be replaced by the &lt;code class=&quot;highlighter-rouge&quot;&gt;:manage&lt;/code&gt; symbol but I wanted to show you your options in case you had defined different abilities per action.&lt;/p&gt;
-
-&lt;p&gt;Also notice that in the create action we added the line&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;vi&quot;&gt;@task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_user&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This line will “fill” the &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; of each newly created task with current user’s id.&lt;/p&gt;
-
-&lt;p&gt;After all these changes, if a user tries to edit/update a task that belongs to another user, an &lt;code class=&quot;highlighter-rouge&quot;&gt;AccessDenied&lt;/code&gt; error is going to be raised.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: the &lt;code class=&quot;highlighter-rouge&quot;&gt;task_params&lt;/code&gt; method we defined in the previous part of the tutorial protects our task model from being assigned with a &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; from the parameters.&lt;/p&gt;
-
-&lt;p&gt;So, all cool? Nope.&lt;/p&gt;
-
-&lt;p&gt;In the home page we show all the tasks. &lt;strong&gt;ALL&lt;/strong&gt; the tasks.&lt;/p&gt;
-
-&lt;p&gt;This isn’t right. So there is a last thing to do. Filter the tasks. Thankfully, CanCan provides us with a very nice way to do this.
-A model scope that uses the &lt;code class=&quot;highlighter-rouge&quot;&gt;ability.rb&lt;/code&gt; permissions!&lt;/p&gt;
-
-&lt;p&gt;Open the pages_controller.rb and change it as below:&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;PagesController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ApplicationController&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;home&lt;/span&gt;
-    &lt;span class=&quot;vi&quot;&gt;@tasks&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;accessible_by&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_ability&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;And now we are fine. I suggest you register more users and start messing with the &lt;code class=&quot;highlighter-rouge&quot;&gt;user_id&lt;/code&gt; attributes of your tasks to see the authorization being applied.&lt;/p&gt;
-
-&lt;p&gt;This is the last part of the tutorial that we actually implement stuff for the ToDo application.&lt;/p&gt;
-
-&lt;p&gt;There is going to be a &lt;a href=&quot;/programming/2013/12/22/creating-a-simple-todo-part-4&quot;&gt;final part&lt;/a&gt; in which I am going to help you deploy the application to &lt;a href=&quot;https://www.openshift.com/&quot;&gt;&lt;strong&gt;OpenShift&lt;/strong&gt;&lt;/a&gt;!&lt;/p&gt;
-
-</description>
-        <pubDate>Fri, 20 Dec 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2013/12/20/creating-a-simple-todo-part-3</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2013/12/20/creating-a-simple-todo-part-3</guid>
         
         <category>ruby</category>
         

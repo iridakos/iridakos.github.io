@@ -10,12 +10,64 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feeds/programming-humor.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 19 Dec 2019 10:13:20 +0200</pubDate>
-    <lastBuildDate>Thu, 19 Dec 2019 10:13:20 +0200</lastBuildDate>
+    <pubDate>Fri, 20 Dec 2019 12:34:04 +0200</pubDate>
+    <lastBuildDate>Fri, 20 Dec 2019 12:34:04 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
 
+    
+      <item>
+        <title>Vim</title>
+        <description>&lt;pre&gt;
+Roses are red
+Violets are blue
+I have stuck in &lt;span class=&quot;font-weight-bold&quot;&gt;vim&lt;/span&gt;
+And so have you.
+
+Vim ain't for newbies
+But I'm a curious soul
+So I went down
+That shell rabbit hole.
+
+I tried to edit &lt;code class=&quot;font-weight-bold&quot;&gt;hosts&lt;/code&gt;
+Everything went wrong
+The file remained open
+For two hours long.
+
+When I found the magic
+&lt;span class=&quot;font-weight-bold&quot;&gt;Semicolon double-u q&lt;/span&gt;
+The file was readonly
+You've been there too.
+
+The bells started ringing
+As I &lt;span class=&quot;font-weight-bold&quot;&gt;control&lt;/span&gt;led&lt;span class=&quot;font-weight-bold&quot;&gt; + c&lt;/span&gt;
+What was I thinking
+I WANT TO BE FREE
+
+I had to stop the panic
+Said it'll all be fine
+I will just kill the process
+Using &lt;strong&gt;minus nine&lt;/strong&gt;.
+&lt;div class=&quot;text-right text-muted font-italic&quot;&gt;&lt;small&gt;-- iridakos&lt;/small&gt;&lt;/div&gt;
+&lt;/pre&gt;
+</description>
+        <pubDate>Fri, 20 Dec 2019 09:00:00 +0200</pubDate>
+        <link>https://iridakos.com/programming/2019/12/20/thy-vim</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/20/thy-vim</guid>
+        
+        <category>humor</category>
+        
+        <category>devhumor</category>
+        
+        <category>poem</category>
+        
+        <category>linux</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Descriptive variable names</title>
@@ -135,6 +187,8 @@ At least nothing was thrown.
         <category>humor</category>
         
         <category>devhumor</category>
+        
+        <category>poem</category>
         
         
         <category>programming</category>
