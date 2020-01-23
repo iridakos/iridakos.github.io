@@ -3,6 +3,13 @@
 
 [
   
+  { "title": "Goodbye Irida",
+    "description": "A goodbye to my beloved cat",
+    "date": "Jan 23, 2020 - 09:00",
+    "categories": "cats",
+    "tags": ["cat","cats","Irida"],
+    "url": "https://iridakos.com/cats/2020/01/23/goodbye-irida"},
+  
   { "title": "Vim",
     "description": "A poem for vim",
     "date": "Dec 20, 2019 - 09:00",

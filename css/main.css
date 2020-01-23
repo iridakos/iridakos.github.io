@@ -8584,6 +8584,13 @@ html {
 .no-overflow pre {
   white-space: pre-wrap; }
 
+.grid-img {
+  max-height: 200px !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-size: cover;
+  object-fit: cover; }
+
 .page-title-container {
   padding: 40px 0 60px 0;
   font-size: 2rem;
