@@ -8599,7 +8599,7 @@ html {
   color: #fff;
   text-shadow: 0 0 3px black;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-  background: url("/assets/images/posts/paintings/meadow/painting-dark.jpg") #e8e8e8 center;
+  background: url("/assets/images/cinema.jpg") #e8e8e8 center 35%;
   background-size: cover;
   min-height: 200px; }
   .page-title-container .page-title h1 {
