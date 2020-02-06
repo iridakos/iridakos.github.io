@@ -10,8 +10,8 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feeds/opensource.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 06 Feb 2020 14:15:01 +0200</pubDate>
-    <lastBuildDate>Thu, 06 Feb 2020 14:15:01 +0200</lastBuildDate>
+    <pubDate>Thu, 06 Feb 2020 15:04:38 +0200</pubDate>
+    <lastBuildDate>Thu, 06 Feb 2020 15:04:38 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     <foo>ha</foo>
     
@@ -43,9 +43,9 @@
 
 &lt;p&gt;And here’s a more readable version using new lines after each pipe.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now - %d days&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..332044&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; | &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f-&lt;/span&gt; +%Y%_m%_d&lt;span class=&quot;s1&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;%Y%m%d | &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; alldates.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; rev alldates.txt &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;revdates.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;paste &lt;/span&gt;alldates.txt revdates.txt | &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now - %d days&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..332044&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; |
+&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f-&lt;/span&gt; +%Y%_m%_d&lt;span class=&quot;s1&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;%Y%m%d |
+&lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; alldates.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; rev alldates.txt &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;revdates.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;paste &lt;/span&gt;alldates.txt revdates.txt |
 &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1==$2{print $1}'&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 

@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
 
   <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
-  <link rel="stylesheet" href="/css/main.css?1580991301031445682">
+  <link rel="stylesheet" href="/css/main.css?1580994278847867479">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
   <!-- Begin Jekyll SEO tag v2.6.1 -->
@@ -227,9 +227,9 @@
 
 <p>And here’s a more readable version using new lines after each pipe.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s2">"now - %d days</span><span class="se">\n</span><span class="s2">"</span> <span class="o">{</span>1..332044<span class="o">}</span> | <span class="se">\</span>
-<span class="nb">date</span> <span class="nt">-f-</span> +%Y%_m%_d<span class="s1">$'</span><span class="se">\n</span><span class="s1">'</span>%Y%m%d | <span class="se">\</span>
-<span class="nb">tr</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="o">&gt;</span> alldates.txt<span class="p">;</span> rev alldates.txt <span class="o">&gt;</span>revdates.txt<span class="p">;</span> <span class="nb">paste </span>alldates.txt revdates.txt | <span class="se">\</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s2">"now - %d days</span><span class="se">\n</span><span class="s2">"</span> <span class="o">{</span>1..332044<span class="o">}</span> |
+<span class="nb">date</span> <span class="nt">-f-</span> +%Y%_m%_d<span class="s1">$'</span><span class="se">\n</span><span class="s1">'</span>%Y%m%d |
+<span class="nb">tr</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="o">&gt;</span> alldates.txt<span class="p">;</span> rev alldates.txt <span class="o">&gt;</span>revdates.txt<span class="p">;</span> <span class="nb">paste </span>alldates.txt revdates.txt |
 <span class="nb">awk</span> <span class="s1">'$1==$2{print $1}'</span>
 </code></pre></div></div>
 
@@ -1255,10 +1255,10 @@ b
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="/assets/javascripts/bootstrap.min.js?1580991301031445682" type="text/javascript"></script>
-<script src="/assets/javascripts/docout.js?1580991301031445682" type="text/javascript"></script>
-<script src="/assets/javascripts/iridakos.js?1580991301031445682" type="text/javascript"></script>
-<script src="/assets/javascripts/search.js?1580991301031445682" type="text/javascript"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1580994278847867479" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1580994278847867479" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1580994278847867479" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1580994278847867479" type="text/javascript"></script>
 
 
 
