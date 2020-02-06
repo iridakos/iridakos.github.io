@@ -10,15 +10,15 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feeds/programming.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 06 Feb 2020 13:13:21 +0200</pubDate>
-    <lastBuildDate>Thu, 06 Feb 2020 13:13:21 +0200</lastBuildDate>
+    <pubDate>Thu, 06 Feb 2020 14:15:01 +0200</pubDate>
+    <lastBuildDate>Thu, 06 Feb 2020 14:15:01 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
 
     
       <item>
-        <title>Find palindrome dates in the command line - explained</title>
+        <title>Find palindrome dates in the Linux command line - explained</title>
         <description>&lt;p&gt;Yesterday I saw a &lt;a href=&quot;https://twitter.com/climagic/status/1225056662949650432&quot;&gt;great command&lt;/a&gt; that finds the palindrome dates between now and &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; days ago.&lt;/p&gt;
 
 &lt;p&gt;The command was posted on Twitter by &lt;a href=&quot;https://twitter.com/climagic&quot;&gt;@climagic&lt;/a&gt; (a great account to follow if you want to find awesome command line stuff).&lt;/p&gt;

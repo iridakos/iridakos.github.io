@@ -3,8 +3,8 @@
 
 [
   
-  { "title": "Find palindrome dates in the command line - explained",
-    "description": "Explaining how to find palindrome dates using a shell command",
+  { "title": "Find palindrome dates in the Linux command line - explained",
+    "description": "Explaining how to find palindrome dates using a shell command in Linux",
     "date": "Feb 6, 2020 - 12:00",
     "categories": "programming",
     "tags": ["how-to","linux","opensource","bash","scripts","awk","climagic"],
