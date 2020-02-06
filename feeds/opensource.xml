@@ -10,12 +10,312 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feeds/opensource.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 24 Jan 2020 10:32:18 +0200</pubDate>
-    <lastBuildDate>Fri, 24 Jan 2020 10:32:18 +0200</lastBuildDate>
+    <pubDate>Thu, 06 Feb 2020 13:13:21 +0200</pubDate>
+    <lastBuildDate>Thu, 06 Feb 2020 13:13:21 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     <foo>ha</foo>
     
 
+    
+      <item>
+        <title>Find palindrome dates in the command line - explained</title>
+        <description>&lt;p&gt;Yesterday I saw a &lt;a href=&quot;https://twitter.com/climagic/status/1225056662949650432&quot;&gt;great command&lt;/a&gt; that finds the palindrome dates between now and &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; days ago.&lt;/p&gt;
+
+&lt;p&gt;The command was posted on Twitter by &lt;a href=&quot;https://twitter.com/climagic&quot;&gt;@climagic&lt;/a&gt; (a great account to follow if you want to find awesome command line stuff).&lt;/p&gt;
+
+&lt;p&gt;In this post we are going to break it down and explain how it works.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-a-palindrome&quot;&gt;What is a palindrome&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Palindrome is a word/number/phrase or other sequence of characters that reads the same backward as forward.
+&lt;cite&gt;– &lt;a href=&quot;https://en.wikipedia.org/wiki/Palindrome&quot;&gt;Palindrome - Wikipedia&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Few days ago, the date was &lt;strong&gt;02/02/2020&lt;/strong&gt; which was a palindrome:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/palindrome-shell/02022020.png&quot; alt=&quot;Image showing the palindrome 02022020&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;the-command&quot;&gt;The command&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now - %d days&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..332044&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; |date &lt;span class=&quot;nt&quot;&gt;-f-&lt;/span&gt; +%Y%_m%_d&lt;span class=&quot;s1&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;%Y%m%d |tr &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; alldates.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; rev alldates.txt &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;revdates.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;paste &lt;/span&gt;alldates.txt revdates.txt |awk &lt;span class=&quot;s1&quot;&gt;'$1==$2{print $1}'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And here’s a more readable version using new lines after each pipe.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now - %d days&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..332044&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; | &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f-&lt;/span&gt; +%Y%_m%_d&lt;span class=&quot;s1&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;%Y%m%d | &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; alldates.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; rev alldates.txt &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;revdates.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;paste &lt;/span&gt;alldates.txt revdates.txt | &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1==$2{print $1}'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I am going to explain each part of the command separately.&lt;/p&gt;
+
+&lt;p&gt;Note that the output of each part is the input of the next part (following the pipe &lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h2 id=&quot;printf-now---d-daysn-1332044&quot;&gt;printf &quot;now - %d days\n&quot; {1..332044}&lt;/h2&gt;
+
+&lt;p&gt;The first part seems pretty straight forward but it does have an interesting part, the &lt;strong&gt;brace expansion mechanism&lt;/strong&gt;, which I didn’t know of.&lt;/p&gt;
+
+&lt;p&gt;Open a terminal and type the following commands:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# From 1 to 10&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..10&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+1 2 3 4 5 6 7 8 9 10
+
+&lt;span class=&quot;c&quot;&gt;# From a to z&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;a..z&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+&lt;span class=&quot;c&quot;&gt;# From 10 to 20&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;Before-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;10..20&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-After&lt;/span&gt;
+Before-10-After Before-11-After Before-12-After Before-13-After Before-14-After Before-15-After Before-16-After Before-17-After Before-18-After Before-19-After Before-20-After
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As you can see, the brace expansion allows the generation of values based on a “sequence” we set.&lt;/p&gt;
+
+&lt;p&gt;Learn more about the &lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html&quot;&gt;Brace expansion mechanism here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;part-explained&quot;&gt;Part explained&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;we print the phrase “now - x days” so many times as the number of values expanded from the sequence&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;{1..332044}&lt;/code&gt; will generate 332044 values starting from 1 and increasing by 1&lt;/li&gt;
+  &lt;li&gt;we add a new line at the end of each produced string&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;output&quot;&gt;Output&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;now - 1 days
+now - 2 days
+now - 3 days
+now - 4 days
+now - 5 days
+...
+now - 332038 days
+now - 332039 days
+now - 332040 days
+now - 332041 days
+now - 332042 days
+now - 332043 days
+now - 332044 days
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;date--f--y_m_dnymd&quot;&gt;date -f- &lt;code class=&quot;highlighter-rouge&quot;&gt;+%Y%\_m%\_d$'\n'%Y%m%d&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;In this part we use the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; command to parse the previously piped output and print two lines for each date, one with padding zeros and one without zeros for single digit days and months.&lt;/p&gt;
+
+&lt;p&gt;Familiarize yourself with the command in your terminal:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Show current date = now&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date
+&lt;/span&gt;Thu Feb  6 07:30:10 EET 2020
+
+&lt;span class=&quot;c&quot;&gt;# Show yesterday&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;now - 1 days&quot;&lt;/span&gt;
+Wed Feb  5 07:31:22 EET 2020
+
+&lt;span class=&quot;c&quot;&gt;# Show yesterday as dd/mm/yyyy (zero padding)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;now - 1 days&quot;&lt;/span&gt; +%d/%m/%Y
+05/02/2020
+
+&lt;span class=&quot;c&quot;&gt;# Show yesterday as dd/mm/yyyy (space padded)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;now - 1 days&quot;&lt;/span&gt; +%_d/%_m/%Y
+ 5/ 2/2020
+
+&lt;span class=&quot;c&quot;&gt;# Show yesterday as dd/mm/yyyy (without padding)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;now - 1 days&quot;&lt;/span&gt; +%-d/%-m/%Y
+5/2/2020
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;part-explained-1&quot;&gt;Part explained&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;we use the &lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt; option to define the input of the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; to be the lines of a file, followed by a hyphen &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; to &lt;a href=&quot;https://unix.stackexchange.com/questions/16357/usage-of-dash-in-place-of-a-filename&quot;&gt;set this file to be the &lt;code class=&quot;highlighter-rouge&quot;&gt;stdin&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;we set the output format (what follows the plus &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; symbol) to be the numeric representation of the year (&lt;code class=&quot;highlighter-rouge&quot;&gt;%Y&lt;/code&gt;), the month (padded with spaces: &lt;code class=&quot;highlighter-rouge&quot;&gt;%_m&lt;/code&gt;, padded with zeros: &lt;code class=&quot;highlighter-rouge&quot;&gt;%m&lt;/code&gt;) and the day of the month (padded with spaces: &lt;code class=&quot;highlighter-rouge&quot;&gt;%_d&lt;/code&gt;, padded with zeros: &lt;code class=&quot;highlighter-rouge&quot;&gt;%d&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;the space padded format is &lt;code class=&quot;highlighter-rouge&quot;&gt;%Y%\_m%\_d&lt;/code&gt; and the zero padded format is &lt;code class=&quot;highlighter-rouge&quot;&gt;%Y%m%d&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;we combine these &lt;strong&gt;two formats for each date&lt;/strong&gt; and we separate them with a new line &lt;code class=&quot;highlighter-rouge&quot;&gt;$'\n'&lt;/code&gt; thus, for each date we parse, we produce two lines, one padded with zeros and one padded with spaces&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: instead of padding with spaces (using the underscore &lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt; in the format), we could use the hyphen &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; instead which would &lt;strong&gt;skip the padding of the field&lt;/strong&gt;. This way wouldn’t have to remove the spaces as described in the next part.&lt;/p&gt;
+
+&lt;h3 id=&quot;output-1&quot;&gt;Output&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2020 2 5
+20200205
+2020 2 4
+20200204
+2020 2 3
+20200203
+2020 2 2
+20200202
+2020 2 1
+20200201
+2020 131
+20200131
+2020 130
+20200130
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;tr--d----alldatestxt-rev-alldatestxt-revdatestxt-paste-alldatestxt-revdatestxt&quot;&gt;tr -d ' ' &amp;gt; alldates.txt; rev alldates.txt &amp;gt;revdates.txt; paste alldates.txt revdates.txt&lt;/h2&gt;
+
+&lt;p&gt;In this part we remove the spaces produced in the previous step and we create two files, one with all the dates and one with all the dates reversed.&lt;/p&gt;
+
+&lt;p&gt;Then we combine these two files by merging each line of the first file with the corresponding line of the second file separated with a tab.&lt;/p&gt;
+
+&lt;p&gt;Familiarize your self with the commands of this part in your terminal:&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Remove empty spaces&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Good night &quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; &quot;&lt;/span&gt;
+Goodnight
+
+&lt;span class=&quot;c&quot;&gt;# Remove hyphens&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Good-night&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-&quot;&lt;/span&gt;
+Goodnight
+
+&lt;span class=&quot;c&quot;&gt;# Print a-x-z where x is a number between 1 and 9&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a-%d-z&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..9&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+a-1-z
+a-2-z
+a-3-z
+a-4-z
+a-5-z
+a-6-z
+a-7-z
+a-8-z
+a-9-z
+
+&lt;span class=&quot;c&quot;&gt;# and then reverse the order of the characters of each line&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a-%d-z&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..9&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; | rev
+z-1-a
+z-2-a
+z-3-a
+z-4-a
+z-5-a
+z-6-a
+z-7-a
+z-8-a
+z-9-a
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;part-explained-2&quot;&gt;Part explained&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tr -d ''&lt;/code&gt;: we remove the spaces of the input (which is the output of the previous part) and we save the output in a file named &lt;code class=&quot;highlighter-rouge&quot;&gt;alldates.txt&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rev&lt;/code&gt;: we reverse the order of the characters of each line of the &lt;code class=&quot;highlighter-rouge&quot;&gt;alldates.txt&lt;/code&gt; file and we save the output in a new file named &lt;code class=&quot;highlighter-rouge&quot;&gt;revdates.txt&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;paste&lt;/code&gt;: we merge the two files; each line of the &lt;code class=&quot;highlighter-rouge&quot;&gt;alldates.txt&lt;/code&gt; file is merged with the corresponding line of the file &lt;code class=&quot;highlighter-rouge&quot;&gt;revdates.txt&lt;/code&gt; separated by a tab (the two files have the exact number of lines).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;output-2&quot;&gt;Output&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;202025	520202
+20200205	50200202
+202024	420202
+20200204	40200202
+202023	320202
+20200203	30200202
+202022	220202
+20200202	20200202
+202021	120202
+20200201	10200202
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;awk-12print-1&quot;&gt;awk '$1==$2{print $1}'&lt;/h2&gt;
+
+&lt;p&gt;In this final part, we use &lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt; to print the palindromes.&lt;/p&gt;
+
+&lt;p&gt;Familiarize yourself with the usage of awk related to this post, in your terminal:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Print the whole input (awk's default behavior) if the fields are equal&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a a&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1==$2'&lt;/span&gt;
+a a
+
+&lt;span class=&quot;c&quot;&gt;# Print the whole input (awk's default behavior) if the fields are not equal&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a a&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1!=$2'&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# nothing here&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Print the whole input (awk's default behavior) if the fields are not equal&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a b&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1!=$2'&lt;/span&gt;
+a b
+
+&lt;span class=&quot;c&quot;&gt;# Print the first field (awk's default behavior) if the fields are not equal&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a b&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1!=$2 {print $1}'&lt;/span&gt;
+a
+
+&lt;span class=&quot;c&quot;&gt;# Print the second field (awk's default behavior) if the fields are not equal&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a b&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1!=$2 {print $2}'&lt;/span&gt;
+b
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;part-explained-3&quot;&gt;Part explained&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the previous output that is now the input of this part consists of lines and each line has two values separated by a TAB. With this kind of input, &lt;a href=&quot;https://www.gnu.org/software/gawk/manual/html_node/Fields.html&quot;&gt;awk resolves two fields&lt;/a&gt; in each line. We can access these two fields using the &lt;code class=&quot;highlighter-rouge&quot;&gt;$1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;$2&lt;/code&gt; variables.&lt;/li&gt;
+  &lt;li&gt;as described in a &lt;a href=&quot;https://iridakos.com/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux#how-it-works&quot;&gt;previous post&lt;/a&gt;, awk statements consist of a pattern-expression and an associated action.
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;pattern/expression&amp;gt; { &amp;lt;action&amp;gt; }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;If the pattern succeeds then the associated action is being executed. In this part the expression is translated as “if the two fields are equal” (&lt;code class=&quot;highlighter-rouge&quot;&gt;$1==$2&lt;/code&gt;) and the action as “print the first field” (&lt;code class=&quot;highlighter-rouge&quot;&gt;printf $1&lt;/code&gt;).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;if the fields are equal we do have a palindrome since each pair of fields is actually a date and its reversed value.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;output-3&quot;&gt;Output&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;20200202
+2019102
+2018102
+2017102
+2016102
+2015102
+2014102
+2013102
+2012102
+...
+11111111
+11111111
+1111111
+1111111
+111111
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;cat-photo&quot;&gt;Cat photo&lt;/h2&gt;
+
+&lt;p&gt;That’s all, thanks for reading.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/palindrome-shell/post.jpg&quot; alt=&quot;Image with image reflection of my cat, Irida&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twitter.com/climagic/status/1225056662949650432&quot;&gt;@climagic tweet this post is based on&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Palindrome&quot;&gt;Palindrome - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html&quot;&gt;Bash brace expansion&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://unix.stackexchange.com/questions/16357/usage-of-dash-in-place-of-a-filename&quot;&gt;Using hyphen to set file input to stdin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/gawk/manual/html_node/Fields.html&quot;&gt;Awk field resolution&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://iridakos.com/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux#how-it-works&quot;&gt;Awkward awk&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 06 Feb 2020 12:00:00 +0200</pubDate>
+        <link>https://iridakos.com/programming/2020/02/06/shell-palindrome-dates</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2020/02/06/shell-palindrome-dates</guid>
+        
+        <category>how-to</category>
+        
+        <category>linux</category>
+        
+        <category>opensource</category>
+        
+        <category>bash</category>
+        
+        <category>scripts</category>
+        
+        <category>awk</category>
+        
+        <category>climagic</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Mongoid - Inheritance: change embedded document's type via nested attributes</title>
