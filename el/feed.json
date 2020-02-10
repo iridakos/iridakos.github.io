@@ -2,6 +2,13 @@
 
 [
   
+  { "title": "Εύρεση παλίνδρομων ημερομηνιών στην Linux κονσόλα - επεξήγηση",
+    "description": "Ένα άρθρο που εξηγεί πως μπορείτε να βρείτε παλίνδρομες ημερομηνίες χρησιμοποιώντας εντολές στο φλοιό του Linux",
+    "date": "Feb 10, 2020 - 09:00",
+    "categories": "programming",
+    "tags": ["how-to","linux","opensource","bash","scripts","awk","climagic"],
+    "url": "https://iridakos.com/el/programming/2020/02/10/shell-palindrome-dates"},
+  
   { "title": "Περιγραφική ονομασία μεταβλητών",
     "description": "Βοήθεια βοήθεια βοήθεια",
     "date": "Dec 12, 2019 - 09:00",

@@ -10,8 +10,8 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 06 Feb 2020 15:04:38 +0200</pubDate>
-    <lastBuildDate>Thu, 06 Feb 2020 15:04:38 +0200</lastBuildDate>
+    <pubDate>Mon, 10 Feb 2020 12:09:10 +0200</pubDate>
+    <lastBuildDate>Mon, 10 Feb 2020 12:09:10 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -163,7 +163,7 @@ Wed Feb  5 07:31:22 EET 2020
 
 &lt;p&gt;Then we combine these two files by merging each line of the first file with the corresponding line of the second file separated with a tab.&lt;/p&gt;
 
-&lt;p&gt;Familiarize your self with the commands of this part in your terminal:&lt;/p&gt;
+&lt;p&gt;Familiarize yourself with the commands of this part in your terminal:&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Remove empty spaces&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Good night &quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; &quot;&lt;/span&gt;
 Goodnight
@@ -237,11 +237,11 @@ a a
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a b&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1!=$2'&lt;/span&gt;
 a b
 
-&lt;span class=&quot;c&quot;&gt;# Print the first field (awk's default behavior) if the fields are not equal&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Print the first field if the fields are not equal&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a b&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1!=$2 {print $1}'&lt;/span&gt;
 a
 
-&lt;span class=&quot;c&quot;&gt;# Print the second field (awk's default behavior) if the fields are not equal&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Print the second field if the fields are not equal&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a b&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1!=$2 {print $2}'&lt;/span&gt;
 b
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;

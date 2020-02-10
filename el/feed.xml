@@ -10,12 +10,313 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 06 Feb 2020 15:04:38 +0200</pubDate>
-    <lastBuildDate>Thu, 06 Feb 2020 15:04:38 +0200</lastBuildDate>
+    <pubDate>Mon, 10 Feb 2020 12:09:10 +0200</pubDate>
+    <lastBuildDate>Mon, 10 Feb 2020 12:09:10 +0200</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
 
+    
+      <item>
+        <title>Εύρεση παλίνδρομων ημερομηνιών στην Linux κονσόλα - επεξήγηση</title>
+        <description>&lt;p&gt;Πρόσφατα είδα μια &lt;a href=&quot;https://twitter.com/climagic/status/1225056662949650432&quot;&gt;πολύ ωραία εντολή&lt;/a&gt; που βρίσκει τις παλίνδρομες ημερομηνίες μεταξύ του τώρα και &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; ημερών στο παρελθόν.&lt;/p&gt;
+
+&lt;p&gt;Η εντολή κοινοποιήθηκε στο Twitter από το λογαριασμό &lt;a href=&quot;https://twitter.com/climagic&quot;&gt;@climagic&lt;/a&gt; (ένας πολύ ωραίος λογαριασμός σχετικά με tweets που σχετίζονται με την γραμμή εντολών).&lt;/p&gt;
+
+&lt;p&gt;Σε αυτό το άρθρο θα σπάσω την εντολή σε τμήματα και θα εξηγήσω πως λειτουργεί το καθένα.&lt;/p&gt;
+
+&lt;h2 id=&quot;τι-είναι-το-παλίνδρομο---καρκινική-γραφή&quot;&gt;Τι είναι το παλίνδρομο - Καρκινική γραφή&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Καρκινικές επιγραφές ή καρκίνοι ονομάζονται συμμετρικές φράσεις οι οποίες μπορούν να διαβαστούν είτε από την αρχή είτε από το τέλος.
+&lt;cite&gt;– &lt;a href=&quot;https://el.wikipedia.org/wiki/%CE%9A%CE%B1%CF%81%CE%BA%CE%B9%CE%BD%CE%B9%CE%BA%CE%AE_%CE%B3%CF%81%CE%B1%CF%86%CE%AE&quot;&gt;Καρκινική γραφή - Wikipedia&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Πριν λίγες μέρες, η ημερομηνία ήταν παλίνδρομη: &lt;strong&gt;02/02/2020&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/palindrome-shell/02022020.png&quot; alt=&quot;Image showing the palindrome 02022020&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;η-εντολή&quot;&gt;Η εντολή&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now - %d days&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..332044&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; |date &lt;span class=&quot;nt&quot;&gt;-f-&lt;/span&gt; +%Y%_m%_d&lt;span class=&quot;s1&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;%Y%m%d |tr &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; alldates.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; rev alldates.txt &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;revdates.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;paste &lt;/span&gt;alldates.txt revdates.txt |awk &lt;span class=&quot;s1&quot;&gt;'$1==$2{print $1}'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;και παρακάτω μια περισσότερο αναγνώσιμη εκδοχή της, χρησιμοποιώντας νέα γραμμή μετά από κάθε σωλήνωση.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;now - %d days&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..332044&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; |
+&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f-&lt;/span&gt; +%Y%_m%_d&lt;span class=&quot;s1&quot;&gt;$'&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;%Y%m%d |
+&lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; alldates.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; rev alldates.txt &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;revdates.txt&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;paste &lt;/span&gt;alldates.txt revdates.txt |
+&lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1==$2{print $1}'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Θα εξηγήσω κάθε τμήμα της εντολής χωριστά.&lt;/p&gt;
+
+&lt;p&gt;Σημειώστε ότι το αποτέλεσμα (output - έξοδος) του κάθε τμήματος αποτελεί είσοδο (input) για το επόμενο τμήμα (αυτό που ακολουθεί τη σωλήνωση &lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h2 id=&quot;printf-now---d-daysn-1332044&quot;&gt;printf &quot;now - %d days\n&quot; {1..332044}&lt;/h2&gt;
+
+&lt;p&gt;Το πρώτο τμήμα είναι αρκετά απλό αλλά έχει και ένα ενδιαφέρον κομμάτι, το &lt;strong&gt;μηχανισμό επέκτασης αγκυλών&lt;/strong&gt; τον οποίο δε γνώριζα.&lt;/p&gt;
+
+&lt;p&gt;Ανοίξτε ένα τερματικό και πληκτρολογήστε τις ακόλουθες εντολές:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Από το 1 έως το 10&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..10&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+1 2 3 4 5 6 7 8 9 10
+
+&lt;span class=&quot;c&quot;&gt;# Από το a έως το z&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;a..z&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+&lt;span class=&quot;c&quot;&gt;# Από το 10 έως το 20&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;Before-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;10..20&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-After&lt;/span&gt;
+Before-10-After Before-11-After Before-12-After Before-13-After Before-14-After Before-15-After Before-16-After Before-17-After Before-18-After Before-19-After Before-20-After
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Όπως μπορείτε να δείτε, ο μηχανισμός επέκτασης αγκυλών επιτρέπει την παραγωγή τιμών βασισμένων σε μια ακολουθία - sequence που του ορίζουμε.&lt;/p&gt;
+
+&lt;p&gt;Μάθετε περισσότερα για τον &lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html&quot;&gt;μηχανισμό επέκτασης αγκυλών εδώ&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;επεξήγηση-εντολής&quot;&gt;Επεξήγηση εντολής&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;τυπώνουμε τη φράση “now - x days” τόσες φορές όσες το πλήθος των τιμών που προκύπτουν από την ακολουθία - sequence&lt;/li&gt;
+  &lt;li&gt;η ακολουθία &lt;code class=&quot;highlighter-rouge&quot;&gt;{1..332044}&lt;/code&gt; θα παράξει 332044 τιμές ξεκινώντας από το 1 αυξανόμενη κατά ένα κάθε φορά&lt;/li&gt;
+  &lt;li&gt;προσθέτουμε μια νέα γραμμή στο τέλος του παραγόμενου λεκτικού&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;αποτελέσματα---output&quot;&gt;Αποτελέσματα - Output&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;now - 1 days
+now - 2 days
+now - 3 days
+now - 4 days
+now - 5 days
+...
+now - 332038 days
+now - 332039 days
+now - 332040 days
+now - 332041 days
+now - 332042 days
+now - 332043 days
+now - 332044 days
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;date--f--y_m_dnymd&quot;&gt;date -f- &lt;code class=&quot;highlighter-rouge&quot;&gt;+%Y%\_m%\_d$'\n'%Y%m%d&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Σε αυτό το τμήμα της εντολής χρησιμοποιούμε την εντολή &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; για να μετατρέψουμε σε ημερομηνία την κάθε γραμμή του αποτελέσματος της προηγούμενης εντολής (της εντολής πριν τη σωλήνωση) και να τυπώσουμε δύο γραμμές για κάθε ημερομηνία, μια που θα γεμίσει τις μονοψήφιες ημέρες και τους μονοψήφιους μήνες με ένα μηδενικό και μια που θα γεμίσει τις μονοψήφιες ημέρες και τους μονοψήφιους μήνες με ένα κενό (space).&lt;/p&gt;
+
+&lt;p&gt;Εξοικειωθείτε με την εντολή στη γραμμή εντολών:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Δείξε την τρέχουσα ημερομηνία = now&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date
+&lt;/span&gt;Thu Feb  6 07:30:10 EET 2020
+
+&lt;span class=&quot;c&quot;&gt;# Δείξε τη χθεσινή ημερομηνία&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;now - 1 days&quot;&lt;/span&gt;
+Wed Feb  5 07:31:22 EET 2020
+
+&lt;span class=&quot;c&quot;&gt;# Δείξε τη χθεσινή ημερομηνία ως ηη/μμ/χχχχ (γέμισμα με μηδενικά)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;now - 1 days&quot;&lt;/span&gt; +%d/%m/%Y
+05/02/2020
+
+&lt;span class=&quot;c&quot;&gt;# Δείξε τη χθεσινή ημερομηνία ως ηη/μμ/χχχχ (γέμισμα με κενά)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;now - 1 days&quot;&lt;/span&gt; +%_d/%_m/%Y
+ 5/ 2/2020
+
+&lt;span class=&quot;c&quot;&gt;# Δείξε τη χθεσινή ημερομηνία ως ηη/μμ/χχχχ (σωρίς γέμισμα)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;now - 1 days&quot;&lt;/span&gt; +%-d/%-m/%Y
+5/2/2020
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;επεξήγηση-εντολής-1&quot;&gt;Επεξήγηση εντολής&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;χρησιμοποιούμε την επιλογή &lt;code class=&quot;highlighter-rouge&quot;&gt;-f&lt;/code&gt; για να ορίσουμε ότι η είσοδος της εντολής &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; θα είναι οι γραμμές ενός αρχείου, ακολουθούμενη από μια παύλα (hyphen) &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; για &lt;a href=&quot;https://unix.stackexchange.com/questions/16357/usage-of-dash-in-place-of-a-filename&quot;&gt;να ορίσουμε ότι το αρχείο αυτό είναι η τυπική είσοδος - &lt;code class=&quot;highlighter-rouge&quot;&gt;stdin&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;ορίζουμε τη μορφή των τυπωμένων τιμών (ό,τι ακολουθεί το σύμβολο &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt;) ώστε να είναι η αριθμητική αναπαράσταση του έτους (&lt;code class=&quot;highlighter-rouge&quot;&gt;%Y&lt;/code&gt;), του μήνα (γεμισμένου με κενά: &lt;code class=&quot;highlighter-rouge&quot;&gt;%_m&lt;/code&gt;, γεμισμένου με μηδενικά: &lt;code class=&quot;highlighter-rouge&quot;&gt;%m&lt;/code&gt;) και της ημέρας του μήνα (γεμισμένης με κενά: &lt;code class=&quot;highlighter-rouge&quot;&gt;%_d&lt;/code&gt;, γεμισμένης με μηδενικά: &lt;code class=&quot;highlighter-rouge&quot;&gt;%d&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;η μορφή με τα κενά είναι &lt;code class=&quot;highlighter-rouge&quot;&gt;%Y%\_m%\_d&lt;/code&gt; και η μορφή με τα μηδενικά &lt;code class=&quot;highlighter-rouge&quot;&gt;%Y%m%d&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;συνδυάζουμε αυτές &lt;strong&gt;τις δύο μορφές για κάθε μία ημερομηνία&lt;/strong&gt; ενώνοντάς τες με μια νέα γραμμή &lt;code class=&quot;highlighter-rouge&quot;&gt;$'\n'&lt;/code&gt; οπότε, για κάθε ημερομηνία παράγουμε δύο γραμμές, μια με μηδενικά και μια με κενά για τους μονοψήφιους μήνες και τις μονοψήφιες ημέρες του μήνα&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Σημείωση&lt;/strong&gt;: αντί να γεμίσουμε με κενά (χρησιμοποιώντας την κάτω παύλα &lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt; στη μορφή), θα μπορούσαμε να χρησιμοποιήσουμε την παύλα &lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt; ώστε &lt;strong&gt;να μη γεμίζουν με τίποτα οι μονοψήφιες τιμές&lt;/strong&gt;. Με αυτόν τον τρόπο δε θα χρειαζόταν να αφαιρέσουμε τα κενά όπως περιγράφεται στο επόμενο τμήμα.&lt;/p&gt;
+
+&lt;h3 id=&quot;αποτέλεσμα---output&quot;&gt;Αποτέλεσμα - Output&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;2020 2 5
+20200205
+2020 2 4
+20200204
+2020 2 3
+20200203
+2020 2 2
+20200202
+2020 2 1
+20200201
+2020 131
+20200131
+2020 130
+20200130
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;tr--d----alldatestxt-rev-alldatestxt-revdatestxt-paste-alldatestxt-revdatestxt&quot;&gt;tr -d ' ' &amp;gt; alldates.txt; rev alldates.txt &amp;gt;revdates.txt; paste alldates.txt revdates.txt&lt;/h2&gt;
+
+&lt;p&gt;Σε αυτό το τμήμα αφαιρούμε τα κενά που παρήχθησαν προηγουμένως και δημιουργούμε δύο αρχεία, ένα με όλες τις ημερομηνίες ως έχουν και ένα με όλες τις ημερομηνίες αντεστραμμένες.&lt;/p&gt;
+
+&lt;p&gt;Στη συνέχεια συγχωνεύουμε αυτά τα δύο αρχεία, ενώνοντας κάθε γραμμή του πρώτου αρχείου με την αντίστοιχη γραμμή του δεύτερου παρεμβάλλοντας ένα στηλοθέτη - TAB.&lt;/p&gt;
+
+&lt;p&gt;Εξοικειωθείτε με τις εντολές στη γραμμή εντολών σας:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Αφαίρεσε τα κενά&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Good night &quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; &quot;&lt;/span&gt;
+Goodnight
+
+&lt;span class=&quot;c&quot;&gt;# Αφαίρεσε τις παύλες&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Good-night&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;-&quot;&lt;/span&gt;
+Goodnight
+
+&lt;span class=&quot;c&quot;&gt;# Τύπωσε a-x-z όπου χ ένας αριθμός μεταξύ του 1 και του 9&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a-%d-z&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..9&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+a-1-z
+a-2-z
+a-3-z
+a-4-z
+a-5-z
+a-6-z
+a-7-z
+a-8-z
+a-9-z
+
+&lt;span class=&quot;c&quot;&gt;# και αντέστρεψε τη σειρά των χαρακτήρων της κάθε γραμμής&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a-%d-z&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1..9&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; | rev
+z-1-a
+z-2-a
+z-3-a
+z-4-a
+z-5-a
+z-6-a
+z-7-a
+z-8-a
+z-9-a
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;επεξήγηση-εντολής-2&quot;&gt;Επεξήγηση εντολής&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;tr -d ''&lt;/code&gt;: αφαιρούμε τα κενά από την είσοδο - input (που είναι η έξοδος - output της προηγούμενης εντολής) και αποθηκεύουμε την έξοδο σε ένα αρχείο με όνομα &lt;code class=&quot;highlighter-rouge&quot;&gt;alldates.txt&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rev&lt;/code&gt;: αντιστρέφουμε του χαρακτήρες κάθε γραμμής του αρχείου &lt;code class=&quot;highlighter-rouge&quot;&gt;alldates.txt&lt;/code&gt; και αποθηκεύουμε την έξοδο σε ένα νέο αρχείο με όνομα &lt;code class=&quot;highlighter-rouge&quot;&gt;revdates.txt&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;paste&lt;/code&gt;: ενώνουμε τα δύο αρχεία; κάθε γραμμή του αρχείου &lt;code class=&quot;highlighter-rouge&quot;&gt;alldates.txt&lt;/code&gt; ενώνεται με την αντίστοιχη γραμμή του αρχείου &lt;code class=&quot;highlighter-rouge&quot;&gt;revdates.txt&lt;/code&gt; παρεμβάλλοντας ένα στηλοθέτη - tab (τα δύο αρχεία έχουν τον ίδιο αριθμό γραμμών).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;αποτελέσματα---output-1&quot;&gt;Αποτελέσματα - Output&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;202025	520202
+20200205	50200202
+202024	420202
+20200204	40200202
+202023	320202
+20200203	30200202
+202022	220202
+20200202	20200202
+202021	120202
+20200201	10200202
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;awk-12print-1&quot;&gt;awk '$1==$2{print $1}'&lt;/h2&gt;
+
+&lt;p&gt;Σε αυτό το τελευταίο τμήμα της εντολής, χρησιμοποιούμε την &lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt; για να τυπώσουμε τα παλίνδρομα.&lt;/p&gt;
+
+&lt;p&gt;Εξοικειωθείτε με τη σχετική λειτουργικότητα της awk στη γραμμή εντολών σας:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Τύπωσε ολόκληρη την είσοδο (η προεπιλεγμένη συμπεριφορά της awk) αν τα πεδία είναι ίδια&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a a&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1==$2'&lt;/span&gt;
+a a
+
+&lt;span class=&quot;c&quot;&gt;# Τύπωσε ολόκληρη την είσοδο (η προεπιλεγμένη συμπεριφορά της awk) αν τα πεδία είναι ίδια&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a a&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1!=$2'&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# δεν τυπώνεται τίποτα εδώ&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Τύπωσε ολόκληρη την είσοδο (η προεπιλεγμένη συμπεριφορά της awk) αν τα πεδία είναι ίδια&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a b&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1!=$2'&lt;/span&gt;
+a b
+
+&lt;span class=&quot;c&quot;&gt;# Τύπωσε το πρώτο πεδίο αν τα πεδία δεν είναι ίδια&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a b&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1!=$2 {print $1}'&lt;/span&gt;
+a
+
+&lt;span class=&quot;c&quot;&gt;# Τύπωσε το δεύτερο πεδίο αν τα πεδία δεν είναι ίδια&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a b&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'$1!=$2 {print $2}'&lt;/span&gt;
+b
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;επεξήγηση-εντολής-3&quot;&gt;Επεξήγηση εντολής&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;τα αποτελέσματα του προηγούμενου τμήματος της εντολής που είναι η είσοδος αυτού του τμήματος αποτελούνται από γραμμές και κάθε γραμμή έχει δύο τιμές χωρισμένες με στηλοθέτη - TAB. Αυτού του τύπου την είσοδο &lt;a href=&quot;https://www.gnu.org/software/gawk/manual/html_node/Fields.html&quot;&gt;η awk την διαβάζει ως δύο πεδία&lt;/a&gt; για κάθε γραμμή. Μπορούμε να προσπελάσουμε αυτά τα πεδία χρησιμοποιώντας της μεταβλητές &lt;code class=&quot;highlighter-rouge&quot;&gt;$1&lt;/code&gt; και &lt;code class=&quot;highlighter-rouge&quot;&gt;$2&lt;/code&gt; αντίστοιχα.&lt;/li&gt;
+  &lt;li&gt;όπως περιγράφεται σε &lt;a href=&quot;https://iridakos.com/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux#%CF%80%CF%89%CF%82-%CE%B4%CE%BF%CF%85%CE%BB%CE%B5%CF%8D%CE%B5%CE%B9&quot;&gt;προηγούμενο άρθρο μου&lt;/a&gt;, οι δηλώσεις (statements) στην &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;awk&lt;/code&gt;&lt;/strong&gt; αποτελούνται από ένα &lt;a href=&quot;http://kirste.userpage.fu-berlin.de/chemnet/use/info/gawk/gawk_9.html&quot;&gt;&lt;strong&gt;μοτίβο (pattern) ή έκφραση (expression)&lt;/strong&gt; και μια &lt;strong&gt;συσχετισμένη ενέργεια (associated action)&lt;/strong&gt;&lt;/a&gt;.
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;pattern/expression&amp;gt; { &amp;lt;action&amp;gt; }
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;Αν το μοτίβο/έκφραση επιτύχει τότε εκτελείται η συσχετισμένη ενέργεια. Στην περίπτωσή μας, η έκφραση μεταφράζεται ως “αν τα δύο πεδία είναι ίδια” (&lt;code class=&quot;highlighter-rouge&quot;&gt;$1==$2&lt;/code&gt;) και η ενέργεια ως “τύπωσε το πρώτο πεδίο” (&lt;code class=&quot;highlighter-rouge&quot;&gt;printf $1&lt;/code&gt;).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;αν τα πεδία είναι ίδια τότε έχουμε μια παλίνδρομη ημερομηνία αφού κάθε ζεύγος πεδίων είναι η ημερομηνία και η αντίστροφη τιμή της.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;αποτελέσματα---output-2&quot;&gt;Αποτελέσματα - Output&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;20200202
+2019102
+2018102
+2017102
+2016102
+2015102
+2014102
+2013102
+2012102
+...
+11111111
+11111111
+1111111
+1111111
+111111
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;γατοφωτογραφία&quot;&gt;Γατοφωτογραφία&lt;/h2&gt;
+
+&lt;p&gt;Τελειώσαμε, ευχαριστώ για την ανάγνωση.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/palindrome-shell/post.jpg&quot; alt=&quot;Φωτογραφία με την αντανάκλαση της γάτας μου, της Ίριδας&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;αναφορές&quot;&gt;Αναφορές&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twitter.com/climagic/status/1225056662949650432&quot;&gt;@climagic tweet this post is based on&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Palindrome&quot;&gt;Palindrome - Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html&quot;&gt;Bash brace expansion&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://unix.stackexchange.com/questions/16357/usage-of-dash-in-place-of-a-filename&quot;&gt;Using hyphen to set file input to stdin&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/gawk/manual/html_node/Fields.html&quot;&gt;Awk field resolution&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://iridakos.com/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux#how-it-works&quot;&gt;Awk - Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 10 Feb 2020 09:00:00 +0200</pubDate>
+        <link>https://iridakos.com/el/programming/2020/02/10/shell-palindrome-dates</link>
+        <guid isPermaLink="true">https://iridakos.com/el/programming/2020/02/10/shell-palindrome-dates</guid>
+        
+        <category>how-to</category>
+        
+        <category>linux</category>
+        
+        <category>opensource</category>
+        
+        <category>bash</category>
+        
+        <category>scripts</category>
+        
+        <category>awk</category>
+        
+        <category>climagic</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Περιγραφική ονομασία μεταβλητών</title>
@@ -2981,17 +3282,6 @@ klm
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
         <link>https://iridakos.com/el/cats/2019/10/01/java-update-popup</link>
         <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/java-update-popup</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Κόλλα πέντε</title>
-        <description>
-</description>
-        <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/friday-releases</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/friday-releases</guid>
         
         
       </item>
