@@ -65,7 +65,7 @@ $(function() {
       tagsContainer.append($('<span class="important">tags: </span>'));
 
       $.each(searchResult.tags, function(i, tag) {
-        tagsContainer.append($('<a href="/tags/?tag='+ tag + '" class="ga-event-link" data-event-label="' + tag + '" data-event-action="click" data-event-category="tags">' + tag + '</a>'));
+        tagsContainer.append($('<a href="/tags/?tag='+ tag + '" class="" >' + tag + '</a>'));
         if (i < searchResult.tags.length - 1) {
           tagsContainer.append("<span> - </span>");
         }
