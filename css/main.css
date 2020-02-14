@@ -8591,6 +8591,9 @@ html {
   background-size: cover;
   object-fit: cover; }
 
+.header-container {
+  background: url("/assets/images/cinema-background.png") #1e585b; }
+
 .page-title-container {
   padding: 40px 0 60px 0;
   font-size: 2rem;
@@ -8599,7 +8602,7 @@ html {
   color: #fff;
   text-shadow: 0 0 3px black;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-  background: url("/assets/images/new-cinema.png") #333 left no-repeat;
+  background: url("/assets/images/new-cinema.png") left no-repeat;
   background-size: contain;
   min-height: 300px; }
   .page-title-container .page-title h1 {
