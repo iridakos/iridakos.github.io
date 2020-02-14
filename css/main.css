@@ -8599,9 +8599,9 @@ html {
   color: #fff;
   text-shadow: 0 0 3px black;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-  background: url("/assets/images/cinema.jpg") #e8e8e8 center 35%;
-  background-size: cover;
-  min-height: 200px; }
+  background: url("/assets/images/new-cinema.png") #333 left no-repeat;
+  background-size: contain;
+  min-height: 300px; }
   .page-title-container .page-title h1 {
     font-weight: bold;
     text-shadow: 1px 1px 0 rgba(10, 10, 10, 0.9);
@@ -8685,6 +8685,9 @@ img.image {
     padding-right: 0; }
     .navbar .input-group {
       margin-right: 0 !important; } }
+@media (max-width: 992px) {
+  .page-title-container {
+    background-size: cover; } }
 .navbar.iridakos-navbar {
   font-size: 100%; }
   .navbar.iridakos-navbar ul.navbar-nav .nav-item {
