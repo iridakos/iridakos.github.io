@@ -8581,6 +8581,9 @@ html {
   font-size: 120%;
   margin-bottom: 5px; }
 
+.text-iridakos {
+  color: #8d7b49; }
+
 .no-overflow pre {
   white-space: pre-wrap; }
 
@@ -8592,44 +8595,41 @@ html {
   object-fit: cover; }
 
 .header-container {
-  background: url("/assets/images/cinema-background.png") #1e585b; }
+  background: url("/assets/images/cinema-background.png") #f1eee4; }
 
 .page-title-container {
   padding: 40px 0 60px 0;
   font-size: 2rem;
   margin-bottom: 2rem;
   margin-top: 0;
-  color: #fff;
-  text-shadow: 0 0 3px black;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  color: #6c5e38;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 5px rgba(158, 137, 82, 0.8);
   background: url("/assets/images/new-cinema.png") left no-repeat;
   background-size: contain;
   min-height: 300px; }
   .page-title-container .page-title h1 {
     font-weight: bold;
-    text-shadow: 1px 1px 0 rgba(10, 10, 10, 0.9);
-    color: #fff;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+    color: #8d7b49;
     font-size: 100%; }
   .page-title-container .page-title .page-subtitle {
     font-size: 50%; }
-  .page-title-container .page-title a, .page-title-container .page-title a:visited, .page-title-container .page-title a:link, .page-title-container .page-title a:hover {
-    font-weight: 600;
-    color: #ffc107; }
-  .page-title-container .page-title a.btn i {
-    font-size: 20px; }
-  .page-title-container .page-title a.btn:hover {
-    color: #000; }
-  .page-title-container .page-title a.btn {
-    text-shadow: none; }
+  .page-title-container .page-title .btn {
+    background-color: #e8e3d4;
+    font-size: 120%;
+    color: #9e8952; }
 
-.spiral {
-  margin-top: 1.75rem;
-  background: url("/assets/images/header.png") repeat-x bottom;
-  height: 30px; }
-  .spiral.flipped {
-    background: url("/assets/images/header-flipped.png") repeat-x top;
-    margin-top: 0;
-    margin-bottom: 0.75rem; }
+.btn-warning {
+  background-color: #e8e3d4;
+  border: 1px solid #e0d8c3;
+  color: #7c6c41; }
+  .btn-warning:hover {
+    background-color: #f1eee4;
+    border: 1px solid #e8e3d4;
+    color: #7c6c41; }
+  .btn-warning:focus {
+    box-shadow: none; }
 
 img.image {
   cursor: default;
@@ -8692,21 +8692,28 @@ img.image {
   .page-title-container {
     background-size: cover; } }
 .navbar.iridakos-navbar {
+  background: #39321e;
+  box-shadow: 0 0 3px #7c6c41;
   font-size: 100%; }
   .navbar.iridakos-navbar ul.navbar-nav .nav-item {
     padding: 0 5px; }
+    .navbar.iridakos-navbar ul.navbar-nav .nav-item a, .navbar.iridakos-navbar ul.navbar-nav .nav-item a:hover, .navbar.iridakos-navbar ul.navbar-nav .nav-item a:visited, .navbar.iridakos-navbar ul.navbar-nav .nav-item a:link {
+      color: #d7cdb2; }
+      .navbar.iridakos-navbar ul.navbar-nav .nav-item a.dropdown-item, .navbar.iridakos-navbar ul.navbar-nav .nav-item a:hover.dropdown-item, .navbar.iridakos-navbar ul.navbar-nav .nav-item a:visited.dropdown-item, .navbar.iridakos-navbar ul.navbar-nav .nav-item a:link.dropdown-item {
+        color: inherit; }
     .navbar.iridakos-navbar ul.navbar-nav .nav-item.active {
-      background-color: #ffc107;
-      border: 1px solid #edb100;
+      background-color: #d7cdb2;
+      border: 1px solid #cec2a1;
       border-radius: 4px; }
       .navbar.iridakos-navbar ul.navbar-nav .nav-item.active > a, .navbar.iridakos-navbar ul.navbar-nav .nav-item.active > a:hover, .navbar.iridakos-navbar ul.navbar-nav .nav-item.active > a:visited, .navbar.iridakos-navbar ul.navbar-nav .nav-item.active > a:link {
         color: #212529 !important; }
 .navbar .navbar-brand {
   padding-left: 15px;
-  padding-right: 15px; }
+  padding-right: 15px;
+  color: #d7cdb2; }
   .navbar .navbar-brand.active {
-    background-color: #ffc107;
-    border: 1px solid #edb100;
+    background-color: #d7cdb2;
+    border: 1px solid #cec2a1;
     border-radius: 4px;
     color: #212529 !important; }
 
@@ -8754,6 +8761,7 @@ h2 {
   font-weight: bold; }
 
 .alert-light {
+  color: #9e8952;
   padding-left: 0; }
   .alert-light .alert-heading {
     font-weight: bold; }
@@ -8821,7 +8829,7 @@ h2 {
 .post .post-tags {
   font-size: 80%; }
   .post .post-tags > span {
-    color: #d39e00;
+    color: #c6b790;
     display: inline-block; }
   .post .post-tags a {
     font-weight: normal; }
@@ -8832,19 +8840,15 @@ h2 {
 .page-title-container .post {
   margin-top: 5px;
   padding-top: 5px;
-  border-top: 1px solid #adb5bd;
-  border-top: 1px solid #ffc107; }
+  border-top: 1px solid #b4a16f; }
   .page-title-container .post .post-metadata, .page-title-container .post .post-tags, .page-title-container .post .post-tags i {
-    color: #fff;
+    color: #9e8952;
     font-size: 80%;
-    text-shadow: 1px 1px 5px black;
     font-weight: normal; }
     .page-title-container .post .post-metadata .important, .page-title-container .post .post-tags .important, .page-title-container .post .post-tags i .important {
       font-weight: normal; }
     .page-title-container .post .post-metadata > span, .page-title-container .post .post-tags > span, .page-title-container .post .post-tags i > span {
-      color: #fff; }
-    .page-title-container .post .post-metadata a, .page-title-container .post .post-metadata a:visited, .page-title-container .post .post-metadata a:link, .page-title-container .post .post-metadata a:hover, .page-title-container .post .post-tags a, .page-title-container .post .post-tags a:visited, .page-title-container .post .post-tags a:link, .page-title-container .post .post-tags a:hover, .page-title-container .post .post-tags i a, .page-title-container .post .post-tags i a:visited, .page-title-container .post .post-tags i a:link, .page-title-container .post .post-tags i a:hover {
-      color: #ffc107 !important; }
+      color: #9e8952; }
 
 .footer {
   padding: 10px 0 5px 0;
@@ -8855,9 +8859,9 @@ h2 {
   font-size: 100%;
   text-align: center;
   color: #343a40;
-  border-top: 1px solid #dee2e6;
-  background: #e9ecef;
-  color: #343a40; }
+  border-top: 1px solid #cec2a1;
+  background: #d7cdb2;
+  color: #7c6c41; }
   .footer .license {
     font-family: 'Open Sans', sans-serif;
     font-size: 80%;
@@ -8893,7 +8897,7 @@ h2 {
     font-size: 90%; }
     .sidebar .sidebar-section .section-title {
       font-family: 'Indie Flower', "Open Sans", cursive;
-      color: #343a40; }
+      color: #c6b790; }
       .sidebar .sidebar-section .section-title h4 {
         margin: 0.25rem 0 0.35rem 0;
         font-size: 140%; }
