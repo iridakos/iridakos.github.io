@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ocs-site-verification" content="e5faa08e01247c38aadf1c1737ff8136">
+  <meta name="google-site-verification" content="KqOxy0ecDlfNdfO530ZAbtNBedy49hn2KziyqLK0JGo" />
+
+  <title>stup - a CLI tool to save, access and organize standup and other types of daily notes</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
+
+  <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css?1587381171894738646">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="stup - a CLI tool to save, access and organize standup and other types of daily notes" />
+<meta name="author" content="Lazarus Lazaridis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introducing a tool for keeping standup and other types of notes in the terminal" />
+<meta property="og:description" content="Introducing a tool for keeping standup and other types of notes in the terminal" />
+<link rel="canonical" href="https://iridakos.com/programming/2020/04/20/stup-cli-notes" />
+<meta property="og:url" content="https://iridakos.com/programming/2020/04/20/stup-cli-notes" />
+<meta property="og:site_name" content="iridakos" />
+<meta property="og:image" content="https://iridakos.com/assets/images/posts/stup-cli-notes/post-image.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-20T12:00:00+03:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://iridakos.com/assets/images/posts/stup-cli-notes/post-image.png" />
+<meta property="twitter:title" content="stup - a CLI tool to save, access and organize standup and other types of daily notes" />
+<meta name="twitter:site" content="@lazaru_s" />
+<meta name="twitter:creator" content="@Lazarus Lazaridis" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/programming/2020/04/20/stup-cli-notes"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"description":"Introducing a tool for keeping standup and other types of notes in the terminal","@type":"BlogPosting","headline":"stup - a CLI tool to save, access and organize standup and other types of daily notes","dateModified":"2020-04-20T12:00:00+03:00","datePublished":"2020-04-20T12:00:00+03:00","image":"https://iridakos.com/assets/images/posts/stup-cli-notes/post-image.png","url":"https://iridakos.com/programming/2020/04/20/stup-cli-notes","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg iridakos-navbar">
+  <div class="container-fluid no-gutters">
+    
+
+    <a class="navbar-brand " href="/" alt="home">
+      <i class="fa fa-home"></i>
+      home
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <i class="fa fa-bars pt-1"></i>
+      </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="header-pages">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            programming
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="more">
+            <a class="dropdown-item" href="/programming/">all posts</a>
+            <a class="dropdown-item" href="/programming/featured/">featured posts</a>
+            <a class="dropdown-item" href="/programming/tutorials/">tutorials</a>
+            <a class="dropdown-item" href="/programming/how-to/">how to</a>
+            <a class="dropdown-item" href="/programming/code/">code</a>
+            <hr class="dropdown-divider">
+            <a class="dropdown-item" href="/programming/humor/">humor</a>
+          </div>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/cats/" alt="cats">cats</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/painting/" alt="painting">painting</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/tags/" alt="tags">tags</a>
+        </li>
+
+        
+
+        <li class="nav-item ">
+            <a class="nav-link" href="/about/" alt="about">about me</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav mr-0 mt-2 mt-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-language"></i>
+            English
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="more">
+            
+            <a class="dropdown-item" href="/el/">Ελληνικά</a>
+          </div>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0" method="get" action="/search">
+        <div class="input-group input-group-sm mr-sm-2">
+          <input class="form-control" name="query" type="search" placeholder="Search the blog">
+
+          <div class="input-group-append">
+            <button class="btn btn-warning" type="submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="header-container">
+  <div class="page-title-container">
+    <div class="container-fluid no-gutters">
+      <div class="page-title">
+        <div class="row align-items-center">
+          <div class="col-xs-12 col-md-8 col-lg-9 order-md-first order-last text-center text-md-left">
+            <h1>stup - a CLI tool to save, access and organize standup and other types of daily notes</h1>
+
+              <div class="page-subtitle">
+              Introducing a tool for keeping standup and other types of notes in the terminal
+
+              
+                <div class="post">
+                  <div class="post-metadata">
+                    <div class="post-date" title="published on">
+                      Published on <span class="important">Apr 20, 2020</span>
+                    </div>
+
+                    <div class="post-category" title="in category">
+                      in category <span class="important">programming</span>
+                    </div>
+                  </div>
+
+                  
+                  
+                    <div class="post-tags">
+                      <span class="important">tags:</span>
+                      
+                        <a href="/tags/?tag=linux">linux</a> - 
+                      
+                        <a href="/tags/?tag=opensource">opensource</a> - 
+                      
+                        <a href="/tags/?tag=bash">bash</a> - 
+                      
+                        <a href="/tags/?tag=scripts">scripts</a> - 
+                      
+                        <a href="/tags/?tag=productivity">productivity</a> - 
+                      
+                        <a href="/tags/?tag=tools">tools</a>
+                      
+                    </div>
+                  
+
+                  
+                  
+                  
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    <div class="container-fluid no-gutters">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-9 page-content">
+          
+            <div class="row">
+              <div class="col-12">
+                <div class="outline mb-3">
+                  <p>Over the past few years I have been participating in <a href="https://en.wikipedia.org/wiki/Stand-up_meeting">Stand-up meetings</a> and it took me some time to find a convenient and effective way for keeping notes about what I was doing every day.</p>
+
+<p>I needed to be able to:</p>
+
+<ul>
+  <li>keep notes on the issues I worked on, the meetings I participated in and stuff that blocked my work</li>
+  <li>easily access these notes based on their date</li>
+  <li>have an overview of what I did for example the last week</li>
+  <li>all of the above from inside a terminal <strong>without</strong>
+    <ul>
+      <li>having to manually structure and update a single document</li>
+      <li>having to manually create a document for each day</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="stup">stup</h2>
+
+<p>I created <a href="https://github.com/iridakos/stup">stup</a> (the name derives from <strong><code class="highlighter-rouge">st</code></strong><code class="highlighter-rouge">and-</code><strong><code class="highlighter-rouge">up</code></strong>), an opensource CLI tool that deals with these issues and allows to easily save, access and organize my notes.</p>
+
+<p><img src="/assets/images/posts/stup-cli-notes/stup-demo.gif" alt="stup demo gif" /></p>
+
+<p>The source code of the project is available on <a href="https://github.com/iridakos/stup" target="_blank">GitHub here</a>.</p>
+
+<h3 id="usage-examples">Usage examples</h3>
+
+<p>Find below some examples showing the most important usage of <code class="highlighter-rouge">stup</code>.</p>
+
+<h4 id="adding-notes">Adding notes</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Adding a note to the default category at current date</span>
+stup add <span class="nt">-n</span> <span class="s2">"Worked on issue #ABC123"</span>
+
+<span class="c"># Adding a note to the default category setting the current date explicitly</span>
+stup add today <span class="nt">-n</span> <span class="s2">"Worked on issue #ABC123"</span>
+
+<span class="c"># Adding a note to the meetings category</span>
+stup add today <span class="nt">-c</span> <span class="s2">"meetings"</span> <span class="nt">-n</span> <span class="s2">"2 hours with @phoebe for the project kick off"</span>
+
+<span class="c"># Adding a note to the blocking category for April 10th, 2020</span>
+stup add @ 2020-04-10 <span class="nt">-c</span> <span class="s2">"blocking"</span> <span class="nt">-n</span> <span class="s2">"connectivity issues"</span>
+</code></pre></div></div>
+
+<h4 id="showing-notes">Showing notes</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Showing yesterday's notes</span>
+<span class="nv">$ </span>stup
+
+<span class="c"># Showing yesterday's notes explicitly setting the date</span>
+<span class="nv">$ </span>stup yesterday
+
+<span class="c"># Showing today's notes</span>
+<span class="nv">$ </span>stup today
+
+<span class="c"># Showing notes on a specific date</span>
+<span class="nv">$ </span>stup show @ 2020-04-18
+
+<span class="c"># Showing notes on a specific date for the meetings category</span>
+<span class="nv">$ </span>stup show @ 2020-04-18 <span class="nt">-c</span> <span class="s2">"meetings"</span>
+</code></pre></div></div>
+
+<h4 id="retrieving-all-notes-for-a-period-of-time">Retrieving all notes for a period of time</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># List current week's notes</span>
+stup log week
+
+<span class="c"># List previous week's notes</span>
+stup log previous-week
+
+<span class="c"># List notes between January 20th, 2020 and March 2nd, 2020</span>
+stup log <span class="nt">--from</span> 2020-01-20 <span class="nt">--to</span> 2020-03-02
+
+<span class="c"># List meeting notes between January 20th, 2020 and March 2nd, 2020</span>
+stup log <span class="nt">--from</span> 2020-01-20 <span class="nt">--to</span> 2020-03-02 <span class="nt">-c</span> <span class="s2">"meetings"</span>
+</code></pre></div></div>
+
+<h3 id="behind-the-scenes">Behind the scenes</h3>
+
+<p>Notes are organized in categories.</p>
+
+<p>When a new note is added, <code class="highlighter-rouge">stup</code> creates a markdown file and places it under the category’s directory in a sub-directory with a path based on the date.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CATEGORIES_ROOT_DIRECTORY/CATEGORY/YEAR/MONTH/YYYY-MM-DD.md
+
+<span class="c"># For example, the notes of a category named "programming" April 18th, 2020 are saved under</span>
+CATEGORIES_ROOT_DIRECTORY/programming/2020/04/2020-04-18.md
+</code></pre></div></div>
+
+<p>This allows users to retrieve any notes added on a specific date or in a specific period for a specific or for all categories.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Fetch notes for all categories</span>
+<span class="nv">$ </span>stup show @ 2020-04-18
+
+<span class="c"># Fetch notes for a specific category for previous week</span>
+<span class="nv">$ </span>stup log previous-week <span class="nt">-c</span> programming
+
+<span class="c"># Fetch notes for all categories for a specific period</span>
+<span class="nv">$ </span>stup log <span class="nt">--from</span> 2020-04-01 <span class="nt">--to</span> 2020-04-15
+</code></pre></div></div>
+
+<h3 id="more-information">More information</h3>
+
+<p>You can:</p>
+
+<ul>
+  <li>visit the project repository on Github <a href="https://github.com/iridakos/stup">here</a>.</li>
+  <li>view the full documentation of <code class="highlighter-rouge">stup</code> <a href="https://github.com/iridakos/stup/blob/master/README.md">here</a>.</li>
+  <li>browse the project’s issues <a href="https://github.com/iridakos/stup/issues">here</a>.</li>
+</ul>
+
+<p>That’s all, thanks for reading! Cat photo.</p>
+
+<p><img src="/assets/images/posts/stup-cli-notes/phoebe.png" alt="Phoebe, my cat, keeping notes without stup" /></p>
+
+                </div>
+              </div>
+
+              <div class="col-12 order-first">
+                <div class="d-sm-block d-md-none mb-3">
+                  <a class=" btn btn-outline-primary d-block collapsed text-left"
+                    title="View the structure of this document"
+                    role="button"
+                    data-toggle="collapse"
+                    data-role="outline"
+                    data-content=".outline"
+                    href="#docout-mobile"
+                    data-target="#docout-mobile"
+                    aria-expanded="false"
+                    aria-controls="collapse">
+                    Table of contents
+                    <i class="fa iridakos-collapse pull-right mt-1"></i>
+                  </a>
+
+                  <div id="docout-mobile" class="collapse my-3 border rounded bg-light p-2">
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+          <!--googleoff: index-->
+
+
+
+
+
+
+
+
+
+<div class="post-navigation">
+  <div class="row">
+    <div class="col-12 col-md-6 my-3">
+      
+        <a class="d-block btn btn-warning btn-sm h-100" href="/programming/2020/02/06/shell-palindrome-dates" title="Find palindrome dates in the Linux command line - explained">
+          <strong>
+            <i class="fa fa-angle-double-left"></i> previous post
+          </strong>
+
+          <hr class="my-1">
+
+          <small>
+            Find palindrome dates in the Linux command line - explained
+          </small>
+        </a>
+      
+    </div>
+
+    <div class="col-12 col-md-6 my-3">
+      
+    </div>
+  </div>
+</div>
+
+
+<!--googleon: index-->
+
+          
+
+
+  
+
+
+          
+<div class="alert alert-light related-posts">
+  <h4 class="alert-heading"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Related posts</h4>
+
+  
+
+  <ul class="list-unstyled">
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link" href="/programming/2018/03/01/bash-programmable-completion-tutorial"><strong>Creating a bash completion script</strong></a>
+          <div>
+            <small>A tutorial for adding tab completion to your scripts using the Bash Programmable Completion functionality.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link" href="/programming/2019/04/10/shell-navigation-with-autocomplete"><strong>How to alias and navigate to directories with autocomplete in Linux</strong></a>
+          <div>
+            <small>A Linux shell script for registering directory aliases and navigating to them with tab completion.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link" href="/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux"><strong>How to remove duplicate lines from files preserving their order</strong></a>
+          <div>
+            <small>How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained).</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+  </ul>
+</div>
+
+
+          
+<div class="share-links">
+  <a class="btn btn-warning" href="https://twitter.com/intent/tweet?text=stup - a CLI tool to save, access and organize standup and other types of daily notes&url=https://iridakos.com/programming/2020/04/20/stup-cli-notes" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning" href="https://facebook.com/sharer.php?u=https://iridakos.com/programming/2020/04/20/stup-cli-notes" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning" href="mailto:?subject=stup - a CLI tool to save, access and organize standup and other types of daily notes&amp;body=stup - a CLI tool to save, access and organize standup and other types of daily notes: https://iridakos.com/programming/2020/04/20/stup-cli-notes"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-warning btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> Subscribe via RSS
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/feed.xml">all posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/feeds/programming.xml">all programming related posts</a>
+    <a class="dropdown-item" href="/feeds/tutorials.xml">programming tutorials posts</a>
+    <a class="dropdown-item" href="/feeds/opensource.xml">opensource related posts</a>
+    <a class="dropdown-item" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/feeds/programming-humor.xml">programming humor</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/feeds/painting.xml">painting posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/feeds/cats.xml">cat photos</a>
+  </div>
+</div>
+
+
+
+        </div>
+
+        <div class="col">
+          <div class="sidebar">
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <a class="btn btn-warning d-block collapsed text-left"
+          data-toggle="collapse"
+          data-role="outline"
+          data-content=".outline"
+          href="#docout-sidebar"
+          data-target="#docout-sidebar"
+
+          title="View the structure of this document"
+          role="button"
+          href="#docout-sidebar"
+          aria-expanded="false"
+          aria-controls="collapse">
+          Table of contents
+          <i class="fa iridakos-collapse pull-right mt-1"></i>
+        </a>
+
+        <div class="section-content">
+          <div id="docout-sidebar" class="collapse mt-2 p-2">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-hand-spock-o"></i> featured posts</h4>
+    </div>
+
+    <div class="section-content">
+      
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2018/03/01/bash-programmable-completion-tutorial">Creating a bash completion script</a>
+             <div class="text-muted smaller">
+               A tutorial for adding tab completion to your scripts using the Bash Programmable Completion functionality.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+            </div>
+            <a href="/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby">Creating a Linux Desktop application with Ruby</a>
+             <div class="text-muted smaller">
+               A tutorial for creating a simple GTK ToDo application with Ruby
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-farnam-street" title="Featured in Farnam Street" data-toggle="tooltip">fs <i class="fa fa-envelope"></i></span>
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-betterldevlink" title="Featured in Better Dev Link" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/programming/2019/06/26/composing-better-emails">How to write better emails</a>
+             <div class="text-muted smaller">
+               Tips for composing effective emails avoiding misunderstandings with examples from the software development world.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+            </div>
+            <a href="/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux">How to remove duplicate lines from files preserving their order</a>
+             <div class="text-muted smaller">
+               How to remove duplicate lines of a file in Linux without sorting or changing their order (awk one-liner explained).
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+            </div>
+            <a href="/programming/2016/04/01/duckrails-guide">DuckRails - Open source development tool for mocking API endpoints</a>
+             <div class="text-muted smaller">
+               An introduction and a guide for installing and using DuckRails, a development tool for mocking API endpoints easily and dynamically. Docker image available.
+             </div>
+          </div>
+        
+      
+
+      <div class="section-item">
+        <a href="/programming/featured">View all featured posts</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-bullhorn"></i> recent posts</h4>
+    </div>
+
+    
+
+    <div class="section-content">
+      
+          <div class="section-item">
+            <a href="/programming/2020/04/20/stup-cli-notes">stup - a CLI tool to save, access and organize standup and other types of daily notes</a>
+            <div class="text-muted smaller">Introducing a tool for keeping standup and other types of notes in the terminal</div>
+          </div>
+      
+          <div class="section-item">
+            <a href="/programming/2020/02/06/shell-palindrome-dates">Find palindrome dates in the Linux command line - explained</a>
+            <div class="text-muted smaller">Explaining how to find palindrome dates using a shell command in Linux</div>
+          </div>
+      
+          <div class="section-item">
+            <a href="/cats/2020/01/23/goodbye-irida">Goodbye Irida</a>
+            <div class="text-muted smaller">A goodbye to my beloved cat</div>
+          </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4>
+        <i class="fa fa-github"></i> code
+      </h4>
+
+      <div class="float-right">
+
+      </div>
+    </div>
+
+    <div class="section-content">
+      <div class="section-item">
+        <a href="https://github.com/iridakos/goto">goto</a>: a tool for navigating to aliased directories in the shell with auto complete
+      </div>
+
+      <div class="section-item">
+        <a href="https://github.com/iridakos/elman">elman</a>: a script for full text searching Linux man pages with Elasticsearch
+      </div>
+
+      <div class="section-item">
+        <a href="https://github.com/iridakos/duckrails">DuckRails</a>
+        version <span class="important">2.1.5</span> is out <img src="/assets/images/news/duckrails.png" class="logo" /> (<a href="https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker" target="_blank">docker image available</a>)
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <div class="section-content mt-2">
+          
+<div class="share-links">
+  <a class="btn btn-warning" href="https://twitter.com/intent/tweet?text=stup - a CLI tool to save, access and organize standup and other types of daily notes&url=https://iridakos.com/programming/2020/04/20/stup-cli-notes" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning" href="https://facebook.com/sharer.php?u=https://iridakos.com/programming/2020/04/20/stup-cli-notes" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning" href="mailto:?subject=stup - a CLI tool to save, access and organize standup and other types of daily notes&amp;body=stup - a CLI tool to save, access and organize standup and other types of daily notes: https://iridakos.com/programming/2020/04/20/stup-cli-notes"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-warning btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> Subscribe via RSS
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/feed.xml">all posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/feeds/programming.xml">all programming related posts</a>
+    <a class="dropdown-item" href="/feeds/tutorials.xml">programming tutorials posts</a>
+    <a class="dropdown-item" href="/feeds/opensource.xml">opensource related posts</a>
+    <a class="dropdown-item" href="/feeds/ruby.xml">ruby and rails related posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/feeds/programming-humor.xml">programming humor</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/feeds/painting.xml">painting posts</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/feeds/cats.xml">cat photos</a>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">iridakos images preview</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <div class="image-container">
+                    <img class="image" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer">
+  <div class="container-fluid no-gutters">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6">
+        <div class="brand mb-1">
+          <a href="https://iridakos.com">iridakos</a>
+        </div>
+
+        <div class="contact-links">
+          <a class="btn btn-warning mr-1" href="https://www.github.com/iridakos/"><i class="fa fa-github" aria-hidden="true"></i></a>
+          <a class="btn btn-warning mr-1" href="https://www.twitter.com/lazaru_s/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          <a class="btn btn-warning mr-1" href="https://www.linkedin.com/in/iridakos/"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+        </div>
+
+        <div class="license mt-1">
+          <div class="mb-1">
+            <a class="" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/assets/images/license.png" /></a>
+          </div>
+
+          <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">iridakos</span> by
+          <a xmlns:cc="http://creativecommons.org/ns#" href="https://iridakos.com/about/" property="cc:attributionName" rel="cc:attributionURL" class="">Lazarus Lazaridis</a> is licensed under a <a class="" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1587381171894738646" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1587381171894738646" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1587381171894738646" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1587381171894738646" type="text/javascript"></script>
+
+
+
+
+  </body>
+</html>

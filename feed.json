@@ -3,6 +3,13 @@
 
 [
   
+  { "title": "stup - a CLI tool to save, access and organize standup and other types of daily notes",
+    "description": "Introducing a tool for keeping standup and other types of notes in the terminal",
+    "date": "Apr 20, 2020 - 12:00",
+    "categories": "programming",
+    "tags": ["linux","opensource","bash","scripts","productivity","tools"],
+    "url": "https://iridakos.com/programming/2020/04/20/stup-cli-notes"},
+  
   { "title": "Find palindrome dates in the Linux command line - explained",
     "description": "Explaining how to find palindrome dates using a shell command in Linux",
     "date": "Feb 6, 2020 - 12:00",
@@ -161,7 +168,7 @@
     "description": "A Linux shell script for registering directory aliases and navigating to them with tab completion.",
     "date": "Apr 10, 2019 - 16:00",
     "categories": "programming",
-    "tags": ["linux","opensource","bash","scripts","tutorial"],
+    "tags": ["linux","opensource","bash","scripts","tutorial","productivity","tools"],
     "url": "https://iridakos.com/programming/2019/04/10/shell-navigation-with-autocomplete"},
   
   { "title": "Dockerizing a Rails application",
