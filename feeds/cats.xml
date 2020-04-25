@@ -3,15 +3,15 @@
   <channel>
     <title>iridakos - cats</title>
     <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
-    <link>http://localhost:4000/</link>
+    <link>https://iridakos.com/</link>
     <image>
-      <url>http://localhost:4000/assets/images/site.png</url>
-      <link>http://localhost:4000/</link>
+      <url>https://iridakos.com/assets/images/site.png</url>
+      <link>https://iridakos.com/</link>
       <title>iridakos</title>
     </image>
-    <atom:link href="http://localhost:4000/feeds/cats.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 25 Apr 2020 13:04:28 +0300</pubDate>
-    <lastBuildDate>Sat, 25 Apr 2020 13:04:28 +0300</lastBuildDate>
+    <atom:link href="https://iridakos.com/feeds/cats.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 25 Apr 2020 13:42:02 +0300</pubDate>
+    <lastBuildDate>Sat, 25 Apr 2020 13:42:02 +0300</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -19,271 +19,271 @@
     
       <item>
         <title>Goodbye Irida / </title>
-        <description><a href="http://localhost:4000/cats/2020/01/23/goodbye-irida"><img src="http://localhost:4000https://iridakos.com/assets/images/posts/goodbye-irida/07.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2020/01/23/goodbye-irida"><img src="https://iridakos.comhttps://iridakos.com/assets/images/posts/goodbye-irida/07.jpg" /></a></description>
         <pubDate>Thu, 23 Jan 2020 09:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2020/01/23/goodbye-irida</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2020/01/23/goodbye-irida</guid>
+        <link>https://iridakos.com/cats/2020/01/23/goodbye-irida</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2020/01/23/goodbye-irida</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Movie night / </title>
-        <description><a href="http://localhost:4000/cats/2019/12/06/movie-night"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/movie-night.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2019/12/06/movie-night"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/movie-night.jpg" /></a></description>
         <pubDate>Fri, 06 Dec 2019 09:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2019/12/06/movie-night</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2019/12/06/movie-night</guid>
+        <link>https://iridakos.com/cats/2019/12/06/movie-night</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2019/12/06/movie-night</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Two step authentication in Ubuntu / </title>
-        <description><a href="http://localhost:4000/cats/2019/11/04/two-step-authentication"><img src="http://localhost:4000https://iridakos.com/assets/images/posts/two-step-authentication/post.png" /></a></description>
+        <description><a href="https://iridakos.com/cats/2019/11/04/two-step-authentication"><img src="https://iridakos.comhttps://iridakos.com/assets/images/posts/two-step-authentication/post.png" /></a></description>
         <pubDate>Mon, 04 Nov 2019 09:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2019/11/04/two-step-authentication</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2019/11/04/two-step-authentication</guid>
+        <link>https://iridakos.com/cats/2019/11/04/two-step-authentication</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2019/11/04/two-step-authentication</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Hug the cat / </title>
-        <description><a href="http://localhost:4000/cats/2019/11/01/hug-the-cat"><img src="http://localhost:4000https://iridakos.com/assets/images/posts/hanging-out/post.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2019/11/01/hug-the-cat"><img src="https://iridakos.comhttps://iridakos.com/assets/images/posts/hanging-out/post.jpg" /></a></description>
         <pubDate>Fri, 01 Nov 2019 10:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2019/11/01/hug-the-cat</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2019/11/01/hug-the-cat</guid>
+        <link>https://iridakos.com/cats/2019/11/01/hug-the-cat</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2019/11/01/hug-the-cat</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Another Friday has arrived / </title>
-        <description><a href="http://localhost:4000/cats/2019/09/13/another-friday"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/another-friday.jpeg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2019/09/13/another-friday"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/another-friday.jpeg" /></a></description>
         <pubDate>Fri, 13 Sep 2019 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/cats/2019/09/13/another-friday</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2019/09/13/another-friday</guid>
+        <link>https://iridakos.com/cats/2019/09/13/another-friday</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2019/09/13/another-friday</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Pair programming / </title>
-        <description><a href="http://localhost:4000/cats/2019/06/12/pair-programming"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/pair-programming.png" /></a></description>
+        <description><a href="https://iridakos.com/cats/2019/06/12/pair-programming"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/pair-programming.png" /></a></description>
         <pubDate>Wed, 12 Jun 2019 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/cats/2019/06/12/pair-programming</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2019/06/12/pair-programming</guid>
+        <link>https://iridakos.com/cats/2019/06/12/pair-programming</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2019/06/12/pair-programming</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Monday Motivation / </title>
-        <description><a href="http://localhost:4000/cats/2019/06/03/monday-motivation"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/monday-001.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2019/06/03/monday-motivation"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/monday-001.jpg" /></a></description>
         <pubDate>Mon, 03 Jun 2019 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/cats/2019/06/03/monday-motivation</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2019/06/03/monday-motivation</guid>
+        <link>https://iridakos.com/cats/2019/06/03/monday-motivation</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2019/06/03/monday-motivation</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Monday. Again. / </title>
-        <description><a href="http://localhost:4000/cats/2019/04/15/monday-again"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/monday-again.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2019/04/15/monday-again"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/monday-again.jpg" /></a></description>
         <pubDate>Mon, 15 Apr 2019 00:00:00 +0300</pubDate>
-        <link>http://localhost:4000/cats/2019/04/15/monday-again</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2019/04/15/monday-again</guid>
+        <link>https://iridakos.com/cats/2019/04/15/monday-again</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2019/04/15/monday-again</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Vacuum cleaner / </title>
-        <description><a href="http://localhost:4000/cats/2018/11/24/vacuum-cleaner"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/vacuum-cleaner.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/24/vacuum-cleaner"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/vacuum-cleaner.jpg" /></a></description>
         <pubDate>Sat, 24 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/24/vacuum-cleaner</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/24/vacuum-cleaner</guid>
+        <link>https://iridakos.com/cats/2018/11/24/vacuum-cleaner</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/24/vacuum-cleaner</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Terminator / </title>
-        <description><a href="http://localhost:4000/cats/2018/11/24/terminator"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/terminator.png" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/24/terminator"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/terminator.png" /></a></description>
         <pubDate>Sat, 24 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/24/terminator</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/24/terminator</guid>
+        <link>https://iridakos.com/cats/2018/11/24/terminator</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/24/terminator</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Nightmare / </title>
-        <description><a href="http://localhost:4000/cats/2018/11/24/nightmare"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/nightmare.png" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/24/nightmare"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/nightmare.png" /></a></description>
         <pubDate>Sat, 24 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/24/nightmare</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/24/nightmare</guid>
+        <link>https://iridakos.com/cats/2018/11/24/nightmare</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/24/nightmare</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Monday / </title>
-        <description><a href="http://localhost:4000/cats/2018/11/24/monday"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/monday.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/24/monday"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/monday.jpg" /></a></description>
         <pubDate>Sat, 24 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/24/monday</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/24/monday</guid>
+        <link>https://iridakos.com/cats/2018/11/24/monday</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/24/monday</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Good night / </title>
-        <description><a href="http://localhost:4000/cats/2018/11/24/goot-night"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/goodnight.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/24/goot-night"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/goodnight.jpg" /></a></description>
         <pubDate>Sat, 24 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/24/goot-night</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/24/goot-night</guid>
+        <link>https://iridakos.com/cats/2018/11/24/goot-night</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/24/goot-night</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Catologist / </title>
-        <description><a href="http://localhost:4000/cats/2018/11/24/catologist"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/catology.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/24/catologist"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/catology.jpg" /></a></description>
         <pubDate>Sat, 24 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/24/catologist</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/24/catologist</guid>
+        <link>https://iridakos.com/cats/2018/11/24/catologist</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/24/catologist</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Boo / </title>
-        <description><a href="http://localhost:4000/cats/2018/11/24/boo"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/boo.png" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/24/boo"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/boo.png" /></a></description>
         <pubDate>Sat, 24 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/24/boo</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/24/boo</guid>
+        <link>https://iridakos.com/cats/2018/11/24/boo</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/24/boo</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>I know stuff / </title>
-        <description><a href="http://localhost:4000/cats/2018/11/24/i-know-stuff"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/i-know-stuff.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/24/i-know-stuff"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/i-know-stuff.jpg" /></a></description>
         <pubDate>Sat, 24 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/24/i-know-stuff</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/24/i-know-stuff</guid>
+        <link>https://iridakos.com/cats/2018/11/24/i-know-stuff</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/24/i-know-stuff</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Code review mode ON / Mop</title>
-        <description><a href="http://localhost:4000/cats/2018/11/16/code-review-mode"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/code-review.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/16/code-review-mode"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/code-review.jpg" /></a></description>
         <pubDate>Fri, 16 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/16/code-review-mode</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/16/code-review-mode</guid>
+        <link>https://iridakos.com/cats/2018/11/16/code-review-mode</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/16/code-review-mode</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Reloading the page after applying random css rules from stack overflow / ctrl+c ctrl+v</title>
-        <description><a href="http://localhost:4000/cats/2018/11/01/css-stackoveflow"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/css-stackoverflow.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/01/css-stackoveflow"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/css-stackoverflow.jpg" /></a></description>
         <pubDate>Thu, 01 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/01/css-stackoveflow</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/01/css-stackoveflow</guid>
+        <link>https://iridakos.com/cats/2018/11/01/css-stackoveflow</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/01/css-stackoveflow</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>When they push on your branch / Sure, go ahead</title>
-        <description><a href="http://localhost:4000/cats/2018/11/01/push-on-my-branch"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/push-on-branch.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/01/push-on-my-branch"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/push-on-branch.jpg" /></a></description>
         <pubDate>Thu, 01 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/01/push-on-my-branch</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/01/push-on-my-branch</guid>
+        <link>https://iridakos.com/cats/2018/11/01/push-on-my-branch</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/01/push-on-my-branch</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Java update available pop up / When the 'Java update available' pop up pops up</title>
-        <description><a href="http://localhost:4000/cats/2018/11/01/java-update-popup"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/java-update.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/01/java-update-popup"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/java-update.jpg" /></a></description>
         <pubDate>Thu, 01 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/01/java-update-popup</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/01/java-update-popup</guid>
+        <link>https://iridakos.com/cats/2018/11/01/java-update-popup</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/01/java-update-popup</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Released on Friday / Low five</title>
-        <description><a href="http://localhost:4000/cats/2018/11/01/friday-releases"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/successful-deployment.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/11/01/friday-releases"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/successful-deployment.jpg" /></a></description>
         <pubDate>Thu, 01 Nov 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/11/01/friday-releases</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/01/friday-releases</guid>
+        <link>https://iridakos.com/cats/2018/11/01/friday-releases</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/01/friday-releases</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Regular expression look / ^(\w+)\b.*\r?\n(?s).*?\b\1\b</title>
-        <description><a href="http://localhost:4000/cats/2018/10/30/regex"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/regex.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/10/30/regex"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/regex.jpg" /></a></description>
         <pubDate>Tue, 30 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/10/30/regex</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/10/30/regex</guid>
+        <link>https://iridakos.com/cats/2018/10/30/regex</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/10/30/regex</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>User agent string / Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)</title>
-        <description><a href="http://localhost:4000/cats/2018/10/30/ie6"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/ie6.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/10/30/ie6"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/ie6.jpg" /></a></description>
         <pubDate>Tue, 30 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/10/30/ie6</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/10/30/ie6</guid>
+        <link>https://iridakos.com/cats/2018/10/30/ie6</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/10/30/ie6</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>reCaptcha / Click on the real cat</title>
-        <description><a href="http://localhost:4000/cats/2018/10/30/recaptcha"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/recaptcha.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/10/30/recaptcha"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/recaptcha.jpg" /></a></description>
         <pubDate>Tue, 30 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/10/30/recaptcha</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/10/30/recaptcha</guid>
+        <link>https://iridakos.com/cats/2018/10/30/recaptcha</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/10/30/recaptcha</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Ruby / WHERE ARE THE DUCKS</title>
-        <description><a href="http://localhost:4000/cats/2018/10/30/ruby-duck"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/ruby-duck.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/10/30/ruby-duck"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/ruby-duck.jpg" /></a></description>
         <pubDate>Tue, 30 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/10/30/ruby-duck</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/10/30/ruby-duck</guid>
+        <link>https://iridakos.com/cats/2018/10/30/ruby-duck</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/10/30/ruby-duck</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>GitHub issues / I don't get it.</title>
-        <description><a href="http://localhost:4000/cats/2018/10/30/github-issue"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/github-issue.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/10/30/github-issue"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/github-issue.jpg" /></a></description>
         <pubDate>Tue, 30 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/10/30/github-issue</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/10/30/github-issue</guid>
+        <link>https://iridakos.com/cats/2018/10/30/github-issue</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/10/30/github-issue</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Strings / THEY ARE MUTABLE</title>
-        <description><a href="http://localhost:4000/cats/2018/10/30/mutable-strings"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/mutable-strings.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/10/30/mutable-strings"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/mutable-strings.jpg" /></a></description>
         <pubDate>Tue, 30 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/10/30/mutable-strings</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/10/30/mutable-strings</guid>
+        <link>https://iridakos.com/cats/2018/10/30/mutable-strings</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/10/30/mutable-strings</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Hey you / Did you accidentally add a comment on my code?</title>
-        <description><a href="http://localhost:4000/cats/2018/10/30/code-comments"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/code-comments.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/10/30/code-comments"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/code-comments.jpg" /></a></description>
         <pubDate>Tue, 30 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/10/30/code-comments</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/10/30/code-comments</guid>
+        <link>https://iridakos.com/cats/2018/10/30/code-comments</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/10/30/code-comments</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Working with this on the side / Introducing the programming cats.</title>
-        <description><a href="http://localhost:4000/cats/2018/10/30/introducing-the-programming-cat"><img src="http://localhost:4000https://iridakos.com/assets/images/programming-cat/working-with-this-on-the-side.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2018/10/30/introducing-the-programming-cat"><img src="https://iridakos.comhttps://iridakos.com/assets/images/programming-cat/working-with-this-on-the-side.jpg" /></a></description>
         <pubDate>Tue, 30 Oct 2018 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/cats/2018/10/30/introducing-the-programming-cat</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2018/10/30/introducing-the-programming-cat</guid>
+        <link>https://iridakos.com/cats/2018/10/30/introducing-the-programming-cat</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2018/10/30/introducing-the-programming-cat</guid>
         <category>cats</category>
       </item>
     
       <item>
         <title>Cat HTTP status codes / </title>
-        <description><a href="http://localhost:4000/cats/2016/09/26/cat-http-status-codes"><img src="http://localhost:4000https://i.imgur.com/1yaeuIY.jpg" /></a></description>
+        <description><a href="https://iridakos.com/cats/2016/09/26/cat-http-status-codes"><img src="https://iridakos.comhttps://i.imgur.com/1yaeuIY.jpg" /></a></description>
         <pubDate>Mon, 26 Sep 2016 21:00:00 +0300</pubDate>
-        <link>http://localhost:4000/cats/2016/09/26/cat-http-status-codes</link>
-        <guid isPermaLink="true">http://localhost:4000/cats/2016/09/26/cat-http-status-codes</guid>
+        <link>https://iridakos.com/cats/2016/09/26/cat-http-status-codes</link>
+        <guid isPermaLink="true">https://iridakos.com/cats/2016/09/26/cat-http-status-codes</guid>
         <category>cats</category>
       </item>
     

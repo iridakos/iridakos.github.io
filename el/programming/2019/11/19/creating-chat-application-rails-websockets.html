@@ -12,9 +12,9 @@
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
 
   <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
-  <link rel="stylesheet" href="/css/main.css?1587809068734784825">
+  <link rel="stylesheet" href="/css/main.css?1587811322151631422">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="alternate" type="application/rss+xml" title="iridakos" href="http://localhost:4000/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
   <!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.6" />
 <meta property="og:title" content="Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets" />
@@ -22,8 +22,8 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Ένα βοήθημα που περιγράφει βήμα προς βήμα πως να δημιουργήσετε μια εφαρμογή συνομιλιών (chat) από το μηδέν με χρήση Rails και WebSockets (ActionCable)." />
 <meta property="og:description" content="Ένα βοήθημα που περιγράφει βήμα προς βήμα πως να δημιουργήσετε μια εφαρμογή συνομιλιών (chat) από το μηδέν με χρήση Rails και WebSockets (ActionCable)." />
-<link rel="canonical" href="http://localhost:4000/el/programming/2019/11/19/creating-chat-application-rails-websockets" />
-<meta property="og:url" content="http://localhost:4000/el/programming/2019/11/19/creating-chat-application-rails-websockets" />
+<link rel="canonical" href="https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets" />
+<meta property="og:url" content="https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets" />
 <meta property="og:site_name" content="iridakos" />
 <meta property="og:image" content="https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png" />
 <meta property="og:type" content="article" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@lazaru_s" />
 <meta name="twitter:creator" content="@Lazarus Lazaridis" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/el/programming/2019/11/19/creating-chat-application-rails-websockets"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"description":"Ένα βοήθημα που περιγράφει βήμα προς βήμα πως να δημιουργήσετε μια εφαρμογή συνομιλιών (chat) από το μηδέν με χρήση Rails και WebSockets (ActionCable).","@type":"BlogPosting","headline":"Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets","dateModified":"2019-11-19T08:00:00+02:00","datePublished":"2019-11-19T08:00:00+02:00","image":"https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png","url":"http://localhost:4000/el/programming/2019/11/19/creating-chat-application-rails-websockets","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/site.png"},"name":"Lazarus Lazaridis"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"description":"Ένα βοήθημα που περιγράφει βήμα προς βήμα πως να δημιουργήσετε μια εφαρμογή συνομιλιών (chat) από το μηδέν με χρήση Rails και WebSockets (ActionCable).","@type":"BlogPosting","headline":"Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets","dateModified":"2019-11-19T08:00:00+02:00","datePublished":"2019-11-19T08:00:00+02:00","image":"https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png","url":"https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -226,7 +226,7 @@
 
 <p>Σε αυτό το βοήθημα θα δημιουργήσουμε μια εφαρμογή συνομιλιών (<strong>chat</strong>) από το μηδέν χρησιμοποιώντας το framework Ruby on Rails και την τεχνολογία των WebSockets.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif" alt="Rails chat tutorial gif" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif" alt="Rails chat tutorial gif" /></p>
 
 <p><strong>Ενημέρωση</strong>: Δημοσίευσα άλλο ένα βοήθημα για τη <a href="https://twitter.com/lazaru_s/status/1182193506430984193">δημιουργία docker image της εφαρμογής</a> του παρόντος, μπορείτε να το βρείτε στα αγγλικά για την ώρα <a href="/programming/2019/04/07/dockerizing-a-rails-application"><strong>εδώ</strong></a>.</p>
 
@@ -346,7 +346,7 @@ Use Ctrl-C to stop
 
 <p>Ανοίξτε έναν φυλλομετρητή και επισκεφθείτε τη διεύθυνση: <code class="highlighter-rouge">http://localhost:3000</code>. Αν βλέπετε το παρακάτω είμαστε εντάξει για να συνεχίσουμε. Αν όχι, δε με ξέρετε δε σας ξέρω :P</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/01-rails-new.png" alt="Rails new application" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/01-rails-new.png" alt="Rails new application" /></p>
 
 <h3 id="χρήστες-και-βιβλιοθήκη-devise">Χρήστες και βιβλιοθήκη <code class="highlighter-rouge">devise</code></h3>
 
@@ -451,7 +451,7 @@ Use Ctrl-C to stop
 
 <p>Θα δείτε το παρακάτω λάθος, μην ανησυχείτε:</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/02.png" alt="No action index for the RoomsController" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/02.png" alt="No action index for the RoomsController" /></p>
 
 <p>Πρέπει να δημιουργήσουμε την ενέργεια <code class="highlighter-rouge">index</code> στον ελεγκτή <code class="highlighter-rouge">RoomsController</code>. Ανοίξτε τον ελεγκτή που βρίσκεται στην τοποθεσία <code class="highlighter-rouge">app/controllers/rooms_controller.rb</code> και αλλάξτε τα περιεχόμενά του στα παρακάτω:</p>
 
@@ -467,7 +467,7 @@ Use Ctrl-C to stop
 
 <p>Φορτώστε ξανά την αρχική σελίδα και voilà.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/03.png" alt="Rooms index" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/03.png" alt="Rooms index" /></p>
 
 <h3 id="προσθήκη-πιστοποίησης-χρηστών">Προσθήκη πιστοποίησης χρηστών</h3>
 
@@ -478,7 +478,7 @@ Use Ctrl-C to stop
 
 <p>Αν πλοηγηθούμε εκ νέου στην αρχική σελίδα <code class="highlighter-rouge">http://localhost:3000</code> θα πρέπει να ανακατευθυνθούμε στη σελίδα πιστοποίησης χρηστών <sup><a href="#ευχαριστίες">[10]</a></sup>.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/04.png" alt="Sign in" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/04.png" alt="Sign in" /></p>
 
 <p>Πριν συνεχίσουμε με τα ωραία, ας εξοπλίσουμε πρώτα την εφαρμογή με κάποια καλά χαρακτηριστικά.</p>
 
@@ -573,11 +573,11 @@ Use Ctrl-C to stop
 
 <p>Περιηγηθείτε στην αρχική σελίδα <code class="highlighter-rouge">http://localhost:3000</code> και δείτε τι δημιουργήσαμε.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/05.png" alt="Sign in with Devise and simple form" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/05.png" alt="Sign in with Devise and simple form" /></p>
 
 <p>Ας προσπαθήσουμε να κάνουμε καταχώρηση χρήστη ακολουθώντας το σύνδεσμο <code class="highlighter-rouge">Sign up</code> της φόρμας:</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/06.png" alt="Sign up without username" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/06.png" alt="Sign up without username" /></p>
 
 <p>Όπως βλέπετε, δεν υπάρχει πεδίο για τη συμπλήρωση του ονόματος χρήστη (<code class="highlighter-rouge">username</code>) που προσθέσαμε όταν δημιουργήσαμε το μοντέλο <code class="highlighter-rouge">User</code>. Για να μπορούν οι χρήστες να καταχωρούν το όνομά τους πρέπει:</p>
 
@@ -609,7 +609,7 @@ Use Ctrl-C to stop
 
 <p>Αυτό ήταν, περιηγηθείτε ξανά στην αρχική σελίδα και δοκιμάστε να καταχωρηθείτε ως χρήστες<sup><a href="#ευχαριστίες">[5]</a></sup>.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/07.png" alt="Sign up with username" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/07.png" alt="Sign up with username" /></p>
 
 <h3 id="καθάρισμα-μη-χρησιμοποιούμενων-στοιχείων">Καθάρισμα μη χρησιμοποιούμενων στοιχείων</h3>
 
@@ -740,11 +740,11 @@ Use Ctrl-C to stop
 
 <p>Φορτώστε ξανά την αρχική σελίδα και δείτε την μπάρα.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/08.png" alt="Sign up with navigation bar" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/08.png" alt="Sign up with navigation bar" /></p>
 
 <p>Τέλεια. Συμπληρώστε τα επιθυμητά στοιχεία εισόδου σας και υποβάλετε τη φόρμα.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/09.png" alt="Signed in" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/09.png" alt="Signed in" /></p>
 
 <h3 id="διαχείριση-δωματίων">Διαχείριση δωματίων</h3>
 
@@ -812,7 +812,7 @@ Use Ctrl-C to stop
 
 <p>Αν υπάρχουν δωμάτια, η αριστερή στήλη θα εμφανίζει μια κάθετη πλοήγηση με συνδέσμους που οδηγούν στη σελίδα κάθε δωματίου. Η δεξιά στήλη εμφανίζει ένα απλό μήνυμα καλωσορίσματος στην εφαρμογή.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/10.png" alt="Room index" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/10.png" alt="Room index" /></p>
 
 <p>Πατώντας το κουμπί <code class="highlighter-rouge">Create a room</code> εμφανίζεται ένα αναμενόμενο λάθος καθώς ο ελεγκτής δεν υποστηρίζει ακόμη την ενέργεια δημιουργίας δωματίου.</p>
 
@@ -902,11 +902,11 @@ Use Ctrl-C to stop
 
 <p>Ώρα να φτιάξουμε το πρώτο μας δωμάτιο. Από την αρχική σελίδα των δωματίων, πατήστε το κουμπί <code class="highlighter-rouge">Create a room</code></p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/11.png" alt="New room" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/11.png" alt="New room" /></p>
 
 <p>Σώστε το και ορίστε:</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/12.png" alt="Room index with rooms" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/12.png" alt="Room index with rooms" /></p>
 
 <p>Προσθέστε την παρακάτω κλάση στο αρχείο <code class="highlighter-rouge">app/assets/stylesheets/rails-chat-tutorial.scss</code> για να βελτιώσουμε την εμφάνιση των δωματίων.</p>
 
@@ -920,7 +920,7 @@ Use Ctrl-C to stop
 <span class="err">}</span>
 </code></pre></div></div>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/13.png" alt="Room index with improved rooms" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/13.png" alt="Room index with improved rooms" /></p>
 
 <p><strong>Σημείωση</strong>: Θα προσθέσουμε παρακάτω τον σύνδεσμο επεξεργασίας (<code class="highlighter-rouge">edit</code>) ενός δωματίου.</p>
 
@@ -1053,7 +1053,7 @@ Use Ctrl-C to stop
 
 <p>Περιηγηθείτε σε ένα δωμάτιο για να δούμε τι έχουμε κάνει μέχρι στιγμής.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/14.png" alt="Room page with chat" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/14.png" alt="Room page with chat" /></p>
 
 <p>Πατώντας το κουμπή <code class="highlighter-rouge">Send</code> δε συμβαίνει τίποτα στη σελίδα αλλά αν κοιτάξετε το αρχείο καταγραφής (log) του εξυπηρετητή θα παρατηρήσετε το εξής:</p>
 
@@ -1128,7 +1128,7 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 
 <p>Αν φορτώσετε πάλι τη σελίδα του δωματίου θα δείτε κάτι σαν αυτό:</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/15.png" alt="Room message to string" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/15.png" alt="Room message to string" /></p>
 
 <p>Ας ομορφύνουμε και τα μηνύματα.</p>
 
@@ -1214,7 +1214,7 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 
 <p>Φορτώστε ξανά τη σελίδα. Magic.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/16.png" alt="Improved display of room messages" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/16.png" alt="Improved display of room messages" /></p>
 
 <h2 id="websockets---actioncable">WebSockets - ActionCable</h2>
 
@@ -1537,7 +1537,7 @@ end
 
 <p>Αυτάααααααα! Μεγάλο άρθρο, κουράστηκε η γάτα.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/rails-chat-tutorial/irida.jpg" alt="Tired cat photo" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/rails-chat-tutorial/irida.jpg" alt="Tired cat photo" /></p>
 
 <h2 id="ευχαριστίες">Ευχαριστίες</h2>
 
@@ -2078,10 +2078,10 @@ end
 
           
 <div class="share-links">
-  <a class="btn btn-warning" href="https://twitter.com/intent/tweet?text=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets&url=http://localhost:4000/el/programming/2019/11/19/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="btn btn-warning" href="https://facebook.com/sharer.php?u=http://localhost:4000/el/programming/2019/11/19/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning" href="https://twitter.com/intent/tweet?text=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets&url=https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning" href="https://facebook.com/sharer.php?u=https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
   <a class="btn btn-warning" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
-  <a class="btn btn-warning" href="mailto:?subject=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets&amp;body=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets: http://localhost:4000/el/programming/2019/11/19/creating-chat-application-rails-websockets"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+  <a class="btn btn-warning" href="mailto:?subject=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets&amp;body=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets: https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets"><i class="fa fa-envelope-o" title="Share with email"></i></a>
 </div>
 
 <div class="subscribe-links">
@@ -2296,10 +2296,10 @@ end
         <div class="section-content mt-2">
           
 <div class="share-links">
-  <a class="btn btn-warning" href="https://twitter.com/intent/tweet?text=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets&url=http://localhost:4000/el/programming/2019/11/19/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="btn btn-warning" href="https://facebook.com/sharer.php?u=http://localhost:4000/el/programming/2019/11/19/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning" href="https://twitter.com/intent/tweet?text=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets&url=https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning" href="https://facebook.com/sharer.php?u=https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
   <a class="btn btn-warning" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
-  <a class="btn btn-warning" href="mailto:?subject=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets&amp;body=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets: http://localhost:4000/el/programming/2019/11/19/creating-chat-application-rails-websockets"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+  <a class="btn btn-warning" href="mailto:?subject=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets&amp;body=Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets: https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets"><i class="fa fa-envelope-o" title="Share with email"></i></a>
 </div>
 
 <div class="subscribe-links">
@@ -2387,10 +2387,10 @@ end
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="/assets/javascripts/bootstrap.min.js?1587809068734784825" type="text/javascript"></script>
-<script src="/assets/javascripts/docout.js?1587809068734784825" type="text/javascript"></script>
-<script src="/assets/javascripts/iridakos.js?1587809068734784825" type="text/javascript"></script>
-<script src="/assets/javascripts/search.js?1587809068734784825" type="text/javascript"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1587811322151631422" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1587811322151631422" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1587811322151631422" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1587811322151631422" type="text/javascript"></script>
 
 
 

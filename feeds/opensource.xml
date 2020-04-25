@@ -3,15 +3,15 @@
   <channel>
     <title>iridakos - opensource articles</title>
     <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
-    <link>http://localhost:4000/</link>
+    <link>https://iridakos.com/</link>
     <image>
-      <url>http://localhost:4000/assets/images/site.png</url>
-      <link>http://localhost:4000/</link>
+      <url>https://iridakos.com/assets/images/site.png</url>
+      <link>https://iridakos.com/</link>
       <title>iridakos</title>
     </image>
-    <atom:link href="http://localhost:4000/feeds/opensource.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 25 Apr 2020 13:04:28 +0300</pubDate>
-    <lastBuildDate>Sat, 25 Apr 2020 13:04:28 +0300</lastBuildDate>
+    <atom:link href="https://iridakos.com/feeds/opensource.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 25 Apr 2020 13:42:02 +0300</pubDate>
+    <lastBuildDate>Sat, 25 Apr 2020 13:42:02 +0300</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     <foo>ha</foo>
     
@@ -134,8 +134,8 @@ CATEGORIES_ROOT_DIRECTORY/programming/2020/04/2020-04-18.md
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/stup-cli-notes/phoebe.png&quot; alt=&quot;Phoebe, my cat, keeping notes without stup&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 20 Apr 2020 12:00:00 +0300</pubDate>
-        <link>http://localhost:4000/programming/2020/04/20/stup-cli-notes</link>
-        <guid isPermaLink="true">http://localhost:4000/programming/2020/04/20/stup-cli-notes</guid>
+        <link>https://iridakos.com/programming/2020/04/20/stup-cli-notes</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2020/04/20/stup-cli-notes</guid>
         
         <category>linux</category>
         
@@ -432,8 +432,8 @@ b
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 06 Feb 2020 12:00:00 +0200</pubDate>
-        <link>http://localhost:4000/programming/2020/02/06/shell-palindrome-dates</link>
-        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/06/shell-palindrome-dates</guid>
+        <link>https://iridakos.com/programming/2020/02/06/shell-palindrome-dates</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2020/02/06/shell-palindrome-dates</guid>
         
         <category>how-to</category>
         
@@ -807,8 +807,8 @@ b
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/mongoid-nested-embedded/cat.jpg&quot; alt=&quot;Cat&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 Nov 2019 09:00:00 +0200</pubDate>
-        <link>http://localhost:4000/programming/2019/11/22/mongoid-nested-attributes-embedded-type</link>
-        <guid isPermaLink="true">http://localhost:4000/programming/2019/11/22/mongoid-nested-attributes-embedded-type</guid>
+        <link>https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type</guid>
         
         <category>ruby</category>
         
@@ -1279,8 +1279,8 @@ b
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 02 May 2019 15:30:00 +0300</pubDate>
-        <link>http://localhost:4000/programming/2019/05/02/add-update-delete-elasticsearch-nested-objects</link>
-        <guid isPermaLink="true">http://localhost:4000/programming/2019/05/02/add-update-delete-elasticsearch-nested-objects</guid>
+        <link>https://iridakos.com/programming/2019/05/02/add-update-delete-elasticsearch-nested-objects</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/05/02/add-update-delete-elasticsearch-nested-objects</guid>
         
         <category>elasticsearch</category>
         
@@ -1315,7 +1315,7 @@ b
   goto repo at GitHub
 &lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/goto/goto.gif&quot; alt=&quot;goto gif&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/goto/goto.gif&quot; alt=&quot;goto gif&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;User registers directory aliases, for example:&lt;/p&gt;
 
@@ -1527,8 +1527,8 @@ Every &lt;code class=&quot;highlighter-rouge&quot;&gt;register&lt;/code&gt; or &
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 10 Apr 2019 16:00:00 +0300</pubDate>
-        <link>http://localhost:4000/programming/2019/04/10/shell-navigation-with-autocomplete</link>
-        <guid isPermaLink="true">http://localhost:4000/programming/2019/04/10/shell-navigation-with-autocomplete</guid>
+        <link>https://iridakos.com/programming/2019/04/10/shell-navigation-with-autocomplete</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2019/04/10/shell-navigation-with-autocomplete</guid>
         
         <category>linux</category>
         
@@ -1624,7 +1624,7 @@ In this first post of the series, we are going to deal with the &lt;strong&gt;bu
 
 &lt;p&gt;Start the kibana service and navigate to its home page at &lt;a href=&quot;http://localhost:5601&quot;&gt;http://localhost:5601&lt;/a&gt;. We will heavily use the &lt;strong&gt;Dev Tools&lt;/strong&gt; which is a powerful console talking to the Elasticsearch engine.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-bucket-aggregations/01-kibana-welcome.png&quot; alt=&quot;Kibana Dev tools&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-bucket-aggregations/01-kibana-welcome.png&quot; alt=&quot;Kibana Dev tools&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-it-going-to-be-covered&quot;&gt;What is it going to be covered&lt;/h2&gt;
 
@@ -3737,8 +3737,8 @@ If we used the &lt;strong&gt;object&lt;/strong&gt; datatype, Elasticsearch would
 &lt;img src=&quot;/assets/images/posts/elasticsearch-bucket-aggregations/cat-photo.jpg&quot; alt=&quot;My cat in a bucket&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 22 Oct 2018 20:00:00 +0300</pubDate>
-        <link>http://localhost:4000/programming/2018/10/22/elasticsearch-bucket-aggregations</link>
-        <guid isPermaLink="true">http://localhost:4000/programming/2018/10/22/elasticsearch-bucket-aggregations</guid>
+        <link>https://iridakos.com/programming/2018/10/22/elasticsearch-bucket-aggregations</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2018/10/22/elasticsearch-bucket-aggregations</guid>
         
         <category>elasticsearch</category>
         
@@ -3843,8 +3843,8 @@ In addition, the &lt;code class=&quot;highlighter-rouge&quot;&gt;/sys/class/back
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/debian-backlight/brightness.jpg&quot; alt=&quot;Cat terminator&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 24 Jun 2018 18:00:00 +0300</pubDate>
-        <link>http://localhost:4000/programming/2018/06/24/debian-imac-backlight-keyboard</link>
-        <guid isPermaLink="true">http://localhost:4000/programming/2018/06/24/debian-imac-backlight-keyboard</guid>
+        <link>https://iridakos.com/programming/2018/06/24/debian-imac-backlight-keyboard</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2018/06/24/debian-imac-backlight-keyboard</guid>
         
         <category>linux</category>
         
@@ -4152,8 +4152,8 @@ In irb type:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/elasticsearch-linux-manpages/elastic-man-pages.jpg&quot; alt=&quot;Cat bookmark&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 12 Apr 2018 19:00:00 +0300</pubDate>
-        <link>http://localhost:4000/programming/2018/04/12/elasticsearch-linux-man-pages</link>
-        <guid isPermaLink="true">http://localhost:4000/programming/2018/04/12/elasticsearch-linux-man-pages</guid>
+        <link>https://iridakos.com/programming/2018/04/12/elasticsearch-linux-man-pages</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2018/04/12/elasticsearch-linux-man-pages</guid>
         
         <category>elasticsearch</category>
         
@@ -4667,8 +4667,8 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;p&gt;That’s all folks!&lt;/p&gt;
 </description>
         <pubDate>Thu, 01 Mar 2018 02:00:00 +0200</pubDate>
-        <link>http://localhost:4000/programming/2018/03/01/bash-programmable-completion-tutorial</link>
-        <guid isPermaLink="true">http://localhost:4000/programming/2018/03/01/bash-programmable-completion-tutorial</guid>
+        <link>https://iridakos.com/programming/2018/03/01/bash-programmable-completion-tutorial</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2018/03/01/bash-programmable-completion-tutorial</guid>
         
         <category>bash</category>
         
@@ -4728,7 +4728,7 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 
 &lt;p&gt;This tutorial is using &lt;strong&gt;Ruby 2.4.2&lt;/strong&gt;. You can check yours using: &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby --version&lt;/code&gt; or via RVM with &lt;code class=&quot;highlighter-rouge&quot;&gt;rvm list&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/rvm-list.png&quot; alt=&quot;rvm list screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/rvm-list.png&quot; alt=&quot;rvm list screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;glade&quot;&gt;Glade&lt;/h3&gt;
 
@@ -4822,7 +4822,7 @@ If you are on Ubuntu, install &lt;code class=&quot;highlighter-rouge&quot;&gt;gl
 
 &lt;p&gt;Ta daaaaaa&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/first-gtk-ruby-application.png&quot; alt=&quot;first gtk+ruby screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/first-gtk-ruby-application.png&quot; alt=&quot;first gtk+ruby screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Notes&lt;/strong&gt;&lt;/p&gt;
 
@@ -4990,7 +4990,7 @@ Well now the script fails since it can’t load the binary which is not produced
 
 &lt;p&gt;Open glade.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-empty-project.png&quot; alt=&quot;Glade empty project screen&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-empty-project.png&quot; alt=&quot;Glade empty project screen&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;A quick description of what you see.&lt;/p&gt;
 
@@ -5011,7 +5011,7 @@ Well now the script fails since it can’t load the binary which is not produced
 
 &lt;p&gt;We are going to create the application window. As you can guess, all we have to do is drag the widget ‘Application Window’ from the widget section to the design section.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-application-window-1.png&quot; alt=&quot;Glade application window&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-application-window-1.png&quot; alt=&quot;Glade application window&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk::Builder&lt;/code&gt; is an object used in GTK+ applications to read textual descriptions of a user interface (like the one we will build via Glade) and build the described objects-widgets.&lt;/p&gt;
 
@@ -5029,7 +5029,7 @@ Well now the script fails since it can’t load the binary which is not produced
 
 &lt;p&gt;Now, in order to define our design as a template, check the &lt;code class=&quot;highlighter-rouge&quot;&gt;Composite&lt;/code&gt; checkbox in the property widget. Note that the &lt;code class=&quot;highlighter-rouge&quot;&gt;ID&lt;/code&gt; property changed to &lt;code class=&quot;highlighter-rouge&quot;&gt;Class Name&lt;/code&gt;. Fill in there &lt;code class=&quot;highlighter-rouge&quot;&gt;TodoApplicationWindow&lt;/code&gt;. This is the class we are going to create in our code to represent this widget.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-application-window-2.png&quot; alt=&quot;Glade application window composite&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-application-window-2.png&quot; alt=&quot;Glade application window composite&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Save the file with name &lt;code class=&quot;highlighter-rouge&quot;&gt;application_window.ui&lt;/code&gt; in a new folder named &lt;code class=&quot;highlighter-rouge&quot;&gt;ui&lt;/code&gt; inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;resources&lt;/code&gt;. If you open the file from an editor you will see this:&lt;/p&gt;
 
@@ -5101,7 +5101,7 @@ Well now the script fails since it can’t load the binary which is not produced
 
 &lt;p&gt;Execute the script.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-application-window-1.png&quot; alt=&quot;GTK+ ToDo window&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-application-window-1.png&quot; alt=&quot;GTK+ ToDo window&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;define-the-model&quot;&gt;Define the model&lt;/h3&gt;
 
@@ -5218,7 +5218,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;Save the file and execute the script&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-add-new-item-application-window.png&quot; alt=&quot;Add new item button in application window&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-add-new-item-application-window.png&quot; alt=&quot;Add new item button in application window&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Don’t worry, we will improve the design later on. Now, let’s see how to &lt;em&gt;connect&lt;/em&gt; functionality to our button’s &lt;em&gt;clicked&lt;/em&gt; event.&lt;/p&gt;
 
@@ -5259,7 +5259,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;Check its &lt;code class=&quot;highlighter-rouge&quot;&gt;Composite&lt;/code&gt; property and name the class &lt;code class=&quot;highlighter-rouge&quot;&gt;TodoNewItemWindow&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-1.png&quot; alt=&quot;GTK+ Todo new item window empty&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-1.png&quot; alt=&quot;GTK+ Todo new item window empty&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; from the widget section and place it in the window we added in the previous steps.&lt;/li&gt;
@@ -5268,7 +5268,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;In the &lt;em&gt;Common&lt;/em&gt; tab of the properties section, set the &lt;code class=&quot;highlighter-rouge&quot;&gt;Widget Spacing &amp;gt; Margins &amp;gt; Top, Bottom, Left, Right&lt;/code&gt; all to &lt;strong&gt;10&lt;/strong&gt; so that the contents are not stuck to the borders of the window.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-2.png&quot; alt=&quot;GTK+ Todo new item window with grid&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-2.png&quot; alt=&quot;GTK+ Todo new item window with grid&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag four times a &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; widget from the widget section and place them in each row of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt;.&lt;/li&gt;
@@ -5284,7 +5284,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;This step is optional but I suggest that you do it: We will not bind these labels in our window since we don’t need to alter their state or behavior. So in this context, we don’t need to set a descriptive id for each of them like we did for the &lt;code class=&quot;highlighter-rouge&quot;&gt;add_new_item_button&lt;/code&gt; button in the application window. &lt;strong&gt;BUT&lt;/strong&gt;. We are going to add more elements to our design and the hierarchy of the widgets in Glade will be hard to read with all the &lt;code class=&quot;highlighter-rouge&quot;&gt;label1&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;label2&lt;/code&gt;. So set a descriptive id to each to make our lives easier (like &lt;code class=&quot;highlighter-rouge&quot;&gt;id_label&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;title_label&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;notes_label&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;priority_label&lt;/code&gt;). I even set the grid’s id to &lt;code class=&quot;highlighter-rouge&quot;&gt;main_grid&lt;/code&gt; cause I don’t like seeing numbers in ids or variable names :)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-3.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-3.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; from the widget section to the second column of the grid’s first row. The id is automatically generated by our model thus we won’t allow editing so a label to display it is more than enough.&lt;/li&gt;
@@ -5293,7 +5293,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;We are going to bind this widget to our window class so that we can change its text each time we load the window so setting a label through glade is not needed but doing so makes the design look closer to what it’ll look like when rendered with actual data. So you can optionally set a label here to whatever suits you better. I set mine to &lt;code class=&quot;highlighter-rouge&quot;&gt;id-of-the-todo-item-here&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-4.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-4.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Text Entry&lt;/code&gt; from the widget section to the second column of the second row of the grid.&lt;/li&gt;
@@ -5301,7 +5301,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;In the &lt;em&gt;Common&lt;/em&gt; tab of the properties section, check the &lt;code class=&quot;highlighter-rouge&quot;&gt;Widget Spacing &amp;gt; Expand &amp;gt; Horizontal&lt;/code&gt; checkbox and turn on the switch which is right next to it. This way, the widget will expand horizontally every time its parent (a.k.a. the grid) is resized.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-5.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-5.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Text View&lt;/code&gt; from the widget section to the second column of the third row of the grid.&lt;/li&gt;
@@ -5309,7 +5309,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;In the &lt;em&gt;Common&lt;/em&gt; tab of the properties section, check the &lt;code class=&quot;highlighter-rouge&quot;&gt;Widget Spacing &amp;gt; Expand &amp;gt; Horizontal, Vertical&lt;/code&gt; checkboxes and turn on the switches which are right next to them. This way, the widget will expand horizontally and vertically every time its parent (a.k.a. the grid) is resized.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-6.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-6.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Combo Box&lt;/code&gt; from the widget section to the second column of the forth row of the grid.&lt;/li&gt;
@@ -5318,7 +5318,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;This widget is actually a drop down element and we are going to populate its values that can be selected by the user when it shows up inside our window class.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-7.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-7.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Button Box&lt;/code&gt; from the widget section to the second column of the last row of the grid.&lt;/li&gt;
@@ -5329,7 +5329,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;Again, this widget won’t be altered by our code but you can give it a descriptive &lt;code class=&quot;highlighter-rouge&quot;&gt;ID&lt;/code&gt; for readability. I named mine &lt;code class=&quot;highlighter-rouge&quot;&gt;actions_box&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-8.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-8.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Button&lt;/code&gt; widget twice and place it to each of the two boxes of the button box widget we added in the previous step.&lt;/li&gt;
@@ -5337,7 +5337,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;In the &lt;em&gt;General&lt;/em&gt; tab of the properties window, set their &lt;em&gt;Button Content &amp;gt; Label with option image&lt;/em&gt; property to &lt;strong&gt;Cancel&lt;/strong&gt; and &lt;strong&gt;Save&lt;/strong&gt; respectively.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-9.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-9.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The window is ready. Save the file under &lt;code class=&quot;highlighter-rouge&quot;&gt;resources/ui/new_item_window.ui&lt;/code&gt;.&lt;/p&gt;
 
@@ -5389,7 +5389,7 @@ Go ahead and change that code in &lt;code class=&quot;highlighter-rouge&quot;&gt
 
 &lt;p&gt;Let’s see what we have done. Start the application and click on the &lt;strong&gt;Add new item&lt;/strong&gt; button. Ta daaaaaaa&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-10.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-10.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Of course, nothing happens when pressing the buttons. We will change that.&lt;/p&gt;
 
@@ -5525,7 +5525,7 @@ Go ahead and change that code in &lt;code class=&quot;highlighter-rouge&quot;&gt
 
 &lt;p&gt;Start the application and click on the &lt;strong&gt;Add new item&lt;/strong&gt; button. Ta daaaaaa (note the &lt;em&gt;- Create mode&lt;/em&gt; part in the title).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-11.png&quot; alt=&quot;New item window&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-11.png&quot; alt=&quot;New item window&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;cancel-the-item-creationupdate&quot;&gt;Cancel the item creation/update&lt;/h4&gt;
 
@@ -5561,7 +5561,7 @@ Go ahead and change that code in &lt;code class=&quot;highlighter-rouge&quot;&gt
 
 &lt;p&gt;Let’s try that out.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-12.png&quot; alt=&quot;New item window&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-12.png&quot; alt=&quot;New item window&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Pressing save and navigating to your &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.gtk-todo-tutorial&lt;/code&gt; folder you should see a file there. Mine had the following contents:&lt;/p&gt;
 
@@ -5596,7 +5596,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;The orientation of the box is already vertical so we are fine.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-13.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-13.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Now, drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;List Box&lt;/code&gt; and place it on the free are of the previously added box.&lt;/li&gt;
@@ -5604,7 +5604,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Set is &lt;code class=&quot;highlighter-rouge&quot;&gt;Selection mode&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;None&lt;/code&gt; since we won’t provide such a functionality.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-view-todo-items-1.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-view-todo-items-1.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;design-the-todo-item-list-box-row&quot;&gt;Design the ToDo item list box row&lt;/h4&gt;
 
@@ -5617,13 +5617,13 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Inside the &lt;strong&gt;hierarchy section&lt;/strong&gt; right click on the &lt;code class=&quot;highlighter-rouge&quot;&gt;List Box&lt;/code&gt; and select &lt;code class=&quot;highlighter-rouge&quot;&gt;Add Row&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-01.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-01.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Inside the &lt;strong&gt;hierarchy section&lt;/strong&gt; right click on the newly added &lt;code class=&quot;highlighter-rouge&quot;&gt;List Box Row&lt;/code&gt; which is nested under the &lt;code class=&quot;highlighter-rouge&quot;&gt;List Box&lt;/code&gt; and select &lt;code class=&quot;highlighter-rouge&quot;&gt;Remove parent&lt;/code&gt;. There it is. The &lt;code class=&quot;highlighter-rouge&quot;&gt;List Box Row&lt;/code&gt; is the top level widget of the project now.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-02.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-02.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Check the widget’s &lt;code class=&quot;highlighter-rouge&quot;&gt;Composite&lt;/code&gt; property and set its name to &lt;code class=&quot;highlighter-rouge&quot;&gt;TodoItemListBoxRow&lt;/code&gt;.&lt;/li&gt;
@@ -5632,7 +5632,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Set its &lt;code class=&quot;highlighter-rouge&quot;&gt;ID&lt;/code&gt; property to &lt;code class=&quot;highlighter-rouge&quot;&gt;main_box&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-03.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-03.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag another &lt;code class=&quot;highlighter-rouge&quot;&gt;Box&lt;/code&gt; from the widget section to the first row of the previously added box.&lt;/li&gt;
@@ -5642,7 +5642,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Set its &lt;code class=&quot;highlighter-rouge&quot;&gt;Spacing&lt;/code&gt; (&lt;em&gt;General&lt;/em&gt; tab) property to &lt;strong&gt;10&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-04.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-04.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; from the widget section to the first column of the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo_item_top_box&lt;/code&gt;.&lt;/li&gt;
@@ -5651,7 +5651,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;In the &lt;em&gt;Common&lt;/em&gt; tab of the properties section, check the &lt;em&gt;Widget Spacing &amp;gt; Expand &amp;gt; Horizontal&lt;/em&gt; checkbox and turn on the switch which is right next to it so that the label expands to available space.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-05.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-05.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Button&lt;/code&gt; from the widget section to the second column of the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo_item_top_box&lt;/code&gt;.&lt;/li&gt;
@@ -5659,7 +5659,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Check the &lt;em&gt;Button Content &amp;gt; Label with optional image&lt;/em&gt; radio and type &lt;code class=&quot;highlighter-rouge&quot;&gt;...&lt;/code&gt; (three dots).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-06.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-06.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Revealer&lt;/code&gt; widget from the widget section to the second row of the &lt;code class=&quot;highlighter-rouge&quot;&gt;main_box&lt;/code&gt;.&lt;/li&gt;
@@ -5668,7 +5668,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Set its &lt;code class=&quot;highlighter-rouge&quot;&gt;Transition type&lt;/code&gt; property to &lt;code class=&quot;highlighter-rouge&quot;&gt;Slide Down&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-07.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-07.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Box&lt;/code&gt; from the widget section to the reveal space.&lt;/li&gt;
@@ -5677,7 +5677,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;In the &lt;em&gt;Common&lt;/em&gt; tab, set its &lt;em&gt;Widget Spacing &amp;gt; Margins &amp;gt; Top&lt;/em&gt; property to &lt;strong&gt;10&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-08.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-08.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Button Box&lt;/code&gt; from the widget section to the first row of the &lt;code class=&quot;highlighter-rouge&quot;&gt;details_box&lt;/code&gt;.&lt;/li&gt;
@@ -5685,7 +5685,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Set its &lt;code class=&quot;highlighter-rouge&quot;&gt;Layout style&lt;/code&gt; property to &lt;code class=&quot;highlighter-rouge&quot;&gt;expand&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-09.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-09.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag two &lt;code class=&quot;highlighter-rouge&quot;&gt;Button&lt;/code&gt; widgets to the first and second column of the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo_item_action_box&lt;/code&gt; respectively.&lt;/li&gt;
@@ -5693,7 +5693,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Set their &lt;em&gt;Button Content &amp;gt; Label with optional image&lt;/em&gt; properties to &lt;code class=&quot;highlighter-rouge&quot;&gt;Delete&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Edit&lt;/code&gt; respective.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-10.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-10.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Viewport&lt;/code&gt; widget from the widget section to the second row of the &lt;code class=&quot;highlighter-rouge&quot;&gt;details_box&lt;/code&gt;.&lt;/li&gt;
@@ -5703,7 +5703,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Uncheck its &lt;code class=&quot;highlighter-rouge&quot;&gt;Editable&lt;/code&gt; property in the &lt;code class=&quot;highlighter-rouge&quot;&gt;General&lt;/code&gt; tab of the properties section.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-11.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-11.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;create-the-todo-item-list-box-row-class&quot;&gt;Create the ToDo item list box row class&lt;/h3&gt;
 
@@ -5806,7 +5806,7 @@ Add this code in &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::Applicati
 
 &lt;p&gt;Let’s see what we’ve created. Start the application and try adding a new ToDo item. After pressing the &lt;strong&gt;Save&lt;/strong&gt; button you should see the parent &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::ApplicationWindow&lt;/code&gt; being automatically updated with the new item!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/both-windows.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/both-windows.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;What’s left to do, is to complete the functionality of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::ItemListBoxRow&lt;/code&gt;.&lt;/p&gt;
 
@@ -5867,13 +5867,13 @@ Add this code in &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::Applicati
 
 &lt;p&gt;Save and run the application. There it is.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/tutorial-preview.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/tutorial-preview.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This has been a &lt;strong&gt;really long tutorial&lt;/strong&gt; and even though there are so many items that we haven’t covered I think we better end it here.&lt;/p&gt;
 
 &lt;p&gt;Long post, cat photo.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/cat.jpg&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/cat.jpg&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;useful-links&quot;&gt;Useful links&lt;/h3&gt;
 
@@ -5885,8 +5885,8 @@ Add this code in &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::Applicati
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 25 Jan 2018 21:00:00 +0200</pubDate>
-        <link>http://localhost:4000/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby</link>
-        <guid isPermaLink="true">http://localhost:4000/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby</guid>
+        <link>https://iridakos.com/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby</guid>
         
         <category>linux</category>
         
@@ -5939,8 +5939,8 @@ Add this code in &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::Applicati
 &lt;p&gt;This was my first attempt to create a docker image so if you have any notes/improvements, you are more than welcomed to contribute. The Dockerfile is located at the root folder of the &lt;a href=&quot;https://github.com/iridakos/duckrails/blob/master/Dockerfile&quot;&gt;DuckRails&lt;/a&gt; repo.&lt;/p&gt;
 </description>
         <pubDate>Thu, 09 Nov 2017 23:05:00 +0200</pubDate>
-        <link>http://localhost:4000/programming/2017/11/09/duckrails-docker-image</link>
-        <guid isPermaLink="true">http://localhost:4000/programming/2017/11/09/duckrails-docker-image</guid>
+        <link>https://iridakos.com/programming/2017/11/09/duckrails-docker-image</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2017/11/09/duckrails-docker-image</guid>
         
         <category>opensource</category>
         
@@ -6200,8 +6200,8 @@ The evaluated JSON is going to add two dynamic headers and set the status code &
 &lt;p&gt;If you need some help regarding the documentation, make sure to label your issue as &lt;code class=&quot;highlighter-rouge&quot;&gt;help wanted&lt;/code&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 01 Apr 2016 10:00:00 +0300</pubDate>
-        <link>http://localhost:4000/programming/2016/04/01/duckrails-guide</link>
-        <guid isPermaLink="true">http://localhost:4000/programming/2016/04/01/duckrails-guide</guid>
+        <link>https://iridakos.com/programming/2016/04/01/duckrails-guide</link>
+        <guid isPermaLink="true">https://iridakos.com/programming/2016/04/01/duckrails-guide</guid>
         
         <category>opensource</category>
         

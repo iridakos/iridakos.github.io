@@ -12,9 +12,9 @@
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
 
   <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
-  <link rel="stylesheet" href="/css/main.css?1587809068734784825">
+  <link rel="stylesheet" href="/css/main.css?1587811322151631422">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="alternate" type="application/rss+xml" title="iridakos" href="http://localhost:4000/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
   <!-- Begin Jekyll SEO tag v2.6.1 -->
 <meta name="generator" content="Jekyll v3.8.6" />
 <meta property="og:title" content="Using elasticsearch in a Rails application" />
@@ -22,8 +22,8 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="A tutorial to integrate with elasticsearch in a Ruby on Rails application." />
 <meta property="og:description" content="A tutorial to integrate with elasticsearch in a Ruby on Rails application." />
-<link rel="canonical" href="http://localhost:4000/programming/2017/12/03/elasticsearch-and-rails-tutorial" />
-<meta property="og:url" content="http://localhost:4000/programming/2017/12/03/elasticsearch-and-rails-tutorial" />
+<link rel="canonical" href="https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial" />
+<meta property="og:url" content="https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial" />
 <meta property="og:site_name" content="iridakos" />
 <meta property="og:image" content="https://iridakos.com/assets/images/posts/elasticsearch-rails/search-page.png" />
 <meta property="og:type" content="article" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@lazaru_s" />
 <meta name="twitter:creator" content="@Lazarus Lazaridis" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/programming/2017/12/03/elasticsearch-and-rails-tutorial"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"description":"A tutorial to integrate with elasticsearch in a Ruby on Rails application.","@type":"BlogPosting","headline":"Using elasticsearch in a Rails application","dateModified":"2017-12-03T08:30:00+02:00","datePublished":"2017-12-03T08:30:00+02:00","image":"https://iridakos.com/assets/images/posts/elasticsearch-rails/search-page.png","url":"http://localhost:4000/programming/2017/12/03/elasticsearch-and-rails-tutorial","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/site.png"},"name":"Lazarus Lazaridis"},"@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"description":"A tutorial to integrate with elasticsearch in a Ruby on Rails application.","@type":"BlogPosting","headline":"Using elasticsearch in a Rails application","dateModified":"2017-12-03T08:30:00+02:00","datePublished":"2017-12-03T08:30:00+02:00","image":"https://iridakos.com/assets/images/posts/elasticsearch-rails/search-page.png","url":"https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 </head>
@@ -237,7 +237,7 @@ The sample application will be a stupid simple blog and the data will be, what e
 
 <p>This tutorial is using <strong>Ruby 2.4.2</strong>. You can check yours using: <code class="highlighter-rouge">ruby --version</code> or via RVM with <code class="highlighter-rouge">rvm list</code>.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rvm-list.png" alt="rvm list screenshot" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/rvm-list.png" alt="rvm list screenshot" /></p>
 
 <h3 id="rails">Rails</h3>
 
@@ -251,7 +251,7 @@ The sample application will be a stupid simple blog and the data will be, what e
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails <span class="nt">--version</span>
 </code></pre></div></div>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-version.png" alt="rails version screenshot" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-version.png" alt="rails version screenshot" /></p>
 
 <p><strong>Important note:</strong> when working on tutorials, always try to use the same versions of software as described in them to avoid losing time figuring out what is wrong if you don’t see the same results as provided in the tutorial. With that in mind, make sure that you have the following versions installed:</p>
 <ul>
@@ -277,14 +277,14 @@ rails s
 
 <p><strong>Note:</strong> the <code class="highlighter-rouge">s</code> in the command <code class="highlighter-rouge">rails s</code> is an alias for <code class="highlighter-rouge">server</code>. You can start the server with <code class="highlighter-rouge">rails server</code> too.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-server.png" alt="rails launch server" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-server.png" alt="rails launch server" /></p>
 
 <p>As declared in the puma startup log, the server is listening on port 3000. Let’s visit the application from the browser.
 Navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
 
 <p>You should be seeing this:</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-first-run.png" alt="rails first run" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-first-run.png" alt="rails first run" /></p>
 
 <h2 id="define-the-model">Define the model</h2>
 
@@ -321,7 +321,7 @@ Navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
 
 <p>Success!</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-console-first-post.png" alt="rails console first post" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-console-first-post.png" alt="rails console first post" /></p>
 
 <h2 id="define-the-controller">Define the controller</h2>
 
@@ -332,7 +332,7 @@ Navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
 
 <p>Tadaaaaa</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-generate-controller-post.png" alt="rails console generate controller for posts" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-generate-controller-post.png" alt="rails console generate controller for posts" /></p>
 
 <p>Now, we are going to define the post routes and set the index page of posts as the application’s homepage.</p>
 
@@ -348,7 +348,7 @@ Navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
 
 <p>Let’s start the server (if it is already started, restart it) and navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/posts-homepage.png" alt="posts homepage" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/posts-homepage.png" alt="posts homepage" /></p>
 
 <p>The links don’t do much at the moment but we are going to change this later on.</p>
 
@@ -394,7 +394,7 @@ Navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
 
 <p>Start the kibana service and navigate to its home page at <a href="http://localhost:5601">http://localhost:5601</a>. We will use heavily the <strong>Dev Tools</strong> which is a powerful console talking to our elasticsearch engine.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/kibana-dev-tools.png" alt="Kibana Dev tools" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/kibana-dev-tools.png" alt="Kibana Dev tools" /></p>
 
 <p>On the left section of the console we write our commands and on the right part we see their execution output.</p>
 
@@ -408,7 +408,7 @@ Navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">import</span>
 </code></pre></div></div>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/index-does-not-exist.png" alt="Index does not exist error" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/index-does-not-exist.png" alt="Index does not exist error" /></p>
 
 <p>As you can, since we haven’t created the index for the posts, the command failed to execute. Reading the error we do understand that the gem automatically tried to find an <strong>index named as the plural form of our model name <code class="highlighter-rouge">posts</code></strong>. Following the hint, we will execute the command, this time demanding the creation of the index if it doesn’t exist.</p>
 
@@ -416,7 +416,7 @@ Navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
 </code></pre></div></div>
 
 <p>Back to kibana now, let’s see what has happened to our instance’s indices.
-<img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/kibana-post-index.png" alt="Kibana post index" /></p>
+<img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/kibana-post-index.png" alt="Kibana post index" /></p>
 
 <p>As you can see, the <code class="highlighter-rouge">posts</code> index was created successfully. But keep this in mind: the index was created automatically, <strong>we didn’t have the opportunity to define what fields should be indexed, what should each record in the index contain or set any other kind of configuration</strong>. Don’t worry though, later on we will change this approach. We will re-create the index explicitly the way we want it to be.</p>
 
@@ -426,7 +426,7 @@ Navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
 </code></pre></div></div>
 
 <p>The command will search for post records without any filters/terms/criteria in the <code class="highlighter-rouge">posts</code> index so we expect to get one result. And there it is.
-<img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/kibana-post-search-result-one.png" alt="Kibana post search first result" /></p>
+<img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/kibana-post-search-result-one.png" alt="Kibana post search first result" /></p>
 
 <p>We are interested in the <code class="highlighter-rouge">hits</code> attribute of the response’s JSON and escecially its <code class="highlighter-rouge">_source</code> attribute. As you can see, all of our model’s columns have been serialized in the <strong>document</strong> that has been indexed for that post in elasticsearch.</p>
 
@@ -438,7 +438,7 @@ Navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
 <span class="n">results</span><span class="p">.</span><span class="nf">size</span>
 <span class="n">results</span><span class="p">.</span><span class="nf">first</span>
 </code></pre></div></div>
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-console-simple-search.png" alt="Rails console simple search" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-console-simple-search.png" alt="Rails console simple search" /></p>
 
 <p>The first command executes the simplest kind of search in our index. And it brought results! The same will happen if you search for <code class="highlighter-rouge">salute</code> or ‘lazarus’ or <code class="highlighter-rouge">post</code> since our unique model contains these words in the title/body/tags/author fields.</p>
 
@@ -448,7 +448,7 @@ Navigate to <a href="http://localhost:3000">http://localhost:3000</a>.</p>
 <span class="no">Post</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="s1">'posts'</span><span class="p">).</span><span class="nf">size</span>
 </code></pre></div></div>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-console-plural-search.png" alt="Rails console plural search" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-console-plural-search.png" alt="Rails console plural search" /></p>
 
 <p>Hmmm. No results even though we would like elasticsearch to understand that we used the plural of words contained in our model. We are going to alter the configuration to match our needs.</p>
 
@@ -489,7 +489,7 @@ To do so, edit the <code class="highlighter-rouge">app/models/post.rb</code> fil
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Post</span><span class="p">.</span><span class="nf">import</span> <span class="ss">force: </span><span class="kp">true</span>
 </code></pre></div></div>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-console-delete-create-index.png" alt="Rails console delete create index" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-console-delete-create-index.png" alt="Rails console delete create index" /></p>
 
 <p>All good. Now try searching for ‘posts’:</p>
 
@@ -685,15 +685,15 @@ The general idea is to create a <em>search page</em> with a text field that will
 
 <p>Restart the server and navigate to home page.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/home-page-with-search-link.png" alt="Home page with search link" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/home-page-with-search-link.png" alt="Home page with search link" /></p>
 
 <p>Clicking on the <code class="highlighter-rouge">here</code> link, you reach at the search page.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/search-page.png" alt="Search page" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/search-page.png" alt="Search page" /></p>
 
 <p>Submitting a query you are still on the search page but this time with the results found on elasticsearch.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/search-page-with-results.png" alt="Search page with results" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/search-page-with-results.png" alt="Search page with results" /></p>
 
 <h2 id="conclusion">Conclusion</h2>
 
@@ -710,7 +710,7 @@ The general idea is to create a <em>search page</em> with a text field that will
 
 <p>Long post, cat photo. Here’s my elastic cat.</p>
 
-<p><img src="http://localhost:4000/assets/images/posts/elasticsearch-rails/irida-elastic.png" alt="cat stretching" /></p>
+<p><img src="https://iridakos.com/assets/images/posts/elasticsearch-rails/irida-elastic.png" alt="cat stretching" /></p>
 
                 </div>
               </div>
@@ -1714,10 +1714,10 @@ The general idea is to create a <em>search page</em> with a text field that will
 
           
 <div class="share-links">
-  <a class="btn btn-warning" href="https://twitter.com/intent/tweet?text=Using elasticsearch in a Rails application&url=http://localhost:4000/programming/2017/12/03/elasticsearch-and-rails-tutorial" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="btn btn-warning" href="https://facebook.com/sharer.php?u=http://localhost:4000/programming/2017/12/03/elasticsearch-and-rails-tutorial" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning" href="https://twitter.com/intent/tweet?text=Using elasticsearch in a Rails application&url=https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning" href="https://facebook.com/sharer.php?u=https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
   <a class="btn btn-warning" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
-  <a class="btn btn-warning" href="mailto:?subject=Using elasticsearch in a Rails application&amp;body=Using elasticsearch in a Rails application: http://localhost:4000/programming/2017/12/03/elasticsearch-and-rails-tutorial"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+  <a class="btn btn-warning" href="mailto:?subject=Using elasticsearch in a Rails application&amp;body=Using elasticsearch in a Rails application: https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial"><i class="fa fa-envelope-o" title="Share with email"></i></a>
 </div>
 
 <div class="subscribe-links">
@@ -1971,10 +1971,10 @@ The general idea is to create a <em>search page</em> with a text field that will
         <div class="section-content mt-2">
           
 <div class="share-links">
-  <a class="btn btn-warning" href="https://twitter.com/intent/tweet?text=Using elasticsearch in a Rails application&url=http://localhost:4000/programming/2017/12/03/elasticsearch-and-rails-tutorial" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
-  <a class="btn btn-warning" href="https://facebook.com/sharer.php?u=http://localhost:4000/programming/2017/12/03/elasticsearch-and-rails-tutorial" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning" href="https://twitter.com/intent/tweet?text=Using elasticsearch in a Rails application&url=https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning" href="https://facebook.com/sharer.php?u=https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
   <a class="btn btn-warning" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
-  <a class="btn btn-warning" href="mailto:?subject=Using elasticsearch in a Rails application&amp;body=Using elasticsearch in a Rails application: http://localhost:4000/programming/2017/12/03/elasticsearch-and-rails-tutorial"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+  <a class="btn btn-warning" href="mailto:?subject=Using elasticsearch in a Rails application&amp;body=Using elasticsearch in a Rails application: https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial"><i class="fa fa-envelope-o" title="Share with email"></i></a>
 </div>
 
 <div class="subscribe-links">
@@ -2062,10 +2062,10 @@ The general idea is to create a <em>search page</em> with a text field that will
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="/assets/javascripts/bootstrap.min.js?1587809068734784825" type="text/javascript"></script>
-<script src="/assets/javascripts/docout.js?1587809068734784825" type="text/javascript"></script>
-<script src="/assets/javascripts/iridakos.js?1587809068734784825" type="text/javascript"></script>
-<script src="/assets/javascripts/search.js?1587809068734784825" type="text/javascript"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1587811322151631422" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1587811322151631422" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1587811322151631422" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1587811322151631422" type="text/javascript"></script>
 
 
 
