@@ -3,15 +3,15 @@
   <channel>
     <title>iridakos - painting articles</title>
     <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
-    <link>https://iridakos.com/</link>
+    <link>http://localhost:4000/</link>
     <image>
-      <url>https://iridakos.com/assets/images/site.png</url>
-      <link>https://iridakos.com/</link>
+      <url>http://localhost:4000/assets/images/site.png</url>
+      <link>http://localhost:4000/</link>
       <title>iridakos</title>
     </image>
-    <atom:link href="https://iridakos.com/feeds/painting.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 25 Apr 2020 00:24:35 +0300</pubDate>
-    <lastBuildDate>Sat, 25 Apr 2020 00:24:35 +0300</lastBuildDate>
+    <atom:link href="http://localhost:4000/feeds/painting.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 25 Apr 2020 13:04:28 +0300</pubDate>
+    <lastBuildDate>Sat, 25 Apr 2020 13:04:28 +0300</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -83,8 +83,8 @@ This time I followed the &lt;a href=&quot;https://www.youtube.com/watch?v=kasGRk
 &lt;/dl&gt;
 </description>
         <pubDate>Mon, 14 Oct 2019 17:00:00 +0300</pubDate>
-        <link>https://iridakos.com/painting/2019/10/14/mountains</link>
-        <guid isPermaLink="true">https://iridakos.com/painting/2019/10/14/mountains</guid>
+        <link>http://localhost:4000/painting/2019/10/14/mountains</link>
+        <guid isPermaLink="true">http://localhost:4000/painting/2019/10/14/mountains</guid>
         
         <category>painting</category>
         
@@ -133,8 +133,8 @@ I surprised myself with the outcome even though it’s not perfect, it’s not p
 &lt;/dl&gt;
 </description>
         <pubDate>Fri, 11 Oct 2019 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/painting/2019/10/11/meadow</link>
-        <guid isPermaLink="true">https://iridakos.com/painting/2019/10/11/meadow</guid>
+        <link>http://localhost:4000/painting/2019/10/11/meadow</link>
+        <guid isPermaLink="true">http://localhost:4000/painting/2019/10/11/meadow</guid>
         
         <category>painting</category>
         
@@ -192,8 +192,8 @@ I surprised myself with the outcome even though it’s not perfect, it’s not p
 &lt;/dl&gt;
 </description>
         <pubDate>Mon, 07 Oct 2019 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/painting/2019/10/07/drawing-my-cat</link>
-        <guid isPermaLink="true">https://iridakos.com/painting/2019/10/07/drawing-my-cat</guid>
+        <link>http://localhost:4000/painting/2019/10/07/drawing-my-cat</link>
+        <guid isPermaLink="true">http://localhost:4000/painting/2019/10/07/drawing-my-cat</guid>
         
         <category>painting</category>
         

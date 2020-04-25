@@ -3,15 +3,15 @@
   <channel>
     <title>iridakos - programming jokes and other</title>
     <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
-    <link>https://iridakos.com/</link>
+    <link>http://localhost:4000/</link>
     <image>
-      <url>https://iridakos.com/assets/images/site.png</url>
-      <link>https://iridakos.com/</link>
+      <url>http://localhost:4000/assets/images/site.png</url>
+      <link>http://localhost:4000/</link>
       <title>iridakos</title>
     </image>
-    <atom:link href="https://iridakos.com/feeds/programming-humor.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 25 Apr 2020 00:24:35 +0300</pubDate>
-    <lastBuildDate>Sat, 25 Apr 2020 00:24:35 +0300</lastBuildDate>
+    <atom:link href="http://localhost:4000/feeds/programming-humor.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 25 Apr 2020 13:04:28 +0300</pubDate>
+    <lastBuildDate>Sat, 25 Apr 2020 13:04:28 +0300</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -27,8 +27,8 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Thu, 12 Dec 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/12/12/descriptive-variable-names</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/12/12/descriptive-variable-names</guid>
+        <link>http://localhost:4000/el/programming/2019/12/12/descriptive-variable-names</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/12/12/descriptive-variable-names</guid>
         
         <category>humor</category>
         
@@ -58,8 +58,8 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 04 Dec 2019 11:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/12/04/pizza-commit</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/12/04/pizza-commit</guid>
+        <link>http://localhost:4000/el/programming/2019/12/04/pizza-commit</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/12/04/pizza-commit</guid>
         
         <category>humor</category>
         
@@ -77,8 +77,8 @@
         <description>&lt;h1 id=&quot;ptssd&quot;&gt;PTSSD&lt;/h1&gt;
 </description>
         <pubDate>Wed, 04 Dec 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/12/04/ptssd</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/12/04/ptssd</guid>
+        <link>http://localhost:4000/el/programming/2019/12/04/ptssd</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/12/04/ptssd</guid>
         
         <category>humor</category>
         
@@ -96,8 +96,8 @@
         <description>&lt;p&gt;Όταν προγραμματίζω, μιλάω στον κώδικα. Αλλά, σύμφωνα με τη γάτα μου, αυτό είναι το λιγότερο ανησυχητικό.&lt;/p&gt;
 </description>
         <pubDate>Tue, 03 Dec 2019 21:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/12/03/talking-to-my-code</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/12/03/talking-to-my-code</guid>
+        <link>http://localhost:4000/el/programming/2019/12/03/talking-to-my-code</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/12/03/talking-to-my-code</guid>
         
         <category>humor</category>
         
@@ -135,8 +135,8 @@ At least nothing was thrown.
 &lt;/pre&gt;
 </description>
         <pubDate>Fri, 22 Nov 2019 17:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/11/22/i</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/22/i</guid>
+        <link>http://localhost:4000/el/programming/2019/11/22/i</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/11/22/i</guid>
         
         <category>humor</category>
         

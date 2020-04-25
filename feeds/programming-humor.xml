@@ -3,15 +3,15 @@
   <channel>
     <title>iridakos - programming jokes and other</title>
     <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
-    <link>https://iridakos.com/</link>
+    <link>http://localhost:4000/</link>
     <image>
-      <url>https://iridakos.com/assets/images/site.png</url>
-      <link>https://iridakos.com/</link>
+      <url>http://localhost:4000/assets/images/site.png</url>
+      <link>http://localhost:4000/</link>
       <title>iridakos</title>
     </image>
-    <atom:link href="https://iridakos.com/feeds/programming-humor.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 25 Apr 2020 00:24:35 +0300</pubDate>
-    <lastBuildDate>Sat, 25 Apr 2020 00:24:35 +0300</lastBuildDate>
+    <atom:link href="http://localhost:4000/feeds/programming-humor.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 25 Apr 2020 13:04:28 +0300</pubDate>
+    <lastBuildDate>Sat, 25 Apr 2020 13:04:28 +0300</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -53,8 +53,8 @@ Using &lt;strong&gt;minus nine&lt;/strong&gt;.
 &lt;/pre&gt;
 </description>
         <pubDate>Fri, 20 Dec 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/12/20/thy-vim</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/20/thy-vim</guid>
+        <link>http://localhost:4000/programming/2019/12/20/thy-vim</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/12/20/thy-vim</guid>
         
         <category>humor</category>
         
@@ -79,8 +79,8 @@ Using &lt;strong&gt;minus nine&lt;/strong&gt;.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Thu, 12 Dec 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/12/12/descriptive-variable-names</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/12/descriptive-variable-names</guid>
+        <link>http://localhost:4000/programming/2019/12/12/descriptive-variable-names</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/12/12/descriptive-variable-names</guid>
         
         <category>humor</category>
         
@@ -110,8 +110,8 @@ Using &lt;strong&gt;minus nine&lt;/strong&gt;.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 04 Dec 2019 11:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/12/04/pizza-commit</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/04/pizza-commit</guid>
+        <link>http://localhost:4000/programming/2019/12/04/pizza-commit</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/12/04/pizza-commit</guid>
         
         <category>humor</category>
         
@@ -127,8 +127,8 @@ Using &lt;strong&gt;minus nine&lt;/strong&gt;.
         <description>&lt;h1 id=&quot;ptssd&quot;&gt;PTSSD&lt;/h1&gt;
 </description>
         <pubDate>Wed, 04 Dec 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/12/04/ptssd</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/04/ptssd</guid>
+        <link>http://localhost:4000/programming/2019/12/04/ptssd</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/12/04/ptssd</guid>
         
         <category>humor</category>
         
@@ -144,8 +144,8 @@ Using &lt;strong&gt;minus nine&lt;/strong&gt;.
         <description>&lt;p&gt;I am talking to my code but according to my cat, this is the least worrying.&lt;/p&gt;
 </description>
         <pubDate>Tue, 03 Dec 2019 21:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/12/03/talking-to-my-code</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/03/talking-to-my-code</guid>
+        <link>http://localhost:4000/programming/2019/12/03/talking-to-my-code</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/12/03/talking-to-my-code</guid>
         
         <category>humor</category>
         
@@ -181,8 +181,8 @@ At least nothing was thrown.
 &lt;/pre&gt;
 </description>
         <pubDate>Fri, 22 Nov 2019 17:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/11/22/i</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/11/22/i</guid>
+        <link>http://localhost:4000/programming/2019/11/22/i</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/11/22/i</guid>
         
         <category>humor</category>
         
@@ -197,11 +197,11 @@ At least nothing was thrown.
     
       <item>
         <title>Mom dad I want to be a computer programmer</title>
-        <description>&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/comics/s01e01.png&quot; style=&quot;max-height: none;&quot; /&gt;&lt;/p&gt;
+        <description>&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/comics/s01e01.png&quot; style=&quot;max-height: none;&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 22 Jan 2017 16:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2017/01/22/mom-dad-i-programmer</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2017/01/22/mom-dad-i-programmer</guid>
+        <link>http://localhost:4000/programming/2017/01/22/mom-dad-i-programmer</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2017/01/22/mom-dad-i-programmer</guid>
         
         <category>humor</category>
         
@@ -292,8 +292,8 @@ I do remember though that “working on a computer” was the first thing that c
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 21 Jun 2015 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2015/06/21/being-a-developer</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2015/06/21/being-a-developer</guid>
+        <link>http://localhost:4000/programming/2015/06/21/being-a-developer</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2015/06/21/being-a-developer</guid>
         
         <category>humor</category>
         

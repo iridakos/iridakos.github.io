@@ -3,15 +3,15 @@
   <channel>
     <title>iridakos - ruby articles</title>
     <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
-    <link>https://iridakos.com/</link>
+    <link>http://localhost:4000/</link>
     <image>
-      <url>https://iridakos.com/assets/images/site.png</url>
-      <link>https://iridakos.com/</link>
+      <url>http://localhost:4000/assets/images/site.png</url>
+      <link>http://localhost:4000/</link>
       <title>iridakos</title>
     </image>
-    <atom:link href="https://iridakos.com/feeds/ruby.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 25 Apr 2020 00:24:35 +0300</pubDate>
-    <lastBuildDate>Sat, 25 Apr 2020 00:24:35 +0300</lastBuildDate>
+    <atom:link href="http://localhost:4000/feeds/ruby.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 25 Apr 2020 13:04:28 +0300</pubDate>
+    <lastBuildDate>Sat, 25 Apr 2020 13:04:28 +0300</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -370,8 +370,8 @@
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/mongoid-nested-embedded/cat.jpg&quot; alt=&quot;Cat&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 Nov 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type</guid>
+        <link>http://localhost:4000/programming/2019/11/22/mongoid-nested-attributes-embedded-type</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/11/22/mongoid-nested-attributes-embedded-type</guid>
         
         <category>ruby</category>
         
@@ -408,7 +408,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png&quot; alt=&quot;Rails chat application gif&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/post.png&quot; alt=&quot;Rails chat application gif&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
 
@@ -912,7 +912,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 &lt;p&gt;Navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; and see what happens.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/dockerizing-rails/01.png&quot; alt=&quot;Error&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/dockerizing-rails/01.png&quot; alt=&quot;Error&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We don’t get very helpful information on the error since the application is running in production mode (at least this worked :P). Let’s connect to the container and check the logs:&lt;/p&gt;
 
@@ -931,7 +931,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 &lt;p&gt;&lt;a href=&quot;https://twitter.com/lazaru_s/status/1182193506430984193&quot;&gt;Reload the page and voilà&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/dockerizing-rails/02.png&quot; alt=&quot;Application home page&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/dockerizing-rails/02.png&quot; alt=&quot;Application home page&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;whats-next&quot;&gt;What’s next&lt;/h2&gt;
 
@@ -950,7 +950,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 &lt;p&gt;That’s all! Cat photo.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/programming-cat/terminator.png&quot; alt=&quot;Irida&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/programming-cat/terminator.png&quot; alt=&quot;Irida&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;alert alert-light&quot;&gt;
   &lt;div class=&quot;alert-heading&quot;&gt;&lt;i class=&quot;fa fa-comments&quot;&gt;&lt;/i&gt; Code and comments&lt;/div&gt;
@@ -967,8 +967,8 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 &lt;/div&gt;
 </description>
         <pubDate>Sun, 07 Apr 2019 04:00:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application</guid>
+        <link>http://localhost:4000/programming/2019/04/07/dockerizing-a-rails-application</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/04/07/dockerizing-a-rails-application</guid>
         
         <category>ruby</category>
         
@@ -1005,7 +1005,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 &lt;p&gt;In this tutorial we are going to create a &lt;strong&gt;chat&lt;/strong&gt; web application from scratch using Rails and WebSockets.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif&quot; alt=&quot;Rails chat tutorial gif&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif&quot; alt=&quot;Rails chat tutorial gif&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;alert alert-light&quot;&gt;
   &lt;div class=&quot;alert-heading&quot;&gt;&lt;i class=&quot;fa fa-comments&quot;&gt;&lt;/i&gt; Code and comments&lt;/div&gt;
@@ -1123,7 +1123,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Open a browser and visit &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt;, if you see this we are good to go.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/01-rails-new.png&quot; alt=&quot;Rails new application&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/01-rails-new.png&quot; alt=&quot;Rails new application&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;users-and-devise&quot;&gt;Users and devise&lt;/h3&gt;
 
@@ -1228,7 +1228,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;You should see an error message, no worries:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/02.png&quot; alt=&quot;No action index for the RoomsController&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/02.png&quot; alt=&quot;No action index for the RoomsController&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We have to create the &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; action in the &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomsController&lt;/code&gt;. Open the controller &lt;code class=&quot;highlighter-rouge&quot;&gt;app/controllers/rooms_controller.rb&lt;/code&gt; and change its contents to the following:&lt;/p&gt;
 
@@ -1244,7 +1244,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Reload and voilà.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/03.png&quot; alt=&quot;Rooms index&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/03.png&quot; alt=&quot;Rooms index&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;adding-authentication&quot;&gt;Adding authentication&lt;/h3&gt;
 
@@ -1255,7 +1255,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;If we navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; now we should be redirected to the sign in page &lt;sup&gt;&lt;a href=&quot;#acknowledgments&quot;&gt;[10]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/04.png&quot; alt=&quot;Sign in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/04.png&quot; alt=&quot;Sign in&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Before continuing with the good stuff, let’s gear up the application with some good features.&lt;/p&gt;
 
@@ -1350,11 +1350,11 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; and view what we have created.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/05.png&quot; alt=&quot;Sign in with Devise and simple form&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/05.png&quot; alt=&quot;Sign in with Devise and simple form&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Let’s try to sign up following the &lt;code class=&quot;highlighter-rouge&quot;&gt;Sign up&lt;/code&gt; link of the form:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/06.png&quot; alt=&quot;Sign up without username&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/06.png&quot; alt=&quot;Sign up without username&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As you can see, there is no field to fill in the username. For that to work we have to:&lt;/p&gt;
 
@@ -1386,7 +1386,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Done, reload and sign up&lt;sup&gt;&lt;a href=&quot;#acknowledgments&quot;&gt;[5]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/07.png&quot; alt=&quot;Sign up with username&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/07.png&quot; alt=&quot;Sign up with username&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;cleanup-unused-components&quot;&gt;Cleanup unused components&lt;/h3&gt;
 
@@ -1517,11 +1517,11 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Reload to view the bar.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/08.png&quot; alt=&quot;Sign up with navigation bar&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/08.png&quot; alt=&quot;Sign up with navigation bar&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Awesome. Fill in with your desired credentials and submit the form.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/09.png&quot; alt=&quot;Signed in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/09.png&quot; alt=&quot;Signed in&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;room-management&quot;&gt;Room management&lt;/h3&gt;
 
@@ -1589,7 +1589,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;If there are rooms, the left column of the page will render a vertical navigation with links leading to each room’s page. The right column displays a simple welcome message.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/10.png&quot; alt=&quot;Room index&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/10.png&quot; alt=&quot;Room index&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Pressing the &lt;code class=&quot;highlighter-rouge&quot;&gt;Create a room&lt;/code&gt; button we get the expected error for the non-existent action.&lt;/p&gt;
 
@@ -1679,11 +1679,11 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Time to create the first room. From the rooms’ index page, press the &lt;code class=&quot;highlighter-rouge&quot;&gt;Create a room&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/11.png&quot; alt=&quot;New room&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/11.png&quot; alt=&quot;New room&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Save and here it is.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/12.png&quot; alt=&quot;Room index with rooms&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/12.png&quot; alt=&quot;Room index with rooms&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Add this class in &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets/rails-chat-tutorial.scss&lt;/code&gt; to improve the display of the rooms.&lt;/p&gt;
 
@@ -1697,7 +1697,7 @@ Use Ctrl-C to stop
 &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/13.png&quot; alt=&quot;Room index with improved rooms&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/13.png&quot; alt=&quot;Room index with improved rooms&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: We will add the &lt;code class=&quot;highlighter-rouge&quot;&gt;edit&lt;/code&gt; link in the room’s page a.k.a. &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt; action.&lt;/p&gt;
 
@@ -1830,7 +1830,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Navigate to a room to see what has been done.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/14.png&quot; alt=&quot;Room page with chat&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/14.png&quot; alt=&quot;Room page with chat&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Pressing the &lt;code class=&quot;highlighter-rouge&quot;&gt;Send&lt;/code&gt; button nothing happens on the page but if you check the server’s console you will notice:&lt;/p&gt;
 
@@ -1905,7 +1905,7 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 
 &lt;p&gt;If you reload the page you will see something like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/15.png&quot; alt=&quot;Room message to string&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/15.png&quot; alt=&quot;Room message to string&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Let’s beautify the messages.&lt;/p&gt;
 
@@ -1991,7 +1991,7 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 
 &lt;p&gt;Reload the page. Magic.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/16.png&quot; alt=&quot;Improved display of room messages&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/16.png&quot; alt=&quot;Improved display of room messages&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;introducing-websockets---actioncable&quot;&gt;Introducing WebSockets - ActionCable&lt;/h2&gt;
 
@@ -2329,7 +2329,7 @@ end
 
 &lt;p&gt;That’s all! Long post, tired cat photo.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/irida.jpg&quot; alt=&quot;Tired cat photo&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/irida.jpg&quot; alt=&quot;Tired cat photo&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;alert alert-light&quot;&gt;
   &lt;div class=&quot;alert-heading&quot;&gt;&lt;i class=&quot;fa fa-comments&quot;&gt;&lt;/i&gt; Code and comments&lt;/div&gt;
@@ -2346,8 +2346,8 @@ end
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 04 Apr 2019 23:00:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets</guid>
+        <link>http://localhost:4000/programming/2019/04/04/creating-chat-application-rails-websockets</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/04/04/creating-chat-application-rails-websockets</guid>
         
         <category>ruby</category>
         
@@ -2661,8 +2661,8 @@ In irb type:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/elasticsearch-linux-manpages/elastic-man-pages.jpg&quot; alt=&quot;Cat bookmark&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 12 Apr 2018 19:00:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2018/04/12/elasticsearch-linux-man-pages</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2018/04/12/elasticsearch-linux-man-pages</guid>
+        <link>http://localhost:4000/programming/2018/04/12/elasticsearch-linux-man-pages</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2018/04/12/elasticsearch-linux-man-pages</guid>
         
         <category>elasticsearch</category>
         
@@ -2705,8 +2705,8 @@ In irb type:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 28 Mar 2018 00:15:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2018/03/28/custom-http-headers</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2018/03/28/custom-http-headers</guid>
+        <link>http://localhost:4000/programming/2018/03/28/custom-http-headers</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2018/03/28/custom-http-headers</guid>
         
         <category>ruby</category>
         
@@ -2762,7 +2762,7 @@ In irb type:&lt;/p&gt;
 
 &lt;p&gt;This tutorial is using &lt;strong&gt;Ruby 2.4.2&lt;/strong&gt;. You can check yours using: &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby --version&lt;/code&gt; or via RVM with &lt;code class=&quot;highlighter-rouge&quot;&gt;rvm list&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/rvm-list.png&quot; alt=&quot;rvm list screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/rvm-list.png&quot; alt=&quot;rvm list screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;glade&quot;&gt;Glade&lt;/h3&gt;
 
@@ -2856,7 +2856,7 @@ If you are on Ubuntu, install &lt;code class=&quot;highlighter-rouge&quot;&gt;gl
 
 &lt;p&gt;Ta daaaaaa&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/first-gtk-ruby-application.png&quot; alt=&quot;first gtk+ruby screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/first-gtk-ruby-application.png&quot; alt=&quot;first gtk+ruby screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Notes&lt;/strong&gt;&lt;/p&gt;
 
@@ -3024,7 +3024,7 @@ Well now the script fails since it can’t load the binary which is not produced
 
 &lt;p&gt;Open glade.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-empty-project.png&quot; alt=&quot;Glade empty project screen&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-empty-project.png&quot; alt=&quot;Glade empty project screen&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;A quick description of what you see.&lt;/p&gt;
 
@@ -3045,7 +3045,7 @@ Well now the script fails since it can’t load the binary which is not produced
 
 &lt;p&gt;We are going to create the application window. As you can guess, all we have to do is drag the widget ‘Application Window’ from the widget section to the design section.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-application-window-1.png&quot; alt=&quot;Glade application window&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-application-window-1.png&quot; alt=&quot;Glade application window&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Gtk::Builder&lt;/code&gt; is an object used in GTK+ applications to read textual descriptions of a user interface (like the one we will build via Glade) and build the described objects-widgets.&lt;/p&gt;
 
@@ -3063,7 +3063,7 @@ Well now the script fails since it can’t load the binary which is not produced
 
 &lt;p&gt;Now, in order to define our design as a template, check the &lt;code class=&quot;highlighter-rouge&quot;&gt;Composite&lt;/code&gt; checkbox in the property widget. Note that the &lt;code class=&quot;highlighter-rouge&quot;&gt;ID&lt;/code&gt; property changed to &lt;code class=&quot;highlighter-rouge&quot;&gt;Class Name&lt;/code&gt;. Fill in there &lt;code class=&quot;highlighter-rouge&quot;&gt;TodoApplicationWindow&lt;/code&gt;. This is the class we are going to create in our code to represent this widget.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-application-window-2.png&quot; alt=&quot;Glade application window composite&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-application-window-2.png&quot; alt=&quot;Glade application window composite&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Save the file with name &lt;code class=&quot;highlighter-rouge&quot;&gt;application_window.ui&lt;/code&gt; in a new folder named &lt;code class=&quot;highlighter-rouge&quot;&gt;ui&lt;/code&gt; inside the &lt;code class=&quot;highlighter-rouge&quot;&gt;resources&lt;/code&gt;. If you open the file from an editor you will see this:&lt;/p&gt;
 
@@ -3135,7 +3135,7 @@ Well now the script fails since it can’t load the binary which is not produced
 
 &lt;p&gt;Execute the script.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-application-window-1.png&quot; alt=&quot;GTK+ ToDo window&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-application-window-1.png&quot; alt=&quot;GTK+ ToDo window&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;define-the-model&quot;&gt;Define the model&lt;/h3&gt;
 
@@ -3252,7 +3252,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;Save the file and execute the script&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-add-new-item-application-window.png&quot; alt=&quot;Add new item button in application window&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-add-new-item-application-window.png&quot; alt=&quot;Add new item button in application window&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Don’t worry, we will improve the design later on. Now, let’s see how to &lt;em&gt;connect&lt;/em&gt; functionality to our button’s &lt;em&gt;clicked&lt;/em&gt; event.&lt;/p&gt;
 
@@ -3293,7 +3293,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;Check its &lt;code class=&quot;highlighter-rouge&quot;&gt;Composite&lt;/code&gt; property and name the class &lt;code class=&quot;highlighter-rouge&quot;&gt;TodoNewItemWindow&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-1.png&quot; alt=&quot;GTK+ Todo new item window empty&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-1.png&quot; alt=&quot;GTK+ Todo new item window empty&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt; from the widget section and place it in the window we added in the previous steps.&lt;/li&gt;
@@ -3302,7 +3302,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;In the &lt;em&gt;Common&lt;/em&gt; tab of the properties section, set the &lt;code class=&quot;highlighter-rouge&quot;&gt;Widget Spacing &amp;gt; Margins &amp;gt; Top, Bottom, Left, Right&lt;/code&gt; all to &lt;strong&gt;10&lt;/strong&gt; so that the contents are not stuck to the borders of the window.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-2.png&quot; alt=&quot;GTK+ Todo new item window with grid&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-2.png&quot; alt=&quot;GTK+ Todo new item window with grid&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag four times a &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; widget from the widget section and place them in each row of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Grid&lt;/code&gt;.&lt;/li&gt;
@@ -3318,7 +3318,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;This step is optional but I suggest that you do it: We will not bind these labels in our window since we don’t need to alter their state or behavior. So in this context, we don’t need to set a descriptive id for each of them like we did for the &lt;code class=&quot;highlighter-rouge&quot;&gt;add_new_item_button&lt;/code&gt; button in the application window. &lt;strong&gt;BUT&lt;/strong&gt;. We are going to add more elements to our design and the hierarchy of the widgets in Glade will be hard to read with all the &lt;code class=&quot;highlighter-rouge&quot;&gt;label1&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;label2&lt;/code&gt;. So set a descriptive id to each to make our lives easier (like &lt;code class=&quot;highlighter-rouge&quot;&gt;id_label&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;title_label&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;notes_label&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;priority_label&lt;/code&gt;). I even set the grid’s id to &lt;code class=&quot;highlighter-rouge&quot;&gt;main_grid&lt;/code&gt; cause I don’t like seeing numbers in ids or variable names :)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-3.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-3.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; from the widget section to the second column of the grid’s first row. The id is automatically generated by our model thus we won’t allow editing so a label to display it is more than enough.&lt;/li&gt;
@@ -3327,7 +3327,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;We are going to bind this widget to our window class so that we can change its text each time we load the window so setting a label through glade is not needed but doing so makes the design look closer to what it’ll look like when rendered with actual data. So you can optionally set a label here to whatever suits you better. I set mine to &lt;code class=&quot;highlighter-rouge&quot;&gt;id-of-the-todo-item-here&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-4.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-4.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Text Entry&lt;/code&gt; from the widget section to the second column of the second row of the grid.&lt;/li&gt;
@@ -3335,7 +3335,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;In the &lt;em&gt;Common&lt;/em&gt; tab of the properties section, check the &lt;code class=&quot;highlighter-rouge&quot;&gt;Widget Spacing &amp;gt; Expand &amp;gt; Horizontal&lt;/code&gt; checkbox and turn on the switch which is right next to it. This way, the widget will expand horizontally every time its parent (a.k.a. the grid) is resized.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-5.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-5.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Text View&lt;/code&gt; from the widget section to the second column of the third row of the grid.&lt;/li&gt;
@@ -3343,7 +3343,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;In the &lt;em&gt;Common&lt;/em&gt; tab of the properties section, check the &lt;code class=&quot;highlighter-rouge&quot;&gt;Widget Spacing &amp;gt; Expand &amp;gt; Horizontal, Vertical&lt;/code&gt; checkboxes and turn on the switches which are right next to them. This way, the widget will expand horizontally and vertically every time its parent (a.k.a. the grid) is resized.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-6.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-6.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Combo Box&lt;/code&gt; from the widget section to the second column of the forth row of the grid.&lt;/li&gt;
@@ -3352,7 +3352,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;This widget is actually a drop down element and we are going to populate its values that can be selected by the user when it shows up inside our window class.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-7.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-7.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Button Box&lt;/code&gt; from the widget section to the second column of the last row of the grid.&lt;/li&gt;
@@ -3363,7 +3363,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;Again, this widget won’t be altered by our code but you can give it a descriptive &lt;code class=&quot;highlighter-rouge&quot;&gt;ID&lt;/code&gt; for readability. I named mine &lt;code class=&quot;highlighter-rouge&quot;&gt;actions_box&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-8.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-8.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Button&lt;/code&gt; widget twice and place it to each of the two boxes of the button box widget we added in the previous step.&lt;/li&gt;
@@ -3371,7 +3371,7 @@ Well now the script fails since it can’t load the binary which is not produced
   &lt;li&gt;In the &lt;em&gt;General&lt;/em&gt; tab of the properties window, set their &lt;em&gt;Button Content &amp;gt; Label with option image&lt;/em&gt; property to &lt;strong&gt;Cancel&lt;/strong&gt; and &lt;strong&gt;Save&lt;/strong&gt; respectively.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-9.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-9.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The window is ready. Save the file under &lt;code class=&quot;highlighter-rouge&quot;&gt;resources/ui/new_item_window.ui&lt;/code&gt;.&lt;/p&gt;
 
@@ -3423,7 +3423,7 @@ Go ahead and change that code in &lt;code class=&quot;highlighter-rouge&quot;&gt
 
 &lt;p&gt;Let’s see what we have done. Start the application and click on the &lt;strong&gt;Add new item&lt;/strong&gt; button. Ta daaaaaaa&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-10.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-10.png&quot; alt=&quot;GTK+ Todo new item with grid and labels&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Of course, nothing happens when pressing the buttons. We will change that.&lt;/p&gt;
 
@@ -3559,7 +3559,7 @@ Go ahead and change that code in &lt;code class=&quot;highlighter-rouge&quot;&gt
 
 &lt;p&gt;Start the application and click on the &lt;strong&gt;Add new item&lt;/strong&gt; button. Ta daaaaaa (note the &lt;em&gt;- Create mode&lt;/em&gt; part in the title).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-11.png&quot; alt=&quot;New item window&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-11.png&quot; alt=&quot;New item window&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;cancel-the-item-creationupdate&quot;&gt;Cancel the item creation/update&lt;/h4&gt;
 
@@ -3595,7 +3595,7 @@ Go ahead and change that code in &lt;code class=&quot;highlighter-rouge&quot;&gt
 
 &lt;p&gt;Let’s try that out.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-12.png&quot; alt=&quot;New item window&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-12.png&quot; alt=&quot;New item window&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Pressing save and navigating to your &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.gtk-todo-tutorial&lt;/code&gt; folder you should see a file there. Mine had the following contents:&lt;/p&gt;
 
@@ -3630,7 +3630,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;The orientation of the box is already vertical so we are fine.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-13.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-new-item-window-13.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Now, drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;List Box&lt;/code&gt; and place it on the free are of the previously added box.&lt;/li&gt;
@@ -3638,7 +3638,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Set is &lt;code class=&quot;highlighter-rouge&quot;&gt;Selection mode&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;None&lt;/code&gt; since we won’t provide such a functionality.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/gtk-todo-view-todo-items-1.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/gtk-todo-view-todo-items-1.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;design-the-todo-item-list-box-row&quot;&gt;Design the ToDo item list box row&lt;/h4&gt;
 
@@ -3651,13 +3651,13 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Inside the &lt;strong&gt;hierarchy section&lt;/strong&gt; right click on the &lt;code class=&quot;highlighter-rouge&quot;&gt;List Box&lt;/code&gt; and select &lt;code class=&quot;highlighter-rouge&quot;&gt;Add Row&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-01.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-01.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Inside the &lt;strong&gt;hierarchy section&lt;/strong&gt; right click on the newly added &lt;code class=&quot;highlighter-rouge&quot;&gt;List Box Row&lt;/code&gt; which is nested under the &lt;code class=&quot;highlighter-rouge&quot;&gt;List Box&lt;/code&gt; and select &lt;code class=&quot;highlighter-rouge&quot;&gt;Remove parent&lt;/code&gt;. There it is. The &lt;code class=&quot;highlighter-rouge&quot;&gt;List Box Row&lt;/code&gt; is the top level widget of the project now.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-02.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-02.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Check the widget’s &lt;code class=&quot;highlighter-rouge&quot;&gt;Composite&lt;/code&gt; property and set its name to &lt;code class=&quot;highlighter-rouge&quot;&gt;TodoItemListBoxRow&lt;/code&gt;.&lt;/li&gt;
@@ -3666,7 +3666,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Set its &lt;code class=&quot;highlighter-rouge&quot;&gt;ID&lt;/code&gt; property to &lt;code class=&quot;highlighter-rouge&quot;&gt;main_box&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-03.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-03.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag another &lt;code class=&quot;highlighter-rouge&quot;&gt;Box&lt;/code&gt; from the widget section to the first row of the previously added box.&lt;/li&gt;
@@ -3676,7 +3676,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Set its &lt;code class=&quot;highlighter-rouge&quot;&gt;Spacing&lt;/code&gt; (&lt;em&gt;General&lt;/em&gt; tab) property to &lt;strong&gt;10&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-04.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-04.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Label&lt;/code&gt; from the widget section to the first column of the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo_item_top_box&lt;/code&gt;.&lt;/li&gt;
@@ -3685,7 +3685,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;In the &lt;em&gt;Common&lt;/em&gt; tab of the properties section, check the &lt;em&gt;Widget Spacing &amp;gt; Expand &amp;gt; Horizontal&lt;/em&gt; checkbox and turn on the switch which is right next to it so that the label expands to available space.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-05.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-05.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Button&lt;/code&gt; from the widget section to the second column of the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo_item_top_box&lt;/code&gt;.&lt;/li&gt;
@@ -3693,7 +3693,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Check the &lt;em&gt;Button Content &amp;gt; Label with optional image&lt;/em&gt; radio and type &lt;code class=&quot;highlighter-rouge&quot;&gt;...&lt;/code&gt; (three dots).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-06.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-06.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Revealer&lt;/code&gt; widget from the widget section to the second row of the &lt;code class=&quot;highlighter-rouge&quot;&gt;main_box&lt;/code&gt;.&lt;/li&gt;
@@ -3702,7 +3702,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Set its &lt;code class=&quot;highlighter-rouge&quot;&gt;Transition type&lt;/code&gt; property to &lt;code class=&quot;highlighter-rouge&quot;&gt;Slide Down&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-07.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-07.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Box&lt;/code&gt; from the widget section to the reveal space.&lt;/li&gt;
@@ -3711,7 +3711,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;In the &lt;em&gt;Common&lt;/em&gt; tab, set its &lt;em&gt;Widget Spacing &amp;gt; Margins &amp;gt; Top&lt;/em&gt; property to &lt;strong&gt;10&lt;/strong&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-08.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-08.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Button Box&lt;/code&gt; from the widget section to the first row of the &lt;code class=&quot;highlighter-rouge&quot;&gt;details_box&lt;/code&gt;.&lt;/li&gt;
@@ -3719,7 +3719,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Set its &lt;code class=&quot;highlighter-rouge&quot;&gt;Layout style&lt;/code&gt; property to &lt;code class=&quot;highlighter-rouge&quot;&gt;expand&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-09.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-09.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag two &lt;code class=&quot;highlighter-rouge&quot;&gt;Button&lt;/code&gt; widgets to the first and second column of the &lt;code class=&quot;highlighter-rouge&quot;&gt;todo_item_action_box&lt;/code&gt; respectively.&lt;/li&gt;
@@ -3727,7 +3727,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Set their &lt;em&gt;Button Content &amp;gt; Label with optional image&lt;/em&gt; properties to &lt;code class=&quot;highlighter-rouge&quot;&gt;Delete&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Edit&lt;/code&gt; respective.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-10.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-10.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Drag a &lt;code class=&quot;highlighter-rouge&quot;&gt;Viewport&lt;/code&gt; widget from the widget section to the second row of the &lt;code class=&quot;highlighter-rouge&quot;&gt;details_box&lt;/code&gt;.&lt;/li&gt;
@@ -3737,7 +3737,7 @@ To accomplish that we are going to add a &lt;code class=&quot;highlighter-rouge&
   &lt;li&gt;Uncheck its &lt;code class=&quot;highlighter-rouge&quot;&gt;Editable&lt;/code&gt; property in the &lt;code class=&quot;highlighter-rouge&quot;&gt;General&lt;/code&gt; tab of the properties section.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/glade-listbox-row-11.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/glade-listbox-row-11.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;create-the-todo-item-list-box-row-class&quot;&gt;Create the ToDo item list box row class&lt;/h3&gt;
 
@@ -3840,7 +3840,7 @@ Add this code in &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::Applicati
 
 &lt;p&gt;Let’s see what we’ve created. Start the application and try adding a new ToDo item. After pressing the &lt;strong&gt;Save&lt;/strong&gt; button you should see the parent &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::ApplicationWindow&lt;/code&gt; being automatically updated with the new item!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/both-windows.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/both-windows.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;What’s left to do, is to complete the functionality of the &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::ItemListBoxRow&lt;/code&gt;.&lt;/p&gt;
 
@@ -3901,13 +3901,13 @@ Add this code in &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::Applicati
 
 &lt;p&gt;Save and run the application. There it is.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/tutorial-preview.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/tutorial-preview.png&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This has been a &lt;strong&gt;really long tutorial&lt;/strong&gt; and even though there are so many items that we haven’t covered I think we better end it here.&lt;/p&gt;
 
 &lt;p&gt;Long post, cat photo.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/gtk-ruby/cat.jpg&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/gtk-ruby/cat.jpg&quot; alt=&quot;View todo items&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;useful-links&quot;&gt;Useful links&lt;/h3&gt;
 
@@ -3919,8 +3919,8 @@ Add this code in &lt;code class=&quot;highlighter-rouge&quot;&gt;Todo::Applicati
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 25 Jan 2018 21:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby</guid>
+        <link>http://localhost:4000/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2018/01/25/creating-a-gtk-todo-application-with-ruby</guid>
         
         <category>linux</category>
         
@@ -3991,7 +3991,7 @@ The sample application will be a stupid simple blog and the data will be, what e
 
 &lt;p&gt;This tutorial is using &lt;strong&gt;Ruby 2.4.2&lt;/strong&gt;. You can check yours using: &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby --version&lt;/code&gt; or via RVM with &lt;code class=&quot;highlighter-rouge&quot;&gt;rvm list&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/rvm-list.png&quot; alt=&quot;rvm list screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/rvm-list.png&quot; alt=&quot;rvm list screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;rails&quot;&gt;Rails&lt;/h3&gt;
 
@@ -4005,7 +4005,7 @@ The sample application will be a stupid simple blog and the data will be, what e
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rails &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-version.png&quot; alt=&quot;rails version screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-version.png&quot; alt=&quot;rails version screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Important note:&lt;/strong&gt; when working on tutorials, always try to use the same versions of software as described in them to avoid losing time figuring out what is wrong if you don’t see the same results as provided in the tutorial. With that in mind, make sure that you have the following versions installed:&lt;/p&gt;
 &lt;ul&gt;
@@ -4031,14 +4031,14 @@ rails s
 
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; the &lt;code class=&quot;highlighter-rouge&quot;&gt;s&lt;/code&gt; in the command &lt;code class=&quot;highlighter-rouge&quot;&gt;rails s&lt;/code&gt; is an alias for &lt;code class=&quot;highlighter-rouge&quot;&gt;server&lt;/code&gt;. You can start the server with &lt;code class=&quot;highlighter-rouge&quot;&gt;rails server&lt;/code&gt; too.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-server.png&quot; alt=&quot;rails launch server&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-server.png&quot; alt=&quot;rails launch server&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As declared in the puma startup log, the server is listening on port 3000. Let’s visit the application from the browser.
 Navigate to &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:3000&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;You should be seeing this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-first-run.png&quot; alt=&quot;rails first run&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-first-run.png&quot; alt=&quot;rails first run&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;define-the-model&quot;&gt;Define the model&lt;/h2&gt;
 
@@ -4075,7 +4075,7 @@ Navigate to &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:300
 
 &lt;p&gt;Success!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-console-first-post.png&quot; alt=&quot;rails console first post&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-console-first-post.png&quot; alt=&quot;rails console first post&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;define-the-controller&quot;&gt;Define the controller&lt;/h2&gt;
 
@@ -4086,7 +4086,7 @@ Navigate to &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:300
 
 &lt;p&gt;Tadaaaaa&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-generate-controller-post.png&quot; alt=&quot;rails console generate controller for posts&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-generate-controller-post.png&quot; alt=&quot;rails console generate controller for posts&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now, we are going to define the post routes and set the index page of posts as the application’s homepage.&lt;/p&gt;
 
@@ -4102,7 +4102,7 @@ Navigate to &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:300
 
 &lt;p&gt;Let’s start the server (if it is already started, restart it) and navigate to &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:3000&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/posts-homepage.png&quot; alt=&quot;posts homepage&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/posts-homepage.png&quot; alt=&quot;posts homepage&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The links don’t do much at the moment but we are going to change this later on.&lt;/p&gt;
 
@@ -4148,7 +4148,7 @@ Navigate to &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:300
 
 &lt;p&gt;Start the kibana service and navigate to its home page at &lt;a href=&quot;http://localhost:5601&quot;&gt;http://localhost:5601&lt;/a&gt;. We will use heavily the &lt;strong&gt;Dev Tools&lt;/strong&gt; which is a powerful console talking to our elasticsearch engine.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/kibana-dev-tools.png&quot; alt=&quot;Kibana Dev tools&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/kibana-dev-tools.png&quot; alt=&quot;Kibana Dev tools&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;On the left section of the console we write our commands and on the right part we see their execution output.&lt;/p&gt;
 
@@ -4162,7 +4162,7 @@ Navigate to &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:300
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;import&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/index-does-not-exist.png&quot; alt=&quot;Index does not exist error&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/index-does-not-exist.png&quot; alt=&quot;Index does not exist error&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As you can, since we haven’t created the index for the posts, the command failed to execute. Reading the error we do understand that the gem automatically tried to find an &lt;strong&gt;index named as the plural form of our model name &lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt;&lt;/strong&gt;. Following the hint, we will execute the command, this time demanding the creation of the index if it doesn’t exist.&lt;/p&gt;
 
@@ -4170,7 +4170,7 @@ Navigate to &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:300
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Back to kibana now, let’s see what has happened to our instance’s indices.
-&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/kibana-post-index.png&quot; alt=&quot;Kibana post index&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/kibana-post-index.png&quot; alt=&quot;Kibana post index&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As you can see, the &lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt; index was created successfully. But keep this in mind: the index was created automatically, &lt;strong&gt;we didn’t have the opportunity to define what fields should be indexed, what should each record in the index contain or set any other kind of configuration&lt;/strong&gt;. Don’t worry though, later on we will change this approach. We will re-create the index explicitly the way we want it to be.&lt;/p&gt;
 
@@ -4180,7 +4180,7 @@ Navigate to &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:300
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;The command will search for post records without any filters/terms/criteria in the &lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt; index so we expect to get one result. And there it is.
-&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/kibana-post-search-result-one.png&quot; alt=&quot;Kibana post search first result&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/kibana-post-search-result-one.png&quot; alt=&quot;Kibana post search first result&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We are interested in the &lt;code class=&quot;highlighter-rouge&quot;&gt;hits&lt;/code&gt; attribute of the response’s JSON and escecially its &lt;code class=&quot;highlighter-rouge&quot;&gt;_source&lt;/code&gt; attribute. As you can see, all of our model’s columns have been serialized in the &lt;strong&gt;document&lt;/strong&gt; that has been indexed for that post in elasticsearch.&lt;/p&gt;
 
@@ -4192,7 +4192,7 @@ Navigate to &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:300
 &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;size&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;first&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-console-simple-search.png&quot; alt=&quot;Rails console simple search&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-console-simple-search.png&quot; alt=&quot;Rails console simple search&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The first command executes the simplest kind of search in our index. And it brought results! The same will happen if you search for &lt;code class=&quot;highlighter-rouge&quot;&gt;salute&lt;/code&gt; or ‘lazarus’ or &lt;code class=&quot;highlighter-rouge&quot;&gt;post&lt;/code&gt; since our unique model contains these words in the title/body/tags/author fields.&lt;/p&gt;
 
@@ -4202,7 +4202,7 @@ Navigate to &lt;a href=&quot;http://localhost:3000&quot;&gt;http://localhost:300
 &lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'posts'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;size&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-console-plural-search.png&quot; alt=&quot;Rails console plural search&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-console-plural-search.png&quot; alt=&quot;Rails console plural search&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hmmm. No results even though we would like elasticsearch to understand that we used the plural of words contained in our model. We are going to alter the configuration to match our needs.&lt;/p&gt;
 
@@ -4243,7 +4243,7 @@ To do so, edit the &lt;code class=&quot;highlighter-rouge&quot;&gt;app/models/po
 &lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;force: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/rails-console-delete-create-index.png&quot; alt=&quot;Rails console delete create index&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/rails-console-delete-create-index.png&quot; alt=&quot;Rails console delete create index&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;All good. Now try searching for ‘posts’:&lt;/p&gt;
 
@@ -4439,15 +4439,15 @@ The general idea is to create a &lt;em&gt;search page&lt;/em&gt; with a text fie
 
 &lt;p&gt;Restart the server and navigate to home page.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/home-page-with-search-link.png&quot; alt=&quot;Home page with search link&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/home-page-with-search-link.png&quot; alt=&quot;Home page with search link&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Clicking on the &lt;code class=&quot;highlighter-rouge&quot;&gt;here&lt;/code&gt; link, you reach at the search page.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/search-page.png&quot; alt=&quot;Search page&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/search-page.png&quot; alt=&quot;Search page&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Submitting a query you are still on the search page but this time with the results found on elasticsearch.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/search-page-with-results.png&quot; alt=&quot;Search page with results&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/search-page-with-results.png&quot; alt=&quot;Search page with results&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
@@ -4464,11 +4464,11 @@ The general idea is to create a &lt;em&gt;search page&lt;/em&gt; with a text fie
 
 &lt;p&gt;Long post, cat photo. Here’s my elastic cat.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/elasticsearch-rails/irida-elastic.png&quot; alt=&quot;cat stretching&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/elasticsearch-rails/irida-elastic.png&quot; alt=&quot;cat stretching&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 03 Dec 2017 08:30:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2017/12/03/elasticsearch-and-rails-tutorial</guid>
+        <link>http://localhost:4000/programming/2017/12/03/elasticsearch-and-rails-tutorial</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2017/12/03/elasticsearch-and-rails-tutorial</guid>
         
         <category>ruby</category>
         
@@ -4567,8 +4567,8 @@ Back to the browser now, everything seemed fine till the moment I tried to submi
 &lt;p&gt;Done. Problem solved.&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Oct 2014 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2014/10/14/rails-radio-buttons-required-boolean</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2014/10/14/rails-radio-buttons-required-boolean</guid>
+        <link>http://localhost:4000/programming/2014/10/14/rails-radio-buttons-required-boolean</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2014/10/14/rails-radio-buttons-required-boolean</guid>
         
         <category>rails</category>
         
@@ -4699,8 +4699,8 @@ Back to the browser now, everything seemed fine till the moment I tried to submi
 &lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-bQn2QNa2khs/VE_hB6TVtpI/AAAAAAAAA7Y/vnRKVmXyXJ0/s1600/irida.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Oct 2014 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2014/10/14/testing-execution-of-filters-with-rspec</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2014/10/14/testing-execution-of-filters-with-rspec</guid>
+        <link>http://localhost:4000/programming/2014/10/14/testing-execution-of-filters-with-rspec</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2014/10/14/testing-execution-of-filters-with-rspec</guid>
         
         <category>rspec</category>
         
@@ -4832,8 +4832,8 @@ NOT easy, believe me…&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/irida-small.jpeg&quot; alt=&quot;cat in panic&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 14 Oct 2014 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2014/10/14/rescue-from-memory-leak</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2014/10/14/rescue-from-memory-leak</guid>
+        <link>http://localhost:4000/programming/2014/10/14/rescue-from-memory-leak</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2014/10/14/rescue-from-memory-leak</guid>
         
         <category>rails</category>
         
@@ -5080,8 +5080,8 @@ git push openshift master
 &lt;p&gt;That’s it. We’re done! The application is successfully deployed to OpenShift.&lt;/p&gt;
 </description>
         <pubDate>Sun, 22 Dec 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2013/12/22/creating-a-simple-todo-part-4</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2013/12/22/creating-a-simple-todo-part-4</guid>
+        <link>http://localhost:4000/programming/2013/12/22/creating-a-simple-todo-part-4</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2013/12/22/creating-a-simple-todo-part-4</guid>
         
         <category>ruby</category>
         
@@ -5581,8 +5581,8 @@ A model scope that uses the &lt;code class=&quot;highlighter-rouge&quot;&gt;abil
 
 </description>
         <pubDate>Fri, 20 Dec 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2013/12/20/creating-a-simple-todo-part-3</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2013/12/20/creating-a-simple-todo-part-3</guid>
+        <link>http://localhost:4000/programming/2013/12/20/creating-a-simple-todo-part-3</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2013/12/20/creating-a-simple-todo-part-3</guid>
         
         <category>ruby</category>
         
@@ -6051,8 +6051,8 @@ We can use the same partial we created for the &lt;strong&gt;new&lt;/strong&gt; 
 
 </description>
         <pubDate>Tue, 17 Dec 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2013/12/17/creating-a-simple-todo-part-2</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2013/12/17/creating-a-simple-todo-part-2</guid>
+        <link>http://localhost:4000/programming/2013/12/17/creating-a-simple-todo-part-2</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2013/12/17/creating-a-simple-todo-part-2</guid>
         
         <category>ruby</category>
         
@@ -6623,8 +6623,8 @@ We only allow values for the &lt;code class=&quot;highlighter-rouge&quot;&gt;tit
 &lt;/ul&gt;
 </description>
         <pubDate>Sat, 07 Dec 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2013/12/07/creating-a-simple-todo-part-1</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2013/12/07/creating-a-simple-todo-part-1</guid>
+        <link>http://localhost:4000/programming/2013/12/07/creating-a-simple-todo-part-1</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2013/12/07/creating-a-simple-todo-part-1</guid>
         
         <category>ruby</category>
         
@@ -6803,8 +6803,8 @@ So let’s create this view in the appropriate folder which is:
 &lt;p&gt;What’s next? How about creating a &lt;a href=&quot;/programming/2013/12/07/creating-a-simple-todo-part-1&quot;&gt;simple ToDo application&lt;/a&gt;?&lt;/p&gt;
 </description>
         <pubDate>Sun, 24 Nov 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2013/11/24/saying-hello-world-with-ruby-on-rails</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2013/11/24/saying-hello-world-with-ruby-on-rails</guid>
+        <link>http://localhost:4000/programming/2013/11/24/saying-hello-world-with-ruby-on-rails</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2013/11/24/saying-hello-world-with-ruby-on-rails</guid>
         
         <category>ruby</category>
         
@@ -6884,8 +6884,8 @@ I was really excited actually and I couldn’t wait to start learning the new st
 &lt;p&gt;Just give it some time.&lt;/p&gt;
 </description>
         <pubDate>Fri, 08 Nov 2013 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2013/11/08/dont-give-up-on-ruby</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2013/11/08/dont-give-up-on-ruby</guid>
+        <link>http://localhost:4000/programming/2013/11/08/dont-give-up-on-ruby</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2013/11/08/dont-give-up-on-ruby</guid>
         
         <category>ruby</category>
         

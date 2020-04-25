@@ -3,15 +3,15 @@
   <channel>
     <title>iridakos</title>
     <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
-    <link>https://iridakos.com/</link>
+    <link>http://localhost:4000/</link>
     <image>
-      <url>https://iridakos.com/assets/images/site.png</url>
-      <link>https://iridakos.com/</link>
+      <url>http://localhost:4000/assets/images/site.png</url>
+      <link>http://localhost:4000/</link>
       <title>iridakos</title>
     </image>
-    <atom:link href="https://iridakos.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 25 Apr 2020 00:24:35 +0300</pubDate>
-    <lastBuildDate>Sat, 25 Apr 2020 00:24:35 +0300</lastBuildDate>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 25 Apr 2020 13:04:28 +0300</pubDate>
+    <lastBuildDate>Sat, 25 Apr 2020 13:04:28 +0300</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -134,8 +134,8 @@ CATEGORIES_ROOT_DIRECTORY/programming/2020/04/2020-04-18.md
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/stup-cli-notes/phoebe.png&quot; alt=&quot;Phoebe, my cat, keeping notes without stup&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 20 Apr 2020 12:00:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2020/04/20/stup-cli-notes</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2020/04/20/stup-cli-notes</guid>
+        <link>http://localhost:4000/programming/2020/04/20/stup-cli-notes</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/04/20/stup-cli-notes</guid>
         
         <category>linux</category>
         
@@ -432,8 +432,8 @@ b
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 06 Feb 2020 12:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2020/02/06/shell-palindrome-dates</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2020/02/06/shell-palindrome-dates</guid>
+        <link>http://localhost:4000/programming/2020/02/06/shell-palindrome-dates</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2020/02/06/shell-palindrome-dates</guid>
         
         <category>how-to</category>
         
@@ -767,8 +767,8 @@ b
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 23 Jan 2020 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/cats/2020/01/23/goodbye-irida</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2020/01/23/goodbye-irida</guid>
+        <link>http://localhost:4000/cats/2020/01/23/goodbye-irida</link>
+        <guid isPermaLink="true">http://localhost:4000/cats/2020/01/23/goodbye-irida</guid>
         
         <category>cat</category>
         
@@ -817,8 +817,8 @@ Using &lt;strong&gt;minus nine&lt;/strong&gt;.
 &lt;/pre&gt;
 </description>
         <pubDate>Fri, 20 Dec 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/12/20/thy-vim</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/20/thy-vim</guid>
+        <link>http://localhost:4000/programming/2019/12/20/thy-vim</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/12/20/thy-vim</guid>
         
         <category>humor</category>
         
@@ -843,8 +843,8 @@ Using &lt;strong&gt;minus nine&lt;/strong&gt;.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Thu, 12 Dec 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/12/12/descriptive-variable-names</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/12/descriptive-variable-names</guid>
+        <link>http://localhost:4000/programming/2019/12/12/descriptive-variable-names</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/12/12/descriptive-variable-names</guid>
         
         <category>humor</category>
         
@@ -860,8 +860,8 @@ Using &lt;strong&gt;minus nine&lt;/strong&gt;.
         <description>
 </description>
         <pubDate>Fri, 06 Dec 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/cats/2019/12/06/movie-night</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2019/12/06/movie-night</guid>
+        <link>http://localhost:4000/cats/2019/12/06/movie-night</link>
+        <guid isPermaLink="true">http://localhost:4000/cats/2019/12/06/movie-night</guid>
         
         <category>photo</category>
         
@@ -895,8 +895,8 @@ Using &lt;strong&gt;minus nine&lt;/strong&gt;.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 04 Dec 2019 11:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/12/04/pizza-commit</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/04/pizza-commit</guid>
+        <link>http://localhost:4000/programming/2019/12/04/pizza-commit</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/12/04/pizza-commit</guid>
         
         <category>humor</category>
         
@@ -912,8 +912,8 @@ Using &lt;strong&gt;minus nine&lt;/strong&gt;.
         <description>&lt;h1 id=&quot;ptssd&quot;&gt;PTSSD&lt;/h1&gt;
 </description>
         <pubDate>Wed, 04 Dec 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/12/04/ptssd</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/04/ptssd</guid>
+        <link>http://localhost:4000/programming/2019/12/04/ptssd</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/12/04/ptssd</guid>
         
         <category>humor</category>
         
@@ -929,8 +929,8 @@ Using &lt;strong&gt;minus nine&lt;/strong&gt;.
         <description>&lt;p&gt;I am talking to my code but according to my cat, this is the least worrying.&lt;/p&gt;
 </description>
         <pubDate>Tue, 03 Dec 2019 21:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/12/03/talking-to-my-code</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/12/03/talking-to-my-code</guid>
+        <link>http://localhost:4000/programming/2019/12/03/talking-to-my-code</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/12/03/talking-to-my-code</guid>
         
         <category>humor</category>
         
@@ -966,8 +966,8 @@ At least nothing was thrown.
 &lt;/pre&gt;
 </description>
         <pubDate>Fri, 22 Nov 2019 17:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/11/22/i</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/11/22/i</guid>
+        <link>http://localhost:4000/programming/2019/11/22/i</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/11/22/i</guid>
         
         <category>humor</category>
         
@@ -1333,8 +1333,8 @@ At least nothing was thrown.
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/mongoid-nested-embedded/cat.jpg&quot; alt=&quot;Cat&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 Nov 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/11/22/mongoid-nested-attributes-embedded-type</guid>
+        <link>http://localhost:4000/programming/2019/11/22/mongoid-nested-attributes-embedded-type</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/11/22/mongoid-nested-attributes-embedded-type</guid>
         
         <category>ruby</category>
         
@@ -1364,8 +1364,8 @@ At least nothing was thrown.
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/two-step-authentication/post.png&quot; alt=&quot;Two step authentication&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 04 Nov 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/cats/2019/11/04/two-step-authentication</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2019/11/04/two-step-authentication</guid>
+        <link>http://localhost:4000/cats/2019/11/04/two-step-authentication</link>
+        <guid isPermaLink="true">http://localhost:4000/cats/2019/11/04/two-step-authentication</guid>
         
         <category>photo</category>
         
@@ -1397,8 +1397,8 @@ At least nothing was thrown.
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/hanging-out/where-s-the-food.png&quot; alt=&quot;Where's the food&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 01 Nov 2019 10:00:00 +0200</pubDate>
-        <link>https://iridakos.com/cats/2019/11/01/hug-the-cat</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2019/11/01/hug-the-cat</guid>
+        <link>http://localhost:4000/cats/2019/11/01/hug-the-cat</link>
+        <guid isPermaLink="true">http://localhost:4000/cats/2019/11/01/hug-the-cat</guid>
         
         <category>photo</category>
         
@@ -1479,8 +1479,8 @@ This time I followed the &lt;a href=&quot;https://www.youtube.com/watch?v=kasGRk
 &lt;/dl&gt;
 </description>
         <pubDate>Mon, 14 Oct 2019 17:00:00 +0300</pubDate>
-        <link>https://iridakos.com/painting/2019/10/14/mountains</link>
-        <guid isPermaLink="true">https://iridakos.com/painting/2019/10/14/mountains</guid>
+        <link>http://localhost:4000/painting/2019/10/14/mountains</link>
+        <guid isPermaLink="true">http://localhost:4000/painting/2019/10/14/mountains</guid>
         
         <category>painting</category>
         
@@ -1529,8 +1529,8 @@ I surprised myself with the outcome even though it’s not perfect, it’s not p
 &lt;/dl&gt;
 </description>
         <pubDate>Fri, 11 Oct 2019 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/painting/2019/10/11/meadow</link>
-        <guid isPermaLink="true">https://iridakos.com/painting/2019/10/11/meadow</guid>
+        <link>http://localhost:4000/painting/2019/10/11/meadow</link>
+        <guid isPermaLink="true">http://localhost:4000/painting/2019/10/11/meadow</guid>
         
         <category>painting</category>
         
@@ -1588,8 +1588,8 @@ I surprised myself with the outcome even though it’s not perfect, it’s not p
 &lt;/dl&gt;
 </description>
         <pubDate>Mon, 07 Oct 2019 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/painting/2019/10/07/drawing-my-cat</link>
-        <guid isPermaLink="true">https://iridakos.com/painting/2019/10/07/drawing-my-cat</guid>
+        <link>http://localhost:4000/painting/2019/10/07/drawing-my-cat</link>
+        <guid isPermaLink="true">http://localhost:4000/painting/2019/10/07/drawing-my-cat</guid>
         
         <category>painting</category>
         
@@ -1609,8 +1609,8 @@ I surprised myself with the outcome even though it’s not perfect, it’s not p
         <description>
 </description>
         <pubDate>Fri, 13 Sep 2019 00:00:00 +0300</pubDate>
-        <link>https://iridakos.com/cats/2019/09/13/another-friday</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2019/09/13/another-friday</guid>
+        <link>http://localhost:4000/cats/2019/09/13/another-friday</link>
+        <guid isPermaLink="true">http://localhost:4000/cats/2019/09/13/another-friday</guid>
         
         <category>friday</category>
         
@@ -1845,8 +1845,8 @@ Lazarus
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 26 Jun 2019 16:30:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2019/06/26/composing-better-emails</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/06/26/composing-better-emails</guid>
+        <link>http://localhost:4000/programming/2019/06/26/composing-better-emails</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/06/26/composing-better-emails</guid>
         
         <category>email</category>
         
@@ -1868,8 +1868,8 @@ Lazarus
         <description>
 </description>
         <pubDate>Wed, 12 Jun 2019 00:00:00 +0300</pubDate>
-        <link>https://iridakos.com/cats/2019/06/12/pair-programming</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2019/06/12/pair-programming</guid>
+        <link>http://localhost:4000/cats/2019/06/12/pair-programming</link>
+        <guid isPermaLink="true">http://localhost:4000/cats/2019/06/12/pair-programming</guid>
         
         <category>pair programming</category>
         
@@ -1881,8 +1881,8 @@ Lazarus
         <description>
 </description>
         <pubDate>Mon, 03 Jun 2019 00:00:00 +0300</pubDate>
-        <link>https://iridakos.com/cats/2019/06/03/monday-motivation</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2019/06/03/monday-motivation</guid>
+        <link>http://localhost:4000/cats/2019/06/03/monday-motivation</link>
+        <guid isPermaLink="true">http://localhost:4000/cats/2019/06/03/monday-motivation</guid>
         
         <category>monday motivation</category>
         
@@ -2087,8 +2087,8 @@ klm
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 16 May 2019 11:30:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux</guid>
+        <link>http://localhost:4000/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/05/16/remove-duplicate-lines-preserving-order-linux</guid>
         
         <category>linux</category>
         
@@ -2559,8 +2559,8 @@ klm
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 02 May 2019 15:30:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2019/05/02/add-update-delete-elasticsearch-nested-objects</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/05/02/add-update-delete-elasticsearch-nested-objects</guid>
+        <link>http://localhost:4000/programming/2019/05/02/add-update-delete-elasticsearch-nested-objects</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/05/02/add-update-delete-elasticsearch-nested-objects</guid>
         
         <category>elasticsearch</category>
         
@@ -2582,8 +2582,8 @@ klm
         <description>
 </description>
         <pubDate>Mon, 15 Apr 2019 00:00:00 +0300</pubDate>
-        <link>https://iridakos.com/cats/2019/04/15/monday-again</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2019/04/15/monday-again</guid>
+        <link>http://localhost:4000/cats/2019/04/15/monday-again</link>
+        <guid isPermaLink="true">http://localhost:4000/cats/2019/04/15/monday-again</guid>
         
         
       </item>
@@ -2606,7 +2606,7 @@ klm
   goto repo at GitHub
 &lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/goto/goto.gif&quot; alt=&quot;goto gif&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/goto/goto.gif&quot; alt=&quot;goto gif&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;User registers directory aliases, for example:&lt;/p&gt;
 
@@ -2818,8 +2818,8 @@ Every &lt;code class=&quot;highlighter-rouge&quot;&gt;register&lt;/code&gt; or &
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 10 Apr 2019 16:00:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2019/04/10/shell-navigation-with-autocomplete</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/04/10/shell-navigation-with-autocomplete</guid>
+        <link>http://localhost:4000/programming/2019/04/10/shell-navigation-with-autocomplete</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/04/10/shell-navigation-with-autocomplete</guid>
         
         <category>linux</category>
         
@@ -2856,7 +2856,7 @@ Every &lt;code class=&quot;highlighter-rouge&quot;&gt;register&lt;/code&gt; or &
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/post.png&quot; alt=&quot;Rails chat application gif&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/post.png&quot; alt=&quot;Rails chat application gif&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
 
@@ -3360,7 +3360,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 &lt;p&gt;Navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; and see what happens.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/dockerizing-rails/01.png&quot; alt=&quot;Error&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/dockerizing-rails/01.png&quot; alt=&quot;Error&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We don’t get very helpful information on the error since the application is running in production mode (at least this worked :P). Let’s connect to the container and check the logs:&lt;/p&gt;
 
@@ -3379,7 +3379,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 &lt;p&gt;&lt;a href=&quot;https://twitter.com/lazaru_s/status/1182193506430984193&quot;&gt;Reload the page and voilà&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/dockerizing-rails/02.png&quot; alt=&quot;Application home page&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/dockerizing-rails/02.png&quot; alt=&quot;Application home page&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;whats-next&quot;&gt;What’s next&lt;/h2&gt;
 
@@ -3398,7 +3398,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 &lt;p&gt;That’s all! Cat photo.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/programming-cat/terminator.png&quot; alt=&quot;Irida&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/programming-cat/terminator.png&quot; alt=&quot;Irida&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;alert alert-light&quot;&gt;
   &lt;div class=&quot;alert-heading&quot;&gt;&lt;i class=&quot;fa fa-comments&quot;&gt;&lt;/i&gt; Code and comments&lt;/div&gt;
@@ -3415,8 +3415,8 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 &lt;/div&gt;
 </description>
         <pubDate>Sun, 07 Apr 2019 04:00:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/04/07/dockerizing-a-rails-application</guid>
+        <link>http://localhost:4000/programming/2019/04/07/dockerizing-a-rails-application</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/04/07/dockerizing-a-rails-application</guid>
         
         <category>ruby</category>
         
@@ -3453,7 +3453,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 &lt;p&gt;In this tutorial we are going to create a &lt;strong&gt;chat&lt;/strong&gt; web application from scratch using Rails and WebSockets.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif&quot; alt=&quot;Rails chat tutorial gif&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif&quot; alt=&quot;Rails chat tutorial gif&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;alert alert-light&quot;&gt;
   &lt;div class=&quot;alert-heading&quot;&gt;&lt;i class=&quot;fa fa-comments&quot;&gt;&lt;/i&gt; Code and comments&lt;/div&gt;
@@ -3571,7 +3571,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Open a browser and visit &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt;, if you see this we are good to go.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/01-rails-new.png&quot; alt=&quot;Rails new application&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/01-rails-new.png&quot; alt=&quot;Rails new application&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;users-and-devise&quot;&gt;Users and devise&lt;/h3&gt;
 
@@ -3676,7 +3676,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;You should see an error message, no worries:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/02.png&quot; alt=&quot;No action index for the RoomsController&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/02.png&quot; alt=&quot;No action index for the RoomsController&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We have to create the &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; action in the &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomsController&lt;/code&gt;. Open the controller &lt;code class=&quot;highlighter-rouge&quot;&gt;app/controllers/rooms_controller.rb&lt;/code&gt; and change its contents to the following:&lt;/p&gt;
 
@@ -3692,7 +3692,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Reload and voilà.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/03.png&quot; alt=&quot;Rooms index&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/03.png&quot; alt=&quot;Rooms index&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;adding-authentication&quot;&gt;Adding authentication&lt;/h3&gt;
 
@@ -3703,7 +3703,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;If we navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; now we should be redirected to the sign in page &lt;sup&gt;&lt;a href=&quot;#acknowledgments&quot;&gt;[10]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/04.png&quot; alt=&quot;Sign in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/04.png&quot; alt=&quot;Sign in&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Before continuing with the good stuff, let’s gear up the application with some good features.&lt;/p&gt;
 
@@ -3798,11 +3798,11 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; and view what we have created.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/05.png&quot; alt=&quot;Sign in with Devise and simple form&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/05.png&quot; alt=&quot;Sign in with Devise and simple form&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Let’s try to sign up following the &lt;code class=&quot;highlighter-rouge&quot;&gt;Sign up&lt;/code&gt; link of the form:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/06.png&quot; alt=&quot;Sign up without username&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/06.png&quot; alt=&quot;Sign up without username&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As you can see, there is no field to fill in the username. For that to work we have to:&lt;/p&gt;
 
@@ -3834,7 +3834,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Done, reload and sign up&lt;sup&gt;&lt;a href=&quot;#acknowledgments&quot;&gt;[5]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/07.png&quot; alt=&quot;Sign up with username&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/07.png&quot; alt=&quot;Sign up with username&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;cleanup-unused-components&quot;&gt;Cleanup unused components&lt;/h3&gt;
 
@@ -3965,11 +3965,11 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Reload to view the bar.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/08.png&quot; alt=&quot;Sign up with navigation bar&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/08.png&quot; alt=&quot;Sign up with navigation bar&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Awesome. Fill in with your desired credentials and submit the form.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/09.png&quot; alt=&quot;Signed in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/09.png&quot; alt=&quot;Signed in&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;room-management&quot;&gt;Room management&lt;/h3&gt;
 
@@ -4037,7 +4037,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;If there are rooms, the left column of the page will render a vertical navigation with links leading to each room’s page. The right column displays a simple welcome message.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/10.png&quot; alt=&quot;Room index&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/10.png&quot; alt=&quot;Room index&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Pressing the &lt;code class=&quot;highlighter-rouge&quot;&gt;Create a room&lt;/code&gt; button we get the expected error for the non-existent action.&lt;/p&gt;
 
@@ -4127,11 +4127,11 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Time to create the first room. From the rooms’ index page, press the &lt;code class=&quot;highlighter-rouge&quot;&gt;Create a room&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/11.png&quot; alt=&quot;New room&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/11.png&quot; alt=&quot;New room&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Save and here it is.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/12.png&quot; alt=&quot;Room index with rooms&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/12.png&quot; alt=&quot;Room index with rooms&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Add this class in &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets/rails-chat-tutorial.scss&lt;/code&gt; to improve the display of the rooms.&lt;/p&gt;
 
@@ -4145,7 +4145,7 @@ Use Ctrl-C to stop
 &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/13.png&quot; alt=&quot;Room index with improved rooms&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/13.png&quot; alt=&quot;Room index with improved rooms&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: We will add the &lt;code class=&quot;highlighter-rouge&quot;&gt;edit&lt;/code&gt; link in the room’s page a.k.a. &lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt; action.&lt;/p&gt;
 
@@ -4278,7 +4278,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Navigate to a room to see what has been done.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/14.png&quot; alt=&quot;Room page with chat&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/14.png&quot; alt=&quot;Room page with chat&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Pressing the &lt;code class=&quot;highlighter-rouge&quot;&gt;Send&lt;/code&gt; button nothing happens on the page but if you check the server’s console you will notice:&lt;/p&gt;
 
@@ -4353,7 +4353,7 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 
 &lt;p&gt;If you reload the page you will see something like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/15.png&quot; alt=&quot;Room message to string&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/15.png&quot; alt=&quot;Room message to string&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Let’s beautify the messages.&lt;/p&gt;
 
@@ -4439,7 +4439,7 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 
 &lt;p&gt;Reload the page. Magic.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/16.png&quot; alt=&quot;Improved display of room messages&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/16.png&quot; alt=&quot;Improved display of room messages&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;introducing-websockets---actioncable&quot;&gt;Introducing WebSockets - ActionCable&lt;/h2&gt;
 
@@ -4777,7 +4777,7 @@ end
 
 &lt;p&gt;That’s all! Long post, tired cat photo.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/irida.jpg&quot; alt=&quot;Tired cat photo&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/irida.jpg&quot; alt=&quot;Tired cat photo&quot; /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;alert alert-light&quot;&gt;
   &lt;div class=&quot;alert-heading&quot;&gt;&lt;i class=&quot;fa fa-comments&quot;&gt;&lt;/i&gt; Code and comments&lt;/div&gt;
@@ -4794,8 +4794,8 @@ end
 &lt;/div&gt;
 </description>
         <pubDate>Thu, 04 Apr 2019 23:00:00 +0300</pubDate>
-        <link>https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets</link>
-        <guid isPermaLink="true">https://iridakos.com/programming/2019/04/04/creating-chat-application-rails-websockets</guid>
+        <link>http://localhost:4000/programming/2019/04/04/creating-chat-application-rails-websockets</link>
+        <guid isPermaLink="true">http://localhost:4000/programming/2019/04/04/creating-chat-application-rails-websockets</guid>
         
         <category>ruby</category>
         
@@ -4827,8 +4827,8 @@ end
         <description>
 </description>
         <pubDate>Sat, 24 Nov 2018 00:00:00 +0200</pubDate>
-        <link>https://iridakos.com/cats/2018/11/24/vacuum-cleaner</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/24/vacuum-cleaner</guid>
+        <link>http://localhost:4000/cats/2018/11/24/vacuum-cleaner</link>
+        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/24/vacuum-cleaner</guid>
         
         
       </item>
@@ -4838,8 +4838,8 @@ end
         <description>
 </description>
         <pubDate>Sat, 24 Nov 2018 00:00:00 +0200</pubDate>
-        <link>https://iridakos.com/cats/2018/11/24/terminator</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/24/terminator</guid>
+        <link>http://localhost:4000/cats/2018/11/24/terminator</link>
+        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/24/terminator</guid>
         
         
       </item>
@@ -4849,8 +4849,8 @@ end
         <description>
 </description>
         <pubDate>Sat, 24 Nov 2018 00:00:00 +0200</pubDate>
-        <link>https://iridakos.com/cats/2018/11/24/nightmare</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/24/nightmare</guid>
+        <link>http://localhost:4000/cats/2018/11/24/nightmare</link>
+        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/24/nightmare</guid>
         
         
       </item>
@@ -4860,8 +4860,8 @@ end
         <description>
 </description>
         <pubDate>Sat, 24 Nov 2018 00:00:00 +0200</pubDate>
-        <link>https://iridakos.com/cats/2018/11/24/monday</link>
-        <guid isPermaLink="true">https://iridakos.com/cats/2018/11/24/monday</guid>
+        <link>http://localhost:4000/cats/2018/11/24/monday</link>
+        <guid isPermaLink="true">http://localhost:4000/cats/2018/11/24/monday</guid>
         
         
       </item>

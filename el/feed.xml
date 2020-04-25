@@ -3,15 +3,15 @@
   <channel>
     <title>iridakos</title>
     <description>Lazarus Lazaridis' personal blog with posts mostly related to programming and opensource. And cats.</description>
-    <link>https://iridakos.com/</link>
+    <link>http://localhost:4000/</link>
     <image>
-      <url>https://iridakos.com/assets/images/site.png</url>
-      <link>https://iridakos.com/</link>
+      <url>http://localhost:4000/assets/images/site.png</url>
+      <link>http://localhost:4000/</link>
       <title>iridakos</title>
     </image>
-    <atom:link href="https://iridakos.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 25 Apr 2020 00:24:35 +0300</pubDate>
-    <lastBuildDate>Sat, 25 Apr 2020 00:24:35 +0300</lastBuildDate>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 25 Apr 2020 13:04:28 +0300</pubDate>
+    <lastBuildDate>Sat, 25 Apr 2020 13:04:28 +0300</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -296,8 +296,8 @@ b
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 10 Feb 2020 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2020/02/10/shell-palindrome-dates</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2020/02/10/shell-palindrome-dates</guid>
+        <link>http://localhost:4000/el/programming/2020/02/10/shell-palindrome-dates</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2020/02/10/shell-palindrome-dates</guid>
         
         <category>how-to</category>
         
@@ -328,8 +328,8 @@ b
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Thu, 12 Dec 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/12/12/descriptive-variable-names</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/12/12/descriptive-variable-names</guid>
+        <link>http://localhost:4000/el/programming/2019/12/12/descriptive-variable-names</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/12/12/descriptive-variable-names</guid>
         
         <category>humor</category>
         
@@ -345,8 +345,8 @@ b
         <description>
 </description>
         <pubDate>Fri, 06 Dec 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/cats/2019/12/06/movie-night</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/12/06/movie-night</guid>
+        <link>http://localhost:4000/el/cats/2019/12/06/movie-night</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/12/06/movie-night</guid>
         
         <category>photo</category>
         
@@ -380,8 +380,8 @@ b
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Wed, 04 Dec 2019 11:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/12/04/pizza-commit</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/12/04/pizza-commit</guid>
+        <link>http://localhost:4000/el/programming/2019/12/04/pizza-commit</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/12/04/pizza-commit</guid>
         
         <category>humor</category>
         
@@ -399,8 +399,8 @@ b
         <description>&lt;h1 id=&quot;ptssd&quot;&gt;PTSSD&lt;/h1&gt;
 </description>
         <pubDate>Wed, 04 Dec 2019 09:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/12/04/ptssd</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/12/04/ptssd</guid>
+        <link>http://localhost:4000/el/programming/2019/12/04/ptssd</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/12/04/ptssd</guid>
         
         <category>humor</category>
         
@@ -418,8 +418,8 @@ b
         <description>&lt;p&gt;Όταν προγραμματίζω, μιλάω στον κώδικα. Αλλά, σύμφωνα με τη γάτα μου, αυτό είναι το λιγότερο ανησυχητικό.&lt;/p&gt;
 </description>
         <pubDate>Tue, 03 Dec 2019 21:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/12/03/talking-to-my-code</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/12/03/talking-to-my-code</guid>
+        <link>http://localhost:4000/el/programming/2019/12/03/talking-to-my-code</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/12/03/talking-to-my-code</guid>
         
         <category>humor</category>
         
@@ -457,8 +457,8 @@ At least nothing was thrown.
 &lt;/pre&gt;
 </description>
         <pubDate>Fri, 22 Nov 2019 17:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/11/22/i</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/22/i</guid>
+        <link>http://localhost:4000/el/programming/2019/11/22/i</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/11/22/i</guid>
         
         <category>humor</category>
         
@@ -477,7 +477,7 @@ At least nothing was thrown.
 
 &lt;p&gt;Σε αυτό το βοήθημα θα δημιουργήσουμε μια εφαρμογή συνομιλιών (&lt;strong&gt;chat&lt;/strong&gt;) από το μηδέν χρησιμοποιώντας το framework Ruby on Rails και την τεχνολογία των WebSockets.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif&quot; alt=&quot;Rails chat tutorial gif&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/rails-chat-tutorial.gif&quot; alt=&quot;Rails chat tutorial gif&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Ενημέρωση&lt;/strong&gt;: Δημοσίευσα άλλο ένα βοήθημα για τη &lt;a href=&quot;https://twitter.com/lazaru_s/status/1182193506430984193&quot;&gt;δημιουργία docker image της εφαρμογής&lt;/a&gt; του παρόντος, μπορείτε να το βρείτε στα αγγλικά για την ώρα &lt;a href=&quot;/programming/2019/04/07/dockerizing-a-rails-application&quot;&gt;&lt;strong&gt;εδώ&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
 
@@ -597,7 +597,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Ανοίξτε έναν φυλλομετρητή και επισκεφθείτε τη διεύθυνση: &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt;. Αν βλέπετε το παρακάτω είμαστε εντάξει για να συνεχίσουμε. Αν όχι, δε με ξέρετε δε σας ξέρω :P&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/01-rails-new.png&quot; alt=&quot;Rails new application&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/01-rails-new.png&quot; alt=&quot;Rails new application&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;χρήστες-και-βιβλιοθήκη-devise&quot;&gt;Χρήστες και βιβλιοθήκη &lt;code class=&quot;highlighter-rouge&quot;&gt;devise&lt;/code&gt;&lt;/h3&gt;
 
@@ -702,7 +702,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Θα δείτε το παρακάτω λάθος, μην ανησυχείτε:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/02.png&quot; alt=&quot;No action index for the RoomsController&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/02.png&quot; alt=&quot;No action index for the RoomsController&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Πρέπει να δημιουργήσουμε την ενέργεια &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt; στον ελεγκτή &lt;code class=&quot;highlighter-rouge&quot;&gt;RoomsController&lt;/code&gt;. Ανοίξτε τον ελεγκτή που βρίσκεται στην τοποθεσία &lt;code class=&quot;highlighter-rouge&quot;&gt;app/controllers/rooms_controller.rb&lt;/code&gt; και αλλάξτε τα περιεχόμενά του στα παρακάτω:&lt;/p&gt;
 
@@ -718,7 +718,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Φορτώστε ξανά την αρχική σελίδα και voilà.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/03.png&quot; alt=&quot;Rooms index&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/03.png&quot; alt=&quot;Rooms index&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;προσθήκη-πιστοποίησης-χρηστών&quot;&gt;Προσθήκη πιστοποίησης χρηστών&lt;/h3&gt;
 
@@ -729,7 +729,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Αν πλοηγηθούμε εκ νέου στην αρχική σελίδα &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; θα πρέπει να ανακατευθυνθούμε στη σελίδα πιστοποίησης χρηστών &lt;sup&gt;&lt;a href=&quot;#ευχαριστίες&quot;&gt;[10]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/04.png&quot; alt=&quot;Sign in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/04.png&quot; alt=&quot;Sign in&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Πριν συνεχίσουμε με τα ωραία, ας εξοπλίσουμε πρώτα την εφαρμογή με κάποια καλά χαρακτηριστικά.&lt;/p&gt;
 
@@ -824,11 +824,11 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Περιηγηθείτε στην αρχική σελίδα &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt; και δείτε τι δημιουργήσαμε.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/05.png&quot; alt=&quot;Sign in with Devise and simple form&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/05.png&quot; alt=&quot;Sign in with Devise and simple form&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Ας προσπαθήσουμε να κάνουμε καταχώρηση χρήστη ακολουθώντας το σύνδεσμο &lt;code class=&quot;highlighter-rouge&quot;&gt;Sign up&lt;/code&gt; της φόρμας:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/06.png&quot; alt=&quot;Sign up without username&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/06.png&quot; alt=&quot;Sign up without username&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Όπως βλέπετε, δεν υπάρχει πεδίο για τη συμπλήρωση του ονόματος χρήστη (&lt;code class=&quot;highlighter-rouge&quot;&gt;username&lt;/code&gt;) που προσθέσαμε όταν δημιουργήσαμε το μοντέλο &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt;. Για να μπορούν οι χρήστες να καταχωρούν το όνομά τους πρέπει:&lt;/p&gt;
 
@@ -860,7 +860,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Αυτό ήταν, περιηγηθείτε ξανά στην αρχική σελίδα και δοκιμάστε να καταχωρηθείτε ως χρήστες&lt;sup&gt;&lt;a href=&quot;#ευχαριστίες&quot;&gt;[5]&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/07.png&quot; alt=&quot;Sign up with username&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/07.png&quot; alt=&quot;Sign up with username&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;καθάρισμα-μη-χρησιμοποιούμενων-στοιχείων&quot;&gt;Καθάρισμα μη χρησιμοποιούμενων στοιχείων&lt;/h3&gt;
 
@@ -991,11 +991,11 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Φορτώστε ξανά την αρχική σελίδα και δείτε την μπάρα.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/08.png&quot; alt=&quot;Sign up with navigation bar&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/08.png&quot; alt=&quot;Sign up with navigation bar&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Τέλεια. Συμπληρώστε τα επιθυμητά στοιχεία εισόδου σας και υποβάλετε τη φόρμα.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/09.png&quot; alt=&quot;Signed in&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/09.png&quot; alt=&quot;Signed in&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;διαχείριση-δωματίων&quot;&gt;Διαχείριση δωματίων&lt;/h3&gt;
 
@@ -1063,7 +1063,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Αν υπάρχουν δωμάτια, η αριστερή στήλη θα εμφανίζει μια κάθετη πλοήγηση με συνδέσμους που οδηγούν στη σελίδα κάθε δωματίου. Η δεξιά στήλη εμφανίζει ένα απλό μήνυμα καλωσορίσματος στην εφαρμογή.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/10.png&quot; alt=&quot;Room index&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/10.png&quot; alt=&quot;Room index&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Πατώντας το κουμπί &lt;code class=&quot;highlighter-rouge&quot;&gt;Create a room&lt;/code&gt; εμφανίζεται ένα αναμενόμενο λάθος καθώς ο ελεγκτής δεν υποστηρίζει ακόμη την ενέργεια δημιουργίας δωματίου.&lt;/p&gt;
 
@@ -1153,11 +1153,11 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Ώρα να φτιάξουμε το πρώτο μας δωμάτιο. Από την αρχική σελίδα των δωματίων, πατήστε το κουμπί &lt;code class=&quot;highlighter-rouge&quot;&gt;Create a room&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/11.png&quot; alt=&quot;New room&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/11.png&quot; alt=&quot;New room&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Σώστε το και ορίστε:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/12.png&quot; alt=&quot;Room index with rooms&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/12.png&quot; alt=&quot;Room index with rooms&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Προσθέστε την παρακάτω κλάση στο αρχείο &lt;code class=&quot;highlighter-rouge&quot;&gt;app/assets/stylesheets/rails-chat-tutorial.scss&lt;/code&gt; για να βελτιώσουμε την εμφάνιση των δωματίων.&lt;/p&gt;
 
@@ -1171,7 +1171,7 @@ Use Ctrl-C to stop
 &lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/13.png&quot; alt=&quot;Room index with improved rooms&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/13.png&quot; alt=&quot;Room index with improved rooms&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Σημείωση&lt;/strong&gt;: Θα προσθέσουμε παρακάτω τον σύνδεσμο επεξεργασίας (&lt;code class=&quot;highlighter-rouge&quot;&gt;edit&lt;/code&gt;) ενός δωματίου.&lt;/p&gt;
 
@@ -1304,7 +1304,7 @@ Use Ctrl-C to stop
 
 &lt;p&gt;Περιηγηθείτε σε ένα δωμάτιο για να δούμε τι έχουμε κάνει μέχρι στιγμής.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/14.png&quot; alt=&quot;Room page with chat&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/14.png&quot; alt=&quot;Room page with chat&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Πατώντας το κουμπή &lt;code class=&quot;highlighter-rouge&quot;&gt;Send&lt;/code&gt; δε συμβαίνει τίποτα στη σελίδα αλλά αν κοιτάξετε το αρχείο καταγραφής (log) του εξυπηρετητή θα παρατηρήσετε το εξής:&lt;/p&gt;
 
@@ -1379,7 +1379,7 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 
 &lt;p&gt;Αν φορτώσετε πάλι τη σελίδα του δωματίου θα δείτε κάτι σαν αυτό:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/15.png&quot; alt=&quot;Room message to string&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/15.png&quot; alt=&quot;Room message to string&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Ας ομορφύνουμε και τα μηνύματα.&lt;/p&gt;
 
@@ -1465,7 +1465,7 @@ Completed 204 No Content in 88ms (ActiveRecord: 5.1ms)
 
 &lt;p&gt;Φορτώστε ξανά τη σελίδα. Magic.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/16.png&quot; alt=&quot;Improved display of room messages&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/16.png&quot; alt=&quot;Improved display of room messages&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;websockets---actioncable&quot;&gt;WebSockets - ActionCable&lt;/h2&gt;
 
@@ -1788,7 +1788,7 @@ end
 
 &lt;p&gt;Αυτάααααααα! Μεγάλο άρθρο, κουράστηκε η γάτα.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://iridakos.com/assets/images/posts/rails-chat-tutorial/irida.jpg&quot; alt=&quot;Tired cat photo&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/posts/rails-chat-tutorial/irida.jpg&quot; alt=&quot;Tired cat photo&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;ευχαριστίες&quot;&gt;Ευχαριστίες&lt;/h2&gt;
 
@@ -1806,8 +1806,8 @@ end
 &lt;/ul&gt;
 </description>
         <pubDate>Tue, 19 Nov 2019 08:00:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/19/creating-chat-application-rails-websockets</guid>
+        <link>http://localhost:4000/el/programming/2019/11/19/creating-chat-application-rails-websockets</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/11/19/creating-chat-application-rails-websockets</guid>
         
         <category>ruby</category>
         
@@ -2345,8 +2345,8 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;p&gt;Αυτό ήταν. Τελειώσαμε. Καλή συνέχεια.&lt;/p&gt;
 </description>
         <pubDate>Wed, 13 Nov 2019 10:30:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/13/bash-programmable-completion-tutorial</guid>
+        <link>http://localhost:4000/el/programming/2019/11/13/bash-programmable-completion-tutorial</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/11/13/bash-programmable-completion-tutorial</guid>
         
         <category>bash</category>
         
@@ -2604,8 +2604,8 @@ _dothis_completions&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Nov 2019 23:10:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/11/11/composing-better-emails</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/11/composing-better-emails</guid>
+        <link>http://localhost:4000/el/programming/2019/11/11/composing-better-emails</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/11/11/composing-better-emails</guid>
         
         <category>email</category>
         
@@ -2822,8 +2822,8 @@ klm
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 11 Nov 2019 23:05:00 +0200</pubDate>
-        <link>https://iridakos.com/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux</link>
-        <guid isPermaLink="true">https://iridakos.com/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux</guid>
+        <link>http://localhost:4000/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux</link>
+        <guid isPermaLink="true">http://localhost:4000/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux</guid>
         
         <category>linux</category>
         
@@ -2859,8 +2859,8 @@ klm
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/hanging-out/where-s-the-food.png&quot; alt=&quot;Where's the food&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 09 Nov 2019 23:30:00 +0200</pubDate>
-        <link>https://iridakos.com/el/cats/2019/11/09/hug-the-cat</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/09/hug-the-cat</guid>
+        <link>http://localhost:4000/el/cats/2019/11/09/hug-the-cat</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/11/09/hug-the-cat</guid>
         
         <category>photo</category>
         
@@ -2886,8 +2886,8 @@ klm
 &lt;p&gt;&lt;img src=&quot;/assets/images/posts/two-step-authentication/post.png&quot; alt=&quot;Two step authentication&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 09 Nov 2019 23:20:00 +0200</pubDate>
-        <link>https://iridakos.com/el/cats/2019/11/09/two-step-authentication</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/11/09/two-step-authentication</guid>
+        <link>http://localhost:4000/el/cats/2019/11/09/two-step-authentication</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/11/09/two-step-authentication</guid>
         
         <category>photo</category>
         
@@ -2974,8 +2974,8 @@ klm
 &lt;/dl&gt;
 </description>
         <pubDate>Mon, 14 Oct 2019 17:00:00 +0300</pubDate>
-        <link>https://iridakos.com/el/painting/2019/10/14/mountains</link>
-        <guid isPermaLink="true">https://iridakos.com/el/painting/2019/10/14/mountains</guid>
+        <link>http://localhost:4000/el/painting/2019/10/14/mountains</link>
+        <guid isPermaLink="true">http://localhost:4000/el/painting/2019/10/14/mountains</guid>
         
         <category>painting</category>
         
@@ -3032,8 +3032,8 @@ klm
 &lt;/dl&gt;
 </description>
         <pubDate>Fri, 11 Oct 2019 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/el/painting/2019/10/11/meadow</link>
-        <guid isPermaLink="true">https://iridakos.com/el/painting/2019/10/11/meadow</guid>
+        <link>http://localhost:4000/el/painting/2019/10/11/meadow</link>
+        <guid isPermaLink="true">http://localhost:4000/el/painting/2019/10/11/meadow</guid>
         
         <category>painting</category>
         
@@ -3096,8 +3096,8 @@ klm
 &lt;/dl&gt;
 </description>
         <pubDate>Mon, 07 Oct 2019 10:00:00 +0300</pubDate>
-        <link>https://iridakos.com/el/painting/2019/10/07/drawing-my-cat</link>
-        <guid isPermaLink="true">https://iridakos.com/el/painting/2019/10/07/drawing-my-cat</guid>
+        <link>http://localhost:4000/el/painting/2019/10/07/drawing-my-cat</link>
+        <guid isPermaLink="true">http://localhost:4000/el/painting/2019/10/07/drawing-my-cat</guid>
         
         <category>ζωγραφική</category>
         
@@ -3119,8 +3119,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/another-friday</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/another-friday</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/another-friday</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/another-friday</guid>
         
         <category>friday</category>
         
@@ -3134,8 +3134,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/pair-programming</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/pair-programming</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/pair-programming</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/pair-programming</guid>
         
         <category>pair programming</category>
         
@@ -3147,8 +3147,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/monday-again</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/monday-again</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/monday-again</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/monday-again</guid>
         
         <category>monday</category>
         
@@ -3164,8 +3164,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/vacuum-cleaner</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/vacuum-cleaner</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/vacuum-cleaner</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/vacuum-cleaner</guid>
         
         
       </item>
@@ -3175,8 +3175,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/terminator</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/terminator</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/terminator</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/terminator</guid>
         
         
       </item>
@@ -3186,8 +3186,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/monday</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/monday</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/monday</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/monday</guid>
         
         <category>monday</category>
         
@@ -3203,8 +3203,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/goot-night</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/goot-night</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/goot-night</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/goot-night</guid>
         
         
       </item>
@@ -3214,8 +3214,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/catologist</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/catologist</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/catologist</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/catologist</guid>
         
         
       </item>
@@ -3225,8 +3225,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/boo</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/boo</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/boo</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/boo</guid>
         
         
       </item>
@@ -3236,8 +3236,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/i-know-stuff</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/i-know-stuff</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/i-know-stuff</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/i-know-stuff</guid>
         
         
       </item>
@@ -3247,8 +3247,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/code-review-mode</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/code-review-mode</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/code-review-mode</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/code-review-mode</guid>
         
         
       </item>
@@ -3258,8 +3258,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/css-stackoveflow</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/css-stackoveflow</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/css-stackoveflow</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/css-stackoveflow</guid>
         
         
       </item>
@@ -3269,8 +3269,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/push-on-my-branch</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/push-on-my-branch</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/push-on-my-branch</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/push-on-my-branch</guid>
         
         
       </item>
@@ -3280,8 +3280,8 @@ klm
         <description>
 </description>
         <pubDate>Tue, 01 Oct 2019 00:01:00 +0300</pubDate>
-        <link>https://iridakos.com/el/cats/2019/10/01/java-update-popup</link>
-        <guid isPermaLink="true">https://iridakos.com/el/cats/2019/10/01/java-update-popup</guid>
+        <link>http://localhost:4000/el/cats/2019/10/01/java-update-popup</link>
+        <guid isPermaLink="true">http://localhost:4000/el/cats/2019/10/01/java-update-popup</guid>
         
         
       </item>
