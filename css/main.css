@@ -8598,16 +8598,20 @@ html {
   object-fit: cover; }
 
 .header-container {
-  background-color: #d5d5d5; }
+  background: url("/assets/images/cinema.png") #d9d9d9 no-repeat left -40px;
+  background-size: contain;
+  padding-top: 30px;
+  margin-bottom: 2rem; }
+  .header-container .header-separator {
+    background: url("/assets/images/header-separator.png") bottom repeat-x;
+    height: 50px; }
 
 .page-title-container {
   padding: 40px 0 60px 0;
   font-size: 2rem;
-  margin-bottom: 2rem;
   margin-top: 0;
   color: black;
   text-shadow: none;
-  box-shadow: 0 0 5px rgba(9, 9, 9, 0.8);
   background-size: contain;
   min-height: 300px; }
   .page-title-container .page-title h1 {
@@ -8619,9 +8623,11 @@ html {
     color: #3c3c3c;
     font-size: 50%; }
   .page-title-container .page-title .btn {
-    background-color: #6f6f6f;
     font-size: 120%;
-    color: #090909; }
+    opacity: 0.7; }
+    .page-title-container .page-title .btn:hover {
+      opacity: 1.0;
+      background-color: #fff; }
 
 img.image {
   cursor: default;
@@ -8683,8 +8689,7 @@ img.image {
 .navbar.iridakos-navbar {
   box-shadow: 0 0 3px black;
   font-size: 100%;
-  height: 40px;
-  margin-top: 15px; }
+  height: 40px; }
 
 blockquote {
   color: #157bc4;
@@ -8745,7 +8750,10 @@ h2 {
 @media (max-width: 992px) {
   .navbar.iridakos-navbar {
     height: inherit;
-    margin-top: 0; } }
+    margin-top: 0; }
+
+  .header-container {
+    background: url("/assets/images/cinema.png") #d9d9d9 no-repeat center bottom; } }
 .cat-photo img {
   margin-left: 0;
   margin-right: 0; }
@@ -8814,12 +8822,12 @@ h2 {
   margin-top: 5px;
   padding-top: 5px;
   border-top: 1px solid #888888; }
+  .page-title-container .post small {
+    color: #7b7b7b; }
   .page-title-container .post .post-metadata, .page-title-container .post .post-tags, .page-title-container .post .post-tags i {
     color: #525252;
     font-size: 80%;
     font-weight: normal; }
-    .page-title-container .post .post-metadata .important, .page-title-container .post .post-tags .important, .page-title-container .post .post-tags i .important {
-      font-weight: normal; }
     .page-title-container .post .post-metadata > span, .page-title-container .post .post-tags > span, .page-title-container .post .post-tags i > span {
       color: #090909; }
 
@@ -8832,8 +8840,8 @@ h2 {
   font-size: 100%;
   text-align: center;
   color: #343a40;
-  border-top: 1px solid #484848;
-  background: #555;
+  border-top: 1px solid #e1e1e1;
+  background: #eeeeee;
   color: black; }
   .footer .license {
     font-family: 'Open Sans', sans-serif;
