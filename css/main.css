@@ -8596,8 +8596,8 @@ html {
   object-fit: cover; }
 
 .header-container {
-  background: url("/assets/images/cinema.png") #d9d9d9 no-repeat left -40px;
-  background-size: contain;
+  background: url("/assets/images/cinema.png") #d9d9d9 no-repeat center bottom;
+  background-size: cover;
   padding-top: 30px;
   margin-bottom: 2rem; }
   .header-container .header-separator {
