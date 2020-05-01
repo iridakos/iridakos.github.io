@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="el">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="ocs-site-verification" content="e5faa08e01247c38aadf1c1737ff8136">
+  <meta name="google-site-verification" content="KqOxy0ecDlfNdfO530ZAbtNBedy49hn2KziyqLK0JGo" />
+
+  <title>stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700&amp;subset=greek" rel="stylesheet">
+
+  <link rel="icon" href="/assets/images/favicon.ico?v=4" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css?1588328138383896505">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="alternate" type="application/rss+xml" title="iridakos" href="https://iridakos.com/feed.xml">
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<meta name="generator" content="Jekyll v3.8.6" />
+<meta property="og:title" content="stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις" />
+<meta name="author" content="Lazarus Lazaridis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Παρουσίαση ενός εργαλείου για την αποθήκευση, ανάκτηση και οργάνωση καθημερινών σημειώσεων μέσα απο την κονσόλα" />
+<meta property="og:description" content="Παρουσίαση ενός εργαλείου για την αποθήκευση, ανάκτηση και οργάνωση καθημερινών σημειώσεων μέσα απο την κονσόλα" />
+<link rel="canonical" href="https://iridakos.com/el/programming/2020/04/20/stup-cli-notes" />
+<meta property="og:url" content="https://iridakos.com/el/programming/2020/04/20/stup-cli-notes" />
+<meta property="og:site_name" content="iridakos" />
+<meta property="og:image" content="https://iridakos.com/assets/images/posts/stup-cli-notes/post-image.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-04-20T12:00:00+03:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://iridakos.com/assets/images/posts/stup-cli-notes/post-image.png" />
+<meta property="twitter:title" content="stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις" />
+<meta name="twitter:site" content="@lazaru_s" />
+<meta name="twitter:creator" content="@Lazarus Lazaridis" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://iridakos.com/el/programming/2020/04/20/stup-cli-notes"},"author":{"@type":"Person","name":"Lazarus Lazaridis"},"description":"Παρουσίαση ενός εργαλείου για την αποθήκευση, ανάκτηση και οργάνωση καθημερινών σημειώσεων μέσα απο την κονσόλα","@type":"BlogPosting","headline":"stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις","dateModified":"2020-04-20T12:00:00+03:00","datePublished":"2020-04-20T12:00:00+03:00","image":"https://iridakos.com/assets/images/posts/stup-cli-notes/post-image.png","url":"https://iridakos.com/el/programming/2020/04/20/stup-cli-notes","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"https://iridakos.com/assets/images/site.png"},"name":"Lazarus Lazaridis"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+  <body>
+    <div class="header-container">
+  <nav class="navbar navbar-expand-lg navbar-light iridakos-navbar">
+    <div class="container-fluid no-gutters">
+      
+
+      <a class="mr-3 blog-logo-container" href="/el/" alt="αρχική">
+        <img class="blog-logo" src="/assets/images/irida-faded.png">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#header-pages" aria-controls="header-pages" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="header-pages">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          
+
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              προγραμματισμός
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="more">
+              <a class="dropdown-item" href="/el/programming/">όλα τα άρθρα</a>
+              <a class="dropdown-item" href="/el/programming/featured/">δημοφιλή άρθρα</a>
+              <a class="dropdown-item" href="/el/programming/tutorials/">βοηθήματα</a>
+              <a class="dropdown-item" href="/el/programming/how-to/">how to άρθρα</a>
+              <a class="dropdown-item" href="/el/programming/code/">κώδικας</a>
+              <hr class="dropdown-divider">
+              <a class="dropdown-item" href="/el/programming/humor/">χιούμορ</a>
+            </div>
+          </li>
+
+          
+
+          <li class="nav-item ">
+              <a class="nav-link" href="/el/cats/" alt="cats">γάτες</a>
+          </li>
+
+          
+
+          <li class="nav-item ">
+              <a class="nav-link" href="/el/painting/" alt="ζωγραφική">ζωγραφική</a>
+          </li>
+
+          
+
+          <li class="nav-item ">
+              <a class="nav-link" href="/el/tags/" alt="ετικέτες">ετικέτες</a>
+          </li>
+
+          
+
+          <li class="nav-item ">
+              <a class="nav-link" href="/el/about/" alt="σχετικά με μένα">σχετικά με μένα</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav mr-0 mt-2 mt-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-language"></i>
+              Ελληνικά
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="more">
+              
+              <a class="dropdown-item" href="/programming/2020/04/20/stup-cli-notes">English</a>
+            </div>
+          </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0" method="get" action="/el/search">
+          <div class="input-group input-group-sm mr-sm-2">
+            <input class="form-control" name="query" type="search" placeholder="Αναζήτηση άρθρων">
+
+            <div class="input-group-append">
+              <button class="btn btn-warning" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-title-container">
+    <div class="container-fluid no-gutters">
+      <div class="page-title">
+        <div class="row align-items-center">
+          <div class="col-xs-12 col-md-8 col-lg-9 order-md-first order-last text-center text-md-left">
+            <h1>stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις</h1>
+
+              <div class="page-subtitle">
+              Παρουσίαση ενός εργαλείου για την αποθήκευση, ανάκτηση και οργάνωση καθημερινών σημειώσεων μέσα απο την κονσόλα
+
+              
+                <div class="post">
+                  <div class="post-metadata">
+                    <div class="post-date" title="published on">
+                      Δημοσιεύτηκε στις <span class="important">20/04/2020</span>
+                    </div>
+
+                    <div class="post-category" title="in category">
+                      στην κατηγορία <span class="important">
+                        
+                             <a href="/el/programming">προγραμματισμός</a>
+                          
+
+                      </span>
+                    </div>
+                  </div>
+
+                  
+                  
+                    <div class="post-tags">
+                      <span class="important">Ετικέτες:</span>
+                      
+                        <a href="/el/tags/?tag=linux">linux</a> - 
+                      
+                        <a href="/el/tags/?tag=opensource">opensource</a> - 
+                      
+                        <a href="/el/tags/?tag=bash">bash</a> - 
+                      
+                        <a href="/el/tags/?tag=scripts">scripts</a> - 
+                      
+                        <a href="/el/tags/?tag=productivity">productivity</a> - 
+                      
+                        <a href="/el/tags/?tag=tools">tools</a>
+                      
+                    </div>
+                  
+
+                  
+                  
+                  
+                    <!--googleoff: index-->
+                    <div class="my-3">
+                      <small>
+                        This article is also available in <a href="/programming/2020/04/20/stup-cli-notes">english</a>.
+                      </small>
+                    </div>
+                    <!--googleon: index-->
+                  
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-separator"></div>
+</div>
+
+
+
+
+
+    <div class="container-fluid no-gutters">
+      <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-9 page-content">
+          
+
+          
+            <div class="row">
+              <div class="col-12">
+                <div class="outline mb-3">
+                  <p>Τα τελευταία χρόνια συμμετέχω σε καθημερινά <a href="https://en.wikipedia.org/wiki/Stand-up_meeting">Stand-up meetings</a> και μου δημιουργήθηκε η ανάγκη να βρω έναν βολικό και αποτελεσματικό τρόπο να κρατάω σημειώσεις σχετικά με το τι έκανα κάθε μέρα.</p>
+
+<p>Χρειαζόμουν:</p>
+
+<ul>
+  <li>να κρατώ <strong>κατηγοριοποιημένες σημειώσες</strong> για τα issues πάνω στα οποία εργαζόμουν, τις συναντήσεις στις οποίες συμμετείχα, πράγματα που εμπόδιζαν τη δουλειά μου κ.λπ.</li>
+  <li>να μπορώ εύκολα να <strong>ανακτήσω αυτές τις σημειώσεις βάσει της ημερομηνίας</strong> στην οποία καταχωρήθηκαν</li>
+  <li>να έχω μια <strong>γενική εικόνα</strong> για το τι έκανα (για παράδειγμα την τελευταία εβδομάδα)</li>
+  <li>όλα τα παραπάνω:
+    <ul>
+      <li>μέσα από την <strong>κονσόλα</strong></li>
+      <li>χωρίς να χρειάζεται να διαμορφώσω και να συντηρώ ένα αρχείο με όλες τις σημειώσεις χειροκίνητα</li>
+      <li>χωρίς να χρειάζεται να διαμορφώνω και να συντηρώ ένα αρχείο για κάθε μέρα με όλες τις σημειώσεις χειροκίνητα</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="stup">stup</h2>
+
+<p>Υλοποίησα το <a href="https://github.com/iridakos/stup">stup</a> (το όνομα προέρχεται από τον όρο <strong><code class="highlighter-rouge">st</code></strong><code class="highlighter-rouge">and-</code><strong><code class="highlighter-rouge">up</code></strong>), ένα πρόγραμμα ανοιχτού κώδικα, για να καλύψω τις ανάγκες αυτές.</p>
+
+<p><img src="/assets/images/posts/stup-cli-notes/stup-demo.gif" alt="stup demo gif" /></p>
+
+<p>Ο πηγαίος κώδικας είναι διαθέσιμος στο <a href="https://github.com/iridakos/stup" target="_blank">GitHub εδώ</a>.</p>
+
+<h3 id="παραδείγματα-χρήσης">Παραδείγματα χρήσης</h3>
+
+<p>Παραθέτω κάποια παραδείγματα που παρουσιάζουν τις βασικότερες χρήσεις του <code class="highlighter-rouge">stup</code>.</p>
+
+<h4 id="προσθήκη-σημειώσεων">Προσθήκη σημειώσεων</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Προσθήκη σημείωσης στην προεπιλεγμένη κατηγορία για την τρέχουσα ημερομηνία</span>
+stup add <span class="nt">-n</span> <span class="s2">"Worked on issue #ABC123"</span>
+
+<span class="c"># Προσθήκη σημείωσης στην προεπιλεγμένη κατηγορία υπονοώντας την τρέχουσα ημερομηνία</span>
+stup add today <span class="nt">-n</span> <span class="s2">"Worked on issue #ABC123"</span>
+
+<span class="c"># Προσθήκη σημείωσης στην κατηγορία "meetings"</span>
+stup add today <span class="nt">-c</span> <span class="s2">"meetings"</span> <span class="nt">-n</span> <span class="s2">"2 hours with @phoebe for the project kick off"</span>
+
+<span class="c"># Προσθήκη σημείωσης στην κατηγορία "blocking" στις 10 Απριλίου, 2020</span>
+stup add @ 2020-04-10 <span class="nt">-c</span> <span class="s2">"blocking"</span> <span class="nt">-n</span> <span class="s2">"connectivity issues"</span>
+</code></pre></div></div>
+
+<h4 id="εμφάνιση-σημειώσεων-συγκεκριμένης-ημέρας">Εμφάνιση σημειώσεων συγκεκριμένης ημέρας</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Εμφάνιση χθεσινών σημειώσεων (υπονοώντας την ημέρα)</span>
+<span class="nv">$ </span>stup
+
+<span class="c"># Εμφάνιση χθεσινών σημειώσεων (με σαφή προσδιορισμό της ημέρας)</span>
+<span class="nv">$ </span>stup yesterday
+
+<span class="c"># Εμφάνιση των σημερινών σημειώσεων</span>
+<span class="nv">$ </span>stup today
+
+<span class="c"># Εμφάνιση σημειώσεων σε συγκεκριμένη ημερομηνία</span>
+<span class="nv">$ </span>stup show @ 2020-04-18
+
+<span class="c"># Εμφανίση σημειώσεων για συγκεκριμένη κατηγορία σε συγκεκριμένη ημέρα</span>
+<span class="nv">$ </span>stup show @ 2020-04-18 <span class="nt">-c</span> <span class="s2">"meetings"</span>
+</code></pre></div></div>
+
+<h4 id="λίστα-όλων-των-σημειώσεων-για-ένα-χρονικό-διάστημα">Λίστα όλων των σημειώσεων για ένα χρονικό διάστημα</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Λίστα των σημειώσεων της τρέχουσας εβδομάδας</span>
+stup log week
+
+<span class="c"># Λίστα των σημειώσεων της τρέχουσας εβδομάδας (υπονοώντας την ενέργεια log)</span>
+stup week
+
+<span class="c"># Λίστα των σημειώσεων της προηγούμενης εβοδμάδας</span>
+stup log previous-week
+
+<span class="c"># Λίστα των σημειώσεων της προηγούμενης εβοδμάδας (υπονοώντας την ενέργεια log)</span>
+stup previous-week
+
+<span class="c"># Λίστα σημειώσεων μεταξύ δύο ημερομηνιών</span>
+stup log <span class="nt">--from</span> 2020-01-20 <span class="nt">--to</span> 2020-03-02
+
+<span class="c"># Λίστα σημειώσεων μεταξύ δύο ημερομηνιών για συγκεκριμένη κατηγορία</span>
+stup log <span class="nt">--from</span> 2020-01-20 <span class="nt">--to</span> 2020-03-02 <span class="nt">-c</span> <span class="s2">"meetings"</span>
+</code></pre></div></div>
+
+<h3 id="πως-λειτουργεί-σε-τεχνικό-επίπεδο">Πως λειτουργεί σε τεχνικό επίπεδο</h3>
+
+<p>Οι σημειώσεις είναι οργανωμένες σε κατηγορίες.</p>
+
+<p>Όταν προστίθεται μια σημείωση, το <code class="highlighter-rouge">stup</code> αποθηκεύει ένα αρχείο markdown και το τοποθετεί μέσα στο φάκελο της κατηγορίας της σημείωσης δημιουργώντας υποφακέλους που αντιστοιχούν στην ημερομηνία της.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CATEGORIES_ROOT_DIRECTORY/CATEGORY/YEAR/MONTH/YYYY-MM-DD.md
+
+<span class="c"># Για παράδειγμα, οι σημειώσεις της κατηγορίας "programming"</span>
+<span class="c"># για τις 18 Απριλίου 2020 αποθηκεύονται στον φάκελο:</span>
+CATEGORIES_ROOT_DIRECTORY/programming/2020/04/2020-04-18.md
+</code></pre></div></div>
+
+<p>Αυτό επιτρέπει τους χρήστες να ανακτήσουν όποιες σημειώσεις προστέθηκαν σε μια συγκεκριμένη ημερομηνία για μια συγκεκριμένη ή για όλες τις κατηγορίες σημειώσεων.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Ανάκτηση σημειώσεων για όλες τις κατηγορίες</span>
+<span class="nv">$ </span>stup show @ 2020-04-18
+
+<span class="c"># Ανάκτηση σημειώσεων για την κατηγορία "programming"</span>
+<span class="c"># της προηγούμενης εβδομάδας</span>
+<span class="nv">$ </span>stup log previous-week <span class="nt">-c</span> programming
+
+<span class="c"># Ανάκτηση όλων των σημειώσεων για συγκεκριμένο χρονικό διάστημα</span>
+<span class="nv">$ </span>stup log <span class="nt">--from</span> 2020-04-01 <span class="nt">--to</span> 2020-04-15
+</code></pre></div></div>
+
+<h3 id="περισσότερες-πληροφορίες">Περισσότερες πληροφορίες</h3>
+
+<p>Μπορείτε να:</p>
+
+<ul>
+  <li>να επισκεφτείτε το αποθετήριο του προγράμματος στο Github <a href="https://github.com/iridakos/stup">εδώ</a>.</li>
+  <li>να δείτε όλη την τεκμηρίωση και τις χρήσεις του <code class="highlighter-rouge">stup</code> (με παραδείγματα) <a href="https://github.com/iridakos/stup/blob/master/README.md">εδώ</a>.</li>
+  <li>να δείτε issues/features προς υλοποίηση <a href="https://github.com/iridakos/stup/issues">εδώ</a>.</li>
+</ul>
+
+<p>Ευχαριστώ για την ανάγνωση!</p>
+
+                </div>
+              </div>
+
+              <div class="col-12 order-first">
+                <div class="d-sm-block d-md-none mb-3">
+                  <a class=" btn btn-outline-primary d-block collapsed text-left"
+                    title="View the structure of this document"
+                    role="button"
+                    data-toggle="collapse"
+                    data-role="outline"
+                    data-content=".outline"
+                    href="#docout-mobile"
+                    data-target="#docout-mobile"
+                    aria-expanded="false"
+                    aria-controls="collapse">
+                    Πίνακας περιεχομένων
+                    <i class="fa iridakos-collapse pull-right mt-1"></i>
+                  </a>
+
+                  <div id="docout-mobile" class="collapse my-3 border rounded bg-light p-2">
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+          <!--googleoff: index-->
+
+
+
+
+
+
+
+<div class="post-navigation">
+  <div class="row">
+    <div class="col-12 col-md-4 my-3">
+      
+        <a class="d-block btn btn-light btn-sm" href="/el/programming/2020/02/10/shell-palindrome-dates" title="Εύρεση παλίνδρομων ημερομηνιών στην Linux κονσόλα - επεξήγηση">
+          <strong>
+            <i class="fa fa-angle-double-left"></i> προηγούμενο άρθρο
+          </strong>
+
+          <hr class="my-1">
+
+          <small>
+            Εύρεση παλίνδρομων ημερομηνιών στην Linux κονσόλα - επεξήγηση
+          </small>
+        </a>
+      
+    </div>
+
+    <div class="col-12 col-md-4 offset-md-4 my-3">
+      
+    </div>
+  </div>
+</div>
+
+
+<!--googleon: index-->
+
+          
+
+
+  
+
+
+          
+<div class="alert alert-light related-posts">
+  <h4 class="alert-heading"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Σχετικά άρθρα</h4>
+
+  
+
+  <ul class="list-unstyled">
+  
+    
+      
+    
+      
+    
+      
+        <li>
+          <a class="alert-link" href="/el/programming/2019/11/13/bash-programmable-completion-tutorial"><strong>Bash: Προσθέτοντας tab συμπλήρωση στα script</strong></a>
+          <div>
+            <small>Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    
+      
+        <li>
+          <a class="alert-link" href="/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux"><strong>Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους</strong></a>
+          <div>
+            <small>Πως να αφαιρέσετε τις διπλές γραμμές ενός αρχείο σε Linux χωρίς να αλλάξει η σειρά τους - επεξήγηση awk one-liner κώδικα.</small>
+          </div>
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+  </ul>
+</div>
+
+
+          
+<div class="share-links">
+  <a class="btn btn-warning" href="https://twitter.com/intent/tweet?text=stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις&url=https://iridakos.com/el/programming/2020/04/20/stup-cli-notes" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning" href="https://facebook.com/sharer.php?u=https://iridakos.com/el/programming/2020/04/20/stup-cli-notes" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning" href="mailto:?subject=stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις&amp;body=stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις: https://iridakos.com/el/programming/2020/04/20/stup-cli-notes"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-warning btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> RSS feeds
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right">
+    <a class="dropdown-item" href="/el/feed.xml">όλα τα άρθρα</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/el/feeds/programming.xml">όλα τα άρθρα προγραμματισμού</a>
+    <a class="dropdown-item" href="/el/feeds/tutorials.xml">βοηθήματα προγραμματισμού</a>
+    <a class="dropdown-item" href="/el/feeds/opensource.xml">άρθρα σχετικά με ανοιχτό λογισμικό</a>
+    <a class="dropdown-item" href="/el/feeds/ruby.xml">άρθρα σχετικά με την Ruby (...on Rails)</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/el/feeds/programming-humor.xml">Χιούμορ για προγραμματιστές</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/el/feeds/painting.xml">άρθρα ζωγραφικής</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/el/feeds/cats.xml">άρθρα με γάτες</a>
+  </div>
+</div>
+
+        </div>
+
+        <div class="col">
+          <div class="sidebar">
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <a class="btn btn-warning d-block collapsed text-left"
+          data-toggle="collapse"
+          data-role="outline"
+          data-content=".outline"
+          href="#docout-sidebar"
+          data-target="#docout-sidebar"
+
+          title="View the structure of this document"
+          role="button"
+          href="#docout-sidebar"
+          aria-expanded="false"
+          aria-controls="collapse">
+          Πίνακας περιεχομένων
+          <i class="fa iridakos-collapse pull-right mt-1"></i>
+        </a>
+
+        <div class="section-content">
+          <div id="docout-sidebar" class="collapse mt-2 p-2">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-hand-spock-o"></i> Δημοφιλή άρθρα</h4>
+    </div>
+
+    <div class="section-content">
+      
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/el/programming/2019/11/13/bash-programmable-completion-tutorial">Bash: Προσθέτοντας tab συμπλήρωση στα script</a>
+             <div class="text-muted smaller">
+               Ένα βοήθημα σχετικά με το πως μπορείτε να προσθέσετε tab συμπλήρωση στα script σας σε περιβάλλον Bash
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-farnam-street" title="Featured in Farnam Street" data-toggle="tooltip">fs <i class="fa fa-envelope"></i></span>
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-betterldevlink" title="Featured in Better Dev Link" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+            </div>
+            <a href="/el/programming/2019/11/11/composing-better-emails">Γράφοντας καλύτερα email</a>
+             <div class="text-muted smaller">
+               Ηλεκτρονική αλληλογραφία - Συμβουλές για την σύνταξη αποτελεσματικών email αποφεύγοντας παρανοήσεις, με παραδείγματα από τον κόσμο της πληροφορικής.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-hacker-news" title="Featured in Hacker News" data-toggle="tooltip"><i class="fa fa-hacker-news"></i></span>
+              
+                <span class="featured-hackernewsletter" title="Featured in hackernewsletter" data-toggle="tooltip"><i class="fa fa-envelope"></i></span>
+              
+                <span class="featured-opensource-com" title="Featured in opensource.com" data-toggle="tooltip"><i class="fa fa-linux"></i></span>
+              
+            </div>
+            <a href="/el/programming/2019/11/11/remove-duplicate-lines-preserving-order-linux">Αποδιπλοποίηση των γραμμών ενός αρχείου διατηρώντας τη σειρά τους</a>
+             <div class="text-muted smaller">
+               Πως να αφαιρέσετε τις διπλές γραμμές ενός αρχείο σε Linux χωρίς να αλλάξει η σειρά τους - επεξήγηση awk one-liner κώδικα.
+             </div>
+          </div>
+        
+      
+        
+          <div class="section-item">
+            <div class="float-right ml-1">
+              
+                <span class="featured-ruby-weekly" title="Featured in Ruby Weekly" data-toggle="tooltip"><i class="fa fa-diamond"></i></span>
+              
+            </div>
+            <a href="/el/programming/2019/11/19/creating-chat-application-rails-websockets">Δημιουργώντας μια εφαρμογή συνομιλιών (chat) από το μηδέν με Rails και WebSockets</a>
+             <div class="text-muted smaller">
+               Ένα βοήθημα που περιγράφει βήμα προς βήμα πως να δημιουργήσετε μια εφαρμογή συνομιλιών (chat) από το μηδέν με χρήση Rails και WebSockets (ActionCable).
+             </div>
+          </div>
+        
+      
+
+      <div class="section-item">
+        <a href="/el/programming/featured">Δείτε όλα τα δημοφιλή άρθρα</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4><i class="fa fa-bullhorn"></i> Πρόσφατα άρθρα</h4>
+    </div>
+
+    
+
+    <div class="section-content">
+      
+          <div class="section-item">
+            <a href="/el/programming/2020/04/20/stup-cli-notes">stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις</a>
+            <div class="text-muted smaller">Παρουσίαση ενός εργαλείου για την αποθήκευση, ανάκτηση και οργάνωση καθημερινών σημειώσεων μέσα απο την κονσόλα</div>
+          </div>
+      
+          <div class="section-item">
+            <a href="/el/programming/2020/02/10/shell-palindrome-dates">Εύρεση παλίνδρομων ημερομηνιών στην Linux κονσόλα - επεξήγηση</a>
+            <div class="text-muted smaller">Ένα άρθρο που εξηγεί πως μπορείτε να βρείτε παλίνδρομες ημερομηνίες χρησιμοποιώντας εντολές στο φλοιό του Linux</div>
+          </div>
+      
+          <div class="section-item">
+            <a href="/el/programming/2019/12/12/descriptive-variable-names">Περιγραφική ονομασία μεταβλητών</a>
+            <div class="text-muted smaller">Βοήθεια βοήθεια βοήθεια</div>
+          </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="alert alert-primary">
+  <div class="sidebar-section">
+    <div class="section-title">
+      <h4>
+        <i class="fa fa-github"></i> Κώδικας
+      </h4>
+
+      <div class="float-right">
+
+      </div>
+    </div>
+
+    <div class="section-content">
+      <div class="section-item">
+        <a href="https://github.com/iridakos/goto">goto</a>: ένα utility για καταχώρηση ψευδώνυμων φακέλων και πλοήγηση σε αυτούς με bash completion
+      </div>
+
+      <div class="section-item">
+        <a href="https://github.com/iridakos/elman">elman</a>: ένα script για ευρετηριασμένη αναζήτηση στις Linux βοηθητικές σελίδες με χρήση του Elasticsearch
+      </div>
+
+      <div class="section-item">
+        <a href="https://github.com/iridakos/duckrails">DuckRails</a>
+        Η έκδοση <span class="important">2.1.5</span> είναι διαθέσιμη <img src="/assets/images/news/duckrails.png" class="logo" /> (<a href="https://github.com/iridakos/duckrails/wiki/Setup-DuckRails-via-Docker" target="_blank">docker image διαθέσιμο επίσης</a>)
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+  
+    <div class="alert alert-primary d-none d-md-block">
+      <div class="sidebar-section">
+        <div class="section-content mt-2">
+          
+<div class="share-links">
+  <a class="btn btn-warning" href="https://twitter.com/intent/tweet?text=stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις&url=https://iridakos.com/el/programming/2020/04/20/stup-cli-notes" rel="nofollow" target="_blank" title="Share on Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="btn btn-warning" href="https://facebook.com/sharer.php?u=https://iridakos.com/el/programming/2020/04/20/stup-cli-notes" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="btn btn-warning" href="https://www.reddit.com/submit" onclick="window.location = 'https://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false" title="Share on Reddit"><i class="fa fa-reddit"></i></a>
+  <a class="btn btn-warning" href="mailto:?subject=stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις&amp;body=stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις: https://iridakos.com/el/programming/2020/04/20/stup-cli-notes"><i class="fa fa-envelope-o" title="Share with email"></i></a>
+</div>
+
+<div class="subscribe-links">
+  <button class="btn btn-warning btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-rss"></i> RSS feeds
+  </button>
+
+  <div class="dropdown-menu dropdown-menu-right">
+    <a class="dropdown-item" href="/el/feed.xml">όλα τα άρθρα</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/el/feeds/programming.xml">όλα τα άρθρα προγραμματισμού</a>
+    <a class="dropdown-item" href="/el/feeds/tutorials.xml">βοηθήματα προγραμματισμού</a>
+    <a class="dropdown-item" href="/el/feeds/opensource.xml">άρθρα σχετικά με ανοιχτό λογισμικό</a>
+    <a class="dropdown-item" href="/el/feeds/ruby.xml">άρθρα σχετικά με την Ruby (...on Rails)</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/el/feeds/programming-humor.xml">Χιούμορ για προγραμματιστές</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/el/feeds/painting.xml">άρθρα ζωγραφικής</a>
+    <div role="separator" class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/el/feeds/cats.xml">άρθρα με γάτες</a>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="image-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">iridakos images preview</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <div class="image-container">
+                    <img class="image" />
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="footer">
+  <div class="container-fluid no-gutters">
+    <div class="row">
+      <div class="col-12">
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="brand mb-1">
+          <a href="https://iridakos.com">iridakos</a>
+        </div>
+
+        <div class="license">
+          <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">iridakos</span> by
+          <a xmlns:cc="http://creativecommons.org/ns#" href="https://iridakos.com/about/" property="cc:attributionName" rel="cc:attributionURL" class="">Lazarus Lazaridis</a> is licensed under a <a class="" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </div>
+
+        <div>
+          <a class="" rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="/assets/images/license.png" /></a>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="my-4">
+          <a class="btn btn-light btn-sm mr-1" href="https://www.github.com/iridakos/"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+          <a class="btn btn-light btn-sm mr-1" href="https://www.twitter.com/lazaru_s/"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>
+          <a class="btn btn-light btn-sm mr-1" href="https://www.linkedin.com/in/iridakos/"><i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="/assets/javascripts/bootstrap.min.js?1588328138383896505" type="text/javascript"></script>
+<script src="/assets/javascripts/docout.js?1588328138383896505" type="text/javascript"></script>
+<script src="/assets/javascripts/iridakos.js?1588328138383896505" type="text/javascript"></script>
+<script src="/assets/javascripts/search.js?1588328138383896505" type="text/javascript"></script>
+
+
+
+
+  </body>
+</html>

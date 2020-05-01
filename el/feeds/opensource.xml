@@ -10,12 +10,156 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/el/feeds/opensource.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 28 Apr 2020 11:07:22 +0300</pubDate>
-    <lastBuildDate>Tue, 28 Apr 2020 11:07:22 +0300</lastBuildDate>
+    <pubDate>Fri, 01 May 2020 13:15:38 +0300</pubDate>
+    <lastBuildDate>Fri, 01 May 2020 13:15:38 +0300</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     <foo>ha</foo>
     
 
+    
+      <item>
+        <title>stup - ένα εργαλείο κονσόλας για καθημερινές σημειώσεις</title>
+        <description>&lt;p&gt;Τα τελευταία χρόνια συμμετέχω σε καθημερινά &lt;a href=&quot;https://en.wikipedia.org/wiki/Stand-up_meeting&quot;&gt;Stand-up meetings&lt;/a&gt; και μου δημιουργήθηκε η ανάγκη να βρω έναν βολικό και αποτελεσματικό τρόπο να κρατάω σημειώσεις σχετικά με το τι έκανα κάθε μέρα.&lt;/p&gt;
+
+&lt;p&gt;Χρειαζόμουν:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;να κρατώ &lt;strong&gt;κατηγοριοποιημένες σημειώσες&lt;/strong&gt; για τα issues πάνω στα οποία εργαζόμουν, τις συναντήσεις στις οποίες συμμετείχα, πράγματα που εμπόδιζαν τη δουλειά μου κ.λπ.&lt;/li&gt;
+  &lt;li&gt;να μπορώ εύκολα να &lt;strong&gt;ανακτήσω αυτές τις σημειώσεις βάσει της ημερομηνίας&lt;/strong&gt; στην οποία καταχωρήθηκαν&lt;/li&gt;
+  &lt;li&gt;να έχω μια &lt;strong&gt;γενική εικόνα&lt;/strong&gt; για το τι έκανα (για παράδειγμα την τελευταία εβδομάδα)&lt;/li&gt;
+  &lt;li&gt;όλα τα παραπάνω:
+    &lt;ul&gt;
+      &lt;li&gt;μέσα από την &lt;strong&gt;κονσόλα&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;χωρίς να χρειάζεται να διαμορφώσω και να συντηρώ ένα αρχείο με όλες τις σημειώσεις χειροκίνητα&lt;/li&gt;
+      &lt;li&gt;χωρίς να χρειάζεται να διαμορφώνω και να συντηρώ ένα αρχείο για κάθε μέρα με όλες τις σημειώσεις χειροκίνητα&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;stup&quot;&gt;stup&lt;/h2&gt;
+
+&lt;p&gt;Υλοποίησα το &lt;a href=&quot;https://github.com/iridakos/stup&quot;&gt;stup&lt;/a&gt; (το όνομα προέρχεται από τον όρο &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;st&lt;/code&gt;&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;and-&lt;/code&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;up&lt;/code&gt;&lt;/strong&gt;), ένα πρόγραμμα ανοιχτού κώδικα, για να καλύψω τις ανάγκες αυτές.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/posts/stup-cli-notes/stup-demo.gif&quot; alt=&quot;stup demo gif&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ο πηγαίος κώδικας είναι διαθέσιμος στο &lt;a href=&quot;https://github.com/iridakos/stup&quot; target=&quot;_blank&quot;&gt;GitHub εδώ&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;παραδείγματα-χρήσης&quot;&gt;Παραδείγματα χρήσης&lt;/h3&gt;
+
+&lt;p&gt;Παραθέτω κάποια παραδείγματα που παρουσιάζουν τις βασικότερες χρήσεις του &lt;code class=&quot;highlighter-rouge&quot;&gt;stup&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;προσθήκη-σημειώσεων&quot;&gt;Προσθήκη σημειώσεων&lt;/h4&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Προσθήκη σημείωσης στην προεπιλεγμένη κατηγορία για την τρέχουσα ημερομηνία&lt;/span&gt;
+stup add &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Worked on issue #ABC123&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Προσθήκη σημείωσης στην προεπιλεγμένη κατηγορία υπονοώντας την τρέχουσα ημερομηνία&lt;/span&gt;
+stup add today &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Worked on issue #ABC123&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Προσθήκη σημείωσης στην κατηγορία &quot;meetings&quot;&lt;/span&gt;
+stup add today &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;meetings&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;2 hours with @phoebe for the project kick off&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Προσθήκη σημείωσης στην κατηγορία &quot;blocking&quot; στις 10 Απριλίου, 2020&lt;/span&gt;
+stup add @ 2020-04-10 &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;blocking&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;connectivity issues&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;εμφάνιση-σημειώσεων-συγκεκριμένης-ημέρας&quot;&gt;Εμφάνιση σημειώσεων συγκεκριμένης ημέρας&lt;/h4&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Εμφάνιση χθεσινών σημειώσεων (υπονοώντας την ημέρα)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;stup
+
+&lt;span class=&quot;c&quot;&gt;# Εμφάνιση χθεσινών σημειώσεων (με σαφή προσδιορισμό της ημέρας)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;stup yesterday
+
+&lt;span class=&quot;c&quot;&gt;# Εμφάνιση των σημερινών σημειώσεων&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;stup today
+
+&lt;span class=&quot;c&quot;&gt;# Εμφάνιση σημειώσεων σε συγκεκριμένη ημερομηνία&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;stup show @ 2020-04-18
+
+&lt;span class=&quot;c&quot;&gt;# Εμφανίση σημειώσεων για συγκεκριμένη κατηγορία σε συγκεκριμένη ημέρα&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;stup show @ 2020-04-18 &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;meetings&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;λίστα-όλων-των-σημειώσεων-για-ένα-χρονικό-διάστημα&quot;&gt;Λίστα όλων των σημειώσεων για ένα χρονικό διάστημα&lt;/h4&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Λίστα των σημειώσεων της τρέχουσας εβδομάδας&lt;/span&gt;
+stup log week
+
+&lt;span class=&quot;c&quot;&gt;# Λίστα των σημειώσεων της τρέχουσας εβδομάδας (υπονοώντας την ενέργεια log)&lt;/span&gt;
+stup week
+
+&lt;span class=&quot;c&quot;&gt;# Λίστα των σημειώσεων της προηγούμενης εβοδμάδας&lt;/span&gt;
+stup log previous-week
+
+&lt;span class=&quot;c&quot;&gt;# Λίστα των σημειώσεων της προηγούμενης εβοδμάδας (υπονοώντας την ενέργεια log)&lt;/span&gt;
+stup previous-week
+
+&lt;span class=&quot;c&quot;&gt;# Λίστα σημειώσεων μεταξύ δύο ημερομηνιών&lt;/span&gt;
+stup log &lt;span class=&quot;nt&quot;&gt;--from&lt;/span&gt; 2020-01-20 &lt;span class=&quot;nt&quot;&gt;--to&lt;/span&gt; 2020-03-02
+
+&lt;span class=&quot;c&quot;&gt;# Λίστα σημειώσεων μεταξύ δύο ημερομηνιών για συγκεκριμένη κατηγορία&lt;/span&gt;
+stup log &lt;span class=&quot;nt&quot;&gt;--from&lt;/span&gt; 2020-01-20 &lt;span class=&quot;nt&quot;&gt;--to&lt;/span&gt; 2020-03-02 &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;meetings&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;πως-λειτουργεί-σε-τεχνικό-επίπεδο&quot;&gt;Πως λειτουργεί σε τεχνικό επίπεδο&lt;/h3&gt;
+
+&lt;p&gt;Οι σημειώσεις είναι οργανωμένες σε κατηγορίες.&lt;/p&gt;
+
+&lt;p&gt;Όταν προστίθεται μια σημείωση, το &lt;code class=&quot;highlighter-rouge&quot;&gt;stup&lt;/code&gt; αποθηκεύει ένα αρχείο markdown και το τοποθετεί μέσα στο φάκελο της κατηγορίας της σημείωσης δημιουργώντας υποφακέλους που αντιστοιχούν στην ημερομηνία της.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CATEGORIES_ROOT_DIRECTORY/CATEGORY/YEAR/MONTH/YYYY-MM-DD.md
+
+&lt;span class=&quot;c&quot;&gt;# Για παράδειγμα, οι σημειώσεις της κατηγορίας &quot;programming&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# για τις 18 Απριλίου 2020 αποθηκεύονται στον φάκελο:&lt;/span&gt;
+CATEGORIES_ROOT_DIRECTORY/programming/2020/04/2020-04-18.md
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Αυτό επιτρέπει τους χρήστες να ανακτήσουν όποιες σημειώσεις προστέθηκαν σε μια συγκεκριμένη ημερομηνία για μια συγκεκριμένη ή για όλες τις κατηγορίες σημειώσεων.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Ανάκτηση σημειώσεων για όλες τις κατηγορίες&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;stup show @ 2020-04-18
+
+&lt;span class=&quot;c&quot;&gt;# Ανάκτηση σημειώσεων για την κατηγορία &quot;programming&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# της προηγούμενης εβδομάδας&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;stup log previous-week &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; programming
+
+&lt;span class=&quot;c&quot;&gt;# Ανάκτηση όλων των σημειώσεων για συγκεκριμένο χρονικό διάστημα&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;stup log &lt;span class=&quot;nt&quot;&gt;--from&lt;/span&gt; 2020-04-01 &lt;span class=&quot;nt&quot;&gt;--to&lt;/span&gt; 2020-04-15
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;περισσότερες-πληροφορίες&quot;&gt;Περισσότερες πληροφορίες&lt;/h3&gt;
+
+&lt;p&gt;Μπορείτε να:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;να επισκεφτείτε το αποθετήριο του προγράμματος στο Github &lt;a href=&quot;https://github.com/iridakos/stup&quot;&gt;εδώ&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;να δείτε όλη την τεκμηρίωση και τις χρήσεις του &lt;code class=&quot;highlighter-rouge&quot;&gt;stup&lt;/code&gt; (με παραδείγματα) &lt;a href=&quot;https://github.com/iridakos/stup/blob/master/README.md&quot;&gt;εδώ&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;να δείτε issues/features προς υλοποίηση &lt;a href=&quot;https://github.com/iridakos/stup/issues&quot;&gt;εδώ&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ευχαριστώ για την ανάγνωση!&lt;/p&gt;
+</description>
+        <pubDate>Mon, 20 Apr 2020 12:00:00 +0300</pubDate>
+        <link>https://iridakos.com/el/programming/2020/04/20/stup-cli-notes</link>
+        <guid isPermaLink="true">https://iridakos.com/el/programming/2020/04/20/stup-cli-notes</guid>
+        
+        <category>linux</category>
+        
+        <category>opensource</category>
+        
+        <category>bash</category>
+        
+        <category>scripts</category>
+        
+        <category>productivity</category>
+        
+        <category>tools</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Εύρεση παλίνδρομων ημερομηνιών στην Linux κονσόλα - επεξήγηση</title>
