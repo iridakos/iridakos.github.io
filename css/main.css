@@ -8585,6 +8585,9 @@ html {
 .text-iridakos {
   color: black; }
 
+.text-200 {
+  font-size: 200% !important; }
+
 .no-overflow pre {
   white-space: pre-wrap; }
 
@@ -9157,15 +9160,9 @@ h2 {
 .announcements {
   font-size: 90%;
   padding: 10px;
+  border-radius: 10;
   margin-top: -2rem;
   margin-bottom: 2rem;
-  background: #fffaed;
-  border-bottom: 1px solid #fff1c9;
-  border-top: 1px solid #fff1c9;
-  border-left: 0 none;
-  border-right: 0 none;
-  border-radius: 0;
-  color: #876500; }
-  .announcements a, .announcements a:link, .announcements a:visited, .announcements a:hover {
-    color: #6d5200 !important;
-    font-weight: bold; }
+  background: #f3f3f3;
+  border: 1px solid #e1e1e1;
+  color: #5a5a5a; }

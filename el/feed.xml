@@ -10,8 +10,8 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 01 May 2020 13:39:02 +0300</pubDate>
-    <lastBuildDate>Fri, 01 May 2020 13:39:02 +0300</lastBuildDate>
+    <pubDate>Wed, 06 May 2020 19:49:02 +0300</pubDate>
+    <lastBuildDate>Wed, 06 May 2020 19:49:02 +0300</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
@@ -40,7 +40,7 @@
 
 &lt;p&gt;Υλοποίησα το &lt;a href=&quot;https://github.com/iridakos/stup&quot;&gt;stup&lt;/a&gt; (το όνομα προέρχεται από τον όρο &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;st&lt;/code&gt;&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;and-&lt;/code&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;up&lt;/code&gt;&lt;/strong&gt;), ένα πρόγραμμα ανοιχτού κώδικα, για να καλύψω τις ανάγκες αυτές.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/posts/stup-cli-notes/stup-demo.gif&quot; alt=&quot;stup demo gif&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/iridakos/stup/blob/master/assets/stup-0-1-9.gif?raw=true&quot; alt=&quot;stup demo gif&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Ο πηγαίος κώδικας είναι διαθέσιμος στο &lt;a href=&quot;https://github.com/iridakos/stup&quot; target=&quot;_blank&quot;&gt;GitHub εδώ&lt;/a&gt;.&lt;/p&gt;
 

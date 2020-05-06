@@ -10,8 +10,8 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feeds/opensource.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 01 May 2020 13:39:02 +0300</pubDate>
-    <lastBuildDate>Fri, 01 May 2020 13:39:02 +0300</lastBuildDate>
+    <pubDate>Wed, 06 May 2020 19:49:02 +0300</pubDate>
+    <lastBuildDate>Wed, 06 May 2020 19:49:02 +0300</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     <foo>ha</foo>
     
@@ -39,7 +39,7 @@
 
 &lt;p&gt;I created &lt;a href=&quot;https://github.com/iridakos/stup&quot;&gt;stup&lt;/a&gt; (the name derives from &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;st&lt;/code&gt;&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;and-&lt;/code&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;up&lt;/code&gt;&lt;/strong&gt;), an opensource CLI tool that deals with these issues and allows to easily save, access and organize my notes.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/posts/stup-cli-notes/stup-demo.gif&quot; alt=&quot;stup demo gif&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/iridakos/stup/blob/master/assets/stup-0-1-9.gif?raw=true&quot; alt=&quot;stup demo gif&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The source code of the project is available on &lt;a href=&quot;https://github.com/iridakos/stup&quot; target=&quot;_blank&quot;&gt;GitHub here&lt;/a&gt;.&lt;/p&gt;
 
