@@ -10,15 +10,15 @@
       <title>iridakos</title>
     </image>
     <atom:link href="https://iridakos.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 May 2020 20:00:52 +0300</pubDate>
-    <lastBuildDate>Wed, 06 May 2020 20:00:52 +0300</lastBuildDate>
+    <pubDate>Wed, 13 May 2020 08:59:17 +0300</pubDate>
+    <lastBuildDate>Wed, 13 May 2020 08:59:17 +0300</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
 
     
 
     
       <item>
-        <title>stup - a CLI tool to save, access and organize standup and other types of daily notes</title>
+        <title>stup - Daily notes in the terminal</title>
         <description>&lt;p&gt;Over the past few years I have been participating in &lt;a href=&quot;https://en.wikipedia.org/wiki/Stand-up_meeting&quot;&gt;Stand-up meetings&lt;/a&gt; and it took me some time to find a convenient and effective way for keeping notes about what I was doing every day.&lt;/p&gt;
 
 &lt;p&gt;I needed to be able to:&lt;/p&gt;

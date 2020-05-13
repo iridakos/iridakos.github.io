@@ -3,8 +3,8 @@
 
 [
   
-  { "title": "stup - a CLI tool to save, access and organize standup and other types of daily notes",
-    "description": "Introducing a tool for keeping standup and other types of notes in the terminal",
+  { "title": "stup - Daily notes in the terminal",
+    "description": "Introducing a shell tool for saving, organizing and searching daily notes from the command line",
     "date": "Apr 20, 2020 - 12:00",
     "categories": "programming",
     "tags": ["linux","opensource","bash","scripts","productivity","tools"],
